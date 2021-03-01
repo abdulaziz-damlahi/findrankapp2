@@ -66,7 +66,8 @@ return [
     | `'posts' => App\Post::class`
     */
     'resources' => [
-        'posts' => \App\Post::class,
+        'keywords' =>  \App\Models\keywords::class,
+
     ],
 
     /*
@@ -181,10 +182,7 @@ return [
     | Content Negotiation chapter in the docs for details.
     |
     */
-    'resources' => [
-        'keywords' =>  \App\Models\keywords::class,
 
-    ],
     'decoding' => [
         'application/vnd.api+json',
     ],
