@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+    JsonApi::register('default', [], function ( $api) {
+
+
+        $api->resource('Keywords');
+    $api->resource('Packets');
+    $api->resource('Websites');
+});JsonApi::register('v1')->routes(function ($api) {
+
+    $api->resource('Keywords');
+    $api->resource('Packets');
+    $api->resource('Websites');
+});
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
