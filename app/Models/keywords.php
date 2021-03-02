@@ -15,13 +15,13 @@ class keywords extends Model
     ];
     public function websites()
     {
-        $this->belongsTo('App\Models\Website', 'website_id','id');
+        $this->belongsTo('App\Models\websites', 'website_id','id');
     }
 
 
     public function User()
     {
-        $this->belongsTo('App\Models\User', 'id','website_id');
+        $this->belongsTo('App\Models\users', 'id','website_id');
     }
 
 }

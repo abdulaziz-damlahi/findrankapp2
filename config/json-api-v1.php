@@ -66,8 +66,9 @@ return [
     | `'posts' => App\Post::class`
     */
     'resources' => [
-        'keywords' =>  \App\Models\keywords::class,
-
+        'Keywords' =>  \App\Models\keywords::class,
+        'Packets' =>  \App\Models\packets::class,
+        'Websites' =>  \App\Models\websites::class,
     ],
 
     /*
@@ -106,10 +107,6 @@ return [
         'host' => null,
         'namespace' => '/api/v1',
         'name' => 'api:v1:',
-    ],
-    'resources' => [
-        'keywords' =>  \App\Models\keywords::class,
-
     ],
 
     /*

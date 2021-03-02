@@ -67,6 +67,8 @@ return [
     */
     'resources' => [
         'keywords' =>  \App\Models\keywords::class,
+        'Packets' =>  \App\Models\packets::class,
+        'Websites' =>  \App\Models\websites::class,
 
     ],
 

@@ -195,6 +195,10 @@
                 "jsonapi.org",
                 "laravel"
             ],
+            "support": {
+                "issues": "https://github.com/cloudcreativity/laravel-json-api/issues",
+                "source": "https://github.com/cloudcreativity/laravel-json-api/tree/v3.3.0"
+            },
             "time": "2021-02-06T08:46:15+00:00"
         },
         {
@@ -5085,6 +5089,10 @@
                 "jsonapi",
                 "jsonapi.org"
             ],
+            "support": {
+                "issues": "https://github.com/cloudcreativity/json-api/issues",
+                "source": "https://github.com/cloudcreativity/json-api-testing/tree/v3.2.0"
+            },
             "time": "2020-11-25T09:35:46+00:00"
         },
         {
@@ -7422,5 +7430,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

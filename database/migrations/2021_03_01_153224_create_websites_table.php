@@ -14,12 +14,12 @@ class CreateWebsitesTable extends Migration
     public function up()
     {
         Schema::create('websites', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('website_name');
-            $table->string('address');
             $table->string('rank');
 
             $table->timestamps();
+
         });
     }
 

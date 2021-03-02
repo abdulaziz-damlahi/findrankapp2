@@ -3,6 +3,7 @@
 namespace App\JsonApi\Websites;
 
 use Neomerx\JsonApi\Schema\SchemaProvider;
+use App\Models\websites;
 
 class Schema extends SchemaProvider
 {
@@ -10,10 +11,11 @@ class Schema extends SchemaProvider
     /**
      * @var string
      */
-    protected $resourceType = 'websites';
+    protected $resourceType = 'Websites';
+
 
     /**
-     * @param \App\Website $resource
+     * @param websites $resource
      *      the domain record being serialized.
      * @return string
      */
@@ -22,16 +24,19 @@ class Schema extends SchemaProvider
         return (string) $resource->getRouteKey();
     }
 
+
     /**
-     * @param \App\Website $resource
+     * @param websites $resource
      *      the domain record being serialized.
-     * @return array
+     * @return string
      */
     public function getAttributes($resource)
     {
         return [
             'createdAt' => $resource->created_at,
             'updatedAt' => $resource->updated_at,
+            'website_names'=> $resource->website_names,
+            'rank'=> $resource->description,
         ];
     }
 }

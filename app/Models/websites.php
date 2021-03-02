@@ -11,15 +11,14 @@ class websites extends Model
     use HasFactory;
 
     protected $fillable = [
-        'website_id',
+        'id',
         'website_names',
         'rank',
-        'keywords',
     ];
 
     public function User()
     {
-        $this->belongsTo('App\Models\User', 'id','website_id');
+        $this->belongsTo('App\Models\users', 'id','website_id');
     }
 
     public function keywords()
@@ -29,7 +28,7 @@ class websites extends Model
 
     public function packets()
     {
-        $this->belongsTo('App\Models\packets', 'packet_id','website_id');
+        $this->belongsTo('App\Models\packets', 'packet_id','id');
     }
 
 }

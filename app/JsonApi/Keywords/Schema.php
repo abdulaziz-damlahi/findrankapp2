@@ -4,13 +4,14 @@ namespace App\JsonApi\Keywords;
 
 use Neomerx\JsonApi\Schema\SchemaProvider;
 use App\Models\keywords;
+use App\Models\websites;
 class Schema extends SchemaProvider
 {
 
     /**
      * @var string
      */
-    protected $resourceType = 'keywords';
+    protected $resourceType = 'Keywords';
 
 
     /**
@@ -31,12 +32,7 @@ class Schema extends SchemaProvider
     public function getAttributes($resource)
     {
         return [
-            'id' => $resource->id,
-            'count_of_words' => $resource->count_of_words,
-            'descrpitions' => $resource->descrpitions,
-            'end_of_pocket' => $resource->end_of_pocket,
-            'started_of_pockets' => $resource->started_of_pockets,
-            'packet_names' => $resource->packet_names,
+            'name' => $resource->name,
             'createdAt' => $resource->created_at,
             'createdAt' => $resource->created_at,
         ];

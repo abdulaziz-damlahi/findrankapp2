@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\websites;
 class packets extends Model
 {
     use HasFactory;
@@ -16,15 +16,13 @@ class packets extends Model
         'started_of_pockets',
         'count_of_websites',
     ];
-    public function User()
+    public function user()
     {
-        $this->belongsTo('App\Models\User', 'id','packet_id');
+        $this->belongsTo('App\Models\users', 'id','id');
     }
-
-
     public function websites()
     {
-        return $this->hasMany('App\Models\websites', 'website_id');
+        return $this->hasMany('App\Models\websites', 'id');
     }
 
 }

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
+
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -38,11 +39,10 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::prefix('api')
-                ->middleware('api')
+
+            Route::middleware('api')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
-
 
             Route::middleware('web')
                 ->namespace($this->namespace)

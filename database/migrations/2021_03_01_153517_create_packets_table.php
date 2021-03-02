@@ -14,14 +14,17 @@ class CreatePacketsTable extends Migration
     public function up()
     {
         Schema::create('packets', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('website_id');
             $table->string('count_of_words');
             $table->string('descrpitions');
             $table->string('end_of_pocket');
             $table->string('started_of_pockets');
             $table->string('count_of_websites');
             $table->string('packet_names');
-
+            $table->foreign('website_id')
+                ->references('id')
+                ->on('websites')->onDelete('cascade');
             $table->timestamps();
         });
     }

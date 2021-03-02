@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
+use CloudCreativity\LaravelJsonApi\Routing\RouteRegistrar as Api;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +15,12 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-    JsonApi::register('default', [], function ( $api) {
-
-
+    JsonApi::register('default', [], function (Api $api) {
         $api->resource('Keywords');
     $api->resource('Packets');
     $api->resource('Websites');
-});JsonApi::register('v1')->routes(function ($api) {
+});
+    JsonApi::register('v1')->routes(function (Api $api) {
 
     $api->resource('Keywords');
     $api->resource('Packets');
