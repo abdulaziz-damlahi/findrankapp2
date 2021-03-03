@@ -14,7 +14,7 @@ class CreatePacketsTable extends Migration
     public function up()
     {
         Schema::create('packets', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('packet_id');
             $table->unsignedBigInteger('website_id');
             $table->string('count_of_words');
             $table->string('descrpitions');

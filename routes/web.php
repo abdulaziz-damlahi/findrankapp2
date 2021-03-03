@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\homepage;
+use App\Http\Controllers\login;
+use App\Http\Controllers\contact;
+use Illuminate\Support\Facades\App;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', [\App\Http\Controllers\homepage::class, 'index']);
+Route::get('/', [homepage::class, 'index']);
+Route::get('/login', [login::class, 'index'])->name('login');
+Route::get('/contact', [contact::class, 'index'])->name('contact');
+Route::get('/settings', [\App\Http\Controllers\settings::class, 'index'])->name('contact');
 

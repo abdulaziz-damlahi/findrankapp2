@@ -1,20 +1,47 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\keywords;
 use App\Models\websites;
 use App\Models\packets;
+use Illuminate\Support\Facades\App;
 
 
 class homepage extends Controller
 {
-    public function index (){
-        $data['keywords']=keywords::orderBy('created_at','DESC')->get();
-        $doctor = packets::with('websites')->find(1);
+    public function index (Request $request){
+        $clientIP = \Request::ip();
+        $clientIP = \Request::getClientIp(true);
+        $clientIP = Request()->ip();
+        $externalContent = file_get_contents('http://checkip.dyndns.com/');
+        preg_match('/Current IP Address: \[?([:.0-9a-fA-F]+)\]?/', $externalContent, $m);
+        $externalIp = $m[1];
+        $externalIp;
+        $ippp = '2.16.7.255';
+        $geo = geoip()->getLocation('88.21.130.14');
+        $localiton=  $geo->iso_code;
+        if($localiton==='TR'){
+            $lang = 'tr';
 
-        return view('pages/home/home',compact(array($doctor, $data)));
+        App::setlocale($lang);
+            $locale = App::getLocale();
+        }
+        else if($localiton==='US'){
+            $lang = 'en';
+            App::setlocale($lang);
+            $locale = App::getLocale();
+        } else if($localiton==='ES'){
+            $lang = 'es';
+            App::setlocale($lang);
+            $locale = App::getLocale();
+        }else if($localiton==='DE'){
+            $lang = 'de';
+            App::setlocale($lang);
+            $locale = App::getLocale();
+        }
+
+        return view('pages/home/home',compact('locale','localiton','lang'));
 
     }
 

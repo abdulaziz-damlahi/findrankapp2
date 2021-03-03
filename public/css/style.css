@@ -8,21 +8,21 @@
 -------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------
-body 
+body
  + WRAP
  + HEADER
  + NAVIGATION
  + BANNER
  + SERVICES
  + OUR FEATURED FOUNDERS
- + BLOG UPDATES 
+ + BLOG UPDATES
  + APPOINMENT
  + NEWS FROM BLOG
  + PARTNERS / CLIENTS
  + FOOTER
  + SOCIAL ICONS
  + MEGA MENU
- + 3 MENU LEVEL 
+ + 3 MENU LEVEL
 -------------------------------------------------------------------*/
 /*=======================================================
       IMPORT FILE
@@ -382,11 +382,11 @@ header nav .ownmenu li {
 }
 header nav li a:hover {
 	color: #fff;
-	background:#232c3b;
+	background:#ff6c3a;
 }
 header nav li.active a {
 	color: #fff;
-	background:#232c3b;
+	background:#ff6c3a;
 }
 header .ownmenu ul.dropdown {
 	padding-bottom: 0px;
@@ -609,7 +609,7 @@ header.coporate-header .ownmenu > li > .megamenu {
 }
 .sub-banner .position-center-center{
 	width:100%;
-	text-align:center; 
+	text-align:center;
 }
 .sub-banner h2{
 	font-family: 'Alegreya Sans';
@@ -663,19 +663,19 @@ header.coporate-header .ownmenu > li > .megamenu {
 }
 
 /*=======================================================
-      
+
 ========================================================*/
 .solution{
 }
 .solution h6{
-	font-size:12px;	
+	font-size:12px;
 	margin-top:40px;
 	text-transform:uppercase;
 	font-weight:normal;
 	letter-spacing:1.3px;
 }
 .front-page span{
-	
+
 }
 .list-style li{
 	padding:5px 0;
@@ -700,7 +700,7 @@ header.coporate-header .ownmenu > li > .megamenu {
 .case-studies{
 }
 .case{
-	
+
 }
 .case ul li article{
 	position:relative;
@@ -1104,7 +1104,7 @@ header.coporate-header .ownmenu > li > .megamenu {
 	padding: 0 10px;
 	height: 40px;
 }
-#contact_form li .form-control {	
+#contact_form li .form-control {
 	border: none;
 	box-shadow: none;
 	border-radius: 0px;
@@ -1139,7 +1139,7 @@ header.coporate-header .ownmenu > li > .megamenu {
 	display: inline-block;
 	width: 100%;
 	margin: 0px;
-    margin-top: 0px;	
+    margin-top: 0px;
 	line-height: 26px;
 }
 .contact-form textarea {
@@ -1266,7 +1266,7 @@ header.coporate-header .ownmenu > li > .megamenu {
       CASE STUDIO SINGLE
 ========================================================*/
 .case-studies-single{
-	
+
 }
 /*=======================================================
       TEAM
@@ -1484,7 +1484,7 @@ footer .news-letter button{
 .footer-info .links li{
 	float:left;
 	width:50%;
-	padding-left:20px;	
+	padding-left:20px;
 	position:relative;
 }
 .footer-info .links li:before{
@@ -1500,7 +1500,7 @@ footer .news-letter button{
 	line-height:40px;
 	font-size:13px;
 	padding-bottom:3px;
-	border-bottom:1px dashed #rgba(255,255,255,0);
+	border-bottom:1px dashed rgba(255,255,255,0);
 }
 .footer-info .links li a:hover{
 	color:#fff;
@@ -1519,7 +1519,7 @@ footer .news-letter button{
 }
 .footer-info  .personal-info {
 	margin-top:30px;
-	
+
 }
 .footer-info  .personal-info li{
 	color:#969ea7;

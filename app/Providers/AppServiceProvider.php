@@ -23,9 +23,19 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        LaravelJsonApi::defaultApi('v1');
+
         //
-    }
+        /**
+         * Bootstrap any application services.
+         *
+         * @return void
+         */
+        public function boot()
+        {
+            LaravelJsonApi::defaultApi('v1');
+            //Check for 'lang' cookie
+
+
+        }
+
 }

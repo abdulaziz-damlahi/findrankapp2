@@ -26,7 +26,7 @@ class Adapter extends AbstractAdapter
      * @var array
      */
     protected $filterScopes = [];
-    protected $defaultWith = ['websites'];
+    protected $defaultWith = ['websitess'];
 
     /**
      * Adapter constructor.

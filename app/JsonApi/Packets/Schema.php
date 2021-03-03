@@ -32,7 +32,8 @@ class Schema extends SchemaProvider
     public function getAttributes($resource)
     {
         return [
-            'count_of_words'=> $resource->count_of_words,
+            'packet_id'=> $resource->packet_id,
+            'count_of_words'=> $resource->count_oapf_words,
             'descrpitions'=> $resource->descrpitions,
             'end_of_pocket'=> $resource->end_of_pocket,
             'started_of_pockets'=> $resource->started_of_pockets,
@@ -41,6 +42,20 @@ class Schema extends SchemaProvider
             'createdAt' => $resource->created_at,
             'updatedAt' => $resource->updated_at,
 
+        ];
+    }
+    public function getRelationships($resource, $isPrimary, array $includeRelationships)
+    {
+        return [
+            'websitess' => [
+                self::SHOW_SELF => true,
+                self::SHOW_RELATED => true,
+                self::SHOW_DATA => isset($includeRelationships['websitess']),
+                self::DATA => function () use ($resource) {
+
+                    return $resource->createdBy;
+                },
+            ],
         ];
     }
 

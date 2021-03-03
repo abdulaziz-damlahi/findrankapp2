@@ -6,6 +6,7 @@
             <div class="tp-banner-fix">
                 <ul>
 
+
                     <!-- Slider 1 -->
                     <li data-transition="fade" data-slotamount="7"> <img src="{{asset('images')}}/slides/slide-bg-1.jpg" data-bgposition="center top" alt="" />
 

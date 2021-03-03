@@ -17,7 +17,8 @@ use CloudCreativity\LaravelJsonApi\Routing\RouteRegistrar as Api;
 */
     JsonApi::register('default', [], function (Api $api) {
         $api->resource('Keywords');
-    $api->resource('Packets');
+    $api->resource('Packets', [
+        'hasMany' => 'websites']);
     $api->resource('Websites');
 });
     JsonApi::register('v1')->routes(function (Api $api) {

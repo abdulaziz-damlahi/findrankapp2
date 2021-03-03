@@ -8,10 +8,4 @@ use Illuminate\Http\Request;
 class keyword extends Controller
 {
 
-    public function getkeyword()
-    {
-        $payments = keywords::get();
-        return response()->json($payments->get());
-
-    }
 }

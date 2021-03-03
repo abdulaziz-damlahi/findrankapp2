@@ -20,9 +20,9 @@ class packets extends Model
     {
         $this->belongsTo('App\Models\users', 'id','id');
     }
-    public function websites()
+    public function websitess()
     {
-        return $this->hasMany('App\Models\websites', 'id');
+        return $this->hasMany('App\Models\websites', 'id','packet_id');
     }
 
 }
