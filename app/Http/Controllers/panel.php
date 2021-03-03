@@ -28,7 +28,7 @@ class panel extends Controller
 
     public function userspacket()
     {
-        $user = User::find(1);
+        $user = User::find(2);
         $user->packets;
         return $user;
     }

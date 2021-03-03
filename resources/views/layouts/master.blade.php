@@ -10,6 +10,7 @@
 <body class="home">
 @yield('header')
 @yield('content')
+</div>
 @yield('footer')
 
 </body>

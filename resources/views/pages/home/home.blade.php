@@ -594,5 +594,11 @@
         </section>
     </div>
 
-    <script>document.querySelector("#ownmenu > li:nth-child(9)").hide();</script>
+
+
+    <script>
+        document.getElementById("openbtn").remove();
+        document.querySelector("#ownmenu > li:nth-child(9)").remove();
+        document.querySelector("#ownmenu > li:nth-child(5)").style.display = "none";
+    </script>
 @endsection

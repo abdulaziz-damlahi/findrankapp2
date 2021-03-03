@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-    <div class="pcoded-inner-content">
+    <div class="pcoded-inner-content" id="main">
         <div class="main-body">
             <div class="page-wrapper">
 
@@ -9,7 +9,7 @@
                     <div class="row">
 
                         <!-- order-card start -->
-                        <div class="col-md-6 col-xl-3">
+                        <div class="col-md-12 col-xl-3">
                             <div class="card bg-c-blue order-card">
                                 <div class="card-block">
                                     <h6 class="m-b-20">Orders Received</h6>
@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-3">
+                        <div class="col-md-12 col-xl-3">
                             <div class="card bg-c-green order-card">
                                 <div class="card-block">
                                     <h6 class="m-b-20">Total Sales</h6>
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-3">
+                        <div class="col-md-12 col-xl-3">
                             <div class="card bg-c-yellow order-card">
                                 <div class="card-block">
                                     <h6 class="m-b-20">Revenue</h6>
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-3">
+                        <div class="col-md-12 col-xl-3">
                             <div class="card bg-c-pink order-card">
                                 <div class="card-block">
                                     <h6 class="m-b-20">Total Profit</h6>
@@ -325,103 +325,9 @@
         </div>
     </div>
 
-    <div  style="z-index:4!important;" id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" id="closebtn"> X </a>
-        <a href="#">About</a>
-        <a href="/profile">my profile</a>
-
-
-
-
-    </div>
-
-
-    <style>
-
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 0 !important;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .sidebar a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-            z-index: 4 !important;
-
-        }
-
-        .sidebar a:hover {
-            color: #f1f1f1;
-        }
-
-        .sidebar .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            z-index: auto;
-            margin-left: 50px;
-        }
-
-        .openbtn {
-            cursor: pointer;
-            background-color: #111;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            z-index: 4 !important;
-        }
-
-        .openbtn:hover {
-            background-color: #444;
-            z-index: 4 !important;
-        }
-
-        #main {
-            transition: margin-left .5s;
-            padding: 16px;
-        }
-
-        /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-        @media screen and (max-height: 450px) {
-            .sidebar {
-                padding-top: 15px;
-            }
-
-            .sidebar a {
-                font-size: 18px;
-            }
-        }
-    </style>
-
     <script>
         document.querySelector("#notch").remove()
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-        }
-
-        $('html').click(function() {
-            document.getElementById("mySidebar").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-        });
-
-
     </script>
+
+
 @endsection

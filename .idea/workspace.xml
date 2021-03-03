@@ -5,8 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/panel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/packets.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/packets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_01_153517_create_packets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_01_153517_create_packets_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/home/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/panel/panel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/panel/panel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/panel/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/panel/profile.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +149,9 @@
       <path value="$PROJECT_DIR$/vendor/cloudcreativity/json-api-testing" />
     </include_path>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1pA2llS8WcABTC37p00z1xjq6HL" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -185,7 +192,7 @@
       <workItem from="1614611727424" duration="2055000" />
       <workItem from="1614614392675" duration="198000" />
       <workItem from="1614665551864" duration="2440000" />
-      <workItem from="1614751962154" duration="14247000" />
+      <workItem from="1614751962154" duration="30095000" />
     </task>
     <servers />
   </component>
