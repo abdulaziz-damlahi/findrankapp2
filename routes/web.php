@@ -10,7 +10,10 @@ Route::get('/profile', 'App\Http\Controllers\panel@profile');
 Route::get('/contact', 'App\Http\Controllers\homepage@contact');
 
 
-Route::get('/one-to-many', 'App\Http\Controllers\panel@OneTOMany');
+Route::get('/users-packet', 'App\Http\Controllers\panel@userspacket');
+Route::get('/users-website', 'App\Http\Controllers\panel@userswebsite');
+Route::get('/packet-website', 'App\Http\Controllers\panel@packetwebsite');
+Route::get('/website-keyword', 'App\Http\Controllers\panel@websitekeyword');
 
 
 

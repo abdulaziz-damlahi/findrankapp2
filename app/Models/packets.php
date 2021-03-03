@@ -11,7 +11,6 @@ class packets extends Model
     protected $fillable = [
         'id',
         'packet_id',
-
         'count_of_word',
         'description',
         'end_of_pocket',
@@ -26,7 +25,7 @@ class packets extends Model
 
     public function websites()
     {
-        return $this->hasMany('App\Models\websites', 'website_id');
+        return $this->hasMany('App\Models\websites', 'packet_id','id');
     }
 
 }

@@ -32,9 +32,7 @@ class User extends Authenticatable
     }
     public function websites()
     {
-
-        return $this->hasMany('App\Models\websites','website_id');
-
+        return $this->hasMany('App\Models\websites','user_id');
     }
 }
 

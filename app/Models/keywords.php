@@ -10,18 +10,12 @@ class keywords extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'website_id',
         'name',
         'date',
     ];
     public function websites()
     {
-        $this->belongsTo('App\Models\Website', 'website_id','id');
+        $this->belongsTo('App\Models\websites','id','website_id');
     }
-
-
-    public function User()
-    {
-        $this->belongsTo('App\Models\User', 'id','website_id');
-    }
-
 }
