@@ -29,24 +29,28 @@ class panel extends Controller
     public function userspacket()
     {
         $user = User::find(1);
-        return $user->packets;
+        $user->packets;
+        return $user;
     }
 
     public function userswebsite()
     {
         $user = User::find(1);
-        return $user->websites;
+         $user->websites;
+        return $user;
     }
 
     public function packetwebsite()
     {
         $packet = packets::find(1);
-        return $packet->websites;
+         $packet->websites;
+        return $packet;
     }
 
     public function websitekeyword()
     {
         $website = websites::find(1);
-        return $website->keywords;
+         $website->keywords;
+        return $website;
     }
 }

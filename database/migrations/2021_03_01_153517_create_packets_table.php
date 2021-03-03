@@ -17,6 +17,7 @@ class CreatePacketsTable extends Migration
             $table->id();
             $table->string('count_of_words');
             $table->string('packet_id');
+            $table->string('user_id');
             $table->string('descrpitions');
             $table->string('end_of_pocket');
             $table->string('started_of_pockets');

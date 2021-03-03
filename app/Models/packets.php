@@ -11,6 +11,7 @@ class packets extends Model
     protected $fillable = [
         'id',
         'packet_id',
+        'user_id',
         'count_of_word',
         'description',
         'end_of_pocket',
@@ -19,7 +20,7 @@ class packets extends Model
     ];
     public function User()
     {
-        $this->belongsTo('App\Models\User', 'id','packet_id');
+         $this->belongsTo('App\Models\User', 'id','user_id');
     }
 
 
