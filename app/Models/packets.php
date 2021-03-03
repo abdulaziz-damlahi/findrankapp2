@@ -9,7 +9,9 @@ class packets extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id',
         'packet_id',
+
         'count_of_word',
         'description',
         'end_of_pocket',

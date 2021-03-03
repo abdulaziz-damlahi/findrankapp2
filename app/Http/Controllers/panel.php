@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -21,5 +22,10 @@ class panel extends Controller
     {
         return view(
             'pages/panel/profile');
+    }
+
+    public function OneTOMany(){
+         $user= User::find(1);
+         return  $user->packets;
     }
 }
