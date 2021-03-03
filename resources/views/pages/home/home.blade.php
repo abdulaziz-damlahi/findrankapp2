@@ -593,4 +593,6 @@
             </div>
         </section>
     </div>
+
+    <script>document.querySelector("#ownmenu > li:nth-child(9)").hide();</script>
 @endsection
