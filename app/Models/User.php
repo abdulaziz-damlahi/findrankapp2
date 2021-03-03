@@ -28,7 +28,7 @@ class User extends Authenticatable
 
     public function packets()
     {
-        return $this->hasMany('App\Models\packets', 'packet_id','id');
+        return $this->hasOne('App\Models\packets', 'packet_id','id');
     }
     public function websites()
     {
