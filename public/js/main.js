@@ -27,8 +27,7 @@ $('#slider').flexslider({
     slideshow: false,
     sync: "#carousel"
   });
-  
-  
+
 $('.testi-slides-flex').flexslider({
    animation: "slide"
 });
@@ -46,8 +45,8 @@ jQuery('.tp-banner-fix').show().revolution({
 	navigationStyle:"preview4",
 	parallax:"mouse",
 	parallaxBgFreeze:"on",
-	parallaxLevels:[7,4,3,2,5,4,3,2,1,0],												
-	keyboardNavigation:"on",						
+	parallaxLevels:[7,4,3,2,5,4,3,2,1,0],
+	keyboardNavigation:"on",
 	fullWidth:"off",
 	fullScreen:"off"
 });
@@ -59,7 +58,7 @@ var $container = $('.port-wrap .items');
     $container.isotope({
     itemSelector: '.portfolio-item',
     layoutMode: 'masonry'
-});	
+});
 });
 $('.portfolio-filter li a').on('click', function () {
     $('.portfolio-filter li a').removeClass('active');
@@ -73,7 +72,7 @@ return false;
 /*-----------------------------------------------------------------------------------*/
 /* 	SINGLE SLIDE
 /*-----------------------------------------------------------------------------------*/
-$(".single-slides").owlCarousel({ 
+$(".single-slides").owlCarousel({
     items : 1,
 	autoplay:false,
 	autoplayHoverPause:true,
@@ -82,7 +81,7 @@ $(".single-slides").owlCarousel({
 	lazyLoad:true,
 	nav: true,
 	loop: true,
-	animateOut: 'fadeOut'	
+	animateOut: 'fadeOut'
 });
 });
 
@@ -91,7 +90,7 @@ $(".single-slides").owlCarousel({
 /*-----------------------------------------------------------------------------------*/
 function checkmail(input){
   var pattern1=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-  	if(pattern1.test(input)){ return true; }else{ return false; }}     
+  	if(pattern1.test(input)){ return true; }else{ return false; }}
     function proceed(){
     	var name = document.getElementById("name");
 		var email = document.getElementById("email");
@@ -99,9 +98,9 @@ function checkmail(input){
 		var web = document.getElementById("website");
 		var msg = document.getElementById("message");
 		var errors = "";
-		if(name.value == ""){ 
+		if(name.value == ""){
 		name.className = 'error';
-	  	  return false;}    
+	  	  return false;}
 		  else if(email.value == ""){
 		  email.className = 'error';
 		  return false;}
@@ -117,7 +116,7 @@ function checkmail(input){
 		   else if(msg.value == ""){
 		        msg.className = 'error';
 		        return false;}
-		   else 
+		   else
 		  {
 	$.ajax({
 		type: "POST",
@@ -133,6 +132,34 @@ function checkmail(input){
 		}}
 	});
 }};
+/*-----------------------------------------------------------------------------------
+       header
+    /*-----------------------------------------------------------------------------------*/
+
+
+let click;
+click = 0;
+function openNav() {
+    if (click == 0) {
+        document.getElementById("mySidebar").style.width = "320px";
+        document.getElementById("main").style.marginRight = "320px";
+        click = 1;
+    } else {
+        document.getElementById("mySidebar").style.width = "0px";
+        document.getElementById("main").style.marginRight = "0px";
+        click = 0;
+    }
+}
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginRight = "0";
+}
+var x = location.href;
+console.log(x);
+if (x == 'http://127.0.0.1:8000/') {
+    document.getElementById("openbtn").remove();
+    document.getElementById("findorder").hide();
+}
 
 
 

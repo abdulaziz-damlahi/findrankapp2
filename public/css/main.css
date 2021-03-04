@@ -28,13 +28,13 @@
 }
 #preloader6 span:nth-child(1){
 background:#ff6c3a;
- 
+
 }
 #preloader6 span:nth-child(2){
 left:22px;
 background:#ff6c3a;
     animation-delay: .2s;
- 
+
 }
 #preloader6 span:nth-child(3){
 top:22px;
@@ -1519,3 +1519,80 @@ header.is-fixed{position:fixed;}
 .letter-space-8{letter-spacing:8px !important;}
 .letter-space-9{letter-spacing:9px !important;}
 .letter-space-10{letter-spacing:10px !important;}
+
+/*sidebar style*/
+
+.sidebar {
+    -moz-box-shadow: 3px 3px 5px 6px #404040;
+    -webkit-box-shadow: 3px 3px 5px 6px #404040;
+    box-shadow: 3px 3px 5px 6px #404040;
+    right: 0;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 0 !important;
+    top: 0;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    z-index: 4 !important;
+
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+
+    z-index: auto;
+}
+
+.SideBarName {
+    position: absolute;
+    top: 0;
+    padding-right: 20px;
+    right: 0px;
+    z-index: auto;
+}
+
+.openbtn {
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    z-index: 4 !important;
+}
+
+.openbtn:hover {
+    background-color: #444;
+    z-index: 4 !important;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
+}
