@@ -2,17 +2,23 @@
 @section('content')
 
     <div id="login_container" class="container my-5 py-5">
-    <form id="loginForm">
+    <form class="user" id="loginForm" method="post" action="{{route('login.post')}}">
+        @csrf
+        @if($errors->any())
+            <div class="alert-danger">
+                {{$errors->first()}}
+            </div>
+        @endif
         <label>
             <p class="label-txt">ENTER YOUR EMAIL</p>
-            <input type="text" class="input">
+            <input name="email" type="text" class="input">
             <div class="line-box">
                 <div class="line"></div>
             </div>
         </label>
         <label>
             <p class="label-txt">ENTER YOUR PASSWORD</p>
-            <input type="text" class="input">
+            <input name="password" type="text" class="input">
             <div class="line-box">
                 <div class="line"></div>
             </div>
@@ -20,6 +26,7 @@
         <button id="button" type="submit">submit</button>
         <div >
         <a id="register"  href="#">Register here</a></div>
+
     </form>
     </div>
     <div id="register_container" class="container my-5 py-5">

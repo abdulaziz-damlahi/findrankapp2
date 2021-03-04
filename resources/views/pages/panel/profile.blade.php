@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+
     <div class="pcoded-inner-content" id="main">
         <div class="main-body col-md-12">
             <div class="page-wrapper col-md-12">

@@ -64,8 +64,14 @@
                                 <li><a href="404-page.html">404 Ppage</a></li>
                             </ul>
                         </li>
-                        <li><a href=""> CONTACT</a></li>
 
+                        <li><a href=""> CONTACT</a></li>
+                        @php
+                            $routeName = Route::getCurrentRoute()->getName();
+                        @endphp
+                        @if($routeName === 'logout')
+                            <li><a href="{{route("logout")}}"> LOGOUT</a></li>
+                    @endif
                         <!--======= SEARCH ICON =========-->
                             <ul class="dropdown">
                                 <li>
