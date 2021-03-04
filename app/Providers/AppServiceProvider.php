@@ -32,7 +32,6 @@ class AppServiceProvider extends ServiceProvider
          */
         public function boot()
         {
-            LaravelJsonApi::defaultApi('v1');
             //Check for 'lang' cookie
 
 

@@ -190,7 +190,7 @@ $(document).ready(function() {
             /* .transitionDuration(350)*/
             .reduceXTicks(true) //If 'false', every single x-axis tick label will be rendered.
             .rotateLabels(0) //Angle to rotate x-axis labels.
-            .showControls(true) //Allow user to switch between 'Grouped' and 'Stacked' mode.
+            .showControls(true) //Allow users to switch between 'Grouped' and 'Stacked' mode.
             .groupSpacing(0.1) //Distance between each group of bars.
         ;
 

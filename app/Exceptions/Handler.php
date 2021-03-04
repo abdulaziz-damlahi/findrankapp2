@@ -9,14 +9,14 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
-    use HandlesErrors;
+
     /**
      * A list of the exception types that are not reported.
      *
      * @var array
      */
     protected $dontReport = [
-        JsonApiException::class,
+
     ];
 
     /**
@@ -52,16 +52,7 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $e
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Throwable $e)
-    {
-        if ($request->ajax() || $request->wantsJson()) {
-            return response()->json(
-                $this->getJsonMessage($e),
-                $this->getExceptionHTTPStatusCode($e)
-            );
-        }
-        return parent::render($request, $e);
-    }
+
 
     protected function getJsonMessage($e){
         // You may add in the code, but it's duplication

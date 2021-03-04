@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\packets;
-use App\Models\User;
+use App\Models\users;
 use App\Models\websites;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -33,14 +33,14 @@ class panel extends Controller
 
     public function userspacket()
     {
-        $user = User::find(2);
+        $user = users::find(1);
         $user->packets;
         return $user;
     }
 
     public function userswebsite()
     {
-        $user = User::find(1);
+        $user = users::find(1);
          $user->websites;
         return $user;
     }

@@ -4,17 +4,17 @@
 //
 // Licensed under the terms of the MIT license.
 //
-// You may use it in your theme if you credit me. 
+// You may use it in your theme if you credit me.
 // It is also free to use on any individual website.
 //
 // Exception:
-// The only restriction is to not publish any  
+// The only restriction is to not publish any
 // extension for browsers or native application
 // without getting a written permission first.
 //
 
 (function () {
-  
+
 // Scroll Variables (tweakable)
 var defaultOptions = {
 
@@ -39,8 +39,8 @@ var defaultOptions = {
 
     // Other
     touchpadSupport   : false, // ignore touchpad by default
-    fixedBackground   : true, 
-    excluded          : ''    
+    fixedBackground   : true,
+    excluded          : ''
 };
 
 var options = defaultOptions;
@@ -58,7 +58,7 @@ var refreshSize;
 var deltaBuffer = [];
 var isMac = /^Mac/.test(navigator.platform);
 
-var key = { left: 37, up: 38, right: 39, down: 40, spacebar: 32, 
+var key = { left: 37, up: 38, right: 39, down: 40, spacebar: 32,
             pageup: 33, pagedown: 34, end: 35, home: 36 };
 
 
@@ -79,20 +79,20 @@ function initTest() {
  * Sets up scrolls array, determines if frames are involved.
  */
 function init() {
-  
+
     if (initDone || !document.body) return;
 
     initDone = true;
 
     var body = document.body;
     var html = document.documentElement;
-    var windowHeight = window.innerHeight; 
+    var windowHeight = window.innerHeight;
     var scrollHeight = body.scrollHeight;
-    
+
     // check compat mode for root element
     root = (document.compatMode.indexOf('CSS') >= 0) ? html : body;
     activeElement = body;
-    
+
     initTest();
 
     // Checks if this script is running in a frame
@@ -101,25 +101,25 @@ function init() {
     }
 
     /**
-     * Please duplicate this radar for a Safari fix! 
+     * Please duplicate this radar for a Safari fix!
      * rdar://22376037
      * https://openradar.appspot.com/radar?id=4965070979203072
-     * 
+     *
      * Only applies to Safari now, Chrome fixed it in v45:
-     * This fixes a bug where the areas left and right to 
+     * This fixes a bug where the areas left and right to
      * the content does not trigger the onmousewheel event
      * on some pages. e.g.: html, body { height: 100% }
      */
     else if (scrollHeight > windowHeight &&
-            (body.offsetHeight <= windowHeight || 
+            (body.offsetHeight <= windowHeight ||
              html.offsetHeight <= windowHeight)) {
 
         var fullPageElem = document.createElement('div');
         fullPageElem.style.cssText = 'position:absolute; z-index:-10000; ' +
-                                     'top:0; left:0; right:0; height:' + 
+                                     'top:0; left:0; right:0; height:' +
                                       root.scrollHeight + 'px';
         document.body.appendChild(fullPageElem);
-        
+
         // DOM changed (throttled) to fix height
         var pendingRefresh;
         refreshSize = function () {
@@ -131,16 +131,16 @@ function init() {
                 pendingRefresh = null;
             }, 500); // act rarely to stay fast
         };
-  
+
         setTimeout(refreshSize, 10);
 
         addEvent('resize', refreshSize);
 
         // TODO: attributeFilter?
         var config = {
-            attributes: true, 
-            childList: true, 
-            characterData: false 
+            attributes: true,
+            childList: true,
+            characterData: false
             // subtree: true
         };
 
@@ -148,7 +148,7 @@ function init() {
         observer.observe(body, config);
 
         if (root.offsetHeight <= windowHeight) {
-            var clearfix = document.createElement('div');   
+            var clearfix = document.createElement('div');
             clearfix.style.clear = 'both';
             body.appendChild(clearfix);
         }
@@ -175,9 +175,9 @@ function cleanup() {
 
 
 /************************************************
- * SCROLLING 
+ * SCROLLING
  ************************************************/
- 
+
 var que = [];
 var pending = false;
 var lastScroll = Date.now();
@@ -186,7 +186,7 @@ var lastScroll = Date.now();
  * Pushes scroll actions to the scrolling queue.
  */
 function scrollArray(elem, left, top) {
-    
+
     directionCheck(left, top);
 
     if (options.accelerationMax != 1) {
@@ -201,83 +201,83 @@ function scrollArray(elem, left, top) {
             }
         }
         lastScroll = Date.now();
-    }          
-    
+    }
+
     // push a scroll command
     que.push({
-        x: left, 
-        y: top, 
+        x: left,
+        y: top,
         lastX: (left < 0) ? 0.99 : -0.99,
-        lastY: (top  < 0) ? 0.99 : -0.99, 
+        lastY: (top  < 0) ? 0.99 : -0.99,
         start: Date.now()
     });
-        
+
     // don't act if there's a pending queue
     if (pending) {
         return;
-    }  
+    }
 
     var scrollWindow = (elem === document.body);
-    
+
     var step = function (time) {
-        
+
         var now = Date.now();
         var scrollX = 0;
-        var scrollY = 0; 
-    
+        var scrollY = 0;
+
         for (var i = 0; i < que.length; i++) {
-            
+
             var item = que[i];
             var elapsed  = now - item.start;
             var finished = (elapsed >= options.animationTime);
-            
+
             // scroll position: [0, 1]
             var position = (finished) ? 1 : elapsed / options.animationTime;
-            
+
             // easing [optional]
             if (options.pulseAlgorithm) {
                 position = pulse(position);
             }
-            
+
             // only need the difference
             var x = (item.x * position - item.lastX) >> 0;
             var y = (item.y * position - item.lastY) >> 0;
-            
+
             // add this to the total scrolling
             scrollX += x;
-            scrollY += y;            
-            
+            scrollY += y;
+
             // update last values
             item.lastX += x;
             item.lastY += y;
-        
+
             // delete and step back if it's over
             if (finished) {
                 que.splice(i, 1); i--;
-            }           
+            }
         }
 
         // scroll left and top
         if (scrollWindow) {
             window.scrollBy(scrollX, scrollY);
-        } 
+        }
         else {
             if (scrollX) elem.scrollLeft += scrollX;
-            if (scrollY) elem.scrollTop  += scrollY;                    
+            if (scrollY) elem.scrollTop  += scrollY;
         }
-        
+
         // clean up if there's nothing left to do
         if (!left && !top) {
             que = [];
         }
-        
-        if (que.length) { 
-            requestFrame(step, elem, (1000 / options.frameRate + 1)); 
-        } else { 
+
+        if (que.length) {
+            requestFrame(step, elem, (1000 / options.frameRate + 1));
+        } else {
             pending = false;
         }
     };
-    
+
     // start a new queue of actions
     requestFrame(step, elem, 0);
     pending = true;
@@ -297,19 +297,19 @@ function wheel(event) {
     if (!initDone) {
         init();
     }
-    
+
     var target = event.target;
     var overflowing = overflowingAncestor(target);
 
     // use default if there's no overflowing
-    // element or default action is prevented   
-    // or it's a zooming event with CTRL 
+    // element or default action is prevented
+    // or it's a zooming event with CTRL
     if (!overflowing || event.defaultPrevented || event.ctrlKey) {
         return true;
     }
-    
+
     // leave embedded content alone (flash & pdf)
-    if (isNodeName(activeElement, 'embed') || 
+    if (isNodeName(activeElement, 'embed') ||
        (isNodeName(target, 'embed') && /\.pdf/i.test(target.src)) ||
        isNodeName(activeElement, 'object')) {
         return true;
@@ -317,7 +317,7 @@ function wheel(event) {
 
     var deltaX = -event.wheelDeltaX || event.deltaX || 0;
     var deltaY = -event.wheelDeltaY || event.deltaY || 0;
-    
+
     if (isMac) {
         if (event.wheelDeltaX && isDivisible(event.wheelDeltaX, 120)) {
             deltaX = -120 * (event.wheelDeltaX / Math.abs(event.wheelDeltaX));
@@ -326,7 +326,7 @@ function wheel(event) {
             deltaY = -120 * (event.wheelDeltaY / Math.abs(event.wheelDeltaY));
         }
     }
-    
+
     // use wheelDelta if deltaX/Y is not available
     if (!deltaX && !deltaY) {
         deltaY = -event.wheelDelta || 0;
@@ -337,7 +337,7 @@ function wheel(event) {
         deltaX *= 40;
         deltaY *= 40;
     }
-    
+
     // check if it's a touchpad scroll that should be ignored
     if (!options.touchpadSupport && isTouchpad(deltaY)) {
         return true;
@@ -352,7 +352,7 @@ function wheel(event) {
     if (Math.abs(deltaY) > 1.2) {
         deltaY *= options.stepSize / 120;
     }
-    
+
     scrollArray(overflowing, deltaX, deltaY);
     event.preventDefault();
     scheduleClearCache();
@@ -365,15 +365,15 @@ function wheel(event) {
 function keydown(event) {
 
     var target   = event.target;
-    var modifier = event.ctrlKey || event.altKey || event.metaKey || 
+    var modifier = event.ctrlKey || event.altKey || event.metaKey ||
                   (event.shiftKey && event.keyCode !== key.spacebar);
-    
+
     // our own tracked active element could've been removed from the DOM
     if (!document.contains(activeElement)) {
         activeElement = document.activeElement;
     }
 
-    // do nothing if user is editing text
+    // do nothing if users is editing text
     // or using a modifier key (except shift)
     // or in a dropdown
     // or inside interactive elements
@@ -383,19 +383,19 @@ function keydown(event) {
          isNodeName(target, 'input') && !buttonTypes.test(target.type) ||
          isNodeName(activeElement, 'video') ||
          isInsideYoutubeVideo(event) ||
-         target.isContentEditable || 
+         target.isContentEditable ||
          event.defaultPrevented   ||
          modifier ) {
       return true;
     }
-    
+
     // spacebar should trigger button press
     if ((isNodeName(target, 'button') ||
          isNodeName(target, 'input') && buttonTypes.test(target.type)) &&
         event.keyCode === key.spacebar) {
       return true;
     }
-    
+
     var shift, x = 0, y = 0;
     var elem = overflowingAncestor(activeElement);
     var clientHeight = elem.clientHeight;
@@ -410,7 +410,7 @@ function keydown(event) {
             break;
         case key.down:
             y = options.arrowScroll;
-            break;         
+            break;
         case key.spacebar: // (+ shift)
             shift = event.shiftKey ? 1 : -1;
             y = -shift * clientHeight * 0.9;
@@ -433,7 +433,7 @@ function keydown(event) {
             break;
         case key.right:
             x = options.arrowScroll;
-            break;            
+            break;
         default:
             return true; // a key we don't care about
     }
@@ -498,9 +498,9 @@ function overflowingAncestor(el) {
         if (rootScrollHeight === el.scrollHeight) {
             var topOverflowsNotHidden = overflowNotHidden(root) && overflowNotHidden(body);
             var isOverflowCSS = topOverflowsNotHidden || overflowAutoOrScroll(root);
-            if (isFrame && isContentOverflowing(root) || 
+            if (isFrame && isContentOverflowing(root) ||
                !isFrame && isOverflowCSS) {
-                return setCache(elems, getScrollRoot()); 
+                return setCache(elems, getScrollRoot());
             }
         } else if (isContentOverflowing(el) && overflowAutoOrScroll(el)) {
             return setCache(elems, el);
@@ -534,7 +534,7 @@ function addEvent(type, fn) {
 }
 
 function removeEvent(type, fn) {
-    window.removeEventListener(type, fn, false);  
+    window.removeEventListener(type, fn, false);
 }
 
 function isNodeName(el, tag) {
@@ -573,7 +573,7 @@ function isTouchpad(deltaY) {
         }
     }, 1000);
     return !allDeltasDivisableBy(120) && !allDeltasDivisableBy(100);
-} 
+}
 
 function isDivisible(n, divisor) {
     return (Math.floor(n / divisor) == n / divisor);
@@ -590,7 +590,7 @@ function isInsideYoutubeVideo(event) {
     var isControl = false;
     if (document.URL.indexOf ('www.youtube.com/watch') != -1) {
         do {
-            isControl = (elem.classList && 
+            isControl = (elem.classList &&
                          elem.classList.contains('html5-video-controls'));
             if (isControl) break;
         } while (elem = elem.parentNode);
@@ -599,17 +599,17 @@ function isInsideYoutubeVideo(event) {
 }
 
 var requestFrame = (function () {
-      return (window.requestAnimationFrame       || 
-              window.webkitRequestAnimationFrame || 
+      return (window.requestAnimationFrame       ||
+              window.webkitRequestAnimationFrame ||
               window.mozRequestAnimationFrame    ||
               function (callback, element, delay) {
                  window.setTimeout(callback, delay || (1000/60));
              });
 })();
 
-var MutationObserver = (window.MutationObserver || 
+var MutationObserver = (window.MutationObserver ||
                         window.WebKitMutationObserver ||
-                        window.MozMutationObserver);  
+                        window.MozMutationObserver);
 
 var getScrollRoot = (function() {
   var SCROLL_ROOT;
@@ -623,7 +623,7 @@ var getScrollRoot = (function() {
       window.scrollBy(0, 3);
       if (document.body.scrollTop != bodyScrollTop)
         (SCROLL_ROOT = document.body);
-      else 
+      else
         (SCROLL_ROOT = document.documentElement);
       window.scrollBy(0, -3);
       document.body.removeChild(dummy);
@@ -636,7 +636,7 @@ var getScrollRoot = (function() {
 /***********************************************
  * PULSE (by Michael Herf)
  ***********************************************/
- 
+
 /**
  * Viscous fluid with a pulse for part and decay for the rest.
  * - Applies a fixed force over an interval (a damped acceleration), and
@@ -677,8 +677,8 @@ function pulse(x) {
 
 var userAgent = window.navigator.userAgent;
 var isEdge    = /Edge/.test(userAgent); // thank you MS
-var isChrome  = /chrome/i.test(userAgent) && !isEdge; 
-var isSafari  = /safari/i.test(userAgent) && !isEdge; 
+var isChrome  = /chrome/i.test(userAgent) && !isEdge;
+var isSafari  = /safari/i.test(userAgent) && !isEdge;
 var isMobile  = /mobile/i.test(userAgent);
 var isEnabledForBrowser = (isChrome || isSafari) && !isMobile;
 
@@ -701,7 +701,7 @@ if (wheelEvent && isEnabledForBrowser) {
 
 function SmoothScroll(optionsToSet) {
     for (var key in optionsToSet)
-        if (defaultOptions.hasOwnProperty(key)) 
+        if (defaultOptions.hasOwnProperty(key))
             options[key] = optionsToSet[key];
 }
 SmoothScroll.destroy = cleanup;
