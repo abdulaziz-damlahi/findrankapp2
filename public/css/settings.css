@@ -8,7 +8,21 @@
     text-align: center;
     -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
     box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-}
+}#buttonss ul li a {
+     text-decoration:none;
+     color:#222;
+     background-color:#ccc;
+     padding:4px 5px;
+ }setting_button:active {
+      color: red;
+  }.LABEL_text{
+margin-bottom: 10px;
+      }.input_file{
+width:100%;
+             }.LABEL_text{
+    width:8%;
+                               font-size: 12px;
+                           }
 label {
     display: block;
     position: relative;
@@ -75,6 +89,45 @@ label {
     transition: ease .3s;
     background: #ff6c3a;
     color:white;
+}#Button_setting_1 {
+    display: inline-block;
+    padding: 12px 24px;
+    background: rgb(220,220,220);
+    font-weight: bold;
+    color: rgb(120,120,120);
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease .3s;
+    background: #ff6c3a;
+    color:white;
+}#Button_setting_2 {
+    display: inline-block;
+    padding: 12px 24px;
+    background: rgb(220,220,220);
+    font-weight: bold;
+    color: rgb(120,120,120);
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease .3s;
+    background: #ff6c3a;
+    color:white;
+}#Button_setting_3 {
+    display: inline-block;
+    padding: 12px 24px;
+    background: rgb(220,220,220);
+    font-weight: bold;
+    color: rgb(120,120,120);
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: ease .3s;
+    background: #ff6c3a;
+    color:white;
 }
 
 #button:hover {
@@ -94,9 +147,17 @@ label {
 }
 #register:hover{
     color:#ff6c3a;
-}
+}.menuy{
+    text-align: center;
+ }
 @media only screen and (max-width: 775px) {
+    .hidden-xs{
+        display:block!important;
+    }
 
+    .menuy ul li{
+        margin-left: 15%;
+    }
     #settingsForm {
         width: 100%;
         margin: 60px auto;
@@ -105,5 +166,11 @@ label {
         text-align: center;
         -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
         box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+    }
+
+}
+@media only screen and (min-width: 775px) and (max-width: 1505px) {
+    .hidden-xs{
+display:block!important;
     }
 }
