@@ -49,7 +49,7 @@
                 <nav>
                     <ul id="ownmenu" class="ownmenu">
                         <li class="active"><a href="index.html">{{__('home.Home')}}</a></li>
-                        <li><a href="{{route('login')}}"> Login/Logout</a></li>
+                        <li><a href=""> Login/Logout</a></li>
                         <li><a href="index.html">Pages</a>
                             <ul class="dropdown">
                                 <li><a href="index.html">Index Defult</a></li>
@@ -64,7 +64,7 @@
                                 <li><a href="404-page.html">404 Ppage</a></li>
                             </ul>
                         </li>
-                        <li><a href={{route('contact')}}> CONTACT</a></li>
+                        <li><a href=""> CONTACT</a></li>
 
                         <!--======= SEARCH ICON =========-->
                             <ul class="dropdown">

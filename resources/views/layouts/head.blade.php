@@ -1,5 +1,8 @@
 @section('head')
 <head>
+    @php
+        $routeName = Route::getCurrentRoute()->getName();
+    @endphp
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="M_Adnan" />
@@ -21,11 +24,19 @@
     <link rel="stylesheet" href="{{asset('css')}}/font-awesome.min.css">
     <link rel="stylesheet" href="{{asset('css')}}/main.css">
     <link rel="stylesheet" href="{{asset('css')}}/style.css">
+    @if($routeName === 'profile')
+    <link rel="stylesheet" href="{{asset('css')}}/Panel.css">
+    @endif
+    @if($routeName === 'panel')
+        <link rel="stylesheet" href="{{asset('css')}}/Panel.css">
+    @endif
     <link rel="stylesheet" href="{{asset('css')}}/contact.css">
     <link rel="stylesheet" type="text/css" href="{{asset('css')}}/settings.css">
     <script rel="stylesheet" src="{{asset('js')}}/login.js"></script>
     <script rel="stylesheet" src="{{asset('js')}}/settings.js"></script>
+    @if($routeName === 'login')
     <link rel="stylesheet" href="{{asset('css')}}/login.css">
+    @endif
     <link rel="stylesheet" href="{{asset('css')}}/responsive.css">
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->

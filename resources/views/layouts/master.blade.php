@@ -1,7 +1,6 @@
 @include('layouts.head')
 @include('layouts.header')
 @include('layouts.footer')
-
         <!DOCTYPE html>
 <html lang="tr" dir="ltr">
 <head>
@@ -10,6 +9,7 @@
 <body class="home">
 @yield('header')
 @yield('content')
+</div>
 @yield('footer')
 
 </body>
