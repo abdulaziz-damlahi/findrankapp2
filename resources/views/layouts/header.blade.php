@@ -9,7 +9,7 @@
 
             <a href="/profile" class="btn btn-primary col-md-6" style="font-size: 17px ;color: white;" type="button"><i
                     class="fa fa-user push-5-r "></i>Hesabım</a>
-            <a href="" class="btn btn-primary col-md-6" style="font-size: 17px; color: white;" type="button"><i
+            <a href="/settings" class="btn btn-primary col-md-6" style="font-size: 17px; color: white;" type="button"><i
                     class="fa fa-gear push-5-r "></i>Ayarlar</a>
         </div>
         <table class="table table-bordered table-striped table-condensed">
@@ -82,8 +82,9 @@
                     <nav>
                         <ul id="ownmenu" class="ownmenu">
                             <li class="active"><a href="/">HOME</a></li>
-                            <li><a href="/panel"> panel </a></li>
+                            <li><a href="/panel"> PANEL </a></li>
                             <li><a href="/contact"> CONTACT</a></li>
+                            <li><a id="findorder" href="/findorder"> FIND-ORDER</a></li>
                             <li><a id="openbtn" data-toggle="toggle" class="openbtn" onclick="openNav()"> ☰</a></li>
 
                             </li>
@@ -204,6 +205,7 @@
             console.log(x);
             if (x == 'http://127.0.0.1:8000/') {
                 document.getElementById("openbtn").remove();
+                document.getElementById("findorder").hide();
             }
         </script>
 @endsection

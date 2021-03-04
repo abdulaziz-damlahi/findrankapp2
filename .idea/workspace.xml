@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3e79f4a-e71e-42ec-a8f2-6a0a7487f803" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/pages/findorder.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/panel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/home/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/panel/panel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/panel/panel.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/panel/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/panel/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +162,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/laravel/laravel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/pages" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -192,7 +189,8 @@
       <workItem from="1614611727424" duration="2055000" />
       <workItem from="1614614392675" duration="198000" />
       <workItem from="1614665551864" duration="2440000" />
-      <workItem from="1614751962154" duration="30095000" />
+      <workItem from="1614751962154" duration="32009000" />
+      <workItem from="1614838398938" duration="12619000" />
     </task>
     <servers />
   </component>

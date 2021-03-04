@@ -25,6 +25,11 @@ class panel extends Controller
         return view(
             'pages/panel/profile');
     }
+    public function FindOrder()
+    {
+        return view(
+            'pages/findorder');
+    }
 
     public function userspacket()
     {

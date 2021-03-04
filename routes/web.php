@@ -8,6 +8,7 @@ Route::get('/home', 'App\Http\Controllers\homepage@index');
 Route::get('/panel', 'App\Http\Controllers\panel@index');
 Route::get('/profile', 'App\Http\Controllers\panel@profile');
 Route::get('/contact', 'App\Http\Controllers\homepage@contact');
+Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder');
 
 
 Route::get('/users-packet', 'App\Http\Controllers\panel@userspacket');
