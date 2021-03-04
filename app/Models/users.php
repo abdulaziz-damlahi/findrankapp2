@@ -25,6 +25,7 @@ class users extends Authenticatable
         'created_at',
         'password',
     ];
+    public $timestamps = false;
 
     public function packets()
     {

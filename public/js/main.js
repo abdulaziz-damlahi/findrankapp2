@@ -158,7 +158,6 @@ var x = location.href;
 console.log(x);
 if (x == 'http://127.0.0.1:8000/') {
     document.getElementById("openbtn").remove();
-    document.getElementById("findorder").hide();
 }
 
 

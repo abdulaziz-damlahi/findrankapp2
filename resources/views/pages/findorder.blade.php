@@ -115,7 +115,7 @@
             font-weight: bold !important;
             color: #fff !important;
             background: #222935 !important;
-            font-family: Alegreya Sans;
+            font-family: inherit !important;
             height: 50px;
             width: 195px;
             text-transform: uppercase;
