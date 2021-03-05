@@ -38,7 +38,7 @@ class websites extends Model
 
     public function packets():HasMany
     {
-        $this->HasMany('App\Models\packets', 'packet_id','id');
+        $this->HasMany('App\Models\packets', 'id','id');
     }
 
 }

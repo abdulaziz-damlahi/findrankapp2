@@ -1,11 +1,11 @@
 <?php
 
-namespace App\JsonApi\Packets;
+namespace App\JsonApi\Users;
 
-use App\JsonApi\Base\AbstractAdapter;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
+use App\JsonApi\Base\AbstractAdapter;
 
 class Adapter extends AbstractAdapter
 {
@@ -23,7 +23,6 @@ class Adapter extends AbstractAdapter
      * @var array
      */
     protected $filterScopes = [];
-    protected $defaultWith = ['websitess'];
 
     /**
      * Adapter constructor.
@@ -32,7 +31,7 @@ class Adapter extends AbstractAdapter
      */
     public function __construct(StandardStrategy $paging)
     {
-        parent::__construct(new \App\models\packets(), $paging);
+        parent::__construct(new \App\Models\users(), $paging);
     }
 
     /**

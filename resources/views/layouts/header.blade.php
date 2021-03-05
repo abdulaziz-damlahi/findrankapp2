@@ -1,5 +1,38 @@
 @section('header')
+    <div style="z-index:4!important;padding-top: 100px;" id="mySidebar" class="sidebar">
 
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" id="closebtn"> X </a>
+
+        <a class="SideBarName" id="SideBarName"> abood </a>
+
+        <div class="btn-group btn-group-justified2 push col-md-12" role="group">
+
+            <a href="{{route("profile")}}" class="btn btn-primary col-md-6" style="font-size: 17px ;color: white;" type="button"><i
+                        class="fa fa-user push-5-r "></i>Hesabım</a>
+            <a href="{{route("settings")}}" class="btn btn-primary col-md-6" style="font-size: 17px; color: white;" type="button"><i
+                        class="fa fa-gear push-5-r "></i>Ayarlar</a>
+        </div>
+        <table class="table table-bordered table-striped table-condensed">
+            <tbody>
+            <tr>
+                <td style="width:50%" class="font-w600">Paket:</td>
+                <td>Pro</td>
+            </tr>
+            <tr>
+                <td class="font-w600">Başlangıç:</td>
+                <td>15.02.2021</td>
+            </tr>
+            <tr>
+                <td class="font-w600">Bitiş:</td>
+                <td>15.03.2021</td>
+            </tr>
+            <tr>
+                <td class="font-w600">Kalan:</td>
+                <td>12 Gün</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     @php
         $routeName = Route::getCurrentRoute()->getName();
     @endphp
@@ -46,35 +79,29 @@
     <header class="header coporate-header">
         <div class="sticky">
             <div class="container">
-                <div class="logo"> <a href="index.html"><img src="images/logo.png" alt=""></a> </div>
+                <div class="logo"> <a href="{{route("home")}}"><img src="images/logo.png" alt=""></a> </div>
 
                 <!-- Nav -->
                 <nav>
                     <ul id="ownmenu" class="ownmenu">
-                        <li class="active"><a href="index.html">{{__('home.Home')}}</a></li>
+                        <li class="active"><a href="{{route("home")}}">{{__('home.Home')}}</a></li>
                         @if($routeName === 'home' || $routeName === 'contact'|| $routeName === 'login' )
 
                         <li><a href="{{route("login")}}"> Login/Logout</a></li>
                         @endif
                         <li><a href="index.html">Pages</a>
                             <ul class="dropdown">
-                                <li><a href="index.html">Index Defult</a></li>
-                                <li><a href="index-1.html">Index 2</a></li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="case-studies.html">Case Studies</a></li>
-                                <li><a href="case-studies-single.html">Case Studies Single</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                                <li><a href="404-page.html">404 Ppage</a></li>
                             </ul>
                         </li>
 
                         <li><a href="{{route("contact")}}"> CONTACT</a></li>
-                        @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile')
+                        @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile'|| $routeName === 'findorder')
                             <li><a href="{{route("logout")}}"> LOGOUT</a></li>
                     @endif
+                        @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile')
+
+                        <li><a id="openbtn" data-toggle="toggle" class="openbtn" onclick="openNav()"> ☰</a></li>
+                        @endif
                         <!--======= SEARCH ICON =========-->
                             <ul class="dropdown">
                                 <li>

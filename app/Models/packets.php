@@ -9,10 +9,13 @@ class packets extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id',
         'packet_id',
-        'count_of_word',
-        'description',
+        'website_id',
+        'count_of_words',
+        'descrpitions',
         'end_of_pocket',
+        'packet_names',
         'started_of_pockets',
         'count_of_websites',
     ];
@@ -22,7 +25,7 @@ class packets extends Model
     }
     public function websitess()
     {
-        return $this->hasMany('App\Models\websites', 'id','packet_id');
+        return $this->hasMany('App\Models\websites', 'id','id');
     }
 
 }

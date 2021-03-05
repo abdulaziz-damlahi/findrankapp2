@@ -15,6 +15,7 @@ class users extends Authenticatable
         'id',
         'first_name',
         'last_name',
+        'user_id',
         'phone',
         'email',
         'password',
@@ -30,8 +31,9 @@ class users extends Authenticatable
 
     public function packets()
     {
-        return $this->hasMany('App\Models\packets', 'packet_id');
+        return $this->hasMany('App\Models\packets', 'id','id');
     }
+
     public function websites()
     {
 

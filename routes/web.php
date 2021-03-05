@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('user/')->middleware('isAdmin')->group(function(){
+Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/panel', 'App\Http\Controllers\panel@index')->name('panel');
-    Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder');
+    Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder')->name('findorder');
     Route::get('/settings', 'App\Http\Controllers\settings@index')->name('settings');
     Route::get('/profile', 'App\Http\Controllers\panel@profile')->name('profile');
     Route::get('/logout','App\Http\Controllers\Login@logout')->name('logout');

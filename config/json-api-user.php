@@ -66,10 +66,7 @@ return [
     | `'posts' => App\Post::class`
     */
     'resources' => [
-        'Keywords' =>  \App\Models\keywords::class,
-        'Packets' =>  \App\Models\packets::class,
-        'Websites' =>  \App\Models\websites::class,
-        'Users' =>  \App\Models\users::class,
+        'posts' => \App\Post::class,
     ],
 
     /*

@@ -2,10 +2,8 @@
 
 namespace App\JsonApi\Packets;
 
-use Neomerx\JsonApi\Schema\SchemaProvider;
+use App\JsonApi\Base\SchemaProvider;
 use App\Models\packets;
-use App\Models\websites;
-
 
 class Schema extends SchemaProvider
 {
@@ -41,23 +39,23 @@ class Schema extends SchemaProvider
             'packet_names'=> $resource->count_of_websites,
             'createdAt' => $resource->created_at,
             'updatedAt' => $resource->updated_at,
-
         ];
     }
-    public function getRelationships($resource, $isPrimary, array $includeRelationships)
-    {
-        return [
-            'websitess' => [
-                self::SHOW_SELF => true,
-                self::SHOW_RELATED => true,
-                self::SHOW_DATA => isset($includeRelationships['websitess']),
-                self::DATA => function () use ($resource) {
 
-                    return $resource->createdBy;
-                },
-            ],
-        ];
-    }
+//    public function getRelationships($resource, $isPrimary, array $includeRelationships)
+//    {
+//        return [
+//            'websites' => [
+//                self::SHOW_SELF => true,
+//                self::SHOW_RELATED => true,
+//                self::SHOW_DATA => isset($includeRelationships['websitess']),
+//                self::DATA => function () use ($resource) {
+//
+//                    return $resource->createdBy;
+//                },
+//            ],
+//        ];
+//    }
 
 
 }
