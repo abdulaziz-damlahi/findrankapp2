@@ -20,8 +20,9 @@ Route::get('/packet-website', 'App\Http\Controllers\panel@packetwebsite');
 Route::get('/website-keyword', 'App\Http\Controllers\panel@websitekeyword');
 
 
-//post api
-Route::post('/store', 'App\Http\Controllers\homepage@store');
+
+
+
 
 
 

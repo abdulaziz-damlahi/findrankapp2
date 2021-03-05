@@ -41,14 +41,14 @@ class panel extends Controller
     public function userswebsite()
     {
         $user = users::find(1);
-         $user->websites;
+         $user->websitess;
         return $user;
     }
 
     public function packetwebsite()
     {
         $packet = packets::find(1);
-         $packet->websites;
+         $packet->websitess;
         return $packet;
     }
 

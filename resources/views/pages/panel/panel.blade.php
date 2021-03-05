@@ -262,8 +262,6 @@
                                                         <td>#7234421</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><img src="assets{{asset('images')}}/product/prod2.jpg" alt="prod img"
-                                                                 class="img-fluid"></td>
                                                         <td>PNG002344</td>
                                                         <td>John Deo</td>
                                                         <td>05-01-2017</td>

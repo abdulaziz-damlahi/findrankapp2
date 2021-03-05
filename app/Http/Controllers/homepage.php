@@ -48,29 +48,4 @@ class homepage extends Controller
         return view('pages/home/home', compact('locale', 'localiton', 'lang'));
 
     }
-
-
-    public function store(Request $request)
-    {
-
-
-dd($request);
-        $data = users::create([  // <= the error is Here!!!
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
-        $data->save();
-        if ($data)
-            return response()->json([
-                'status' => true,
-                'msg' => 'saved successfully',
-            ]);
-        else
-            return response()->$request->json([
-                'status' => false,
-                'msg' => 'not saved',
-            ]);
-
-    }
-
 }

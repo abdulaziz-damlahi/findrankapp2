@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class users extends Authenticatable
+class Users extends Authenticatable
 {
     use HasFactory, Notifiable;
 
@@ -25,17 +25,15 @@ class users extends Authenticatable
         'created_at',
         'password',
     ];
-    public $timestamps = false;
 
     public function packets()
     {
-        return $this->hasMany('App\Models\packets', 'packet_id');
+        return   $this->hasOne('App\Models\packets', 'user_id','id');
     }
+
     public function websites()
     {
-
-        return $this->hasMany('App\Models\websites','website_id');
-
+        return $this->hasMany('App\Models\websites','user_id');
     }
 }
 

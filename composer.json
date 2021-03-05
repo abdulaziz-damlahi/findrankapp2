@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.5",
         "stevebauman/location": "^6.1",
         "torann/currency": "^1.1",
-        "torann/geoip": "^3.0"
+        "torann/geoip": "^3.0",
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
 

@@ -15,9 +15,11 @@ class CreateWebsitesTable extends Migration
     {
         Schema::create('websites', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('website_name');
-            $table->string('rank');
-
+            $table->string('website_name')->nullable();
+            $table->string('user_id')->nullable();
+            $table->string('packet_id')->nullable();
+            $table->string('address')->nullable();
+            $table->string('rank')->nullable();
             $table->timestamps();
 
         });
