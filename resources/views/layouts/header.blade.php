@@ -1,5 +1,8 @@
 @section('header')
 
+    @php
+        $routeName = Route::getCurrentRoute()->getName();
+    @endphp
     <div id="loader">
     <div class="loader">
         <div class="position-center-center">
@@ -49,7 +52,10 @@
                 <nav>
                     <ul id="ownmenu" class="ownmenu">
                         <li class="active"><a href="index.html">{{__('home.Home')}}</a></li>
-                        <li><a href=""> Login/Logout</a></li>
+                        @if($routeName === 'home' || $routeName === 'contact'|| $routeName === 'login' )
+
+                        <li><a href="{{route("login")}}"> Login/Logout</a></li>
+                        @endif
                         <li><a href="index.html">Pages</a>
                             <ul class="dropdown">
                                 <li><a href="index.html">Index Defult</a></li>
@@ -65,11 +71,8 @@
                             </ul>
                         </li>
 
-                        <li><a href=""> CONTACT</a></li>
-                        @php
-                            $routeName = Route::getCurrentRoute()->getName();
-                        @endphp
-                        @if($routeName === 'logout')
+                        <li><a href="{{route("contact")}}"> CONTACT</a></li>
+                        @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile')
                             <li><a href="{{route("logout")}}"> LOGOUT</a></li>
                     @endif
                         <!--======= SEARCH ICON =========-->

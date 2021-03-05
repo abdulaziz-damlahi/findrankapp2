@@ -22,9 +22,6 @@ class CreatePacketsTable extends Migration
             $table->string('started_of_pockets');
             $table->string('count_of_websites');
             $table->string('packet_names');
-            $table->foreign('website_id')
-                ->references('id')
-                ->on('websites')->onDelete('cascade');
             $table->timestamps();
         });
     }

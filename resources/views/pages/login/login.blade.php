@@ -29,30 +29,37 @@
 
     </form>
     </div>
-    <div id="register_container" class="container my-5 py-5">
-        <form id="loginForm">
+    <div id="register_container" class="container my-5 py-5" >
+        <form id="loginForm" method="post" action="{{route('register.post')}}">
+            @csrf
             <label>
-                <p class="label-txt">NAME AND USERNAME</p>
-                <input type="text" class="input">
+                <p class="label-txt">FIRSTNAME</p>
+                <input name="first_name" type="text" class="input">
+                <div class="line-box">
+                    <div class="line"></div>
+                </div>
+            </label> <label>
+                <p class="label-txt">last_name</p>
+                <input name="last_name" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>     <label>
                 <p class="label-txt">EMAİL</p>
-                <input type="text" class="input">
+                <input name="email" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
                 <label>
                     <p class="label-txt">PHONE</p>
-                    <input type="text" class="input">
+                    <input name="phone" type="text" class="input">
                     <div class="line-box">
                         <div class="line"></div>
                     </div>
                 </label>
             </label>     <label>
                 <p class="label-txt">PASSWORD</p>
-                <input type="text" class="input">
+                <input name="password" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
