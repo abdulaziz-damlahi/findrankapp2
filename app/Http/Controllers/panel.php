@@ -33,7 +33,11 @@ class panel extends Controller
 
     public function userspacket()
     {
+<<<<<<< HEAD
         $user = users::find(2);
+=======
+        $user = users::find(1);
+>>>>>>> 7a2e82b9d360ff2c9e0d6a02ffc09ad6d5e1ec74
         $user->packets;
         return $user;
     }

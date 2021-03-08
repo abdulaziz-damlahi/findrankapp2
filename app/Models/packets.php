@@ -8,6 +8,7 @@ use App\Models\websites;
 class packets extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'id',
         'packet_id',
@@ -21,11 +22,12 @@ class packets extends Model
     ];
     public function user()
     {
-        $this->belongsTo('App\Models\users', 'id','id');
+        $this->belongsTo('App\Models\Users', 'user_id','user_id');
     }
-    public function websitess()
+    public function websites()
     {
         return $this->hasMany('App\Models\websites', 'id','id');
     }
+
 
 }

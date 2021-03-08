@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Offer;
+use App\Models\users;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use App\Models\keywords;
 use App\Models\websites;
@@ -11,7 +15,8 @@ use Illuminate\Support\Facades\App;
 
 class homepage extends Controller
 {
-    public function index (Request $request){
+    public function index(Request $request)
+    {
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
         $clientIP = Request()->ip();
@@ -21,6 +26,7 @@ class homepage extends Controller
         $externalIp;
         $base_moeny='₺';
         $ippp = '2.16.7.255';
+<<<<<<< HEAD
         $ippamerica= '1.32.232.0';
         $tr='78.180.10.189';
         $geo = geoip()->getLocation('78.180.10.189');
@@ -69,6 +75,20 @@ class homepage extends Controller
 
             $base_moeny='$';
         } else if($localiton==='ES'){
+=======
+        $geo = geoip()->getLocation('88.21.130.14');
+        $localiton = $geo->iso_code;
+        if ($localiton === 'TR') {
+            $lang = 'tr';
+
+            App::setlocale($lang);
+            $locale = App::getLocale();
+        } else if ($localiton === 'US') {
+            $lang = 'en';
+            App::setlocale($lang);
+            $locale = App::getLocale();
+        } else if ($localiton === 'ES') {
+>>>>>>> 7a2e82b9d360ff2c9e0d6a02ffc09ad6d5e1ec74
             $lang = 'es';
             App::setlocale($lang);
             $money_value=$arr_result->rates->EUR;
@@ -81,7 +101,7 @@ class homepage extends Controller
             $base_moeny='€';
 
             $locale = App::getLocale();
-        }else if($localiton==='DE'){
+        } else if ($localiton === 'DE') {
             $lang = 'de';
             App::setlocale($lang);
             $base_moeny='€';
@@ -95,8 +115,12 @@ class homepage extends Controller
 
             $locale = App::getLocale();
         }
+<<<<<<< HEAD
         return view('pages/home/home',compact('base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
+=======
+
+        return view('pages/home/home', compact('locale', 'localiton', 'lang'));
+>>>>>>> 7a2e82b9d360ff2c9e0d6a02ffc09ad6d5e1ec74
 
     }
-
 }

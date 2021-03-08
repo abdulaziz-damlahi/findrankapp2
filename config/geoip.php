@@ -18,7 +18,7 @@ return [
     | Include Currency in Results
     |--------------------------------------------------------------------------
     |
-    | When enabled the system will do it's best in deciding the user's currency
+    | When enabled the system will do it's best in deciding the users's currency
     | by matching their ISO code to a preset list of currencies.
     |
     */
@@ -106,7 +106,7 @@ return [
     | Options:
     |
     |  all  - All location are cached
-    |  some - Cache only the requesting user
+    |  some - Cache only the requesting users
     |  none - Disable cached
     |
     */
@@ -125,6 +125,7 @@ return [
 
     //'cache_tags' => ['torann-geoip-location'],
 
+
     /*
     |--------------------------------------------------------------------------
     | Cache Expiration
@@ -135,7 +136,7 @@ return [
     */
 
     'cache_expires' => 30,
-
+    'cache_tags' => [],
     /*
     |--------------------------------------------------------------------------
     | Default Location

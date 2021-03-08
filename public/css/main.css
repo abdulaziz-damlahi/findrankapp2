@@ -28,7 +28,11 @@
     animation: preloader_6_span 1s infinite linear;
 }
 #preloader6 span:nth-child(1){
+<<<<<<< HEAD
     background:#ff6c3a;
+=======
+background:#ff6c3a;
+>>>>>>> 7a2e82b9d360ff2c9e0d6a02ffc09ad6d5e1ec74
 
 }
 #preloader6 span:nth-child(2){
@@ -53,9 +57,9 @@
     50% { transform:scale(0.5); }
     100% { transform:scale(1); }
 }
-.ownmenu{width:auto;padding:0;margin:0;float:right;list-style:none;}
+.ownmenu{width:auto;padding:0;margin:0;float:right;list-style:none; padding-right: 70px;padding-left: 70px;}
 .ownmenu li{display:inline-block;float:left;}
-.ownmenu a{-o-transition:all .3s linear;-webkit-transition:all .3s linear;-moz-transition:all .3s linear;transition:all .3s linear;outline:none;z-index:10;}
+.ownmenu a{-o-transition:all .3s linear;-webkit-transition:all .3s linear;-moz-transition:all .3s linear;transition:all .3s linear;outline:none;z-index:10; }
 .ownmenu li{}
 .ownmenu ul.dropdown, .ownmenu ul.dropdown li ul.dropdown{list-style:none;margin:0;padding:0;display:none;position:absolute;z-index:99;padding-left:0px;width:250px;background:none;padding:20px 35px;}
 .ownmenu ul.dropdown li ul.dropdown{left:100%;top:inherit;background:#272727;}
@@ -1574,11 +1578,19 @@ header.is-fixed{position:fixed;}
 
 .openbtn {
     cursor: pointer;
+<<<<<<< HEAD
     background-color: #111;
+=======
+    background-color: #ff6c3a;
+>>>>>>> 7a2e82b9d360ff2c9e0d6a02ffc09ad6d5e1ec74
     color: white;
     padding: 10px 15px;
     border: none;
     z-index: 4 !important;
+<<<<<<< HEAD
+=======
+    font-size: 12px;
+>>>>>>> 7a2e82b9d360ff2c9e0d6a02ffc09ad6d5e1ec74
 }
 
 .openbtn:hover {
@@ -1599,3 +1611,27 @@ header.is-fixed{position:fixed;}
         font-size: 18px;
     }
 }
+<<<<<<< HEAD
+=======
+
+
+
+/*findorder css*/
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.select {
+    font-size: 15px;
+    font-weight: bold !important;
+    color: #fff !important;
+    background: #222935 !important;
+    font-family: inherit !important;
+    height: 50px;
+    width: 195px;
+    text-transform: uppercase;
+}
+>>>>>>> 7a2e82b9d360ff2c9e0d6a02ffc09ad6d5e1ec74

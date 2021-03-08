@@ -15,6 +15,13 @@ class CreateKeywordsTable extends Migration
     {  Schema::create('keywords', function (Blueprint $table) {
         $table->id();
         $table->string('name');
+        $table->string('website_id');
+        $table->string('count_of_words');
+        $table->string('descrpitions');
+        $table->string('end_of_pocket');
+        $table->string('started_of_pockets');
+        $table->string('count_of_websites');
+        $table->string('packet_names');
         $table->timestamps();
     });
     }

@@ -62,7 +62,7 @@ $(document).ready(function() {
         // REVENUE STATUS weekly Ends
 
         // stacked Transactions chart start
-        $("#new-user-daily").peity("bar", {
+        $("#new-users-daily").peity("bar", {
             fill: ['#93BE52', '#93BE52', '#93BE52', '#93BE52', '#93BE52', '#CCCCCC', '#CCCCCC', '#CCCCCC', '#CCCCCC'],
             padding: 0.2,
         });

@@ -86,7 +86,7 @@ $(document).ready(function() {
         $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
     });
 
-    //    Edit information of user-profile
+    //    Edit information of users-profile
     $('#edit-cancel').on('click', function() {
 
         var c = $('#edit-btn').find("i");
@@ -279,7 +279,7 @@ $(document).ready(function() {
         ]
     });
 
-    //edit user description
+    //edit users description
     $('#edit-cancel-btn').on('click', function() {
 
         var c = $('#edit-info-btn').find("i");

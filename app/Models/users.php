@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class users extends Authenticatable
+class Users extends Authenticatable
 {
     use HasFactory, Notifiable;
 
@@ -31,14 +31,16 @@ class users extends Authenticatable
 
     public function packets()
     {
+<<<<<<< HEAD
         return $this->hasMany('App\Models\packets', 'id','id');
+=======
+        return   $this->hasOne('App\Models\packets', 'user_id','id');
+>>>>>>> 7a2e82b9d360ff2c9e0d6a02ffc09ad6d5e1ec74
     }
 
     public function websites()
     {
-
-        return $this->hasMany('App\Models\websites','website_id');
-
+        return $this->hasMany('App\Models\websites','user_id');
     }
 }
 
