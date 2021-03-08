@@ -17,19 +17,19 @@
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
-            </label>   <label class="col-md-6">
+            </label> <label class="col-md-6">
                 <p class="label-txt">EMAIL ADDRESS</p>
                 <input type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
-            </label>   <label class="col-md-6">
+            </label> <label class="col-md-6">
                 <p class="label-txt">PHONE NUMBER</p>
                 <input type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
-            </label>   <label class="col-md-12">
+            </label> <label class="col-md-12">
                 <p class="label-txt">YOUR MESSAGE</p>
                 <textarea type="text" class="input"></textarea>
                 <div class="line-box">

@@ -2,25 +2,25 @@
 @section('content')
 
     <div class="container" id="seo">
-    <section class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 "
-             style="background-color: #efefef; ">
+        <section class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 "
+                 style="background-color: #efefef; ">
 
-        <br class="container" style="padding-right: 500px; padding-left:500px; ">
-        <!-- Tittle -->
-        <div class="heading-block white-text text-center margin-bottom-50">
-            <h2 style="color: black">What’s Your SEO Score ?</h2>
-            <span style="color: black">See how well your page is optimised for your keyword</span></div>
-        <!-- Form -->
-        <form>
+            <br class="container" style="padding-right: 500px; padding-left:500px; ">
+            <!-- Tittle -->
+            <div class="heading-block white-text text-center margin-bottom-50">
+                <h2 style="color: black">What’s Your SEO Score ?</h2>
+                <span style="color: black">See how well your page is optimised for your keyword</span></div>
+            <!-- Form -->
+            <form>
 
-            <ul class="row col-lg-12">
-                <li class="col-md-6">
-                    <input type="text" class="form-control" placeholder="http://">
-                </li>
-                <li class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Keyword">
-                </li>
-            </ul>
+                <ul class="row col-lg-12">
+                    <li class="col-md-6">
+                        <input type="text" class="form-control" placeholder="http://">
+                    </li>
+                    <li class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Keyword">
+                    </li>
+                </ul>
 
                 <div class="row col-lg-12 padding-top-50">
                     <div class="btn-group col-md-3 ">
@@ -95,13 +95,13 @@
                 </div>
 
 
-        </form>
-        <div class="row col-md-3 padding-top-50" style="margin: auto">
-            <li class="">
-                <button type="submit" class="btn btn-orange">Check Now !</button>
-            </li>
-        </div>
-    </section>
+            </form>
+            <div class="row col-md-3 padding-top-50" style="margin: auto">
+                <li class="">
+                    <button type="submit" class="btn btn-orange">Check Now !</button>
+                </li>
+            </div>
+        </section>
     </div>
     <style>
         .scrollable-menu {

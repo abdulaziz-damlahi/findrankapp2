@@ -153,12 +153,10 @@ function openNav() {
         document.getElementById("mySidebar").style.width = "330px";
         document.getElementById("home").style.marginRight = "330px";
         document.getElementById("wrap").style.marginRight = "330px";
-        if ($(window).width() < 700){
-            document.getElementById("mySidebar").style.width = "414px";
-        }
-        else {
+        if ($(window).width() < 700) {
+            document.getElementById("mySidebar").style.width = "100%";
+        } else {
             document.getElementById("mySidebar").style.marginRight = "";
-
         }
         document.getElementById("ownmenu").style.marginRight = "130px";
 
@@ -184,17 +182,8 @@ function closeNav() {
 }
 
 var x = location.href;
-console.log(x);
-if (x == 'http://127.0.0.1:8000/') {
+if (x != 'http://127.0.0.1:8000/') {
+    document.getElementById("notch").style.display = "none";
+} else {
     document.getElementById("openbtn").remove();
-    document.getElementById("notch").style.display = "";
-}else {
-    document.getElementById("notch").style.display = "none"
 }
-
-
-
-
-
-
-

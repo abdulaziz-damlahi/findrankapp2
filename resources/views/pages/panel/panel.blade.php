@@ -133,7 +133,8 @@
                                                         <th>Transaction ID</th>
                                                     </tr>
                                                     <tr>
-                                                        <td><img src="{{asset('images')}}/product/prod2.jpg" alt="prod img"
+                                                        <td><img src="{{asset('images')}}/product/prod2.jpg"
+                                                                 alt="prod img"
                                                                  class="img-fluid"></td>
                                                         <td>PNG002344</td>
                                                         <td>John Deo</td>
@@ -142,7 +143,8 @@
                                                         <td>#7234486</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><img src="{{asset('images')}}/product/prod3.jpg" alt="prod img"
+                                                        <td><img src="{{asset('images')}}/product/prod3.jpg"
+                                                                 alt="prod img"
                                                                  class="img-fluid"></td>
                                                         <td>PNG002653</td>
                                                         <td>Eugine Turner</td>
@@ -151,7 +153,8 @@
                                                         <td>#7234417</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><img src="{{asset('images')}}/product/prod4.jpg" alt="prod img"
+                                                        <td><img src="{{asset('images')}}/product/prod4.jpg"
+                                                                 alt="prod img"
                                                                  class="img-fluid"></td>
                                                         <td>PNG002156</td>
                                                         <td>Jacqueline Howell</td>
@@ -179,7 +182,8 @@
                                                         <th>Transaction ID</th>
                                                     </tr>
                                                     <tr>
-                                                        <td><img src="{{asset('images')}}/product/prod3.jpg" alt="prod img"
+                                                        <td><img src="{{asset('images')}}/product/prod3.jpg"
+                                                                 alt="prod img"
                                                                  class="img-fluid"></td>
                                                         <td>PNG002653</td>
                                                         <td>Eugine Turner</td>
@@ -188,7 +192,8 @@
                                                         <td>#7234417</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><img src="{{asset('images')}}/product/prod4.jpg" alt="prod img"
+                                                        <td><img src="{{asset('images')}}/product/prod4.jpg"
+                                                                 alt="prod img"
                                                                  class="img-fluid"></td>
                                                         <td>PNG002156</td>
                                                         <td>Jacqueline Howell</td>
@@ -216,7 +221,8 @@
                                                         <th>Transaction ID</th>
                                                     </tr>
                                                     <tr>
-                                                        <td><img src="{{asset('images')}}/product/prod1.jpg" alt="prod img"
+                                                        <td><img src="{{asset('images')}}/product/prod1.jpg"
+                                                                 alt="prod img"
                                                                  class="img-fluid"></td>
                                                         <td>PNG002413</td>
                                                         <td>Jane Elliott</td>
@@ -225,7 +231,8 @@
                                                         <td>#7234421</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><img src="{{asset('images')}}/product/prod4.jpg" alt="prod img"
+                                                        <td><img src="{{asset('images')}}/product/prod4.jpg"
+                                                                 alt="prod img"
                                                                  class="img-fluid"></td>
                                                         <td>PNG002156</td>
                                                         <td>Jacqueline Howell</td>
@@ -253,7 +260,8 @@
                                                         <th>Transaction ID</th>
                                                     </tr>
                                                     <tr>
-                                                        <td><img src="{{asset('images')}}/product/prod1.jpg" alt="prod img"
+                                                        <td><img src="{{asset('images')}}/product/prod1.jpg"
+                                                                 alt="prod img"
                                                                  class="img-fluid"></td>
                                                         <td>PNG002413</td>
                                                         <td>Jane Elliott</td>
@@ -322,10 +330,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-        document.querySelector("#notch").remove()
-    </script>
-
-
 @endsection

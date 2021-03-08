@@ -72,7 +72,7 @@
         </div>
 
         <!-- Header -->
-        <header style="z-index:3!important;" class="header coporate-header" >
+        <header style="z-index:3!important;" class="header coporate-header">
             <div class="sticky">
                 <div class="container">
                     <div class="logo"><a href="/"><img src="images/logo.png" alt=""></a></div>
