@@ -103,23 +103,4 @@
             </div>
         </section>
     </div>
-    <style>
-        .scrollable-menu {
-            height: auto;
-            max-height: 200px;
-            overflow-x: hidden;
-        }
-
-        .select {
-            font-size: 15px;
-            font-weight: bold !important;
-            color: #fff !important;
-            background: #222935 !important;
-            font-family: inherit !important;
-            height: 50px;
-            width: 195px;
-            text-transform: uppercase;
-        }
-    </style>
-
 @endsection

@@ -80,7 +80,7 @@
                     <nav>
                         <ul id="ownmenu" class="ownmenu">
                             <li class="active"><a href="/">HOME</a></li>
-                            <li><a href="/panel"> PANEL </a></li>
+                            <li><a id="panelbtn" href="/panel"> PANEL </a></li>
                             <li><a href="/login"> SIGN IN </a></li>
                             <li><a href="/contact"> CONTACT</a></li>
                             <li><a id="findorder" href="/findorder"> FIND-ORDER</a></li>
