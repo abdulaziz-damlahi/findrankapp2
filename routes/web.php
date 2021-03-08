@@ -17,7 +17,7 @@ Route::prefix('user/')->middleware('isLogin')->group(function() {
 });
 
 Route::get('/', 'App\Http\Controllers\homepage@index')->name('home');
-Route::get('/home', 'App\Http\Controllers\homepage@index');
+Route::get('/packets', 'App\Http\Controllers\packets@index')->name('packets');
 Route::get('/contact', 'App\Http\Controllers\contact@index')->name('contact');
 
 Route::get('/users-packet', 'App\Http\Controllers\panel@userspacket');

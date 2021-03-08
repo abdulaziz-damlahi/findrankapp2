@@ -19,28 +19,36 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- StyleSheets -->
-    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="{{asset('css')}}/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="{{asset('css')}}/font-awesome.min.css">
-    <link rel="stylesheet" href="{{asset('css')}}/main.css">
-    <link rel="stylesheet" href="{{asset('css')}}/style.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
+    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet"type="text/css" href="{{asset('css')}}/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet"type="text/css" href="{{asset('css')}}/font-awesome.min.css">
+    <link rel="stylesheet"type="text/css" href="{{asset('css')}}/main.css">
+    <link rel="stylesheet"type="text/css" href="{{asset('css')}}/style.css">
     @if($routeName === 'profile')
-    <link rel="stylesheet" href="{{asset('css')}}/Panel.css">
+    <link rel="stylesheet"type="text/css" href="{{asset('css')}}/Panel.css">
     @endif
     @if($routeName === 'panel')
-        <link rel="stylesheet" href="{{asset('css')}}/Panel.css">
+        <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
+    @endif   @if($routeName === 'packets')
+        <script rel="stylesheet" src="{{asset('js')}}/packets.js"></script>
     @endif
-    <link rel="stylesheet" href="{{asset('css')}}/contact.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('css')}}/settings.css">
+    @if($routeName === 'contact')
+        <link rel="stylesheet" type="text/css" href="{{asset('css')}}/contact.css">
+    @endif
     <script rel="stylesheet" src="{{asset('js')}}/login.js"></script>
-    <script rel="stylesheet" src="{{asset('js')}}/settings.js"></script>
-    @if($routeName === 'login')
-    <link rel="stylesheet" href="{{asset('css')}}/login.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
+    @if($routeName === 'settings')
+        <link rel="stylesheet" type="text/css" href="{{asset('css')}}/settings.css">
+        <script rel="stylesheet" src="{{asset('js')}}/settings.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen" />
     @endif
-    <link rel="stylesheet" href="{{asset('css')}}/responsive.css">
+    @if($routeName === 'login')
+    <link rel="stylesheet" type="text/css" href="{{asset('css')}}/login.css">
+    @endif
+    <link rel="stylesheet" type="text/css" href="{{asset('css')}}/responsive.css">
 
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-    <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen" />
 
     <!-- JavaScripts -->
     <script src="{{asset('js')}}/vendors/modernizr.js"></script>

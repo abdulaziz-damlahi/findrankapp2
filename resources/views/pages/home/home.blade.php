@@ -343,73 +343,70 @@
                 <!-- Tittle -->
                 <div class="heading-block text-center margin-bottom-80">
                     <h2>Affordable SEO Services Packages </h2>
-                    <span class="intro-style">Choose from affordable SEO services packages & get the best results in return. </span> </div>
-                <div class="row">
+                    <div class="row">
 
-                    <!-- Price -->
-                    <div class="col-md-4">
-                        <!-- Icon -->
-                        <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-1.png" alt=" "></div>
+                        <!-- Price -->
+                        <div class="col-md-4">
+                            <!-- Icon -->
+                            <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-1.png" alt=" "></div>
 
-                        <!-- Plan  -->
-                        <div class="pricing-head">
-                            <h4>Basic Plan</h4>
-                            <span class="curency">$</span> <span class="amount">25<span>.99</span></span> <span class="month">/ month</span> </div>
+                            <!-- Plan  -->
+                            <div class="pricing-head">
+                                <h4>{{$last->names_packets}}</h4>
+                                <span class="curency">{{$base_moeny}}</span> <span class="amount">{{$round_new2}}<span>.99</span></span> <span class="month">/ month</span> </div>
 
-                        <!-- Plean Detail -->
-                        <div class="price-in">
-                            <ul class="text-center">
-                                <li>25 Analytics Campaigns</li>
-                                <li> 1,900 Keywords</li>
-                                <li> 1,250,000 Crawled Pages</li>
-                                <li> Includes Branded Reports</li>
-                                <li> 50 Social Accounts</li>
-                            </ul>
-                            <a href="#." class="btn btn-orange">PURCHACE</a> </div>
-                    </div>
+                            <!-- Plean Detail -->
+                            <div class="price-in">
+                                <ul class="text-center">
+                                    <li> {{$last->word_count}} Keywords</li>
+                                    <li> {{$last->websites_count}} Websites</li>
+                                    <li> {{$last->rank_fosllow}} Rank Follow</li>
+                                    <li> {{$last->description}}</li>
+                                </ul>
+                                <a href="#."  class="PURCHACE btn btn-orange">PURCHACE</a> </div>
+                        </div>
 
-                    <!-- Price -->
-                    <div class="col-md-4">
-                        <!-- Icon -->
-                        <div class="plan-icon orange-bg"><img src="{{asset('images')}}/plan-icon-2.png" alt=" "></div>
+                        <!-- Price -->
+                        <div class="col-md-4">
+                            <!-- Icon -->
+                            <div class="plan-icon orange-bg"><img src="{{asset('images')}}/plan-icon-2.png" alt=" "></div>
 
-                        <!-- Plan  -->
-                        <div class="pricing-head orange-bg">
-                            <h4>Advanced Plan</h4>
-                            <span class="curency">$</span> <span class="amount">45<span>.99</span></span> <span class="month">/ month</span> </div>
+                            <!-- Plan  -->
+                            <div class="pricing-head orange-bg">
+                                <h4>{{$middle->names_packets}}</h4>
+                                <span class="curency">{{$base_moeny}}</span> <span class="amount">{{$round_new1}}<span>.99</span></span> <span class="month">/ month</span> </div>
 
-                        <!-- Plean Detail -->
-                        <div class="price-in">
-                            <ul class="text-center">
-                                <li>25 Analytics Campaigns</li>
-                                <li> 1,900 Keywords</li>
-                                <li> 1,250,000 Crawled Pages</li>
-                                <li> Includes Branded Reports</li>
-                                <li> 50 Social Accounts</li>
-                            </ul>
-                            <a href="#." class="btn btn-orange">PURCHACE</a> </div>
-                    </div>
+                            <!-- Plean Detail -->
+                            <div class="price-in">
+                                <ul class="text-center">
+                                    <li> {{$middle->word_count}} Keywords</li>
+                                    <li> {{$middle->websites_count}} Websites</li>
+                                    <li> {{$middle->rank_fosllow}} Rank Follow</li>
+                                    <li> {{$middle->description}}</li>
+                                </ul>
+                                <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a> </div>
+                        </div>
 
-                    <!-- Price -->
-                    <div class="col-md-4">
-                        <!-- Icon -->
-                        <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-3.png" alt=" "></div>
+                        <!-- Price -->
+                        <div class="col-md-4">
+                            <!-- Icon -->
+                            <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-3.png" alt=" "></div>
 
-                        <!-- Plan  -->
-                        <div class="pricing-head">
-                            <h4>Premium Plan</h4>
-                            <span class="curency">$</span> <span class="amount">65<span>.99</span></span> <span class="month">/ month</span> </div>
+                            <!-- Plan  -->
+                            <div class="pricing-head">
+                                <h4>{{$pack->names_packets}}</h4>
+                                <span class="curency">{{$base_moeny}}</span> <span class="amount">{{$round_new}}<span>.99</span></span> <span class="month">/ month</span> </div>
 
-                        <!-- Plean Detail -->
-                        <div class="price-in">
-                            <ul class="text-center">
-                                <li>25 Analytics Campaigns</li>
-                                <li> 1,900 Keywords</li>
-                                <li> 1,250,000 Crawled Pages</li>
-                                <li> Includes Branded Reports</li>
-                                <li> 50 Social Accounts</li>
-                            </ul>
-                            <a href="#." class="btn btn-orange">PURCHACE</a> </div>
+                            <!-- Plean Detail -->
+                            <div class="price-in">
+                                <ul class="text-center">
+                                    <li> {{$pack->word_count}} Keywords</li>
+                                    <li> {{$pack->websites_count}} Websites</li>
+                                    <li> {{$pack->rank_fosllow}} Rank Follow</li>
+                                    <li> {{$pack->description}}</li>
+                                </ul>
+                                <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a> </div>
+                        </div>
                     </div>
                 </div>
             </div>

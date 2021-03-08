@@ -1,16 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Models\keywords;
-use App\Models\websites;
-use App\Models\packets;
+
 use App\Models\packets_reels;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
-
-class homepage extends Controller
+class packets extends Controller
 {
+    //
     public function index (Request $request){
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
@@ -23,7 +21,7 @@ class homepage extends Controller
         $ippp = '2.16.7.255';
         $ippamerica= '1.32.232.0';
         $tr='78.180.10.189';
-        $geo = geoip()->getLocation('78.180.10.189');
+        $geo = geoip()->getLocation('2.16.7.255');
         $localiton=  $geo->iso_code;
         $packets_reel = packets_reels::all();
         $pack = $packets_reel->take(1)->first();
@@ -95,8 +93,7 @@ class homepage extends Controller
 
             $locale = App::getLocale();
         }
-        return view('pages/home/home',compact('base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
+        return view('pages/packets/packets',compact('base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
 
     }
-
 }
