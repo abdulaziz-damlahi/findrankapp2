@@ -5,12 +5,50 @@
 
         <a class="SideBarName" id="SideBarName"> abood </a>
 
+<<<<<<< HEAD
         <div class="btn-group btn-group-justified2 push col-md-12" style="" role="group">
 
             <a href="/profile" class="btn btn-primary col-md-6" style="font-size: 17px ;color: white;" type="button"><i
                     class="fa fa-user push-5-r "></i>Hesabım</a>
             <a href="/settings" class="btn btn-primary col-md-6" style="font-size: 17px; color: white;" type="button"><i
                     class="fa fa-gear push-5-r "></i>Ayarlar</a>
+=======
+        <div class="btn-group btn-group-justified2 push col-md-12" role="group">
+
+            <a href="{{route("profile")}}" class="btn btn-primary col-md-6" style="font-size: 17px ;color: white;" type="button"><i
+                        class="fa fa-user push-5-r "></i>Hesabım</a>
+            <a href="{{route("settings")}}" class="btn btn-primary col-md-6" style="font-size: 17px; color: white;" type="button"><i
+                        class="fa fa-gear push-5-r "></i>Ayarlar</a>
+        </div>
+        <table class="table table-bordered table-striped table-condensed">
+            <tbody>
+            <tr>
+                <td style="width:50%" class="font-w600">Paket:</td>
+                <td>Pro</td>
+            </tr>
+            <tr>
+                <td class="font-w600">Başlangıç:</td>
+                <td>15.02.2021</td>
+            </tr>
+            <tr>
+                <td class="font-w600">Bitiş:</td>
+                <td>15.03.2021</td>
+            </tr>
+            <tr>
+                <td class="font-w600">Kalan:</td>
+                <td>12 Gün</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    @php
+        $routeName = Route::getCurrentRoute()->getName();
+    @endphp
+    <div id="loader">
+    <div class="loader">
+        <div class="position-center-center">
+            <div id="preloader6"> <span></span> <span></span> <span></span> <span></span> </div>
+>>>>>>> 603618635d6b3a4848206f548c6caa16db6f6ba2
         </div>
         <table class="table table-bordered table-striped table-condensed">
             <tbody>
@@ -41,6 +79,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <!-- Page Wrapper -->
     <div id="wrap">
 
@@ -65,6 +104,43 @@
                                 <li><i class="fa fa-envelope"></i> Example@domain.com</li>
                                 <li><i class="fa fa-weixin"></i> LiveChat</li>
                                 <li><i class="fa fa-question-circle"></i> Support</li>
+=======
+    <!-- Header -->
+    <header class="header coporate-header">
+        <div class="sticky">
+            <div class="container">
+                <div class="logo"> <a href="{{route("home")}}"><img src="images/logo.png" alt=""></a> </div>
+
+                <!-- Nav -->
+                <nav>
+                    <ul id="ownmenu" class="ownmenu">
+                        <li class="active"><a href="{{route("home")}}">{{__('home.Home')}}</a></li>
+                        @if($routeName === 'home' || $routeName === 'contact'|| $routeName === 'login' )
+
+                        <li><a href="{{route("login")}}"> Login/Logout</a></li>
+                        @endif
+                        <li><a href="index.html">Pages</a>
+                            <ul class="dropdown">
+                            </ul>
+                        </li>
+
+                        <li><a href="{{route("contact")}}"> CONTACT</a></li>
+                        @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile'|| $routeName === 'findorder')
+                            <li><a href="{{route("logout")}}"> LOGOUT</a></li>
+                    @endif
+                        @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile')
+
+                        <li><a id="openbtn" data-toggle="toggle" class="openbtn" onclick="openNav()"> ☰</a></li>
+                        @endif
+                        <!--======= SEARCH ICON =========-->
+                            <ul class="dropdown">
+                                <li>
+                                    <form>
+                                        <input type="search" class="form-control" placeholder="Enter Your Keywords..." required>
+                                        <button type="submit"> SEARCH </button>
+                                    </form>
+                                </li>
+>>>>>>> 603618635d6b3a4848206f548c6caa16db6f6ba2
                             </ul>
                         </div>
                     </div>

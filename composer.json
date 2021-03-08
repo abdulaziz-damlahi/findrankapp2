@@ -14,7 +14,10 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "stevebauman/location": "^6.1",
+        "torann/currency": "^1.1",
+        "torann/geoip": "^3.0"
     },
     "require-dev": {
         "cloudcreativity/json-api-testing": "^3.2",

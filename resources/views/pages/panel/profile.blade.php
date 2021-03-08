@@ -1,5 +1,9 @@
 @extends('layouts.master')
 @section('content')
+<<<<<<< HEAD
+=======
+
+>>>>>>> 603618635d6b3a4848206f548c6caa16db6f6ba2
     <div class="pcoded-inner-content" id="main">
         <div class="main-body col-md-12">
             <div class="page-wrapper col-md-12">
