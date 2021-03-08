@@ -19,11 +19,11 @@ class packets extends Model
     ];
     public function user()
     {
-        $this->belongsTo('App\Models\Users', 'id','user_id');
+        $this->belongsTo('App\Models\Users', 'user_id','user_id');
     }
-    public function websitess()
+    public function websites()
     {
-        return $this->hasMany('App\Models\websites', 'packet_id','id');
+        return $this->hasMany('App\Models\websites', 'id','packet_id');
     }
 
 

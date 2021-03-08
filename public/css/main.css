@@ -52,7 +52,7 @@ background:#ff6c3a;
    50% { transform:scale(0.5); }
    100% { transform:scale(1); }
 }
-.ownmenu{width:auto;padding:0;margin:0;float:right;list-style:none;}
+.ownmenu{width:auto;padding:0;margin:0;float:right;list-style:none; padding-right: 110px;}
 .ownmenu li{display:inline-block;float:left;}
 .ownmenu a{-o-transition:all .3s linear;-webkit-transition:all .3s linear;-moz-transition:all .3s linear;transition:all .3s linear;outline:none;z-index:10;}
 .ownmenu li{}
@@ -1571,11 +1571,12 @@ header.is-fixed{position:fixed;}
 
 .openbtn {
     cursor: pointer;
-    background-color: #111;
+    background-color: #ff6c3a;
     color: white;
     padding: 10px 15px;
     border: none;
     z-index: 4 !important;
+    font-size: 12px;
 }
 
 .openbtn:hover {

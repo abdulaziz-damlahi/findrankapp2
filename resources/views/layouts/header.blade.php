@@ -72,7 +72,7 @@
         </div>
 
         <!-- Header -->
-        <header style="z-index:3!important;" class="header coporate-header">
+        <header style="z-index:3!important;" class="header coporate-header" >
             <div class="sticky">
                 <div class="container">
                     <div class="logo"><a href="/"><img src="images/logo.png" alt=""></a></div>
@@ -84,8 +84,7 @@
                             <li><a href="/login"> SIGN IN </a></li>
                             <li><a href="/contact"> CONTACT</a></li>
                             <li><a id="findorder" href="/findorder"> FIND-ORDER</a></li>
-                            <li><a id="openbtn" data-toggle="toggle" class="openbtn" onclick="openNav()"> ☰</a></li>
-
+                            <li id="openbtn" data-toggle="toggle" class="openbtn" onclick="openNav()">〱</li>
                             </li>
                         </ul>
                     </nav>

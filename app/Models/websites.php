@@ -27,8 +27,11 @@ class websites extends Authenticatable implements JWTSubject
 
     protected $fillable = [
         'id',
-        'website_name',
+        'user_id',
+        'packet_id',
+        'website_names',
         'rank',
+        'keywords',
     ];
 
     public function User()

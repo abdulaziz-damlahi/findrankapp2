@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('content')
 
-    <div class="container">
-    <section class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-100 padding-right-100"
+    <div class="container" id="seo">
+    <section class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 "
              style="background-color: #efefef; ">
 
         <br class="container" style="padding-right: 500px; padding-left:500px; ">

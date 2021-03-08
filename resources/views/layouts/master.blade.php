@@ -6,7 +6,7 @@
 <head>
     @yield('head')
 </head>
-<body class="home">
+<body class="home" id="home">
 @yield('header')
 @yield('content')
 @yield('footer')
