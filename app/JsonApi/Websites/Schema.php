@@ -35,7 +35,8 @@ class Schema extends SchemaProvider
         return [
             'createdAt' => $resource->created_at,
             'updatedAt' => $resource->updated_at,
-            'website_names'=> $resource->website_names,
+            'website_name'=> $resource->website_name,
+            'id_website'=> $resource->id_website,
             'rank'=> $resource->description,
         ];
     }

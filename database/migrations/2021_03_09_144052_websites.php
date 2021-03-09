@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWebsitesTable extends Migration
+class Websites extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,16 @@ class CreateWebsitesTable extends Migration
      */
     public function up()
     {
+        //
         Schema::create('websites', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('website_name');
             $table->string('rank');
+            $table->unsignedBigInteger('id_website')->unsigned();
 
+            $table->foreign('id_website')
+                ->references('id')
+                ->on('users')->onDelete('cascade');
             $table->timestamps();
 
         });
@@ -30,6 +35,6 @@ class CreateWebsitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('websites');
+        //
     }
 }

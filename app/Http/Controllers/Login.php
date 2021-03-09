@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Auth\LoginByPassPostRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\users;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Propaganistas\LaravelPhone\PhoneNumber;
 
 class Login extends Controller
 {
@@ -26,6 +30,25 @@ return view('pages/login/login');
 
 
 }
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function loginByPass(Request $request)
+    {
+        $user = users::get();
+        dd($user);
+            $user = $user->first();
+            if (Hash::check($request['password'], $user['password'])) {
+                Auth::login($user, true);
+                $user = Auth::user();
+                return response()->json([
+                    'message' => 'Başarıyla giriş yapıldı',
+                ], 200);
+            }
+
+    }
+
     public function registerPost (Request $request){
         users::create([
         'first_name' => $request->first_name,

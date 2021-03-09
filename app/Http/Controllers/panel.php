@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\packets;
 use App\Models\users;
+use Illuminate\Support\Facades\Auth;
 use App\Models\websites;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -16,8 +17,10 @@ class panel extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
+        dd($user);
         return view(
-            'pages/panel/panel');
+            'pages/panel/panel','user');
     }
 
     public function profile()
@@ -34,6 +37,7 @@ class panel extends Controller
     public function userspacket()
     {
         $user = users::find(2);
+        $user = auth()->user();
         $user->packets;
         return $user;
     }
