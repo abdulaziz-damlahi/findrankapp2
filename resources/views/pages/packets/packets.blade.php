@@ -511,7 +511,7 @@
                                         <div id="paymentFrame">Ödeme formunuz oluşturuluyor...</div>
                                     </div>
                                 </div>
-                                <!-- /Card Container -->
+                                <!-- / Container -->
                             </div>
                             <!-- END Step 3 -->
 
@@ -565,7 +565,6 @@
                     </div>
                     <div id="form4">
                         <div class="success-page">
-                            <img src="http://share.ashiknesin.com/green-checkmark.png" class="center" alt=""/>
                             <h2>Payment Successful !</h2>
                         </div>
                     </div>

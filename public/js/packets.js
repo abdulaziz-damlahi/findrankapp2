@@ -27,7 +27,7 @@ if(i<3) {
   $('.menuy ul li').eq(i).removeClass('active');
   $('.menuy ul li').eq(i + 1).addClass('active');
   i++;
-  console.log(i)
+
   if(i===0){
     if($( '#kurumsal' ).prop( "checked" )==='false'){
       $('.kurumsal').hide();
@@ -58,10 +58,8 @@ else if(i===1){
       $('#form2').hide();
       $('#form3').hide();
       $('#form4').show();
-      $('.button_contact').hide();
-      $('.button_contact2').hide();
-
-
+      $('#button_contact').hide();
+      $('#button_contact2').hide();
   }
 
 }
@@ -76,7 +74,7 @@ if(i<4 && i>0) {
   $('.menuy ul li').eq(i).removeClass('active');
   $('.menuy ul li').eq(i - 1).addClass('active');
   i--;
-  console.log(i)
+
     if(i===0){
         if($( '#kurumsal' ).prop( "checked" )==='false'){
             $('.kurumsal').hide();
@@ -108,6 +106,8 @@ if(i<4 && i>0) {
         $('#form2').hide();
         $('#form3').hide();
         $('#form4').show();
+        $('#button_contact').hide();
+        $('#button_contact2').hide();
     }
 
 }
@@ -124,7 +124,7 @@ if(i<4 && i>0) {
     $(this).parent().addClass('active');
     $(this).addClass("active");
     if($('#button_first').hasClass('active')){
-      console.log('sa')
+
       $('.personal_settings').hide();
       $('.password_process').show();
       $('.custumize').hide();
