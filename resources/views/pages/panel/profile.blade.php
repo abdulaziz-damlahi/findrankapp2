@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
-
-    <div class="pcoded-inner-content" id="main">
+            <div class="container"  id="main">
+    <div class="pcoded-inner-content">
         <div class="main-body col-md-12">
             <div class="page-wrapper col-md-12">
 
@@ -35,7 +35,7 @@
                                                 <td class="tableStyle">
                                                     25 Gün Kaldı
                                                 </td>
-                                                <td class="tableStyle"><a href="/packet">update your packet</a> </td>
+                                                <td class="tableStyle"><b><a href="/packets">update your packet</a></b> </td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -104,7 +104,7 @@
             </div>
         </div>
     </div>
-
+            </div>
     <style>
         .tableStyle{ width:50%;
             font-size:15px !important;

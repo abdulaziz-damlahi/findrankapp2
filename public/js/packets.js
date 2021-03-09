@@ -1,21 +1,22 @@
 $(document).ready(function() {
-  $('#form1').hide();
+  $('#Bireyselfrom').hide();
+  $('#form2').hide();
   $('#form3').hide();
   $('#form4').hide();
   $('.kurumsal').hide();
   $('#settingsForm').height( 500 )
   $( "#kurumsal" ).on( "click", function() {
-    $('#form1').show();
-    $('#form2').hide();
+    $('#Bireyselfrom').hide();
+    $('#Kurumsalform').show();
     $('.kurumsal').show();
-    $('#settingsForm').height( 700 )
+    $('#settingsForm').height(700 )
     $('#themostunder').css('margin-right','60%');
 
 
 
   });  $( "#bireysel" ).on( "click", function() {
-    $('#form2').show();
-    $('#form1').hide();
+    $('#Bireyselfrom').show();
+    $('#Kurumsalform ').hide();
     $('#settingsForm').height( 500 )
   });
   i=0;
@@ -27,44 +28,40 @@ if(i<3) {
   $('.menuy ul li').eq(i + 1).addClass('active');
   i++;
   console.log(i)
-  if(i===2){
+  if(i===0){
     if($( '#kurumsal' ).prop( "checked" )==='false'){
       $('.kurumsal').hide();
       console.log($('.kurumsal').text());
 
     }
-    $('#form3').show();
-    $('#form1').hide();
-    $('#form2').hide();
-    $('#form4').hide();
-  }
-else if(i===1){
-    if($( '#kurumsal' ).prop( "checked" )=='false'){
-      $('.kurumsal').hide();
-    }
-    $('#form2').show();
-    $('#form1').hide();
-    $('#form3').hide();
-    $('#form4').hide();
-
-  }else if(i===0){
-    if($( '#kurumsal' ).prop( "checked" )=='false'){
-      $('.kurumsal').hide();
-      console.log($( '#kurumsal' ).prop( "checked" ));
-    }
     $('#form1').show();
     $('#form2').hide();
     $('#form3').hide();
     $('#form4').hide();
+  }
+else if(i===1){
+      $('#form1').hide();
+      $('#form2').show();
+      $('#form3').hide();
+      $('#form4').hide();
+      $('#form2').height(300);
+
+  }else if(i===2){
+
+      $('#form1').hide();
+      $('#form2').hide();
+      $('#form3').show();
+      $('#form4').hide();
 
   }else if(i===3){
-    if($( '#kurumsal' ).prop( "checked" )==='false'){
-      $('.kurumsal').hide();
-    }
-    $('#form4').show();
-    $('#form1').hide();
-    $('#form3').hide();
-    $('#form2').hide();
+      $('#form1').hide();
+      $('#form2').hide();
+      $('#form3').hide();
+      $('#form4').show();
+      $('.button_contact').hide();
+      $('.button_contact2').hide();
+
+
   }
 
 }
@@ -80,45 +77,38 @@ if(i<4 && i>0) {
   $('.menuy ul li').eq(i - 1).addClass('active');
   i--;
   console.log(i)
-  if(i===2){
-    if($( '#kurumsal' ).prop( "checked" )==='false'){
-      $('.kurumsal').hide();
-    }
-    $('#form3').show();
-    $('#form1').hide();
-    $('#form2').hide();
-    $('#form4').hide();
+    if(i===0){
+        if($( '#kurumsal' ).prop( "checked" )==='false'){
+            $('.kurumsal').hide();
+            console.log($('.kurumsal').text());
 
+        }
+        $('#form1').show();
+        $('#form2').hide();
+        $('#form3').hide();
+        $('#form4').hide();
+    }
+    else if(i===1){
 
-  }
-  else if(i===1){
-    if($( '#kurumsal' ).prop( "checked" )==='false'){
-      $('.kurumsal').hide();
-    }
-    $('#form2').show();
-    $('#form1').hide();
-    $('#form3').hide();
-    $('#form4').hide();
-  }else if(i===0){
-    if($( '#kurumsal' ).prop( "checked" )==='false'){
-      $('.kurumsal').hide();
-    }
-    console.log($( '#kurumsal' ).prop( "checked" ))
-    $('#form1').show();
-    $('#form2').hide();
-    $('#form3').hide();
-    $('#form4').hide();
-  }else if(i===3){
-    console.log($( '#kurumsal' ).prop( "checked" ))
+        $('#form1').hide();
+        $('#form2').show();
+        $('#form3').hide();
+        $('#form4').hide();
+        $('#form2').height(300);
 
-    if($( '#kurumsal' ).prop( "checked" )==='false'){
-      $('.kurumsal').hide();
+    }else if(i===2){
+
+        $('#form1').hide();
+        $('#form2').hide();
+        $('#form3').show();
+        $('#form4').hide();
+
+    }else if(i===3){
+        $('#form1').hide();
+        $('#form2').hide();
+        $('#form3').hide();
+        $('#form4').show();
     }
-    $('#form4').show();
-    $('#form1').hide();
-    $('#form3').hide();
-    $('#form2').hide();
-  }
 
 }
   });
@@ -150,3 +140,5 @@ if(i<4 && i>0) {
     }
   });
 });
+
+// payment
