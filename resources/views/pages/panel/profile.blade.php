@@ -109,5 +109,5 @@
         .tableStyle{ width:50%;
             font-size:15px !important;
             color: black !important;}
-    </style>
+    </style>>
 @endsection

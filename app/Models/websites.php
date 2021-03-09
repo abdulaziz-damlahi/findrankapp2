@@ -22,7 +22,8 @@ class websites extends Model
 
     protected $fillable = [
         'id',
-        'website_names',
+        'website_name',
+        'id_website',
         'rank',
     ];
 
