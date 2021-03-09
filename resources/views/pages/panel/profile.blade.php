@@ -1,9 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<<<<<<< HEAD
-=======
 
->>>>>>> 603618635d6b3a4848206f548c6caa16db6f6ba2
     <div class="pcoded-inner-content" id="main">
         <div class="main-body col-md-12">
             <div class="page-wrapper col-md-12">
@@ -11,7 +8,7 @@
                 <div class="page-body ">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="card bg-c-green order-card">
                                     <div class="card-block " style="height: 300px">
                                         <table class="table table-bordered table-striped table-condensed ">
@@ -45,7 +42,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="card bg-c-yellow order-card">
                                     <div class="card-block">
                                         <div class="block-content block-content-full">

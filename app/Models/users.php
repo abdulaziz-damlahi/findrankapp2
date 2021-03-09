@@ -31,16 +31,14 @@ class users extends Authenticatable
 
     public function packets()
     {
-<<<<<<< HEAD:app/Models/User.php
-      return   $this->hasOne('App\Models\packets', 'user_id','id');
-=======
         return $this->hasMany('App\Models\packets', 'id','id');
->>>>>>> 603618635d6b3a4848206f548c6caa16db6f6ba2:app/Models/users.php
     }
 
     public function websites()
     {
-        return $this->hasMany('App\Models\websites','user_id');
+
+        return $this->hasMany('App\Models\websites','website_id');
+
     }
 }
 

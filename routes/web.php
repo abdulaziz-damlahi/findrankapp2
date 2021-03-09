@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-<<<<<<< HEAD
-
-Route::get('/', 'App\Http\Controllers\homepage@index');
-Route::get('/home', 'App\Http\Controllers\homepage@index');
-Route::get('/panel', 'App\Http\Controllers\panel@index');
-Route::get('/profile', 'App\Http\Controllers\panel@profile');
-Route::get('/contact', 'App\Http\Controllers\homepage@contact');
-Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder');
-
-=======
 Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/panel', 'App\Http\Controllers\panel@index')->name('panel');
     Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder')->name('findorder');
@@ -29,7 +19,6 @@ Route::prefix('user/')->middleware('isLogin')->group(function() {
 Route::get('/', 'App\Http\Controllers\homepage@index')->name('home');
 Route::get('/packets', 'App\Http\Controllers\packets@index')->name('packets');
 Route::get('/contact', 'App\Http\Controllers\contact@index')->name('contact');
->>>>>>> 603618635d6b3a4848206f548c6caa16db6f6ba2
 
 Route::get('/users-packet', 'App\Http\Controllers\panel@userspacket');
 Route::get('/users-website', 'App\Http\Controllers\panel@userswebsite');

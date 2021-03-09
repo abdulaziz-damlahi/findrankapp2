@@ -89,11 +89,8 @@
             <p>Copyright © 2016 Infinity SEO Solution. All Rights Reserved.</p>
         </div>
     </div>
-
 </footer>
 </div>
-
-
 <!-- End Page Wrapper -->
 
 <!-- JavaScripts -->

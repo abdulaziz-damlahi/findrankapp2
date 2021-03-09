@@ -151,6 +151,36 @@
 
     <!-- Content -->
     <div id="content">
+
+        <!-- Seo Secore -->
+        <section class="bg-parallax seo-secore padding-top-100 padding-bottom-100" style="background:url({{asset('images')}}/bg/bg-parallax.jpg) no-repeat;">
+            <div class="container">
+
+                <!-- Tittle -->
+                <div class="heading-block white-text text-center margin-bottom-50">
+                    <h2>What’s Your SEO Score ?</h2>
+                    <span>See how well your page is optimised for your keyword</span> </div>
+
+                <!-- Form -->
+                <form>
+                    <ul class="row">
+                        <li class="col-md-3">
+                            <input type="text" class="form-control" placeholder="http://">
+                        </li>
+                        <li class="col-md-3">
+                            <input type="text" class="form-control" placeholder="Keyword">
+                        </li>
+                        <li class="col-md-3">
+                            <input type="text" class="form-control" placeholder="Email">
+                        </li>
+                        <li class="col-md-3">
+                            <button type="submit" class="btn btn-orange">Check Now !</button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </section>
+
         <!-- Infinity Solution -->
         <section class="light-gray-bg solution padding-top-100 padding-bottom-100">
             <div class="container">
@@ -561,13 +591,4 @@
             </div>
         </section>
     </div>
-
-
-
-    <script>
-        document.getElementById("openbtn").remove();
-        document.querySelector("#ownmenu > li:nth-child(9)").remove();
-        document.getElementById("findorder").remove();
-        document.querySelector("#ownmenu > li:nth-child(5)").style.display = "none";
-    </script>
 @endsection

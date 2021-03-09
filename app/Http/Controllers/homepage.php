@@ -2,23 +2,6 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use Illuminate\Routing\Controller;
-
-class homepage extends Controller
-{
-    public function index()
-    {
-        return view(
-            'pages/home/home');
-    }
-
-    public function contact()
-    {
-        return view(
-            'pages/contact');
-    }
-=======
 use App\Models\keywords;
 use App\Models\websites;
 use App\Models\packets;
@@ -116,5 +99,4 @@ class homepage extends Controller
 
     }
 
->>>>>>> 603618635d6b3a4848206f548c6caa16db6f6ba2
 }

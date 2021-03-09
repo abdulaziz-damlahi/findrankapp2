@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('content')
-    <section class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-100 padding-right-100"
-             style="background-color: lightblue; ">
+    <div class="container" id="seo">
+        <section class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 "
+             style="background-color: #EFEFEF; ">
 
         <br class="container" style="padding-right: 500px; padding-left:500px; ">
         <!-- Tittle -->
@@ -99,28 +100,7 @@
                 <button type="submit" class="btn btn-orange">Check Now !</button>
             </li>
         </div>
-        </div>
-        </div>
-
     </section>
-
-    <style>
-        .scrollable-menu {
-            height: auto;
-            max-height: 200px;
-            overflow-x: hidden;
-        }
-
-        .select {
-            font-size: 15px;
-            font-weight: bold !important;
-            color: #fff !important;
-            background: #222935 !important;
-            font-family: Alegreya Sans;
-            height: 50px;
-            width: 220px;
-            text-transform: uppercase;
-        }
-    </style>
+    </div>
 
 @endsection

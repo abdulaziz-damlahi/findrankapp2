@@ -22,27 +22,18 @@ class websites extends Model
 
     protected $fillable = [
         'id',
-<<<<<<< HEAD
-        'user_id',
-        'packet_id',
-=======
->>>>>>> 603618635d6b3a4848206f548c6caa16db6f6ba2
         'website_names',
         'rank',
     ];
 
     public function User()
     {
-<<<<<<< HEAD
-        $this->belongsTo('App\Models\User', 'id','user_id');
-=======
         $this->belongsTo('App\Models\users', 'id','website_id');
->>>>>>> 603618635d6b3a4848206f548c6caa16db6f6ba2
     }
 
     public function keywords()
     {
-        return $this->hasMany('App\Models\keywords', 'website_id','id');
+        return $this->hasMany('App\Models\keywords', 'id');
     }
 
     public function packets():HasMany
