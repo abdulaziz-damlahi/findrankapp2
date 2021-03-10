@@ -34,7 +34,7 @@ class websites extends Model
 
     public function keywords()
     {
-        return $this->hasMany('App\Models\keywords', 'id');
+         $this->belongsTo('App\Models\keywords', 'id','id');
     }
 
     public function packets():HasMany

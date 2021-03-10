@@ -18,9 +18,8 @@ class panel extends Controller
     public function index()
     {
         $user = auth()->user();
-        dd($user);
         return view(
-            'pages/panel/panel','user');
+            'pages/panel/panel',compact('user'));
     }
 
     public function profile()

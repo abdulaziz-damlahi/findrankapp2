@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class keywords extends Model
 {
@@ -12,12 +14,12 @@ class keywords extends Model
         'id',
         'name',
         'date',
+        'website_id',
     ];
-    public function websites()
+    public function website():hasMany
     {
-        $this->belongsTo('App\Models\websites', 'website_id','id');
+        return $this->hasMany('App\Models\websites', 'id','website_id');
     }
-
 
     public function User()
     {
