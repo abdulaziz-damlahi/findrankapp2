@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKeywordsTable extends Migration
+class Keywords extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class CreateKeywordsTable extends Migration
      * @return void
      */
     public function up()
-    {  Schema::create('keywords', function (Blueprint $table) {
-        $table->id();
-        $table->string('name');
-        $table->timestamps();
-    });
+    {
+        //
     }
 
     /**
@@ -26,6 +23,6 @@ class CreateKeywordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('keywords');
+        //
     }
 }

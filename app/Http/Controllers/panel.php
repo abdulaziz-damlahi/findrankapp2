@@ -3,24 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\packets;
+
 use App\Models\users;
 use Illuminate\Support\Facades\Auth;
 use App\Models\websites;
+use App\Models\keywords;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class panel extends Controller
 {
     public function index()
     {
+        //        $username = auth()->user()->first_name;
         $user = auth()->user();
-        dd($user);
-        return view(
-            'pages/panel/panel','user');
+         $userId = $user->id;
+         $userwebsites = websites::where('id_website', '=', $userId)->get();
+        return  $userwebsites2=$userwebsites->id->first();
+        return  $keywordequalwebsite = keywords::where('website_id', '=', $userwebsites2)->get();
+
+        return view('pages/panel/panel', compact('user', 'userwebsites', 'user'));
     }
 
     public function profile()
@@ -28,6 +35,7 @@ class panel extends Controller
         return view(
             'pages/panel/profile');
     }
+
     public function FindOrder()
     {
         return view(
@@ -37,7 +45,6 @@ class panel extends Controller
     public function userspacket()
     {
         $user = users::find(2);
-        $user = auth()->user();
         $user->packets;
         return $user;
     }
@@ -45,21 +52,21 @@ class panel extends Controller
     public function userswebsite()
     {
         $user = users::find(1);
-         $user->websites;
+        $user->websites;
         return $user;
     }
 
     public function packetwebsite()
     {
         $packet = packets::find(1);
-         $packet->websites;
+        $packet->websites;
         return $packet;
     }
 
     public function websitekeyword()
     {
         $website = websites::find(1);
-         $website->keywords;
+        $website->keywords;
         return $website;
     }
 }

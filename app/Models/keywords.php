@@ -12,10 +12,11 @@ class keywords extends Model
         'id',
         'name',
         'date',
+        'website_id',
     ];
     public function websites()
     {
-        $this->belongsTo('App\Models\websites', 'website_id','id');
+        $this->belongsTo('App\Models\websites', 'id','website_id');
     }
 
 

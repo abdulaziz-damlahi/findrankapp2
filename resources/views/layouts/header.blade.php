@@ -3,7 +3,7 @@
 
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" id="closebtn"> X </a>
 
-        <a class="SideBarName" id="SideBarName"> abood </a>
+        <a class="SideBarName" id="SideBarName"></a>
 
         <div class="btn-group btn-group-justified2 push col-md-12" role="group">
 
