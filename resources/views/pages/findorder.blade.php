@@ -9,26 +9,27 @@
             <h2 style="color: black">What’s Your SEO Score ?</h2>
             <span style="color: black">See how well your page is optimised for your keyword</span></div>
         <!-- Form -->
-        <form>
+        <form method="post" action="{{route('findpost')}}">
+            @csrf
 
             <ul class="row col-lg-12">
                 <li class="col-md-6">
-                    <input type="text" class="form-control" placeholder="http://">
+                    <input type="text" name="website" class="form-control" placeholder="http://">
                 </li>
                 <li class="col-md-6">
-                    <input type="text" class="form-control" placeholder="Keyword">
+                    <input type="text" name="keyword" class="form-control" placeholder="Keyword">
                 </li>
             </ul>
 
                 <div class="row col-lg-12">
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
-                            <select class="select">
+                            <select class="selectSecil">
                                 <option class="select">
                                     Ülke
                                 </option>
-                                <option class="select">
-                                    turkey
+                                <option class="select" value="TR">
+                                    Türkiye
                                 </option>
                                 <option class="select" value="AE">
                                     Birleşik Arap Emirlikleri
@@ -144,46 +145,28 @@
                     </div>
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
-                            <select class="select">
-                                <option class="select">
-                                    Şehir
-                                </option>
-                                <option class="select">
-                                    mersin
-                                </option>
-                                <option class="select">
-                                    istanbul
-                                </option>
-                                <option class="select">
-                                    karabuk
-                                </option>
+                            <select class="cityy">
                             </select>
                         </div>
                     </div>
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
-                            <select class="select">
-                                <option class="select">
-                                    Cihaz
+                            <select class="device">
+                                <option >
+                                    Mobil
                                 </option>
-                                <option class="select">
-                                    mobile
-                                </option>
-                                <option class="select">
-                                    masaustu
+                                <option >
+                                    Masaüstü
                                 </option>
                             </select>
                         </div>
                     </div>
                 </div>
-
+            <input hidden name="hidden_collonial_name" id="hidden_collonial" />
+            <input hidden name="hidden_device_name" id="hidden_device" />
+            <button type="submit" class="btn btn-orange">Check Now !</button>
 
         </form>
-        <div class="row col-md-3 " style="margin: auto">
-            <li class="">
-                <button type="submit" class="btn btn-orange">Check Now !</button>
-            </li>
-        </div>
         </div>
         </div>
 

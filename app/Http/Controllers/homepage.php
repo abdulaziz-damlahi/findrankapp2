@@ -23,7 +23,7 @@ class homepage extends Controller
         $ippp = '2.16.7.255';
         $ippamerica= '1.32.232.0';
         $tr='78.180.10.189';
-        $geo = geoip()->getLocation('78.180.10.189');
+        $geo = geoip()->getLocation('1.32.232.0');
         $localiton=  $geo->iso_code;
         $packets_reel = packets_reels::all();
         $pack = $packets_reel->take(1)->first();

@@ -24,17 +24,17 @@ use CloudCreativity\LaravelJsonApi\Routing\RouteRegistrar as Api;
 
     });
     JsonApi::register('v1')->routes(function (Api $api) {
-        $api->post("Packets");
-    $api->resource('Keywords');
-    $api->resource('Users');
-    $api->resource('Packets');
-    $api->resource('Websites');
+
+                $api->resource('Keywords');
+                $api->resource('Users');
+                $api->resource('invoicerecords');
+                $api->resource('Locations');
+                $api->resource('packets-reels');
+                $api->resource('Packets');
+                $api->resource('Websites');
         Route::prefix('auth')
             ->group(function () use ($api) {
                 $api->post('loginByPass', [\App\Http\Controllers\Login::class, 'loginByPass'])->name('loginByPass');
 
             });
-});
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
 });

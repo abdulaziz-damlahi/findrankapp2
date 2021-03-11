@@ -22,6 +22,8 @@ class PacketsReels extends Migration
             $table->string('names_packets');
             $table->integer('rank_fosllow');
             $table->integer('price');
+            $table->timestamps();
+
         });
     }
 

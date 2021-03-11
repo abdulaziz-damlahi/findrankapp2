@@ -31,6 +31,18 @@ class panel extends Controller
     {
         return view(
             'pages/findorder');
+    } public function findPost(Request $request)
+    {
+      $colonial_name =  $request->hidden_collonial_name;
+      $device_information =  $request->hidden_device_name;
+      $website_request =  $request->website;
+      $keyword_request =  $request->keyword;
+      echo $colonial_name;
+      echo $device_information;
+      echo $website_request;
+      echo $keyword_request;
+        return view(
+            'pages/findorder',compact('$colonial_name','$device_information','$website_request','$keyword_request'));
     }
 
     public function userspacket()

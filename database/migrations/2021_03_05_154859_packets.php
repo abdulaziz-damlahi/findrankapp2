@@ -18,8 +18,7 @@ class Packets extends Migration
             $table->unsignedBigInteger('id_sa')->unsigned();
             $table->string('count_of_words');
             $table->string('descrpitions');
-            $table->string('end_of_pocket');
-            $table->string('started_of_pockets');
+            $table->date('end_of_pocket');
             $table->string('count_of_websites');
             $table->string('packet_names');
             $table->foreign('id_sa')

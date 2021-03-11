@@ -1,21 +1,28 @@
 $(document).ready(function() {
-  $('#form1').hide();
+
+  $('#Bireyselfrom').hide();
+  $('#form2').hide();
   $('#form3').hide();
   $('#form4').hide();
   $('.kurumsal').hide();
+  $('#settingsForm').hide();
   $('#settingsForm').height( 500 )
   $( "#kurumsal" ).on( "click", function() {
-    $('#form1').show();
-    $('#form2').hide();
+    $('#Bireyselfrom').hide();
+    $('#Kurumsalform').show();
     $('.kurumsal').show();
-    $('#settingsForm').height( 700 )
+    $('#settingsForm').height(700 )
     $('#themostunder').css('margin-right','60%');
 
 
 
-  });  $( "#bireysel" ).on( "click", function() {
-    $('#form2').show();
-    $('#form1').hide();
+  });
+  $( ".PURCHACE" ).on( "click", function() {
+    $('#settingsForm').show();
+  });
+  $( "#bireysel" ).on( "click", function() {
+    $('#Bireyselfrom').show();
+    $('#Kurumsalform ').hide();
     $('#settingsForm').height( 500 )
   });
   i=0;
@@ -26,45 +33,39 @@ if(i<3) {
   $('.menuy ul li').eq(i).removeClass('active');
   $('.menuy ul li').eq(i + 1).addClass('active');
   i++;
-  console.log(i)
-  if(i===2){
+
+  if(i===0){
     if($( '#kurumsal' ).prop( "checked" )==='false'){
       $('.kurumsal').hide();
       console.log($('.kurumsal').text());
 
     }
-    $('#form3').show();
-    $('#form1').hide();
-    $('#form2').hide();
-    $('#form4').hide();
-  }
-else if(i===1){
-    if($( '#kurumsal' ).prop( "checked" )=='false'){
-      $('.kurumsal').hide();
-    }
-    $('#form2').show();
-    $('#form1').hide();
-    $('#form3').hide();
-    $('#form4').hide();
-
-  }else if(i===0){
-    if($( '#kurumsal' ).prop( "checked" )=='false'){
-      $('.kurumsal').hide();
-      console.log($( '#kurumsal' ).prop( "checked" ));
-    }
     $('#form1').show();
     $('#form2').hide();
     $('#form3').hide();
     $('#form4').hide();
+  }
+else if(i===1){
+      $('#form1').hide();
+      $('#form2').show();
+      $('#form3').hide();
+      $('#form4').hide();
+      $('#form2').height(300);
+
+  }else if(i===2){
+
+      $('#form1').hide();
+      $('#form2').hide();
+      $('#form3').show();
+      $('#form4').hide();
 
   }else if(i===3){
-    if($( '#kurumsal' ).prop( "checked" )==='false'){
-      $('.kurumsal').hide();
-    }
-    $('#form4').show();
-    $('#form1').hide();
-    $('#form3').hide();
-    $('#form2').hide();
+      $('#form1').hide();
+      $('#form2').hide();
+      $('#form3').hide();
+      $('#form4').show();
+      $('#button_contact').hide();
+      $('#button_contact2').hide();
   }
 
 }
@@ -79,54 +80,45 @@ if(i<4 && i>0) {
   $('.menuy ul li').eq(i).removeClass('active');
   $('.menuy ul li').eq(i - 1).addClass('active');
   i--;
-  console.log(i)
-  if(i===2){
-    if($( '#kurumsal' ).prop( "checked" )==='false'){
-      $('.kurumsal').hide();
-    }
-    $('#form3').show();
-    $('#form1').hide();
-    $('#form2').hide();
-    $('#form4').hide();
 
+    if(i===0){
+        if($( '#kurumsal' ).prop( "checked" )==='false'){
+            $('.kurumsal').hide();
+            console.log($('.kurumsal').text());
 
-  }
-  else if(i===1){
-    if($( '#kurumsal' ).prop( "checked" )==='false'){
-      $('.kurumsal').hide();
+        }
+        $('#form1').show();
+        $('#form2').hide();
+        $('#form3').hide();
+        $('#form4').hide();
     }
-    $('#form2').show();
-    $('#form1').hide();
-    $('#form3').hide();
-    $('#form4').hide();
-  }else if(i===0){
-    if($( '#kurumsal' ).prop( "checked" )==='false'){
-      $('.kurumsal').hide();
-    }
-    console.log($( '#kurumsal' ).prop( "checked" ))
-    $('#form1').show();
-    $('#form2').hide();
-    $('#form3').hide();
-    $('#form4').hide();
-  }else if(i===3){
-    console.log($( '#kurumsal' ).prop( "checked" ))
+    else if(i===1){
 
-    if($( '#kurumsal' ).prop( "checked" )==='false'){
-      $('.kurumsal').hide();
+        $('#form1').hide();
+        $('#form2').show();
+        $('#form3').hide();
+        $('#form4').hide();
+        $('#form2').height(300);
+
+    }else if(i===2){
+
+        $('#form1').hide();
+        $('#form2').hide();
+        $('#form3').show();
+        $('#form4').hide();
+
+    }else if(i===3){
+        $('#form1').hide();
+        $('#form2').hide();
+        $('#form3').hide();
+        $('#form4').show();
+        $('#button_contact').hide();
+        $('#button_contact2').hide();
     }
-    $('#form4').show();
-    $('#form1').hide();
-    $('#form3').hide();
-    $('#form2').hide();
-  }
 
 }
   });
   $('.setting_button').css('margin-right','0px');
-  $(".PURCHACE").click(function() {
- $("#packets_show").hide();
-    $("#settingsForm").show();
-  });
   $('.personal_settings').hide();
   $('.custumize').hide();
   $(".setting_but").click(function() {
@@ -134,7 +126,7 @@ if(i<4 && i>0) {
     $(this).parent().addClass('active');
     $(this).addClass("active");
     if($('#button_first').hasClass('active')){
-      console.log('sa')
+
       $('.personal_settings').hide();
       $('.password_process').show();
       $('.custumize').hide();
@@ -149,4 +141,81 @@ if(i<4 && i>0) {
       $('.custumize').show();
     }
   });
+  function packets_reels () {
+    $.ajax({
+      type: 'get',
+      url: "http://127.0.0.1:8000/api/v1/packets-reels",
+      success: function (response) {
+        jQuery.each(response, function (i, val) {
+          jQuery.each(val, function (is, vall) {
+            $start = vall.id - 1;
+            $(".PURCHACE").eq($start).val(vall.id);
+            console.log($(".PURCHACE").val());
+          });
+        });
+      }
+    });
+  }
+  packets_reels();
+
+  $(".PURCHACE").click(function() {
+    let number_id = $(this).val();
+    get_one_packets(number_id);
+    $("#packets_show").hide();
+    $("#settingsForm").show();
+  });
+function get_one_packets(id){
+  $.ajax({
+    type: 'get',
+    url: "http://127.0.0.1:8000/api/v1/packets-reels/"+id,
+    success: function (response) {
+      $(".price_packet").text(response.data.attributes.price+ " TL");
+      $("#total_price").text("Toplam : "+response.data.attributes.price+ " TL");
+      jQuery.each(response, function (i, val) {
+        jQuery.each(val, function (is, vall) {
+      console.log(vall);
+          $(".hidden_word_count").val(vall.count_of_words)
+          $(".hidden_websites_count").val(vall.websites_count)
+          $(".başlangic").text(vall.names_packets);
+          $(".hidden_description").val(vall.description)
+        });
+      });
+    }
+  });
+}
+
+  $( ".invoice_records" ).submit(function() {
+    post_invoice();
+  });
+function post_invoice () {
+  $.ajax({
+    url: "http://127.0.0.1:8000/api/v1/invoicerecords",
+    type: "POST",
+    data: JSON.stringify({
+      "data": {
+        "type": "invoicerecords",
+
+        "attributes": {
+          "first_name":"first_name",
+          "last_name":"last_name",
+          "Id_number":"2201546589",
+          "tax_no":"sa",
+          "tax_address":"sa",
+          "country":"sa",
+          "city":"sa",
+          "company_name":"sa"
+
+
+        }
+      } }),
+    headers: {
+      "Content-Type": "application/vnd.api+json",
+      Accept: "application/vnd.api+json",
+    },success: function (result) {
+      console.log('işlem başarılı')
+    }
+  });
+}
 });
+
+// payment

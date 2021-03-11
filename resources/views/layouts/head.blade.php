@@ -32,12 +32,16 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
     @endif   @if($routeName === 'packets')
         <script rel="stylesheet" src="{{asset('js')}}/packets.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
+
     @endif
     @if($routeName === 'contact')
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/contact.css">
     @endif
+       @if( $routeName === 'findorder' )
+        <script rel="stylesheet" src="{{asset('js')}}/findorder.js"></script>
+    @endif
     <script rel="stylesheet" src="{{asset('js')}}/login.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
     @if($routeName === 'settings')
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/settings.css">
         <script rel="stylesheet" src="{{asset('js')}}/settings.js"></script>

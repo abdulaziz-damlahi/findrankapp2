@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class packetreeels extends Seeder
 {
@@ -15,6 +16,13 @@ class packetreeels extends Seeder
     public function run()
     {
         DB::table('packets_reels')->insert([
+            [   'word_count'=>'50',
+                'description'=>'Her gün otomatik sıra güncellemesi',
+                'websites_count'=>'5',
+                'names_packets'=>'BAŞLANGIÇ',
+                'rank_fosllow'=>'100',
+                'price'=>'40',
+                ],
             [
                 'word_count'=>'100',
                 'description'=>'Her gün otomatik sıra güncellemesi',
@@ -29,12 +37,6 @@ class packetreeels extends Seeder
                 'rank_fosllow'=>'500',
                 'price'=>'100',
             ],
- [   'word_count'=>'50',
-     'description'=>'Her gün otomatik sıra güncellemesi',
-     'websites_count'=>'5',
-     'names_packets'=>'BAŞLANGIÇ',
-     'rank_fosllow'=>'100',
-     'price'=>'40',]
         ]);
         //
     }

@@ -27,7 +27,6 @@ class users extends Authenticatable
     protected $hidden = [
         'updated_at',
         'created_at',
-        'password',
     ];
 
     public function packets()

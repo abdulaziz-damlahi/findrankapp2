@@ -70,6 +70,9 @@ return [
         'Packets' =>  \App\Models\packets::class,
         'Websites' =>  \App\Models\websites::class,
         'Users' =>  \App\Models\users::class,
+        'Locations' =>  \App\Models\locations::class,
+        'packets-reels'  =>  \App\Models\packets_reels::class,
+        'invoicerecords'  =>  \App\Models\invoicerecords::class
     ],
 
     /*
