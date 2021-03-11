@@ -17,7 +17,6 @@ class Websites extends Migration
         Schema::create('websites', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('website_name');
-            $table->string('rank');
             $table->unsignedBigInteger('id_website')->unsigned();
 
             $table->foreign('id_website')

@@ -10,16 +10,18 @@
 
                         <!-- order-card start -->
                         <div class="col-lg-12 col-md-12 col-xl-12">
-                        @foreach ($userwebsites as $userwebsite)
-                        <div class="col-md-12 col-xl-3">
-                            <div class="card bg-c-blue order-card">
-                                <div class="card-block">
-                                    <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
-                                    <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span>word used 10</span></h2>
-                                    <p class="m-b-0">today's rank<span class="f-right"> {{ $userwebsite->rank }}</span></p>
+                            @foreach ($userwebsites as $userwebsite)
+                                <div class="col-md-12 col-xl-3">
+                                    <div class="card bg-c-blue order-card">
+                                        <div class="card-block">
+                                            <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
+                                            <h2 class="text-right"><i class="ti-shopping-cart f-left"
+                                                                      style="text-shadow: 3px 3px 5px #0000!important; ;"></i><span>rank {{$userwebsite->rank}}</span>
+                                            </h2>
+                                            <p class="m-b-0"><span class="f-right"></span></p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
                         @endforeach
                         <!-- order-card end -->
                         </div>
@@ -33,26 +35,17 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
+                                            <th scope="col">#</th>
                                             <th scope="col">WEB SİTE / URL</th>
                                             <th scope="col">ANAHTAR KELİME</th>
                                             <th scope="col">SIRA</th>
                                             <th scope="col">DEĞİŞİM</th>
-                                            <th scope="col">EN İYİ</th>
                                             <th scope="col">GRAFİK</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="row">
 
-                                        @foreach ($userwebsites as $userwebsite)
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        @endforeach
+
 
                                         </tbody>
                                     </table>

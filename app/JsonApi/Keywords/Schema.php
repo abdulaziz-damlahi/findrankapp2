@@ -2,7 +2,7 @@
 
 namespace App\JsonApi\Keywords;
 
-use Neomerx\JsonApi\Schema\SchemaProvider;
+use App\JsonApi\Base\SchemaProvider;
 use App\Models\keywords;
 use App\Models\websites;
 class Schema extends SchemaProvider
@@ -12,7 +12,6 @@ class Schema extends SchemaProvider
      * @var string
      */
     protected $resourceType = 'Keywords';
-
 
     /**
      * @param keywords $resource
@@ -33,6 +32,7 @@ class Schema extends SchemaProvider
     {
         return [
             'name' => $resource->name,
+            'website_id' => $resource->website_id,
             'createdAt' => $resource->created_at,
             'createdAt' => $resource->created_at,
         ];

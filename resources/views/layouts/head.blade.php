@@ -30,6 +30,7 @@
     @endif
     @if($routeName === 'panel')
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
+        <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
     @endif   @if($routeName === 'packets')
         <script rel="stylesheet" src="{{asset('js')}}/packets.js"></script>
     @endif

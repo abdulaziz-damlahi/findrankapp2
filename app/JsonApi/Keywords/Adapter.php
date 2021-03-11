@@ -2,10 +2,10 @@
 
 namespace App\JsonApi\Keywords;
 
-use CloudCreativity\LaravelJsonApi\Eloquent\AbstractAdapter;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
+use App\JsonApi\Base\AbstractAdapter;
 use App\Models\keywords;
 
 class Adapter extends AbstractAdapter
@@ -32,7 +32,7 @@ class Adapter extends AbstractAdapter
      */
     public function __construct(StandardStrategy $paging)
     {
-        parent::__construct(new \App\models\keywords(), $paging);
+        parent::__construct(new \App\Models\keywords(), $paging);
     }
 
     /**

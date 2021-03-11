@@ -22,12 +22,14 @@ class panel extends Controller
     {
         //        $username = auth()->user()->first_name;
         $user = auth()->user();
-         $userId = $user->id;
-         $userwebsites = websites::where('id_website', '=', $userId)->get();
-        return  $userwebsites2=$userwebsites->id->first();
-        return  $keywordequalwebsite = keywords::where('website_id', '=', $userwebsites2)->get();
-
-        return view('pages/panel/panel', compact('user', 'userwebsites', 'user'));
+        $userId = $user->id;
+        $userwebsites = websites::where('id_website', '=', $userId)->get();
+//              $firstwebsiteid = $userwebsites->skip(0)->first()->id;
+//              $secondwebsiteid = $userwebsites->skip(1)->first()->id;
+//
+//          $keywordequalwebsite = keywords::where('website_id', '=', $firstwebsiteid)->get();
+//         $keywordequalwebsite = keywords::where('website_id', '=', $secondwebsiteid)->get();
+        return  view('pages/panel/panel', compact('user', 'userwebsites', 'user'));
     }
 
     public function profile()
