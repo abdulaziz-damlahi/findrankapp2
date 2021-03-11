@@ -18,7 +18,7 @@ class userSeeder extends Seeder
   'last_name'=>'Çeliker',
   'phone'=>'5375751554',
   'email'=>'td21brs14@hotmail.com',
-  'password'=>bcrypt(5456465),
+  'password'=>bcrypt(123456789),
     ], [ 'first_name'=>'abood',
   'last_name'=>'damlahi',
   'phone'=>'5375751554',

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-
+   <div style="display:none" id="id">{{ $userId}}</div>
     <div class="pcoded-inner-content" id="main">
         <div class="main-body">
             <div class="page-wrapper">
@@ -16,7 +16,7 @@
                                         <div class="card-block">
                                             <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
                                             <h2 class="text-right"><i class="ti-shopping-cart f-left"
-                                                                      style="text-shadow: 3px 3px 5px #0000!important; ;"></i><span>rank {{$userwebsite->rank}}</span>
+                                                                      style="text-shadow: 3px 3px 5px #0000!important; ;"></i><span></span>
                                             </h2>
                                             <p class="m-b-0"><span class="f-right"></span></p>
                                         </div>
