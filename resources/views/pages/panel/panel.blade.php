@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
-   <div style="display:none" id="id">{{ $userId}}</div>
+
+   <div style="" id="id">{{ $userId}}</div>
     <div class="pcoded-inner-content" id="main">
         <div class="main-body">
             <div class="page-wrapper">
@@ -10,7 +11,10 @@
 
                         <!-- order-card start -->
                         <div class="col-lg-12 col-md-12 col-xl-12">
-                            @foreach ($userwebsites as $userwebsite)
+
+
+                           @foreach($userwebsites as $userwebsite)
+
                                 <div class="col-md-12 col-xl-3">
                                     <div class="card bg-c-blue order-card">
                                         <div class="card-block">
@@ -22,7 +26,9 @@
                                         </div>
                                     </div>
                                 </div>
-                        @endforeach
+
+                            @endforeach
+
                         <!-- order-card end -->
                         </div>
                         <!-- statustic and process start -->
@@ -44,11 +50,27 @@
                                         </tr>
                                         </thead>
                                         <tbody id="row">
-
-
-
+                                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                                         </tbody>
+
+
                                     </table>
+
+                                    <div class="pagination">
+                                        <a class="pagination-buttons" href="#" id="prevPageButton">&laquo;</a>
+                                    </div>
+
+                                    <div class="pagination" id="pagination">
+                                        {{--java script generated Pagination in tbody (panel.js)--}}
+                                    </div>
+
+                                    <div class="pagination">
+                                        <a class="pagination-buttons" href="#" id="nextPageButton">&raquo;</a>
+                                    </div>
+
+                                    <div id="pageDetails" class="page-details">
+                                    </div>
+
                                 </div>
                                 <div class="card-block">
                                     <canvas id="Statistics-chart" height="200"></canvas>

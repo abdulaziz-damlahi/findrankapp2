@@ -14852,3 +14852,26 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
         display: inline-block; } }
 
 /*# sourceMappingURL=style.css.map */
+
+/*next prev button*/
+.pagination-buttons {
+    display: inline-block;
+}
+
+.pagination-buttons{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination-buttons  .active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+.pagination-buttons:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
