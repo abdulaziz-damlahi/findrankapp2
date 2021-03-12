@@ -25,6 +25,11 @@ $table->id();
             $table->string('city', 255)->nullable();
             $table->string('company_name', 100)->nullable();
             $table->timestamps();
+            $table->unsignedBigInteger('user_id')->unsigned();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')->onDelete('cascade');
 
         });
     }

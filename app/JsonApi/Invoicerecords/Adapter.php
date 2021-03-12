@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\invoicerecords;
 use Illuminate\Support\Collection;
 use App\JsonApi\Base\AbstractAdapter;
+use Illuminate\Support\Facades\Auth;
 
 class Adapter extends AbstractAdapter
 {
@@ -42,6 +43,7 @@ class Adapter extends AbstractAdapter
      */
     protected function filter($query, Collection $filters)
     {
+        $query->whereUserId(Auth::id());
         $this->filterWithScopes($query, $filters);
     }
 

@@ -18,4 +18,9 @@ class invoicerecords extends Model
         'city',
         'company_name',
     ];
+    public function user()
+    {
+        return $this->belongsTo('App\Models\users', 'id','id_website');
+    }
+
 }

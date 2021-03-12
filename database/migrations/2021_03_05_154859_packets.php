@@ -21,12 +21,14 @@ class Packets extends Migration
             $table->date('end_of_pocket');
             $table->string('count_of_websites');
             $table->string('packet_names');
-            $table->foreign('id_sa')
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');
 
-            $table->timestamps();
         });
+
+
     }
 
     /**

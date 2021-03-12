@@ -184,13 +184,16 @@ function get_one_packets(id){
   });
 }
 
-  $( ".invoice_records" ).submit(function() {
+  $( "#button_pay" ).click(function() {
     post_invoice();
   });
-function post_invoice () {
+function post_invoice(){
   $.ajax({
     url: "http://127.0.0.1:8000/api/v1/invoicerecords",
     type: "POST",
+    headers: { "Content-Type": "application/vnd.api+json",
+      Accept: "application/vnd.api+json",
+    },
     data: JSON.stringify({
       "data": {
         "type": "invoicerecords",
@@ -204,14 +207,10 @@ function post_invoice () {
           "country":"sa",
           "city":"sa",
           "company_name":"sa"
-
-
         }
-      } }),
-    headers: {
-      "Content-Type": "application/vnd.api+json",
-      Accept: "application/vnd.api+json",
-    },success: function (result) {
+      }
+    }),
+   success: function (result) {
       console.log('işlem başarılı')
     }
   });

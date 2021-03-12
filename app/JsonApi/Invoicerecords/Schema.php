@@ -32,6 +32,7 @@ class Schema extends SchemaProvider
             'first_name'=> $resource->first_name,
             'last_name'=> $resource->last_name,
             'Id_number'=> $resource->Id_number,
+            'user_id'=> $resource->user_id,
             'tax_no'=> $resource->tax_no,
             'country'=> $resource->country,
             'city'=> $resource->city,

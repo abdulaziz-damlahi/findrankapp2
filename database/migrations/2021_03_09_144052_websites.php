@@ -18,9 +18,9 @@ class Websites extends Migration
             $table->bigIncrements('id');
             $table->string('website_name');
             $table->string('rank');
-            $table->unsignedBigInteger('id_website')->unsigned();
+            $table->unsignedBigInteger('user_id')->unsigned();
 
-            $table->foreign('id_website')
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');
             $table->timestamps();

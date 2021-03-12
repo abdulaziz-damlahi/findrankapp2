@@ -102,7 +102,7 @@
                         </li>
                     </ul>
                 </div>
-                <form class="invoice_records" method="post">
+                <form class="invoice_records" enctype="multipart/form-data" method="post" action="">
                     @csrf
                     <div><input id="kurumsal" type="radio" name="gender" value="Kurumsal"> Kurumsal
                         <input checked type="radio" id="bireysel" name="gender" value="Kurumsal"> Bireysel

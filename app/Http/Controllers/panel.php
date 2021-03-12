@@ -42,7 +42,7 @@ class panel extends Controller
       echo $website_request;
       echo $keyword_request;
         return view(
-            'pages/findorder',compact('$colonial_name','$device_information','$website_request','$keyword_request'));
+            'pages/findorder',compact('colonial_name','device_information','website_request','keyword_request'));
     }
 
     public function userspacket()
