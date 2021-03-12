@@ -28,31 +28,31 @@ chart.render();
 }
 
 
-let pageNumber=1;
+let pageNumber = 1;
+let  currentPage2=1;
 $(document).ready(function () {
     Statistics(pageNumber)
 })
 $("#nextPageButton").click(function () {
-     pageNumber = currentPage2;
+    pageNumber = currentPage2;
+    console.log(currentPage2)
     pageNumber = pageNumber + 1;
     Statistics(pageNumber);
 });
+
 $("#prevPageButton").click(function () {
-     pageNumber = currentPage2;
+    pageNumber = currentPage2;
     pageNumber = pageNumber - 1;
     Statistics(pageNumber);
 });
-
 function Statistics(pageNumber) {
     $.ajax({
         type: 'get',
-        url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website&page[number]=" + pageNumber + "&page[size]=9",
+        url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website&page[number]=" + pageNumber + "&page[size]=10",
         success: function (response) {
-
-
             $('#row').html("")
             // jQuery.each(response, function (i, val) {});
-            var userid = document.querySelector("#id").innerHTML;
+            // var userid = document.querySelector("#id").innerHTML;
             //len keywords
             var len = 0;
             if (response['data'] != null) {
@@ -65,18 +65,19 @@ function Statistics(pageNumber) {
                 len2 = response['included'].length;
             }
             //len user->keywords
-            var websitebelong = 0;
-            for (var i3 = 0; i3 < len2; i3++) {
-                var websiteid2 = response['included'][i3].attributes.id_website;
-                if (userid == websiteid2) {
-                    websitebelong++;
-                }
-            }
+            // var websitebelong = 0;
+            // for (var i3 = 0; i3 < len2; i3++) {
+            //     var websiteid2 = response['included'][i3].attributes.user_id;
+            //     if (userid == websiteid2) {
+            //         websitebelong++;
+            //     }
+            // }
 
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
 
                     var word = response['data'][i].attributes.name
+
                     var wordsiteid = response['data'][i].attributes.website_id
                     var dataid = response['data'][i].id
 
@@ -84,22 +85,23 @@ function Statistics(pageNumber) {
                     for (var i2 = 0; i2 < len2; i2++) {
 
                         var websiteid = response['included'][i2].id
-                        var id_website = response['included'][i2].attributes.id_website
+                        var id_website = response['included'][i2].attributes.user_id
 
-                            var websitename = response['included'][i2].attributes.website_name
-                            if (wordsiteid == websiteid) {
+                        var websitename = response['included'][i2].attributes.website_name
+                        var rank = response['included'][i2].attributes.rank
+                        if (wordsiteid == websiteid) {
 
 
-                                var str = " <tr><th scope=\"row\">" +dataid + "</th>" +
-                                    "<td id=\"website\">" + websitename + "</td>" +
-                                    "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
-                                    "<td id=\"SIRA\"> SIRA</td>" +
-                                    "<td id=\"DEĞİŞİM\"> DEĞİŞİM</td>" +
-                                    "<td id=\"GRAFİK\"></td>" +
-                                    "</tr>";
-                                $('#row').append(str);
+                            var str = " <tr><th scope=\"row\">" + dataid + "</th>" +
+                                "<td id=\"website\">" + websitename + "</td>" +
+                                "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+                                "<td id=\"rank\">  " + rank + "</td>" +
+                                "<td id=\"DEĞİŞİM\"> DEĞİŞİM</td>" +
+                                "<td id=\"GRAFİK\"></td>" +
+                                "</tr>";
+                            $('#row').append(str);
 
-                            }
+                        }
 
                     }
 

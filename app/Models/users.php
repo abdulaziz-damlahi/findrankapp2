@@ -27,7 +27,6 @@ class users extends Authenticatable
     protected $hidden = [
         'updated_at',
         'created_at',
-        'password',
     ];
 
     public function packets()
@@ -36,14 +35,13 @@ class users extends Authenticatable
     }
     public function website()
     {
-        return $this->hasMany('App\Models\websites', 'id_website','id');
+        return $this->hasMany('App\Models\websites', 'user_id','id');
     }
 
     public function websites()
     {
 
-        return $this->hasMany('App\Models\websites','website_id');
+        return $this->hasMany('App\Models\websites','user_id','id');
 
     }
 }
-

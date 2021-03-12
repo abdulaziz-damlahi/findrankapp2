@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Validation\ValidationException;
+use App\Models\users;
 
 class websites extends Model
 {
@@ -23,13 +24,13 @@ class websites extends Model
     protected $fillable = [
         'id',
         'website_name',
-        'id_website',
+        'user_id',
         'rank',
     ];
 
-    public function User()
+    public function user()
     {
-        $this->belongsTo('App\Models\users', 'id','website_id');
+        return $this->belongsTo('App\Models\users', 'id','user_id');
     }
 
     public function keywords()

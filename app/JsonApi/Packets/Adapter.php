@@ -6,6 +6,7 @@ use App\JsonApi\Base\AbstractAdapter;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class Adapter extends AbstractAdapter
 {
@@ -42,6 +43,7 @@ class Adapter extends AbstractAdapter
      */
     protected function filter($query, Collection $filters)
     {
+        $query->whereUserId(Auth::id());
         $this->filterWithScopes($query, $filters);
     }
 

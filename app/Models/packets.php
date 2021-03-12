@@ -10,7 +10,7 @@ class packets extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'packet_id',
+        'id_sa',
         'website_id',
         'count_of_words',
         'descrpitions',

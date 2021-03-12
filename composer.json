@@ -15,6 +15,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
+        "nesbot/carbon": "^2.46",
         "stevebauman/location": "^6.1",
         "torann/currency": "^1.1",
         "torann/geoip": "^3.0"

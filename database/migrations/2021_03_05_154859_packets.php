@@ -18,16 +18,17 @@ class Packets extends Migration
             $table->unsignedBigInteger('id_sa')->unsigned();
             $table->string('count_of_words');
             $table->string('descrpitions');
-            $table->string('end_of_pocket');
-            $table->string('started_of_pockets');
+            $table->date('end_of_pocket');
             $table->string('count_of_websites');
             $table->string('packet_names');
-            $table->foreign('id_sa')
+            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');
 
-            $table->timestamps();
         });
+
+
     }
 
     /**

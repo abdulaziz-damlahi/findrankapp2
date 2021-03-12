@@ -15,12 +15,12 @@ class      Locations extends Migration
     {
         //
         Schema::create('locations', function (Blueprint $table) {
-            $table->bigIncrements('Criteria ID')->nullable();
+            $table->bigIncrements('Criteria_ID')->nullable();
             $table->string('name')->nullable();
-            $table->string('Canonical Name')->nullable();
-            $table->integer('Parent ID')->nullable();
-            $table->string('Country Code')->nullable();
-            $table->string('Target Type')->nullable();
+            $table->string('Canonical_Name')->nullable();
+            $table->integer('Parent_ID')->nullable();
+            $table->string('Country_Code')->nullable();
+            $table->string('Target_Type')->nullable();
             $table->string('Status')->nullable();
             $table->timestamps();
         });

@@ -81,17 +81,17 @@ class homepage extends Controller
             $base_moeny='€';
 
             $locale = App::getLocale();
-        }else if($localiton==='DE'){
+        }else if($localiton==='DE') {
             $lang = 'de';
             App::setlocale($lang);
-            $base_moeny='€';
-            $money_value=$arr_result->rates->EUR;
-            $money_new_value = $money1*$money_value;
-            $money_new_value1 = $money*$money_value;
-            $money_new_value2 = $money2*$money_value;
-            $round_new  = round($money_new_value);
-            $round_new1  = round($money_new_value1);
-            $round_new2  = round($money_new_value2);
+            $base_moeny = '€';
+            $money_value = $arr_result->rates->EUR;
+            $money_new_value = $money1 * $money_value;
+            $money_new_value1 = $money * $money_value;
+            $money_new_value2 = $money2 * $money_value;
+            $round_new = round($money_new_value);
+            $round_new1 = round($money_new_value1);
+            $round_new2 = round($money_new_value2);
 
             $locale = App::getLocale();
         }

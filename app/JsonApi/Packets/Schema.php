@@ -30,11 +30,11 @@ class Schema extends SchemaProvider
     public function getAttributes($resource)
     {
         return [
-            'packet_id'=> $resource->packet_id,
-            'count_of_words'=> $resource->count_oapf_words,
+            'id_sa'=> $resource->id_sa,
+            'count_of_words'=> $resource->count_of_words,
             'descrpitions'=> $resource->descrpitions,
             'end_of_pocket'=> $resource->end_of_pocket,
-            'started_of_pockets'=> $resource->started_of_pockets,
+            'started_of_pockets'=> $resource->created_at,
             'count_of_websites'=> $resource->count_of_websites,
             'packet_names'=> $resource->count_of_websites,
             'createdAt' => $resource->created_at,

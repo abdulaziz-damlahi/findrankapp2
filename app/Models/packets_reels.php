@@ -18,5 +18,5 @@ class packets_reels extends Model
         'rank_fosllow',
         'price',
     ];
-
+    public $timestamps = false;
 }

@@ -17,9 +17,14 @@ class Websites extends Migration
         Schema::create('websites', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('website_name');
-            $table->unsignedBigInteger('id_website')->unsigned();
 
-            $table->foreign('id_website')
+
+
+            $table->string('rank');
+            $table->unsignedBigInteger('user_id')->unsigned();
+
+
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');
             $table->timestamps();

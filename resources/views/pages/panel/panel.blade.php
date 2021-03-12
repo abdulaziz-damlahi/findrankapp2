@@ -1,7 +1,6 @@
 @extends('layouts.master')
 @section('content')
-
-   <div style="" id="id">{{ $userId}}</div>
+{{--   <div style="" id="id">{{ $userId}}</div>--}}
     <div class="pcoded-inner-content" id="main">
         <div class="main-body">
             <div class="page-wrapper">
@@ -50,23 +49,26 @@
                                         </tr>
                                         </thead>
                                         <tbody id="row">
+
+
+
                                         <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                                         </tbody>
 
 
                                     </table>
 
-                                    <div class="pagination">
-                                        <a class="pagination-buttons" href="#" id="prevPageButton">&laquo;</a>
-                                    </div>
+{{--                                    <div class="pagination">--}}
+{{--                                        <a class="pagination-buttons" href="#" id="prevPageButton">&laquo;</a>--}}
+{{--                                    </div>--}}
 
                                     <div class="pagination" id="pagination">
                                         {{--java script generated Pagination in tbody (panel.js)--}}
                                     </div>
 
-                                    <div class="pagination">
-                                        <a class="pagination-buttons" href="#" id="nextPageButton">&raquo;</a>
-                                    </div>
+{{--                                    <div class="pagination">--}}
+{{--                                        <a class="pagination-buttons" href="#" id="nextPageButton">&raquo;</a>--}}
+{{--                                    </div>--}}
 
                                     <div id="pageDetails" class="page-details">
                                     </div>

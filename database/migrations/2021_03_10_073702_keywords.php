@@ -20,10 +20,14 @@ class Keywords extends Migration
                 $table->string('name');
                 $table->integer('rank');
                 $table->unsignedBigInteger('website_id')->unsigned();
+                $table->unsignedBigInteger('user_id')->unsigned();
                 $table->timestamps();
                 $table->foreign('website_id')
                     ->references('id')
                     ->on('websites')->onDelete('cascade');
+                $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')->onDelete('cascade');
             });
         }
     }

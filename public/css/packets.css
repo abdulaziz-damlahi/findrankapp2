@@ -1,6 +1,6 @@
 .radio_ttile label{
-margin-top:0px;
-margin-bottom:0px;
+    margin-top:0px;
+    margin-bottom:0px;
 }
 .label_title{
     margin-top:0px !important;
@@ -11,14 +11,14 @@ margin-bottom:0px;
     mpadding-left:0px !important;
     width:60px !important;
 }p{
-    margin-top:0px !important;
-    margin-bottom:0px !important;
-    margin-right:0px !important;
-    padding-right:0px !important;
-    margin-left:0px !important;
-    mpadding-left:0px !important;
-    width:55% !important;
-}
+     margin-top:0px !important;
+     margin-bottom:0px !important;
+     margin-right:0px !important;
+     padding-right:0px !important;
+     margin-left:0px !important;
+     mpadding-left:0px !important;
+     width:55% !important;
+ }
 .demonstration{
     width:40%;
 }.menuy{
@@ -39,31 +39,31 @@ margin-bottom:0px;
     color:white;
     float:left;
 }#button_contact2 {
-    display: inline-block;
-    padding: 12px 24px;
+     display: inline-block;
+     padding: 12px 24px;
      float:right;
-    background: rgb(220,220,220);
-    font-weight: bold;
-    color: rgb(120,120,120);
-    border: none;
-    outline: none;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: ease .3s;
-    background: #ff6c3a;
-    color:white;
-}#settingsForm label p{
-     text-align: justify;
- }
+     background: rgb(220,220,220);
+     font-weight: bold;
+     color: rgb(120,120,120);
+     border: none;
+     outline: none;
+     border-radius: 3px;
+     cursor: pointer;
+     transition: ease .3s;
+     background: #ff6c3a;
+     color:white;
+ }#settingsForm label p{
+      text-align: justify;
+  }
 
 
 #button_contact:hover {
     background: #333;
     color: #ffffff;
 }#button_contact2:hover {
-    background: #333;
-    color: #ffffff;
-}
+     background: #333;
+     color: #ffffff;
+ }
 #settingsForm {
     width: 60%;
     margin: 60px auto;
@@ -87,18 +87,18 @@ margin-bottom:0px;
 }
 
 #buttonss ul li a {
-     text-decoration:none;
-     color:#222;
-     background-color:#ccc;
-     padding:4px 5px;
- }.LABEL_text{
-       margin-bottom: 10px;
-   }.input_file{
-        width:100%;
-    }.LABEL_text{
-         width:8%;
-         font-size: 12px;
-     }
+    text-decoration:none;
+    color:#222;
+    background-color:#ccc;
+    padding:4px 5px;
+}.LABEL_text{
+     margin-bottom: 10px;
+ }.input_file{
+      width:100%;
+  }.LABEL_text{
+       width:8%;
+       font-size: 12px;
+   }
 label {
     display: block;
     position: relative;
@@ -289,6 +289,16 @@ label {
     text-decoration: none;
     margin-bottom: 20px;
 }
+
+.price_packet{
+    float: right;
+    margin-top: 10%;
+    margin-top: 5px;
+    padding-top: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
 h2{
     color:#47c7c5;
     margin-top: 25px;

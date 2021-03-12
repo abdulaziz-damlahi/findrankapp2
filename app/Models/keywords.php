@@ -15,15 +15,16 @@ class keywords extends Model
         'name',
         'date',
         'website_id',
+        'user_keyword_id',
     ];
     public function website():hasMany
     {
         return $this->hasMany('App\Models\websites', 'id','website_id');
     }
 
-    public function User()
+    public function user()
     {
-        $this->belongsTo('App\Models\users', 'id','website_id');
+       return $this->belongsTo('App\Models\users', 'id','user_keyword_id');
     }
 
 }
