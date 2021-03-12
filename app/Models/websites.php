@@ -25,7 +25,6 @@ class websites extends Model
         'id',
         'website_name',
         'user_id',
-        'rank',
     ];
 
     public function user()

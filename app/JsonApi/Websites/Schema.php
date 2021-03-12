@@ -38,7 +38,7 @@ class Schema extends SchemaProvider
             'updatedAt' => $resource->updated_at,
             'website_name'=> $resource->website_name,
             'user_id'=> $resource->user_id,
-            'rank'=> $resource->rank,
+
 
         ];
     }

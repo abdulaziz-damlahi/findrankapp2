@@ -9,41 +9,24 @@
                 <div class="row">
 
                     <!-- Price -->
-<<<<<<< HEAD
-                    <div class="col-md-4">
-=======
                     <div id="satis" class="col-md-4">
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                         <!-- Icon -->
                         <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-1.png" alt=" "></div>
 
                         <!-- Plan  -->
                         <div class="pricing-head">
-<<<<<<< HEAD
-                            <h4>{{$last->names_packets}}</h4>
-                            <span class="curency">{{$base_moeny}}</span> <span
-                                class="amount">{{$round_new2}}<span>.99</span></span> <span class="month">/ month</span>
-=======
                             <h4>{{$pack->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                    class="amount">{{$round_new}}<span>.99</span></span> <span class="month">/ month</span>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
+                                class="amount">{{$round_new}}<span>.99</span></span> <span class="month">/ month</span>
                         </div>
 
                         <!-- Plean Detail -->
                         <div class="price-in">
                             <ul class="text-center">
-<<<<<<< HEAD
-                                <li> {{$last->word_count}} Keywords</li>
-                                <li> {{$last->websites_count}} Websites</li>
-                                <li> {{$last->rank_fosllow}} Rank Follow</li>
-                                <li> {{$last->description}}</li>
-=======
                                 <li> {{$pack->word_count}} Keywords</li>
                                 <li> {{$pack->websites_count}} Websites</li>
                                 <li> {{$pack->rank_fosllow}} Rank Follow</li>
                                 <li> {{$pack->description}}</li>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                             </ul>
                             <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a></div>
                     </div>
@@ -57,11 +40,7 @@
                         <div class="pricing-head orange-bg">
                             <h4>{{$middle->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-<<<<<<< HEAD
                                 class="amount">{{$round_new1}}<span>.99</span></span> <span class="month">/ month</span>
-=======
-                                    class="amount">{{$round_new1}}<span>.99</span></span> <span class="month">/ month</span>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                         </div>
 
                         <!-- Plean Detail -->
@@ -82,31 +61,18 @@
 
                         <!-- Plan  -->
                         <div class="pricing-head">
-<<<<<<< HEAD
-                            <h4>{{$pack->names_packets}}</h4>
-                            <span class="curency">{{$base_moeny}}</span> <span
-                                class="amount">{{$round_new}}<span>.99</span></span> <span class="month">/ month</span>
-=======
                             <h4>{{$last->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                    class="amount">{{$round_new2}}<span>.99</span></span> <span class="month">/ month</span>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
+                                class="amount">{{$round_new2}}<span>.99</span></span> <span class="month">/ month</span>
                         </div>
 
                         <!-- Plean Detail -->
                         <div class="price-in">
                             <ul class="text-center">
-<<<<<<< HEAD
-                                <li> {{$pack->word_count}} Keywords</li>
-                                <li> {{$pack->websites_count}} Websites</li>
-                                <li> {{$pack->rank_fosllow}} Rank Follow</li>
-                                <li> {{$pack->description}}</li>
-=======
                                 <li> {{$last->word_count}} Keywords</li>
                                 <li> {{$last->websites_count}} Websites</li>
                                 <li> {{$last->rank_fosllow}} Rank Follow</li>
                                 <li> {{$last->description}}</li>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                             </ul>
                             <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a></div>
                     </div>
@@ -117,16 +83,11 @@
                     <ul id="sa" class="nav nav-tabs nav-justified nav-dark push-20" data-toggle="tabs">
                         <li class="setting_button active" id="button_first">
                             <a id="setting_button1" href="#tab-profile-personal"><i
-<<<<<<< HEAD
                                     class="si si-user push-5-r"></i><span class="hidden-xs">Fatura Bilgilerim</span></a>
-=======
-                                        class="si si-user push-5-r"></i><span class="hidden-xs">Fatura Bilgilerim</span></a>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                         </li>
 
                         <li class="setting_button" id="button_second">
                             <a id="setting_button2" href="#tab-profile-password"><i
-<<<<<<< HEAD
                                     class="setting_but si si-lock push-5-r"></i><span
                                     class="hidden-xs">Paket Özeti</span></a>
                         </li>
@@ -141,25 +102,8 @@
                         </li>
                     </ul>
                 </div>
-                <form class="invoice_records">
-=======
-                                        class="setting_but si si-lock push-5-r"></i><span
-                                        class="hidden-xs">Paket Özeti</span></a>
-                        </li>
-                        <li class="setting_button" id="button_third">
-                            <a id="setting_button3" href="#customize"><i
-                                        class="setting_but si si-wrench push-5-r"></i><span class="hidden-xs">Ödeme Bilgileri</span></a>
-                        </li>
-                        <li class="setting_button" id="button_third">
-                            <a id="setting_button3" href="#customize"><i
-                                        class="setting_but si si-wrench push-5-r"></i><span
-                                        class="hidden-xs">Sonuç</span></a>
-                        </li>
-                    </ul>
-                </div>
                 <form class="invoice_records" enctype="multipart/form-data" method="post" action="">
                     @csrf
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                     <div><input id="kurumsal" type="radio" name="gender" value="Kurumsal"> Kurumsal
                         <input checked type="radio" id="bireysel" name="gender" value="Kurumsal"> Bireysel
                     </div>
@@ -199,22 +143,14 @@
                                 </div>
                             </label>
                             <label class="col-md-6">
-<<<<<<< HEAD
-                                <p class="label-txt">IDENTIFICATION NUMBER</p>
-=======
                                 <p class="label-txt">Kimlik Numarası</p>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                                 <input type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
-<<<<<<< HEAD
-                                <p class="label-txt">INVOICE RECORDS</p>
-=======
                                 <p class="label-txt">Faturası Adresi</p>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                                 <input type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
@@ -259,11 +195,7 @@
                                 </div>
                             </label>
                             <label class="col-md-6">
-<<<<<<< HEAD
-                                <p class="label-txt">INVOICE RECORDS</p>
-=======
                                 <p class="label-txt">Fatura Adresi</p>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                                 <input type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
@@ -527,19 +459,11 @@
                                     <tbody>
                                     <tr>
                                         <td>
-<<<<<<< HEAD
-                                            <a class="h5" href="#">Başlangıç</a>
-                                            <div class="font-s12 text-muted">1 aylık abonelik hizmeti.</div>
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="font-w600 text-success">40 TL</div>
-=======
                                             <a class="başlangic" href="#">Başlangıç</a>
                                             <div class="font-s12 text-muted">1 aylık abonelik hizmeti.</div>
                                         </td>
                                         <td class="text-right">
                                             <div class="font-w600 text-success"><h6 class="price_packet"></h6></div>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                                         </td>
                                     </tr>
                                     <tr id="shippingTr" class="hide">
@@ -562,12 +486,7 @@
                                     </tr>
                                     <tr class="success">
                                         <td colspan="2" class="text-right">
-<<<<<<< HEAD
-                                            <div class="h4 font-w600"><b class="push-20-r">Toplam:</b> <span
-                                                    id="totalPrice">40</span> TL
-=======
                                             <div class="h4 font-w600"><b class="push-20-r"><h6 id="total_price">Toplam:</h6></b>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                                             </div>
                                         </td>
                                     </tr>
@@ -643,24 +562,14 @@
                                  src="https://www.paytr.com/img/odeme_sayfasi/os_kartlar_x3.png" alt="Kart Güvenliği"
                                  style="padding: 0px 0 10px 0;">
                         </div>
-<<<<<<< HEAD
-                    </div>
-=======
                         <button id="button_pay" type="submit">Ödeme Yap</button>
                     </div>
 
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
                     <div id="form4">
                         <div class="success-page">
                             <h2>Payment Successful !</h2>
                         </div>
                     </div>
-<<<<<<< HEAD
-            </form>
-            <button id="button_contact" type="submit">Önce</button>
-            <button id="button_contact2" type="submit">Sonra</button>
-        </div>
-=======
                     <input hidden class="hidden">
                     <input hidden class="hidden_word_count">
                     <input hidden class="hidden_websites_count">
@@ -673,7 +582,6 @@
                 <button id="button_contact" type="submit">Önce</button>
                 <button id="button_contact2" type="submit">Sonra</button>
             </div>
->>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
         </div>
     </section>
 @endsection

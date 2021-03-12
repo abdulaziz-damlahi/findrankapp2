@@ -20,7 +20,7 @@ class Websites extends Migration
 
 
 
-            $table->string('rank');
+
             $table->unsignedBigInteger('user_id')->unsigned();
 
 

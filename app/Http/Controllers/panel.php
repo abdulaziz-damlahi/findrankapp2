@@ -23,13 +23,8 @@ class panel extends Controller
         //        $username = auth()->user()->first_name;
         $user = auth()->user();
         $userId = $user->id;
-        $userwebsites = websites::where('user_id', '=', $userId)->get();
+        $userwebsites = websites::where('user_id', '=', $userId)->take(8)->get();
 
-//              $firstwebsiteid = $userwebsites->skip(0)->first()->id;
-//              $secondwebsiteid = $userwebsites->skip(1)->first()->id;
-//
-//          $keywordequalwebsite = keywords::where('website_id', '=', $firstwebsiteid)->get();
-//         $keywordequalwebsite = keywords::where('website_id', '=', $secondwebsiteid)->get();
        return  view('pages/panel/panel', compact('user', 'userwebsites', 'user', 'userId'));
     }
 

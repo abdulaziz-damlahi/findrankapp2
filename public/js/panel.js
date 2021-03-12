@@ -1,32 +1,3 @@
-window.onload = function () {
-var chart = new CanvasJS.Chart("GRAFİK", {
-    animationEnabled: true,
-    theme: "light2",
-    title:{
-        text: "Simple Line Chart"
-    },
-    data: [{
-        type: "line",
-        indexLabelFontSize: 16,
-        dataPoints: [
-            { y: 450 },
-            { y: 414},
-            { y: 520, indexLabel: "\u2191 highest",markerColor: "red", markerType: "triangle" },
-            { y: 460 },
-            { y: 450 },
-            { y: 500 },
-            { y: 480 },
-            { y: 480 },
-            { y: 410 , indexLabel: "\u2193 lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
-            { y: 500 },
-            { y: 480 },
-            { y: 510 }
-        ]
-    }]
-});
-chart.render();
-}
-
 
 let pageNumber = 1;
 let  currentPage2=1;
@@ -51,9 +22,6 @@ function Statistics(pageNumber) {
         url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website&page[number]=" + pageNumber + "&page[size]=10",
         success: function (response) {
             $('#row').html("")
-            // jQuery.each(response, function (i, val) {});
-            // var userid = document.querySelector("#id").innerHTML;
-            //len keywords
             var len = 0;
             if (response['data'] != null) {
                 len = response['data'].length;
@@ -64,52 +32,32 @@ function Statistics(pageNumber) {
             if (response['included'] != null) {
                 len2 = response['included'].length;
             }
-            //len user->keywords
-            // var websitebelong = 0;
-            // for (var i3 = 0; i3 < len2; i3++) {
-            //     var websiteid2 = response['included'][i3].attributes.user_id;
-            //     if (userid == websiteid2) {
-            //         websitebelong++;
-            //     }
-            // }
-
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
 
                     var word = response['data'][i].attributes.name
-
                     var wordsiteid = response['data'][i].attributes.website_id
                     var dataid = response['data'][i].id
-
+                    var rank = response['data'][i].attributes.rank
 
                     for (var i2 = 0; i2 < len2; i2++) {
 
                         var websiteid = response['included'][i2].id
                         var id_website = response['included'][i2].attributes.user_id
-
                         var websitename = response['included'][i2].attributes.website_name
-                        var rank = response['included'][i2].attributes.rank
+
                         if (wordsiteid == websiteid) {
-
-
                             var str = " <tr><th scope=\"row\">" + dataid + "</th>" +
                                 "<td id=\"website\">" + websitename + "</td>" +
                                 "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
                                 "<td id=\"rank\">  " + rank + "</td>" +
                                 "<td id=\"DEĞİŞİM\"> DEĞİŞİM</td>" +
-                                "<td id=\"GRAFİK\"></td>" +
-                                "</tr>";
+                                "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
                             $('#row').append(str);
-
                         }
-
                     }
-
-
                 }
             }
-
-
             var currentPage = response['meta'].page["current-page"];
             var from = response['meta'].page.from;
             var to = response['meta'].page.to;
@@ -206,6 +154,3 @@ function Statistics(pageNumber) {
         }
     });
 }
-
-
-
