@@ -31,7 +31,7 @@ JsonApi::register('v1')->routes(function (Api $api) {
     $api->resource('invoicerecords')->middleware("auth");
     $api->resource('Locations');
     $api->resource('packets-reels');
-    $api->resource('Packets')->middleware("auth");
+    $api->resource('Packets');
     $api->resource('Websites')->middleware("auth");
     Route::prefix('auth')
         ->group(function () use ($api) {

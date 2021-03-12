@@ -11,6 +11,7 @@ class packets extends Model
     protected $fillable = [
         'id',
         'id_sa',
+        'user_id',
         'website_id',
         'count_of_words',
         'descrpitions',

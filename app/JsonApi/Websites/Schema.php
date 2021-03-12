@@ -33,13 +33,12 @@ class Schema extends SchemaProvider
     public function getAttributes($resource)
     {
         return [
-
-            'createdAt' => $resource->created_at,
+            'website_to_keyword' => $resource->website_to_keyword,
             'updatedAt' => $resource->updated_at,
+            'createdAt' => $resource->created_at,
+            'user_id' => $resource->user_id,
             'website_name'=> $resource->website_name,
-            'id_website'=> $resource->id_website,
             'rank'=> $resource->rank,
-
-        ];
+         ];
     }
 }

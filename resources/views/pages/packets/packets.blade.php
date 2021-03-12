@@ -102,7 +102,7 @@
                         </li>
                     </ul>
                 </div>
-                <form class="invoice_records" enctype="multipart/form-data" method="post" action="">
+                <form class="invoice_records" method="post">
                     @csrf
                     <div><input id="kurumsal" type="radio" name="gender" value="Kurumsal"> Kurumsal
                         <input checked type="radio" id="bireysel" name="gender" value="Kurumsal"> Bireysel
@@ -459,7 +459,7 @@
                                     <tbody>
                                     <tr>
                                         <td>
-                                            <a class="başlangic" href="#">Başlangıç</a>
+                                            <a id="başlangic" href="#">Başlangıç</a>
                                             <div class="font-s12 text-muted">1 aylık abonelik hizmeti.</div>
                                         </td>
                                         <td class="text-right">
@@ -562,7 +562,9 @@
                                  src="https://www.paytr.com/img/odeme_sayfasi/os_kartlar_x3.png" alt="Kart Güvenliği"
                                  style="padding: 0px 0 10px 0;">
                         </div>
-                        <button id="button_pay" type="submit">Ödeme Yap</button>
+                        <p hidden id="hidden_id" val="{{\Illuminate\Support\Facades\Auth::id()}}" >{{\Illuminate\Support\Facades\Auth::id()}}</p>
+                        <input hidden  class="hidden_size">
+                        <input hidden  class="id_hidden">
                     </div>
 
                     <div id="form4">
@@ -571,14 +573,16 @@
                         </div>
                     </div>
                     <input hidden class="hidden">
-                    <input hidden class="hidden_word_count">
-                    <input hidden class="hidden_websites_count">
-                    <input hidden class="hidden_rank_follow">
-                    <input hidden class="hidden_price">
-                    <input hidden class="hidden_description">
-                    <input hidden class="hidden_name_packets">
+                    <p hidden id="hidden_word_count"></p>
+                    <p hidden id="hidden_websites_count"></p>
+                    <p hidden id="hidden_rank_follow"></p>
+                    <p hidden id="hidden_price"></p>
+                    <p hidden id="hidden_created"></p>
+                    <p hidden id="hidden_description"></p>
+                    <p hidden id="hidden_name_packets"></p>
 
                 </form>
+                <button id="button_pay" type="submit">Ödeme Yap</button>
                 <button id="button_contact" type="submit">Önce</button>
                 <button id="button_contact2" type="submit">Sonra</button>
             </div>

@@ -19,7 +19,10 @@ class Websites extends Migration
             $table->string('website_name');
             $table->string('rank');
             $table->unsignedBigInteger('user_id')->unsigned();
-
+            $table->unsignedBigInteger('website_to_keyword')->unsigned();
+            $table->foreign('website_to_keyword')
+                ->references('id')
+                ->on('keywords')->onDelete('cascade');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');

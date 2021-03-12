@@ -13,13 +13,13 @@ class Validators extends AbstractValidators
      * @var string[]|null
      *      the allowed paths, an empty array for none allowed, or null to allow all paths.
      */
-    protected $allowedIncludePaths = ['Keywords'];
+    protected $allowedIncludePaths = ['keyword'];
 
     /**
      * The sort field names a client is allowed send.
      *
      * @var string[]|null
-     *      the allowed fields, an empty array for none allowed, or null to allow all fields.
+     *      t he allowed fields, an empty array for none allowed, or null to allow all fields.
      */
     protected $allowedSortParameters = [];
 

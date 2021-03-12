@@ -19,6 +19,12 @@ class userSeeder extends Seeder
   'phone'=>'5375751554',
   'email'=>'td21brs14@hotmail.com',
   'password'=>bcrypt(5456465),
-    ]);
+    ],[
+            'first_name'=>'Barış',
+            'last_name'=>'Çeliker',
+            'phone'=>'5375751554',
+            'email'=>'eeee',
+            'password'=>bcrypt('eeee'),
+        ]);
     }
 }

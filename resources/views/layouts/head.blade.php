@@ -27,6 +27,8 @@
     <link rel="stylesheet"type="text/css" href="{{asset('css')}}/style.css">
     @if($routeName === 'profile')
     <link rel="stylesheet"type="text/css" href="{{asset('css')}}/Panel.css">
+        <script rel="stylesheet" src="{{asset('js')}}/profile.js"></script>
+
     @endif
     @if($routeName === 'panel')
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">

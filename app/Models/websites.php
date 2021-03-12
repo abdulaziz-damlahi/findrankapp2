@@ -16,6 +16,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Validation\ValidationException;
 use App\Models\users;
+use App\Models\keywords;
 
 class websites extends Model
 {
@@ -24,19 +25,19 @@ class websites extends Model
     protected $fillable = [
         'id',
         'website_name',
-        'id_website',
         'user_id',
         'rank',
+        'website_to_keyword',
     ];
 
     public function user()
     {
-        return $this->belongsTo('App\Models\users', 'id','id_website');
+        return $this->belongsTo('App\Models\users', 'id','user_id');
     }
 
-    public function keywords()
+    public function keyword():hasMany
     {
-         $this->belongsTo('App\Models\keywords', 'id','id');
+        return $this->hasMany('App\Models\websites', 'id','id');
     }
 
     public function packets():HasMany

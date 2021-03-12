@@ -32,7 +32,7 @@ class Schema extends SchemaProvider
     {
         return [
             'name' => $resource->name,
-            'website_id' => $resource->website_id,
+            'user_id' => $resource->user_id,
             'createdAt' => $resource->created_at,
             'createdAt' => $resource->created_at,
         ];

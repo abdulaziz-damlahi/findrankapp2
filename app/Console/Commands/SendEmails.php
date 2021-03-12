@@ -3,15 +3,15 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\packets;
-class packeets extends Command
+
+class SendEmails extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'packeets:name';
+    protected $signature = 'SendEmails:name';
 
     /**
      * The console command description.
@@ -37,8 +37,6 @@ class packeets extends Command
      */
     public function handle()
     {
-        $packets = packets::find(1);
-       $packets->delete();
-       $this->info('başarıyla silindi');
+        return 0;
     }
 }
