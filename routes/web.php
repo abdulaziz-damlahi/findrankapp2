@@ -21,7 +21,7 @@ Route::get('/', 'App\Http\Controllers\homepage@index')->name('home');
 Route::get('/packets', 'App\Http\Controllers\packets@index')->name('packets');
 Route::post('/packets', 'App\Http\Controllers\packets@index')->name('packets');
 Route::get('/contact', 'App\Http\Controllers\contact@index')->name('contact');
-Route::post('/contact', 'App\Http\Controllers\contact@post')->name('contact');
+Route::post('/contact', 'App\Http\Controllers\contact@post')->name('contact.post');
 
 Route::get('/users-packet', 'App\Http\Controllers\panel@userspacket');
 Route::get('/users-website', 'App\Http\Controllers\panel@userswebsite');

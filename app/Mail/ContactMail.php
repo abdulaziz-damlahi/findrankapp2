@@ -19,7 +19,7 @@ public $data;
     public function __construct($data)
     {
         //
-        $this->data = $data;
+        $this->testemail = $data;
     }
 
     /**
@@ -29,6 +29,6 @@ public $data;
      */
     public function build()
     {
-return $this->subject('mail sended')->view('email.testemail');
+return $this->subject('mail sended')->view('email.testemail',['mail_data'=>$this->testemail]);
     }
 }

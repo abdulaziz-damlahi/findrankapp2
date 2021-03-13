@@ -6,7 +6,9 @@
         <div class="contact-form ">
 
             <!-- FORM -->
-            <form role="form" id="contact_form" class="contact-form" method="post" onSubmit="return false col-md-12">
+            <form role="form" id="contact_form" class="contact-form" method="post" action="{{route('contact.post')}}">
+                @csrf
+
                 <ul class="row">
                     <li class="col-sm-6">
                         <label>*NAME
@@ -34,7 +36,7 @@
                         </label>
                     </li>
                     <li class="col-sm-12 no-margin">
-                        <button type="submit" value="submit" class="btn" id="btn_submit" onClick="proceed();">SEND NOW</button>
+                        <button type="submit" value="degistir" class="btn" id="btn_submit" >SEND NOW</button>
                     </li>
                 </ul>
             </form>

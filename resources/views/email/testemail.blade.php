@@ -1,7 +1,9 @@
 <html>
+<head>
+    <title>Hemen Geliriz</title>
+</head>
 <body>
-<div>
-    oldu
-</div>
+
+    <h1> {{$mail_data['title']}}</h1>
 </body>
 </html>

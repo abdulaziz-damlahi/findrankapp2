@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mail\SendMail;
+use App\Mail\ContactMail;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class contact extends Controller
@@ -13,14 +15,24 @@ class contact extends Controller
         return view('pages/contact/contact');
 }
     public function post (Request $request){
-        dd($request);
-        $details=[
-          'title'=>'başarılı',
-          'body'=>'this is ',
+        $request->validate([
+            'firstname' => 'required|max:255|min:5',
+            'lastname' => 'required',
+            'mail' => 'nullable',
+            'phone' => 'nullable',
+        ]);
+       $firstname= $request->firstname;
+       $lastname = $request->lastname;
+       $mail= $request->mail;
+       $phone= $request->phone;
+        $data=[
+          'title'=>$firstname,
+          'body'=>$lastname,
+          'mail'=>$mail,
+          'phone'=>$phone,
         ];
-        \Mail::to('bariss.be@gmail.com')->send(new \App\Mail\SendEmails($details));
-        echo 'Email';
-        return view('pages/contact/contact');
+        Mail::to('bariss.be@gmail.com')->send(new ContactMail($data));
+        return view('pages/contact/contact')->with('success','Mesajınız başarıyla iletildi');
     }
 
 }

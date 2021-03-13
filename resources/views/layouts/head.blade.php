@@ -37,7 +37,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
 
     @endif
-    @if($routeName === 'contact')
+    @if($routeName === 'contact' || $routeName === 'contact.post')
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/contact.css">
     @endif
        @if( $routeName === 'findorder' )
