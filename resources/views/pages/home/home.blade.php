@@ -79,7 +79,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              data-captionhidden="on"
-                             style=""> <a href="#." class="btn">Learn More</a> <a href="#." class="btn btn-white margin-left-20">Get a quote</a> </div>
+                             style=""> <a href="#." class="btn">Learn More</a> <a href="#packetsss" id="button_down" class="btn btn-white margin-left-20">Get a quote</a> </div>
                     </li>
 
                     <!-- Slider 1 -->
@@ -160,33 +160,6 @@
     <div id="content">
 
         <!-- Seo Secore -->
-        <section class="bg-parallax seo-secore padding-top-100 padding-bottom-100" style="background:url(images/bg/bg-parallax.jpg) no-repeat;">
-            <div class="container">
-
-                <!-- Tittle -->
-                <div class="heading-block white-text text-center margin-bottom-50">
-                    <h2>What’s Your SEO Score ?</h2>
-                    <span>See how well your page is optimised for your keyword</span> </div>
-
-                <!-- Form -->
-                <form>
-                    <ul class="row">
-                        <li class="col-md-3">
-                            <input type="text" class="form-control" placeholder="http://">
-                        </li>
-                        <li class="col-md-3">
-                            <input type="text" class="form-control" placeholder="Keyword">
-                        </li>
-                        <li class="col-md-3">
-                            <input type="text" class="form-control" placeholder="Email">
-                        </li>
-                        <li class="col-md-3">
-                            <button type="submit" class="btn btn-orange">Check Now !</button>
-                        </li>
-                    </ul>
-                </form>
-            </div>
-        </section>
 
         <!-- Infinity Solution -->
         <section class="light-gray-bg solution padding-top-100 padding-bottom-100">
@@ -269,17 +242,6 @@
         </section>
 
         <!-- Infinity Solution -->
-        <section class="offer-services padding-top-100">
-            <div class="container">
-
-                <!-- Tittle -->
-                <div class="heading-block text-center margin-bottom-80">
-                    <h2>What Services We Offer </h2>
-                    <span class="intro-style">Do you want to improve the online visibility of your brand and
-          drive more relevant traffic to your website?</span> </div>
-                <div class="text-center"> <img src="images/services-img.jpg" alt=""> </div>
-            </div>
-        </section>
 
         <!-- INTRO -->
         <section class="bg-parallax text-center padding-top-60 padding-bottom-60" style="background:url(images/bg/bg-parallax.jpg) no-repeat;">
@@ -290,133 +252,77 @@
                 <a href="#." class="btn btn-orange">Learn More</a> </div>
         </section>
 
-        <!-- Case Studies -->
-        <section class="case-studies padding-top-100 padding-bottom-100">
+
+        <section id="packetsss" class="pricing-table light-gray-bg padding-top-100 padding-bottom-100">
             <div class="container">
 
                 <!-- Tittle -->
-                <div class="heading-block text-center margin-bottom-80">
-                    <h2>Case Studies </h2>
-                    <span class="intro-style">Do you want to improve the online visibility of your brand </span> </div>
-
-                <!-- Cases -->
-                <div class="case">
-                    <ul class="row">
-
-                        <!-- Case 1 -->
-                        <li class="col-md-4">
-                            <article> <a href="#"> <img class="img-responsive" src="images/case-img-1.jpg" alt=""> </a>
-                                <div class="case-detail">
-                                    <h5>Tremely Design</h5>
-                                    <p>Paid listings on Google AdWords and
-                                        Microsoft AdCenter customers</p>
-                                </div>
-                            </article>
-                        </li>
-
-                        <!-- Case 2 -->
-                        <li class="col-md-4">
-                            <article> <a href="#"> <img class="img-responsive" src="images/case-img-2.jpg" alt=""> </a>
-                                <div class="case-detail">
-                                    <h5>Tremely Design</h5>
-                                    <p>Paid listings on Google AdWords and
-                                        Microsoft AdCenter customers</p>
-                                </div>
-                            </article>
-                        </li>
-
-                        <!-- Case 3 -->
-                        <li class="col-md-4">
-                            <article> <a href="#"> <img class="img-responsive" src="images/case-img-3.jpg" alt=""> </a>
-                                <div class="case-detail">
-                                    <h5>Tremely Design</h5>
-                                    <p>Paid listings on Google AdWords and
-                                        Microsoft AdCenter customers</p>
-                                </div>
-                            </article>
-                        </li>
-                    </ul>
-
-                    <!-- Button -->
-                    <div class="text-center margin-top-50"> <a href="#." class="btn btn-orange">View More</a> </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Case Studies -->
-        <section class="pricing-table light-gray-bg padding-top-100 padding-bottom-100">
-            <div class="container">
-
-                <!-- Tittle -->
-                <div class="heading-block text-center margin-bottom-80">
+                <div  class="heading-block text-center margin-bottom-80">
                     <h2>Affordable SEO Services Packages </h2>
-                    <span class="intro-style">Choose from affordable SEO services packages & get the best results in return. </span> </div>
-                <div class="row">
+                    <div class="row">
 
-                    <!-- Price -->
-                    <div class="col-md-4">
-                        <!-- Icon -->
-                        <div class="plan-icon"><img src="images/plan-icon-1.png" alt=" "></div>
+                        <!-- Price -->
+                        <div class="col-md-4">
+                            <!-- Icon -->
+                            <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-1.png" alt=" "></div>
 
-                        <!-- Plan  -->
-                        <div class="pricing-head">
-                            <h4>Basic Plan</h4>
-                            <span class="curency">$</span> <span class="amount">25<span>.99</span></span> <span class="month">/ month</span> </div>
+                            <!-- Plan  -->
+                            <div class="pricing-head">
+                                <h4>{{$last->names_packets}}</h4>
+                                <span class="curency">{{$base_moeny}}</span> <span class="amount">{{$round_new2}}<span>.99</span></span> <span class="month">/ month</span> </div>
 
-                        <!-- Plean Detail -->
-                        <div class="price-in">
-                            <ul class="text-center">
-                                <li>25 Analytics Campaigns</li>
-                                <li> 1,900 Keywords</li>
-                                <li> 1,250,000 Crawled Pages</li>
-                                <li> Includes Branded Reports</li>
-                                <li> 50 Social Accounts</li>
-                            </ul>
-                            <a href="#." class="btn btn-orange">PURCHACE</a> </div>
-                    </div>
+                            <!-- Plean Detail -->
+                            <div class="price-in">
+                                <ul class="text-center">
+                                    <li> {{$last->word_count}} Keywords</li>
+                                    <li> {{$last->websites_count}} Websites</li>
+                                    <li> {{$last->rank_fosllow}} Rank Follow</li>
+                                    <li> {{$last->description}}</li>
+                                </ul>
+                                <a href="#."  class="PURCHACE btn btn-orange">PURCHACE</a> </div>
+                        </div>
 
-                    <!-- Price -->
-                    <div class="col-md-4">
-                        <!-- Icon -->
-                        <div class="plan-icon orange-bg"><img src="images/plan-icon-2.png" alt=" "></div>
+                        <!-- Price -->
+                        <div class="col-md-4">
+                            <!-- Icon -->
+                            <div class="plan-icon orange-bg"><img src="{{asset('images')}}/plan-icon-2.png" alt=" "></div>
 
-                        <!-- Plan  -->
-                        <div class="pricing-head orange-bg">
-                            <h4>Advanced Plan</h4>
-                            <span class="curency">$</span> <span class="amount">45<span>.99</span></span> <span class="month">/ month</span> </div>
+                            <!-- Plan  -->
+                            <div class="pricing-head orange-bg">
+                                <h4>{{$middle->names_packets}}</h4>
+                                <span class="curency">{{$base_moeny}}</span> <span class="amount">{{$round_new1}}<span>.99</span></span> <span class="month">/ month</span> </div>
 
-                        <!-- Plean Detail -->
-                        <div class="price-in">
-                            <ul class="text-center">
-                                <li>25 Analytics Campaigns</li>
-                                <li> 1,900 Keywords</li>
-                                <li> 1,250,000 Crawled Pages</li>
-                                <li> Includes Branded Reports</li>
-                                <li> 50 Social Accounts</li>
-                            </ul>
-                            <a href="#." class="btn btn-orange">PURCHACE</a> </div>
-                    </div>
+                            <!-- Plean Detail -->
+                            <div class="price-in">
+                                <ul class="text-center">
+                                    <li> {{$middle->word_count}} Keywords</li>
+                                    <li> {{$middle->websites_count}} Websites</li>
+                                    <li> {{$middle->rank_fosllow}} Rank Follow</li>
+                                    <li> {{$middle->description}}</li>
+                                </ul>
+                                <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a> </div>
+                        </div>
 
-                    <!-- Price -->
-                    <div class="col-md-4">
-                        <!-- Icon -->
-                        <div class="plan-icon"><img src="images/plan-icon-3.png" alt=" "></div>
+                        <!-- Price -->
+                        <div class="col-md-4">
+                            <!-- Icon -->
+                            <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-3.png" alt=" "></div>
 
-                        <!-- Plan  -->
-                        <div class="pricing-head">
-                            <h4>Premium Plan</h4>
-                            <span class="curency">$</span> <span class="amount">65<span>.99</span></span> <span class="month">/ month</span> </div>
+                            <!-- Plan  -->
+                            <div class="pricing-head">
+                                <h4>{{$pack->names_packets}}</h4>
+                                <span class="curency">{{$base_moeny}}</span> <span class="amount">{{$round_new}}<span>.99</span></span> <span class="month">/ month</span> </div>
 
-                        <!-- Plean Detail -->
-                        <div class="price-in">
-                            <ul class="text-center">
-                                <li>25 Analytics Campaigns</li>
-                                <li> 1,900 Keywords</li>
-                                <li> 1,250,000 Crawled Pages</li>
-                                <li> Includes Branded Reports</li>
-                                <li> 50 Social Accounts</li>
-                            </ul>
-                            <a href="#." class="btn btn-orange">PURCHACE</a> </div>
+                            <!-- Plean Detail -->
+                            <div class="price-in">
+                                <ul class="text-center">
+                                    <li> {{$pack->word_count}} Keywords</li>
+                                    <li> {{$pack->websites_count}} Websites</li>
+                                    <li> {{$pack->rank_fosllow}} Rank Follow</li>
+                                    <li> {{$pack->description}}</li>
+                                </ul>
+                                <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a> </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -462,144 +368,10 @@
         </section>
 
         <!-- Our Clients  -->
-        <section class="clients padding-bottom-100 padding-top-100">
-            <div class="container">
-
-                <!-- Tittle -->
-                <div class="heading-block white-text text-center margin-bottom-80">
-                    <h2>Our Clients </h2>
-                    <span class="intro-style">Do you want to improve the online visibility of your brand and
-          drive more relevant traffic to your website? </span> </div>
-
-                <!-- Clients Images -->
-                <ul class="col-5 text-center">
-                    <li> <img class="img-responsive" src="images/client-img-1.png" alt=""></li>
-                    <li> <img class="img-responsive" src="images/client-img-2.png" alt=""></li>
-                    <li> <img class="img-responsive" src="images/client-img-3.png" alt=""></li>
-                    <li> <img class="img-responsive" src="images/client-img-4.png" alt=""></li>
-                    <li> <img class="img-responsive" src="images/client-img-5.png" alt=""></li>
-                </ul>
-            </div>
-        </section>
 
         <!-- TESTIMONIALS -->
-        <section class="testimonial padding-top-100">
-            <div class="container">
-
-                <!-- Tittle -->
-                <div class="heading-block text-center margin-bottom-80">
-                    <h2>Why Customer <i class="fa fa-heart"></i> us! </h2>
-                    <span class="intro-style">Do you want to improve the online visibility of your brand and
-          drive more relevant traffic to your website? </span> </div>
-
-                <!-- TESTIMONIALS SLIDER -->
-                <div id="slider" class="flexslider">
-                    <ul class="slides">
-
-                        <!-- Slide 1 -->
-                        <li>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h6>tim rijkes  / <span>CEO - Founder </span></h6>
-                                    <p>“Here's the story of a lovely lady who was bringing up three very lovely girls. The first mate and his Skipper too will do their very best to make the others comfortable in their tropic island nest. I have always wanted to have a neighbor just like you. I've always wanted to live in a neighborhood with you.” </p>
-                                </div>
-                                <div class="col-md-4"> <img src="images/testi-img-1.png" alt=""> </div>
-                            </div>
-                        </li>
-
-                        <!-- Slide 2 -->
-                        <li>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h6>WPMINES  / <span>CEO - Founder </span></h6>
-                                    <p>“Here's the story of a lovely lady who was bringing up three very lovely girls. The first mate and his Skipper too will do their very best to make the others comfortable in their tropic island nest. I have always wanted to have a neighbor just like you. I've always wanted to live in a neighborhood with you. The first mate and his Skipper too will do their very best to” </p>
-                                </div>
-                                <div class="col-md-4"> <img src="images/testi-img-1.png" alt=""> </div>
-                            </div>
-                        </li>
-
-                        <!-- Slide 3 -->
-                        <li>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h6>M_ADNAN  / <span>Front End Developer </span></h6>
-                                    <p>“Here's the story of a  mate and his Skipper too will lovely lady who was bringing up three very lovely girls. The first do their very best to make the others comfortable in their tropic island nest. I have always wanted to have a neighbor just like you. I've always wanted to  mate and his Skipper too will live in a neighborhood with you.” </p>
-                                </div>
-                                <div class="col-md-4"> <img src="images/testi-img-1.png" alt=""> </div>
-                            </div>
-                        </li>
-
-                        <!-- Slide 4 -->
-                        <li>
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h6>FATON / <span>Designer </span></h6>
-                                    <p>“Here's the story of a lovely lady who was bringing up three very lovely girls. The first mate and his Skipper too will do lady who was bringing up three very lovely girls.  their very best to make the others comfortable in their tropic island nest. I have always wanted to have a neighbor just like you. I've always wanted to live in a neighborhood with you.” </p>
-                                </div>
-                                <div class="col-md-4"> <img src="images/testi-img-1.png" alt=""> </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- TESTIMONIALS THUMB -->
-                <div id="carousel" class="flexslider">
-                    <ul class="slides">
-                        <li> <img src="images/testi-thumb-img-1.png" alt="" > <span>Jhonny Dep</span> </li>
-                        <li> <img src="images/testi-thumb-img-2.png" alt="" > <span>Luck Walker</span> </li>
-                        <li> <img src="images/testi-thumb-img-3.png" alt="" > <span>tim rijkes</span> </li>
-                        <li> <img src="images/testi-thumb-img-4.png" alt="" > <span>Irene warner</span> </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
         <!-- Latest News -->
-        <section class="latest-news padding-top-100 padding-bottom-100">
-            <div class="container">
-
-                <!-- Tittle -->
-                <div class="heading-block text-center margin-bottom-80">
-                    <h2> Our Latest News</h2>
-                    <span class="intro-style">Do you want to improve the online visibility of your brand and
-          drive more relevant traffic to your website? </span> </div>
-
-                <!-- News -->
-                <div class="row">
-                    <!-- News 1 -->
-                    <div class="col-md-6"> <a href="#."> <img class="img-responsive" src="images/new-1.jpg" alt=""> </a>
-                        <div class="news-detail">
-                            <div class="row">
-                                <div class="col-md-3 text-center">
-                                    <div class="avatar"> <img class="img-circle" src="images/avatar-1.png" alt=""> </div>
-                                    <p>28 Sep 2015 </p>
-                                    <p><i class="fa fa-comment"></i>03 </p>
-                                </div>
-                                <div class="col-md-9"> <a href="#.">Data Traffic Conversion</a>
-                                    <p>You bet your life Speed Racer he will see it through It mission worlds seek out civilizations gone before.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News 2 -->
-                    <div class="col-md-6"> <a href="#."> <img class="img-responsive" src="images/new-2.jpg" alt=""> </a>
-                        <div class="news-detail">
-                            <div class="row">
-                                <div class="col-md-3 text-center">
-                                    <div class="avatar"> <img class="img-circle" src="images/avatar-1.png" alt=""> </div>
-                                    <p>28 Sep 2015 </p>
-                                    <p><i class="fa fa-comment"></i>03 </p>
-                                </div>
-                                <div class="col-md-9"> <a href="#.">Data Traffic Conversion</a>
-                                    <p>You bet your life Speed Racer he will see it through It mission worlds seek out civilizations gone before.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
     <!-- End Content -->
 @yield('footer')

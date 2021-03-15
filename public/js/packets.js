@@ -191,10 +191,13 @@ function get_one_packets(id){
     if(count<1){
       post_packets();
       post_invoice();
-    }else if(count==1){
+      console.log('geldii')
+    }else {
       console.log('sas')
       patch_packets();
       post_invoice();
+      console.log('gitti')
+
     }
   });
 function post_invoice(){
@@ -228,10 +231,6 @@ function post_invoice(){
   });
 }
   function post_packets(){
-    $("#hidden_word_count").text(vall.word_count)
-    $("#hidden_websites_count").text(vall.websites_count)
-    $("#başlangic").text(vall.names_packets);
-    $("#hidden_price").text(vall.price);
     $.ajax({
       url: "http://127.0.0.1:8000/api/v1/Packets",
       type: "POST",
