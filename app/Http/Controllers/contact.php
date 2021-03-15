@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\ContactMail;
+
 use Illuminate\Support\Facades\Mail;
 
 
@@ -31,7 +32,7 @@ class contact extends Controller
           'mail'=>$mail,
           'phone'=>$phone,
         ];
-        Mail::to('bariss.be@gmail.com')->send(new ContactMail($data));
+        Mail::to('td21brs14@hotmail.com')->send(new ContactMail($data));
         return view('pages/contact/contact')->with('success','Mesajınız başarıyla iletildi');
     }
 

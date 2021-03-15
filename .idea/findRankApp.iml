@@ -16,6 +16,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/stevebauman/location" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/geoip2/geoip2" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/torann/geoip" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yoeunes/toastr" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/var-dumper" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -7,6 +7,9 @@ Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder')->name('findorder');
     Route::post('/findorder', 'App\Http\Controllers\panel@findPost')->name('findpost');
     Route::get('/settings', 'App\Http\Controllers\settings@index')->name('settings');
+    Route::post('/settings/password', 'App\Http\Controllers\settings@store_personal_settings')->name('set.post');
+    Route::post('/settings/personal_settings', 'App\Http\Controllers\settings@store_password')->name('personal.settings');
+    Route::post('/settings/custumize', 'App\Http\Controllers\settings@store_custumize')->name('custumize');
     Route::get('/profile', 'App\Http\Controllers\panel@profile')->name('profile');
     Route::get('/logout','App\Http\Controllers\Login@logout')->name('logout');
 

@@ -1,14 +1,21 @@
-@extends('layouts.master')
-@section('content')
+@include('layouts.head')
+@include('layouts.header')
+@include('layouts.footer')
+<!doctype html>
+<html class="no-js" lang="en">
+@yield('head')
+<body>
+@yield('header')
+
+
     <!--======= HOME MAIN SLIDER =========-->
     <section class="home-slider">
         <div class="tp-banner-container">
             <div class="tp-banner-fix">
                 <ul>
 
-
                     <!-- Slider 1 -->
-                    <li data-transition="fade" data-slotamount="7"> <img src="{{asset('images')}}/slides/slide-bg-1.jpg" data-bgposition="center top" alt="" />
+                    <li data-transition="fade" data-slotamount="7"> <img src="images/slides/slide-bg-1.jpg" data-bgposition="center top" alt="" />
 
                         <!-- Layer -->
                         <div class="tp-caption sft tp-resizeme font-extra-bold"
@@ -23,7 +30,7 @@
                              data-elementdelay="0.1"
                              data-endelementdelay="0.1"
                              data-endspeed="300"
-                             data-captionhidden="on"> <img src="{{asset('images')}}/slides/img--1-1.png" alt="" > </div>
+                             data-captionhidden="on"> <img src="images/slides/img--1-1.png" alt="" > </div>
 
                         <!-- Layer -->
                         <div class="tp-caption sfb tp-resizeme font-bold"
@@ -76,7 +83,7 @@
                     </li>
 
                     <!-- Slider 1 -->
-                    <li data-transition="fade" data-slotamount="7"> <img src="{{asset('images')}}/slides/slide-bg-2.jpg" data-bgposition="center top" alt="" />
+                    <li data-transition="fade" data-slotamount="7"> <img src="images/slides/slide-bg-2.jpg" data-bgposition="center top" alt="" />
 
                         <!-- Layer -->
                         <div class="tp-caption sft tp-resizeme font-extra-bold"
@@ -92,7 +99,7 @@
                              data-endelementdelay="0.1"
                              data-endspeed="300"
                              data-captionhidden="on"
-                        > <img src="{{asset('images')}}/slides/img--2-1.png" alt="" > </div>
+                        > <img src="images/slides/img--2-1.png" alt="" > </div>
 
                         <!-- Layer -->
                         <div class="tp-caption sfb tp-resizeme font-bold"
@@ -153,7 +160,7 @@
     <div id="content">
 
         <!-- Seo Secore -->
-        <section class="bg-parallax seo-secore padding-top-100 padding-bottom-100" style="background:url({{asset('images')}}/bg/bg-parallax.jpg) no-repeat;">
+        <section class="bg-parallax seo-secore padding-top-100 padding-bottom-100" style="background:url(images/bg/bg-parallax.jpg) no-repeat;">
             <div class="container">
 
                 <!-- Tittle -->
@@ -192,7 +199,7 @@
                 <ul class="row text-center">
 
                     <!-- Web Analytics -->
-                    <li class="col-md-3"> <img src="{{asset('images')}}/icon-1.png" alt="">
+                    <li class="col-md-3"> <img src="images/icon-1.png" alt="">
                         <h6>Web Analytics</h6>
                         <p>Duis posuere blandit orci sed tinc in
                             Curabitur porttitor nisi ac nunc
@@ -200,7 +207,7 @@
                     </li>
 
                     <!-- Keyword Targeting -->
-                    <li class="col-md-3"> <img src="{{asset('images')}}/icon-2.png" alt="">
+                    <li class="col-md-3"> <img src="images/icon-2.png" alt="">
                         <h6>Keyword Targeting</h6>
                         <p>Duis posuere blandit orci sed tinc in
                             Curabitur porttitor nisi ac nunc
@@ -208,7 +215,7 @@
                     </li>
 
                     <!-- Technical Service -->
-                    <li class="col-md-3"> <img src="{{asset('images')}}/icon-3.png" alt="">
+                    <li class="col-md-3"> <img src="images/icon-3.png" alt="">
                         <h6>Technical Service</h6>
                         <p>Duis posuere blandit orci sed tinc in
                             Curabitur porttitor nisi ac nunc
@@ -216,7 +223,7 @@
                     </li>
 
                     <!-- Support Center -->
-                    <li class="col-md-3"> <img src="{{asset('images')}}/icon-4.png" alt="">
+                    <li class="col-md-3"> <img src="images/icon-4.png" alt="">
                         <h6>Support Center</h6>
                         <p>Duis posuere blandit orci sed tinc in
                             Curabitur porttitor nisi ac nunc
@@ -230,7 +237,7 @@
         <section class="front-page padding-top-100 padding-bottom-100">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6"> <img class="img-responsive margin-top-30" src="{{asset('images')}}/ipad.jpg" alt=" "> </div>
+                    <div class="col-md-6"> <img class="img-responsive margin-top-30" src="images/ipad.jpg" alt=" "> </div>
                     <div class="col-md-6">
                         <!-- Tittle -->
                         <div class="heading-block text-left margin-bottom-20">
@@ -242,16 +249,16 @@
                         <!-- List Style -->
                         <ul class="list-style">
                             <li>
-                                <p><img src="{{asset('images')}}/list-icon-1.png" alt=""> We deliver Top Rankings. </p>
+                                <p><img src="images/list-icon-1.png" alt=""> We deliver Top Rankings. </p>
                             </li>
                             <li>
-                                <p><img src="{{asset('images')}}/list-icon-2.png" alt=""> High customer retention rate. </p>
+                                <p><img src="images/list-icon-2.png" alt=""> High customer retention rate. </p>
                             </li>
                             <li>
-                                <p><img src="{{asset('images')}}/list-icon-3.png" alt=""> We always return e-mails and calls within one business day. </p>
+                                <p><img src="images/list-icon-3.png" alt=""> We always return e-mails and calls within one business day. </p>
                             </li>
                             <li>
-                                <p><img src="{{asset('images')}}/list-icon-4.png" alt=""> Afordable pricing offers. </p>
+                                <p><img src="images/list-icon-4.png" alt=""> Afordable pricing offers. </p>
                             </li>
                         </ul>
 
@@ -270,12 +277,12 @@
                     <h2>What Services We Offer </h2>
                     <span class="intro-style">Do you want to improve the online visibility of your brand and
           drive more relevant traffic to your website?</span> </div>
-                <div class="text-center"> <img src="{{asset('images')}}/services-img.jpg" alt=""> </div>
+                <div class="text-center"> <img src="images/services-img.jpg" alt=""> </div>
             </div>
         </section>
 
         <!-- INTRO -->
-        <section class="bg-parallax text-center padding-top-60 padding-bottom-60" style="background:url({{asset('images')}}/bg/bg-parallax.jpg) no-repeat;">
+        <section class="bg-parallax text-center padding-top-60 padding-bottom-60" style="background:url(images/bg/bg-parallax.jpg) no-repeat;">
             <div class="container">
                 <div class="text-center margin-bottom-50">
                     <p class="text-white intro-style font-14px">We are a full service SEO agency. Our social media experts can help you establish your business objectives, identify your target audience, create engaging and share-worthy content and finally integrate your social media with all other aspects of your online presence.</p>
@@ -298,7 +305,7 @@
 
                         <!-- Case 1 -->
                         <li class="col-md-4">
-                            <article> <a href="#"> <img class="img-responsive" src="{{asset('images')}}/case-img-1.jpg" alt=""> </a>
+                            <article> <a href="#"> <img class="img-responsive" src="images/case-img-1.jpg" alt=""> </a>
                                 <div class="case-detail">
                                     <h5>Tremely Design</h5>
                                     <p>Paid listings on Google AdWords and
@@ -309,7 +316,7 @@
 
                         <!-- Case 2 -->
                         <li class="col-md-4">
-                            <article> <a href="#"> <img class="img-responsive" src="{{asset('images')}}/case-img-2.jpg" alt=""> </a>
+                            <article> <a href="#"> <img class="img-responsive" src="images/case-img-2.jpg" alt=""> </a>
                                 <div class="case-detail">
                                     <h5>Tremely Design</h5>
                                     <p>Paid listings on Google AdWords and
@@ -320,7 +327,7 @@
 
                         <!-- Case 3 -->
                         <li class="col-md-4">
-                            <article> <a href="#"> <img class="img-responsive" src="{{asset('images')}}/case-img-3.jpg" alt=""> </a>
+                            <article> <a href="#"> <img class="img-responsive" src="images/case-img-3.jpg" alt=""> </a>
                                 <div class="case-detail">
                                     <h5>Tremely Design</h5>
                                     <p>Paid listings on Google AdWords and
@@ -343,70 +350,73 @@
                 <!-- Tittle -->
                 <div class="heading-block text-center margin-bottom-80">
                     <h2>Affordable SEO Services Packages </h2>
-                    <div class="row">
+                    <span class="intro-style">Choose from affordable SEO services packages & get the best results in return. </span> </div>
+                <div class="row">
 
-                        <!-- Price -->
-                        <div class="col-md-4">
-                            <!-- Icon -->
-                            <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-1.png" alt=" "></div>
+                    <!-- Price -->
+                    <div class="col-md-4">
+                        <!-- Icon -->
+                        <div class="plan-icon"><img src="images/plan-icon-1.png" alt=" "></div>
 
-                            <!-- Plan  -->
-                            <div class="pricing-head">
-                                <h4>{{$last->names_packets}}</h4>
-                                <span class="curency">{{$base_moeny}}</span> <span class="amount">{{$round_new2}}<span>.99</span></span> <span class="month">/ month</span> </div>
+                        <!-- Plan  -->
+                        <div class="pricing-head">
+                            <h4>Basic Plan</h4>
+                            <span class="curency">$</span> <span class="amount">25<span>.99</span></span> <span class="month">/ month</span> </div>
 
-                            <!-- Plean Detail -->
-                            <div class="price-in">
-                                <ul class="text-center">
-                                    <li> {{$last->word_count}} Keywords</li>
-                                    <li> {{$last->websites_count}} Websites</li>
-                                    <li> {{$last->rank_fosllow}} Rank Follow</li>
-                                    <li> {{$last->description}}</li>
-                                </ul>
-                                <a href="#."  class="PURCHACE btn btn-orange">PURCHACE</a> </div>
-                        </div>
+                        <!-- Plean Detail -->
+                        <div class="price-in">
+                            <ul class="text-center">
+                                <li>25 Analytics Campaigns</li>
+                                <li> 1,900 Keywords</li>
+                                <li> 1,250,000 Crawled Pages</li>
+                                <li> Includes Branded Reports</li>
+                                <li> 50 Social Accounts</li>
+                            </ul>
+                            <a href="#." class="btn btn-orange">PURCHACE</a> </div>
+                    </div>
 
-                        <!-- Price -->
-                        <div class="col-md-4">
-                            <!-- Icon -->
-                            <div class="plan-icon orange-bg"><img src="{{asset('images')}}/plan-icon-2.png" alt=" "></div>
+                    <!-- Price -->
+                    <div class="col-md-4">
+                        <!-- Icon -->
+                        <div class="plan-icon orange-bg"><img src="images/plan-icon-2.png" alt=" "></div>
 
-                            <!-- Plan  -->
-                            <div class="pricing-head orange-bg">
-                                <h4>{{$middle->names_packets}}</h4>
-                                <span class="curency">{{$base_moeny}}</span> <span class="amount">{{$round_new1}}<span>.99</span></span> <span class="month">/ month</span> </div>
+                        <!-- Plan  -->
+                        <div class="pricing-head orange-bg">
+                            <h4>Advanced Plan</h4>
+                            <span class="curency">$</span> <span class="amount">45<span>.99</span></span> <span class="month">/ month</span> </div>
 
-                            <!-- Plean Detail -->
-                            <div class="price-in">
-                                <ul class="text-center">
-                                    <li> {{$middle->word_count}} Keywords</li>
-                                    <li> {{$middle->websites_count}} Websites</li>
-                                    <li> {{$middle->rank_fosllow}} Rank Follow</li>
-                                    <li> {{$middle->description}}</li>
-                                </ul>
-                                <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a> </div>
-                        </div>
+                        <!-- Plean Detail -->
+                        <div class="price-in">
+                            <ul class="text-center">
+                                <li>25 Analytics Campaigns</li>
+                                <li> 1,900 Keywords</li>
+                                <li> 1,250,000 Crawled Pages</li>
+                                <li> Includes Branded Reports</li>
+                                <li> 50 Social Accounts</li>
+                            </ul>
+                            <a href="#." class="btn btn-orange">PURCHACE</a> </div>
+                    </div>
 
-                        <!-- Price -->
-                        <div class="col-md-4">
-                            <!-- Icon -->
-                            <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-3.png" alt=" "></div>
+                    <!-- Price -->
+                    <div class="col-md-4">
+                        <!-- Icon -->
+                        <div class="plan-icon"><img src="images/plan-icon-3.png" alt=" "></div>
 
-                            <!-- Plan  -->
-                            <div class="pricing-head">
-                                <h4>{{$pack->names_packets}}</h4>
-                                <span class="curency">{{$base_moeny}}</span> <span class="amount">{{$round_new}}<span>.99</span></span> <span class="month">/ month</span> </div>
+                        <!-- Plan  -->
+                        <div class="pricing-head">
+                            <h4>Premium Plan</h4>
+                            <span class="curency">$</span> <span class="amount">65<span>.99</span></span> <span class="month">/ month</span> </div>
 
-                            <!-- Plean Detail -->
-                            <div class="price-in">
-                                <ul class="text-center">
-                                    <li> {{$pack->word_count}} Keywords</li>
-                                    <li> {{$pack->websites_count}} Websites</li>
-                                    <li> {{$pack->rank_fosllow}} Rank Follow</li>
-                                    <li> {{$pack->description}}</li>
-                                </ul>
-                                <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a> </div>
-                        </div>
+                        <!-- Plean Detail -->
+                        <div class="price-in">
+                            <ul class="text-center">
+                                <li>25 Analytics Campaigns</li>
+                                <li> 1,900 Keywords</li>
+                                <li> 1,250,000 Crawled Pages</li>
+                                <li> Includes Branded Reports</li>
+                                <li> 50 Social Accounts</li>
+                            </ul>
+                            <a href="#." class="btn btn-orange">PURCHACE</a> </div>
                     </div>
                 </div>
             </div>
@@ -421,28 +431,28 @@
                     <h2>Our Work Flow </h2>
                     <span class="intro-style">Do you want to improve the online visibility of your brand and
           drive more relevant traffic to your website? </span> </div>
-                <div class="text-center"> <img src="{{asset('images')}}/work-folow-img.jpg" alt=" "> </div>
+                <div class="text-center"> <img src="images/work-folow-img.jpg" alt=" "> </div>
                 <ul class="row padding-left-50 padding-right-50">
                     <li class="col-sm-3">
-                        <div class="icon"> <img src="{{asset('images')}}/flow-icon-1.png" alt="" > </div>
+                        <div class="icon"> <img src="images/flow-icon-1.png" alt="" > </div>
                         <h6>Planing</h6>
                         <p>Duis posuere blandit orci sed
                             fringilla nisl blandit.</p>
                     </li>
                     <li class="col-sm-3">
-                        <div class="icon"> <img src="{{asset('images')}}/flow-icon-2.png" alt="" > </div>
+                        <div class="icon"> <img src="images/flow-icon-2.png" alt="" > </div>
                         <h6>Designing</h6>
                         <p>Duis posuere blandit orci sed
                             fringilla nisl blandit.</p>
                     </li>
                     <li class="col-sm-3">
-                        <div class="icon"> <img src="{{asset('images')}}/flow-icon-3.png" alt="" > </div>
+                        <div class="icon"> <img src="images/flow-icon-3.png" alt="" > </div>
                         <h6>Developing</h6>
                         <p>Duis posuere blandit orci sed
                             fringilla nisl blandit.</p>
                     </li>
                     <li class="col-sm-3">
-                        <div class="icon"> <img src="{{asset('images')}}/flow-icon-4.png" alt="" > </div>
+                        <div class="icon"> <img src="images/flow-icon-4.png" alt="" > </div>
                         <h6>Launch</h6>
                         <p>Duis posuere blandit orci sed
                             fringilla nisl blandit.</p>
@@ -463,11 +473,11 @@
 
                 <!-- Clients Images -->
                 <ul class="col-5 text-center">
-                    <li> <img class="img-responsive" src="{{asset('images')}}/client-img-1.png" alt=""></li>
-                    <li> <img class="img-responsive" src="{{asset('images')}}/client-img-2.png" alt=""></li>
-                    <li> <img class="img-responsive" src="{{asset('images')}}/client-img-3.png" alt=""></li>
-                    <li> <img class="img-responsive" src="{{asset('images')}}/client-img-4.png" alt=""></li>
-                    <li> <img class="img-responsive" src="{{asset('images')}}/client-img-5.png" alt=""></li>
+                    <li> <img class="img-responsive" src="images/client-img-1.png" alt=""></li>
+                    <li> <img class="img-responsive" src="images/client-img-2.png" alt=""></li>
+                    <li> <img class="img-responsive" src="images/client-img-3.png" alt=""></li>
+                    <li> <img class="img-responsive" src="images/client-img-4.png" alt=""></li>
+                    <li> <img class="img-responsive" src="images/client-img-5.png" alt=""></li>
                 </ul>
             </div>
         </section>
@@ -493,7 +503,7 @@
                                     <h6>tim rijkes  / <span>CEO - Founder </span></h6>
                                     <p>“Here's the story of a lovely lady who was bringing up three very lovely girls. The first mate and his Skipper too will do their very best to make the others comfortable in their tropic island nest. I have always wanted to have a neighbor just like you. I've always wanted to live in a neighborhood with you.” </p>
                                 </div>
-                                <div class="col-md-4"> <img src="{{asset('images')}}/testi-img-1.png" alt=""> </div>
+                                <div class="col-md-4"> <img src="images/testi-img-1.png" alt=""> </div>
                             </div>
                         </li>
 
@@ -504,7 +514,7 @@
                                     <h6>WPMINES  / <span>CEO - Founder </span></h6>
                                     <p>“Here's the story of a lovely lady who was bringing up three very lovely girls. The first mate and his Skipper too will do their very best to make the others comfortable in their tropic island nest. I have always wanted to have a neighbor just like you. I've always wanted to live in a neighborhood with you. The first mate and his Skipper too will do their very best to” </p>
                                 </div>
-                                <div class="col-md-4"> <img src="{{asset('images')}}/testi-img-1.png" alt=""> </div>
+                                <div class="col-md-4"> <img src="images/testi-img-1.png" alt=""> </div>
                             </div>
                         </li>
 
@@ -515,7 +525,7 @@
                                     <h6>M_ADNAN  / <span>Front End Developer </span></h6>
                                     <p>“Here's the story of a  mate and his Skipper too will lovely lady who was bringing up three very lovely girls. The first do their very best to make the others comfortable in their tropic island nest. I have always wanted to have a neighbor just like you. I've always wanted to  mate and his Skipper too will live in a neighborhood with you.” </p>
                                 </div>
-                                <div class="col-md-4"> <img src="{{asset('images')}}/testi-img-1.png" alt=""> </div>
+                                <div class="col-md-4"> <img src="images/testi-img-1.png" alt=""> </div>
                             </div>
                         </li>
 
@@ -526,7 +536,7 @@
                                     <h6>FATON / <span>Designer </span></h6>
                                     <p>“Here's the story of a lovely lady who was bringing up three very lovely girls. The first mate and his Skipper too will do lady who was bringing up three very lovely girls.  their very best to make the others comfortable in their tropic island nest. I have always wanted to have a neighbor just like you. I've always wanted to live in a neighborhood with you.” </p>
                                 </div>
-                                <div class="col-md-4"> <img src="{{asset('images')}}/testi-img-1.png" alt=""> </div>
+                                <div class="col-md-4"> <img src="images/testi-img-1.png" alt=""> </div>
                             </div>
                         </li>
                     </ul>
@@ -535,10 +545,10 @@
                 <!-- TESTIMONIALS THUMB -->
                 <div id="carousel" class="flexslider">
                     <ul class="slides">
-                        <li> <img src="{{asset('images')}}/testi-thumb-img-1.png" alt="" > <span>Jhonny Dep</span> </li>
-                        <li> <img src="{{asset('images')}}/testi-thumb-img-2.png" alt="" > <span>Luck Walker</span> </li>
-                        <li> <img src="{{asset('images')}}/testi-thumb-img-3.png" alt="" > <span>tim rijkes</span> </li>
-                        <li> <img src="{{asset('images')}}/testi-thumb-img-4.png" alt="" > <span>Irene warner</span> </li>
+                        <li> <img src="images/testi-thumb-img-1.png" alt="" > <span>Jhonny Dep</span> </li>
+                        <li> <img src="images/testi-thumb-img-2.png" alt="" > <span>Luck Walker</span> </li>
+                        <li> <img src="images/testi-thumb-img-3.png" alt="" > <span>tim rijkes</span> </li>
+                        <li> <img src="images/testi-thumb-img-4.png" alt="" > <span>Irene warner</span> </li>
                     </ul>
                 </div>
             </div>
@@ -557,11 +567,11 @@
                 <!-- News -->
                 <div class="row">
                     <!-- News 1 -->
-                    <div class="col-md-6"> <a href="#."> <img class="img-responsive" src="{{asset('images')}}/new-1.jpg" alt=""> </a>
+                    <div class="col-md-6"> <a href="#."> <img class="img-responsive" src="images/new-1.jpg" alt=""> </a>
                         <div class="news-detail">
                             <div class="row">
                                 <div class="col-md-3 text-center">
-                                    <div class="avatar"> <img class="img-circle" src="{{asset('images')}}/avatar-1.png" alt=""> </div>
+                                    <div class="avatar"> <img class="img-circle" src="images/avatar-1.png" alt=""> </div>
                                     <p>28 Sep 2015 </p>
                                     <p><i class="fa fa-comment"></i>03 </p>
                                 </div>
@@ -573,11 +583,11 @@
                     </div>
 
                     <!-- News 2 -->
-                    <div class="col-md-6"> <a href="#."> <img class="img-responsive" src="{{asset('images')}}/new-2.jpg" alt=""> </a>
+                    <div class="col-md-6"> <a href="#."> <img class="img-responsive" src="images/new-2.jpg" alt=""> </a>
                         <div class="news-detail">
                             <div class="row">
                                 <div class="col-md-3 text-center">
-                                    <div class="avatar"> <img class="img-circle" src="{{asset('images')}}/avatar-1.png" alt=""> </div>
+                                    <div class="avatar"> <img class="img-circle" src="images/avatar-1.png" alt=""> </div>
                                     <p>28 Sep 2015 </p>
                                     <p><i class="fa fa-comment"></i>03 </p>
                                 </div>
@@ -591,4 +601,5 @@
             </div>
         </section>
     </div>
-@endsection
+    <!-- End Content -->
+@yield('footer')
