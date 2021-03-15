@@ -20,63 +20,102 @@ class panel extends Controller
 {
     public function index()
     {
-        //        $username = auth()->user()->first_name;
         $user = auth()->user();
         $userId = $user->id;
-        $userwebsites = websites::where('user_id', '=', $userId)->take(8)->get();
+        $userwebsites8 = websites::where('user_id', '=', $userId)->take(8)->get();
+        $userwebsites = websites::where('user_id', '=', $userId)->get();
+        $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
+        for ($x = 1; $x <= $userkeywordcount; $x++) {
+            $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
+            websites::where('id', '=', $x)->update(['wordcount' => $keywordcount, 'user_id' => $userId]);
 
-       return  view('pages/panel/panel', compact('user', 'userwebsites', 'user', 'userId'));
+        }
+        return view('pages/panel/panel', compact('user', 'userwebsites8', 'user', 'userwebsites',));
     }
 
-    public function profile()
+    public function addwebsite(Request $request)
     {
-        return view(
-            'pages/panel/profile');
+        $request->validate([
+            'website'=>'min:3|min:255',
+        ]);
+        $user = auth()->user();
+        $userId = $user->id;
+        $website = new websites;
+        $website->website_name = $request->website;
+        $website->user_id = $userId;
+        $website->user_id = $userId;
+        $website->wordcount = 0;
+        $website->save();
+        return redirect('user/panel');
     }
 
-    public function FindOrder()
+
+    public function deletewebsite($id)
     {
-        return view(
-            'pages/findorder');
-    } public function findPost(Request $request)
-    {
-      $colonial_name =  $request->hidden_collonial_name;
-      $device_information =  $request->hidden_device_name;
-      $website_request =  $request->website;
-      $keyword_request =  $request->keyword;
-      echo $colonial_name;
-      echo $device_information;
-      echo $website_request;
-      echo $keyword_request;
-        return view(
-            'pages/findorder',compact('colonial_name','device_information','website_request','keyword_request'));
+
+        DB::delete('delete from websites where id = ?', [$id]);
+        return redirect('user/panel');
     }
 
-    public function userspacket()
-    {
-        $user = users::find(2);
-        $user->packets;
-        return $user;
-    }
 
-    public function userswebsite()
-    {
-        $user = users::find(1);
-        $user->websites;
-        return $user;
-    }
+public
+function profile()
+{
+    return view(
+        'pages/panel/profile');
+}
 
-    public function packetwebsite()
-    {
-        $packet = packets::find(1);
-        $packet->websites;
-        return $packet;
-    }
+public
+function FindOrder()
+{
+    return view(
+        'pages/findorder');
+}
 
-    public function websitekeyword()
-    {
-        $website = websites::find(1);
-        $website->keywords;
-        return $website;
-    }
+public
+function findPost(Request $request)
+{
+    $colonial_name = $request->hidden_collonial_name;
+    $device_information = $request->hidden_device_name;
+    $website_request = $request->website;
+    $keyword_request = $request->keyword;
+    echo $colonial_name;
+    echo $device_information;
+    echo $website_request;
+    echo $keyword_request;
+    return view(
+        'pages/findorder', compact('colonial_name', 'device_information', 'website_request', 'keyword_request'));
+}
+
+public
+function userspacket()
+{
+    $user = users::find(2);
+    $user->packets;
+    return $user;
+}
+
+public
+function userswebsite()
+{
+    $user = users::find(1);
+    $user->websites;
+    return $user;
+}
+
+public
+function packetwebsite()
+{
+    $packet = packets::find(1);
+    $packet->websites;
+    return $packet;
+}
+
+public
+function websitekeyword()
+{
+    $website = websites::find(1);
+    $website->keywords;
+    return $website;
+}
 }

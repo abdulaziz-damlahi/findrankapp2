@@ -9,12 +9,15 @@ Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/settings', 'App\Http\Controllers\settings@index')->name('settings');
     Route::get('/profile', 'App\Http\Controllers\panel@profile')->name('profile');
     Route::get('/logout','App\Http\Controllers\Login@logout')->name('logout');
+    Route::post('/addwebsite', 'App\Http\Controllers\panel@addwebsite')->name('addwebsite');
+    Route::get('/deletewebsite/{id}', 'App\Http\Controllers\panel@deletewebsite')->name('deletewebsite');
 
 });
 Route::prefix('user/')->middleware('isLogin')->group(function() {
     Route::get('/login', 'App\Http\Controllers\Login@index')->name('login');
     Route::post('/login', 'App\Http\Controllers\Login@Loginpost')->name('login.post');
     Route::post('/register', 'App\Http\Controllers\Login@registerPost')->name('register.post');
+
 });
 
 Route::get('/', 'App\Http\Controllers\homepage@index')->name('home');

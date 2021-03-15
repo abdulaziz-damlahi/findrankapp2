@@ -14872,7 +14872,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
 }
 
 .pagination-buttons:hover:not(.active) {
-    background-color: #ddd;
+    background-color: #dddddd;
     border-radius: 5px;
 }
 
@@ -14917,4 +14917,25 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+/*site ekle panel*/
+
+
+.btns{
+    border: none;
+    color: white;
+    padding-right: 10px ;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color: black;
+}
+
+.btns:hover:not(.active) {
+    transition: all .3s linear;
+    background-color: #ff6c3a;
 }

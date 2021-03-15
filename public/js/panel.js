@@ -1,6 +1,5 @@
-
 let pageNumber = 1;
-let  currentPage2=1;
+let currentPage2 = 1;
 $(document).ready(function () {
     Statistics(pageNumber)
 })
@@ -16,12 +15,14 @@ $("#prevPageButton").click(function () {
     pageNumber = pageNumber - 1;
     Statistics(pageNumber);
 });
+
 function Statistics(pageNumber) {
     $.ajax({
         type: 'get',
         url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website&page[number]=" + pageNumber + "&page[size]=10",
         success: function (response) {
             $('#row').html("")
+            //len keyword
             var len = 0;
             if (response['data'] != null) {
                 len = response['data'].length;
@@ -154,3 +155,92 @@ function Statistics(pageNumber) {
         }
     });
 }
+
+
+// function mywebsites() {
+//     $.ajax({
+//         type: 'get',
+//         url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website",
+//         success: function (response) {
+//             $('#mysites').html("")
+//             //len keyword
+//             var len = 0;
+//             if (response['data'] != null) {
+//                 len = response['data'].length;
+//             }
+//             var elmId = $("#test").attr("id");
+//             //len websites
+//             var len2 = 0;
+//             if (response['included'] != null) {
+//                 len2 = response['included'].length;
+//             }
+//             if (len > 0) {
+//                 for (var i = 0; i < len; i++) {
+//
+//                     var word = response['data'][i].attributes.name
+//                     var wordsiteid = response['data'][i].attributes.website_id
+//                     var dataid = response['data'][i].id
+//                     var rank = response['data'][i].attributes.rank
+//
+//                     for (var i2 = 0; i2 < len2; i2++) {
+//
+//                         var websiteid = response['included'][i2].id
+//                         var id_website = response['included'][i2].attributes.user_id
+//                         var websitename = response['included'][i2].attributes.website_name
+//
+//                         if (wordsiteid == websiteid) {
+//                             var str = " <tr><th scope=\"row\">" + dataid + "</th>" +
+//                                 "<td id=\"website\">" + websitename + "</td>" +
+//                                 "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+//                                 "<td id=\"rank\">  " + rank + "</td>" +
+//                                 "<td id=\"DEĞİŞİM\"> DEĞİŞİM</td>" +
+//                                 "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
+//                             $('#mysites').append(str);
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     })
+// }
+
+
+
+
+
+
+// popup chart
+window.addEventListener('load', (event) => {
+
+// Get the modal
+    var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+    var btn = document.getElementById("addNewSite");
+
+// Get the <span> element that closes the modal
+    var span = document.getElementById("close");
+    var span2 = document.getElementById("close2");
+
+
+// When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    span2.onclick = function() {
+        modal.style.display = "none";
+    }
+
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
+

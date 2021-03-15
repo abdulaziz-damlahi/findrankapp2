@@ -25,7 +25,9 @@ class websites extends Model
         'id',
         'website_name',
         'user_id',
+        'wordcount',
     ];
+    public $timestamps = false;
 
     public function user()
     {

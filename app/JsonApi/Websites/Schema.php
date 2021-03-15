@@ -37,6 +37,7 @@ class Schema extends SchemaProvider
             'createdAt' => $resource->created_at,
             'updatedAt' => $resource->updated_at,
             'website_name'=> $resource->website_name,
+            'wordcount'=> $resource->wordcount,
             'user_id'=> $resource->user_id,
 
 
