@@ -172,22 +172,83 @@ window.addEventListener('load', (event) => {
 
 
 // When the user clicks the button, open the modal
-    btn.onclick = function() {
+    btn.onclick = function () {
         modal.style.display = "block";
     }
 
 // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    span.onclick = function () {
         modal.style.display = "none";
     }
-    span2.onclick = function() {
+    span2.onclick = function () {
         modal.style.display = "none";
     }
 
 // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
 });
+
+let les3 = 0;
+let les10 = 0;
+let les100 = 0;
+window.onload = function () {
+
+    $.ajax({
+        type: 'get',
+        url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website",
+        success: function (response) {
+
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+
+
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var rank = response['data'][i].attributes.rank
+
+                    if (rank < 3) {
+                        les3 = les3 + 1;
+                    }
+
+                    console.log(les10)
+                    if (rank < 10) {
+                        les10 = les10 + 1;
+                    }
+
+                    if (rank < 100) {
+                        les100 = les100 + 1;
+                    }
+                }
+            }
+        }
+    });
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        title: {
+            text: "ANAHTAR KELİME POZİSYONLARI",
+            horizontalAlign: "left"
+        },
+        data: [{
+            type: "doughnut",
+            startAngle: 60,
+            //innerRadius: 60,
+            indexLabelFontSize: 17,
+            indexLabel: "{label} - #percent%",
+            toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+            dataPoints: [
+                {y: 33, label: "les than 3"},
+                {y: 33, label: "les than 10"},
+                {y: 33, label: "les than 100"},
+            ]
+        }]
+    });
+    chart.render();
+
+}

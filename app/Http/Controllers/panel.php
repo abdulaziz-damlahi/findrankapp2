@@ -25,9 +25,10 @@ class panel extends Controller
         $userwebsites8 = websites::where('user_id', '=', $userId)->take(8)->get();
         $userwebsites = websites::where('user_id', '=', $userId)->get();
          $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
-        for ($x = 1; $x <= $userkeywordcount; $x++) {
+         $userwebsitecount = websites::where('user_id', '=', $userId)->count();
+        for ($x = 1; $x < $userkeywordcount; $x++) {
             $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
-            websites::where('id', '=', $x)->update(['wordcount' => $keywordcount, 'user_id' => $userId]);
+            websites::where('id', '=', $x)->where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
         }
         return view('pages/panel/panel', compact('user', 'userwebsites8', 'user', 'userwebsites',));
     }
