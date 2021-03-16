@@ -19,6 +19,27 @@
      mpadding-left:0px !important;
      width:55% !important;
  }
+ #success_message{
+     display:grid;
+ }
+ #button_pay {
+     cursor: pointer;
+     transition: ease .3s;
+     background: #ff6c3a;
+     color: white;
+     float: right;    display: none;
+     padding: 12px 24px;
+     background: rgb(220,220,220);
+     font-weight: bold;
+     color: rgb(120,120,120);
+     border: none;
+     outline: none;
+     border-radius: 3px;
+     cursor: pointer;
+     transition: ease .3s;
+     background: #ff6c3a;
+     color: white;
+ }
 .demonstration{
     width:40%;
 }.menuy{

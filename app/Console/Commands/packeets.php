@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use App\Models\packets;
 class packeets extends Command
 {
@@ -11,7 +13,7 @@ class packeets extends Command
      *
      * @var string
      */
-    protected $signature = 'packeets:name';
+    protected $signature = 'packeets:online';
 
     /**
      * The console command description.
@@ -37,8 +39,7 @@ class packeets extends Command
      */
     public function handle()
     {
-        $packets = packets::find(1);
-       $packets->delete();
-       $this->info('başarıyla silindi');
+
+       // packets::where('end_of_pocket','<=',Carbon::today())->delete();
     }
 }

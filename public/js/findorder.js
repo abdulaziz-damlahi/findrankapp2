@@ -1,11 +1,11 @@
 $(document).ready(function() {
-  $(".device").change(function() {
+  $("#device").change(function() {
 console.log($(".deviee").val())
     console.log($(this).val())
     console.log($(".deviee").val())
-    $("#hidden_device").val($(".device").val());
+    $("#hidden_device").val($("#device").val());
     console.log($("#hidden_device").val());});
-  $(".selectSecil").change(function() {
+  $("#selectSecil").change(function() {
     $(".cityy").empty()
   $.ajax({
     type: 'get',
@@ -15,11 +15,11 @@ console.log($(".deviee").val())
         jQuery.each( val, function( i, valll ) {
          $sa = valll.attributes.Country_Code;
          $saname = valll.attributes.name;
-         $aaaa=  $(".selectSecil").val();
+         $aaaa=  $("#selectSecil").val();
          if($sa===$aaaa){
            $typecity=valll.attributes.Target_Type;
            if(valll.attributes.Target_Type==='City') {
-             $(".cityy")
+             $("#cityy")
              .append('<option  class="cononical" value='+valll.attributes.Canonical_Name+'>' + valll.attributes.name + '</option>')
            }
          }
@@ -28,7 +28,7 @@ console.log($(".deviee").val())
     }
 
   });
-    $(".cityy").change(function() {
+    $("#cityy").change(function() {
 
       $("#hidden_collonial").val($(".cityy").val());
       $("#hidden_device").val($("#hidden_collonial").val());

@@ -15,10 +15,10 @@ class Invoicerecords extends Migration
     {
         //
         Schema::create('invoicerecords', function (Blueprint $table) {
-$table->id();
+            $table->bigIncrements('id');
             $table->string('first_name')->nullable();
             $table->string('last_name', 255)->nullable();
-            $table->string('Id_number', 255)->nullable();
+            $table->bigInteger('id_number')->nullable()->length(20)->unsigned();
             $table->string('tax_no', 255)->nullable();
             $table->string('tax_address', 255)->nullable();
             $table->string('country', 255)->nullable();

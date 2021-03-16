@@ -15,7 +15,6 @@ class Packets extends Migration
     {
         Schema::create('packets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('id_sa')->unsigned();
             $table->string('count_of_words');
             $table->string('descrpitions');
             $table->date('end_of_pocket');
@@ -25,7 +24,8 @@ class Packets extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
 

@@ -1,5 +1,10 @@
 $(document).ready(function() {
+  $('#success_message').css('display','none');
+  $('#error_message').css('display','none');
+    if($('#button_third').hasClass('active')){
+      console.log('geldi')
 
+  };
   $('#Bireyselfrom').hide();
   $('#form2').hide();
   $('#form3').hide();
@@ -40,12 +45,16 @@ if(i<3) {
       console.log($('.kurumsal').text());
 
     }
+    $('#button_pay').hide();
+    $('#button_contact2').css('display','inline');
     $('#form1').show();
     $('#form2').hide();
     $('#form3').hide();
     $('#form4').hide();
   }
 else if(i===1){
+    $('#button_contact2').css('display','inline');
+    $('#button_pay').hide();
       $('#form1').hide();
       $('#form2').show();
       $('#form3').hide();
@@ -53,19 +62,24 @@ else if(i===1){
       $('#form2').height(300);
 
   }else if(i===2){
-
+    $('#button_pay').css('display','inline');
+    $('#button_contact2').css('display','none');
       $('#form1').hide();
       $('#form2').hide();
       $('#form3').show();
       $('#form4').hide();
 
   }else if(i===3){
+  $('#button_pay').show();
+
       $('#form1').hide();
       $('#form2').hide();
       $('#form3').hide();
       $('#form4').show();
       $('#button_contact').hide();
       $('#button_contact2').hide();
+  }else if (i<3){
+    $('#button_contact2').css('display','inline');
   }
 
 }
@@ -87,13 +101,19 @@ if(i<4 && i>0) {
             console.log($('.kurumsal').text());
 
         }
+      $('#button_contact2').css('display','inline');
         $('#form1').show();
+        $('#button_pay').hide();
         $('#form2').hide();
         $('#form3').hide();
         $('#form4').hide();
     }
     else if(i===1){
+      $('#button_contact2').css('display','inline');
+      $('#invoice_type').css('display','none');
+      $('.invoiceeetype').css('display','none');
 
+      $('#button_pay').hide();
         $('#form1').hide();
         $('#form2').show();
         $('#form3').hide();
@@ -101,6 +121,7 @@ if(i<4 && i>0) {
         $('#form2').height(300);
 
     }else if(i===2){
+      $('#button_contact2').css('display','inline');
 
         $('#form1').hide();
         $('#form2').hide();
@@ -108,16 +129,17 @@ if(i<4 && i>0) {
         $('#form4').hide();
 
     }else if(i===3){
-        $('#form1').hide();
+      $('#button_contact2').css('display','inline');
+
+      $('#form1').hide();
         $('#form2').hide();
         $('#form3').hide();
         $('#form4').show();
-        $('#button_contact').hide();
-        $('#button_contact2').hide();
     }
 
 }
   });
+
   $('.setting_button').css('margin-right','0px');
   $('.personal_settings').hide();
   $('.custumize').hide();
@@ -149,8 +171,8 @@ if(i<4 && i>0) {
         jQuery.each(response, function (i, val) {
           jQuery.each(val, function (is, vall) {
             $start = vall.id - 1;
+            console.log(vall);
             $(".PURCHACE").eq($start).val(vall.id);
-            console.log($(".PURCHACE").val());
           });
         });
       }
@@ -160,7 +182,12 @@ if(i<4 && i>0) {
 
   $(".PURCHACE").click(function() {
     let number_id = $(this).val();
+
     get_one_packets(number_id);
+
+
+    console.log(number_id)
+
     $("#packets_show").hide();
     $("#settingsForm").show();
   });
@@ -184,6 +211,7 @@ function get_one_packets(id){
     }
   });
 }let user_id =  $('#hidden_id').text();
+
   console.log(user_id)
   get_packets();
   $( "#button_pay" ).click(function() {
@@ -192,6 +220,7 @@ function get_one_packets(id){
       post_packets();
       post_invoice();
       console.log('geldii')
+
     }else {
       console.log('sas')
       patch_packets();
@@ -201,7 +230,20 @@ function get_one_packets(id){
     }
   });
 function post_invoice(){
+  let first = $('#first_name').val();
+  let last = $('#last_name').val();
+  let Id_number = $('#number_personal').val();
+  let id_number = parseInt(Id_number);
+  console.log(typeof id_number)
 
+  let invoice_no = $('#invoice_noo').val();
+
+  let companyName = $('#companyName').val();
+  let invoice_Addres = $('#invoice_addresses').val();
+  console.log(invoice_no,'invoice no');
+  console.log(invoice_Addres,'invoice_addreses');
+  let country = $('#country').val();
+  let city = $('#city').val();
   $.ajax({
     url: "http://127.0.0.1:8000/api/v1/invoicerecords",
     type: "POST",
@@ -213,24 +255,62 @@ function post_invoice(){
         "type": "invoicerecords",
 
         "attributes": {
+
           "user_id":user_id,
-          "first_name":"first_name",
-          "last_name":"last_name",
-          "Id_number":"2201546589",
-          "tax_no":"sa",
-          "tax_address":"sa",
-          "country":"geldi",
-          "city":"sa",
-          "company_name":"sa"
+          "first_name":first,
+          "last_name":last,
+          "id_number":id_number,
+
+          "country":country,
+          "city":city
+
         }
       }
+
     }),
    success: function (result) {
       console.log('işlem başarılı')
+     $('#success_message').css('display','grid');
+
+
+   },
+    error: function(result) {
+      $('#error_message').css('display','grid');
+
     }
   });
 }
   function post_packets(){
+    console.log($('#first_name').text());
+    console.log($('#first_name').val());
+    let hidden_word_count  =$("#hidden_word_count").text()
+    let hidden_websites_count  =$("#hidden_websites_count").text()
+    let başlangic  =$("#başlangic").text()
+    let hidden_price  =$("#hidden_price").text()
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today2 = dd + '-' + mm + '-' + yyyy;
+    let date_int_mm  = parseInt(mm);
+    let date_int_day  = parseInt(dd);
+    var new_mm = date_int_mm +1;
+    var new_dd = date_int_day +1;
+    today =  new_dd + "-" + '0'+new_mm  + "-" + yyyy;
+    let ee =  Date.parse(today);
+    let dateArray = today.split("-");
+//dateArray[2] equals to 2021
+//dateArray[1] equals to 02
+//dateArray[0] equals to 13
+
+// using template literals below
+    let dateObj = new Date(`${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`);
+    let deyt =   new Date(new_dd,new_mm,yyyy);
+    var con_date =
+        ""+deyt.getFullYear() + (deyt.getMonth()+1) + deyt.getDate(); //converting the date
+    let gdate = "" + yyyy +"-"+ new_mm+"-" + new_dd; //given date
+    console.log(gdate,'giremedi');
+
     $.ajax({
       url: "http://127.0.0.1:8000/api/v1/Packets",
       type: "POST",
@@ -242,14 +322,13 @@ function post_invoice(){
       "type": "Packets",
 
         "attributes": {
-      "id_sa":"1",
           "user_id":user_id,
-          "count_of_words": $("#hidden_word_count").text(),
+          "count_of_words": hidden_word_count,
           "descrpitions":"sada",
-          "end_of_pocket":"2021-03-03",
+          "end_of_pocket":gdate,
 
-          "count_of_websites": $("#hidden_websites_count").text(),
-          "packet_names":$("#başlangic").text(),
+          "count_of_websites": hidden_websites_count,
+          "packet_names":başlangic,
 
     }}
       }) ,
@@ -258,6 +337,34 @@ function post_invoice(){
       }
     });
   }   function patch_packets(){
+    let hidden_word_count  =$("#hidden_word_count").text()
+    let hidden_websites_count  =$("#hidden_websites_count").text()
+    let başlangic  =$("#başlangic").text()
+    let hidden_price  =$("#hidden_price").text()
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today2 = dd + '-' + mm + '-' + yyyy;
+    let date_int_mm  = parseInt(mm);
+    let date_int_day  = parseInt(dd);
+    var new_mm = date_int_mm +1;
+    var new_dd = date_int_day +1;
+    today =  new_dd + "-" + '0'+new_mm  + "-" + yyyy;
+    let ee =  Date.parse(today);
+    let dateArray = today.split("-");
+//dateArray[2] equals to 2021
+//dateArray[1] equals to 02
+//dateArray[0] equals to 13
+
+// using template literals below
+    let dateObj = new Date(`${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`);
+    let deyt =   new Date(new_dd,new_mm,yyyy);
+    var con_date =
+        ""+deyt.getFullYear() + (deyt.getMonth()+1) + deyt.getDate(); //converting the date
+    let gdate = "" + yyyy +"-"+ new_mm+"-" + new_dd; //given date
+    console.log(gdate,'giremedi');
    const id =  $('.id_hidden').val();
     $.ajax({
       url: "http://127.0.0.1:8000/api/v1/Packets/"+id,
@@ -270,13 +377,12 @@ function post_invoice(){
       "type": "Packets",
           "id":id,
         "attributes": {
-      "id_sa":"1",
           "user_id":user_id,
-          "count_of_words":"0",
+          "count_of_words":hidden_word_count,
           "descrpitions":"patch",
-          "end_of_pocket":"2021-03-03",
-          "count_of_websites":"sdadasda",
-          "packet_names":"packet"
+          "end_of_pocket":gdate,
+          "count_of_websites":hidden_websites_count,
+          "packet_names":başlangic
 
     }
     }
@@ -294,12 +400,14 @@ function post_invoice(){
         Accept: "application/vnd.api+json",
       },
       success: function (result) {
-       let deneme =  result.data[0].attributes.createdAt
 
-       console.log(yen,'eski');
-       $('.id_hidden').val(result.data[0].id)
-        $('.hidden_size').val(result.data.length);
-        console.log($('.hidden_size').val());
+       console.log(result,'eski');
+       let count = result.data.length
+        if(count>0) {
+          $('.id_hidden').val(result.data[0].id)
+          $('.hidden_size').val(result.data.length);
+          console.log($('.hidden_size').val());
+        }
       }
     });
   }

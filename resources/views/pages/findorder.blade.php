@@ -6,7 +6,7 @@
         <br class="container" style="padding-right: 500px; padding-left:500px; ">
         <!-- Tittle -->
         <div class="heading-block white-text text-center margin-bottom-50">
-            <h2 style="color: black">What’s Your SEO Score ?</h2>
+            <h2 style="color: black">What’s Your Google Rank ?</h2>
             <span style="color: black">See how well your page is optimised for your keyword</span></div>
         <!-- Form -->
         <form method="post" action="{{route('findpost')}}">
@@ -24,7 +24,7 @@
                 <div class="row col-lg-12">
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
-                            <select class="selectSecil">
+                            <select id="selectSecil" class="select">
                                 <option class="select">
                                     Ülke
                                 </option>
@@ -145,13 +145,13 @@
                     </div>
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
-                            <select class="cityy">
+                            <select id="cityy" class="select">
                             </select>
                         </div>
                     </div>
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
-                            <select class="device">
+                            <select id="device" class="select">
                                 <option >
                                     Mobil
                                 </option>
@@ -164,31 +164,15 @@
                 </div>
             <input hidden name="hidden_collonial_name" id="hidden_collonial" />
             <input hidden name="hidden_device_name" id="hidden_device" />
-            <button type="submit" class="btn btn-orange">Check Now !</button>
-
+<div id="check_now2" >
+            <button id="check_now"type="submit" class="btn btn-orange">Check Now !</button>
+</div>
         </form>
         </div>
         </div>
 
     </section>
 
-    <style>
-        .scrollable-menu {
-            height: auto;
-            max-height: 200px;
-            overflow-x: hidden;
-        }
 
-        .select {
-            font-size: 15px;
-            font-weight: bold !important;
-            color: #fff !important;
-            background: #222935 !important;
-            font-family: Alegreya Sans;
-            height: 50px;
-            width: 220px;
-            text-transform: uppercase;
-        }
-    </style>
 
 @endsection
