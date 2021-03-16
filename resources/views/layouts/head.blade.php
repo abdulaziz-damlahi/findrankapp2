@@ -52,7 +52,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css')}}/login.css">
     @endif
     <link rel="stylesheet" type="text/css" href="{{asset('css')}}/responsive.css">
+    @if($routeName === 'websitelist')
+        <script rel="stylesheet" src="{{asset('js')}}/websitelist.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{asset('css')}}/websitelist.css">
 
+@endif
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
 
     <!-- JavaScripts -->

@@ -1,0 +1,86 @@
+/*next prev button*/
+.pagination-buttons {
+    display: inline-block;
+}
+
+.pagination-buttons{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination-buttons.active{
+    background-color: #2896b3;
+    color: #4a4a4a;
+    border-radius: 5px;
+}
+
+.pagination-buttons:hover:not(.active) {
+    background-color: #dddddd;
+    border-radius: 5px;
+}
+
+
+/*popup style*/
+.modal {
+    z-index: 1;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    /* Sit on top */
+    padding-top: 300px; /* Location of the box */
+    left: 0;
+    justify-content: center;
+    top: 0px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*site ekle panel*/
+
+
+.btns{
+    border: none;
+    color: white;
+    padding-right: 10px ;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color: black;
+}
+
+.btns:hover:not(.active) {
+    transition: all .3s linear;
+    background-color: #ff6c3a;
+}

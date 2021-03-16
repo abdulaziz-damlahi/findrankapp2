@@ -58,10 +58,32 @@
                                             </tr>
                                             </thead>
                                             <tbody id="mysites" class="list">
+                                            <div id="myModal" class="modal">
+                                                <!-- Modal content -->
+                                                <div class="modal-content">
+                                                    <span style="size: 15px;" id="close" class="close">X</span>
+                                                    <br><br>
+                                                    <form action="{{route('addwebsite')}}" class="btn-submit" method="POST">
 
+                                                        @csrf
+                                                        <textarea class="form-control" id="urls" name="website" rows="5"
+                                                                  placeholder=""></textarea>
+                                                        <br><br>
+
+                                                        <button type="submit" class="btn btn-primary mcuLoadingButton"
+                                                                data-handler="confirm">Kaydet
+                                                        </button>
+                                                    </form>
+                                                    <button id="close2" class="btn btn-default"
+                                                            data-dismiss="modal">Kapat
+                                                    </button>
+                                                </div>
+
+
+                                            </div>
                                             @foreach($userwebsites as $userwebsite)
                                                 <tr>
-                                                    <th scope="col">{{ $userwebsite->website_name }}</th>
+                                                    <th scope="col"><a href="{{route('websitelist',$userwebsite->id)}}">{{ $userwebsite->website_name }}</a></th>
                                                     <th scope="col">GÜNLÜK DEĞİŞİM</th>
                                                     <th scope="col">{{ $userwebsite->wordcount}}</th>
                                                     <th scope="col"><a href = 'deletewebsite/{{ $userwebsite->id }}'  class="fa fa-trash text-danger"></a></th>

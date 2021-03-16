@@ -18,6 +18,8 @@ class keywords extends Model
         'website_id',
         'user_keyword_id',
     ];
+    public $timestamps = false;
+
     public function website():hasMany
     {
         return $this->hasMany('App\Models\websites', 'id','website_id');

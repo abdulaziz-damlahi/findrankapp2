@@ -10,7 +10,11 @@ Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/profile', 'App\Http\Controllers\panel@profile')->name('profile');
     Route::get('/logout','App\Http\Controllers\Login@logout')->name('logout');
     Route::post('/addwebsite', 'App\Http\Controllers\panel@addwebsite')->name('addwebsite');
+
     Route::get('/deletewebsite/{id}', 'App\Http\Controllers\panel@deletewebsite')->name('deletewebsite');
+    Route::get('/website/{websiteid}', 'App\Http\Controllers\panel@websitelist')->name('websitelist');
+    Route::get('/website/deletekeyword/{id}', 'App\Http\Controllers\panel@deletekeyword')->name('deletekeyword');
+    Route::post('/addword', 'App\Http\Controllers\panel@addword')->name('addword');
 
 });
 Route::prefix('user/')->middleware('isLogin')->group(function() {

@@ -157,58 +157,6 @@ function Statistics(pageNumber) {
 }
 
 
-// function mywebsites() {
-//     $.ajax({
-//         type: 'get',
-//         url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website",
-//         success: function (response) {
-//             $('#mysites').html("")
-//             //len keyword
-//             var len = 0;
-//             if (response['data'] != null) {
-//                 len = response['data'].length;
-//             }
-//             var elmId = $("#test").attr("id");
-//             //len websites
-//             var len2 = 0;
-//             if (response['included'] != null) {
-//                 len2 = response['included'].length;
-//             }
-//             if (len > 0) {
-//                 for (var i = 0; i < len; i++) {
-//
-//                     var word = response['data'][i].attributes.name
-//                     var wordsiteid = response['data'][i].attributes.website_id
-//                     var dataid = response['data'][i].id
-//                     var rank = response['data'][i].attributes.rank
-//
-//                     for (var i2 = 0; i2 < len2; i2++) {
-//
-//                         var websiteid = response['included'][i2].id
-//                         var id_website = response['included'][i2].attributes.user_id
-//                         var websitename = response['included'][i2].attributes.website_name
-//
-//                         if (wordsiteid == websiteid) {
-//                             var str = " <tr><th scope=\"row\">" + dataid + "</th>" +
-//                                 "<td id=\"website\">" + websitename + "</td>" +
-//                                 "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
-//                                 "<td id=\"rank\">  " + rank + "</td>" +
-//                                 "<td id=\"DEĞİŞİM\"> DEĞİŞİM</td>" +
-//                                 "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
-//                             $('#mysites').append(str);
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     })
-// }
-
-
-
-
-
-
 // popup chart
 window.addEventListener('load', (event) => {
 
@@ -243,4 +191,3 @@ window.addEventListener('load', (event) => {
         }
     }
 });
-
