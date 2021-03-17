@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/panel', 'App\Http\Controllers\panel@index')->name('panel');
     Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder')->name('findorder');
-    Route::post('/findorder', 'App\Http\Controllers\panel@findPost')->name('findpost');
+    Route::post('/findorders', 'App\Http\Controllers\panel@findPost')->name('findpost');
     Route::get('/settings', 'App\Http\Controllers\settings@index')->name('settings');
     Route::post('/settings/password', 'App\Http\Controllers\settings@store_personal_settings')->name('set.post');
     Route::post('/settings/personal_settings', 'App\Http\Controllers\settings@store_password')->name('personal.settings');
