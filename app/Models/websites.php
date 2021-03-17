@@ -37,7 +37,7 @@ class websites extends Model
         return $this->belongsTo('App\Models\users', 'id','user_id');
     }
 
-    public function keywords()
+//    public function keywords()
     public function keyword():hasMany
     {
         $this->belongsTo('App\Models\keywords', 'id','id');

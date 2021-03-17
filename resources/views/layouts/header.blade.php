@@ -1,6 +1,4 @@
 @section('header')
-    <body>
-
     <div style="z-index:4!important;padding-top: 100px;" id="mySidebar" class="sidebar">
 
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" id="closebtn"> X </a>
