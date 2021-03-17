@@ -89,8 +89,6 @@ class panel extends Controller
     {
         return view('pages/websitelist/websitelist', compact('websiteid'));
 
-        return view(
-            'pages/panel/panel', compact('user'));
 
     }
 
