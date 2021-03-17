@@ -192,9 +192,7 @@ window.addEventListener('load', (event) => {
     }
 });
 
-let les3 = 0;
-let les10 = 0;
-let les100 = 0;
+
 window.onload = function () {
 
     $.ajax({
@@ -207,48 +205,162 @@ window.onload = function () {
                 len = response['data'].length;
             }
 
-
+            var les3 = 0;
+            var les10 = 0;
+            var les100 = 0;
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
+                    var id = response['data'][i].id
                     var rank = response['data'][i].attributes.rank
+                    var word = response['data'][i].attributes.name
 
-                    if (rank < 3) {
+                    if (rank > 0 && rank <= 3) {
                         les3 = les3 + 1;
+                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
+                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+                            "<td id=\"rank\">  " + rank + "</td>"+
+                            "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
+                        $('#ilk3table').append(str);
                     }
-
-                    console.log(les10)
-                    if (rank < 10) {
+                    if (rank > 3 && rank <= 10) {
                         les10 = les10 + 1;
-                    }
+                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
+                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+                            "<td id=\"rank\">  " + rank + "</td>"+
+                            "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
+                        $('#ilk10table').append(str);
 
-                    if (rank < 100) {
+                    }
+                    if (rank > 10 && rank <= 100) {
                         les100 = les100 + 1;
+                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
+                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+                            "<td id=\"rank\">  " + rank + "</td>"+
+                            "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
+                        $('#ilk100table').append(str);
                     }
                 }
+                console.log(les3)
+                $('#ilk3').append(les3);
+                console.log(les10)
+                $('#ilk10').append(les10);
+                console.log(les100)
+                $('#ilk100').append(les100);
             }
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "ANAHTAR KELİME POZİSYONLARI",
+                    horizontalAlign: "center"
+                },
+                data: [{
+                    type: "doughnut",
+                    startAngle: 60,
+                    //innerRadius: 60,
+                    indexLabelFontSize: 17,
+                    indexLabel: "{label} - #percent%",
+                    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                    dataPoints: [
+                        {y: les3, label: "les than 3"},
+                        {y: les10, label: "les than 10"},
+                        {y: les100, label: "les than 100"},
+                    ]
+                }]
+            });
+            chart.render();
         }
+
     });
 
-    var chart = new CanvasJS.Chart("chartContainer", {
-        animationEnabled: true,
-        title: {
-            text: "ANAHTAR KELİME POZİSYONLARI",
-            horizontalAlign: "left"
-        },
-        data: [{
-            type: "doughnut",
-            startAngle: 60,
-            //innerRadius: 60,
-            indexLabelFontSize: 17,
-            indexLabel: "{label} - #percent%",
-            toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-            dataPoints: [
-                {y: 33, label: "les than 3"},
-                {y: 33, label: "les than 10"},
-                {y: 33, label: "les than 100"},
-            ]
-        }]
-    });
-    chart.render();
 
 }
+
+//ilk 3 js
+window.addEventListener('load', (event) => {
+
+// Get the modal
+    var modal = document.getElementById("ilk3modal");
+
+// Get the button that opens the modal
+    var btn = document.getElementById("ilke3btn");
+
+// Get the <span> element that closes the modal
+    var span = document.getElementById("closeilk3");
+
+// When the user clicks the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
+
+// ilk 10 js
+window.addEventListener('load', (event) => {
+
+// Get the modal
+    var modal = document.getElementById("ilk10modal");
+
+// Get the button that opens the modal
+    var btn = document.getElementById("ilke10btn");
+
+// Get the <span> element that closes the modal
+    var span = document.getElementById("closeilk10");
+
+// When the user clicks the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
+
+// ilk 100 js
+window.addEventListener('load', (event) => {
+
+// Get the modal
+    var modal = document.getElementById("ilk100modal");
+
+// Get the button that opens the modal
+    var btn = document.getElementById("ilke100btn");
+
+// Get the <span> element that closes the modal
+    var span = document.getElementById("closeilk100");
+
+// When the user clicks the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});

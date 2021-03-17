@@ -7,17 +7,11 @@
             <div class="col-md-6 padding-top-50">
 
                 <!-- News Letter -->
-                <div class="news-letter">
-                    <h6>News Letter</h6>
-                    <form>
-                        <input type="email" placeholder="Enter your email..." >
-                        <button type="submit"><i class="fa fa-envelope-o"></i></button>
-                    </form>
-                </div>
+
             </div>
 
             <!-- Folow Us -->
-            <div class="col-md-6 padding-top-50">
+            <div class="col-mx-12 padding-top-50">
                 <div class="news-letter">
                     <h6>Follow us</h6>
                     <ul class="social_icons pull-left margin-left-50 margin-top-10">

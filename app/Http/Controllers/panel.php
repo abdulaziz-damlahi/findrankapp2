@@ -22,7 +22,7 @@ class panel extends Controller
     {
         $user = auth()->user();
         $userId = $user->id;
-        $userwebsites8 = websites::where('user_id', '=', $userId)->take(8)->get();
+        $userwebsites8 = websites::where('user_id', '=', $userId)->take(4)->get();
         $userwebsites = websites::where('user_id', '=', $userId)->get();
          $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
          $userwebsitecount = websites::where('user_id', '=', $userId)->count();

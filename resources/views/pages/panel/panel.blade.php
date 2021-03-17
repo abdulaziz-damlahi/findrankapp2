@@ -6,7 +6,7 @@
             <div class="page-wrapper">
 
                 <div class="page-body">
-                    <div class="row">
+                    <div class="col-lg-8 col-md-12 row">
                         @foreach($userwebsites8 as $userwebsite)
 
                             <div class="col-md-12 col-xl-3">
@@ -24,7 +24,96 @@
                     @endforeach
 
                     <!-- order-card end -->
+                            <div class="col-lg-12 col-md-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5>Statistics</h5>
+                                        <br>
+                                        <br>
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">WEB SİTE / URL</th>
+                                                <th scope="col">ANAHTAR KELİME</th>
+                                                <th scope="col">SIRA</th>
+                                                <th scope="col">DEĞİŞİM</th>
+                                                <th scope="col">GRAFİK</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="row">
+
+
+                                            <div id="myModal" class="modal">
+                                                <!-- Modal content -->
+                                                <div class="modal-content">
+                                                    <span style="size: 15px;" id="close" class="close">X</span>
+                                                    <br><br>
+                                                    <form action="{{route('addwebsite')}}" class="btn-submit" method="POST">
+
+                                                        @csrf
+                                                        <textarea class="form-control" id="urls" name="website" rows="5"
+                                                                  placeholder=""></textarea>
+                                                        <br><br>
+
+                                                        <button type="submit" class="btn btn-primary mcuLoadingButton"
+                                                                data-handler="confirm">Kaydet
+                                                        </button>
+                                                    </form>
+                                                    <button id="close2" class="btn btn-default"
+                                                            data-dismiss="modal">Kapat
+                                                    </button>
+                                                </div>
+
+
+                                            </div>
+
+
+                                            </tbody>
+
+                                        </table>
+                                        <div class="pagination" id="pagination">
+                                            {{--java script generated Pagination in tbody (panel.js)--}}
+                                        </div>
+                                        <div id="pageDetails" class="page-details">
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+
+                                    </div>
+                                </div>
+                            </div>
                     </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Customer Feedback</h5>
+                            </div>
+
+                            <div class="card-block">
+                                {{--popup ilk kilme--}}
+                                <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+                                <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                                <div style="font-size:20px;">
+                                        <span class="text-left"><button id="ilke3btn"><i class="fa  fa-square push-5-r"
+                                                                                         style=" color:#005698">  </i>İlk 3'de: <b
+                                                    id="ilk3">  </b> <b>kilme</b> </button> </span>
+                                </div>
+                                <div style="font-size:20px;">
+                                        <span class="text-left"><button id="ilke10btn"><i class="fa  fa-square push-5-r"
+                                                                                          style=" color:#16c800">  </i>İlk 10'de: <b
+                                                    id="ilk10">  </b> <b>kilme</b>  </button> </span>
+                                </div>
+                                <div style="font-size:20px;">
+                                        <span class="text-left"><button id="ilke100btn"><i class="fa  fa-square push-5-r"
+                                                                                           style=" color:#cb0000">  </i>İlk 100'de: <b
+                                                    id="ilk100">  </b> <b>kilme</b> </button>  </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- statustic and process start -->
                     <div class="col-lg-12 col-md-12">
                         <div class="card">
@@ -63,7 +152,8 @@
                                                 <div class="modal-content">
                                                     <span style="size: 15px;" id="close" class="close">X</span>
                                                     <br><br>
-                                                    <form action="{{route('addwebsite')}}" class="btn-submit" method="POST">
+                                                    <form action="{{route('addwebsite')}}" class="btn-submit"
+                                                          method="POST">
 
                                                         @csrf
                                                         <textarea class="form-control" id="urls" name="website" rows="5"
@@ -81,92 +171,107 @@
 
 
                                             </div>
+
+                                            {{-- ilk modal--}}
+
+
+
+
+
                                             @foreach($userwebsites as $userwebsite)
                                                 <tr>
-                                                    <th scope="col"><a href="{{route('websitelist',$userwebsite->id)}}">{{ $userwebsite->website_name }}</a></th>
+                                                    <th scope="col"><a
+                                                            href="{{route('websitelist',$userwebsite->id)}}">{{ $userwebsite->website_name }}</a>
+                                                    </th>
                                                     <th scope="col">GÜNLÜK DEĞİŞİM</th>
                                                     <th scope="col">{{ $userwebsite->wordcount}}</th>
-                                                    <th scope="col"><a href = 'deletewebsite/{{ $userwebsite->id }}'  class="fa fa-trash text-danger"></a></th>
+                                                    <th scope="col"><a href='deletewebsite/{{ $userwebsite->id }}'
+                                                                       class="fa fa-trash text-danger"></a></th>
                                                 </tr>
                                             @endforeach
 
                                             </tbody>
                                         </table>
-                                    </div>
-                                </div>
+                                        <!-- ilk3 Modal  -->
+                                        <div id="ilk3modal" class="modal">
 
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>Statistics</h5>
-                                    <br>
-                                    <br>
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">WEB SİTE / URL</th>
-                                            <th scope="col">ANAHTAR KELİME</th>
-                                            <th scope="col">SIRA</th>
-                                            <th scope="col">DEĞİŞİM</th>
-                                            <th scope="col">GRAFİK</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="row">
-
-
-                                        <div id="myModal" class="modal">
-                                            <!-- Modal content -->
-                                            <div class="modal-content">
-                                                <span style="size: 15px;" id="close" class="close">X</span>
+                                            <div class="modal-content2">
+                                                <span style="size: 15px;" id="closeilk3" class="close">X</span>
                                                 <br><br>
-                                                <form action="{{route('addwebsite')}}" class="btn-submit" method="POST">
+                                                <div class="col-md-12 container">
 
-                                                    @csrf
-                                                    <textarea class="form-control" id="urls" name="website" rows="5"
-                                                              placeholder=""></textarea>
-                                                    <br><br>
+                                                    <table
+                                                        class="table table-hover table-vcenter table-striped table-track">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">ANAHTAR KELİME</th>
+                                                            <th scope="col">sira</th>
+                                                            <th scope="col">grafik</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="ilk3table" class="list">
+                                                        </tbody>
+                                                    </table>
 
-                                                    <button type="submit" class="btn btn-primary mcuLoadingButton"
-                                                            data-handler="confirm">Kaydet
-                                                    </button>
-                                                </form>
-                                                <button id="close2" class="btn btn-default"
-                                                        data-dismiss="modal">Kapat
-                                                </button>
+                                                </div>
                                             </div>
-
-
                                         </div>
+                                        <div id="ilk10modal" class="modal">
 
+                                            <div class="modal-content2">
+                                                <span style="size: 15px;" id="closeilk10" class="close">X</span>
+                                                <br><br>
+                                                <div class="col-md-12 container">
 
-                                        </tbody>
+                                                    <table
+                                                        class="table table-hover table-vcenter table-striped table-track">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">ANAHTAR KELİME</th>
+                                                            <th scope="col">sira</th>
+                                                            <th scope="col">grafik</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="ilk10table" class="list">
+                                                        </tbody>
+                                                    </table>
 
-                                    </table>
-                                    <div class="pagination" id="pagination">
-                                        {{--java script generated Pagination in tbody (panel.js)--}}
-                                    </div>
-                                    <div id="pageDetails" class="page-details">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="ilk100modal" class="modal">
+
+                                            <div class="modal-content2">
+                                                <span style="size: 15px;" id="closeilk100" class="close">X</span>
+                                                <br><br>
+                                                <div class="col-md-12 container">
+
+                                                    <table
+                                                        class="table table-hover table-vcenter table-striped table-track">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">ANAHTAR KELİME</th>
+                                                            <th scope="col">sira</th>
+                                                            <th scope="col">grafik</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="ilk100table" class="list">
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card-block">
 
-                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>Customer Feedback</h5>
-                                </div>
-                                <div class="card-block">
-                                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-                                    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-                                </div>
-                            </div>
-                        </div>
+
+
                         <!-- statustic and process end -->
                     </div>
                 </div>
