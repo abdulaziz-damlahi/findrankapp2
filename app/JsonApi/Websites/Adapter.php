@@ -32,11 +32,11 @@ class Adapter extends AbstractAdapter
      *
      * @param StandardStrategy $paging
      */
+
     public function __construct(StandardStrategy $paging)
     {
-        parent::__construct(new \App\models\websites(), $paging);
+        parent::__construct(new \App\Models\websites(), $paging);
     }
-
     /**
      * @param Builder $query
      * @param Collection $filters

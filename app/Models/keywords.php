@@ -13,6 +13,7 @@ class keywords extends Model
     protected $fillable = [
         'id',
         'name',
+        'user_id',
         'date',
         'rank',
         'website_id',
@@ -22,7 +23,10 @@ class keywords extends Model
 
     public function website():hasMany
     {
-        return $this->hasMany('App\Models\websites', 'id','website_id');
+    }
+    public function websites()
+    {
+        return $this->belongsTo('App\Models\websites', 'id','user_keyword_id');
     }
 
     public function user()

@@ -3,6 +3,7 @@
 namespace App\JsonApi\Invoicerecords;
 
 use CloudCreativity\LaravelJsonApi\Validation\AbstractValidators;
+use Illuminate\Validation\Rule;
 
 class Validators extends AbstractValidators
 {
@@ -43,7 +44,11 @@ class Validators extends AbstractValidators
     protected function rules($record, array $data): array
     {
         return [
-            //
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'user_id' => ['required', 'string'],
+            'country' => ['required', 'string'],
+            'city' => ['required', 'string'],
         ];
     }
 

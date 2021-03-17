@@ -16,7 +16,6 @@ class users extends Authenticatable
         'first_name',
         'last_name',
         'user_id',
-        'keyword_id',
         'phone',
         'email',
         'password',

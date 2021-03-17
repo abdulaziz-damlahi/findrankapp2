@@ -1,5 +1,18 @@
+.password_process,.personal_settings,.custumize{
+    background-color: #efefef;
+    height: 400px;
+}
+.alert-danger text{
+    padding-top: 10px;
+    padding-bottom: 10px;
 
-
+    display: grid;
+}
+.button_contact{
+    margin-left: 50%;
+    margin-right: 50%;
+    margin-top:5%;
+}
 #settingsForm {
     width: 60%;
     margin: 60px auto;

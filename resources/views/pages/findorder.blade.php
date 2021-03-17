@@ -8,6 +8,7 @@
         <!-- Tittle -->
         <div class="heading-block white-text text-center margin-bottom-50">
             <h2 style="color: black">What’s Your SEO Score ?</h2>
+            <h2 style="color: black">What’s Your Google Rank ?</h2>
             <span style="color: black">See how well your page is optimised for your keyword</span></div>
         <!-- Form -->
         <form method="post" action="{{route('findpost')}}">
@@ -26,6 +27,7 @@
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
                             <select class="selectSecil">
+                            <select id="selectSecil" class="select">
                                 <option class="select">
                                     Ülke
                                 </option>
@@ -129,6 +131,7 @@
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
                             <select class="select">
+                            <select id="language" class="select">
                                 <option class="select">
                                     dil
                                 </option>
@@ -147,12 +150,14 @@
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
                             <select class="cityy">
+                            <select id="cityy" class="select">
                             </select>
                         </div>
                     </div>
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
                             <select class="device">
+                            <select id="device" class="select">
                                 <option >
                                     Mobil
                                 </option>
@@ -166,8 +171,13 @@
             <input hidden name="hidden_collonial_name" id="hidden_collonial" />
             <input hidden name="hidden_device_name" id="hidden_device" />
             <button type="submit" class="btn btn-orange">Check Now !</button>
+            <input hidden name="language_name" id="language_hidden" />
 
+<div id="check_now2" >
+            <button id="check_now"type="submit" class="btn btn-orange">Check Now !</button>
+</div>
         </form>
+<<<<<<< HEAD
 <<<<<<< HEAD
         <div class="row col-md-3 " style="margin: auto">
             <li class="">
@@ -177,9 +187,33 @@
 =======
         </div>
         </div>
+=======
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th>Statistics</th>
+                <th>#1</th>
+                <th>#2</th>
+            </tr>
+            </thead>
+            <tbody>
+            @isset($result)
+                @foreach ($result as $key=>$itemm)
+                    <tr>
+                        <td>{{ $key }}</td>
+                        <td>{{ $itemm }}</td>
+                    </tr>
+            @endforeach
+            </tbody>
+        </table>
+
+        @endisset
+
 
 >>>>>>> 2f179e69fc7363bb0dc573e42a6cfd4604be2d26
     </section>
     </div>
+
+
 
 @endsection

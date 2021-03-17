@@ -32,8 +32,12 @@ class Schema extends SchemaProvider
     {
         return [
             'name' => $resource->name,
+<<<<<<< HEAD
             'rank' => $resource->rank,
             'website_id' => $resource->website_id,
+=======
+            'user_id' => $resource->user_id,
+>>>>>>> yedek2
             'createdAt' => $resource->created_at,
             'createdAt' => $resource->created_at,
         ];

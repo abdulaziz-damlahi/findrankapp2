@@ -12,9 +12,11 @@ class invoicerecords extends Model
         'id',
         'first_name',
         'last_name',
-        'Id_number',
+        'id_number',
         'tax_no',
+        'tax_address',
         'country',
+        'user_id',
         'city',
         'company_name',
     ];

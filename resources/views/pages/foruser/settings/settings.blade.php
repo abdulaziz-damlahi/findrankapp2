@@ -14,78 +14,99 @@
                         <a class="setting_but"  href="#customize"><i class="setting_but si si-wrench push-5-r"></i><span class="hidden-xs">Özelleştirme</span></a>
                     </li>
                 </ul>
+                @if($errors->any())
+                    <div class="alert-danger">
+                        <text> {{$errors->first()}}</text>
+                    </div>
+                @endif
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li>{!! \Session::get('success') !!}</li>
+                        </ul>
+                    </div>
+                @endif
+                @if (\Session::has('error_password'))
+                    <div class="alert alert-danger">
+                        <ul>
+                            <li>{!! \Session::get('error_password') !!}</li>
+                        </ul>
+                    </div>
+                @endif
             </div>
-            <form class="password_process">
+
+                <form class="password_process" method="post" enctype="multipart/form-data" action="{{route('set.post')}}">
+                @csrf
                 <label class="col-md-6">
                     <p class="label-txt">FIRST NAME</p>
-                    <input type="text" class="input">
+                    <input type="text" name="first_name" value="{{$user_first_name}}" class="input">
                     <div class="line-box">
                         <div class="line"></div>
                     </div>
                 </label>   <label class="col-md-6">
                     <p class="label-txt">LAST NAME</p>
-                    <input type="text" class="input">
+                    <input type="text"  name="last_name" value="{{$user_last_name}}" class="input">
                     <div class="line-box">
                         <div class="line"></div>
                     </div>
                 </label>
             <label class="col-md-12">
                 <p class="label-txt">EMAIL </p>
-                <input type="text" class="input">
+                <input type="text"name="mail"  value="{{$mail}}" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
             <label class="col-md-12">
                 <p class="label-txt">PHONE NUMBER</p>
-                <input type="text" class="input">
+                <input type="text" name="phone"  value="{{$phone}}" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
-            <button id="button_contact" type="submit">submit</button>
+            <button  class="button_contact"id="button_contact"  type="submit">submit</button>
             </form>
-            <form class="personal_settings">
-            <label class="col-md-12">
+            <form class="personal_settings"  method="post" enctype="multipart/form-data" action="{{route('personal.settings')}}">
+             @csrf
+                <label class="col-md-12">
                 <p class="label-txt">ŞİMDİKİ ŞİFRE </p>
-                <input type="text" class="input">
+                <input name="password_now" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
             <label class="col-md-12">
                 <p class="label-txt">YENİ ŞİFRE</p>
-                <input type="text" class="input">
+                <input name="new_password" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label> <label class="col-md-12">
                 <p class="label-txt">YENİ ŞİFRE TEKRARI</p>
-                <input type="text" class="input">
+                <input name="new_password_confirmation" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
-            <button id="button_contact" type="submit">submit</button>
-            </form> <form class="custumize">
+            <button class="button_contact"id="button_contact" type="submit" >submit</button>
+            </form>
+                <form class="custumize"  method="post" enctype="multipart/form-data" action="{{route('custumize')}}">
+                    @csrf
             <label class="col-md-6">
-                <p class="label-txt">FIRSTNAME </p>
-                <input type="text" class="input">
+                <p class="label-txt">Firma İsmi </p>
+                <input name="company_name" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
             <label class="col-md-6">
-                <p class="label-txt">LASTNAME</p>
-                <input type="text" class="input">
+                <p class="label-txt">Firma E-Posta Adresi</p>
+                <input name="company_email" type="email" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
-            </label> <label class="col-md-12">
-                <p class="LABEL_text">LASTNAME</p>
-                <input type="file" class="input_file">
             </label>
-            <button id="button_contact" type="submit">submit</button>
+            <button class="button_contact"id="button_contact" type="submit" action="{{route('custumize')}}"  >submit</button>
             </form>
         </div>
     </div>

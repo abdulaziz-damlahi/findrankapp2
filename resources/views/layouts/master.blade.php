@@ -7,10 +7,16 @@
     @yield('head')
 </head>
 <body class="home" id="home">
+        <!doctype html>
+<html class="no-js" lang="en">
+
+@yield('head')
 @yield('header')
+
 @yield('content')
 </div>
 @yield('footer')
 
 </body>
 </html>
+

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
+use App\Http\Controllers\panel;
 use CloudCreativity\LaravelJsonApi\Routing\RouteRegistrar as Api;
 
 /*
@@ -27,11 +28,13 @@ JsonApi::register('v1')->routes(function (Api $api) {
 
     $api->resource('Keywords')
             ->middleware("auth");
+    $api->post('/findrank', [\App\Http\Controllers\panel::class, 'findPost_T'])->name('findrank');
+
     $api->resource('Users');
     $api->resource('invoicerecords')->middleware("auth");
     $api->resource('Locations');
     $api->resource('packets-reels');
-    $api->resource('Packets')->middleware("auth");
+    $api->resource('Packets');
     $api->resource('Websites')->middleware("auth");
     Route::prefix('auth')
         ->group(function () use ($api) {

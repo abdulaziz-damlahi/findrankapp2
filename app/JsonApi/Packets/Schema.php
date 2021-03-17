@@ -31,14 +31,15 @@ class Schema extends SchemaProvider
     {
         return [
             'id_sa'=> $resource->id_sa,
+            'user_id'=> $resource->user_id,
             'count_of_words'=> $resource->count_of_words,
             'descrpitions'=> $resource->descrpitions,
             'end_of_pocket'=> $resource->end_of_pocket,
             'started_of_pockets'=> $resource->created_at,
             'count_of_websites'=> $resource->count_of_websites,
             'packet_names'=> $resource->count_of_websites,
-            'createdAt' => $resource->created_at,
             'updatedAt' => $resource->updated_at,
+            'createdAt' => $resource->created_at,
         ];
     }
 

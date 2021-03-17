@@ -79,6 +79,7 @@
                 </div>
             </div>
             <div id="settingsForm">
+
                 <div class="menuy col-md-12">
                     <ul id="sa" class="nav nav-tabs nav-justified nav-dark push-20" data-toggle="tabs">
                         <li class="setting_button active" id="button_first">
@@ -102,56 +103,62 @@
                         </li>
                     </ul>
                 </div>
-                <form class="invoice_records" enctype="multipart/form-data" method="post" action="">
+                <form class="invoice_records" method="post">
                     @csrf
-                    <div><input id="kurumsal" type="radio" name="gender" value="Kurumsal"> Kurumsal
-                        <input checked type="radio" id="bireysel" name="gender" value="Kurumsal"> Bireysel
+                    <br>
+                    <div id="success_message" class="alert alert-success">
+                        <strong>Ödeme Başarılı</strong>
+                    </div>   <div id="error_message" class="alert alert-danger">
+                        <strong>Ödeme Başarısız</strong>
                     </div>
                     <div id="form1">
+                        <div class="invoiceeetype" id="invoice_type"><input id="kurumsal" type="radio" name="gender" value="Kurumsal"> Kurumsal
+                            <input checked type="radio" id="bireysel" name="gender" value="Kurumsal"> Bireysel
+                        </div>
                         <div id="Kurumsalform">
                             <label class="kurumsal col-md-6">
                                 <p class="label-txt">FIRMA ADI</p>
-                                <input type="text" class="input">
+                                <input id="companyName" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label> <label class="kurumsal col-md-6">
                                 <p class="label-txt">VERGI NO</p>
-                                <input type="text" class="input">
+                                <input id="invoice_noo" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="kurumsal col-md-6">
                                 <p class="label-txt">VERGI ADRESİ</p>
-                                <input type="text" class="input">
+                                <input id="invoicd_address" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">FIRST NAME</p>
-                                <input type="text" class="input">
+                                <input id="first_name" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label> <label class="col-md-6">
                                 <p class="label-txt">LAST NAME</p>
-                                <input type="text" class="input">
+                                <input id="last_name" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">Kimlik Numarası</p>
-                                <input type="text" class="input">
+                                <input id="number_personal" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">Faturası Adresi</p>
-                                <input type="text" class="input">
+                                <input id="invoice_addresses" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
@@ -159,13 +166,13 @@
 
                             <label class="col-md-6">
                                 <p class="label-txt">COUNTRY</p>
-                                <input type="text" class="input">
+                                <input id="country" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label> <label id="themostunder" class="col-md-6">
                                 <p class="label-txt">CITY</p>
-                                <input type="text" class="input">
+                                <input id="city" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
@@ -175,42 +182,42 @@
                         <div id="Bireyselfrom">
                             <label class="col-md-6">
                                 <p class="label-txt">FIRST NAMEss</p>
-                                <input type="text" class="input">
+                                <input id="firstt_namee" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">LAST NAME</p>
-                                <input type="text" class="input">
+                                <input id="last_namee" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">IDENTIFICATION NUMBER</p>
-                                <input type="text" class="input">
+                                <input id="numberr" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">Fatura Adresi</p>
-                                <input type="text" class="input">
+                                <input id="invoice_adresses" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">COUNTRY</p>
-                                <input type="text" class="input">
+                                <input id="countries" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">CITY</p>
-                                <input type="text" class="input">
+                                <input id="cities" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
@@ -459,7 +466,7 @@
                                     <tbody>
                                     <tr>
                                         <td>
-                                            <a class="başlangic" href="#">Başlangıç</a>
+                                            <a id="başlangic" href="#">Başlangıç</a>
                                             <div class="font-s12 text-muted">1 aylık abonelik hizmeti.</div>
                                         </td>
                                         <td class="text-right">
@@ -562,7 +569,13 @@
                                  src="https://www.paytr.com/img/odeme_sayfasi/os_kartlar_x3.png" alt="Kart Güvenliği"
                                  style="padding: 0px 0 10px 0;">
                         </div>
-                        <button id="button_pay" type="submit">Ödeme Yap</button>
+                        <p hidden id="hidden_id" val="{{\Illuminate\Support\Facades\Auth::id()}}" >{{\Illuminate\Support\Facades\Auth::id()}}</p>
+                        <input hidden  class="hidden_size">
+                        <input hidden  class="id_hidden">
+                        <input hidden  class="hidden_descrpitions">
+                        <input hidden  class="count_of_websites">
+                        <input hidden  class="count_of_words">
+                        <input hidden  class="packet_names">
                     </div>
 
                     <div id="form4">
@@ -571,14 +584,16 @@
                         </div>
                     </div>
                     <input hidden class="hidden">
-                    <input hidden class="hidden_word_count">
-                    <input hidden class="hidden_websites_count">
-                    <input hidden class="hidden_rank_follow">
-                    <input hidden class="hidden_price">
-                    <input hidden class="hidden_description">
-                    <input hidden class="hidden_name_packets">
+                    <p hidden id="hidden_word_count"></p>
+                    <p hidden id="hidden_websites_count"></p>
+                    <p hidden id="hidden_rank_follow"></p>
+                    <p hidden id="hidden_price"></p>
+                    <p hidden id="hidden_created"></p>
+                    <p hidden id="hidden_description"></p>
+                    <p hidden id="hidden_name_packets"></p>
 
                 </form>
+                <button id="button_pay" type="submit">Ödeme Yap</button>
                 <button id="button_contact" type="submit">Önce</button>
                 <button id="button_contact2" type="submit">Sonra</button>
             </div>

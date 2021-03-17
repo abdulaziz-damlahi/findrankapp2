@@ -1,0 +1,37 @@
+#check_now{
+    width:300px;
+    margin-top:5%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.select {
+    margin-top:25px;
+    font-size: 15px;
+    font-weight: bold !important;
+    color: #fff !important;
+    background: #222935 !important;
+    font-family: Alegreya Sans;
+    margin-left:50px;
+    height: 50px;
+    width: 300px;
+    text-transform: uppercase;
+}
+@media only screen and (max-width: 1200px) {
+    #check_now{
+        margin:auto;
+        margin-top:40px;
+        width:250px;
+    }
+    .select {
+ margin:auto;
+
+        paddin-left:8px;
+    }
+}

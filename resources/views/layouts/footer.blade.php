@@ -1,6 +1,4 @@
-<!-- Footer -->
 @section('footer')
-
 <footer>
     <div class="container">
         <div class="row">
@@ -85,6 +83,7 @@
     </div>
 </footer>
 </div>
+
 <!-- End Page Wrapper -->
 
 <!-- JavaScripts -->
@@ -100,8 +99,8 @@
 <script src="{{asset('js')}}/vendors/jquery.sticky.js"></script>
 
 <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="{{asset('rs-plugin')}}/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="{{asset('rs-plugin')}}/js/jquery.themepunch.revolution.min.js"></script>
 <script src="{{asset('js')}}/main.js"></script>
 </body>
 </html>

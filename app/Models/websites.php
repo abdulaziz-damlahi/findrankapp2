@@ -16,6 +16,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\App;
 use Illuminate\Validation\ValidationException;
 use App\Models\users;
+use App\Models\keywords;
 
 class websites extends Model
 {
@@ -26,6 +27,8 @@ class websites extends Model
         'website_name',
         'user_id',
         'wordcount',
+        'rank',
+        'website_to_keyword',
     ];
     public $timestamps = false;
 
@@ -35,8 +38,10 @@ class websites extends Model
     }
 
     public function keywords()
+    public function keyword():hasMany
     {
         $this->belongsTo('App\Models\keywords', 'id','id');
+        return $this->hasMany('App\Models\websites', 'id','id');
     }
 
     public function packets():HasMany

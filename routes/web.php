@@ -7,6 +7,9 @@ Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder')->name('findorder');
     Route::post('/findorder', 'App\Http\Controllers\panel@findPost')->name('findpost');
     Route::get('/settings', 'App\Http\Controllers\settings@index')->name('settings');
+    Route::post('/settings/password', 'App\Http\Controllers\settings@store_personal_settings')->name('set.post');
+    Route::post('/settings/personal_settings', 'App\Http\Controllers\settings@store_password')->name('personal.settings');
+    Route::post('/settings/custumize', 'App\Http\Controllers\settings@store_custumize')->name('custumize');
     Route::get('/profile', 'App\Http\Controllers\panel@profile')->name('profile');
     Route::get('/logout','App\Http\Controllers\Login@logout')->name('logout');
     Route::post('/addwebsite', 'App\Http\Controllers\panel@addwebsite')->name('addwebsite');
@@ -26,7 +29,9 @@ Route::prefix('user/')->middleware('isLogin')->group(function() {
 
 Route::get('/', 'App\Http\Controllers\homepage@index')->name('home');
 Route::get('/packets', 'App\Http\Controllers\packets@index')->name('packets');
+Route::post('/packets', 'App\Http\Controllers\packets@index')->name('packets');
 Route::get('/contact', 'App\Http\Controllers\contact@index')->name('contact');
+Route::post('/contact', 'App\Http\Controllers\contact@post')->name('contact.post');
 
 Route::get('/users-packet', 'App\Http\Controllers\panel@userspacket');
 Route::get('/users-website', 'App\Http\Controllers\panel@userswebsite');

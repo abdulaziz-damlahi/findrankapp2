@@ -2,18 +2,16 @@
 
 namespace App\Console\Commands;
 
-use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
-use App\Models\packets;
-class packeets extends Command
+
+class SendEmails extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'packeets:online';
+    protected $signature = 'SendEmails:name';
 
     /**
      * The console command description.
@@ -39,7 +37,6 @@ class packeets extends Command
      */
     public function handle()
     {
-
-       // packets::where('end_of_pocket','<=',Carbon::today())->delete();
+        return 0;
     }
 }
