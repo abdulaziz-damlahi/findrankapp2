@@ -129,7 +129,7 @@
                                             <button class="btns btn-default" type="button" id="addNewSite"><i
                                                     class="fa fa-plus text-success"><span class="hidden-xs push-7-l">Site Ekle</span></i>
                                             </button>
-                                           
+
                                         </div>
                                         <table class="table table-hover table-vcenter table-striped table-track">
                                             <thead>
