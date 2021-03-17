@@ -6,7 +6,7 @@ use App\Models\packets;
 
 use App\Models\users;
 use App\Models\websites;
-<<<<<<< HEAD
+
 use App\Models\keywords;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -15,17 +15,15 @@ use Illuminate\Routing\Controller;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-=======
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
->>>>>>> yedek2
+
+
 
 class panel extends Controller
 {
     public function index()
     {
         $user = auth()->user();
-<<<<<<< HEAD
+
         $userId = $user->id;
         $userwebsites8 = websites::where('user_id','=',$userId)->orderByDesc('wordcount')->take(3)->get();
         $userwebsites = websites::where('user_id', '=', $userId)->get();
@@ -90,10 +88,10 @@ class panel extends Controller
     public function websitelist($websiteid)
     {
         return view('pages/websitelist/websitelist', compact('websiteid'));
-=======
+
         return view(
             'pages/panel/panel', compact('user'));
->>>>>>> yedek2
+
     }
 
 
@@ -103,36 +101,32 @@ class panel extends Controller
             'pages/panel/profile');
     }
 
-<<<<<<< HEAD
-    public
-    function FindOrder()
-=======
+
+
     public function FindOrder()
->>>>>>> yedek2
+
     {
         return view(
             'pages/findorder');
     }
 
-<<<<<<< HEAD
-    public
-    function findPost(Request $request)
-=======
+
+
     public function findPost(Request $request)
->>>>>>> yedek2
+
     {
         $colonial_name = $request->hidden_collonial_name;
         $device_information = $request->hidden_device_name;
         $website_request = $request->website;
         $keyword_request = $request->keyword;
-<<<<<<< HEAD
+
         echo $colonial_name;
         echo $device_information;
         echo $website_request;
         echo $keyword_request;
         return view(
             'pages/findorder', compact('colonial_name', 'device_information', 'website_request', 'keyword_request'));
-=======
+
         $language = $request->language_name;
         $ch = curl_init();
         $keywords = "hemengeliriz.com/";
@@ -411,11 +405,10 @@ class panel extends Controller
             "location name" => $colonial_name,
         ], 200);
 
->>>>>>> yedek2
+
     }
 
-    public
-    function userspacket()
+    public function  userspacket()
     {
         $user = users::find(2);
         $user->packets;

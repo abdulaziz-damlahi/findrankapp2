@@ -18,8 +18,8 @@
         "nesbot/carbon": "^2.46",
         "stevebauman/location": "^6.1",
         "torann/currency": "^1.1",
-        "torann/geoip": "^3.0",
-        "yoeunes/toastr": "^1.2"
+        "torann/geoip": "^3.0"
+
     },
     "require-dev": {
         "cloudcreativity/json-api-testing": "^3.2",
