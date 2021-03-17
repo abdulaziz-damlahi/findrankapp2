@@ -288,7 +288,7 @@ class panel extends Controller
         preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)</div>@', $response, $resultss);
 
         foreach ($resultss as $result) {
-
+    print_r($result);
 
 
 
