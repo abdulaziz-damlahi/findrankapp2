@@ -44,7 +44,7 @@
     @if($routeName === 'contact' || $routeName === 'contact.post')
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/contact.css">
     @endif
-       @if( $routeName === 'findorder' )
+       @if( $routeName === 'findorder' ||$routeName ==='findpost')
         <script rel="stylesheet" src="{{asset('js')}}/findorder.js"></script>
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/findorder.css">
     @endif

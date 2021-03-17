@@ -127,7 +127,7 @@
                     </div>
                     <div class="btn-group col-md-3 ">
                         <div class="btn-group">
-                            <select class="select">
+                            <select id="language" class="select">
                                 <option class="select">
                                     dil
                                 </option>
@@ -164,12 +164,33 @@
                 </div>
             <input hidden name="hidden_collonial_name" id="hidden_collonial" />
             <input hidden name="hidden_device_name" id="hidden_device" />
+            <input hidden name="language_name" id="language_hidden" />
+
 <div id="check_now2" >
             <button id="check_now"type="submit" class="btn btn-orange">Check Now !</button>
 </div>
         </form>
-        </div>
-        </div>
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th>Statistics</th>
+                <th>#1</th>
+                <th>#2</th>
+            </tr>
+            </thead>
+            <tbody>
+            @isset($result)
+                @foreach ($result as $key=>$itemm)
+                    <tr>
+                        <td>{{ $key }}</td>
+                        <td>{{ $itemm }}</td>
+                    </tr>
+            @endforeach
+            </tbody>
+        </table>
+
+        @endisset
+
 
     </section>
 

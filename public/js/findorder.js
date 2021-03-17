@@ -1,10 +1,13 @@
 $(document).ready(function() {
   $("#device").change(function() {
-console.log($(".deviee").val())
-    console.log($(this).val())
-    console.log($(".deviee").val())
-    $("#hidden_device").val($("#device").val());
-    console.log($("#hidden_device").val());});
+    if($(this).val()==="Mobil"){
+      let mobile_device ="Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53"
+      $("#hidden_device").val(mobile_device);
+    }
+    else{
+      $("#hidden_device").val("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36")
+    }
+  });
   $("#selectSecil").change(function() {
     $(".cityy").empty()
   $.ajax({
@@ -29,10 +32,12 @@ console.log($(".deviee").val())
 
   });
     $("#cityy").change(function() {
-
-      $("#hidden_collonial").val($(".cityy").val());
+      $("#hidden_collonial").val($(this).val());
       $("#hidden_device").val($("#hidden_collonial").val());
     });
 
     });
+  $("#language").change(function() {
+    $("#language_hidden").val($(this).val());
+  });
 });
