@@ -235,7 +235,7 @@ h6 {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out; }
 .card .card-footer {
-    background-color: #fff;
+    background-color: #ffffff;
     border-top: none; }
 .card .card-header {
     background-color: transparent;
@@ -504,7 +504,7 @@ h6 {
     cursor: pointer;
     position: absolute; }
 .location-selector .bit:hover {
-    background-color: #ddd; }
+    background-color: #dddddd; }
 .location-selector .bit.bottom, .location-selector .bit.top {
     height: 25%;
     width: 40%;
@@ -816,12 +816,12 @@ button.close {
     margin: -7px 0 0 -15px;
     width: 30px;
     height: 20px;
-    background: url("../images/tooltip/tooltip1.svg") center center no-repeat;
+    background: url("tooltip/tooltip1.svg") center center no-repeat;
     background-size: 100%; }
 
 .tooltip-content3 {
     position: absolute;
-    background: url("../images/tooltip/shape1.svg") center bottom no-repeat;
+    background: url("tooltip/shape1.svg") center bottom no-repeat;
     background-size: 100% 100%;
     z-index: 9999;
     width: 200px;
@@ -6070,7 +6070,7 @@ table tbody .border-bottom-info td {
     visibility: visible; }
 .pcoded[theme-layout="vertical"][vertical-nav-type="compact"][pcoded-device-type="desktop"] .pcoded-header .navbar-logo img {
     padding: 84px;
-    background: url("../images/logo-compact.png") left top no-repeat;
+    background: url("logo-compact.png") left top no-repeat;
     margin-top: 112px; }
 .pcoded[theme-layout="vertical"][vertical-nav-type="compact"] .pcoded-header .navbar-logo {
     width: 200px;
@@ -7872,18 +7872,7 @@ table tbody .border-bottom-info td {
 .pcoded[sidebar-img="true"] .pcoded-navbar .main-menu .pcoded-item li.pcoded-hasmenu .pcoded-submenu {
     background: transparent !important;
     background-color: transparent !important; }
-.pcoded[sidebar-img="true"] .pcoded-navbar .main-menu .pcoded-item > li.active > a:before {
-    border-left-color: transparent !important; }
-.pcoded[sidebar-img="true"][sidebar-img-type="img1"] .pcoded-navbar {
-    background-image: url("../images/navbar-img-1.jpg"); }
-.pcoded[sidebar-img="true"][sidebar-img-type="img2"] .pcoded-navbar {
-    background-image: url("../images/navbar-img-2.jpg"); }
-.pcoded[sidebar-img="true"][sidebar-img-type="img3"] .pcoded-navbar {
-    background-image: url("../images/navbar-img-3.jpg"); }
-.pcoded[sidebar-img="true"][sidebar-img-type="img4"] .pcoded-navbar {
-    background-image: url("../images/navbar-img-4.jpg"); }
-.pcoded[sidebar-img="true"][sidebar-img-type="img5"] .pcoded-navbar {
-    background-image: url("../images/navbar-img-5.jpg"); }
+
 .pcoded[theme-layout="vertical"][vnavigation-view="view2"][pcoded-device-type="desktop"] .pcoded-navbar .main-menu, .pcoded[theme-layout="vertical"][vnavigation-view="view2"][pcoded-device-type="tablet"] .pcoded-navbar .main-menu {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -8162,7 +8151,7 @@ table tbody .border-bottom-info td {
     height: 20px; }
 .theme-color a[layout-type="img"] {
     background-size: cover;
-    background-image: url("../images/navbar-img-2.jpg"); }
+}
 .theme-color a.image {
     width: 45px;
     height: 100px;
@@ -8170,16 +8159,7 @@ table tbody .border-bottom-info td {
 .theme-color a.image .cont:before,
 .theme-color a.image .head:before {
     background-color: #fff; }
-.theme-color a.image[navbg-pattern="img1"] {
-    background-image: url("../images/navbar-img-1.jpg"); }
-.theme-color a.image[navbg-pattern="img2"] {
-    background-image: url("../images/navbar-img-2.jpg"); }
-.theme-color a.image[navbg-pattern="img3"] {
-    background-image: url("../images/navbar-img-3.jpg"); }
-.theme-color a.image[navbg-pattern="img4"] {
-    background-image: url("../images/navbar-img-4.jpg"); }
-.theme-color a.image[navbg-pattern="img5"] {
-    background-image: url("../images/navbar-img-5.jpg"); }
+
 .theme-color a .cont,
 .theme-color a .head {
     display: block;
@@ -10465,11 +10445,11 @@ td.highlight {
     text-align: center; }
 
 td.details-control {
-    background: url("../images/details_open.png") no-repeat center center;
+    background: url("details_open.png") no-repeat center center;
     cursor: pointer; }
 
 tr.shown td.details-control {
-    background: url("../images/details_close.png") no-repeat center center; }
+    background: url("details_close.png") no-repeat center center; }
 
 #row-select .selected,
 #row-delete .selected {
@@ -11810,7 +11790,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
       Chatting css start
 ==========================  **/
 .chat-bg {
-    background-image: url("../images/chat-bg.jpg");
+
     background-size: cover;
     background-blend-mode: overlay;
     background-color: rgba(255, 255, 255, 0.45); }
@@ -14914,7 +14894,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #888888;
     width: 80%;
 }.modal-content2 {
 
@@ -14961,4 +14941,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
 .btns:hover:not(.active) {
     transition: all .3s linear;
     background-color: #ff6c3a;
+}
+.whitebackground{
+    background-color: white;
 }

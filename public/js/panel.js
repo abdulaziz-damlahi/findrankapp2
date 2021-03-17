@@ -5,7 +5,7 @@ $(document).ready(function () {
 })
 $("#nextPageButton").click(function () {
     pageNumber = currentPage2;
-    console.log(currentPage2)
+
     pageNumber = pageNumber + 1;
     Statistics(pageNumber);
 });
@@ -51,9 +51,9 @@ function Statistics(pageNumber) {
                             var str = " <tr><th scope=\"row\">" + dataid + "</th>" +
                                 "<td id=\"website\">" + websitename + "</td>" +
                                 "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
-                                "<td id=\"rank\">  " + rank + "</td>" +
-                                "<td id=\"DEĞİŞİM\"> DEĞİŞİM</td>" +
-                                "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
+                                "<td  id=\"rank\">  " + rank + "</td>" +
+                                "<td class='hidden-xs' id=\"DEĞİŞİM\"> DEĞİŞİM</td>" +
+                                "<td class='hidden-xs' id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
                             $('#row').append(str);
                         }
                     }
@@ -240,19 +240,13 @@ window.onload = function () {
                         $('#ilk100table').append(str);
                     }
                 }
-                console.log(les3)
                 $('#ilk3').append(les3);
-                console.log(les10)
                 $('#ilk10').append(les10);
-                console.log(les100)
                 $('#ilk100').append(les100);
             }
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
-                title: {
-                    text: "ANAHTAR KELİME POZİSYONLARI",
-                    horizontalAlign: "center"
-                },
+
                 data: [{
                     type: "doughnut",
                     startAngle: 60,

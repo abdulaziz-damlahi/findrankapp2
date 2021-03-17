@@ -9,14 +9,21 @@
                     <div class="col-lg-8 col-md-12 row">
                         @foreach($userwebsites8 as $userwebsite)
 
-                            <div class="col-md-12 col-xl-3">
+                            <div class="col-md-12 col-xl-4">
                                 <div class="card bg-c-blue order-card">
                                     <div class="card-block">
                                         <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
+                                        <h class="m-b-20">word count {{ $userwebsite->wordcount }}</h>
                                         <h2 class="text-right"><i class="ti-shopping-cart f-left"
                                                                   style="text-shadow: 3px 3px 5px #0000!important; ;"></i><span></span>
                                         </h2>
-                                        <p class="m-b-0"><span class="f-right"></span></p>
+                                        <p class="m-b-0"><span class="f-right"></span>
+                                        <td class="sort_change text-center hidden-xs" data-change="36">
+                                            <i class="fa fa-chevron-circle-up text-success"></i>36</span>
+                                            <i class="fa fa-chevron-circle-down text-danger"></i>42</span>
+                                            <i class="fa fa-circle "></i> 45</span>
+                                        </td>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -24,99 +31,88 @@
                     @endforeach
 
                     <!-- order-card end -->
-                            <div class="col-lg-12 col-md-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5>Statistics</h5>
-                                        <br>
-                                        <br>
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">WEB SİTE / URL</th>
-                                                <th scope="col">ANAHTAR KELİME</th>
-                                                <th scope="col">SIRA</th>
-                                                <th scope="col">DEĞİŞİM</th>
-                                                <th scope="col">GRAFİK</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody id="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="card whitebackground">
+                                <div class="card-header ">
+                                    <h5>Statistics</h5>
+                                    <br>
+                                    <br>
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">WEB SİTE / URL</th>
+                                            <th scope="col">ANAHTAR KELİME</th>
+                                            <th scope="col">SIRA</th>
+                                            <th class="hidden-xs" scope="col">DEĞİŞİM</th>
+                                            <th class="hidden-xs" scope="col">GRAFİK</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="row">
 
 
-                                            <div id="myModal" class="modal">
-                                                <!-- Modal content -->
-                                                <div class="modal-content">
-                                                    <span style="size: 15px;" id="close" class="close">X</span>
+                                        <div id="myModal" class="modal">
+                                            <!-- Modal content -->
+                                            <div class="modal-content">
+                                                <span style="size: 15px;" id="close" class="close">X</span>
+                                                <br><br>
+                                                <form action="{{route('addwebsite')}}" class="btn-submit" method="POST">
+
+                                                    @csrf
+                                                    <textarea class="form-control" id="urls" name="website" rows="5"
+                                                              placeholder=""></textarea>
                                                     <br><br>
-                                                    <form action="{{route('addwebsite')}}" class="btn-submit" method="POST">
 
-                                                        @csrf
-                                                        <textarea class="form-control" id="urls" name="website" rows="5"
-                                                                  placeholder=""></textarea>
-                                                        <br><br>
-
-                                                        <button type="submit" class="btn btn-primary mcuLoadingButton"
-                                                                data-handler="confirm">Kaydet
-                                                        </button>
-                                                    </form>
-                                                    <button id="close2" class="btn btn-default"
-                                                            data-dismiss="modal">Kapat
+                                                    <button type="submit" class="btn btn-primary mcuLoadingButton"
+                                                            data-handler="confirm">Kaydet
                                                     </button>
-                                                </div>
-
-
+                                                </form>
+                                                <button id="close2" class="btn btn-default"
+                                                        data-dismiss="modal">Kapat
+                                                </button>
                                             </div>
 
 
-                                            </tbody>
+                                        </div>
 
-                                        </table>
-                                        <div class="pagination" id="pagination">
-                                            {{--java script generated Pagination in tbody (panel.js)--}}
-                                        </div>
-                                        <div id="pageDetails" class="page-details">
-                                        </div>
+
+                                        </tbody>
+
+                                    </table>
+                                    <div class="pagination" id="pagination">
+                                        {{--java script generated Pagination in tbody (panel.js)--}}
                                     </div>
-                                    <div class="card-block">
-
+                                    <div id="pageDetails" class="page-details">
                                     </div>
                                 </div>
+
                             </div>
+                        </div>
                     </div>
                     <div class="col-lg-4 col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Customer Feedback</h5>
+                        <div class="card whitebackground">
+                            <div class="card-header whitebackground">
+                                <h5>ANAHTAR KELİME POZİSYONLARI</h5>
                             </div>
 
-                            <div class="card-block">
+                            <div class="card-block whitebackground">
                                 {{--popup ilk kilme--}}
                                 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-                                <div style="font-size:20px;">
-                                        <span class="text-left"><button id="ilke3btn"><i class="fa  fa-square push-5-r"
-                                                                                         style=" color:#005698">  </i>İlk 3'de: <b
-                                                    id="ilk3">  </b> <b>kilme</b> </button> </span>
-                                </div>
-                                <div style="font-size:20px;">
-                                        <span class="text-left"><button id="ilke10btn"><i class="fa  fa-square push-5-r"
-                                                                                          style=" color:#16c800">  </i>İlk 10'de: <b
-                                                    id="ilk10">  </b> <b>kilme</b>  </button> </span>
-                                </div>
-                                <div style="font-size:20px;">
-                                        <span class="text-left"><button id="ilke100btn"><i class="fa  fa-square push-5-r"
-                                                                                           style=" color:#cb0000">  </i>İlk 100'de: <b
-                                                    id="ilk100">  </b> <b>kilme</b> </button>  </span>
-                                </div>
 
+                                <div class="col-md-12" style="font-size:15px; padding: 40px;">
+                                        <span class="text-left"><button id="ilke3btn"><i class="fa  fa-square push-5-r"
+                                                                                         style=" color:#005698">  </i>İlk 3'de:<b id="ilk3">  </b> <b>kilme</b> </button> </span>
+                                        <span class="text-left"><button id="ilke10btn"><i class="fa  fa-square push-5-r" style=" color:#16c800">  </i>İlk 10'de: <b id="ilk10">  </b> <b>kilme</b>  </button> </span>
+                                        <span class="text-left"><button id="ilke100btn"><i class="fa  fa-square push-5-r" style=" color:#cb0000">  </i>İlk 100'de: <b id="ilk100">  </b> <b>kilme</b> </button>  </span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- statustic and process start -->
                     <div class="col-lg-12 col-md-12">
-                        <div class="card">
+                        <div class="card whitebackground">
                             <div class="card-header">
                                 <h5>TAKİP EDİLEN WEB SİTELERİ</h5>
                                 @if($errors->any())
@@ -133,17 +129,15 @@
                                             <button class="btns btn-default" type="button" id="addNewSite"><i
                                                     class="fa fa-plus text-success"><span class="hidden-xs push-7-l">Site Ekle</span></i>
                                             </button>
-                                            <button class="btns btn-default" type="button" id="updateKeywords"><i
-                                                    class="fa fa-refresh text-primary"><span class="hidden-xs push-7-l">Kelimeleri Güncelle</span></i>
-                                            </button>
+                                           
                                         </div>
                                         <table class="table table-hover table-vcenter table-striped table-track">
                                             <thead>
                                             <tr>
                                                 <th scope="col">SİTELER</th>
-                                                <th scope="col">GÜNLÜK DEĞİŞİM</th>
+                                                <th class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</th>
                                                 <th scope="col">KELİMELER</th>
-                                                <th scope="col">delete</th>
+                                                <th class="hidden-xs" scope="col">delete</th>
                                             </tr>
                                             </thead>
                                             <tbody id="mysites" class="list">

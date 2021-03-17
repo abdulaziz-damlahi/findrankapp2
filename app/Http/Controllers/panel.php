@@ -22,7 +22,7 @@ class panel extends Controller
     {
         $user = auth()->user();
         $userId = $user->id;
-        $userwebsites8 = websites::where('user_id', '=', $userId)->take(4)->get();
+        $userwebsites8 = websites::where('user_id','=',$userId)->orderByDesc('wordcount')->take(3)->get();
         $userwebsites = websites::where('user_id', '=', $userId)->get();
          $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
          $userwebsitecount = websites::where('user_id', '=', $userId)->count();
@@ -30,7 +30,7 @@ class panel extends Controller
             $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
             websites::where('id', '=', $x)->where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
         }
-        return view('pages/panel/panel', compact('user', 'userwebsites8', 'user', 'userwebsites',));
+        return view('pages/panel/panel', compact('user', 'userwebsites8', 'user', 'userwebsites'));
     }
 
     public function addwebsite(Request $request)
