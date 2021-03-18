@@ -1,4 +1,6 @@
+
 $(document).ready(function() {
+
     $('#success_message').css('display','none');
     $('#error_message').css('display','none');
     if($('#button_third').hasClass('active')){
@@ -135,8 +137,7 @@ $(document).ready(function() {
             $('.personal_settings').show();
             $('.custumize').hide();
             $('.password_process').hide();
-        } else if($('#button_third').has
-            Class('active')){
+        } else if($('#button_third').hasClass('active')){
             $('.personal_settings').hide();
             $('.password_process').hide();
             $('.custumize').show();
@@ -262,8 +263,7 @@ $(document).ready(function() {
         today =  new_dd + "-" + '0'+new_mm  + "-" + yyyy;
         let ee =  Date.parse(today);
         let dateArray = today.split("-");
-        let dateObj = new Date(`${dateArray[2]}-${date
-        Array[1]}-${dateArray[0]}`);
+        let dateObj = new Date(`${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`);
         let deyt =   new Date(new_dd,new_mm,yyyy);
         var con_date =
             ""+deyt.getFullYear() + (deyt.getMonth()+1) + deyt.getDate(); //converting the date
@@ -367,8 +367,7 @@ $(document).ready(function() {
                 url: "http://127.0.0.1:8000/api/v1/Packets",
                 type: "GET",
                 headers: { "Content-Type": "application/vnd.api+json",
-                    Accept: "appl
-                    ication/vnd.api+json",
+                    Accept: "application/vnd.api+json",
             },
             success: function (result) {
             let count = result.data.length
