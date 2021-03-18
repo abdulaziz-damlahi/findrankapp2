@@ -1,3 +1,6 @@
+
+
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -15,10 +18,14 @@ class Packets extends Migration
     {
         Schema::create('packets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('count_of_words');
+            $table->integer('count_of_words');
+            $table->integer('max_count_of_words');
+            $table->integer('max_count_of_websites');
             $table->string('descrpitions');
             $table->date('end_of_pocket');
-            $table->string('count_of_websites');
+            $table->integer('count_of_websites');
+            $table->integer('rank_follow');
+            $table->integer('rank_follow_max');
             $table->string('packet_names');
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->foreign('user_id')
@@ -41,3 +48,6 @@ class Packets extends Migration
         //
     }
 }
+
+
+

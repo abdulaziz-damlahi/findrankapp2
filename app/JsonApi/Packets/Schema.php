@@ -36,6 +36,10 @@ class Schema extends SchemaProvider
             'descrpitions'=> $resource->descrpitions,
             'end_of_pocket'=> $resource->end_of_pocket,
             'started_of_pockets'=> $resource->created_at,
+            'rank_follow'=> $resource->rank_follow,
+            'rank_follow_max'=> $resource->rank_follow_max,
+            'max_count_of_words'=> $resource->max_count_of_words,
+            'max_count_of_websites'=> $resource->max_count_of_websites,
             'count_of_websites'=> $resource->count_of_websites,
             'packet_names'=> $resource->count_of_websites,
             'updatedAt' => $resource->updated_at,
@@ -60,3 +64,5 @@ class Schema extends SchemaProvider
 
 
 }
+
+

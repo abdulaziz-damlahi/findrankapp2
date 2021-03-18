@@ -1,3 +1,6 @@
+
+
+
 <?php
 
 namespace App\Models;
@@ -16,6 +19,10 @@ class packets extends Model
         'count_of_words',
         'descrpitions',
         'end_of_pocket',
+        'max_count_of_websites',
+        'rank_follow',
+        'rank_follow_max',
+        'max_count_of_words',
         'packet_names',
         'started_of_pockets',
         'count_of_websites',

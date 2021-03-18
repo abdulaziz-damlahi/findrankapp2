@@ -19,7 +19,7 @@ class Websites extends Migration
             $table->string('website_name');
             $table->integer('wordcount')->nullable();
             $table->unsignedBigInteger('user_id')->unsigned();
-            $table->unsignedBigInteger('website_to_keyword')->unsigned();
+            $table->unsignedBigInteger('website_to_keyword')->nullable();
             $table->foreign('website_to_keyword')
                 ->references('id')
                 ->on('keywords')->onDelete('cascade');
