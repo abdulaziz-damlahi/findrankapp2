@@ -172,11 +172,6 @@
         </form>
         <table class="table table-sm">
             <thead>
-            <tr>
-                <th>Statistics</th>
-                <th>#1</th>
-                <th>#2</th>
-            </tr>
             </thead>
             <tbody>
             @isset($result)

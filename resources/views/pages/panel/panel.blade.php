@@ -44,7 +44,6 @@
                                             <th scope="col">WEB SİTE / URL</th>
                                             <th scope="col">ANAHTAR KELİME</th>
                                             <th scope="col">SIRA</th>
-                                            <th class="hidden-xs" scope="col">DEĞİŞİM</th>
                                             <th class="hidden-xs" scope="col">GRAFİK</th>
                                         </tr>
                                         </thead>
@@ -103,8 +102,8 @@
                                 <div class="col-md-12" style="font-size:15px; padding: 40px;">
                                         <span class="text-left"><button id="ilke3btn"><i class="fa  fa-square push-5-r"
                                                                                          style=" color:#005698">  </i>İlk 3'de:<b id="ilk3">  </b> <b>kilme</b> </button> </span>
-                                        <span class="text-left"><button id="ilke10btn"><i class="fa  fa-square push-5-r" style=" color:#16c800">  </i>İlk 10'de: <b id="ilk10">  </b> <b>kilme</b>  </button> </span>
-                                        <span class="text-left"><button id="ilke100btn"><i class="fa  fa-square push-5-r" style=" color:#cb0000">  </i>İlk 100'de: <b id="ilk100">  </b> <b>kilme</b> </button>  </span>
+                                    <span class="text-left"><button id="ilke10btn"><i class="fa  fa-square push-5-r" style=" color:#16c800">  </i>İlk 10'de: <b id="ilk10">  </b> <b>kilme</b>  </button> </span>
+                                    <span class="text-left"><button id="ilke100btn"><i class="fa  fa-square push-5-r" style=" color:#cb0000">  </i>İlk 100'de: <b id="ilk100">  </b> <b>kilme</b> </button>  </span>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +176,7 @@
                                                     <th scope="col"><a
                                                             href="{{route('websitelist',$userwebsite->id)}}">{{ $userwebsite->website_name }}</a>
                                                     </th>
-                                                    <th scope="col">GÜNLÜK DEĞİŞİM</th>
+                                                    <th class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</th>
                                                     <th scope="col">{{ $userwebsite->wordcount}}</th>
                                                     <th scope="col"><a href='deletewebsite/{{ $userwebsite->id }}'
                                                                        class="fa fa-trash text-danger"></a></th>

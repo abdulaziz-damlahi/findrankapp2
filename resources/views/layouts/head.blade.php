@@ -70,7 +70,7 @@
 
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <!-- JavaScripts -->
-        <script src="{{asset('js')}}/vendors/modernizr.js"></script>
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- Favicon -->
         <!-- FontsOnline -->
@@ -82,7 +82,6 @@ egreya+Sans:400,500,700,800,900,300,100' rel='stylesheet' type='text/css'>
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen"/>
         <!-- JavaScripts -->
-        <script src="js/vendors/modernizr.js"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>

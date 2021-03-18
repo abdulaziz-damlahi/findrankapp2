@@ -1,6 +1,7 @@
-let pageNumber = 1;
-let currentPage2 = 1;
+
+
 $(document).ready(function () {
+    var pageNumber = 1;
     Statistics(pageNumber)
 })
 $("#nextPageButton").click(function () {
@@ -52,7 +53,6 @@ function Statistics(pageNumber) {
                                 "<td id=\"website\">" + websitename + "</td>" +
                                 "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
                                 "<td  id=\"rank\">  " + rank + "</td>" +
-                                "<td class='hidden-xs' id=\"DEĞİŞİM\"> DEĞİŞİM</td>" +
                                 "<td class='hidden-xs' id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
                             $('#row').append(str);
                         }

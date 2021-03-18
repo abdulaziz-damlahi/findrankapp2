@@ -32,7 +32,7 @@
             <div class="row">
 
                 <!-- About -->
-                <div class="col-md-4"> <img class="margin-bottom-30" src="images/logo-footer.png" alt="" >
+                <div class="col-md-4"> <img class="margin-bottom-30" src="" alt="" >
                     <p>Aoluptas sit aspernatur aut odit aut fugit, sed elits quias consequuntur magni dolores eos qui ratione volust  luptatem sequi nesciunt. .</p>
                     <ul class="personal-info">
                         <li><i class="fa fa-map-marker"></i> 10th Floor,Washington Square Park,

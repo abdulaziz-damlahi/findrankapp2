@@ -303,7 +303,7 @@ n sfb tp-resizeme font-crimson"
                 <span
                     class="intro-style">Do you want to Know How Your Websites Are Appearing On The Search Engine? </span>
             </div>
-            <div class="c"><img src="images/work-folow-img.jpg" alt=" "></div>
+            <div class="c"><img src="images/work-folow-img.jpg" style="padding-left: 120px" alt=" "></div>
             <ul class="row padding-left-50 padding-right-50" style=" text-align:center;">
                 <li class="col-sm-4">
                     <div class="icon"><img src="images/flow-icon-1.png" alt=""></div>

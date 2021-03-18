@@ -81,7 +81,7 @@
         <header class="header coporate-header">
             <div class="sticky">
                 <div class="container">
-                    <div class="logo"><a href="{{route("home")}}"><img src="images/logo.png" alt=""></a></div>
+                    <div class="logo"><a href="{{route("home")}}"><img src="" alt=""></a></div>
 
                     <!-- Nav -->
                     <nav>
@@ -91,10 +91,10 @@
 
                                 <li><a href="{{route("login")}}"> Login/Logout</a></li>
                             @endif
-                            <li><a href="{{route("findorder")}}">FIND-ORDER</a>
+                            <li><a id="findorder" href="{{route("findorder")}}">FIND-ORDER</a>
 
                             </li>
-                            <li><a href="{{route("panel")}}">PANEL</a>
+                            <li><a id="panelbtn" href="{{route("panel")}}">PANEL</a>
 
                             </li>
 
