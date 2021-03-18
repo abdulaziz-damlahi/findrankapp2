@@ -53,7 +53,7 @@
             <script rel="stylesheet" src="{{asset('js')}}/findorder.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/findorder.css">
         @endif
-        @if( $routeName === 'packets' ||$routeName ==='packets')
+        @if( $routeName === 'packets' )
             <script rel="stylesheet" src="{{asset('js')}}/packets.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
         @endif

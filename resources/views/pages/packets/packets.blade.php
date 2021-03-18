@@ -573,6 +573,10 @@
                         <input hidden  class="hidden_size">
                         <input hidden  class="id_hidden">
                         <input hidden  class="hidden_descrpitions">
+                        <input hidden  class="my_count_of_words">
+                        <input hidden  class="rank_follow">
+                        <input hidden  class="rank_follow_max">
+                        <input hidden  class="my_count_of_websites">
                         <input hidden  class="count_of_websites">
                         <input hidden  class="count_of_words">
                         <input hidden  class="packet_names">
