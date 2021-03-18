@@ -37,7 +37,7 @@
                                     <h5>Statistics</h5>
                                     <br>
                                     <br>
-                                    <table class="table">
+                                    <table class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%" style="font-size: 13px">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -49,6 +49,7 @@
                                         </thead>
                                         <tbody id="row">
 
+{{--                                            table content from js--}}
 
                                         <div id="myModal" class="modal">
                                             <!-- Modal content -->
@@ -101,9 +102,14 @@
 
                                 <div class="col-md-12" style="font-size:15px; padding: 40px;">
                                         <span class="text-left"><button id="ilke3btn"><i class="fa  fa-square push-5-r"
-                                                                                         style=" color:#005698">  </i>İlk 3'de:<b id="ilk3">  </b> <b>kilme</b> </button> </span>
-                                    <span class="text-left"><button id="ilke10btn"><i class="fa  fa-square push-5-r" style=" color:#16c800">  </i>İlk 10'de: <b id="ilk10">  </b> <b>kilme</b>  </button> </span>
-                                    <span class="text-left"><button id="ilke100btn"><i class="fa  fa-square push-5-r" style=" color:#cb0000">  </i>İlk 100'de: <b id="ilk100">  </b> <b>kilme</b> </button>  </span>
+                                                                                         style=" color:#005698">  </i>İlk 3'de:<b
+                                                    id="ilk3">  </b> <b>kilme</b> </button> </span>
+                                    <span class="text-left"><button id="ilke10btn"><i class="fa  fa-square push-5-r"
+                                                                                      style=" color:#16c800">  </i>İlk 10'de: <b
+                                                id="ilk10">  </b> <b>kilme</b>  </button> </span>
+                                    <span class="text-left"><button id="ilke100btn"><i class="fa  fa-square push-5-r"
+                                                                                       style=" color:#cb0000">  </i>İlk 100'de: <b
+                                                id="ilk100">  </b> <b>kilme</b> </button>  </span>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +136,8 @@
                                             </button>
 
                                         </div>
-                                        <table class="table table-hover table-vcenter table-striped table-track">
+                                        <table
+                                            class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
                                             <thead>
                                             <tr>
                                                 <th scope="col">SİTELER</th>
@@ -166,11 +173,11 @@
                                             </div>
                                             @foreach($userwebsites as $userwebsite)
                                                 <tr>
-                                                    <th  scope="col"><a
-                                                            href="{{route('websitelist',$userwebsite->id)}}">{{ $userwebsite->website_name }}</a>
+                                                    <th scope="col">
+                                                        <a href="{{route('websitelist',$userwebsite->id)}}"> <div id="colmun1" > {{ $userwebsite->website_name }}</div></a>
                                                     </th>
                                                     <td class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</td>
-                                                    <td scope="col">{{ $userwebsite->wordcount}}</td>
+                                                    <td scope="col"> {{ $userwebsite->wordcount}}</td>
                                                     <td scope="col"><a href='deletewebsite/{{ $userwebsite->id }}'
                                                                        class="fa fa-trash text-danger"></a></td>
                                                 </tr>

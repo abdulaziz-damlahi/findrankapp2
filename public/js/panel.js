@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
     var pageNumber = 1;
     Statistics(pageNumber)
@@ -50,10 +48,10 @@ function Statistics(pageNumber) {
 
                         if (wordsiteid == websiteid) {
                             var str = " <tr><th scope=\"row\">" + dataid + "</th>" +
-                                "<td id=\"website\">" + websitename + "</td>" +
-                                "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
-                                "<td  id=\"rank\">  " + rank + "</td>" +
-                                "<td class='hidden-xs' id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
+                                "<td id=\"colmun2\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto ' class='col-2'> <b> " + websitename + "</b></td>" +
+                                "<td id=\"ANAHTARKELİME\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto 'class='col-2'> " + word + "</td>" +
+                                "<td  id=\"rank\"class='col-2'>  " + rank + "</td>" +
+                                "<td class='hidden-xs col-2' id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
                             $('#row').append(str);
                         }
                     }
@@ -218,7 +216,7 @@ window.onload = function () {
                         les3 = les3 + 1;
                         var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
                             "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
-                            "<td id=\"rank\">  " + rank + "</td>"+
+                            "<td id=\"rank\">  " + rank + "</td>" +
                             "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
                         $('#ilk3table').append(str);
                     }
@@ -226,7 +224,7 @@ window.onload = function () {
                         les10 = les10 + 1;
                         var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
                             "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
-                            "<td id=\"rank\">  " + rank + "</td>"+
+                            "<td id=\"rank\">  " + rank + "</td>" +
                             "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
                         $('#ilk10table').append(str);
 
@@ -235,7 +233,7 @@ window.onload = function () {
                         les100 = les100 + 1;
                         var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
                             "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
-                            "<td id=\"rank\">  " + rank + "</td>"+
+                            "<td id=\"rank\">  " + rank + "</td>" +
                             "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
                         $('#ilk100table').append(str);
                     }
@@ -358,3 +356,18 @@ window.addEventListener('load', (event) => {
         }
     }
 });
+
+$(document).ready(function () {
+    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        var colmun1 = document.getElementById("colmun1");
+
+        colmun1.style.maxWidth = "150px";
+        colmun1.style.overflowWrap = "break-word";
+        colmun1.style.overflow = "auto";
+
+    }
+
+})
+$(document).ready(function () {
+
+})

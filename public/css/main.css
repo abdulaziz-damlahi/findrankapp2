@@ -1620,3 +1620,9 @@ header.is-fixed{position:fixed;}
     width: 220px;
     text-transform: uppercase;
 }
+.contact_container{
+    height: 540px;
+}
+.contactForm{
+    width: 200px;
+}

@@ -112,12 +112,15 @@ class panel extends Controller
 
     public function findPost(Request $request)
     {
+
+
         $colonial_name = $request->hidden_collonial_name;
         $device_information = $request->hidden_device_name;
         $website_request = $request->website;
         $keyword_request = $request->keyword;
         $language = $request->language_name;
         $ch = curl_init();
+
         $keywords = "hemengeliriz.com/";
         $aranansite = "https://www.hemengeliriz.com/";
         $aranan = urlencode($keyword_request);
@@ -364,10 +367,12 @@ class panel extends Controller
             CURLOPT_USERAGENT => $device_information,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_SSL_VERIFYPEER => false,
         ]);
         $response = curl_exec($ch);
         preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)</div>@', $response, $resultss);
-
+        echo($response);
         foreach ($resultss as $result) {
             print_r($result);
 
@@ -381,20 +386,7 @@ class panel extends Controller
             'pages/findorder', compact('result', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
     }
 
-    public function findPost_T(Request $request)
-    {
 
-
-        $colonial_name = $request['colonial_name'];
-        return response()->json([
-            'message' => 'veri geldi',
-            "website" => $request['website'],
-            "keyword" => $request['keyword'],
-            "language" => $request['language'],
-            "location name" => $colonial_name,
-        ], 200);
-
-    }
     public function  userspacket()
     {
         $user = users::find(2);
