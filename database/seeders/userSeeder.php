@@ -32,20 +32,7 @@ class userSeeder extends Seeder
                 'password' => bcrypt(123456789),
             ],
         ],);
-  'first_name'=>'Barış',
-  'last_name'=>'Çeliker',
-  'phone'=>'5375751554',
-  'company_name'=>'',
-  'company_email'=>'',
-  'company_logo'=>'',
-  'email'=>'td21brs14@hotmail.com',
-  'password'=>bcrypt(5456465),
-    ],[
-            'first_name'=>'Barış',
-            'last_name'=>'Çeliker',
-            'phone'=>'5375751554',
-            'email'=>'eeee',
-            'password'=>bcrypt('eeee'),
-        ]);
+
+
     }
 }
