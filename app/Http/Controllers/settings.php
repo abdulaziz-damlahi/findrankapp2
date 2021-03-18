@@ -53,7 +53,7 @@ public function store_password(Request $request){
     $phone = $bune->phone;
     $mail = $bune->email;
     if($bune->password=$request->password_now){
-        $bune->password=$request->new_password;
+        $bune->password=bcrypt($request->new_password);
         $bune->save();
     }
     else{
