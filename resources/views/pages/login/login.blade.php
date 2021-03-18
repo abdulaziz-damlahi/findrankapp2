@@ -2,6 +2,7 @@
 @section('content')
 
     <div id="login_container" class="container my-5 py-5">
+
     <form class="user" id="loginForm" method="post" action="{{route('login.post')}}">
         @csrf
         @if($errors->any())

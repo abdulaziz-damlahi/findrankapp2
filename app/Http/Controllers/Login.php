@@ -58,17 +58,29 @@ class Login extends Controller
             ], 200);
         }
     }
-
     public function registerPost(Request $request)
     {
-        users::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
-        return redirect()->route('login')->with('success', 'success messages');
+        $dene = users::all();
+        foreach ($dene as $burasi){
+            echo $burasi;
+            if($request->email===$burasi->email){
+                echo $request->email;
+                echo $burasi->email;
+                 echo "veri döndü";
+
+            }
+            else{
+                users::create([
+                    'first_name' => $request->first_name,
+                    'last_name' => $request->last_name,
+                    'phone' => $request->phone,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+
+                ]);
+            }
+        }
+        return redirect()->route('login')->withErrors('Bu email kullanımda');
 
     }
 

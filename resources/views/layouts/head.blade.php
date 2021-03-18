@@ -4,9 +4,7 @@
         @php
             $routeName = Route::getCurrentRoute()->getName();
         @endphp
-        @toastr_css
-        @toastr_js
-        @toastr_render
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="M_Adnan" />
@@ -35,8 +33,16 @@
 
         @endif
         @if($routeName === 'panel')
+            <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
-        @endif   @if($routeName === 'packets')
+        @endif
+
+        @if($routeName === 'websitelist')
+            <script rel="stylesheet" src="{{asset('js')}}/websitelist.js"></script>
+            <link rel="stylesheet" type="text/css" href="{{asset('css')}}/websitelist.css">
+        @endif
+
+        @if($routeName === 'packets')
             <script rel="stylesheet" src="{{asset('js')}}/packets.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
 
@@ -53,35 +59,23 @@
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/settings.css">
             <script rel="stylesheet" src="{{asset('js')}}/settings.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen" />
-
         @endif
         @if($routeName === 'login')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/login.css">
         @endif
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/responsive.css">
-        @toastr_css
-        @toastr_js
-        @toastr_render
-
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
-
         <!-- JavaScripts -->
         <script src="{{asset('js')}}/vendors/modernizr.js"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-
         <!-- Favicon -->
-
         <!-- FontsOnline -->
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800,900,300,100' rel='stylesheet' type='text/css'>
-
-
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen" />
-
         <!-- JavaScripts -->
         <script src="js/vendors/modernizr.js"></script>
-
     </head>
 @endsection

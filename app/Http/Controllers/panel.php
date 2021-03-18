@@ -104,6 +104,7 @@ class panel extends Controller
     public function FindOrder()
 
     {
+
         return view(
             'pages/findorder');
     }
@@ -113,7 +114,12 @@ class panel extends Controller
     public function findPost(Request $request)
     {
 
-
+        $packets = packets::all();
+        $countrank= $packets[0]->rank_follow;
+        $rank_follow_max= $packets[0]->rank_follow_max;
+        if($rank_follow_max==$countrank){
+     echo "hakkınız yok";
+    }else{
         $colonial_name = $request->hidden_collonial_name;
         $device_information = $request->hidden_device_name;
         $website_request = $request->website;
@@ -377,13 +383,11 @@ class panel extends Controller
             print_r($result);
 
 
-
         }
         curl_close($ch);
-
-
+    }
         return view(
-            'pages/findorder', compact('result', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+            'pages/findorder', compact('rank_follow_max','countrank','packets','result', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
     }
 
 

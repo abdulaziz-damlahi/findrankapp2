@@ -81,7 +81,7 @@
         <header class="header coporate-header">
             <div class="sticky">
                 <div class="container">
-                    <div class="logo"><a href="{{route("home")}}"><img src="" alt=""></a></div>
+                    <div class="logo"><a href="{{route("home")}}"><img src="{{asset('images')}}/logo.png" alt=""></a></div>
 
                     <!-- Nav -->
                     <nav>
