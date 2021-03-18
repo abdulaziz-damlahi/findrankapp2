@@ -164,22 +164,15 @@
 
 
                                             </div>
-
-                                            {{-- ilk modal--}}
-
-
-
-
-
                                             @foreach($userwebsites as $userwebsite)
                                                 <tr>
-                                                    <th scope="col"><a
+                                                    <th  scope="col"><a
                                                             href="{{route('websitelist',$userwebsite->id)}}">{{ $userwebsite->website_name }}</a>
                                                     </th>
-                                                    <th class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</th>
-                                                    <th scope="col">{{ $userwebsite->wordcount}}</th>
-                                                    <th scope="col"><a href='deletewebsite/{{ $userwebsite->id }}'
-                                                                       class="fa fa-trash text-danger"></a></th>
+                                                    <td class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</td>
+                                                    <td scope="col">{{ $userwebsite->wordcount}}</td>
+                                                    <td scope="col"><a href='deletewebsite/{{ $userwebsite->id }}'
+                                                                       class="fa fa-trash text-danger"></a></td>
                                                 </tr>
                                             @endforeach
 

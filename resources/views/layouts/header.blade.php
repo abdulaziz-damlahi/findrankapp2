@@ -91,10 +91,10 @@
 
                                 <li><a href="{{route("login")}}"> Login/Logout</a></li>
                             @endif
-                            <li><a id="findorder" href="{{route("findorder")}}">FIND-ORDER</a>
+                            <li><a href="{{route("findorder")}}">FIND-ORDER</a>
 
                             </li>
-                            <li><a id="panelbtn" href="{{route("panel")}}">PANEL</a>
+                            <li><a href="{{route("panel")}}">PANEL</a>
 
                             </li>
 

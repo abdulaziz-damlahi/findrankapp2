@@ -21,11 +21,7 @@ class packets extends Controller
         $ippp = '2.16.7.255';
         $ippamerica= '1.32.232.0';
         $tr='78.180.10.189';
-<<<<<<< HEAD
         $geo = geoip()->getLocation('78.180.10.189');
-=======
-        $geo = geoip()->getLocation('1.32.232.0');
->>>>>>> yedek2
         $localiton=  $geo->iso_code;
         $packets_reel = packets_reels::all();
         $pack = $packets_reel->take(1)->first();
@@ -83,17 +79,17 @@ class packets extends Controller
             $base_moeny='€';
 
             $locale = App::getLocale();
-        }else if($localiton==='DE'){
+        }else if($localiton==='DE') {
             $lang = 'de';
             App::setlocale($lang);
-            $base_moeny='€';
-            $money_value=$arr_result->rates->EUR;
-            $money_new_value = $money1*$money_value;
-            $money_new_value1 = $money*$money_value;
-            $money_new_value2 = $money2*$money_value;
-            $round_new  = round($money_new_value);
-            $round_new1  = round($money_new_value1);
-            $round_new2  = round($money_new_value2);
+            $base_moeny = '€';
+            $money_value = $arr_result->rates->EUR;
+            $money_new_value = $money1 * $money_value;
+            $money_new_value1 = $money * $money_value;
+            $money_new_value2 = $money2 * $money_value;
+            $round_new = round($money_new_value);
+            $round_new1 = round($money_new_value1);
+            $round_new2 = round($money_new_value2);
 
             $locale = App::getLocale();
         }

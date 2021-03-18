@@ -141,9 +141,7 @@ function proceed() {
 /*-----------------------------------------------------------------------------------
        header
 /*-----------------------------------------------------------------------------------*/
-let click;
-click = 0;
-
+let click= 0;
 function openNav() {
     if (click == 0) {
         document.getElementById("mySidebar").style.width = "330px";
@@ -179,7 +177,7 @@ var x = location.href;
 if (x != 'http://127.0.0.1:8000/') {
     document.getElementById("notch").style.display = "none";
 } else {
-    document.getElementById("openbtn").remove();
+        document.getElementById("openbtn").remove();
     document.getElementById("findorder").remove();
     document.getElementById("panelbtn").remove();
 }

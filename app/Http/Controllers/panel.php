@@ -109,6 +109,7 @@ class panel extends Controller
     }
 
 
+
     public function findPost(Request $request)
     {
         $colonial_name = $request->hidden_collonial_name;
@@ -356,7 +357,7 @@ class panel extends Controller
         echo "colonial base64 = " . $ne . "<br>";
         echo "birleşmiş base64 = " . $yeni . "<br>";
 
-        $degise = 'https://www.wikipedia.org/';
+        $degise = 'https://www.google.com/search?ie=UTF-8&oe=UTF-8&hl=' . $len . '&num=100&q=' . $kelime . '&uule=w+CAIQICI' . $yeni;
         echo "url : " . $degise;
         curl_setopt_array($ch, [
             CURLOPT_URL => $degise,
@@ -365,12 +366,10 @@ class panel extends Controller
             CURLOPT_FOLLOWLOCATION => true,
         ]);
         $response = curl_exec($ch);
-        echo "<br>";
-        var_dump($response);
         preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)</div>@', $response, $resultss);
 
         foreach ($resultss as $result) {
-
+            print_r($result);
 
 
 
@@ -379,7 +378,22 @@ class panel extends Controller
 
 
         return view(
-            'pages/findorder', compact('result', 'response','degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+            'pages/findorder', compact('result', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+    }
+
+    public function findPost_T(Request $request)
+    {
+
+
+        $colonial_name = $request['colonial_name'];
+        return response()->json([
+            'message' => 'veri geldi',
+            "website" => $request['website'],
+            "keyword" => $request['keyword'],
+            "language" => $request['language'],
+            "location name" => $colonial_name,
+        ], 200);
+
     }
     public function  userspacket()
     {
