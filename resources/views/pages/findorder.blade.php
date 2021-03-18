@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('content')
-    <section class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-100 padding-right-100"
-             style="background-color: lightblue; ">
+<div >
+    <section  class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-75 padding-right-75"
+             style="padding-left:200px!important;background-color: #efefef; ">
 
         <br class="container" style="padding-right: 500px; padding-left:500px; ">
         <!-- Tittle -->
@@ -162,6 +163,7 @@
                     </div>
                 </div>
             </div>
+
             <input hidden name="hidden_collonial_name" id="hidden_collonial" />
             <input hidden name="hidden_device_name" id="hidden_device" />
             <input hidden name="language_name" id="language_hidden" />
@@ -170,25 +172,36 @@
                 <button id="check_now"type="submit" class="btn btn-orange">Check Now !</button>
             </div>
         </form>
-        <table class="table table-sm">
-            <thead>
-            </thead>
-            <tbody>
-            @isset($result)
-                @foreach ($result as $key=>$itemm)
+        @isset($resultss)
+            <table class="table table-sm">
+                <thead>
+                <tr>
+                    <th>Sırası</th>
+                    <th>Siteler</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                @foreach ($resultss as $key=>$result)
                     <tr>
                         <td>{{ $key }}</td>
-                        <td>{{ $itemm }}</td>
+                        <td>{{ $result[1] }}
+                            @if(strpos($result[1],$website_request) !== false)
+                                burası aradığınız eleman
+                            @endif
+                        </td>
+
+
                     </tr>
                 @endforeach
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
         @endisset
 
 
     </section>
 
-
+</div>
 
 @endsection
