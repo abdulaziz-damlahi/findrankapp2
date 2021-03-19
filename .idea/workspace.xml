@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f067c307-ba7a-421d-a7d0-585f050ebd1d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/panel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/findorder.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/findorder.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/findorder.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/findorder.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/rank_follow.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/rank_follow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,6 +249,10 @@
           <url>file://$PROJECT_DIR$/app/Http/Controllers/panel.php</url>
           <line>421</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/database/seeders/keyword.php</url>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

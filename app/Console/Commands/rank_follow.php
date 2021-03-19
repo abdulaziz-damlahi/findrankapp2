@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
+use App\Models\websites;
+use App\Models\keywords;
+use Illuminate\Support\Facades\DB;
 class rank_follow extends Command
 {
     /**
@@ -11,7 +13,7 @@ class rank_follow extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'rank_follow:name';
 
     /**
      * The console command description.
@@ -37,6 +39,24 @@ class rank_follow extends Command
      */
     public function handle()
     {
-        return 0;
+    //  $keywords = keywords::get()->id;
+        $keywords = keywords::all();
+        $websites = websites::get('id');
+   //   $websie=  DB::table('websites')->find();
+        foreach ($websites as $website_id) {
+            $this->info($website_id);
+            $userkeywordcount = keywords::where('website_id', '=', $website_id->id)->get('name','id');
+            $userkeywordcounid2 = keywords::where('website_id', '=', $website_id->id)->get('id');
+            $this->info($userkeywordcount);
+        }
+     //   $websites2 = keywords::find($websites->id);
+
+     //   $userkeywordcount = keywords::where('website_id', '=', $websites)->get('name');
+
+        //   $this->info($userkeywordcount);
+        /*
+
+*/
+
     }
 }

@@ -28,7 +28,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('packeets:online')->dailyAt('12 ');
+        $schedule->command('packeets:online')->monthly('12 ');
+        $schedule->command('rank_follow:online')->everyMinute();
 
     }
 
