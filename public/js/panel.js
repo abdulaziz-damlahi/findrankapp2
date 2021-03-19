@@ -1,24 +1,26 @@
 $(document).ready(function () {
     var pageNumber = 1;
-    Statistics(pageNumber)
+    Statistics();
+    getcount();
+    Statistics2(pageNumber);
 })
 $("#nextPageButton").click(function () {
     pageNumber = currentPage2;
 
     pageNumber = pageNumber + 1;
-    Statistics(pageNumber);
+    Statistics2(pageNumber);
 });
 
 $("#prevPageButton").click(function () {
     pageNumber = currentPage2;
     pageNumber = pageNumber - 1;
-    Statistics(pageNumber);
+    Statistics2(pageNumber);
 });
 
-function Statistics(pageNumber) {
+function Statistics2(pageNumber) {
     $.ajax({
         type: 'get',
-        url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website&page[number]=" + pageNumber + "&page[size]=10",
+        url: "/api/v1/Keywords/?include=website&page[number]=" + pageNumber + "&page[size]=10",
         success: function (response) {
             $('#row').html("")
             //len keyword
@@ -139,7 +141,7 @@ function Statistics(pageNumber) {
 
             $(".pagination-buttons").click(function () {
                 pageNumber = $(this).data('id');
-                Statistics(pageNumber);
+                Statistics2(pageNumber);
             });
             //convert date start here
             var CurrentData = response['data'];
@@ -195,7 +197,7 @@ window.onload = function () {
 
     $.ajax({
         type: 'get',
-        url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website",
+        url: "/api/v1/Keywords/?include=website",
         success: function (response) {
 
             var len = 0;
@@ -368,32 +370,72 @@ $(document).ready(function () {
     }
 
 })
-$(document).ready(function () {
-
-})
 
 
-function websitefollowed() {
+function Statistics() {
     $.ajax({
         type: 'get',
-        url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website",
+        url: "/api/v1/Websites",
         success: function (response) {
-            $('#row').html("")
-            //len keyword
+            var keywordcount = 0;
             var len = 0;
             if (response['data'] != null) {
-                len = response['included'].length;
+                len = response['data'].length;
             }
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
-                    var websitename = response['included'][i].attributes.website_name
-                    var str = "<tr><th scope='col'><a href=''><div id='colmun1'></div>"+websitename+"</a></th>"+
-                        "<td className='hidden-xs' scope='col' >GÜNLÜK DEĞİŞİM</td>"+
-                        "<td scope='col'></td>"+
-                        "<td scope='col'><a className='fa fa-trash text-danger'></a></td></tr>";
+                    var wordcounthtml='wordcounthtml'+i;
+                    console.log(wordcounthtml)
+                    var websitename = response['data'][i].attributes.website_name
+                    var websiteid = response['data'][i].id
+                    var str = "<tr><th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websitename + "</a></th>" +
+                        "<td class='hidden-xs' scope='col' >GÜNLÜK DEĞİŞİM</td>" +
+                        "<td scope='col' id=" + wordcounthtml + "></td>" +
+                        "<td scope='col'><a href=deletewebsite/" + websiteid + " class='fa fa-trash text-danger'></a></td></tr>";
                     $('#followedWebsites').append(str);
+
                 }
             }
         }
     })
 }
+
+function getcount() {
+    $.ajax({
+        type: 'get',
+        url: "/api/v1/Keywords/?include=website",
+        success: function (response) {
+            //len websites
+
+            var len1 = 0;
+            if (response['included'] != null) {
+                len1 = response['included'].length;
+            }
+            //len keyword
+            var len2 = 0;
+            if (response['data'] != null) {
+                len2 = response['data'].length;
+            }
+
+            if (len1 > 0) {
+                for (var i1 = 0; i1 < len1; i1++) {
+                    var wordcount = 0;
+                    var websiteid = response['included'][i1].id
+                    console.log(websiteid)
+                    for (var i2 = 0; i2 < len2; i2++) {
+                        var keywordwebsiteid = response['data'][i2].attributes.website_id
+                        if (websiteid == keywordwebsiteid) {
+                            wordcount++
+                        }
+                    }
+                    var wordcounthtml='wordcounthtml'+i1;
+                    console.log(wordcounthtml)
+                    console.log(wordcount)
+                  $('#wordcounthtml'+i1).append(wordcount);
+                }
+            }
+        }
+    });
+}
+
+
