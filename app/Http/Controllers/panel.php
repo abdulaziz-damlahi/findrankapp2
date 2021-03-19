@@ -23,13 +23,13 @@ class panel extends Controller
 
         $userId = $user->id;
         $userwebsites8 = websites::where('user_id','=',$userId)->orderByDesc('wordcount')->take(3)->get();
-//        $userwebsites = websites::where('user_id', '=', $userId)->get();
-//         $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
-//         $userwebsitecount = websites::where('user_id', '=', $userId)->count();
-//        for ($x = 1; $x < $userkeywordcount; $x++) {
-//            $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
-//            websites::where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
-//        }
+        $userwebsites = websites::where('user_id', '=', $userId)->get();
+         $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
+         $userwebsitecount = websites::where('user_id', '=', $userId)->count();
+        for ($x = 1; $x < $userkeywordcount; $x++) {
+            $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
+            websites::where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
+        }
         return view('pages/panel/panel', compact('user', 'userwebsites8'));
     }
 

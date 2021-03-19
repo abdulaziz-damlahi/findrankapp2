@@ -156,7 +156,6 @@ function Statistics2(pageNumber) {
     });
 }
 
-
 // popup chart
 window.addEventListener('load', (event) => {
 
@@ -384,14 +383,13 @@ function Statistics() {
             }
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
-                    var wordcounthtml='wordcounthtml'+i;
-                    console.log(wordcounthtml)
+                    var wordcounthtml = 'wordcounthtml' + i;
                     var websitename = response['data'][i].attributes.website_name
                     var websiteid = response['data'][i].id
                     var str = "<tr><th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websitename + "</a></th>" +
                         "<td class='hidden-xs' scope='col' >GÜNLÜK DEĞİŞİM</td>" +
-                        "<td scope='col' id=" + wordcounthtml + "></td>" +
-                        "<td scope='col'><a href=deletewebsite/" + websiteid + " class='fa fa-trash text-danger'></a></td></tr>";
+                        "<td  +scope='col' ></td>" +
+                        "<td scope='col'><a id='randomm'href=deletewebsite/" + websiteid + " class='fa fa-trash text-danger'></a></td></tr>";
                     $('#followedWebsites').append(str);
 
                 }
@@ -421,17 +419,68 @@ function getcount() {
                 for (var i1 = 0; i1 < len1; i1++) {
                     var wordcount = 0;
                     var websiteid = response['included'][i1].id
-                    console.log(websiteid)
+
                     for (var i2 = 0; i2 < len2; i2++) {
                         var keywordwebsiteid = response['data'][i2].attributes.website_id
                         if (websiteid == keywordwebsiteid) {
                             wordcount++
                         }
                     }
-                    var wordcounthtml='wordcounthtml'+i1;
-                    console.log(wordcounthtml)
+                    $.ajax({
+                        type: 'get', url: "/api/v1/Websites",
+                        success: function (response) {
+                            var length = 0;
+                            if (response['data'] != null) {
+                                length = response['data'].length;
+                            }
+
+                            if (length > 0) {
+                                for (var i3 = 0; i3 < length; i3++) {
+
+                                    type = response['data'][i3].type;
+                                    id = response['data'][i3].id;
+                                    createdAt = response['data'][i3].attributes.createdAt;
+                                    website_to_keyword = response['data'][i3].attributes.website_to_keyword;
+                                    updatedAt = response['data'][i3].attributes.updatedAt;
+                                    user_id = response['data'][i3].attributes.user_id
+                                    website_name = response['data'][i3].attributes.website_name;
+                                    // wordcount = response['data'][i3].attributes.wordcount;
+                                    console.log(website_name)
+                                    $.ajax({
+                                        url: "/api/v1/Websites",
+                                        type: "post",
+                                        headers: {
+                                            "Content-Type": "application/vnd.api+json",
+                                            Accept: "application/vnd.api+json",
+                                        },
+                                        data: JSON.stringify({
+                                            "data": {
+                                                "type": type,
+                                                "id": id,
+
+                                                "attributes": {
+                                                    "createdAt": createdAt,
+                                                    "updatedAt": updatedAt,
+                                                    "website_to_keyword": website_to_keyword,
+                                                    "user_id": user_id,
+                                                    "website_name": website_name,
+                                                }
+                                            }
+                                        }),
+                                        success: function (result) {
+                                            console.log('işlem başarılı')
+                                        }
+                                    });
+
+                                }
+                            }
+                        }
+                    })
                     console.log(wordcount)
-                  $('#wordcounthtml'+i1).append(wordcount);
+                    var wordcounthtml = 'wordcounthtml' + i1;
+
+                    $('#wordcounthtml' + i1).append(wordcount);
+
                 }
             }
         }
