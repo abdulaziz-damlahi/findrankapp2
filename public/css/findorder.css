@@ -5,6 +5,13 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+#alertMessage{
+    margin: auto;
+    width: 65%;
+    padding: 1px;
+    text-align: center;
+    margin-bottom: 10px;
+}
 .scrollable-menu {
     height: auto;
     max-height: 200px;

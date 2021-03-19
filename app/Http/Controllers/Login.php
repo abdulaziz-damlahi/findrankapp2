@@ -60,27 +60,27 @@ class Login extends Controller
     }
     public function registerPost(Request $request)
     {
-        $dene = users::all();
-        foreach ($dene as $burasi){
-            echo $burasi;
-            if($request->email===$burasi->email){
-                echo $request->email;
-                echo $burasi->email;
-                 echo "veri döndü";
+        $requstemail = $request->email;
+        $groupName = users::where('email', $request->email)->value('email');
+       if(isset($groupName)){
+           return redirect()->route('login')->withErrors('Bu email hesabı bulunmaktadır.');
 
-            }
-            else{
-                users::create([
-                    'first_name' => $request->first_name,
-                    'last_name' => $request->last_name,
-                    'phone' => $request->phone,
-                    'email' => $request->email,
-                    'password' => bcrypt($request->password),
 
-                ]);
-            }
-        }
-        return redirect()->route('login')->withErrors('Bu email kullanımda');
+       }
+       else{
+           users::create([
+               'first_name' => $request->first_name,
+               'last_name' => $request->last_name,
+               'phone' => $request->phone,
+               'email' => $request->email,
+               'password' => bcrypt($request->password),
+
+
+
+           ]);
+           return redirect()->route('login')->withSuccess('Üyelik Başarılı');
+       }
+
 
     }
 

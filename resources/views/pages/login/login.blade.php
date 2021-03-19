@@ -10,6 +10,11 @@
                 {{$errors->first()}}
             </div>
         @endif
+        @if(session('success'))
+            <div class="alert-success">
+                <h5>{{session('success')}}</h5>
+            </div>
+        @endif
         <label>
             <p class="label-txt">ENTER YOUR EMAIL</p>
             <input name="email" type="text" class="input">

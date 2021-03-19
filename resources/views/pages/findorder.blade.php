@@ -12,7 +12,11 @@
         <!-- Form -->
         <form method="post" action="{{route('findpost')}}">
             @csrf
-
+            @if($errors->any())
+                <div id="alertMessage" class="alert-danger">
+                   <h5>{{$errors->first()}}
+                </div>
+            @endif
             <ul class="row col-lg-12">
                 <li class="col-md-6">
                     <input type="text" name="website" class="form-control" placeholder="http://">
