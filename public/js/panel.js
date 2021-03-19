@@ -371,3 +371,29 @@ $(document).ready(function () {
 $(document).ready(function () {
 
 })
+
+
+function websitefollowed() {
+    $.ajax({
+        type: 'get',
+        url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website",
+        success: function (response) {
+            $('#row').html("")
+            //len keyword
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['included'].length;
+            }
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var websitename = response['included'][i].attributes.website_name
+                    var str = "<tr><th scope='col'><a href=''><div id='colmun1'></div>"+websitename+"</a></th>"+
+                        "<td className='hidden-xs' scope='col' >GÜNLÜK DEĞİŞİM</td>"+
+                        "<td scope='col'></td>"+
+                        "<td scope='col'><a className='fa fa-trash text-danger'></a></td></tr>";
+                    $('#followedWebsites').append(str);
+                }
+            }
+        }
+    })
+}
