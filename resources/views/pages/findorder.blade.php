@@ -13,7 +13,7 @@
         <form method="post" action="{{route('findpost')}}">
             @csrf
             @if($errors->any())
-                <div id="alertMessage" class="alert-danger">
+                <div class="alertMessage alert-danger">
                    <h5>{{$errors->first()}}
                 </div>
             @endif
@@ -177,6 +177,20 @@
             </div>
         </form>
         @isset($resultss)
+            @foreach ($resultss as $key=>$result)
+                @if(strpos($result[1],$website_request) !== false)
+                <div id="alert_color" class="alert alert-light" role="alert">
+                    Sorguladığınız site  {{$key}} sırada yer alıyor.
+                </div>
+                @endif
+            @endforeach
+                @if(strpos($result[1],$website_request) === false)
+                    <div id="alert_color" class="alert alert-light" role="alert">
+                        gelmedi
+                    </div>
+                @endif
+            <div class="container">
+                <div class="row">
             <table class="table table-sm">
                 <thead>
                 <tr>
@@ -185,22 +199,17 @@
                 </tr>
                 </thead>
                 <tbody>
-
-                @foreach ($resultss as $key=>$result)
+                    @foreach ($resultss as $key=>$result)
                     <tr>
                         <td>{{ $key }}</td>
                         <td>{{ $result[1] }}
-                            @if(strpos($result[1],$website_request) !== false)
-                                burası aradığınız eleman
-                            @endif
                         </td>
-
-
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-
+</div>
+</div>
         @endisset
 
 

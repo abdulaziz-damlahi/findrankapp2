@@ -95,6 +95,7 @@ class panel extends Controller
 
     public function profile()
     {
+
         return view(
             'pages/panel/profile');
     }
@@ -113,13 +114,15 @@ class panel extends Controller
 
     public function findPost(Request $request)
     {
-
-        $packets = packets::all();
+        $packets =  packets::all();
         if(count($packets)>0) {
+            $id = $packets[0]->id;
             $countrank = $packets[0]->rank_follow;
+            $new=$countrank+1;
+            echo $new;
             $rank_follow_max = $packets[0]->rank_follow_max;
             if ($rank_follow_max == $countrank) {
-                echo "hakkınız yok";
+                return redirect()->route('findorder')->withErrors('Paket hakkınız dolmuştur');
             } else {
                 $colonial_name = $request->hidden_collonial_name;
                 $device_information = $request->hidden_device_name;
@@ -378,15 +381,38 @@ class panel extends Controller
                     CURLOPT_SSL_VERIFYPEER => false,
                 ]);
                 $response = curl_exec($ch);
-                preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)</div>@', $response, $resultss);
-                foreach ($resultss as $result) {
+                if ($len === 'ar') {
 
+                    echo "girdi";
+                    if($device_information==='Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53'){
+                        preg_match_all('@<span class="Zu0yb UGIkD qzEoUe">(.*?)<span class="kbNtnf">(.*?)<\/span><\/span>@', $response, $resultss, PREG_SET_ORDER, 0);
+                    }
+                    else{
+                        echo 'buraya girer';
+                        preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx"><span dir="ltr">(.*?)</span><span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
+                    }
+                } else{
+                    if($device_information==='Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53'){
+                        preg_match_all('@<span class="Zu0yb UGIkD qzEoUe">(.*?)<span class="kbNtnf">(.*?)<\/span><\/span>@', $response, $resultss, PREG_SET_ORDER, 0);
+                        echo 'buraya girer2';
+
+                    }
+                    else {
+                        echo 'buraya girer2';
+
+                        preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)<span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
+                    }
+                }
+
+                foreach ($resultss as $key=>$result){
 
                 }
                 curl_close($ch);
+                packets::where('id',$id)->update(['rank_follow'=>$new]);
+                return view(
+                    'pages/findorder', compact('resultss','result','rank_follow_max','countrank','packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
             }
-            return view(
-                'pages/findorder', compact('rank_follow_max','countrank','packets','result', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+
         }
         else{
             $error_message = "paketiniz yok";
