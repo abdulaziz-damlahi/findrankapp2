@@ -33,10 +33,11 @@
         @endif
         @if($routeName === 'panel')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
-        @endif   @if($routeName === 'packets')
+            <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
+        @endif
+        @if($routeName === 'packets')
             <script rel="stylesheet" src="{{asset('js')}}/packets.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
-
         @endif
         @if($routeName === 'contact' || $routeName === 'contact.post')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/contact.css">
@@ -62,6 +63,5 @@
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen" />
         <!-- JavaScripts -->
-        <script src="js/vendors/modernizr.js"></script>
     </head>
 @endsection

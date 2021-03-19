@@ -137,6 +137,7 @@
 
                                         </div>
                                         <table
+                                            {{--  down table head--}}
                                             class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
                                             <thead>
                                             <tr>
@@ -146,7 +147,8 @@
                                                 <th class="hidden-xs" scope="col">delete</th>
                                             </tr>
                                             </thead>
-                                            <tbody id="mysites" class="list">
+                                            {{--   table body--}}
+                                            <tbody id="followedWebsites" class="list">
                                             <div id="myModal" class="modal">
                                                 <!-- Modal content -->
                                                 <div class="modal-content">
@@ -169,21 +171,14 @@
                                                     </button>
                                                 </div>
 
-
                                             </div>
-                                            @foreach($userwebsites as $userwebsite)
-                                                <tr>
-                                                    <th scope="col">
-                                                        <a href="{{route('websitelist',$userwebsite->id)}}"> <div id="colmun1" > {{ $userwebsite->website_name }}</div></a>
-                                                    </th>
-                                                    <td class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</td>
-                                                    <td scope="col"> {{ $userwebsite->wordcount}}</td>
-                                                    <td scope="col"><a href='deletewebsite/{{ $userwebsite->id }}'
-                                                                       class="fa fa-trash text-danger"></a></td>
-                                                </tr>
-                                            @endforeach
+
+
+
+
 
                                             </tbody>
+                                            {{--  down table body--}}
                                         </table>
                                         <!-- ilk3 Modal  -->
                                         <div id="ilk3modal" class="modal">

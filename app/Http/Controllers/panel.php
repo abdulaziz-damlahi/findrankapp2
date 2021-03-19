@@ -15,9 +15,6 @@ use Illuminate\Routing\Controller;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
-
-
 class panel extends Controller
 {
     public function index()
@@ -26,14 +23,14 @@ class panel extends Controller
 
         $userId = $user->id;
         $userwebsites8 = websites::where('user_id','=',$userId)->orderByDesc('wordcount')->take(3)->get();
-        $userwebsites = websites::where('user_id', '=', $userId)->get();
-         $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
-         $userwebsitecount = websites::where('user_id', '=', $userId)->count();
-        for ($x = 1; $x < $userkeywordcount; $x++) {
-            $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
-            websites::where('id', '=', $x)->where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
-        }
-        return view('pages/panel/panel', compact('user', 'userwebsites8', 'user', 'userwebsites'));
+//        $userwebsites = websites::where('user_id', '=', $userId)->get();
+//         $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
+//         $userwebsitecount = websites::where('user_id', '=', $userId)->count();
+//        for ($x = 1; $x < $userkeywordcount; $x++) {
+//            $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
+//            websites::where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
+//        }
+        return view('pages/panel/panel', compact('user', 'userwebsites8'));
     }
 
     public function addwebsite(Request $request)
@@ -371,7 +368,8 @@ class panel extends Controller
             CURLOPT_SSL_VERIFYPEER => false,
         ]);
         $response = curl_exec($ch);
-        preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)</div>@', $response, $resultss);
+        preg_match_all('@ <div class="BNeawe UPmit AP7Wnd">(.*?)</div>@', $response, $resultss);
+
         echo($response);
         foreach ($resultss as $result) {
             print_r($result);
