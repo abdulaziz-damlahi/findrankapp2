@@ -29,7 +29,7 @@ Route::prefix('user/')->middleware('isLogin')->group(function() {
 
 Route::get('/', 'App\Http\Controllers\homepage@index')->name('home');
 Route::get('/packets', 'App\Http\Controllers\packets@index')->name('packets');
-Route::post('/packets', 'App\Http\Controllers\packets@index')->name('packets');
+Route::post('/packets', 'App\Http\Controllers\payment@pay_post')->name('packets_post');
 Route::get('/contact', 'App\Http\Controllers\contact@index')->name('contact');
 Route::post('/contact', 'App\Http\Controllers\contact@post')->name('contact.post');
 

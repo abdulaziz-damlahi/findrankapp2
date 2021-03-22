@@ -198,6 +198,10 @@ $(document).ready(function() {
             url: "http://127.0.0.1:8000/api/v1/packets-reels/"+id,
             success: function (response) {
                 $(".price_packet").text(response.data.attributes.price+ " TL");
+                $(".input_price").text(response.data.attributes.price);
+                $(".input_price").val(response.data.attributes.price);
+                $(".input_id").val(response.data.id);
+                $(".input_id").text(response.data.id);
                 $("#total_price").text("Toplam : "+response.data.attributes.price+ " TL");
                 jQuery.each(response, function (i, val) {
                     jQuery.each(val, function (is, vall) {

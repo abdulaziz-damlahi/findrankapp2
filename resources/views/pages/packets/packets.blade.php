@@ -103,8 +103,9 @@
                         </li>
                     </ul>
                 </div>
-                <form class="invoice_records" method="post">
+                <form class="invoice_records" method="post" method="post" action="{{route('packets_post')}}">
                     @csrf
+                    <div id="iyzipay-checkout-form" class="responsive">
                     <br>
                     <div id="success_message" class="alert alert-success">
                         <strong>Ödeme Başarılı</strong>
@@ -138,27 +139,41 @@
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">FIRST NAME</p>
-                                <input id="first_name" type="text" class="input">
+                                <input name="First_name_institutional" id="first_name" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label> <label class="col-md-6">
                                 <p class="label-txt">LAST NAME</p>
-                                <input id="last_name" type="text" class="input">
+                                <input name="last_name_institutional" id="last_name" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
+
                             <label class="col-md-6">
                                 <p class="label-txt">Kimlik Numarası</p>
-                                <input id="number_personal" type="text" class="input">
+                                <input name="id_number" id="number_personal" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">Faturası Adresi</p>
-                                <input id="invoice_addresses" type="text" class="input">
+                                <input name="invoiceAdress_institutional" id="invoice_addresses" type="text" class="input">
+                                <div class="line-box">
+                                    <div class="line"></div>
+                                </div>
+                            </label>
+                            <label class="col-md-6">
+                                <p class="label-txt">Telefon Numarası</p>
+                                <input name="gsm_number_institutional" id="gsm_number" type="text" class="input">
+                                <div class="line-box">
+                                    <div class="line"></div>
+                                </div>
+                            </label>    <label class="col-md-6">
+                                <p class="label-txt">Email</p>
+                                <input name="email_institutional" id="email" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
@@ -166,13 +181,13 @@
 
                             <label class="col-md-6">
                                 <p class="label-txt">COUNTRY</p>
-                                <input id="country" type="text" class="input">
+                                <input name="country_information_institutional" id="country" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label> <label id="themostunder" class="col-md-6">
                                 <p class="label-txt">CITY</p>
-                                <input id="city" type="text" class="input">
+                                <input name="city_information_institutional" id="city" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
@@ -182,42 +197,56 @@
                         <div id="Bireyselfrom">
                             <label class="col-md-6">
                                 <p class="label-txt">FIRST NAMEss</p>
-                                <input id="firstt_namee" type="text" class="input">
+                                <input name="firstName_personal" id="firstt_namee" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">LAST NAME</p>
-                                <input id="last_namee" type="text" class="input">
+                                <input name="last_namee_personal" id="last_namee" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">IDENTIFICATION NUMBER</p>
-                                <input id="numberr" type="text" class="input">
+                                <input name="identification_number" id="numberr" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">Fatura Adresi</p>
-                                <input id="invoice_adresses" type="text" class="input">
+                                <input name="invoice_address_personal" id="invoice_adresses" type="text" class="input">
+                                <div class="line-box">
+                                    <div class="line"></div>
+                                </div>
+                            </label>
+                            <label class="col-md-6">
+                                <p class="label-txt">Telefon Numarası</p>
+                                <input name="gsm_number_personal" id="gsm_number" type="text" class="input">
+                                <div class="line-box">
+                                    <div class="line"></div>
+                                </div>
+                            </label>
+                            <label class="col-md-6">
+                                <p class="label-txt">Email</p>
+                                <input name="email_personal" id="email_personal" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">COUNTRY</p>
-                                <input id="countries" type="text" class="input">
+                                <input id="countries_personal" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-6">
                                 <p class="label-txt">CITY</p>
-                                <input id="cities" type="text" class="input">
+                                <input id="cities_personal" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
@@ -261,45 +290,13 @@
                                             Fatura Bilgileri
                                         </div>
 
-                                        <div id="corporate" class="hide">
-                                            <div class="form-group">
-                                                <div class="col-xs-12">
-                                                    <div class="form-material">
-                                                        <input class="form-control" id="invoice-company"
-                                                               name="data[invoice][company]" type="text"
-                                                               value="Hemen Geliriz Teknoloji Sanayi ve Ticaret A.Ş.">
-                                                        <label for="invoice-company">Firma Adı</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-xs-12">
-                                                    <div class="form-material">
-                                                        <input class="form-control" id="invoice-tax_no"
-                                                               name="data[invoice][tax_no]" type="text"
-                                                               value="4610816858">
-                                                        <label for="invoice-tax_no">Vergi No</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-xs-12">
-                                                    <div class="form-material">
-                                                        <input class="form-control" id="invoice-tax_office"
-                                                               name="data[invoice][tax_office]" type="text"
-                                                               value="İstiklal">
-                                                        <label for="invoice-tax_office">Vergi Dairesi</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-12">
                                                 <div class="form-material">
                                                     <input class="form-control" id="invoice-name"
-                                                           name="data[invoice][name]" type="text" value="Denizkan "
-                                                           required="">
+                                                           name="firstname" type="text" value="Denizkan "
+                                                         >
                                                     <label for="invoice-name">Adınız</label>
                                                 </div>
                                             </div>
@@ -308,8 +305,8 @@
                                             <div class="col-xs-12">
                                                 <div class="form-material">
                                                     <input class="form-control" id="invoice-lastname"
-                                                           name="data[invoice][lastname]" type="text" value="Erdoğan"
-                                                           required="">
+                                                           name="lastname" type="text" value="Erdoğan"
+                                                           >
                                                     <label for="invoice-lastname">Soyadınız</label>
                                                 </div>
                                             </div>
@@ -319,7 +316,7 @@
                                                 <div class="form-material">
                                                     <input class="form-control" id="invoice-idno"
                                                            name="data[invoice][idno]" type="text" value="33913884290"
-                                                           required="">
+                                                           >
                                                     <label for="invoice-idno">T.C Kimlik No</label>
                                                 </div>
                                             </div>
@@ -330,7 +327,7 @@
                                                     <input class="form-control" id="invoice-address"
                                                            name="data[invoice][address]" type="text"
                                                            value="Çiftlikköy mahallesi Mersin Üniversitesi kampüsü teknopark z06 yenişehir mersin"
-                                                           required="">
+                                                          >
                                                     <label for="invoice-address">Fatura Adresi</label>
                                                 </div>
                                             </div>
@@ -339,8 +336,8 @@
                                             <div class="col-xs-12">
                                                 <div class="form-material">
                                                     <input class="form-control" id="invoice-country"
-                                                           name="data[invoice][country]" type="text" value="Türkiye"
-                                                           required="">
+                                                           name="countryy" type="text"
+                                                           >
                                                     <label for="invoice-country">Ülke</label>
                                                 </div>
                                             </div>
@@ -349,8 +346,8 @@
                                             <div class="col-xs-12">
                                                 <div class="form-material">
                                                     <input class="form-control" id="invoice-city"
-                                                           name="data[invoice][city]" type="text" value="mersin"
-                                                           required="">
+                                                           name=cityy type="text"
+                                                           >
                                                     <label for="invoice-city">Şehir</label>
                                                 </div>
                                             </div>
@@ -378,7 +375,7 @@
                                                     <div class="form-material">
                                                         <input class="form-control" id="shipping-name"
                                                                name="data[shipping][name]" type="text"
-                                                               value="Denizkan ">
+                                                               >
                                                         <label for="shipping-name">Adınız</label>
                                                     </div>
                                                 </div>
@@ -388,7 +385,7 @@
                                                     <div class="form-material">
                                                         <input class="form-control" id="shipping-lastname"
                                                                name="data[shipping][lastname]" type="text"
-                                                               value="Erdoğan">
+                                                              >
                                                         <label for="shipping-lastname">Soyadınız</label>
                                                     </div>
                                                 </div>
@@ -408,7 +405,7 @@
                                                     <div class="form-material">
                                                         <input class="form-control" id="shipping-address"
                                                                name="data[shipping][address]" type="text"
-                                                               value="Çiftlikköy mahallesi Mersin Üniversitesi kampüsü teknopark z06 yenişehir mersin">
+                                                               >
                                                         <label for="shipping-address">Fatura Adresi</label>
                                                     </div>
                                                 </div>
@@ -531,14 +528,14 @@
                     <div id="form3">
                         <label class="col-md-12">
                             <p class="label-txt">Kart Üzerindeki Ad, Soyad:</p>
-                            <input type="text" class="input">
+                            <input name="card_first_last" type="text" class="input">
                             <div class="line-box">
                                 <div class="line"></div>
                             </div>
                         </label>
                         <label class="col-md-12">
                             <p class="label-txt">Kart Numarası:</p>
-                            <input type="number" class="input">
+                            <input name="card_number" type="number" class="input">
                             <div class="line-box">
                                 <div class="line"></div>
                             </div>
@@ -546,19 +543,19 @@
                         <div class="col-md-12">
                             <p class="label-txt">Kart Son Kullanma Tarihi:</p>
                             <label class="col-md-4">
-                                <input type="number" placeholder="Ay" class="input">
+                                <input name="Ay"type="number" placeholder="Ay" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-4">
-                                <input type="number" placeholder="Yil" class="input">
+                                <input name="Yil" type="number" placeholder="Yil" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-4">
-                                <input type="number" placeholder="CVV" class="input">
+                                <input name="CVC" type="number" placeholder="CVV" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
@@ -575,13 +572,14 @@
                         <input hidden  class="hidden_descrpitions">
                         <input hidden  class="my_count_of_words">
                         <input hidden  class="rank_follow">
+                        <input hidden name="input_price" class="input_price">
+                        <input hidden name="input_id" class="input_id">
                         <input hidden  class="rank_follow_max">
                         <input hidden  class="my_count_of_websites">
                         <input hidden  class="count_of_websites">
                         <input hidden  class="count_of_words">
                         <input hidden  class="packet_names">
                     </div>
-
                     <div id="form4">
                         <div class="success-page">
                             <h2>Payment Successful !</h2>
@@ -591,12 +589,14 @@
                     <p hidden id="hidden_word_count"></p>
                     <p hidden id="hidden_websites_count"></p>
                     <p hidden id="hidden_rank_follow"></p>
-                    <p hidden id="hidden_price"></p>
+                    <p name="hidden_price" hidden id="hidden_price"></p>
                     <p hidden id="hidden_created"></p>
                     <p hidden id="hidden_description"></p>
                     <p hidden id="hidden_name_packets"></p>
-
+                    </div>
+                    <button type="submit">button</button>
                 </form>
+
                 <button id="button_pay" type="submit">Ödeme Yap</button>
                 <button id="button_contact" type="submit">Önce</button>
                 <button id="button_contact2" type="submit">Sonra</button>

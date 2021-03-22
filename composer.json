@@ -13,13 +13,13 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "iyzico/iyzipay-php": "^2.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "nesbot/carbon": "^2.46",
         "stevebauman/location": "^6.1",
         "torann/currency": "^1.1",
         "torann/geoip": "^3.0"
-
     },
     "require-dev": {
         "cloudcreativity/json-api-testing": "^3.2",
