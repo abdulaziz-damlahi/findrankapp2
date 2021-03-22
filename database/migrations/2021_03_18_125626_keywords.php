@@ -20,6 +20,8 @@ class Keywords extends Migration
             Schema::create('keywords', function (Blueprint $table) {
                 $table->bigIncrements('id');
                 $table->string('name');
+                $table->string('device');
+                $table->string('location');
                 $table->integer('rank');
                 $table->unsignedBigInteger('website_id')->unsigned();
                 $table->unsignedBigInteger('user_id')->unsigned();

@@ -1,8 +1,9 @@
 $(document).ready(function () {
     var pageNumber = 1;
-    Statistics();
     getcount();
     Statistics2(pageNumber);
+    Statistics();
+    get();
 })
 $("#nextPageButton").click(function () {
     pageNumber = currentPage2;
@@ -42,12 +43,12 @@ function Statistics2(pageNumber) {
                     var dataid = response['data'][i].id
                     var rank = response['data'][i].attributes.rank
 
+
                     for (var i2 = 0; i2 < len2; i2++) {
 
                         var websiteid = response['included'][i2].id
                         var id_website = response['included'][i2].attributes.user_id
                         var websitename = response['included'][i2].attributes.website_name
-
                         if (wordsiteid == websiteid) {
                             var str = " <tr><th scope=\"row\">" + dataid + "</th>" +
                                 "<td id=\"colmun2\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto ' class='col-2'> <b> " + websitename + "</b></td>" +
@@ -371,34 +372,42 @@ $(document).ready(function () {
 })
 
 
-function Statistics() {
+function get() {
     $.ajax({
-        type: 'get',
-        url: "/api/v1/Websites",
+        url: "http://127.0.0.1:8000/api/v1/Websites",
+        type: "GET",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+
         success: function (response) {
-            var keywordcount = 0;
             var len = 0;
             if (response['data'] != null) {
                 len = response['data'].length;
             }
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
-                    var wordcounthtml = 'wordcounthtml' + i;
                     var websitename = response['data'][i].attributes.website_name
+                    var wordcount = response['data'][i].attributes.wordcount
                     var websiteid = response['data'][i].id
-                    var str = "<tr><th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websitename + "</a></th>" +
+                    var str = "<tr><th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websiteid + "</a></th>" +
+                        "<th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websitename + "</a></th>" +
                         "<td class='hidden-xs' scope='col' >GÜNLÜK DEĞİŞİM</td>" +
-                        "<td  +scope='col' ></td>" +
+                        "<td  +scope='col' >" + wordcount + "</td>" +
                         "<td scope='col'><a id='randomm'href=deletewebsite/" + websiteid + " class='fa fa-trash text-danger'></a></td></tr>";
                     $('#followedWebsites').append(str);
-
                 }
             }
+
         }
     })
 }
 
+
 function getcount() {
+
+
     $.ajax({
         type: 'get',
         url: "/api/v1/Keywords/?include=website",
@@ -417,69 +426,41 @@ function getcount() {
 
             if (len1 > 0) {
                 for (var i1 = 0; i1 < len1; i1++) {
-                    var wordcount = 0;
+                    var wordcount2 = 0;
                     var websiteid = response['included'][i1].id
-
+                    var type = response['included'][i1].type;
+                    var createdAt = response['included'][i1].attributes.createdAt;
+                    var updatedAt = response['included'][i1].attributes.updatedAt;
+                    var user_id = response['included'][i1].attributes.user_id
+                    var website_name = response['included'][i1].attributes.website_name;
+                    // wordcount = response['data'][i3].attributes.wordcount;
                     for (var i2 = 0; i2 < len2; i2++) {
                         var keywordwebsiteid = response['data'][i2].attributes.website_id
                         if (websiteid == keywordwebsiteid) {
-                            wordcount++
+                            wordcount2++
                         }
                     }
                     $.ajax({
-                        type: 'get', url: "/api/v1/Websites",
-                        success: function (response) {
-                            var length = 0;
-                            if (response['data'] != null) {
-                                length = response['data'].length;
-                            }
-
-                            if (length > 0) {
-                                for (var i3 = 0; i3 < length; i3++) {
-
-                                    type = response['data'][i3].type;
-                                    id = response['data'][i3].id;
-                                    createdAt = response['data'][i3].attributes.createdAt;
-                                    website_to_keyword = response['data'][i3].attributes.website_to_keyword;
-                                    updatedAt = response['data'][i3].attributes.updatedAt;
-                                    user_id = response['data'][i3].attributes.user_id
-                                    website_name = response['data'][i3].attributes.website_name;
-                                    // wordcount = response['data'][i3].attributes.wordcount;
-                                    console.log(website_name)
-                                    $.ajax({
-                                        url: "/api/v1/Websites",
-                                        type: "post",
-                                        headers: {
-                                            "Content-Type": "application/vnd.api+json",
-                                            Accept: "application/vnd.api+json",
-                                        },
-                                        data: JSON.stringify({
-                                            "data": {
-                                                "type": type,
-                                                "id": id,
-
-                                                "attributes": {
-                                                    "createdAt": createdAt,
-                                                    "updatedAt": updatedAt,
-                                                    "website_to_keyword": website_to_keyword,
-                                                    "user_id": user_id,
-                                                    "website_name": website_name,
-                                                }
-                                            }
-                                        }),
-                                        success: function (result) {
-                                            console.log('işlem başarılı')
-                                        }
-                                    });
-
+                        url: "/api/v1/Websites/" + websiteid,
+                        type: "PATCH",
+                        headers: {
+                            "Content-Type": "application/vnd.api+json",
+                            Accept: "application/vnd.api+json",
+                        },
+                        data: JSON.stringify({
+                            "data": {
+                                "type": "Websites",
+                                'id': websiteid,
+                                "attributes": {
+                                    "user_id": user_id,
+                                    "website_name": website_name,
+                                    "wordcount": wordcount2,
                                 }
                             }
-                        }
-                    })
-                    console.log(wordcount)
-                    var wordcounthtml = 'wordcounthtml' + i1;
+                        }),
 
-                    $('#wordcounthtml' + i1).append(wordcount);
+                    });
+
 
                 }
             }
@@ -487,4 +468,16 @@ function getcount() {
     });
 }
 
+function Statistics() {
+    $.ajax({
+        url: "/api/v1/Websites",
+        type: "GET",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+        success: function (response) {
+        }
+    })
+}
 

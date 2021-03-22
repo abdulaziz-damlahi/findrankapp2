@@ -28,7 +28,7 @@ class websites extends Model
         'user_id',
         'wordcount',
         'rank',
-        'website_to_keyword',
+
     ];
     public $timestamps = false;
 

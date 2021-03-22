@@ -141,6 +141,7 @@
                                             class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
                                             <thead>
                                             <tr>
+                                                <th scope="col">id</th>
                                                 <th scope="col">SİTELER</th>
                                                 <th class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</th>
                                                 <th scope="col">KELİMELER</th>
