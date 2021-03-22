@@ -60,6 +60,10 @@ class panel extends Controller
 
         $keyword = new keywords;
         $keyword->name = $request->keyword;
+        $keyword->country = $request->country;
+        $keyword->language = $request->language;
+        $keyword->device = $request->device;
+        $keyword->city = $request->city;
         $keyword->rank = 0;
         $keyword->website_id = $webid;
         $keyword->user_id = $userId;
@@ -74,6 +78,11 @@ class panel extends Controller
 
         DB::delete('delete from websites where id = ?', [$id]);
         return redirect('user/panel');
+    }
+
+    public function editkeyword($id)
+    {
+        return view('pages/websitelist/editkeyword', compact('id'));
     }
 
     public function deletekeyword($id)

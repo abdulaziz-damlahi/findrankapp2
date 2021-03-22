@@ -21,7 +21,9 @@ class Keywords extends Migration
                 $table->bigIncrements('id');
                 $table->string('name');
                 $table->string('device');
-                $table->string('location');
+                $table->string('country');
+                $table->string('language');
+                $table->string('city');
                 $table->integer('rank');
                 $table->unsignedBigInteger('website_id')->unsigned();
                 $table->unsignedBigInteger('user_id')->unsigned();

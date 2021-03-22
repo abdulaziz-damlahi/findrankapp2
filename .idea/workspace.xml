@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b3e79f4a-e71e-42ec-a8f2-6a0a7487f803" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/editkeyword.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/editkeyword.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/pages/websitelist/editkeyword.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/JsonApi/Websites/Schema.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/JsonApi/Websites/Schema.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/websites.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/websites.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_12_085306_websites.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_12_085306_websites.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/panel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/JsonApi/Keywords/Schema.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/JsonApi/Keywords/Schema.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_18_125626_keywords.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_18_125626_keywords.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/websitelist.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/websitelist.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/findorder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/findorder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/websitelist.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/websitelist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/panel/panel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/panel/panel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/websitelist/websitelist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/websitelist/websitelist.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,15 +176,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/findRankApp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.SQL" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\OEM\Documents\findRankApp\public\css" />
       <recent name="C:\Users\OEM\Documents\findRankApp\public\js" />
+      <recent name="C:\Users\OEM\Documents\findRankApp\public\css" />
       <recent name="C:\Users\OEM\Documents\findRankApp\resources\views\pages\websitelist" />
       <recent name="C:\Users\OEM\Documents\findRankApp\database\seeders" />
       <recent name="C:\Users\OEM\Documents\findRankApp\resources\views\pages" />
@@ -219,7 +224,8 @@
       <workItem from="1615986798274" duration="4857000" />
       <workItem from="1616133843273" duration="1858000" />
       <workItem from="1616135799584" duration="2653000" />
-      <workItem from="1616393119544" duration="14383000" />
+      <workItem from="1616393119544" duration="14990000" />
+      <workItem from="1616412293964" duration="16279000" />
     </task>
     <servers />
   </component>
