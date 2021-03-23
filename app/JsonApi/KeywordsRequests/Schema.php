@@ -2,6 +2,7 @@
 
 namespace App\JsonApi\KeywordsRequests;
 use App\JsonApi\Base\SchemaProvider;
+use App\Models\KeywordRequest;
 
 class Schema extends SchemaProvider
 {
@@ -9,7 +10,7 @@ class Schema extends SchemaProvider
     /**
      * @var string
      */
-    protected $resourceType = 'keywords-requests';
+    protected $resourceType = 'keywordsRequests';
 
     /**
      * @param \App\Models\KeywordsRequest $resource

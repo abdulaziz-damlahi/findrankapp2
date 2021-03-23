@@ -10,6 +10,16 @@ $(document).ready(function() {
   $('#form2').hide();
   $('#form3').hide();
   $('#form4').show();
+  let window_size =$( window ).width();
+
+  if(window_size<500){
+    $('#settingsForm').height(1000);
+
+  }else{
+    if($('.menuy ul li').eq(1).hasClass('active')){
+      $('#settingsForm').height(800);
+    }
+  }
   $('#success_message').css('display','none');
   $('#error_message').css('display','none');
   if($('#button_third').hasClass('active')){
@@ -21,6 +31,7 @@ $(document).ready(function() {
   $('#form3').hide();
   $('.kurumsal').hide();
   $( "#try_again" ).on( "click", function() {
+
     $('#packets_show').show();
     $('#button_contact').show();
     $('#button_contact2').show();
@@ -28,8 +39,6 @@ $(document).ready(function() {
     $('#form2').hide();
     $('#form3').hide();
     $('#form4').hide();
-    $('.menuy ul li').eq(3).removeClass('active');
-    $('.menuy ul li').eq(0).addClass('active');
 
 
   });
@@ -118,6 +127,12 @@ $(document).ready(function() {
       i--;
 
       if(i===0){
+        let window_size =$( window ).width();
+
+        if(window_size<500){
+          $('#settingsForm').height(1000);
+
+        }
         if($( '#kurumsal' ).prop( "checked" )==='false'){
           $('.kurumsal').hide();
           console.log($('.kurumsal').text());
@@ -131,6 +146,12 @@ $(document).ready(function() {
         $('#form4').hide();
       }
       else if(i===1){
+        let window_size =$( window ).width();
+
+        if(window_size<500){
+          $('#settingsForm').height(590);
+
+        }
         $('#button_contact2').css('display','inline');
         $('#invoice_type').css('display','none');
         $('.invoiceeetype').css('display','none');
@@ -143,6 +164,12 @@ $(document).ready(function() {
         $('#form2').height(300);
 
       }else if(i===2){
+        let window_size =$( window ).width();
+
+        if(window_size<500){
+          $('#settingsForm').height(899 );
+
+        }
         $('#button_contact2').css('display','inline');
 
         $('#form1').hide();
@@ -151,6 +178,12 @@ $(document).ready(function() {
         $('#form4').hide();
 
       }else if(i===3){
+        let window_size =$( window ).width();
+
+        if(window_size<500){
+          $('#settingsForm').height(500 );
+
+        }
         $('#button_contact2').css('display','inline');
 
         $('#form1').hide();

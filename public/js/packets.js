@@ -29,7 +29,6 @@ $(document).ready(function() {
         let window_size =$( window ).width();
         if(window_size<500){
             $('#settingsForm').height(1000 );
-
         }
     });
     $( "#bireysel" ).on( "click", function() {
@@ -129,12 +128,12 @@ $(document).ready(function() {
                 if($( '#kurumsal' ).prop( "checked" )==='false'){
                     $('.kurumsal').hide();
                     console.log($('.kurumsal').text());
-                    let window_size =$( window ).width();
 
-                    if(window_size<500){
-                        $('#settingsForm').height(1000 );
+                }
+                let window_size =$( window ).width();
 
-                    }
+                if(window_size<500){
+                    $('#settingsForm').height(1000);
 
                 }
                 $('#button_contact2').css('display','inline');

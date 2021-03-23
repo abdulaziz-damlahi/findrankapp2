@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class KeywordRequest extends Migration
+class CreateKeywordRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class KeywordRequest extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('KeywordRequest', function (Blueprint $table) {
+        Schema::create('keyword_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('rank');
             $table->unsignedBigInteger('keyword_id')->unsigned();
@@ -37,6 +36,6 @@ class KeywordRequest extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('keyword_requests');
     }
 }

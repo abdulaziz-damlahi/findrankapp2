@@ -6,7 +6,7 @@ use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use App\JsonApi\Base\AbstractAdapter;
-use App\Models\keywords;
+use App\Models\KeywordRequest;
 use Illuminate\Support\Facades\Auth;
 
 class Adapter extends AbstractAdapter
@@ -33,7 +33,7 @@ class Adapter extends AbstractAdapter
      */
     public function __construct(StandardStrategy $paging)
     {
-        parent::__construct(new \App\KeywordsRequest(), $paging);
+        parent::__construct(new \App\Models\KeywordRequest(), $paging);
     }
 
     /**
