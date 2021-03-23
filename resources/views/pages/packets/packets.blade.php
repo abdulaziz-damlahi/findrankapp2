@@ -107,11 +107,6 @@
                     @csrf
                     <div id="iyzipay-checkout-form" class="responsive">
                     <br>
-                    <div id="success_message" class="alert alert-success">
-                        <strong>Ödeme Başarılı</strong>
-                    </div>   <div id="error_message" class="alert alert-danger">
-                        <strong>Ödeme Başarısız</strong>
-                    </div>
                     <div id="form1">
                         <div class="invoiceeetype" id="invoice_type"><input id="kurumsal" type="radio" name="gender" value="Kurumsal"> Kurumsal
                             <input checked type="radio" id="bireysel" name="gender" value="Kurumsal"> Bireysel
@@ -497,13 +492,6 @@
                                     </tbody>
                                 </table>
 
-                                <div class="input-group col-xs-8">
-								<span class="input-group-btn">
-									<input type="search" class="form-control" style="max-width:150px"
-                                           placeholder="Kupon Kodu" id="couponCode" name="data[couponCode]">
-									<button class="btn btn-primary" type="button" id="applyCouponCode">Uygula</button>
-								</span>
-                                </div>
                             </div>
                             <!-- END Step 2 -->
 
@@ -582,7 +570,16 @@
                     </div>
                     <div id="form4">
                         <div class="success-page">
-                            <h2>Payment Successful !</h2>
+                            @isset($payment)
+                                @if ($payment['status'] === "success")
+                                    <h2 id="unSuccessMessage">{{$success_message}}</h2>
+                                    <a href="{{route('panel')}}" id="startTouse" >Kullanmaya Başla!</a>
+                                @else
+                                    <h2 id="unsuccesmessage">{{$success_message}}</h2>
+                                    <a id="try_again" >Tekrar Dene</a>
+                                @endif
+                            @endisset
+
                         </div>
                     </div>
                     <input hidden class="hidden">
@@ -594,10 +591,10 @@
                     <p hidden id="hidden_description"></p>
                     <p hidden id="hidden_name_packets"></p>
                     </div>
-                    <button type="submit">button</button>
+                    <button id="button_pay" type="submit">Ödeme Yap</button>
+
                 </form>
 
-                <button id="button_pay" type="submit">Ödeme Yap</button>
                 <button id="button_contact" type="submit">Önce</button>
                 <button id="button_contact2" type="submit">Sonra</button>
             </div>

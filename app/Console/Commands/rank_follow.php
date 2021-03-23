@@ -296,18 +296,19 @@ class rank_follow extends Command
                         CURLOPT_SSL_VERIFYPEER => false,
                     ]);
                     $response = curl_exec($ch);
-                    dd($response);
+                    echo 'deneme';
+
                     preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)<span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
                     if(!empty($resultss)){
 
                     foreach ($resultss as $keyyy=>$resultsaasda){
                         if(strpos($resultsaasda[1],$website_name) !== false){
                         echo $keyyy;
-                        echo 'gelmedi oh be ';
+                        echo 'gelmediOhBe';
                         }
                         else{
-                         echo  $keyyy;
-                         echo  'burası';
+                            echo  $degise;
+                         echo  $resultsaasda[1];
                         }
                     }
                    }else{

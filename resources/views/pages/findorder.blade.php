@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('content')
 <div >
-    <section  class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-75 padding-right-75"
-             style="padding-left:200px!important;background-color: #efefef; ">
+    <section id="general_find" class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-50 padding-right-50"
+             >
 
         <br class="container" style="padding-right: 500px; padding-left:500px; ">
         <!-- Tittle -->
@@ -29,7 +29,7 @@
             <div class="row col-lg-12">
                 <div class="btn-group col-md-3 ">
                     <div class="btn-group">
-                        <select id="selectSecil" class="select">
+                        <select id="selectSecil" class="GoogleRank select">
                             <option class="select">
                                 Ülke
                             </option>

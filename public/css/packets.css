@@ -39,6 +39,55 @@
      transition: ease .3s;
      background: #ff6c3a;
      color: white;
+ }#unSuccessMessage{
+    margin-bottom:30px;
+   }#unsuccesmessage{
+    margin-bottom:30px;
+   }
+#try_again {
+     cursor: pointer;
+     transition: ease .3s;
+     background: #ff6c3a;
+     color: white;
+     float: right;    display: none;
+     padding: 12px 24px;
+     background: rgb(220,220,220);
+     font-weight: bold;
+     color: rgb(120,120,120);
+     border: none;
+     outline: none;
+     border-radius: 3px;
+     cursor: pointer;
+     transition: ease .3s;
+     background: #ff6c3a;
+     color: white;
+        margin: auto;
+        display: initial;
+        float: none;
+        width: 30%;
+        text-align: center;
+ }#startTouse {
+     cursor: pointer;
+     transition: ease .3s;
+     background: #ff6c3a;
+     color: white;
+     float: right;    display: none;
+     padding: 12px 24px;
+     background: rgb(220,220,220);
+     font-weight: bold;
+     color: rgb(120,120,120);
+     border: none;
+     outline: none;
+     border-radius: 3px;
+     cursor: pointer;
+     transition: ease .3s;
+     background: #ff6c3a;
+     color: white;
+        margin: auto;
+        display: initial;
+        float: none;
+        width: 30%;
+        text-align: center;
  }
 .demonstration{
     width:40%;
@@ -280,7 +329,9 @@ label {
     }
 
 }
-
+#device ,#cityy , #language , #selectSecil{
+    width: 250px;
+}
 
 /*success*/
 .success-page{

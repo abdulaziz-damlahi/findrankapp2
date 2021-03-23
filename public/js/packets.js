@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $('#try_again').hide();
+
     $('#success_message').css('display','none');
     $('#error_message').css('display','none');
     if($('#button_third').hasClass('active')){
@@ -24,6 +26,11 @@ $(document).ready(function() {
     });
     $( ".PURCHACE" ).on( "click", function() {
         $('#settingsForm').show();
+        let window_size =$( window ).width();
+        if(window_size<500){
+            $('#settingsForm').height(1000 );
+
+        }
     });
     $( "#bireysel" ).on( "click", function() {
         $('#Bireyselfrom').show();
@@ -43,6 +50,12 @@ $(document).ready(function() {
                 if($( '#kurumsal' ).prop( "checked" )==='false'){
                     $('.kurumsal').hide();
                     console.log($('.kurumsal').text());
+                    let window_size =$( window ).width();
+
+                    if(window_size<500){
+                        $('#settingsForm').height(1000 );
+
+                    }
 
                 }
                 $('#button_pay').hide();
@@ -53,6 +66,12 @@ $(document).ready(function() {
                 $('#form4').hide();
             }
             else if(i===1){
+                let window_size =$( window ).width();
+
+                if(window_size<500){
+                    $('#settingsForm').height(590);
+
+                }
                 $('#button_contact2').css('display','inline');
                 $('#button_pay').hide();
                 $('#form1').hide();
@@ -62,6 +81,12 @@ $(document).ready(function() {
                 $('#form2').height(300);
 
             }else if(i===2){
+                let window_size =$( window ).width();
+
+                if(window_size<500){
+                    $('#settingsForm').height(899 );
+
+                }
                 $('#button_pay').css('display','inline');
                 $('#button_contact2').css('display','none');
                 $('#form1').hide();
@@ -71,7 +96,12 @@ $(document).ready(function() {
 
             }else if(i===3){
                 $('#button_pay').show();
+                let window_size =$( window ).width();
 
+                if(window_size<500){
+                    $('#settingsForm').height(500 );
+
+                }
                 $('#form1').hide();
                 $('#form2').hide();
                 $('#form3').hide();
@@ -99,6 +129,12 @@ $(document).ready(function() {
                 if($( '#kurumsal' ).prop( "checked" )==='false'){
                     $('.kurumsal').hide();
                     console.log($('.kurumsal').text());
+                    let window_size =$( window ).width();
+
+                    if(window_size<500){
+                        $('#settingsForm').height(1000 );
+
+                    }
 
                 }
                 $('#button_contact2').css('display','inline');
@@ -109,6 +145,12 @@ $(document).ready(function() {
                 $('#form4').hide();
             }
             else if(i===1){
+                let window_size =$( window ).width();
+
+                if(window_size<500){
+                    $('#settingsForm').height(590);
+
+                }
                 $('#button_contact2').css('display','inline');
                 $('#invoice_type').css('display','none');
                 $('.invoiceeetype').css('display','none');
@@ -121,6 +163,12 @@ $(document).ready(function() {
                 $('#form2').height(300);
 
             }else if(i===2){
+                let window_size =$( window ).width();
+
+                if(window_size<500){
+                    $('#settingsForm').height(899 );
+
+                }
                 $('#button_contact2').css('display','inline');
 
                 $('#form1').hide();
@@ -129,6 +177,12 @@ $(document).ready(function() {
                 $('#form4').hide();
 
             }else if(i===3){
+                let window_size =$( window ).width();
+
+                if(window_size<500){
+                    $('#settingsForm').height(500 );
+
+                }
                 $('#button_contact2').css('display','inline');
 
                 $('#form1').hide();
