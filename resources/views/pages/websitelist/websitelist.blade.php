@@ -11,9 +11,6 @@
                         <button class="btns btn-default" type="button" id="addNewSite"><i
                                 class="fa fa-plus text-success"><span class="hidden-xs push-7-l">Add word</span></i>
                         </button>
-                        <button class="btns btn-default" type="button" id="editkeywordbtn"><i
-                                class="fa fa-edit text-primary"><span class="hidden-xs push-7-l">Update word</span></i>
-                        </button>
                     </div>
                     <br>
                     <br>
@@ -28,6 +25,7 @@
                             <th scope="col">device</th>
                             <th scope="col">grafik</th>
                             <th scope="col">delete</th>
+                            <th scope="col">edit</th>
                         </tr>
                         </thead>
                         <tbody id="row">

@@ -15,6 +15,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class panel extends Controller
 {
     public function index()
@@ -22,10 +23,10 @@ class panel extends Controller
         $user = auth()->user();
 
         $userId = $user->id;
-        $userwebsites8 = websites::where('user_id','=',$userId)->orderByDesc('wordcount')->take(3)->get();
+        $userwebsites8 = websites::where('user_id', '=', $userId)->orderByDesc('wordcount')->take(3)->get();
         $userwebsites = websites::where('user_id', '=', $userId)->get();
-         $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
-         $userwebsitecount = websites::where('user_id', '=', $userId)->count();
+        $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
+        $userwebsitecount = websites::where('user_id', '=', $userId)->count();
         for ($x = 1; $x < $userkeywordcount; $x++) {
             $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
             websites::where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
@@ -69,7 +70,7 @@ class panel extends Controller
         $keyword->user_id = $userId;
 
         $keyword->save();
-      return redirect()->back();
+        return redirect()->back();
     }
 
 
@@ -82,7 +83,21 @@ class panel extends Controller
 
     public function editkeyword($id)
     {
-        return view('pages/websitelist/editkeyword', compact('id'));
+        $currentKeyword = keywords::findOrFail($id);
+
+        return view('pages/websitelist/editkeyword', compact('currentKeyword'));
+    }
+
+    public function updatekeyword(Request $request,$id)
+    {
+        keywords::where('id', '=', $id)-> update([
+            'name'=>$request->keyword,
+            'country'=>$request->country,
+            'language'=>$request->language,
+            'device'=>$request->device,
+            'city'=>$request->city,
+        ]);;
+        return redirect()->back();
     }
 
     public function deletekeyword($id)
@@ -106,14 +121,12 @@ class panel extends Controller
     }
 
 
-
     public function FindOrder()
 
     {
         return view(
             'pages/findorder');
     }
-
 
 
     public function findPost(Request $request)
@@ -384,7 +397,6 @@ class panel extends Controller
             print_r($result);
 
 
-
         }
         curl_close($ch);
 
@@ -394,7 +406,7 @@ class panel extends Controller
     }
 
 
-    public function  userspacket()
+    public function userspacket()
     {
         $user = users::find(2);
         $user->packets;

@@ -1,19 +1,21 @@
 @extends('layouts.master')
 @section('content')
-    <div class="container" style="height:700px">
-            {{$id}}
 
-        <div id="myModal2" class="modal2">
-            <!-- Modal content -->
-            <div class="container" style="background-color: gray">
+    <div class="container">
+
+        <div class="container">
+
                 <br><br>
-                <form action="{{route('addword')}}" class="btn-submit" method="POST">
+                <form action="{{route('updatekeyword',$currentKeyword->id)}}" class="btn-submit" method="POST">
                     @csrf
-                    <textarea class="form-control" id="urls4" name="keyword" rows="5"
-                              placeholder=""></textarea>
-                    <textarea style="display:none" class="form-control" id="urls3" name="websiteid"
-                              rows="5"
-                              placeholder=""></textarea>
+
+
+                    <div id="myModal2" class="modal2">
+                        <div class="heading-block white-text text-center margin-bottom-50">
+                            <h2 style="color: black">Update Your Keyword</h2>
+                           </div>
+                    <textarea class="form-control" style="padding: 20px" id="keyword" name="keyword" rows="5"
+                              placeholder="">{{$currentKeyword->name}}</textarea>
                     <br><br>
                     @if($errors->any())
                         <div class="alert-danger" style="font-size: 15px;">
@@ -24,8 +26,8 @@
                         <div class="btn-group col-md-3 ">
                             <div class="btn-group">
                                 <select id="selectSecil2" name="country" class="select">
-                                    <option value="none" selected disabled hidden>
-                                        country
+                                    <option value="{{$currentKeyword->country}}" selected hidden>
+                                        {{$currentKeyword->country}}
                                     </option>
                                     <option class="select" value="TR">
                                         Türkiye
@@ -152,8 +154,8 @@
                         <div class="btn-group col-md-3 ">
                             <div class="btn-group">
                                 <select id="language2" name="language" class="select">
-                                    <option value="none" selected disabled hidden>
-                                        language
+                                    <option value="{{$currentKeyword->language}}" selected hidden>
+                                        {{$currentKeyword->language}}
                                     </option>
                                     <option class="select">
                                         turkish
@@ -170,8 +172,8 @@
                         <div class="btn-group col-md-3 ">
                             <div class="btn-group">
                                 <select id="device2" name="device" class="select">
-                                    <option value="none" selected disabled hidden>
-                                        device
+                                    <option value="{{$currentKeyword->device}}" selected hidden>
+                                        {{$currentKeyword->device}}
                                     </option>
                                     <option>
                                         Mobil
@@ -184,7 +186,10 @@
                         </div>
                         <div class="btn-group col-md-3 ">
                             <div class="btn-group">
-                                <select id="cityy2"  name="city" class="select">
+                                <select id="cityy2" name="city" class="select">
+                                    <option value="{{$currentKeyword->city}}" selected hidden>
+                                        {{$currentKeyword->city}}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -193,9 +198,11 @@
                     <input hidden name="hidden_device_name2" id="hidden_device2"/>
                     <input hidden name="language_name2" id="language_hidden2"/>
                     <br><br><br>
-                    <button type="submit" class="btn btn-primary mcuLoadingButton"
-                            data-handler="confirm">Kaydet
-                    </button>
+                    <div class="row col-lg-12">
+                        <button type="submit" class="btn btn-primary mcuLoadingButton"
+                                data-handler="confirm">update
+                        </button>
+                    </div>
                     <br><br><br>
                 </form>
 

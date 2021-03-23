@@ -45,14 +45,15 @@ function Statistics() {
                         if (wordsiteid == websiteid) {
                             if (websiteid == websitidhtml) {
                                 let sayi = response['data'][i].id
-                                var str = "<tr><td  class='anahtar' data-id='  " + i + "' id=\"ANAHTARKELİME\"> <a href='editkeyword/"+ wordid +"'> "+ word + "</a>  </td>" +
+                                var str = "<tr><td  class='anahtar' data-id='  " + i + "' id=\"ANAHTARKELİME\"> "+ word + " </td>" +
                                     "<td id=\"rank\">  " + rank + "</td>" +
                                     "<td id=\"country\">  " + country + "</td>" +
                                     "<td id=\"country\">  " + city + "</td>" +
                                     "<td id=\"language\">  " + language + "</td>" +
                                     "<td id=\"device\">  " + device + "</td>" +
                                     "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td>" +
-                                    "<td scope=\"col\"><a href = 'deletekeyword/" + wordid + "'  class=\"fa fa-trash text-danger\"></a></td></tr>" ;
+                                    "<td scope=\"col\"><a href = 'deletekeyword/" + wordid + "'  class=\"fa fa-trash text-danger\"></a></td>"+
+                                    "<td   id=\"editbtn\"><a  class=\"fa fa-edit text-success\" href='editkeyword/"+ wordid +"'> </a> </td></tr>";
                                 $('#row').append(str);
 
                             }
@@ -105,42 +106,6 @@ window.addEventListener('load', (event) => {
         }
     }
 });
-
-// popup chart
-window.addEventListener('load', (event) => {
-
-// Get the modal
-    var modal = document.getElementById("myModal2");
-
-// Get the button that opens the modal
-    var btn = document.getElementById("editkeywordbtn");
-
-// Get the <span> element that closes the modal
-    var span = document.getElementById("closeedit");
-    var span2 = document.getElementById("closeedit2");
-
-
-// When the user clicks the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-// When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    span2.onclick = function () {
-        modal.style.display = "none";
-    }
-
-// When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-});
-
 
 $("#device2").change(function() {
         if($(this).val()==="Mobil"){
