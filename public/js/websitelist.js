@@ -1,6 +1,6 @@
 let pageNumber = 1;
 let currentPage2 = 1;
-let xa =0
+let xa = 0
 let wordcount;
 let contdivide;
 $(document).ready(function () {
@@ -45,15 +45,15 @@ function Statistics() {
                         if (wordsiteid == websiteid) {
                             if (websiteid == websitidhtml) {
                                 let sayi = response['data'][i].id
-                                var str = "<tr><td  class='anahtar' data-id='  " + i + "' id=\"ANAHTARKELİME\"> "+ word + " </td>" +
+                                var str = "<tr><td  class='anahtar' data-id='  " + i + "' id=\"ANAHTARKELİME\"> " + word + " </td>" +
                                     "<td id=\"rank\">  " + rank + "</td>" +
                                     "<td id=\"country\">  " + country + "</td>" +
                                     "<td id=\"country\">  " + city + "</td>" +
                                     "<td id=\"language\">  " + language + "</td>" +
                                     "<td id=\"device\">  " + device + "</td>" +
-                                    "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td>" +
-                                    "<td scope=\"col\"><a href = 'deletekeyword/" + wordid + "'  class=\"fa fa-trash text-danger\"></a></td>"+
-                                    "<td   id=\"editbtn\"><a  class=\"fa fa-edit text-success\" href='editkeyword/"+ wordid +"'> </a> </td></tr>";
+                                    "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='grafik/" + wordid + "'> </a></td>" +
+                                    "<td scope=\"col\"><a href = 'deletekeyword/" + wordid + "'  class=\"fa fa-trash text-danger \"></a></td>" +
+                                    "<td   id=\"editbtn\"><a  class=\"fa fa-edit text-success \" href='editkeyword/" + wordid + "'> </a> </td></tr>";
                                 $('#row').append(str);
 
                             }
@@ -66,13 +66,11 @@ function Statistics() {
             }
 
 
-
         }
     });
 }
 
-
-// popup chart
+// add word popup
 window.addEventListener('load', (event) => {
 
 // Get the modal
@@ -107,54 +105,52 @@ window.addEventListener('load', (event) => {
     }
 });
 
-$("#device2").change(function() {
-        if($(this).val()==="Mobil"){
-            let mobile_device ="Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53"
-            $("#language_name2").val(mobile_device);
-        }
-        else{
-            $("#hidden_device2").val("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36")
-        }
-    });
+$("#device2").change(function () {
+    if ($(this).val() === "Mobil") {
+        let mobile_device = "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53"
+        $("#language_name2").val(mobile_device);
+    } else {
+        $("#hidden_device2").val("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36")
+    }
+});
 
-$(document).ready(function() {
-    $("#device2").change(function() {
-        if($(this).val()==="Mobil"){
-            let mobile_device ="Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53"
+$(document).ready(function () {
+    $("#device2").change(function () {
+        if ($(this).val() === "Mobil") {
+            let mobile_device = "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53"
             $("#hidden_device2").val(mobile_device);
-        }
-        else{
+        } else {
             $("#hidden_device2").val("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36")
         }
     });
-    $("#selectSecil2").change(function() {
+    $("#selectSecil2").change(function () {
         $(".cityy2").empty()
         $.ajax({
             type: 'get',
             url: "http://127.0.0.1:8000/api/v1/Locations",
             success: function (response) {
-                jQuery.each( response, function( i, val ) {
-                    jQuery.each( val, function( i, valll ) {
+                jQuery.each(response, function (i, val) {
+                    jQuery.each(val, function (i, valll) {
                         $sa = valll.attributes.Country_Code;
                         $saname = valll.attributes.name;
-                        $aaaa=  $("#selectSecil2").val();
-                        if($sa===$aaaa){
-                            $typecity=valll.attributes.Target_Type;
-                            if(valll.attributes.Target_Type==='City') {
+                        $aaaa = $("#selectSecil2").val();
+                        if ($sa === $aaaa) {
+                            $typecity = valll.attributes.Target_Type;
+                            if (valll.attributes.Target_Type === 'City') {
                                 $("#cityy2")
-                                    .append('<option  class="cononical" value='+valll.attributes.Canonical_Name+'>' + valll.attributes.name + '</option>')
+                                    .append('<option  class="cononical" value=' + valll.attributes.Canonical_Name + '>' + valll.attributes.name + '</option>')
                             }
                         }
                     });
                 });
             }
         });
-        $("#cityy2").change(function() {
+        $("#cityy2").change(function () {
             $("#hidden_collonial2").val($(this).val());
             $("#hidden_device2").val($("#hidden_collonial2").val());
         });
     });
-    $("#language2").change(function() {
+    $("#language2").change(function () {
         $("#language_hidden2").val($(this).val());
 
     });
@@ -166,45 +162,43 @@ $(document).ready(function() {
     });
 });
 
-
-$(document).ready(function() {
-    $("#device").change(function() {
-        if($(this).val()==="Mobil"){
-            let mobile_device ="Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53"
+$(document).ready(function () {
+    $("#device").change(function () {
+        if ($(this).val() === "Mobil") {
+            let mobile_device = "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53"
             $("#hidden_device").val(mobile_device);
-        }
-        else{
+        } else {
             $("#hidden_device").val("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36")
         }
     });
-    $("#selectSecil").change(function() {
+    $("#selectSecil").change(function () {
         $(".cityy").empty()
         $.ajax({
             type: 'get',
             url: "http://127.0.0.1:8000/api/v1/Locations",
             success: function (response) {
-                jQuery.each( response, function( i, val ) {
-                    jQuery.each( val, function( i, valll ) {
+                jQuery.each(response, function (i, val) {
+                    jQuery.each(val, function (i, valll) {
                         $sa = valll.attributes.Country_Code;
                         $saname = valll.attributes.name;
-                        $aaaa=  $("#selectSecil").val();
-                        if($sa===$aaaa){
-                            $typecity=valll.attributes.Target_Type;
-                            if(valll.attributes.Target_Type==='City') {
+                        $aaaa = $("#selectSecil").val();
+                        if ($sa === $aaaa) {
+                            $typecity = valll.attributes.Target_Type;
+                            if (valll.attributes.Target_Type === 'City') {
                                 $("#cityy")
-                                    .append('<option  class="cononical" value='+valll.attributes.Canonical_Name+'>' + valll.attributes.name + '</option>')
+                                    .append('<option  class="cononical" value=' + valll.attributes.Canonical_Name + '>' + valll.attributes.name + '</option>')
                             }
                         }
                     });
                 });
             }
         });
-        $("#cityy").change(function() {
+        $("#cityy").change(function () {
             $("#hidden_collonial").val($(this).val());
             $("#hidden_device").val($("#hidden_collonial").val());
         });
     });
-    $("#language").change(function() {
+    $("#language").change(function () {
         $("#language_hidden").val($(this).val());
 
     });
@@ -216,6 +210,30 @@ $(document).ready(function() {
     });
 });
 
+//chart popup
+window.addEventListener('load', (event) => {
 
+    var btn = document.getElementById("grafikbtn");
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    var span = document.getElementById("grafikclose");
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    var span2 = document.getElementById("grafikclose2");
+    span2.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    var modal = document.getElementById("grafikmodal");
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
 
 

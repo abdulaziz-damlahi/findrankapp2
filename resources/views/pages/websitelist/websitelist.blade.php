@@ -11,6 +11,9 @@
                         <button class="btns btn-default" type="button" id="addNewSite"><i
                                 class="fa fa-plus text-success"><span class="hidden-xs push-7-l">Add word</span></i>
                         </button>
+                        <button class="btns btn-default" type="button" id="grafikbtn"><i
+                                class="fa fa-plus text-success"><span class="hidden-xs push-7-l">Add word</span></i>
+                        </button>
                     </div>
                     <br>
                     <br>
@@ -197,7 +200,7 @@
                                         </div>
                                         <div class="btn-group col-md-3 ">
                                             <div class="btn-group">
-                                                <select  id="device" name="device" class="select">
+                                                <select id="device" name="device" class="select">
                                                     <option value="none" selected disabled hidden>
                                                         device
                                                     </option>
@@ -227,6 +230,17 @@
                                 </form>
                                 <button id="close2" class="btn btn-default"
                                         data-dismiss="modal">Kapat
+                                </button>
+                            </div>
+                        </div>
+                        {{-- grafik modal--}}
+                        <div id="grafikmodal" class="grafikmodal">
+                            <!-- Modal content -->
+                            <div class="grafikmodal-content">
+                                <span style="size: 15px;" id="grafikclose" class="grafikclose">X</span>
+                                <br><br>
+                                <button id="grafikclose2" class="btn btn-default"
+                                        data-dismiss="grafikmodal">Kapat
                                 </button>
                             </div>
                         </div>

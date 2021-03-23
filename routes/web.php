@@ -20,6 +20,7 @@ Route::prefix('user/')->middleware('auth')->group(function(){
     Route::post('/addword', 'App\Http\Controllers\panel@addword')->name('addword');
     Route::get('website/editkeyword/{id}', 'App\Http\Controllers\panel@editkeyword')->name('editkeyword');
     Route::post('website/updatekeyword/{id}', 'App\Http\Controllers\panel@updatekeyword')->name('updatekeyword');
+    Route::get('website/grafik/{id}', 'App\Http\Controllers\panel@grafik')->name('grafik');
 
 });
 Route::prefix('user/')->middleware('isLogin')->group(function() {

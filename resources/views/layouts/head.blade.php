@@ -27,6 +27,10 @@
             <link rel="stylesheet"type="text/css" href="{{asset('css')}}/editkeyword.css">
             <script rel="stylesheet" src="{{asset('js')}}/editkeyword.js"></script>
         @endif
+        @if($routeName === 'grafik')
+            <link rel="stylesheet"type="text/css" href="{{asset('css')}}/grafik.css">
+            <script rel="stylesheet" src="{{asset('js')}}/grafik.js"></script>
+        @endif
         @if($routeName === 'profile')
             <link rel="stylesheet"type="text/css" href="{{asset('css')}}/Panel.css">
             <script rel="stylesheet" src="{{asset('js')}}/profile.js"></script>

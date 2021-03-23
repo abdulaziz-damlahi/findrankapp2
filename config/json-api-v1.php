@@ -72,7 +72,8 @@ return [
         'Users' =>  \App\Models\users::class,
         'Locations' =>  \App\Models\locations::class,
         'packets-reels'  =>  \App\Models\packets_reels::class,
-        'invoicerecords'  =>  \App\Models\invoicerecords::class
+        'invoicerecords'  =>  \App\Models\invoicerecords::class,
+        'keywordsRequests'  =>  \App\Models\KeywordRequest::class
     ],
 
     /*
