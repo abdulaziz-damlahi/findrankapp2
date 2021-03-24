@@ -8,25 +8,23 @@
                 <div class="page-body">
                     <div class="col-lg-8 col-md-12 row">
                         @foreach($userwebsites8 as $userwebsite)
-
+                            <a href="website/{{ $userwebsite->id}} ">
                             <div class="col-md-12 col-xl-4">
                                 <div class="card bg-c-blue order-card">
                                     <div class="card-block">
                                         <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
-                                        <h class="m-b-20">word count {{ $userwebsite->wordcount }}</h>
+                                        <h class="m-b-20">Keywords Used {{ $userwebsite->wordcount }}</h>
                                         <h2 class="text-right"><i class="ti-shopping-cart f-left"
                                                                   style="text-shadow: 3px 3px 5px #0000!important; ;"></i><span></span>
                                         </h2>
                                         <p class="m-b-0"><span class="f-right"></span>
                                         <td class="sort_change text-center hidden-xs" data-change="36">
-                                            <i class="fa fa-chevron-circle-up text-success"></i>36</span>
-                                            <i class="fa fa-chevron-circle-down text-danger"></i>42</span>
-                                            <i class="fa fa-circle "></i> 45</span>
+
                                         </td>
                                         </p>
                                     </div>
                                 </div>
-                            </div>
+                            </div></a>
 
                     @endforeach
 

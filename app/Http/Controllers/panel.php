@@ -20,8 +20,9 @@ class panel extends Controller
     public function index()
     {
         $user = auth()->user();
-
         $userId = $user->id;
+       $username = $user->first_name;
+        $keywordrequest = keywordRequest::where('user_id', '=', $userId)->get();
         $userwebsites8 = websites::where('user_id', '=', $userId)->orderByDesc('wordcount')->take(3)->get();
         $userwebsites = websites::where('user_id', '=', $userId)->get();
         $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
@@ -136,8 +137,10 @@ class panel extends Controller
 
     public function profile()
     {
-        return view(
-            'pages/panel/profile');
+        $user = auth()->user();
+        $userId = $user->id;
+          $packetdata = packets::where('user_id','=',$userId)->get()->first();
+        return view('pages/panel/profile',compact('packetdata'));
     }
 
 

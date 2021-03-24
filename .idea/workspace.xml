@@ -7,10 +7,13 @@
     <list default="true" id="b3e79f4a-e71e-42ec-a8f2-6a0a7487f803" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/panel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/findorder.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/findorder.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/grafik.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/grafik.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/panel/panel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/panel/panel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/panel/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/panel/profile.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/websitelist/grafik.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/websitelist/grafik.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/websitelist/websitelist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/websitelist/websitelist.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,15 +173,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.SQL" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\OEM\Documents\findRankApp\public\css" />
       <recent name="C:\Users\OEM\Documents\findRankApp\public\js" />
+      <recent name="C:\Users\OEM\Documents\findRankApp\public\css" />
       <recent name="C:\Users\OEM\Documents\findRankApp\resources\views\pages\websitelist" />
       <recent name="C:\Users\OEM\Documents\findRankApp\database\seeders" />
       <recent name="C:\Users\OEM\Documents\findRankApp\resources\views\pages" />
@@ -221,7 +224,7 @@
       <workItem from="1616393119544" duration="14990000" />
       <workItem from="1616412293964" duration="16421000" />
       <workItem from="1616479661181" duration="29630000" />
-      <workItem from="1616565587451" duration="14237000" />
+      <workItem from="1616565587451" duration="27054000" />
     </task>
     <servers />
   </component>

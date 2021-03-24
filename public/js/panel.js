@@ -4,6 +4,7 @@ $(document).ready(function () {
     Statistics2(pageNumber);
     Statistics();
     get();
+    updownequal();
 })
 $("#nextPageButton").click(function () {
     pageNumber = currentPage2;
@@ -50,7 +51,6 @@ function Statistics2(pageNumber) {
                         var websitename = response['included'][i2].attributes.website_name
                         var url = '{{route("grafik",":id")}}';
                         url = url.replace(':id',dataid );
-                        console.log(url)
                         if (wordsiteid == websiteid) {
 
                             var str = " <tr><th scope=\"row\">" + dataid + "</th>" +
@@ -480,6 +480,21 @@ function Statistics() {
             Accept: "application/vnd.api+json",
         },
         success: function (response) {
+        }
+    })
+}
+
+
+function updownequal() {
+    $.ajax({
+        url: "/api/v1/keywordsRequests",
+        type: "GET",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+        success: function (response) {
+            console.log(response)
         }
     })
 }

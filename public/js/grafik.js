@@ -40,15 +40,13 @@ chart = new CanvasJS.Chart("chartContainer", {
                 yValueFormatString: "#0.## ",
                 showInLegend: true,
             dataPoints: [
-                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)), y: parseInt(rank7)},
-                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-1), y: parseInt(rank6)},
-                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-2), y: parseInt(rank5)},
+                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)), y: parseInt(rank1)},
+                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-1), y: parseInt(rank2)},
+                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-2), y: parseInt(rank3)},
                 {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-3), y: parseInt(rank4)},
-                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-4), y: parseInt(rank3)},
-                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-5), y: parseInt(rank2)},
-                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-6), y: parseInt(rank1)},
-                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-7), y: parseInt(rank1)},
-
+                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-4), y: parseInt(rank5)},
+                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-5), y: parseInt(rank6)},
+                {x: new Date(parseInt(yyyy),parseInt(mm), parseInt(dd)-6), y: parseInt(rank7)},
 
             ]
         },
