@@ -114,6 +114,9 @@ class panel extends Controller
 
     public function grafik($id)
     {
+         $keywordid= keywords::where('id','=',$id)->get('id');
+        $keywordidnum = (int)filter_var($keywordid, FILTER_SANITIZE_NUMBER_INT);
+        if ($id !=$keywordidnum ){return abort(404);}
         $rank1 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(0)->first();
         $rank1num = (int)filter_var($rank1, FILTER_SANITIZE_NUMBER_INT);
         $rank2 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(1)->first();

@@ -11,9 +11,6 @@
                         <button class="btns btn-default" type="button" id="addNewSite"><i
                                 class="fa fa-plus text-success"><span class="hidden-xs push-7-l">Add word</span></i>
                         </button>
-                        <button class="btns btn-default" type="button" id="grafikbtn"><i
-                                class="fa fa-plus text-success"><span class="hidden-xs push-7-l">Add word</span></i>
-                        </button>
                     </div>
                     <br>
                     <br>
