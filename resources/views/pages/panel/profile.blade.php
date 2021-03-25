@@ -47,10 +47,13 @@
                                         <div class="card-block">
                                             <div class="block-content block-content-full">
                                                 <div><span class="tableStyle">Kelime Takibi</span> <span
-                                                       id="" class="tableStyle pull-right"><b id="keywordused"></b>/<b id="maxcountword">{{$packetdata->max_count_of_words}}</b></span></div>
+                                                        id="" class="tableStyle pull-right"><b id="keywordused"></b>/<b
+                                                            id="maxcountword">{{$packetdata->max_count_of_words}}</b></span>
+                                                </div>
                                                 <div class="progress-bar-border" style="margin-bottom:3px">
-                                                    <div  id="keywordprogress" class="progress progress-mini" style="margin-bottom:0;">
-                                                        <div   class="progress-bar progress-bar-success"
+                                                    <div id="keywordprogress" class="progress progress-mini"
+                                                         style="margin-bottom:0;">
+                                                        <div class="progress-bar progress-bar-success"
                                                              role="progressbar" style="width: 100%"></div>
                                                     </div>
                                                 </div>
@@ -62,15 +65,17 @@
                                                 <hr>
 
                                                 <div><span class="tableStyle">Site Ekleme</span> <span
-                                                        class="tableStyle pull-right"><b id="websiteused"></b> /<b id="maxwebsite">{{$packetdata->max_count_of_websites}}</b> </span></div>
+                                                        class="tableStyle pull-right"><b id="websiteused"></b> /<b
+                                                            id="maxwebsite">{{$packetdata->max_count_of_websites}}</b> </span>
+                                                </div>
                                                 <div class="progress-bar-border" style="margin-bottom:3px">
                                                     <div class="progress progress-max" style="margin-bottom:0;">
-                                                        <div id="websiteprogress" class="progress-bar progress-bar-success"
+                                                        <div id="websiteprogress"
+                                                             class="progress-bar progress-bar-success"
                                                              role="progressbar" style="width: 100%"></div>
                                                     </div>
                                                 </div>
 
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -78,12 +83,13 @@
                             </div>
                         </div>
                     </div>
-                    <div id="styleSelector">
+                </div>
+                <div id="styleSelector">
 
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <style>
         .tableStyle {

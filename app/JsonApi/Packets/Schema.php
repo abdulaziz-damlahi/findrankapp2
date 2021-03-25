@@ -41,7 +41,7 @@ class Schema extends SchemaProvider
             'max_count_of_words'=> $resource->max_count_of_words,
             'max_count_of_websites'=> $resource->max_count_of_websites,
             'count_of_websites'=> $resource->count_of_websites,
-            'packet_names'=> $resource->count_of_websites,
+            'packet_names'=> $resource->packet_names,
             'updatedAt' => $resource->updated_at,
             'createdAt' => $resource->created_at,
         ];

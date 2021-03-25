@@ -4,11 +4,9 @@ $(document).ready(function () {
     Statistics2(pageNumber);
     Statistics();
     get();
-    updownequal();
 })
 $("#nextPageButton").click(function () {
     pageNumber = currentPage2;
-
     pageNumber = pageNumber + 1;
     Statistics2(pageNumber);
 });
@@ -250,8 +248,15 @@ window.onload = function () {
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
 
-                data: [{
-                    type: "doughnut",
+                data: [
+                    {
+                        //startAngle: 45,
+                        indexLabelFontSize: 20,
+                        indexLabelFontFamily: "Garamond",
+                        indexLabelFontColor: "orange",
+                        indexLabelLineColor: "darkgrey",
+                        indexLabelPlacement: "outside",
+                        type: "doughnut",
                     startAngle: 60,
                     //innerRadius: 60,
                     indexLabelFontSize: 17,
@@ -485,17 +490,4 @@ function Statistics() {
 }
 
 
-function updownequal() {
-    $.ajax({
-        url: "/api/v1/keywordsRequests",
-        type: "GET",
-        headers: {
-            "Content-Type": "application/vnd.api+json",
-            Accept: "application/vnd.api+json",
-        },
-        success: function (response) {
-            console.log(response)
-        }
-    })
-}
 

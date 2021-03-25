@@ -10,7 +10,7 @@
                         @foreach($userwebsites8 as $userwebsite)
                             <a href="website/{{ $userwebsite->id}} ">
                             <div class="col-md-12 col-xl-4">
-                                <div class="card bg-c-blue order-card">
+                                <div style="background-color:#ff6c3a" class="card order-card">
                                     <div class="card-block">
                                         <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
                                         <h class="m-b-20">Keywords Used {{ $userwebsite->wordcount }}</h>
@@ -99,13 +99,13 @@
                                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
                                 <div class="col-md-12" style="font-size:15px; padding: 40px;">
-                                        <span class="text-left"><button id="ilke3btn"><i class="fa  fa-square push-5-r"
+                                        <span class="text-left"><button id="ilke3btn"  class=""><i class="fa  fa-square push-5-r"
                                                                                          style=" color:#005698">  </i>İlk 3'de:<b
                                                     id="ilk3">  </b> <b>kilme</b> </button> </span>
-                                    <span class="text-left"><button id="ilke10btn"><i class="fa  fa-square push-5-r"
+                                    <span class="text-left"><button id="ilke10btn" class=""><i class="fa  fa-square push-5-r"
                                                                                       style=" color:#16c800">  </i>İlk 10'de: <b
                                                 id="ilk10">  </b> <b>kilme</b>  </button> </span>
-                                    <span class="text-left"><button id="ilke100btn"><i class="fa  fa-square push-5-r"
+                                    <span class="text-left"><button id="ilke100btn"  class=""><i class="fa  fa-square push-5-r"
                                                                                        style=" color:#cb0000">  </i>İlk 100'de: <b
                                                 id="ilk100">  </b> <b>kilme</b> </button>  </span>
                                 </div>

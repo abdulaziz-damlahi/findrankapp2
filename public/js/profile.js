@@ -1,5 +1,7 @@
 $(document).ready(function () {
     profile();
+    wordlen();
+    websitelen();
 })
 
 function profile() {
@@ -22,9 +24,14 @@ function profile() {
             var diffDays = Math.round(Math.abs((todayformat - lastday) / oneDay));
             diffDays2 = (diffDays) - 2;
             $('#daysleft').append(diffDays2);
+
         }
     });
 
+
+}
+
+function wordlen() {
     $.ajax({
         url: "/api/v1/Keywords",
         type: "GET",
@@ -38,16 +45,16 @@ function profile() {
                 lenkeyword = response['data'].length;
             }
             $('#keywordused').append(lenkeyword);
-            var maxword =parseInt(document.querySelector("#maxcountword").innerHTML);
-            perc1 = ((lenkeyword/maxword) * 100);
-            console.log(perc1)
-
-           var keywordprogress= document.querySelector("#main > div > div > div > div.page-body > div > div > div:nth-child(2) > div > div > div > div:nth-child(2)")
-            perc1a=(perc1)+'%'
-            console.log(perc1a)
+            var maxword = parseInt(document.querySelector("#maxcountword").innerHTML);
+            perc1 = ((lenkeyword / maxword) * 100);
+            var keywordprogress = document.querySelector("#main > div > div > div > div.page-body > div > div > div:nth-child(2) > div > div > div > div:nth-child(2)")
+            perc1a = (perc1) + '%'
             keywordprogress.style.width = perc1a;
         }
     });
+}
+
+function websitelen() {
     $.ajax({
         url: "/api/v1/Websites",
         type: "GET",
@@ -61,15 +68,11 @@ function profile() {
                 lenwebsite = response['data'].length;
             }
             $('#websiteused').append(lenwebsite);
-            var maxwebsite =parseInt(document.querySelector("#maxwebsite").innerHTML);
-            perc2 = ((lenwebsite/maxwebsite) * 100);
-            console.log(perc2)
-
-            var websiteprogress= document.querySelector("#main > div > div > div.page-wrapper.col-md-12 > div > div > div > div:nth-child(2) > div > div > div > div:nth-child(6)")
-            perc2a=(perc2)+'%'
-            console.log(perc1a)
+            var maxwebsite = parseInt(document.querySelector("#maxwebsite").innerHTML);
+            perc2 = ((lenwebsite / maxwebsite) * 100);
+            var websiteprogress = document.querySelector("#main > div > div > div.page-wrapper.col-md-12 > div > div > div > div:nth-child(2) > div > div > div > div:nth-child(6)")
+            perc2a = (perc2) + '%'
             websiteprogress.style.width = perc2a;
         }
     });
 }
-
