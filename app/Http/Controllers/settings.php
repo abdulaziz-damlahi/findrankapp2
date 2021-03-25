@@ -2,22 +2,70 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\users;
+use App\Models\packets;
+use App\Models\cards;
+use App\Models\packets_reels;
+use App\Parasut\Utils;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Storage;
 
 class settings extends Controller
 {
     //
+
+    public const BASE_URL = "https://api.parasut.com/v4/422430/"; // TODO Change Required
+    protected const TOKEN_BASE_URL = "https://api.parasut.com/oauth/token";
+    static string $accessToken = '';
+    static string $refreshToken = '';
+    static $tokenExpiredAt = null;
+
+    static $clientId = null;
+    static $clientSecret = null;
+    static $username = null;
+    static $password = null;
+
     public function index (Request $request){
+
         $user  = Auth::user();
        $user_first_name = $user->first_name;
        $user_last_name = $user->last_name;
        $phone = $user->phone;
        $mail = $user->email;
+        if (!empty(self::$refreshToken)) {
+            $params = [
+                'grant_type' => 'refresh_token',
+                'client_id' => dzFACO06aYS9hZjajasvbta6zTXCk34SdBhY0sG_UA,
+                'client_secret' => "nbIAXHyXLKBfsPh0gN3qfcjIfzUHVDSeFyIa2ijFDY",
+                'refresh_token' => self::$refreshToken
+            ];
+        } else {
+            $params = [
+                'grant_type' => "password",
+                'client_id' => "-dzFACO06aYS9hZjajasvbta6zTXCk34SdBhY0sG_UA",
+                'client_secret' => "-nbIAXHyXLKBfsPh0gN3qfcjIfzUHVDSeFyIa2ijFDY",
+                'username'=>'td21brs14@hotmail.com',
+                'password'=>'199714brs',
+                'redirect_url'=>'urn:ietf:wg:oauth:2.0:oob',
+            ];
+        }
+        $Client = new Client();
+        $response = $Client->post("https://api.parasut.com/oauth/token",['form_params'=>$params]);
+        $response;
         return view('pages/foruser/settings/settings',compact('user_first_name','user_last_name','phone','mail'));
 }
+    public function getClient()
+    {
+        if (isset($this->client)) {
+            return $this->client;
+        }
+        $client = new Client();
+        $this->client = $client;
+        return $client;
+    }
 public function store_personal_settings(Request $request){
         $request->validate([
             'first_name'=>'min:3|string',

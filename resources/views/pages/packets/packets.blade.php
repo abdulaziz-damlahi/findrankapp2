@@ -2,7 +2,6 @@
 @section('content')
     <section class="pricing-table light-gray-bg padding-top-100 padding-bottom-100">
         <div class="container">
-
             <!-- Tittle -->
             <div id="packets_show" class="heading-block text-center margin-bottom-80">
                 <h2>Affordable SEO Services Packages </h2>
@@ -559,11 +558,15 @@
                         <input hidden  class="id_hidden">
                         <input hidden  class="hidden_descrpitions">
                         <input hidden  class="my_count_of_words">
+                        <input hidden  class="max_my_count_of_words">
                         <input hidden  class="rank_follow">
                         <input hidden name="input_price" class="input_price">
                         <input hidden name="input_id" class="input_id">
                         <input hidden  class="rank_follow_max">
+                        <input hidden  class="rank_follow_max_max">
+                        <input hidden  class="date_packet">
                         <input hidden  class="my_count_of_websites">
+                        <input hidden  class="max_my_count_of_websites">
                         <input hidden  class="count_of_websites">
                         <input hidden  class="count_of_words">
                         <input hidden  class="packet_names">
@@ -572,6 +575,7 @@
                         <div class="success-page">
                             @isset($payment)
                                 @if ($payment['status'] === "success")
+
                                     <h2 id="unSuccessMessage">{{$success_message}}</h2>
                                     <a href="{{route('panel')}}" id="startTouse" >Kullanmaya Başla!</a>
                                 @else

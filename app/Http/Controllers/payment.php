@@ -15,6 +15,7 @@ class payment extends Controller
 {
     //
     public function pay_post(Request $request){
+
         $paymentrequest = new \Iyzipay\Request\CreatePaymentRequest();
       /*  $packets_reel = packets_reels::all();
         $packets = packets::all()->first();
@@ -65,6 +66,7 @@ class payment extends Controller
                 $round_new2  = round($money_new_value2);
 
                 $base_moeny='₺';
+                echo "buraya girer";
             }
             else if($localiton==='US'){
                 $lang = 'en';
@@ -77,6 +79,7 @@ class payment extends Controller
                 $round_new  = round($money_new_value);
                 $round_new1  = round($money_new_value1);
                 $round_new2  = round($money_new_value2);
+                echo "buraya girer2";
 
                 $base_moeny='$';
             } else if($localiton==='ES'){
@@ -90,6 +93,7 @@ class payment extends Controller
                 $round_new1  = round($money_new_value1);
                 $round_new2  = round($money_new_value2);
                 $base_moeny='€';
+                echo "buraya girer3";
 
                 $locale = App::getLocale();
             }else if($localiton==='DE') {
@@ -103,6 +107,21 @@ class payment extends Controller
                 $round_new = round($money_new_value);
                 $round_new1 = round($money_new_value1);
                 $round_new2 = round($money_new_value2);
+                echo "buraya girer4";
+
+                $locale = App::getLocale();
+            }else {
+                $lang = 'de';
+                App::setlocale($lang);
+                $base_moeny = '€';
+                $money_value = $arr_result->rates->EUR;
+                $money_new_value = $money1 * $money_value;
+                $money_new_value1 = $money * $money_value;
+                $money_new_value2 = $money2 * $money_value;
+                $round_new = round($money_new_value);
+                $round_new1 = round($money_new_value1);
+                $round_new2 = round($money_new_value2);
+                echo "buraya girer5";
 
                 $locale = App::getLocale();
             }
@@ -287,7 +306,6 @@ else{
 $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
         $payment = json_decode($payment->getRawResult(), true);
         if ($payment['status'] === "success") {
-
             $success_message = "Payment Successful !";
         }
         else{

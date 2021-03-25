@@ -73,6 +73,7 @@ return [
         'keywordsRequests' =>  \App\Models\KeywordRequest::class,
         'Locations' =>  \App\Models\locations::class,
         'packets-reels'  =>  \App\Models\packets_reels::class,
+        'requests'  =>  \App\Models\requests::class,
         'invoicerecords'  =>  \App\Models\invoicerecords::class
     ],
 

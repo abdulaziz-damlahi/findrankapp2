@@ -12,7 +12,7 @@
         "cloudcreativity/laravel-json-api": "^3.3",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.3",
         "iyzico/iyzipay-php": "^2.0",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",

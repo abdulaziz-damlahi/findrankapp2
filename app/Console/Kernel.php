@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('packeets:online')->monthly('12 ');
-        $schedule->command('rank_follow:online')->everyMinute();
+        $schedule->command('rank_follow:online')->dailyAt('10');
 
     }
 

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $('#try_again').hide();
-
+    $('#settingsForm').height('600')
     $('#success_message').css('display','none');
     $('#error_message').css('display','none');
     if($('#button_third').hasClass('active')){
@@ -13,12 +13,10 @@ $(document).ready(function() {
     $('#form4').hide();
     $('.kurumsal').hide();
     $('#settingsForm').hide();
-    $('#settingsForm').height( 500 )
     $( "#kurumsal" ).on( "click", function() {
         $('#Bireyselfrom').hide();
         $('#Kurumsalform').show();
         $('.kurumsal').show();
-        $('#settingsForm').height(700 )
         $('#themostunder').css('margin-right','60%');
 
 
@@ -28,13 +26,14 @@ $(document).ready(function() {
         $('#settingsForm').show();
         let window_size =$( window ).width();
         if(window_size<500){
-            $('#settingsForm').height(1000 );
+            $('#settingsForm').height('1000')
+        }else{
+            $('#settingsForm').height('600')
         }
     });
     $( "#bireysel" ).on( "click", function() {
         $('#Bireyselfrom').show();
         $('#Kurumsalform ').hide();
-        $('#settingsForm').height( 500 )
     });
     i=0;
     $( "#button_contact2" ).click(function() {
@@ -51,9 +50,7 @@ $(document).ready(function() {
                     console.log($('.kurumsal').text());
                     let window_size =$( window ).width();
 
-                    if(window_size<500){
-                        $('#settingsForm').height(1000 );
-
+                    if(window_size<500) {
                     }
 
                 }
@@ -68,7 +65,11 @@ $(document).ready(function() {
                 let window_size =$( window ).width();
 
                 if(window_size<500){
-                    $('#settingsForm').height(590);
+                    $('#settingsForm').height('500px')
+
+                }
+                else{
+                    $('#settingsForm').height('300')
 
                 }
                 $('#button_contact2').css('display','inline');
@@ -77,13 +78,16 @@ $(document).ready(function() {
                 $('#form2').show();
                 $('#form3').hide();
                 $('#form4').hide();
-                $('#form2').height(300);
 
             }else if(i===2){
                 let window_size =$( window ).width();
 
                 if(window_size<500){
-                    $('#settingsForm').height(899 );
+                    $('#settingsForm').height('800')
+
+                }
+                else{
+                    $('#settingsForm').height('700')
 
                 }
                 $('#button_pay').css('display','inline');
@@ -98,7 +102,6 @@ $(document).ready(function() {
                 let window_size =$( window ).width();
 
                 if(window_size<500){
-                    $('#settingsForm').height(500 );
 
                 }
                 $('#form1').hide();
@@ -110,9 +113,7 @@ $(document).ready(function() {
             }else if (i<3){
                 $('#button_contact2').css('display','inline');
             }
-
         }
-
     });
     $( "#button_contact" ).click(function() {
         $('#themostunder').css('margin-right','0%');
@@ -123,18 +124,19 @@ $(document).ready(function() {
             $('.menuy ul li').eq(i).removeClass('active');
             $('.menuy ul li').eq(i - 1).addClass('active');
             i--;
-
             if(i===0){
                 if($( '#kurumsal' ).prop( "checked" )==='false'){
                     $('.kurumsal').hide();
                     console.log($('.kurumsal').text());
-
                 }
                 let window_size =$( window ).width();
 
                 if(window_size<500){
-                    $('#settingsForm').height(1000);
+                    $('#settingsForm').height('950')
 
+                }
+                else{
+                    $('#settingsForm').height('600')
                 }
                 $('#button_contact2').css('display','inline');
                 $('#form1').show();
@@ -147,7 +149,12 @@ $(document).ready(function() {
                 let window_size =$( window ).width();
 
                 if(window_size<500){
-                    $('#settingsForm').height(590);
+                    $('#settingsForm').height('500')
+
+
+                }
+                else{
+                    $('#settingsForm').height('200')
 
                 }
                 $('#button_contact2').css('display','inline');
@@ -159,13 +166,11 @@ $(document).ready(function() {
                 $('#form2').show();
                 $('#form3').hide();
                 $('#form4').hide();
-                $('#form2').height(300);
 
             }else if(i===2){
                 let window_size =$( window ).width();
 
                 if(window_size<500){
-                    $('#settingsForm').height(899 );
 
                 }
                 $('#button_contact2').css('display','inline');
@@ -178,10 +183,6 @@ $(document).ready(function() {
             }else if(i===3){
                 let window_size =$( window ).width();
 
-                if(window_size<500){
-                    $('#settingsForm').height(500 );
-
-                }
                 $('#button_contact2').css('display','inline');
 
                 $('#form1').hide();
@@ -225,7 +226,9 @@ $(document).ready(function() {
                     jQuery.each(val, function (is, vall) {
                         $start = vall.id - 1;
                         console.log(vall);
+
                         $(".PURCHACE").eq($start).val(vall.id);
+
 
                     });
                 });
@@ -263,7 +266,6 @@ $(document).ready(function() {
                         $("#başlangic").text(vall.names_packets);
                         $(".rank_follow").text(vall.rank_fosllow);
                         $("#hidden_price").text(vall.price);
-
                         $("#hidden_description").text(vall.description)
                     });
                 });
@@ -274,29 +276,25 @@ $(document).ready(function() {
     console.log(user_id)
     get_packets();
     $( "#button_pay" ).click(function() {
+
+        console.log('burasdgeldi')
         const count =  $('.hidden_size').val();
         if(count<1){
             post_packets();
             post_invoice();
-            console.log('geldii')
-
         }else {
-            console.log('sas')
-            patch_packets();
-            post_invoice();
-            console.log('gitti')
-
+                patch_packets();
+                post_invoice();
+            }
         }
-    });
+    );
     function post_invoice(){
         let first = $('#first_name').val();
         let last = $('#last_name').val();
         let Id_number = $('#number_personal').val();
         let id_number = parseInt(Id_number);
         console.log(typeof id_number)
-
         let invoice_no = $('#invoice_noo').val();
-
         let companyName = $('#companyName').val();
         let invoice_Addres = $('#invoice_addresses').val();
         console.log(invoice_no,'invoice no');
@@ -330,8 +328,6 @@ $(document).ready(function() {
             success: function (result) {
                 console.log('işlem başarılı')
                 $('#success_message').css('display','grid');
-
-
             },
             error: function(result) {
                 $('#error_message').css('display','grid');
@@ -357,9 +353,9 @@ $(document).ready(function() {
         let date_int_day  = parseInt(dd);
         var new_mm = date_int_mm +1;
         var new_dd = date_int_day +1;
-        today =  new_dd + "-" + '0'+new_mm  + "-" + yyyy;
-        let ee =  Date.parse(today);
-        let dateArray = today.split("-");
+        todayee =  new_dd + "-" + '0'+new_mm  + "-" + yyyy;
+        let ee =  Date.parse(todayee);
+        let dateArray = todayee.split("-");
         let dateObj = new Date(`${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`);
         let deyt =   new Date(new_dd,new_mm,yyyy);
         var con_date =
@@ -399,40 +395,34 @@ $(document).ready(function() {
         let hidden_word_count  =parseInt($("#hidden_word_count").text());
         let hidden_websites_count  =parseInt($("#hidden_websites_count").text());
         let rank_follow_normal  =parseInt($(".rank_follow").text());
-        console.log(rank_follow_normal)
-        console.log(($(".rank_follow_max").val()))
-        let hidden_websites_count_new= (hidden_websites_count-($('.my_count_of_websites').val()))+hidden_websites_count;
-        let rank_follow_new= (rank_follow_normal-($(".rank_follow_max").val()))+rank_follow_normal;
-        console.log(((rank_follow_normal-($(".rank_follow_max").val()))),'rank count');
-        console.log((rank_follow_normal),'max count');
-        let  hidden_word_count_new=(hidden_word_count-($('.my_count_of_words').val()))+ hidden_word_count;
+      let max_count_word  = $('.max_my_count_of_words').val();
+        let max_count_of_websites  =  $('.max_my_count_of_websites').val();
+        let hidden_websites_count_new= (parseInt(max_count_of_websites))-parseInt($('.my_count_of_websites').val())+hidden_websites_count;
+        let rank_follow_new= (parseInt($('.rank_follow_max_max').val()))-parseInt($('.rank_follow_max').val())+rank_follow_normal;
+        let  hidden_word_count_new=(parseInt(max_count_word))-parseInt($('.my_count_of_words').val())+ hidden_word_count;
         let başlangic  =$("#başlangic").text()
         let hidden_price  =$("#hidden_price").text()
 
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-        today2 = dd + '-' + mm + '-' + yyyy;
-        let date_int_mm  = parseInt(mm);
-        let date_int_day  = parseInt(dd);
-        var new_mm = date_int_mm +1;
-        var new_dd = date_int_day +1;
-        today =  new_dd + "-" + '0'+new_mm  + "-" + yyyy;
-        let ee =  Date.parse(today);
-        let dateArray = today.split("-");
+        var today = $('.date_packet').val();
 //dateArray[2] equals to 2021
 //dateArray[1] equals to 02
 //dateArray[0] equals to 13
+        var arr_dateText = today.split("-");
+        startyear = parseInt(arr_dateText[0]);
+        startmonth = parseInt(arr_dateText[1])+1;
+        startday = parseInt(arr_dateText[2]);
+        if(startmonth==13){
+            startmonth=1
+            startyear=startyear+1
+
+        }
+
+        let gdate = "" + startyear +"-"+"0"+ startmonth+"-" + startday; //given date,
+
+        console.log(gdate);
         $('.my_count_of_words').val();
         $('.my_count_of_websites').val();
 // using template literals below
-        let dateObj = new Date(`${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`);
-        let deyt =   new Date(new_dd,new_mm,yyyy);
-        var con_date =
-            ""+deyt.getFullYear() + (deyt.getMonth()+1) + deyt.getDate(); //converting the date
-        let gdate = "" + yyyy +"-"+ new_mm+"-" + new_dd; //given date
-        console.log(gdate,'giremedi');
         const id =  $('.id_hidden').val();
         $.ajax({
             url: "http://127.0.0.1:8000/api/v1/Packets/"+id,
@@ -446,14 +436,14 @@ $(document).ready(function() {
                     "id":id,
                     "attributes": {
                         "user_id":user_id,
-                        "count_of_words": $('.my_count_of_words').val(),
+                        "count_of_words": 0,
                         "descrpitions":"sada",
                         "end_of_pocket":gdate,
                         "max_count_of_words":hidden_word_count_new,
-                        "rank_follow":$(".rank_follow_max").val(),
+                        "rank_follow":0,
                         "rank_follow_max":rank_follow_new,
 
-                        "count_of_websites": $('.my_count_of_websites').val(),
+                        "count_of_websites": 0,
                         "max_count_of_websites": hidden_websites_count_new,
                         "packet_names":başlangic,
 
@@ -473,7 +463,7 @@ $(document).ready(function() {
                 Accept: "application/vnd.api+json",
             },
             success: function (result) {
-
+                console.log(result)
                 let count = result.data.length
                 if(count>0) {
                     $('.id_hidden').val(result.data[0].id)
@@ -481,7 +471,14 @@ $(document).ready(function() {
                     $('.my_count_of_words').val(result.data[0].attributes.count_of_words);
                     $('.my_count_of_websites').val(result.data[0].attributes.count_of_websites);
                     $('.rank_follow_max').val(result.data[0].attributes.rank_follow);
+                    $('.max_my_count_of_words').val(result.data[0].attributes.max_count_of_words);
+                    $('.max_my_count_of_websites').val(result.data[0].attributes.max_count_of_websites);
+                    $('.rank_follow_max_max').val(result.data[0].attributes.rank_follow_max);
+                    $('.date_packet').val(result.data[0].attributes.end_of_pocket);
                     console.log($('.rank_follow_max').val());
+                    console.log($('.rank_follow_max_max').val());
+                    var today = $('.date_packet').val();
+
 
                 }
             }
