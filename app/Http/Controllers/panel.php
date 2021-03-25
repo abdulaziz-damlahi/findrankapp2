@@ -118,21 +118,21 @@ class panel extends Controller
          $keywordid= keywords::where('id','=',$id)->get('id');
         $keywordidnum = (int)filter_var($keywordid, FILTER_SANITIZE_NUMBER_INT);
         if ($id !=$keywordidnum ){return abort(404);}
-        $rank1 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(0)->first();
-        $rank1num = (int)filter_var($rank1, FILTER_SANITIZE_NUMBER_INT);
-        $rank2 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(1)->first();
-        $rank2num = (int)filter_var($rank2, FILTER_SANITIZE_NUMBER_INT);
-        $rank3 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(2)->first();
-        $rank3num = (int)filter_var($rank3, FILTER_SANITIZE_NUMBER_INT);
-        $rank4 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(3)->first();
-        $rank4num = (int)filter_var($rank4, FILTER_SANITIZE_NUMBER_INT);
-        $rank5 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(4)->first();
-        $rank5num = (int)filter_var($rank5, FILTER_SANITIZE_NUMBER_INT);
-        $rank6 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(5)->first();
-        $rank6num = (int)filter_var($rank6, FILTER_SANITIZE_NUMBER_INT);
-        $rank7 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(6)->first();
-        $rank7num = (int)filter_var($rank7, FILTER_SANITIZE_NUMBER_INT);
-        return view('pages/websitelist/grafik', compact('rank1num', 'rank2num', 'rank3num', 'rank4num', 'rank5num', 'rank6num', 'rank7num'));
+//        $rank1 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(0)->first();
+//        $rank1num = (int)filter_var($rank1, FILTER_SANITIZE_NUMBER_INT);
+//        $rank2 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(1)->first();
+//        $rank2num = (int)filter_var($rank2, FILTER_SANITIZE_NUMBER_INT);
+//        $rank3 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(2)->first();
+//        $rank3num = (int)filter_var($rank3, FILTER_SANITIZE_NUMBER_INT);
+//        $rank4 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(3)->first();
+//        $rank4num = (int)filter_var($rank4, FILTER_SANITIZE_NUMBER_INT);
+//        $rank5 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(4)->first();
+//        $rank5num = (int)filter_var($rank5, FILTER_SANITIZE_NUMBER_INT);
+//        $rank6 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(5)->first();
+//        $rank6num = (int)filter_var($rank6, FILTER_SANITIZE_NUMBER_INT);
+//        $rank7 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(6)->first();
+//        $rank7num = (int)filter_var($rank7, FILTER_SANITIZE_NUMBER_INT);
+        return view('pages/websitelist/grafik', compact('id'));
     }
 
     public function profile()
@@ -143,20 +143,11 @@ class panel extends Controller
         return view('pages/panel/profile',compact('packetdata'));
     }
 
-
-
     public function FindOrder()
-
-    {
-        return view(
-            'pages/findorder');
-    }
-
+    {return view('pages/findorder');}
 
     public function findPost(Request $request)
     {
-
-
         $colonial_name = $request->hidden_collonial_name;
         $device_information = $request->hidden_device_name;
         $website_request = $request->website;

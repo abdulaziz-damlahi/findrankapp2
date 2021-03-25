@@ -195,12 +195,10 @@ window.addEventListener('load', (event) => {
 
 
 window.onload = function () {
-
     $.ajax({
         type: 'get',
         url: "/api/v1/Keywords/?include=website",
         success: function (response) {
-
             var len = 0;
             if (response['data'] != null) {
                 len = response['data'].length;
@@ -214,7 +212,6 @@ window.onload = function () {
                     var id = response['data'][i].id
                     var rank = response['data'][i].attributes.rank
                     var word = response['data'][i].attributes.name
-
                     if (rank > 0 && rank <= 3) {
                         les3 = les3 + 1;
                         var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
@@ -245,11 +242,15 @@ window.onload = function () {
                 $('#ilk10').append(les10);
                 $('#ilk100').append(les100);
             }
+            CanvasJS.addColorSet("customColorSet1",
+            ["#fd9644", "#fed330", "#fc5c65" ]);
+
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
-
+                colorSet: "customColorSet1",
                 data: [
                     {
+                        colorSet:  "customColorSet1",
                         //startAngle: 45,
                         indexLabelFontSize: 20,
                         indexLabelFontFamily: "Garamond",
@@ -263,7 +264,7 @@ window.onload = function () {
                     indexLabel: "{label} - #percent%",
                     toolTipContent: "<b>{label}:</b> {y} (#percent%)",
                     dataPoints: [
-                        {y: les3, label: "les than 3"},
+                        {y: les3, label: "les than 3",},
                         {y: les10, label: "les than 10"},
                         {y: les100, label: "les than 100"},
                     ]
@@ -490,4 +491,29 @@ function Statistics() {
 }
 
 
-
+$.ajax({
+    url: "http://127.0.0.1:8000/api/v1/Packets",
+    type: "POST",
+    headers: { "Content-Type": "application/vnd.api+json",
+        Accept: "application/vnd.api+json",
+    },
+    data: JSON.stringify({
+        "data": {
+            "type": "Packets",
+            "attributes": {
+                "user_id":user_id,
+                "count_of_words": 0,
+                "descrpitions":"sada",
+                "end_of_pocket":gdate,
+                "max_count_of_words":hidden_word_count,
+                "rank_follow":0,
+                "rank_follow_max":rank_follow,
+                "count_of_websites":0,
+                "max_count_of_websites": hidden_websites_count,
+                "packet_names":başlangic,
+            }}
+    }) ,
+    success: function (result) {
+        console.log('işlem başarılı')
+    }
+});

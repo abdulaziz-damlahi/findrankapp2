@@ -1,6 +1,5 @@
 $(document).ready(function () {
     profile();
-    profilename();
 });
 
 function profile() {
@@ -8,7 +7,6 @@ function profile() {
         type: 'get',
         url: "/api/v1/Packets",
         success: function (response) {
-            console.log(response)
             //last day
             var endofpacket = response['data'][0].attributes.end_of_pocket;
             var createdAt = response['data'][0].attributes.createdAt;
@@ -27,7 +25,6 @@ function profile() {
             var oneDay = 24 * 60 * 60 * 1000;
             var diffDays = Math.round(Math.abs((todayformat - lastday) / oneDay));
             diffDays2 = (diffDays) - 2;
-            console.log(diffDays2)
             $('#daysleft1').append(diffDays2);
             $('#endofpacket1').append(endofpacket);
             $('#createdAt1').append(createdAt);
