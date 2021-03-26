@@ -36,6 +36,7 @@ JsonApi::register('v1')->routes(function (Api $api) {
     $api->resource('packets-reels');
     $api->resource('keywordsRequests');
     $api->resource('Packets');
+    $api->resource('requests');
     $api->resource('Websites')->middleware("auth");
     Route::prefix('auth')
         ->group(function () use ($api) {

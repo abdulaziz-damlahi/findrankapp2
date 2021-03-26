@@ -56,6 +56,8 @@ class rank_follow extends Command
             $result = keywords::with('website')->where('website_id', $website_id->id)->get();
             foreach ($result as $anahtar => $resultsasa) {
                 $sonucc = KeywordRequest::where('keyword_id', $resultsasa->id)->get();
+                // it will INSERT a new record
+
                     $keyword = $resultsasa->name;
                 $website_name = $resultsasa->website[0]->website_name;
 
@@ -300,23 +302,30 @@ class rank_follow extends Command
                                     ]);
                                     $response = curl_exec($ch);
                                 echo    $degise;
-                                dd($response);
-                                    preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)<span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
+                                    preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb">(.*?)<span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
                                     if(!empty($resultss)){
 
                                     foreach ($resultss as $keyyy=>$resultsaasda){
                                         if(strpos($resultsaasda[1],$website_name) !== false){
-                                            $KeywordRequest->rank=$keyyy;
                                             $resultsasa->rank=$keyyy;
                                             $resultsasa->save();
                                             $KeywordRequest->save();
-                                            echo $resultsasa->rank;
+                                            $keywordRequest2 = new KeywordRequest;
+                                            $keywordRequest2->rank=$resultsasa->rank;
+                                            $keywordRequest2->keyword_id=$resultsasa->id;
+                                            $keywordRequest2->user_id=$resultsasa->user_id;
+                                            $keywordRequest2->save();
                                             break;
                                         }
                                         else{
                                             echo "gelmedi";
                                             $bune=0;
                                             $resultsasa->rank=$bune;
+                                            $keywordRequest2 = new KeywordRequest;
+                                            $keywordRequest2->rank=$bune;
+                                            $keywordRequest2->keyword_id=$resultsasa->id;
+                                            $keywordRequest2->user_id=$resultsasa->user_id;
+                                            $keywordRequest2->save();
                                             $resultsasa->save();
                                         }
 

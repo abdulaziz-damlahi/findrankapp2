@@ -32,5 +32,9 @@ class packets extends Model
     {
         return $this->hasMany('App\Models\websites', 'id','id');
     }
+    public function requests()
+    {
+        return $this->hasMany('App\Models\requests', 'id','id');
+    }
 
 }

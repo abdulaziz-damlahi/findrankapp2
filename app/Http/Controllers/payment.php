@@ -9,13 +9,15 @@ use Iyzipay\Model\BasketItemType;
 use Iyzipay\Options;
 use App\Models\packets_reels;
 use App\Models\packets;
+use App\Models\requests;
+
+
 use Illuminate\Routing\Controller;
 
 class payment extends Controller
 {
     //
-    public function pay_post(Request $request){
-
+    public static  function pay_post(requests $request){
         $paymentrequest = new \Iyzipay\Request\CreatePaymentRequest();
       /*  $packets_reel = packets_reels::all();
         $packets = packets::all()->first();
@@ -44,7 +46,6 @@ class payment extends Controller
             $money=  $pack->price;
             $money1=  $middle->price;
             $money2=  $last->price;
-
             $url = "https://api.exchangeratesapi.io/latest?base=TRY";
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -132,6 +133,7 @@ if($request->First_name_institutional!==""){
     $card_ay= $request->Ay;
     $card_yil= $request->Yil;
     $card_cvc= $request->CVC;
+    dd($request);
 
     $paymentrequest->setConversationId("123456789");
     if(App::getLocale()=='de'){

@@ -1,8 +1,6 @@
 <?php
 
-namespace App\JsonApi\Packets;
-
-use App\Http\Controllers\payment;
+namespace App\JsonApi\Requests;
 use App\JsonApi\Base\AbstractAdapter;
 use \App\Models\packets;
 use \App\Models\requests;
@@ -14,8 +12,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
+
+use App\Http\Controllers\payment;
+
+
 class Adapter extends AbstractAdapter
 {
+
     /**
      * Mapping of JSON API attribute field names to model keys.
      *
@@ -29,7 +32,6 @@ class Adapter extends AbstractAdapter
      * @var array
      */
     protected $filterScopes = [];
-    protected $defaultWith = ['websitess'];
 
     /**
      * Adapter constructor.
@@ -38,22 +40,21 @@ class Adapter extends AbstractAdapter
      */
     public function __construct(StandardStrategy $paging)
     {
-        parent::__construct(new \App\Models\packets(), $paging);
+        parent::__construct(new \App\Models\requests(), $paging);
+    }
+    protected function creating(requests $requests)
+    {
+        payment::pay_post($requests);
+
     }
 
-    /**
-     * @param requests $requests
-     *
-     */
     /**
      * @param Builder $query
      * @param Collection $filters
      * @return void
      */
-
     protected function filter($query, Collection $filters)
     {
-        $query->whereUserId(Auth::id());
         $this->filterWithScopes($query, $filters);
     }
 
