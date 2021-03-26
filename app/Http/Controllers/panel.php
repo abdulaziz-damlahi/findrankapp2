@@ -134,7 +134,6 @@ class panel extends Controller
 //        $rank7num = (int)filter_var($rank7, FILTER_SANITIZE_NUMBER_INT);
         return view('pages/websitelist/grafik', compact('id'));
     }
-
     public function profile()
     {
         $user = auth()->user();

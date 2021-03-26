@@ -26,9 +26,7 @@
                                     </div>
                                 </div>
                             </a>
-
                     @endforeach
-
                     <!-- order-card end -->
                         <div class="col-lg-12 col-md-12">
                             <div class="card whitebackground">
@@ -49,9 +47,7 @@
                                         </tr>
                                         </thead>
                                         <tbody id="row">
-
                                         {{--                                            table content from js--}}
-
                                         <div id="myModal" class="modal">
                                             <!-- Modal content -->
                                             <div class="modal-content">
