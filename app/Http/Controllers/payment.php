@@ -17,7 +17,7 @@ use Illuminate\Routing\Controller;
 class payment extends Controller
 {
     //
-    public static  function pay_post(requests $request){
+    public static  function pay_post(Request $request){
         $paymentrequest = new \Iyzipay\Request\CreatePaymentRequest();
       /*  $packets_reel = packets_reels::all();
         $packets = packets::all()->first();
@@ -133,7 +133,7 @@ if($request->First_name_institutional!==""){
     $card_ay= $request->Ay;
     $card_yil= $request->Yil;
     $card_cvc= $request->CVC;
-    dd($request);
+    $card_cvc= $request->CVC;
 
     $paymentrequest->setConversationId("123456789");
     if(App::getLocale()=='de'){
@@ -306,7 +306,7 @@ else{
 
 
 $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
-        $payment = json_decode($payment->getRawResult(), true);
+$payment = json_decode($payment->getRawResult(), true);
         if ($payment['status'] === "success") {
             $success_message = "Payment Successful !";
         }

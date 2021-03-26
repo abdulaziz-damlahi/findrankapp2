@@ -328,7 +328,6 @@ class rank_follow extends Command
                                             $keywordRequest2->save();
                                             $resultsasa->save();
                                         }
-
                                     }
                                    }else{
                                        echo "ip değiş";

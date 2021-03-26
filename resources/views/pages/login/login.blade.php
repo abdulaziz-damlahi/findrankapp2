@@ -9,6 +9,7 @@
             <div class="alert-danger">
                 {{$errors->first()}}
             </div>
+
         @endif
         @if(session('success'))
             <div class="alert-success">

@@ -23,6 +23,7 @@ class Invoicerecords extends Migration
             $table->string('tax_address', 255)->nullable();
             $table->string('country', 255)->nullable();
             $table->string('city', 255)->nullable();
+            $table->enum('invoice_type', ['individual', 'institutional'])->default('individual');
             $table->string('company_name', 100)->nullable();
             $table->timestamps();
             $table->unsignedBigInteger('user_id')->unsigned();

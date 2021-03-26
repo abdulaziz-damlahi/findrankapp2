@@ -5,12 +5,9 @@ use App\JsonApi\Base\AbstractAdapter;
 use \App\Models\packets;
 use \App\Models\requests;
 use \http\Client\Request;
-use CloudCreativity\LaravelJsonApi\Http\Requests\FetchResource;
-use CloudCreativity\LaravelJsonApi\Document\ResourceObject;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 
 
 use App\Http\Controllers\payment;

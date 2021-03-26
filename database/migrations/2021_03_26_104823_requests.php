@@ -17,12 +17,11 @@ class Requests extends Migration
         Schema::create('requests', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('input_price');
+            $table->integer('deneme_ay');
+            $table->integer('deneme_years');
+            $table->integer('deneme_cvs');
             $table->string('card_first_last');
             $table->unsignedBigInteger('card_number');
-            $table->integer('Ay');
-            $table->integer('Yil');
-            $table->integer('CVC');
-
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

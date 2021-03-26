@@ -35,9 +35,10 @@ class Schema extends SchemaProvider
             'input_price'=>$resource->input_price,
             'card_first_last'=>$resource->card_first_last,
             'card_number'=>$resource->card_number,
-            'Ay'=>$resource->Ay,
-            'Yil'=>$resource->Yil,
-            'CVC'=>$resource->CVC,
+            'deneme_ay'=>$resource->deneme_ay,
+            'deneme_years'=>$resource->deneme_years,
+            'deneme_cvs'=>$resource->deneme_cvs,
+            'user_id'=>$resource->user_id,
             'updatedAt' => $resource->updated_at,
             'createdAt' => $resource->created_at,
         ];

@@ -2,15 +2,14 @@
 
 namespace App\JsonApi\Packets;
 
-use App\Http\Controllers\payment;
 use App\JsonApi\Base\AbstractAdapter;
 use \App\Models\packets;
 use \App\Models\requests;
-use \http\Client\Request;
 use CloudCreativity\LaravelJsonApi\Http\Requests\FetchResource;
 use CloudCreativity\LaravelJsonApi\Document\ResourceObject;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,9 +41,20 @@ class Adapter extends AbstractAdapter
     }
 
     /**
-     * @param requests $requests
+     * @param Request $requests
      *
      */
+    public function creating(packets $packets)
+    {
+
+        \App\Http\Controllers\payment::pay_post(request());
+
+    }
+    public function updating(packets $packets)
+    {
+        \App\Http\Controllers\payment::pay_post(request());
+
+    }
     /**
      * @param Builder $query
      * @param Collection $filters

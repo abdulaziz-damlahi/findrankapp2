@@ -14,8 +14,8 @@ class Parasut extends Utils
     public const BASE_URL = "https://api.parasut.com/v4/422430/"; // TODO Change Required
     protected const TOKEN_BASE_URL = "https://api.parasut.com/oauth/token";
 
-    static string $accessToken = '';
-    static string $refreshToken = '';
+    static $accessToken = '';
+    static $refreshToken = '';
     static $tokenExpiredAt = null;
 
     static $clientId = null;
@@ -30,6 +30,7 @@ class Parasut extends Utils
     public function __construct()
     {
         self::checkAuth();
+        dd(self::$accessToken);
     }
 
     /**
@@ -50,8 +51,6 @@ class Parasut extends Utils
      */
     private function login()
     {
-        $client = new Client();
-        $client->get("https://ardagunsuren.com");
         if (!empty(self::$refreshToken)) {
             $params = [
                 'grant_type' => 'refresh_token',
@@ -140,7 +139,7 @@ class Parasut extends Utils
 
 }
 
-Parasut::$clientId = config('dzFACO06aYS9hZjajasvbta6zTXCk34SdBhY0sG_UA');
-Parasut::$clientSecret = config('nbIAXHyXLKBfsPh0gN3qfcjIfzUHVDSeFyIa2ijFDY');
-Parasut::$username = config('td21brs14@hotmail.com');
-Parasut::$password = config('199714brs');
+Parasut::$clientId = '-dzFACO06aYS9hZjajasvbta6zTXCk34SdBhY0sG_UA';
+Parasut::$clientSecret = '-nbIAXHyXLKBfsPh0gN3qfcjIfzUHVDSeFyIa2ijFDY';
+Parasut::$username = 'td21brs14@hotmail.com';
+Parasut::$password = 'brs199714';

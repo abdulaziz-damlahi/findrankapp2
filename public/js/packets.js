@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    $('#e_invoice').change(function() {
+        $('#e_invoice').val($(this).is(':checked'));
+       console.log($('#e_invoice').val());
+    });
     $('#try_again').hide();
     $('#settingsForm').height('600')
     $('#success_message').css('display','none');
@@ -275,6 +279,7 @@ $(document).ready(function() {
 
     console.log(user_id)
     get_packets();
+    get_invoice();
     $( "#button_pay" ).click(function() {
 
         console.log('burasdgeldi')
@@ -288,6 +293,9 @@ $(document).ready(function() {
             }
         }
     );
+    function patch_invoice(){
+
+    }
     function post_invoice(){
         let first = $('#first_name').val();
         let last = $('#last_name').val();
@@ -312,15 +320,15 @@ $(document).ready(function() {
                     "type": "invoicerecords",
 
                     "attributes": {
-
                         "user_id":user_id,
                         "first_name":first,
                         "last_name":last,
                         "id_number":id_number,
-
+                        "tax_address":invoice_Addres,
+                        "tax_no":invoice_no,
                         "country":country,
-                        "city":city
-
+                        "city":city,
+                        "company_name":companyName
                     }
                 }
 
@@ -479,6 +487,45 @@ $(document).ready(function() {
                     console.log($('.rank_follow_max_max').val());
                     var today = $('.date_packet').val();
 
+
+                }
+            }
+        });
+    } function get_invoice(){
+        $.ajax({
+            url: "http://127.0.0.1:8000/api/v1/invoicerecords",
+            type: "GET",
+            headers: { "Content-Type": "application/vnd.api+json",
+                Accept: "application/vnd.api+json",
+            },
+            success: function (result) {
+                console.log(result)
+                let count = result.data.length
+                if(count>0) {
+                    $('.invoice_id').val(result.data[0].id)
+                    $('.invoice_size').val(result.data.length);
+                    $('.invoice_first_name').val(result.data[0].attributes.first_name);
+                    $('.invoice_last_name').val(result.data[0].attributes.last_name);
+                    $('.invoice_tax_address').val(result.data[0].attributes.tax_address);
+                    $('.invoice_id_number').val(result.data[0].attributes.id_number);
+                    $('.invoice_tax_no').val(result.data[0].attributes.tax_no);
+                    $('.invoice_country').val(result.data[0].attributes.country);
+                    $('.invoice_city').val(result.data[0].attributes.city);
+                    $('.invoice_invoice_type').val(result.data[0].attributes.invoice_type);
+                    $('.invoice_company_name').val(result.data[0].attributes.company_name);
+                    $('.invoice_user_id').val(result.data[0].attributes.user_id );
+console.log($('.invoice_id').val());
+console.log($('.invoice_size').val());
+console.log($('.invoice_first_name').val());
+console.log($('.invoice_last_name').val());
+console.log($('.invoice_tax_address').val());
+console.log($('.invoice_id_number').val());
+console.log( $('.invoice_tax_no').val());
+console.log(  $('.invoice_country').val());
+console.log($('.invoice_city').val());
+console.log($('.invoice_invoice_type').val());
+console.log($('.invoice_company_name').val());
+console.log($('.invoice_user_id').val());
 
                 }
             }
