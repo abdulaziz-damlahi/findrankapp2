@@ -2,7 +2,7 @@
 @section('content')
     <div  id="keywordid" class="hidden" >{{$id}}</div>
 
-        <form id="myForm" style="">
+        <form id="myForm" style="padding-left: 100px">
             <input type="date" id="from" name="datefrom" style="height: 50px">
             <input type="date" id="to" name="dateto" style="height: 50px">
             <input type="button" class="btn" id="myButton" value="Submit">
