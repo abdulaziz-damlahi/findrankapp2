@@ -3,15 +3,10 @@
         @php
             $routeName = Route::getCurrentRoute()->getName();
         @endphp
-<<<<<<< HEAD
-
-=======
->>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="M_Adnan" />
         <!-- Document Title -->
-        <title>Infinity | SEO HTML5 Template</title>
         <!-- Favicon -->
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -48,7 +43,6 @@
         @if($routeName === 'panel')
             <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
-<<<<<<< HEAD
         @endif
 
         @if($routeName === 'websitelist')
@@ -63,13 +57,11 @@
         @endif    @if($routeName === 'packets_post')
             <script rel="stylesheet" src="{{asset('js')}}/packet_post.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
-=======
             <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
         @endif
         @if($routeName === 'packets')
             <script rel="stylesheet" src="{{asset('js')}}/packets.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
->>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
         @endif
         @if($routeName === 'contact' || $routeName === 'contact.post')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/contact.css">
@@ -88,14 +80,11 @@
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/login.css">
         @endif
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/responsive.css">
-<<<<<<< HEAD
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <!-- JavaScripts -->
         <script src="{{asset('js')}}/vendors/modernizr.js"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- Favicon -->
-=======
->>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
         <!-- FontsOnline -->
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -103,9 +92,6 @@
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen" />
         <!-- JavaScripts -->
-<<<<<<< HEAD
         <script src="js/vendors/modernizr.js"></script>
-=======
->>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
     </head>
 @endsection

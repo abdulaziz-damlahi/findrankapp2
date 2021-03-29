@@ -2,7 +2,6 @@
 
 namespace App\JsonApi\KeywordsRequests;
 
-<<<<<<< HEAD
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -10,16 +9,9 @@ use App\JsonApi\Base\AbstractAdapter;
 use App\Models\KeywordRequest;
 use Illuminate\Support\Facades\Auth;
 
-=======
-use App\JsonApi\Base\AbstractAdapter;
-use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
 
 
 
->>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
 class Adapter extends AbstractAdapter
 {
 

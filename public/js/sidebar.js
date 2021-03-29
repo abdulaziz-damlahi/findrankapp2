@@ -7,7 +7,10 @@ function profile() {
         type: 'get',
         url: "/api/v1/Packets",
         success: function (response) {
+            console.log(response,'packet');
             //last day
+            let count = response['data'].length;
+            if(count>0){
             var endofpacket = response['data'][0].attributes.end_of_pocket;
             var createdAt = response['data'][0].attributes.createdAt;
             var packet_names = response['data'][0].attributes.packet_names;
@@ -29,6 +32,10 @@ function profile() {
             $('#endofpacket1').append(endofpacket);
             $('#createdAt1').append(createdAt);
             $('#packet_names1').append(packet_names);
+            }
+else{
+console.log('packet yok')
+            }
         }
     });
 

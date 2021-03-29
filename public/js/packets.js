@@ -556,7 +556,6 @@ $(document).ready(function() {
             },
             success: function (result) {
                 console.log(result)
-                console.log(result.data[0].attributes.invoice_type,'invoice type')
                 let count = result.data.length
                 if(count>0) {
                     $('.invoice_id').val(result.data[0].id)

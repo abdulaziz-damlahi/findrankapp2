@@ -116,11 +116,9 @@ class panel extends Controller
 
     public function grafik($id)
     {
-<<<<<<< HEAD
 
         return view(
             'pages/panel/profile');
-=======
          $keywordid= keywords::where('id','=',$id)->get('id');
         $keywordidnum = (int)filter_var($keywordid, FILTER_SANITIZE_NUMBER_INT);
         if ($id !=$keywordidnum ){return abort(404);}
@@ -139,20 +137,16 @@ class panel extends Controller
 //        $rank7 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(6)->first();
 //        $rank7num = (int)filter_var($rank7, FILTER_SANITIZE_NUMBER_INT);
         return view('pages/websitelist/grafik', compact('id'));
->>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
     }
     public function profile()
     {
-<<<<<<< HEAD
 
         return view(
             'pages/findorder');
-=======
         $user = auth()->user();
         $userId = $user->id;
           $packetdata = packets::where('user_id','=',$userId)->get()->first();
         return view('pages/panel/profile',compact('packetdata'));
->>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
     }
 
     public function FindOrder()
@@ -160,7 +154,6 @@ class panel extends Controller
 
     public function findPost(Request $request)
     {
-<<<<<<< HEAD
         $packets =  packets::all();
         if(count($packets)>0) {
             $id = $packets[0]->id;
@@ -459,68 +452,9 @@ class panel extends Controller
                 return view(
                     'pages/findorder', compact('resultss','result','rank_follow_max','countrank','packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
             }
-
-=======
-        $colonial_name = $request->hidden_collonial_name;
-        $device_information = $request->hidden_device_name;
-        $website_request = $request->website;
-        $keyword_request = $request->keyword;
-        $language = $request->language_name;
-        $ch = curl_init();
-
-        $keywords = "hemengeliriz.com/";
-        $aranansite = "https://www.hemengeliriz.com/";
-        $aranan = urlencode($keyword_request);
-        echo $aranan . "gelidi";
-        $saayfa_basina_sonuc = 100;
-
-        $sa = $colonial_name;
-        $kelime = $aranan;
-        $ne = base64_encode($sa);
-
-        if ($language == 'english') {
-            $len = 'en';
-        } else {
-            $len = 'tr';
->>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
-        }
-        else{
-            $error_message = "paketiniz yok";
-            return redirect()->route('findorder')->withErrors('Paketiniz bulunmamaktadır. Bu işlemi yapamazsınız');
-        }
-<<<<<<< HEAD
-
-=======
-        echo "colonial name = " . $sa . "<br>";
-        echo "colonial base64 = " . $ne . "<br>";
-        echo "birleşmiş base64 = " . $yeni . "<br>";
-
-        $degise = 'https://www.google.com/search?ie=UTF-8&oe=UTF-8&hl=' . $len . '&num=100&q=' . $kelime . '&uule=w+CAIQICI' . $yeni;
-        echo "url : " . $degise;
-        curl_setopt_array($ch, [
-            CURLOPT_URL => $degise,
-            CURLOPT_USERAGENT => $device_information,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_SSL_VERIFYHOST => false,
-            CURLOPT_SSL_VERIFYPEER => false,
-        ]);
-        $response = curl_exec($ch);
-        preg_match_all('@ <div class="BNeawe UPmit AP7Wnd">(.*?)</div>@', $response, $resultss);
-
-        echo($response);
-        foreach ($resultss as $result) {
-            print_r($result);
+        }}
 
 
-        }
-        curl_close($ch);
-
-
-        return view(
-            'pages/findorder', compact('result', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
->>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
-    }
 
 
     public function userspacket()

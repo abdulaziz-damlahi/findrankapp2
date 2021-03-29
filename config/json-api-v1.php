@@ -73,13 +73,8 @@ return [
         'keywordsRequests' =>  \App\Models\KeywordRequest::class,
         'Locations' =>  \App\Models\locations::class,
         'packets-reels'  =>  \App\Models\packets_reels::class,
-<<<<<<< HEAD
         'requests'  =>  \App\Models\requests::class,
-        'invoicerecords'  =>  \App\Models\invoicerecords::class
-=======
         'invoicerecords'  =>  \App\Models\invoicerecords::class,
-        'keywordsRequests'  =>  \App\Models\KeywordRequest::class
->>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
     ],
 
     /*
