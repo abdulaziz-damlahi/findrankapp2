@@ -14,7 +14,6 @@ let to;
 function grafik() {
     var keywordid = parseInt(document.querySelector("#keywordid").innerHTML);
 
-
     $.ajax({
         type: 'get',
         url: "/api/v1/keywordsRequests",
@@ -27,6 +26,7 @@ function grafik() {
 
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
+
                     var requestkeywordid = response['data'][i].attributes.keyword_id
                     if (keywordid == requestkeywordid) {
                         var counterid = "count" + i;
@@ -42,14 +42,13 @@ function grafik() {
                     }
                 }
 
-                var seven=5
-                    for (var last = dps1.length; last > seven; last--) {
+                var seven = 5
+                for (var last = dps1.length; last > seven; last--) {
                     last7.push(dps1[dps1.length - last])
                 }
                 chart2(dps1)
-                console.log(dps1)
                 $("#myButton").on("click", function () {
-                    var dpsvar =0
+                    var dpsvar = 0
                     var from = new Date($("#from").val());
                     var to = new Date($("#to").val());
                     var firstcount
@@ -69,11 +68,35 @@ function grafik() {
                             console.log(lastcount)
                         }
                     }
+                    var val = document.getElementById("lastForm").value;
+                    //1hatfa 1ay 3ay 6ay 12ay
+                    if (val === "1hatfa") {
+                        lastcount=len
+                        firstcount=len-7;
+                    }
+                    if (val === "1ay") {
+                        lastcount=len
+                        firstcount=len-30;
+                    }
+                    if (val === "3ay") {
+                        lastcount=len
+                        firstcount=len-90;
+                    }
+                    if (val === "6ay") {
+                        lastcount=len
+                        firstcount=len-180;
+                    }
+                    if (val === "12ay") {
+                        lastcount=len
+                        firstcount=len-365;
+                    }
+
                     // firstcount=firstcount+1;
-                    dpsvar = dps1.slice(firstcount,lastcount)
+                    dpsvar = dps1.slice(firstcount, lastcount)
                     chart(dpsvar);
-                    function chart(dps1){
-                        var dpslast=dps1
+
+                    function chart(dps1) {
+                        var dpslast = dps1
                         chart = new CanvasJS.Chart("chartContainer", {
                             animationEnabled: true,
                             title: {
@@ -112,25 +135,26 @@ function grafik() {
                         }
                     }
 
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0');
-                var yyyy = today.getFullYear();
-                today = mm + '/' + dd + ',' + yyyy;
+                    var today = new Date();
+                    var dd = String(today.getDate()).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0');
+                    var yyyy = today.getFullYear();
+                    today = mm + '/' + dd + ',' + yyyy;
 
-                var last =  function(array, n) {
-                    if (array == null)
-                        return void 0;
-                    if (n == null)
-                        return array[array.length - 1];
-                    return array.slice(Math.max(array.length - n, 0));
-                };
+                    var last = function (array, n) {
+                        if (array == null)
+                            return void 0;
+                        if (n == null)
+                            return array[array.length - 1];
+                        return array.slice(Math.max(array.length - n, 0));
+                    };
                 });
             }
         }
     })
-    function chart2(dps1){
-        var dpslast=dps1
+
+    function chart2(dps1) {
+        var dpslast = dps1
         chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
             title: {
@@ -168,6 +192,7 @@ function grafik() {
             chart.render();
         }
     }
+
 }
 
 
