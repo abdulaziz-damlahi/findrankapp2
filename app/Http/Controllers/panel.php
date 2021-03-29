@@ -185,7 +185,10 @@ class panel extends Controller
 
                 if ($language == 'english') {
                     $len = 'en';
-                } else {
+                } elseif($language == 'arabic'){
+                    $len = 'ar';
+                }
+                else {
                     $len = 'tr';
                 }
                 $yeni = 0;
@@ -427,7 +430,7 @@ class panel extends Controller
 
                     echo "girdi";
                     if($device_information==='Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53'){
-                        preg_match_all('@<span class="Zu0yb UGIkD qzEoUe">(.*?)<span class="kbNtnf">(.*?)<\/span><\/span>@', $response, $resultss, PREG_SET_ORDER, 0);
+                        preg_match_all('@<span class="Zu0yb UGIkD qzEoUe"><span dir="ltr">(.*?)<\/span><\/span>@', $response, $resultss, PREG_SET_ORDER, 0);
                     }
                     else{
                         echo 'buraya girer';
@@ -446,7 +449,7 @@ class panel extends Controller
                     }
                 }
 
-                foreach ($resultss as $key=>$result){
+                foreach ($resultss as $keyo=>$result){
 
                 }
                 curl_close($ch);

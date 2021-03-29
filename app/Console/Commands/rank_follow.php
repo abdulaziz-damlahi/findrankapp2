@@ -61,21 +61,33 @@ class rank_follow extends Command
 
                     $keyword = $resultsasa->name;
                 $website_name = $resultsasa->website[0]->website_name;
-
+                if($resultsasa->device=='Mobil'){
+$device_name ="Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53";
+                }
+                else{
+                    $device_name="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36s";
+                }
                                $packets =  packets::all();
                                 if(count($packets)>0) {
                                     $ch = curl_init();
-                                    $colonial_name = 'Canakkale,Canakkale,Turkey';
+                                    $colonial_name = $resultsasa->city;
                                     $aranan = urlencode($keyword);
-                                    $language = "Turkish";
+                                    $language = $resultsasa->language;
                                     $sa = $colonial_name;
                                     $kelime = $aranan;
                                     $ne = base64_encode($sa);
 
                                     if ($language == 'english') {
                                         $len = 'en';
-                                    } else {
+                                        echo "1 buraasqdwq ";
+                                    } elseif($language =='turkish') {
                                         $len = 'tr';
+                                        echo "3 buraasqdwq";
+                                    }
+                                    elseif($language =='arabic'){
+                                        $len = 'ar';
+                                        echo "2 buraasqdwq";
+
                                     }
                                     $saayi = strlen($sa);
                                     if ($saayi == 4) {
@@ -293,21 +305,52 @@ class rank_follow extends Command
                                         $yeni = $saaa . $ne;
                                     }
                                     $degise = 'https://www.google.com/search?ie=UTF-8&oe=UTF-8&hl=' . $len . '&num=100&q=' . $kelime . '&uule=w+CAIQICI' . $yeni;
-                                    echo  $degise;
+                                    echo $degise;
                                     curl_setopt_array($ch, [
                                         CURLOPT_URL => $degise,
-                                        CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
+                                        CURLOPT_USERAGENT => $device_name,
                                         CURLOPT_RETURNTRANSFER => true,
                                         CURLOPT_FOLLOWLOCATION => true,
                                         CURLOPT_SSL_VERIFYHOST => false,
                                         CURLOPT_SSL_VERIFYPEER => false,
                                     ]);
                                     $response = curl_exec($ch);
-                                    preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)<span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
+                                    if($resultsasa->device=='Mobil') {
+                                        if ($len === 'ar') {
+                                            echo 'girdi';
+                                            preg_match_all('@<span class="Zu0yb UGIkD qzEoUe"><span dir="ltr">(.*?)</span><span class="kbNtnf">(.*?)<\/span><\/span>@', $response, $resultss, PREG_SET_ORDER, 0);
+
+
+                                        }
+                                        else{
+                                            echo 'burasu len ar olmayan';
+                                            preg_match_all('@<span class="Zu0yb UGIkD qzEoUe">(.*?)<span class="kbNtnf">(.*?)<\/span><\/span>@', $response, $resultss, PREG_SET_ORDER, 0);
+
+
+                                        }
+
+
+                                    }elseif($resultsasa->device=='Masaüstü')
+                                    {      if ($len === 'ar') {
+                                        echo 'nereye2';
+
+                                        preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx"><span dir="ltr">(.*?)</span><span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
+
+                                    }
+                                    else{
+                                        echo 'nereye';
+
+                                        preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)<span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
+
+                                    }
+
+
+                                    }
                                     if(!empty($resultss)){
 
                                     foreach ($resultss as $keyyy=>$resultsaasda){
                                         if(strpos($resultsaasda[1],$website_name) !== false){
+                                            echo $resultsaasda[1];
                                             $resultsasa->rank=$keyyy;
                                             $keywordRequest2 = new KeywordRequest;
                                             $keywordRequest2->rank=$keyyy;

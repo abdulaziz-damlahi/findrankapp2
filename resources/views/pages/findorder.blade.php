@@ -180,6 +180,7 @@
             @foreach ($resultss as $key=>$result)
                 @if(strpos($result[1],$website_request) !== false)
                 <div id="alert_color" class="alert alert-light" role="alert">
+
                     Sorguladığınız site  {{$key}} sırada yer alıyor.
                 </div>
                 @endif

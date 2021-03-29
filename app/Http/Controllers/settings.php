@@ -20,7 +20,8 @@ class settings extends Controller
 
     public function index(Request $request)
     {
-       // $parasut = (new \App\Parasut\jobs\Invoicing(request()));
+        $parasut = (new \App\Parasut\Parasut(request()));
+
 
         $user = Auth::user();
         $user_first_name = $user->first_name;
@@ -31,10 +32,9 @@ class settings extends Controller
         return view('pages/foruser/settings/settings', compact('user_first_name', 'user_last_name', 'phone', 'mail'));
     }
 
-    public function parase(invoicerecords $invoicerecords)
+    public function parase(users $user,invoicerecords $invoicerecords)
     {
-     //   $parasut = (new \App\Parasut\Parasut());
-        $parasut2 = (new \App\Parasut\jobs\Invoicing($invoicerecords));
+        $parasut2 = (new \App\Parasut\jobs\Invoicing($user,$invoicerecords));
     }
 
     public function getClient()

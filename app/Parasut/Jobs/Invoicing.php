@@ -19,6 +19,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Auth;
 
 class Invoicing implements ShouldQueue
 {
@@ -72,26 +73,28 @@ class Invoicing implements ShouldQueue
      */
     private function updateUser(users $user, invoicerecords $invoiceRecord)
     {
-        $isIndividual = $invoiceRecord['invoice_type'] === 'individual';
-        $fullName = $isIndividual ? ($invoiceRecord['first_name'] . ' ' . $invoiceRecord['last_name']) : $invoiceRecord['company_name'];
-        $taxNumber = (($isIndividual) ? $invoiceRecord['id_no'] : $invoiceRecord['tax_number']) ?? "asdasd";
-        $requestModel = new ParasutRequestModel($user['parasut_customer_id'], 'contacts', [
+        $auth = Auth::user();
+        $invoiceRecord=$invoiceRecord->all()[0];
+        $isIndividual = $invoiceRecord->invoice_type === 'individual';
+        $fullName = $isIndividual ? ($invoiceRecord->first_name . ' ' . $invoiceRecord->last_name) : $invoiceRecord->company_name;
+        $taxNumber = (($isIndividual) ? $invoiceRecord->id : $invoiceRecord->tax_number) ?? "asdasd";
+        $requestModel = new ParasutRequestModel($auth->parasut_customer_id, 'contacts', [
             "email" => $invoiceRecord['email'],
             "name" => $fullName,
             "short_name" => $fullName,
             "contact_type" => ($isIndividual ? "person" : "company"),
             "tax_office" => $invoiceRecord['tax_office'] ?? $invoiceRecord['city'],
             "tax_number" => $taxNumber,
-            "city" => $invoiceRecord->city['name'],
-            "district" => $invoiceRecord->district['name'],
-            "address" => $invoiceRecord['address'],
-            "phone" => $invoiceRecord['phone'],
+            "city" => $invoiceRecord->city,
+            "district" => $invoiceRecord->district,
+            "address" => $invoiceRecord->address,
+            "phone" => $invoiceRecord->phone,
             "is_abroad" => false,
             "archived" => false,
             "account_type" => "customer",
             "untrackable" => false
         ]);
-        (new Parasut())->update(ParasutEndPoint::Contacts(), $user['parasut_customer_id'], $requestModel);
+        (new Parasut())->update(ParasutEndPoint::Contacts(),$auth->parasut_customer_id, $requestModel);
         return $taxNumber;
     }
 
