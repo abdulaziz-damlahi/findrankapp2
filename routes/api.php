@@ -33,6 +33,7 @@ JsonApi::register('v1')->routes(function (Api $api) {
     $api->resource('Users');
     $api->resource('invoicerecords')->middleware("auth");
     $api->resource('Locations');
+    $api->resource('keywordsRequests');
     $api->resource('packets-reels');
     $api->resource('keywordsRequests');
     $api->resource('Packets');

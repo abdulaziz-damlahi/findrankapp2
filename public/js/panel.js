@@ -1,24 +1,26 @@
 $(document).ready(function () {
     var pageNumber = 1;
-    Statistics(pageNumber)
+    getcount();
+    Statistics2(pageNumber);
+    Statistics();
+    get();
 })
 $("#nextPageButton").click(function () {
     pageNumber = currentPage2;
-
     pageNumber = pageNumber + 1;
-    Statistics(pageNumber);
+    Statistics2(pageNumber);
 });
 
 $("#prevPageButton").click(function () {
     pageNumber = currentPage2;
     pageNumber = pageNumber - 1;
-    Statistics(pageNumber);
+    Statistics2(pageNumber);
 });
 
-function Statistics(pageNumber) {
+function Statistics2(pageNumber) {
     $.ajax({
         type: 'get',
-        url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website&page[number]=" + pageNumber + "&page[size]=10",
+        url: "/api/v1/Keywords/?include=website&page[number]=" + pageNumber + "&page[size]=10",
         success: function (response) {
             $('#row').html("")
             //len keyword
@@ -40,18 +42,20 @@ function Statistics(pageNumber) {
                     var dataid = response['data'][i].id
                     var rank = response['data'][i].attributes.rank
 
-                    for (var i2 = 0; i2 < len2; i2++) {
 
+                    for (var i2 = 0; i2 < len2; i2++) {
                         var websiteid = response['included'][i2].id
                         var id_website = response['included'][i2].attributes.user_id
                         var websitename = response['included'][i2].attributes.website_name
-
+                        var url = '{{route("grafik",":id")}}';
+                        url = url.replace(':id',dataid );
                         if (wordsiteid == websiteid) {
+
                             var str = " <tr><th scope=\"row\">" + dataid + "</th>" +
                                 "<td id=\"colmun2\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto ' class='col-2'> <b> " + websitename + "</b></td>" +
                                 "<td id=\"ANAHTARKELİME\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto 'class='col-2'> " + word + "</td>" +
                                 "<td  id=\"rank\"class='col-2'>  " + rank + "</td>" +
-                                "<td class='hidden-xs col-2' id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
+                                "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + dataid  +"'> </a></td></tr>";
                             $('#row').append(str);
                         }
                     }
@@ -139,7 +143,7 @@ function Statistics(pageNumber) {
 
             $(".pagination-buttons").click(function () {
                 pageNumber = $(this).data('id');
-                Statistics(pageNumber);
+                Statistics2(pageNumber);
             });
             //convert date start here
             var CurrentData = response['data'];
@@ -153,7 +157,6 @@ function Statistics(pageNumber) {
         }
     });
 }
-
 
 // popup chart
 window.addEventListener('load', (event) => {
@@ -192,12 +195,10 @@ window.addEventListener('load', (event) => {
 
 
 window.onload = function () {
-
     $.ajax({
         type: 'get',
-        url: "http://127.0.0.1:8000/api/v1/Keywords/?include=website",
+        url: "/api/v1/Keywords/?include=website",
         success: function (response) {
-
             var len = 0;
             if (response['data'] != null) {
                 len = response['data'].length;
@@ -211,13 +212,12 @@ window.onload = function () {
                     var id = response['data'][i].id
                     var rank = response['data'][i].attributes.rank
                     var word = response['data'][i].attributes.name
-
                     if (rank > 0 && rank <= 3) {
                         les3 = les3 + 1;
                         var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
                             "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
                             "<td id=\"rank\">  " + rank + "</td>" +
-                            "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id  +"'> </a></td></tr>";
                         $('#ilk3table').append(str);
                     }
                     if (rank > 3 && rank <= 10) {
@@ -225,7 +225,7 @@ window.onload = function () {
                         var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
                             "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
                             "<td id=\"rank\">  " + rank + "</td>" +
-                            "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id  +"'> </a></td></tr>";
                         $('#ilk10table').append(str);
 
                     }
@@ -234,7 +234,7 @@ window.onload = function () {
                         var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
                             "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
                             "<td id=\"rank\">  " + rank + "</td>" +
-                            "<td id=\"grafik\"><button id=\"grafik\">Open Modal</button></td></tr>";
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id  +"'> </a></td></tr>";
                         $('#ilk100table').append(str);
                     }
                 }
@@ -242,18 +242,29 @@ window.onload = function () {
                 $('#ilk10').append(les10);
                 $('#ilk100').append(les100);
             }
+            CanvasJS.addColorSet("customColorSet1",
+            ["#fd9644", "#fed330", "#fc5c65" ]);
+
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
-
-                data: [{
-                    type: "doughnut",
+                colorSet: "customColorSet1",
+                data: [
+                    {
+                        colorSet:  "customColorSet1",
+                        //startAngle: 45,
+                        indexLabelFontSize: 20,
+                        indexLabelFontFamily: "Garamond",
+                        indexLabelFontColor: "orange",
+                        indexLabelLineColor: "darkgrey",
+                        indexLabelPlacement: "outside",
+                        type: "doughnut",
                     startAngle: 60,
                     //innerRadius: 60,
                     indexLabelFontSize: 17,
                     indexLabel: "{label} - #percent%",
                     toolTipContent: "<b>{label}:</b> {y} (#percent%)",
                     dataPoints: [
-                        {y: les3, label: "les than 3"},
+                        {y: les3, label: "les than 3",},
                         {y: les10, label: "les than 10"},
                         {y: les100, label: "les than 100"},
                     ]
@@ -368,6 +379,141 @@ $(document).ready(function () {
     }
 
 })
-$(document).ready(function () {
 
-})
+
+function get() {
+    $.ajax({
+        url: "http://127.0.0.1:8000/api/v1/Websites",
+        type: "GET",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+
+        success: function (response) {
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var websitename = response['data'][i].attributes.website_name
+                    var wordcount = response['data'][i].attributes.wordcount
+                    var websiteid = response['data'][i].id
+                    var str = "<tr><th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websiteid + "</a></th>" +
+                        "<th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websitename + "</a></th>" +
+                        "<td class='hidden-xs' scope='col' >GÜNLÜK DEĞİŞİM</td>" +
+                        "<td  +scope='col' >" + wordcount + "</td>" +
+                        "<td scope='col'><a id='randomm'href=deletewebsite/" + websiteid + " class='fa fa-trash text-danger'></a></td></tr>";
+                    $('#followedWebsites').append(str);
+                }
+            }
+
+        }
+    })
+}
+
+
+function getcount() {
+
+
+    $.ajax({
+        type: 'get',
+        url: "/api/v1/Keywords/?include=website",
+        success: function (response) {
+            //len websites
+
+            var len1 = 0;
+            if (response['included'] != null) {
+                len1 = response['included'].length;
+            }
+            //len keyword
+            var len2 = 0;
+            if (response['data'] != null) {
+                len2 = response['data'].length;
+            }
+
+            if (len1 > 0) {
+                for (var i1 = 0; i1 < len1; i1++) {
+                    var wordcount2 = 0;
+                    var websiteid = response['included'][i1].id
+                    var type = response['included'][i1].type;
+                    var createdAt = response['included'][i1].attributes.createdAt;
+                    var updatedAt = response['included'][i1].attributes.updatedAt;
+                    var user_id = response['included'][i1].attributes.user_id
+                    var website_name = response['included'][i1].attributes.website_name;
+                    // wordcount = response['data'][i3].attributes.wordcount;
+                    for (var i2 = 0; i2 < len2; i2++) {
+                        var keywordwebsiteid = response['data'][i2].attributes.website_id
+                        if (websiteid == keywordwebsiteid) {
+                            wordcount2++
+                        }
+                    }
+                    $.ajax({
+                        url: "/api/v1/Websites/" + websiteid,
+                        type: "PATCH",
+                        headers: {
+                            "Content-Type": "application/vnd.api+json",
+                            Accept: "application/vnd.api+json",
+                        },
+                        data: JSON.stringify({
+                            "data": {
+                                "type": "Websites",
+                                'id': websiteid,
+                                "attributes": {
+                                    "user_id": user_id,
+                                    "website_name": website_name,
+                                    "wordcount": wordcount2,
+                                }
+                            }
+                        }),
+
+                    });
+
+
+                }
+            }
+        }
+    });
+}
+
+function Statistics() {
+    $.ajax({
+        url: "/api/v1/Websites",
+        type: "GET",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+        success: function (response) {
+        }
+    })
+}
+
+
+$.ajax({
+    url: "http://127.0.0.1:8000/api/v1/Packets",
+    type: "POST",
+    headers: { "Content-Type": "application/vnd.api+json",
+        Accept: "application/vnd.api+json",
+    },
+    data: JSON.stringify({
+        "data": {
+            "type": "Packets",
+            "attributes": {
+                "user_id":user_id,
+                "count_of_words": 0,
+                "descrpitions":"sada",
+                "end_of_pocket":gdate,
+                "max_count_of_words":hidden_word_count,
+                "rank_follow":0,
+                "rank_follow_max":rank_follow,
+                "count_of_websites":0,
+                "max_count_of_websites": hidden_websites_count,
+                "packet_names":başlangic,
+            }}
+    }) ,
+    success: function (result) {
+        console.log('işlem başarılı')
+    }
+});

@@ -1,8 +1,15 @@
 <?php
 
 namespace App\JsonApi\KeywordsRequests;
+<<<<<<< HEAD
 
 use CloudCreativity\LaravelJsonApi\Validation\AbstractValidators;
+=======
+use CloudCreativity\LaravelJsonApi\Validation\AbstractValidators;
+use App\Models\websites;
+use CloudCreativity\LaravelJsonApi\Contracts\Validation\ValidatorInterface;
+use Illuminate\Validation\Rule;
+>>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
 
 class Validators extends AbstractValidators
 {

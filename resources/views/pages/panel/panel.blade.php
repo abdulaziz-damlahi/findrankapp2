@@ -8,28 +8,25 @@
                 <div class="page-body">
                     <div class="col-lg-8 col-md-12 row">
                         @foreach($userwebsites8 as $userwebsite)
+                            <a href="website/{{ $userwebsite->id}} ">
+                                <div class="col-md-12 col-xl-4">
+                                    <div style="background-color:#ff6c3a" class="card order-card">
+                                        <div class="card-block">
+                                            <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
+                                            <h class="m-b-20">Keywords Used {{ $userwebsite->wordcount }}</h>
+                                            <h2 class="text-right"><i class="ti-shopping-cart f-left"
+                                                                      style="text-shadow: 3px 3px 5px #0000!important; ;"></i><span></span>
+                                            </h2>
+                                            <p class="m-b-0"><span class="f-right"></span>
+                                            <td class="sort_change text-center hidden-xs" data-change="36">
 
-                            <div class="col-md-12 col-xl-4">
-                                <div class="card bg-c-blue order-card">
-                                    <div class="card-block">
-                                        <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
-                                        <h class="m-b-20">word count {{ $userwebsite->wordcount }}</h>
-                                        <h2 class="text-right"><i class="ti-shopping-cart f-left"
-                                                                  style="text-shadow: 3px 3px 5px #0000!important; ;"></i><span></span>
-                                        </h2>
-                                        <p class="m-b-0"><span class="f-right"></span>
-                                        <td class="sort_change text-center hidden-xs" data-change="36">
-                                            <i class="fa fa-chevron-circle-up text-success"></i>36</span>
-                                            <i class="fa fa-chevron-circle-down text-danger"></i>42</span>
-                                            <i class="fa fa-circle "></i> 45</span>
-                                        </td>
-                                        </p>
+                                            </td>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
+                            </a>
                     @endforeach
-
                     <!-- order-card end -->
                         <div class="col-lg-12 col-md-12">
                             <div class="card whitebackground">
@@ -37,7 +34,9 @@
                                     <h5>Statistics</h5>
                                     <br>
                                     <br>
-                                    <table class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%" style="font-size: 13px">
+                                    <table
+                                        class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%"
+                                        style="font-size: 13px">
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -48,9 +47,7 @@
                                         </tr>
                                         </thead>
                                         <tbody id="row">
-
-{{--                                            table content from js--}}
-
+                                        {{--                                            table content from js--}}
                                         <div id="myModal" class="modal">
                                             <!-- Modal content -->
                                             <div class="modal-content">
@@ -94,27 +91,27 @@
                             <div class="card-header whitebackground">
                                 <h5>ANAHTAR KELİME POZİSYONLARI</h5>
                             </div>
-
                             <div class="card-block whitebackground">
                                 {{--popup ilk kilme--}}
                                 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
                                 <div class="col-md-12" style="font-size:15px; padding: 40px;">
-                                        <span class="text-left"><button id="ilke3btn"><i class="fa  fa-square push-5-r"
-                                                                                         style=" color:#005698">  </i>İlk 3'de:<b
+                                        <span class="text-left"><button id="ilke3btn" class=""><i
+                                                    class="fa  fa-square push-5-r"
+                                                    style=" color:#005698">  </i>İlk 3'de:<b
                                                     id="ilk3">  </b> <b>kilme</b> </button> </span>
-                                    <span class="text-left"><button id="ilke10btn"><i class="fa  fa-square push-5-r"
-                                                                                      style=" color:#16c800">  </i>İlk 10'de: <b
+                                    <span class="text-left"><button id="ilke10btn" class=""><i
+                                                class="fa  fa-square push-5-r"
+                                                style=" color:#16c800">  </i>İlk 10'de: <b
                                                 id="ilk10">  </b> <b>kilme</b>  </button> </span>
-                                    <span class="text-left"><button id="ilke100btn"><i class="fa  fa-square push-5-r"
-                                                                                       style=" color:#cb0000">  </i>İlk 100'de: <b
+                                    <span class="text-left"><button id="ilke100btn" class=""><i
+                                                class="fa  fa-square push-5-r"
+                                                style=" color:#cb0000">  </i>İlk 100'de: <b
                                                 id="ilk100">  </b> <b>kilme</b> </button>  </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- statustic and process start -->
                     <div class="col-lg-12 col-md-12">
                         <div class="card whitebackground">
@@ -137,16 +134,19 @@
 
                                         </div>
                                         <table
+                                            {{--  down table head--}}
                                             class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
                                             <thead>
                                             <tr>
+                                                <th scope="col">id</th>
                                                 <th scope="col">SİTELER</th>
                                                 <th class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</th>
                                                 <th scope="col">KELİMELER</th>
                                                 <th class="hidden-xs" scope="col">delete</th>
                                             </tr>
                                             </thead>
-                                            <tbody id="mysites" class="list">
+                                            {{--   table body--}}
+                                            <tbody id="followedWebsites" class="list">
                                             <div id="myModal" class="modal">
                                                 <!-- Modal content -->
                                                 <div class="modal-content">
@@ -169,21 +169,13 @@
                                                     </button>
                                                 </div>
 
-
                                             </div>
-                                            @foreach($userwebsites as $userwebsite)
-                                                <tr>
-                                                    <th scope="col">
-                                                        <a href="{{route('websitelist',$userwebsite->id)}}"> <div id="colmun1" > {{ $userwebsite->website_name }}</div></a>
-                                                    </th>
-                                                    <td class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</td>
-                                                    <td scope="col"> {{ $userwebsite->wordcount}}</td>
-                                                    <td scope="col"><a href='deletewebsite/{{ $userwebsite->id }}'
-                                                                       class="fa fa-trash text-danger"></a></td>
-                                                </tr>
-                                            @endforeach
+                                            {{--<input hidden id="hidden_input">--}}
+                                            {{--<input hidden id="hidden_count">--}}
+
 
                                             </tbody>
+                                            {{--  down table body--}}
                                         </table>
                                         <!-- ilk3 Modal  -->
                                         <div id="ilk3modal" class="modal">

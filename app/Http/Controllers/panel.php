@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\packets;
-
 use App\Models\users;
 use App\Models\websites;
-
 use App\Models\keywords;
+use App\Models\keywordRequest;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,24 +15,24 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-
-
 class panel extends Controller
 {
     public function index()
     {
         $user = auth()->user();
-
         $userId = $user->id;
         $userwebsites8 = websites::where('user_id','=',$userId)->orderByDesc('wordcount')->take(3)->get();
+       $username = $user->first_name;
+        $keywordrequest = keywordRequest::where('user_id', '=', $userId)->get();
+        $userwebsites8 = websites::where('user_id', '=', $userId)->orderByDesc('wordcount')->take(3)->get();
         $userwebsites = websites::where('user_id', '=', $userId)->get();
-         $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
-         $userwebsitecount = websites::where('user_id', '=', $userId)->count();
+        $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
+        $userwebsitecount = websites::where('user_id', '=', $userId)->count();
         for ($x = 1; $x < $userkeywordcount; $x++) {
             $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
-            websites::where('id', '=', $x)->where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
+            websites::where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
         }
-        return view('pages/panel/panel', compact('user', 'userwebsites8', 'user', 'userwebsites'));
+        return view('pages/panel/panel', compact('user', 'userwebsites8'));
     }
 
     public function addwebsite(Request $request)
@@ -63,12 +62,16 @@ class panel extends Controller
 
         $keyword = new keywords;
         $keyword->name = $request->keyword;
+        $keyword->country = $request->country;
+        $keyword->language = $request->language;
+        $keyword->device = $request->device;
+        $keyword->city = $request->city;
         $keyword->rank = 0;
         $keyword->website_id = $webid;
         $keyword->user_id = $userId;
 
         $keyword->save();
-      return redirect()->back();
+        return redirect()->back();
     }
 
 
@@ -77,6 +80,25 @@ class panel extends Controller
 
         DB::delete('delete from websites where id = ?', [$id]);
         return redirect('user/panel');
+    }
+
+    public function editkeyword($id)
+    {
+        $currentKeyword = keywords::findOrFail($id);
+
+        return view('pages/websitelist/editkeyword', compact('currentKeyword'));
+    }
+
+    public function updatekeyword(Request $request, $id)
+    {
+        keywords::where('id', '=', $id)->update([
+            'name' => $request->keyword,
+            'country' => $request->country,
+            'language' => $request->language,
+            'device' => $request->device,
+            'city' => $request->city,
+        ]);;
+        return redirect()->back();
     }
 
     public function deletekeyword($id)
@@ -92,28 +114,53 @@ class panel extends Controller
 
     }
 
-
-    public function profile()
+    public function grafik($id)
     {
+<<<<<<< HEAD
 
         return view(
             'pages/panel/profile');
+=======
+         $keywordid= keywords::where('id','=',$id)->get('id');
+        $keywordidnum = (int)filter_var($keywordid, FILTER_SANITIZE_NUMBER_INT);
+        if ($id !=$keywordidnum ){return abort(404);}
+//        $rank1 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(0)->first();
+//        $rank1num = (int)filter_var($rank1, FILTER_SANITIZE_NUMBER_INT);
+//        $rank2 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(1)->first();
+//        $rank2num = (int)filter_var($rank2, FILTER_SANITIZE_NUMBER_INT);
+//        $rank3 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(2)->first();
+//        $rank3num = (int)filter_var($rank3, FILTER_SANITIZE_NUMBER_INT);
+//        $rank4 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(3)->first();
+//        $rank4num = (int)filter_var($rank4, FILTER_SANITIZE_NUMBER_INT);
+//        $rank5 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(4)->first();
+//        $rank5num = (int)filter_var($rank5, FILTER_SANITIZE_NUMBER_INT);
+//        $rank6 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(5)->first();
+//        $rank6num = (int)filter_var($rank6, FILTER_SANITIZE_NUMBER_INT);
+//        $rank7 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(6)->first();
+//        $rank7num = (int)filter_var($rank7, FILTER_SANITIZE_NUMBER_INT);
+        return view('pages/websitelist/grafik', compact('id'));
+>>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
     }
-
-
-
-    public function FindOrder()
-
+    public function profile()
     {
+<<<<<<< HEAD
 
         return view(
             'pages/findorder');
+=======
+        $user = auth()->user();
+        $userId = $user->id;
+          $packetdata = packets::where('user_id','=',$userId)->get()->first();
+        return view('pages/panel/profile',compact('packetdata'));
+>>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
     }
 
-
+    public function FindOrder()
+    {return view('pages/findorder');}
 
     public function findPost(Request $request)
     {
+<<<<<<< HEAD
         $packets =  packets::all();
         if(count($packets)>0) {
             $id = $packets[0]->id;
@@ -413,16 +460,70 @@ class panel extends Controller
                     'pages/findorder', compact('resultss','result','rank_follow_max','countrank','packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
             }
 
+=======
+        $colonial_name = $request->hidden_collonial_name;
+        $device_information = $request->hidden_device_name;
+        $website_request = $request->website;
+        $keyword_request = $request->keyword;
+        $language = $request->language_name;
+        $ch = curl_init();
+
+        $keywords = "hemengeliriz.com/";
+        $aranansite = "https://www.hemengeliriz.com/";
+        $aranan = urlencode($keyword_request);
+        echo $aranan . "gelidi";
+        $saayfa_basina_sonuc = 100;
+
+        $sa = $colonial_name;
+        $kelime = $aranan;
+        $ne = base64_encode($sa);
+
+        if ($language == 'english') {
+            $len = 'en';
+        } else {
+            $len = 'tr';
+>>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
         }
         else{
             $error_message = "paketiniz yok";
             return redirect()->route('findorder')->withErrors('Paketiniz bulunmamaktadır. Bu işlemi yapamazsınız');
         }
+<<<<<<< HEAD
 
+=======
+        echo "colonial name = " . $sa . "<br>";
+        echo "colonial base64 = " . $ne . "<br>";
+        echo "birleşmiş base64 = " . $yeni . "<br>";
+
+        $degise = 'https://www.google.com/search?ie=UTF-8&oe=UTF-8&hl=' . $len . '&num=100&q=' . $kelime . '&uule=w+CAIQICI' . $yeni;
+        echo "url : " . $degise;
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $degise,
+            CURLOPT_USERAGENT => $device_information,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_SSL_VERIFYPEER => false,
+        ]);
+        $response = curl_exec($ch);
+        preg_match_all('@ <div class="BNeawe UPmit AP7Wnd">(.*?)</div>@', $response, $resultss);
+
+        echo($response);
+        foreach ($resultss as $result) {
+            print_r($result);
+
+
+        }
+        curl_close($ch);
+
+
+        return view(
+            'pages/findorder', compact('result', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+>>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
     }
 
 
-    public function  userspacket()
+    public function userspacket()
     {
         $user = users::find(2);
         $user->packets;
@@ -445,11 +546,10 @@ class panel extends Controller
         return $packet;
     }
 
-    public
-    function websitekeyword()
+    public function websitekeyword()
     {
         $website = websites::find(1);
         $website->keywords;
-        return $website;
+        $website;
     }
 }

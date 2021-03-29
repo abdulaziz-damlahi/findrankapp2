@@ -3,17 +3,27 @@
 namespace App\JsonApi\KeywordsRequests;
 use App\JsonApi\Base\SchemaProvider;
 use App\Models\KeywordRequest;
+<<<<<<< HEAD
 
 class Schema extends SchemaProvider
 {
 
+=======
+class Schema extends SchemaProvider
+{
+>>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
     /**
      * @var string
      */
     protected $resourceType = 'keywordsRequests';
+<<<<<<< HEAD
 
     /**
      * @param \App\Models\KeywordsRequest $resource
+=======
+    /**
+     * @param \App\Models\KeywordRequest $resource
+>>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
      *      the domain record being serialized.
      * @return string
      */
@@ -21,9 +31,14 @@ class Schema extends SchemaProvider
     {
         return (string) $resource->getRouteKey();
     }
+<<<<<<< HEAD
 
     /**
      * @param \App\Models\KeywordsRequest $resource
+=======
+    /**
+     * @param \App\Models\KeywordRequest $resource
+>>>>>>> 86c61793713674e13cdc6332e0b0af242aeaab91
      *      the domain record being serialized.
      * @return string
      */
