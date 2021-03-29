@@ -36,7 +36,6 @@ class Invoicing implements ShouldQueue
     public function __construct(users $user,invoicerecords $invoiceRecord)
     {
         $this->request = $invoiceRecord;
-        dd(self::updateUser($user, $invoiceRecord));
 
     }
 
