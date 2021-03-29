@@ -59,10 +59,6 @@
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
             <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
         @endif
-        @if($routeName === 'packets')
-            <script rel="stylesheet" src="{{asset('js')}}/packets.js"></script>
-            <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
-        @endif
         @if($routeName === 'contact' || $routeName === 'contact.post')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/contact.css">
         @endif

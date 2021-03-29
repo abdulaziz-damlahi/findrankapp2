@@ -13,6 +13,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 
 class panel extends Controller
@@ -28,11 +29,14 @@ class panel extends Controller
         $userwebsites = websites::where('user_id', '=', $userId)->get();
         $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
         $userwebsitecount = websites::where('user_id', '=', $userId)->count();
+
+        $packetdata = packets::where('user_id','=',$userId)->get()->first();
+
         for ($x = 1; $x < $userkeywordcount; $x++) {
             $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
             websites::where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
         }
-        return view('pages/panel/panel', compact('user', 'userwebsites8'));
+        return view('pages/panel/panel', compact('user', 'userwebsites8','packetdata'));
     }
 
     public function addwebsite(Request $request)
@@ -116,10 +120,10 @@ class panel extends Controller
 
     public function grafik($id)
     {
-
         return view(
             'pages/panel/profile');
          $keywordid= keywords::where('id','=',$id)->get('id');
+        $packetdata = packets::where('user_id','=',$userId)->get()->first();
         $keywordidnum = (int)filter_var($keywordid, FILTER_SANITIZE_NUMBER_INT);
         if ($id !=$keywordidnum ){return abort(404);}
 //        $rank1 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(0)->first();
@@ -136,7 +140,7 @@ class panel extends Controller
 //        $rank6num = (int)filter_var($rank6, FILTER_SANITIZE_NUMBER_INT);
 //        $rank7 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(6)->first();
 //        $rank7num = (int)filter_var($rank7, FILTER_SANITIZE_NUMBER_INT);
-        return view('pages/websitelist/grafik', compact('id'));
+        return view('pages/websitelist/grafik', compact('id','packetdata'));
     }
     public function profile()
     {
@@ -146,6 +150,7 @@ class panel extends Controller
         $user = auth()->user();
         $userId = $user->id;
           $packetdata = packets::where('user_id','=',$userId)->get()->first();
+          echo $packetdata;
         return view('pages/panel/profile',compact('packetdata'));
     }
 

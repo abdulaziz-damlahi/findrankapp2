@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('#e_invoice').change(function() {
         $('#e_invoice').val($(this).is(':checked'));
-       console.log($('#e_invoice').val());
+        console.log($('#e_invoice').val());
     });
     $('#try_again').hide();
     $('#settingsForm').height('600')
@@ -282,33 +282,33 @@ $(document).ready(function() {
     get_invoice();
     $( "#button_pay" ).click(function() {
 
-        console.log('burasdgeldi')
-        const count =  $('.hidden_size').val();
-        if(count<1){
-            post_packets();
-            if($('.invoice_size').val()<1){
-                post_invoice();
-            }
-            else{
-                patch_invoice();
-            }
-        }else {
+            console.log('burasdgeldi')
+            const count =  $('.hidden_size').val();
+            if(count<1){
+                post_packets();
+                if($('.invoice_size').val()<1){
+                    post_invoice();
+                }
+                else{
+                    patch_invoice();
+                }
+            }else {
                 patch_packets();
-            if($('.invoice_size').val()<1){
-                post_invoice();
-            }
-            else{
-                patch_invoice();
-            }
+                if($('.invoice_size').val()<1){
+                    post_invoice();
+                }
+                else{
+                    patch_invoice();
+                }
             }
         }
     );
     function patch_invoice(){
-       let invoicee_id =  parseInt($('.invoice_id').val());
+        let invoicee_id =  parseInt($('.invoice_id').val());
         $('.invoice_size').val();
         let first_name = $('.invoice_first_name').val();
         let last_name = $('.invoice_last_name').val();
-       let address = $('.invoice_tax_address').val();
+        let address = $('.invoice_tax_address').val();
         let number = $('.invoice_id_number').val();
         let invoice_no =$('.invoice_tax_no').val();
         let country=$('.invoice_country').val();
@@ -459,7 +459,7 @@ $(document).ready(function() {
         let hidden_word_count  =parseInt($("#hidden_word_count").text());
         let hidden_websites_count  =parseInt($("#hidden_websites_count").text());
         let rank_follow_normal  =parseInt($(".rank_follow").text());
-      let max_count_word  = $('.max_my_count_of_words').val();
+        let max_count_word  = $('.max_my_count_of_words').val();
         let max_count_of_websites  =  $('.max_my_count_of_websites').val();
         let hidden_websites_count_new= (parseInt(max_count_of_websites))-parseInt($('.my_count_of_websites').val())+hidden_websites_count;
         let rank_follow_new= (parseInt($('.rank_follow_max_max').val()))-parseInt($('.rank_follow_max').val())+rank_follow_normal;

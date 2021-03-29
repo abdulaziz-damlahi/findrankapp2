@@ -245,10 +245,8 @@
                                         <div class="line"></div>
                                     </div>
                                 </label>
-                            </div>
-                            <div id="label">
-                                <label>E vergi Mükellefiyim</label>
-                                <input style="margin:0px" type="checkbox" id="e_invoice" name="e_invoice">
+                                    <label>E vergi Mükellefiyim</label>
+                                    <input style="margin:0px" type="checkbox" id="e_invoice" name="e_invoice">
                             </div>
                         </div>
                         <div id="form2">

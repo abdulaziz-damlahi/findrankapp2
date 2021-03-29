@@ -176,6 +176,7 @@ label {
 }
 #label label{
     margin:0px;
+    width:30px;
 }
 .label-txt {
     position: absolute;
