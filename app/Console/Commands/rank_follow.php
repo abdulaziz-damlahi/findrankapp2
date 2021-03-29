@@ -293,6 +293,7 @@ class rank_follow extends Command
                                         $yeni = $saaa . $ne;
                                     }
                                     $degise = 'https://www.google.com/search?ie=UTF-8&oe=UTF-8&hl=' . $len . '&num=100&q=' . $kelime . '&uule=w+CAIQICI' . $yeni;
+                                    echo  $degise;
                                     curl_setopt_array($ch, [
                                         CURLOPT_URL => $degise,
                                         CURLOPT_USERAGENT => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36",
@@ -302,33 +303,20 @@ class rank_follow extends Command
                                         CURLOPT_SSL_VERIFYPEER => false,
                                     ]);
                                     $response = curl_exec($ch);
-                                echo    $degise;
-                                    preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb">(.*?)<span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
+                                    preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)<span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
                                     if(!empty($resultss)){
 
                                     foreach ($resultss as $keyyy=>$resultsaasda){
                                         if(strpos($resultsaasda[1],$website_name) !== false){
                                             $resultsasa->rank=$keyyy;
-                                            $resultsasa->save();
-                                            $KeywordRequest->save();
                                             $keywordRequest2 = new KeywordRequest;
-                                            $keywordRequest2->rank=$resultsasa->rank;
+                                            $keywordRequest2->rank=$keyyy;
                                             $keywordRequest2->keyword_id=$resultsasa->id;
                                             $keywordRequest2->user_id=$resultsasa->user_id;
-
+                                            $resultsasa->save();
                                             $keywordRequest2->save();
-                                            break;
                                         }
                                         else{
-                                            echo "gelmedi";
-                                            $bune=0;
-                                            $resultsasa->rank=$bune;
-                                            $keywordRequest2 = new KeywordRequest;
-                                            $keywordRequest2->rank=$bune;
-                                            $keywordRequest2->keyword_id=$resultsasa->id;
-                                            $keywordRequest2->user_id=$resultsasa->user_id;
-                                            $keywordRequest2->save();
-                                            $resultsasa->save();
                                         }
                                     }
                                    }else{

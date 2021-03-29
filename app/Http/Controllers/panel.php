@@ -120,10 +120,7 @@ class panel extends Controller
 
     public function grafik($id)
     {
-        return view(
-            'pages/panel/profile');
          $keywordid= keywords::where('id','=',$id)->get('id');
-        $packetdata = packets::where('user_id','=',$userId)->get()->first();
         $keywordidnum = (int)filter_var($keywordid, FILTER_SANITIZE_NUMBER_INT);
         if ($id !=$keywordidnum ){return abort(404);}
 //        $rank1 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(0)->first();
@@ -140,7 +137,7 @@ class panel extends Controller
 //        $rank6num = (int)filter_var($rank6, FILTER_SANITIZE_NUMBER_INT);
 //        $rank7 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(6)->first();
 //        $rank7num = (int)filter_var($rank7, FILTER_SANITIZE_NUMBER_INT);
-        return view('pages/websitelist/grafik', compact('id','packetdata'));
+        return view('pages/websitelist/grafik', compact('id'));
     }
     public function profile()
     {

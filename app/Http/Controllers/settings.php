@@ -20,7 +20,7 @@ class settings extends Controller
 
     public function index(Request $request)
     {
-        $parasut = (new \App\Parasut\jobs\Invoicing(request()));
+       // $parasut = (new \App\Parasut\jobs\Invoicing(request()));
 
         $user = Auth::user();
         $user_first_name = $user->first_name;
