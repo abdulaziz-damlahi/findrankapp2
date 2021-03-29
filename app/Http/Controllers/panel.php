@@ -142,12 +142,9 @@ class panel extends Controller
     public function profile()
     {
 
-        return view(
-            'pages/findorder');
         $user = auth()->user();
         $userId = $user->id;
           $packetdata = packets::where('user_id','=',$userId)->get()->first();
-          echo $packetdata;
         return view('pages/panel/profile',compact('packetdata'));
     }
 

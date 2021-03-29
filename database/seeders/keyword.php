@@ -15,10 +15,17 @@ class keyword extends Seeder
     public function run()
     {
         DB::table('keywords')->insert([
+            [
+                'name' => 'wewd',
+                'device' => 'Masaüstü',
+                'country' => 'AR',
+                'city' => 'Roque',
+                'language' => 'english',
+                'rank' => '4',
+                'website_id' => '1',
+                'user_id' => '2',
 
-
-
-        ],
-        );
+            ],
+        ]);
     }
 }

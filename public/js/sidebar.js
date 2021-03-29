@@ -7,7 +7,7 @@ function profile() {
         type: 'get',
         url: "/api/v1/Packets",
         success: function (response) {
-            console.log(response,'packet');
+
             //last day
             let count = response['data'].length;
             if(count>0){
@@ -34,7 +34,7 @@ function profile() {
             $('#packet_names1').append(packet_names);
             }
 else{
-console.log('packet yok')
+
             }
         }
     });
