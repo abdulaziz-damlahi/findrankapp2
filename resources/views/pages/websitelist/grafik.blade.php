@@ -4,7 +4,7 @@
 
         <form id="myForm" style="padding-left: 100px;">
             <select id="lastForm" class="lastdate" style="background-color: white;">
-                <option class="lastdate" id="custom" value="custom">iki tarih arasi</option>
+                <option class="lastdate" id="custom" value="custom">iki tarih arasis</option>
                 <option class="lastdate" id="1hatfa" value="1hatfa">son 1 hafta</option>
                 <option class="lastdate" id="1ay" value="1ay">son 1 ay</option>
                 <option class="lastdate" id="3ay" value="3ay">son 3 ay</option>
