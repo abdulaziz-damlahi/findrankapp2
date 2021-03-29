@@ -12,7 +12,6 @@ class packets extends Model
         'id',
         'id_sa',
         'user_id',
-        'website_id',
         'count_of_words',
         'descrpitions',
         'end_of_pocket',
@@ -21,7 +20,6 @@ class packets extends Model
         'rank_follow_max',
         'max_count_of_words',
         'packet_names',
-        'started_of_pockets',
         'count_of_websites',
     ];
     public function user()

@@ -4,8 +4,10 @@ namespace App\Parasut\Jobs;
 
 use App\Models\InvoiceRecord;
 use App\Models\Payment;
+use App\Models\invoicerecords;
+
 use App\Models\Request;
-use App\Models\User;
+use App\Models\users;
 use App\Parasut\Enums\ParasutEndPoint;
 use App\Parasut\Models\ParasutRequestModel;
 use App\Parasut\Models\TrackableModel;
@@ -22,16 +24,20 @@ class Invoicing implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected Request $request;
+    protected invoicerecords $invoiceRecord;
+    static $taxNumber;
 
     /**
      * Create a new job instance.
      *
-     * @param Request $request
+     * @param invoicerecords $invoiceRecord
+     * @param users $user
      */
-    public function __construct(Request $request)
+    public function __construct(users $user,invoicerecords $invoiceRecord)
     {
-        $this->request = $request;
+        $this->request = $invoiceRecord;
+        dd(self::updateUser($user, $invoiceRecord));
+
     }
 
     /**
@@ -42,12 +48,10 @@ class Invoicing implements ShouldQueue
      */
     public function handle()
     {
-
         $request = $this->request;
-        $invoiceRecord = $request->invoiceRecord;
+        $invoiceRecord = $this->invoicerecords;
         $user = $request->customer;
         $payment = $request->payment;
-
 
         $taxNumber = self::updateUser($user, $invoiceRecord);
         $invoice = self::createInvoice($user, $payment);
@@ -61,12 +65,12 @@ class Invoicing implements ShouldQueue
     }
 
     /**
-     * @param User $user
-     * @param InvoiceRecord $invoiceRecord
+     * @param users $user
+     * @param invoicerecords $invoicerecords
      * @return mixed
      * @throws GuzzleException
      */
-    private function updateUser(User $user, InvoiceRecord $invoiceRecord)
+    private function updateUser(users $user, invoicerecords $invoiceRecord)
     {
         $isIndividual = $invoiceRecord['invoice_type'] === 'individual';
         $fullName = $isIndividual ? ($invoiceRecord['first_name'] . ' ' . $invoiceRecord['last_name']) : $invoiceRecord['company_name'];
@@ -91,7 +95,7 @@ class Invoicing implements ShouldQueue
         return $taxNumber;
     }
 
-    private function createInvoice(User $user, Payment $payment)
+    private function createInvoice(users $user, Payment $payment)
     {
         $requestModel = new ParasutRequestModel(null, "sales_invoices", [
             "item_type" => "invoice",

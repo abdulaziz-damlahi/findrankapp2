@@ -15,6 +15,7 @@ class invoicerecords extends Model
         'id_number',
         'tax_no',
         'tax_address',
+        'invoice_type',
         'country',
         'user_id',
         'city',

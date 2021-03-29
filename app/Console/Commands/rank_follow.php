@@ -56,6 +56,7 @@ class rank_follow extends Command
             $result = keywords::with('website')->where('website_id', $website_id->id)->get();
             foreach ($result as $anahtar => $resultsasa) {
                 $sonucc = KeywordRequest::where('keyword_id', $resultsasa->id)->get();
+
                 // it will INSERT a new record
 
                     $keyword = $resultsasa->name;
@@ -314,6 +315,7 @@ class rank_follow extends Command
                                             $keywordRequest2->rank=$resultsasa->rank;
                                             $keywordRequest2->keyword_id=$resultsasa->id;
                                             $keywordRequest2->user_id=$resultsasa->user_id;
+
                                             $keywordRequest2->save();
                                             break;
                                         }

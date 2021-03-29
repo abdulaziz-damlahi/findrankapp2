@@ -7,6 +7,7 @@ Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder')->name('findorder');
     Route::post('/findorders', 'App\Http\Controllers\panel@findPost')->name('findpost');
     Route::get('/settings', 'App\Http\Controllers\settings@index')->name('settings');
+    Route::get('/parase', 'App\Http\Controllers\settings@parase')->name('parase');
     Route::post('/settings/password', 'App\Http\Controllers\settings@store_personal_settings')->name('set.post');
     Route::post('/settings/personal_settings', 'App\Http\Controllers\settings@store_password')->name('personal.settings');
     Route::post('/settings/custumize', 'App\Http\Controllers\settings@store_custumize')->name('custumize');

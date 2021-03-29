@@ -35,7 +35,17 @@ class Adapter extends AbstractAdapter
     {
         parent::__construct(new \App\Models\invoicerecords(), $paging);
     }
+    public function creating(invoicerecords $invoicerecords)
+    {
 
+        \App\Http\Controllers\payment::pay_post(request());
+
+    }    public function updating(invoicerecords $invoicerecords)
+    {
+
+        \App\Http\Controllers\payment::pay_post(request());
+
+    }
     /**
      * @param Builder $query
      * @param Collection $filters

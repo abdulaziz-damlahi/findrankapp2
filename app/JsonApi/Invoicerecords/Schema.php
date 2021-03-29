@@ -34,6 +34,7 @@ class Schema extends SchemaProvider
             'id_number'=> $resource->id_number,
             'tax_address'=> $resource->tax_address,
             'user_id'=> $resource->user_id,
+            'invoice_type'=> $resource->invoice_type,
             'tax_no'=> $resource->tax_no,
             'country'=> $resource->country,
             'city'=> $resource->city,

@@ -286,15 +286,71 @@ $(document).ready(function() {
         const count =  $('.hidden_size').val();
         if(count<1){
             post_packets();
-            post_invoice();
+            if($('.invoice_size').val()<1){
+                post_invoice();
+            }
+            else{
+                patch_invoice();
+            }
         }else {
                 patch_packets();
+            if($('.invoice_size').val()<1){
                 post_invoice();
+            }
+            else{
+                patch_invoice();
+            }
             }
         }
     );
     function patch_invoice(){
+       let invoicee_id =  parseInt($('.invoice_id').val());
+        $('.invoice_size').val();
+        let first_name = $('.invoice_first_name').val();
+        let last_name = $('.invoice_last_name').val();
+       let address = $('.invoice_tax_address').val();
+        let number = $('.invoice_id_number').val();
+        let invoice_no =$('.invoice_tax_no').val();
+        let country=$('.invoice_country').val();
+        let city = $('.invoice_city').val();
+        let invoice_type = $('.invoice_invoice_type').val();
+        let company_name =$('.invoice_company_name').val();
+        let user_id =$('.invoice_user_id').val( );
+        $.ajax({
+            url: "http://127.0.0.1:8000/api/v1/invoicerecords"+invoicee_id,
+            type: "PATCH",
+            headers: { "Content-Type": "application/vnd.api+json",
+                Accept: "application/vnd.api+json",
+            },
+            data: JSON.stringify({
+                "data": {
+                    "type": "invoicerecords",
 
+                    "attributes": {
+                        "user_id":user_id,
+                        "first_name":first_name,
+                        "last_name":last_name,
+                        "id_number":number,
+                        "tax_address":address,
+                        "tax_no":invoice_no,
+                        "country":country,
+                        "city":city,
+                        "company_name":company_name,
+                        "invoice_type":invoice_type,
+
+                    }
+                }
+
+            }),
+            success: function (result) {
+                console.log('işlem başarılı')
+                $('#success_message').css('display','grid');
+            },
+            error: function(result) {
+                $('#error_message').css('display','grid');
+
+            }
+        });
     }
     function post_invoice(){
         let first = $('#first_name').val();
@@ -500,6 +556,7 @@ $(document).ready(function() {
             },
             success: function (result) {
                 console.log(result)
+                console.log(result.data[0].attributes.invoice_type,'invoice type')
                 let count = result.data.length
                 if(count>0) {
                     $('.invoice_id').val(result.data[0].id)
@@ -514,18 +571,7 @@ $(document).ready(function() {
                     $('.invoice_invoice_type').val(result.data[0].attributes.invoice_type);
                     $('.invoice_company_name').val(result.data[0].attributes.company_name);
                     $('.invoice_user_id').val(result.data[0].attributes.user_id );
-console.log($('.invoice_id').val());
-console.log($('.invoice_size').val());
-console.log($('.invoice_first_name').val());
-console.log($('.invoice_last_name').val());
-console.log($('.invoice_tax_address').val());
-console.log($('.invoice_id_number').val());
-console.log( $('.invoice_tax_no').val());
-console.log(  $('.invoice_country').val());
-console.log($('.invoice_city').val());
-console.log($('.invoice_invoice_type').val());
-console.log($('.invoice_company_name').val());
-console.log($('.invoice_user_id').val());
+
 
                 }
             }
