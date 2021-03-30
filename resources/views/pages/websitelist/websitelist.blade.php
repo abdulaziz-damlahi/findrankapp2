@@ -8,8 +8,26 @@
                     <br>
                     <br>
                     <div class="btn-group">
-                        <a class="btns btn-default" href="{{route('panel')}}"  type="button" id=""><i class="fa fa-arrow-left text-info">PANEL</i></a>
-                        <button class="btns btn-default" type="button" id="addNewSite"><i class="fa fa-plus text-success"><span class="hidden-xs push-7-l">ADD WORD</span></i></button>
+                        <a class="btns btn-default" href="{{route('panel')}}" type="button" id=""><i
+                                class="fa fa-arrow-left text-info">PANEL</i></a>
+                        <button class="btns btn-default" type="button" id="addNewSite"><i
+                                class="fa fa-plus text-success"><span class="hidden-xs push-7-l">ADD WORD</span></i>
+                        </button>
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if (session('notsuccess'))
+                            <div class="alert alert-danger">
+                                {{ session('notsuccess') }}
+                            </div>
+                        @endif
+                        @if (session('cantbeempty'))
+                            <div class="alert alert-danger">
+                                {{ session('cantbeempty') }}
+                            </div>
+                        @endif
                     </div>
                     <br>
                     <br>

@@ -143,9 +143,9 @@
                                                     {{ session('success') }}
                                                 </div>
                                             @endif
-                                                @if (session('sasa'))
+                                                @if (session('notsuccess'))
                                                     <div class="alert alert-danger">
-                                                        {{ session('sasa') }}
+                                                        {{ session('notsuccess') }}
                                                     </div>
                                                 @endif
                                             <thead>

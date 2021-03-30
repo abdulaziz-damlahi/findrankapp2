@@ -45,11 +45,10 @@ class panel extends Controller
     {
         $user = auth()->user();
         $userId = $user->id;
-        $maxwebsites = packets::where('user_id', '=', $userId)->get('max_count_of_websites');//used
-        $website_count = packets::where('user_id', '=', $userId)->get('count_of_websites');//used
-        $maxwebsitesfilterd = (int)filter_var($maxwebsites, FILTER_SANITIZE_NUMBER_INT);//used
-        $filterwebsite_count = (int)filter_var($website_count, FILTER_SANITIZE_NUMBER_INT);//used
-
+        $maxwebsites = packets::where('user_id', '=', $userId)->get('max_count_of_websites');
+        $website_count = packets::where('user_id', '=', $userId)->get('count_of_websites');
+        $maxwebsitesfilterd = (int)filter_var($maxwebsites, FILTER_SANITIZE_NUMBER_INT);
+        $filterwebsite_count = (int)filter_var($website_count, FILTER_SANITIZE_NUMBER_INT);
 
         if ($filterwebsite_count !== $maxwebsitesfilterd) {
             $request->validate([
@@ -65,33 +64,61 @@ class panel extends Controller
             $website->save();
             return redirect()->back()->with('success', 'Websiteniz Başarıyla Eklendi');
         } else {
-            return redirect()->back()->with('sasa', 'Website Ekleme Hakkınız Bitmiştir');
+            return redirect()->back()->with('notsuccess', 'Website Ekleme Hakkınız Bitmiştir');
         }
     }
 
     public function addword(Request $request)
     {
-        $request->validate([
-            'website' => 'min:3|min:255',
-        ]);
         $user = auth()->user();
         $userId = $user->id;
-        $webid = $request->websiteid;
+        $maxwkeywords = packets::where('user_id', '=', $userId)->get('max_count_of_words');
+        $keword_count = packets::where('user_id', '=', $userId)->get('count_of_words');
+        $maxkeywordfilterd = (int)filter_var($maxwkeywords, FILTER_SANITIZE_NUMBER_INT);
+        $filterd_keyword_count = (int)filter_var($keword_count, FILTER_SANITIZE_NUMBER_INT);
 
-        $keyword = new keywords;
-        $keyword->name = $request->keyword;
-        $keyword->country = $request->country;
-        $keyword->language = $request->language;
-        $keyword->device = $request->device;
-        $keyword->city = $request->city;
-        $keyword->rank = 0;
-        $keyword->website_id = $webid;
-        $keyword->user_id = $userId;
+        if ($filterd_keyword_count !== $maxkeywordfilterd) {
+            $request->validate([
+                'cantbeempty' => 'min:3|min:255',
+            ]);
 
-        $keyword->save();
-        return redirect()->back();
+            $webid = $request->websiteid;
+            $keyword = new keywords;
+            if ($request->has('name')) {
+                $keyword->name = $request->keyword;
+            } else {
+                return redirect()->back()->with('cantbeempty', 'keyword bos ekleden');
+            }
+            if ($request->has('country')) {
+            $keyword->country = $request->country;
+            } else {
+                return redirect()->back()->with('cantbeempty', 'country bos ekleden');
+            }
+            if ($request->has('language')) {
+            $keyword->language = $request->language;
+            } else {
+                return redirect()->back()->with('cantbeempty', 'language bos ekleden');
+            }
+            if ($request->has('device')) {
+            $keyword->device = $request->device;
+            } else {
+                return redirect()->back()->with('cantbeempty', 'device bos ekleden');
+            }
+            if ($request->has('city')) {
+            $keyword->city = $request->city;
+            } else {
+                return redirect()->back()->with('cantbeempty', 'city bos ekleden');
+            }
+            $keyword->rank = 0;
+            $keyword->website_id = $webid;
+            $keyword->user_id = $userId;
+            $keyword->save();
+
+            return redirect()->back()->with('success', 'keleme Başarıyla Eklendi');
+        } else {
+            return redirect()->back()->with('notsuccess', 'keleme Ekleme Hakkınız Bitmiştir');
+        }
     }
-
 
     public function deletewebsite($id)
     {
@@ -127,9 +154,15 @@ class panel extends Controller
 
     public function websitelist($websiteid)
     {
+        $user = auth()->user();
+        $userId = $user->id;
+        $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
+        $userwebsitecount = websites::where('user_id', '=', $userId)->count();
+        packets::where('user_id', '=', $userId)->update([
+            'count_of_words' => $userkeywordcount,
+            'count_of_websites' => $userwebsitecount,
+        ]);
         return view('pages/websitelist/websitelist', compact('websiteid'));
-
-
     }
 
     public function grafik($id)
@@ -139,20 +172,6 @@ class panel extends Controller
         if ($id != $keywordidnum) {
             return abort(404);
         }
-//        $rank1 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(0)->first();
-//        $rank1num = (int)filter_var($rank1, FILTER_SANITIZE_NUMBER_INT);
-//        $rank2 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(1)->first();
-//        $rank2num = (int)filter_var($rank2, FILTER_SANITIZE_NUMBER_INT);
-//        $rank3 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(2)->first();
-//        $rank3num = (int)filter_var($rank3, FILTER_SANITIZE_NUMBER_INT);
-//        $rank4 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(3)->first();
-//        $rank4num = (int)filter_var($rank4, FILTER_SANITIZE_NUMBER_INT);
-//        $rank5 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(4)->first();
-//        $rank5num = (int)filter_var($rank5, FILTER_SANITIZE_NUMBER_INT);
-//        $rank6 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(5)->first();
-//        $rank6num = (int)filter_var($rank6, FILTER_SANITIZE_NUMBER_INT);
-//        $rank7 = keywordRequest::where('keyword_id', '=', $id)->orderBy('id', 'DESC')->get('rank')->skip(6)->first();
-//        $rank7num = (int)filter_var($rank7, FILTER_SANITIZE_NUMBER_INT);
         return view('pages/websitelist/grafik', compact('id'));
     }
 
