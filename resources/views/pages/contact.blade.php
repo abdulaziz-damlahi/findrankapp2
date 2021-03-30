@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+    <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
     <div class="container ">
     <div  class="">
         <h3 class="font-alegreya margin-top-50">Get In Touch With Us</h3>

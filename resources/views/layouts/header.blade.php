@@ -1,4 +1,4 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
 @section('header')
     <div style="z-index:4!important;padding-top: 100px;" id="mySidebar" class="sidebar">
 
@@ -15,9 +15,10 @@
                type="button"><i
                     class="fa fa-gear push-5-r "></i>Ayarlar</a>
         </div>
-        <table class="table table-bordered table-striped table-condensed">
+        <table class="table table-bordered table-striped table-condensed" style=";font-size: 15px">
             <tbody>
             <tr>
+
                 <td style="width:50%" class="font-w600">Paket:</td>
                 <td id="packet_names1"></td>
             </tr>
@@ -30,8 +31,8 @@
                 <td id="endofpacket1"></td>
             </tr>
             <tr>
-                <td class="font-w600">Kalan:</td>
-                <td id="daysleft1">   Gün</td>
+                <td class="font-w600">Kalan Günler:</td>
+                <td id="daysleft1"></td>
             </tr>
             </tbody>
         </table>

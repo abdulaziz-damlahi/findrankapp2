@@ -492,7 +492,7 @@ function Statistics() {
 
 
 $.ajax({
-    url: "http://127.0.0.1:8000/api/v1/Packets",
+    url: "/api/v1/Packets",
     type: "POST",
     headers: { "Content-Type": "application/vnd.api+json",
         Accept: "application/vnd.api+json",
@@ -501,7 +501,7 @@ $.ajax({
         "data": {
             "type": "Packets",
             "attributes": {
-                "user_id":user_id,
+                "user_id": user_id,
                 "count_of_words": 0,
                 "descrpitions":"sada",
                 "end_of_pocket":gdate,

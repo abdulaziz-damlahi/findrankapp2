@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+    <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
 <div >
     <section id="general_find" class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-50 padding-right-50"
              >

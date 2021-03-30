@@ -27,16 +27,26 @@ class panel extends Controller
         $keywordrequest = keywordRequest::where('user_id', '=', $userId)->get();
         $userwebsites8 = websites::where('user_id', '=', $userId)->orderByDesc('wordcount')->take(3)->get();
         $userwebsites = websites::where('user_id', '=', $userId)->get();
-        $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
-        $userwebsitecount = websites::where('user_id', '=', $userId)->count();
+
+          $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
+          $userwebsitecount = websites::where('user_id', '=', $userId)->count();
+        packets::where('user_id', '=', $userId)->update([
+            'count_of_words' => $userkeywordcount,
+            'count_of_websites' => $userwebsitecount,
+        ]);
+          $maxwebsites= packets::where('user_id', '=', $userId)->get('max_count_of_websites');
+          $maxkeyword= packets::where('user_id', '=', $userId)->get('max_count_of_words');
+         $maxwebsitesfilterd = (int)filter_var($maxwebsites, FILTER_SANITIZE_NUMBER_INT);
+          $maxkeywordfilterd = (int)filter_var($maxkeyword, FILTER_SANITIZE_NUMBER_INT);
+    
+
 
         $packetdata = packets::where('user_id','=',$userId)->get()->first();
-
         for ($x = 1; $x < $userkeywordcount; $x++) {
             $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
             websites::where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
         }
-        return view('pages/panel/panel', compact('user', 'userwebsites8','packetdata'));
+        return  view('pages/panel/panel', compact('user', 'userwebsites8','packetdata'));
     }
 
     public function addwebsite(Request $request)
@@ -101,7 +111,7 @@ class panel extends Controller
             'language' => $request->language,
             'device' => $request->device,
             'city' => $request->city,
-        ]);;
+        ]);
         return redirect()->back();
     }
 

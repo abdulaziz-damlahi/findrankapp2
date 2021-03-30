@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+    <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
     <div id="contact_container" class="">
         <div id="settingsForm">
             <div class="menuy col-md-12">

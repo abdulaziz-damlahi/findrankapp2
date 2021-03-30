@@ -8,9 +8,8 @@
                     <br>
                     <br>
                     <div class="btn-group">
-                        <button class="btns btn-default" type="button" id="addNewSite"><i
-                                class="fa fa-plus text-success"><span class="hidden-xs push-7-l">Add word</span></i>
-                        </button>
+                        <a class="btns btn-default" href="{{route('panel')}}"  type="button" id=""><i class="fa fa-arrow-left text-info">PANEL</i></a>
+                        <button class="btns btn-default" type="button" id="addNewSite"><i class="fa fa-plus text-success"><span class="hidden-xs push-7-l">ADD WORD</span></i></button>
                     </div>
                     <br>
                     <br>

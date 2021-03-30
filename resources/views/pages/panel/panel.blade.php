@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+        <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
     {{--   <div style="" id="id">{{ $userId}}</div>--}}
     <div class="pcoded-inner-content" id="main">
         <div class="main-body">

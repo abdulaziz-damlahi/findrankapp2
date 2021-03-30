@@ -1,6 +1,7 @@
 $(document).ready(function () {
     grafik();
     hideonlast();
+
 })
 let dps1 = [];
 let dps2 = [];
@@ -11,6 +12,7 @@ let last7 = [];
 let tarih = [];
 let from;
 let to;
+
 
 function hideonlast() {
     $("#lastForm").change(function () {
@@ -34,9 +36,6 @@ function hideonlast() {
             var mm = String(today.getMonth() + 1).padStart(2, '0');
             var yyyy = today.getFullYear();
             today = yyyy + '-' + mm + '-' + dd;
-
-            console.log(totoday)
-            console.log(today)
               $("#to").val(today);
               $("#from").val(totoday);
             $('#fromto').hide();
@@ -55,9 +54,6 @@ function hideonlast() {
             var mm = String(today.getMonth() + 1).padStart(2, '0');
             var yyyy = today.getFullYear();
             today = yyyy + '-' + mm + '-' + dd;
-
-            console.log(totoday)
-            console.log(today)
             $("#to").val(today);
             $("#from").val(totoday);
             $('#fromto').hide();
@@ -76,9 +72,6 @@ function hideonlast() {
             var mm = String(today.getMonth() + 1).padStart(2, '0');
             var yyyy = today.getFullYear();
             today = yyyy + '-' + mm + '-' + dd;
-
-            console.log(totoday)
-            console.log(today)
             $("#to").val(today);
             $("#from").val(totoday);
             $('#fromto').hide();
@@ -97,9 +90,6 @@ function hideonlast() {
             var mm = String(today.getMonth() + 1).padStart(2, '0');
             var yyyy = today.getFullYear();
             today = yyyy + '-' + mm + '-' + dd;
-
-            console.log(totoday)
-            console.log(today)
             $("#to").val(today);
             $("#from").val(totoday);
             $('#fromto').hide();
@@ -118,9 +108,6 @@ function hideonlast() {
             var mm = String(today.getMonth() + 1).padStart(2, '0');
             var yyyy = today.getFullYear();
             today = yyyy + '-' + mm + '-' + dd;
-
-            console.log(totoday)
-            console.log(today)
             $("#to").val(today);
             $("#from").val(totoday);
             $('#fromto').hide();
@@ -129,6 +116,29 @@ function hideonlast() {
 }
 
 function grafik() {
+    var val = document.getElementById("lastForm").value;
+    //1hatfa 1ay 3ay 6ay 12ay
+    if (val === "custom") {
+        prev1 = new Date();
+        prev1.setDate(prev1.getDate() - 10);
+        var totoday = new Date(prev1);
+        var dd2 = String(totoday.getDate()).padStart(2, '0');
+        var mm2 = String(totoday.getMonth() + 1).padStart(2, '0');
+        var yyyy2 = totoday.getFullYear();
+        totoday = yyyy2 + '-' + mm2 + '-' + dd2;
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+        $("#to").val(today);
+        $("#from").val(totoday);
+        $('#fromto').show();
+
+
+    }
+
     var keywordid = parseInt(document.querySelector("#keywordid").innerHTML);
     $.ajax({
         type: 'get',
@@ -163,15 +173,14 @@ function grafik() {
                 for (var last = dps1.length; last > seven; last--) {
                     last7.push(dps1[dps1.length - last])
                 }
-                chart2(dps1)
+                //cut first 10 ranks in the first load
+                var dps2 = dps1.slice(0, 10)
+                chart2(dps2)
                 $("#myButton").on("click", function () {
 
                     var dpsvar = 0
                      from = new Date($("#from").val());
                      to = new Date($("#to").val());
-                    console.log(from)
-                    console.log(to)
-
                     var firstcount
                     var lastcount
 
@@ -179,40 +188,16 @@ function grafik() {
                         test = cleandate[arraycounter].toString();
                         if (from == test) {
                             firstcount = arraycounter
-                            console.log(firstcount)
+                            // console.log(firstcount)
                         }
                     }
                     for (var arraycounter = 0; arraycounter < cleandate.length; arraycounter++) {
                         var test = cleandate[arraycounter].toString()
                         if (to == test) {
                             lastcount = arraycounter
-                            console.log(lastcount)
+                            // console.log(lastcount)
                         }
-                    }
-                    // var val = document.getElementById("lastForm").value;
-                    // //1hatfa 1ay 3ay 6ay 12ay
-                    // if (val === "1hatfa") {
-                    //
-                    //     lastcount = len
-                    //     firstcount = len - 7;
-                    // }
-                    // if (val === "1ay") {
-                    //     lastcount = len
-                    //     firstcount = len - 30;
-                    // }
-                    // if (val === "3ay") {
-                    //     lastcount = len
-                    //     firstcount = len - 90;
-                    // }
-                    // if (val === "6ay") {
-                    //     lastcount = len
-                    //     firstcount = len - 180;
-                    // }
-                    // if (val === "12ay") {
-                    //     lastcount = len
-                    //     firstcount = len - 365;
-                    // }
-
+                    }``
                     lastcount = lastcount + 1;
                     dpsvar = dps1.slice(firstcount, lastcount)
                     chart(dpsvar);

@@ -15,8 +15,10 @@ class website extends Seeder
     public function run()
     {
         DB::table('websites')->insert([
-
-
+            ['website_name' => 'facebook.com',
+            'wordcount' => '0',
+            'user_id' => '2',
+            ],
         ],
         );
     }

@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+    <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
     <div class="container" id="main">
         <div class="pcoded-inner-content">
             <div class="main-body col-md-12">
@@ -34,7 +35,7 @@
                                                     <td id="daysleft" class="tableStyle">
                                                         Gün Kaldı
                                                     </td>
-                                                    <td class="tableStyle"><b><a href="/packets">update your packet</a></b>
+                                                    <td class="tableStyle"><b><a href="{{ route('packets') }}">update your packet</a></b>
                                                     </td>
                                                 </tr>
                                                 </tbody>

@@ -122,6 +122,7 @@
       <path value="$PROJECT_DIR$/vendor/torann/currency" />
       <path value="$PROJECT_DIR$/vendor/torann/geoip" />
       <path value="$PROJECT_DIR$/vendor/yoeunes/toastr" />
+      <path value="$PROJECT_DIR$/vendor/iyzico/iyzipay-php" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />

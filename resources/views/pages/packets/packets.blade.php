@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+    <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
     <section class="pricing-table light-gray-bg padding-top-100 padding-bottom-100">
         <div class="container">
             <!-- Tittle -->
@@ -16,7 +17,7 @@
                         <div class="pricing-head">
                             <h4>{{$pack->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                    class="amount">{{$round_new}}<span>.99</span></span> <span class="month">/ month</span>
+                                class="amount">{{$round_new}}<span>.99</span></span> <span class="month">/ month</span>
                         </div>
 
                         <!-- Plean Detail -->
@@ -39,7 +40,7 @@
                         <div class="pricing-head orange-bg">
                             <h4>{{$middle->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                    class="amount">{{$round_new1}}<span>.99</span></span> <span class="month">/ month</span>
+                                class="amount">{{$round_new1}}<span>.99</span></span> <span class="month">/ month</span>
                         </div>
 
                         <!-- Plean Detail -->
@@ -62,7 +63,7 @@
                         <div class="pricing-head">
                             <h4>{{$last->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                    class="amount">{{$round_new2}}<span>.99</span></span> <span class="month">/ month</span>
+                                class="amount">{{$round_new2}}<span>.99</span></span> <span class="month">/ month</span>
                         </div>
 
                         <!-- Plean Detail -->
@@ -83,22 +84,22 @@
                     <ul id="sa" class="nav nav-tabs nav-justified nav-dark push-20" data-toggle="tabs">
                         <li class="setting_button active" id="button_first">
                             <a id="setting_button1" href="#tab-profile-personal"><i
-                                        class="si si-user push-5-r"></i><span class="hidden-xs">Fatura Bilgilerim</span></a>
+                                    class="si si-user push-5-r"></i><span class="hidden-xs">Fatura Bilgilerim</span></a>
                         </li>
 
                         <li class="setting_button" id="button_second">
                             <a id="setting_button2" href="#tab-profile-password"><i
-                                        class="setting_but si si-lock push-5-r"></i><span
-                                        class="hidden-xs">Paket Özeti</span></a>
+                                    class="setting_but si si-lock push-5-r"></i><span
+                                    class="hidden-xs">Paket Özeti</span></a>
                         </li>
                         <li class="setting_button" id="button_third">
                             <a id="setting_button3" href="#customize"><i
-                                        class="setting_but si si-wrench push-5-r"></i><span class="hidden-xs">Ödeme Bilgileri</span></a>
+                                    class="setting_but si si-wrench push-5-r"></i><span class="hidden-xs">Ödeme Bilgileri</span></a>
                         </li>
                         <li class="setting_button" id="button_third">
                             <a id="setting_button3" href="#customize"><i
-                                        class="setting_but si si-wrench push-5-r"></i><span
-                                        class="hidden-xs">Sonuç</span></a>
+                                    class="setting_but si si-wrench push-5-r"></i><span
+                                    class="hidden-xs">Sonuç</span></a>
                         </li>
                     </ul>
                 </div>
@@ -245,8 +246,8 @@
                                         <div class="line"></div>
                                     </div>
                                 </label>
-                                    <label>E vergi Mükellefiyim</label>
-                                    <input style="margin:0px" type="checkbox" id="e_invoice" name="e_invoice">
+                                <label>E vergi Mükellefiyim</label>
+                                <input style="margin:0px" type="checkbox" id="e_invoice" name="e_invoice">
                             </div>
                         </div>
                         <div id="form2">
