@@ -4,6 +4,7 @@ namespace App\Parasut\Jobs;
 
 use App\Models\InvoiceRecord;
 use App\Models\Payment;
+use App\Models\packets;
 use App\Models\invoicerecords;
 
 use App\Models\Request;
@@ -34,10 +35,10 @@ class Invoicing implements ShouldQueue
      * @param invoicerecords $invoiceRecord
      * @param users $user
      */
-    public function __construct(users $user,invoicerecords $invoiceRecord)
+    public function __construct(users $user,invoicerecords $invoiceRecord,packets $packets)
     {
         $this->request = $invoiceRecord;
-        dd(self::updateUser($user, $invoiceRecord));
+        dd(self::createInvoice($user,$packets));
 
     }
 
@@ -73,12 +74,12 @@ class Invoicing implements ShouldQueue
      */
     private function updateUser(users $user, invoicerecords $invoiceRecord)
     {
-        $auth = Auth::user();
-        $invoiceRecord=$invoiceRecord->all()[0];
+       $user = Auth::user();
+        $invoiceRecord=$invoiceRecord->all()->last();
         $isIndividual = $invoiceRecord->invoice_type === 'individual';
         $fullName = $isIndividual ? ($invoiceRecord->first_name . ' ' . $invoiceRecord->last_name) : $invoiceRecord->company_name;
         $taxNumber = (($isIndividual) ? $invoiceRecord->id : $invoiceRecord->tax_number) ?? "asdasd";
-        $requestModel = new ParasutRequestModel($auth->parasut_customer_id, 'contacts', [
+        $requestModel = new ParasutRequestModel($user->parasut_customer_id, 'contacts', [
             "email" => $invoiceRecord['email'],
             "name" => $fullName,
             "short_name" => $fullName,
@@ -94,12 +95,14 @@ class Invoicing implements ShouldQueue
             "account_type" => "customer",
             "untrackable" => false
         ]);
-        (new Parasut())->update(ParasutEndPoint::Contacts(),$auth->parasut_customer_id, $requestModel);
+        (new Parasut())->update(ParasutEndPoint::Contacts(),$user->parasut_customer_id, $requestModel);
         return $taxNumber;
     }
 
-    private function createInvoice(users $user, Payment $payment)
+    private function createInvoice(users $user, packets $packets)
     {
+        $user = Auth::user();
+        $packets=$packets->all()->last();
         $requestModel = new ParasutRequestModel(null, "sales_invoices", [
             "item_type" => "invoice",
             "description" => $user['first_name'] . ' ' . $user['last_name'] . ' Hemen Geliriz Yazılım Kullanım Lisans Bedeli Faturası',
@@ -108,8 +111,8 @@ class Invoicing implements ShouldQueue
             "withholding_rate" => 0,
             "vat_withholding_rate" => 0,
             "is_abroad" => false,
-            "order_no" => $payment['iyzico_payment_id'],
-            "order_date" => Carbon::parse($payment['updated_at'])->format("Y-m-d"),
+            "order_no" => $packets['paymentId'],
+            "order_date" => Carbon::parse($packets['updated_at'])->format("Y-m-d"),
             "shipment_included" => false
         ], [
             "details" => [
@@ -119,13 +122,13 @@ class Invoicing implements ShouldQueue
                         "type" => "sales_invoice_details",
                         "attributes" => [
                             "quantity" => 1,
-                            "unit_price" => $payment['price'],
+                            "unit_price" => $packets['price'],
                             "vat_rate" => 0
                         ],
                         "relationships" => [
                             "product" => [
                                 "data" => [
-                                    "id" => config('hemengeliriz.parasut.product_id'),
+                                    "id" => 44674414,
                                     "type" => "products"
                                 ]
                             ]
@@ -143,7 +146,7 @@ class Invoicing implements ShouldQueue
         return (new Parasut())->create(ParasutEndPoint::SalesInvoices(), $requestModel);
     }
 
-    private function createEInvoice(Request $request, $invoiceId, $taxNumber)
+    private function createEInvoice($invoiceId, $taxNumber)
     {
         $requestModel = new ParasutRequestModel(null, "e_invoices", [
             "vat_exemption_reason_code" => "223",
@@ -159,10 +162,11 @@ class Invoicing implements ShouldQueue
             ]
         ]);
         $response = (new Parasut())->create(ParasutEndPoint::EInvoices(), $requestModel);
-        $trackableModel = new TrackableModel($response['data']['id'], "e_invoice", $invoiceId, $request);
+        $trackableModel = new TrackableModel($response['data']['id'], "e_invoice", $invoiceId);
         Trackable::dispatch($trackableModel)
             ->delay(5)
-            ->onQueue('parasut');;
+            ->onQueue('parasut');
+
     }
 
     public function createEArchive(Request $request, Payment $payment, $invoiceId) // Make private
@@ -179,7 +183,7 @@ class Invoicing implements ShouldQueue
         ], [
             "sales_invoice" => [
                 "data" => [
-                    "id" => $invoiceId,
+                    "id" => 44674414,
                     "type" => "sales_invoices"
                 ]
             ]

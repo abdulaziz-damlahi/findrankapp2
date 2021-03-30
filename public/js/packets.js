@@ -310,6 +310,10 @@ $(document).ready(function() {
         let last_name = $('.invoice_last_name').val();
         let address = $('.invoice_tax_address').val();
         let number = $('.invoice_id_number').val();
+        let pay_id  =$("#pay_id").val();
+        console.log(pay_id,'sadsadasddönmed');
+        let pay_id2  =$("#pay_id").text();
+        console.log(pay_id2,'sadsadasddönmed');
         let invoice_no =$('.invoice_tax_no').val();
         let country=$('.invoice_country').val();
         let city = $('.invoice_city').val();
@@ -333,6 +337,7 @@ $(document).ready(function() {
                         "id_number":number,
                         "tax_address":address,
                         "tax_no":invoice_no,
+
                         "country":country,
                         "city":city,
                         "company_name":company_name,
@@ -352,6 +357,7 @@ $(document).ready(function() {
             }
         });
     }
+
     function post_invoice(){
         let first = $('#first_name').val();
         let last = $('#last_name').val();
@@ -361,6 +367,8 @@ $(document).ready(function() {
         let invoice_no = $('#invoice_noo').val();
         let companyName = $('#companyName').val();
         let invoice_Addres = $('#invoice_addresses').val();
+        let phonee = $('#gsm_number').val();
+           let invocetype =$('input[name=gender]:checked', '.invoiceeetype').val();
         console.log(invoice_no,'invoice no');
         console.log(invoice_Addres,'invoice_addreses');
         let country = $('#country').val();
@@ -380,8 +388,10 @@ $(document).ready(function() {
                         "first_name":first,
                         "last_name":last,
                         "id_number":id_number,
-                        "tax_address":invoice_Addres,
+                        "address":invoice_Addres,
                         "tax_no":invoice_no,
+                        "phone":phonee,
+                        "invoice_type":invocetype,
                         "country":country,
                         "city":city,
                         "company_name":companyName
@@ -408,6 +418,10 @@ $(document).ready(function() {
         let başlangic  =$("#başlangic").text()
         let rank_follow  =$(".rank_follow").text()
         let hidden_price  =$("#hidden_price").text()
+        let pay_id  =$("#pay_id").val();
+        console.log(pay_id,'sadsadasddönmed');
+        let pay_id2  =$("#pay_id").text();
+        console.log(pay_id2,'sadsadasddönmed');
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -421,10 +435,10 @@ $(document).ready(function() {
         let ee =  Date.parse(todayee);
         let dateArray = todayee.split("-");
         let dateObj = new Date(`${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`);
-        let deyt =   new Date(new_dd,new_mm,yyyy);
+        let deyt =   new Date(yyyy,new_mm,new_dd);
         var con_date =
-            ""+deyt.getFullYear() + (deyt.getMonth()+1) + deyt.getDate(); //converting the date
-        let gdate = "" + yyyy +"-"+ new_mm+"-" + new_dd; //given date
+            ""+deyt.getFullYear() + "-"+"0"+(deyt.getMonth()+1) + "-"+deyt.getDate(); //converting the date
+        let gdate = "" + yyyy +"-"+"0"+ new_mm+"-" + new_dd; //given date
         console.log(gdate,'giremedi');
 
         $.ajax({
@@ -441,9 +455,10 @@ $(document).ready(function() {
                         "user_id":user_id,
                         "count_of_words": 0,
                         "descrpitions":"sada",
-                        "end_of_pocket":gdate,
+                        "end_of_pocket":con_date,
                         "max_count_of_words":hidden_word_count,
                         "rank_follow":0,
+                        "paymentId":parseInt(pay_id2),
                         "rank_follow_max":rank_follow,
                         "count_of_websites":0,
                         "max_count_of_websites": hidden_websites_count,
@@ -480,7 +495,9 @@ $(document).ready(function() {
             startyear=startyear+1
 
         }
-
+        var deyt = new Date(startyear,startmonth,startday)
+        var con_date =
+            ""+deyt.getFullYear() + "-"+"0"+(deyt.getMonth()+1) + "-"+deyt.getDate(); //converting the date
         let gdate = "" + startyear +"-"+"0"+ startmonth+"-" + startday; //given date,
 
         console.log(gdate);
@@ -502,7 +519,7 @@ $(document).ready(function() {
                         "user_id":user_id,
                         "count_of_words": 0,
                         "descrpitions":"sada",
-                        "end_of_pocket":gdate,
+                        "end_of_pocket":con_date,
                         "max_count_of_words":hidden_word_count_new,
                         "rank_follow":0,
                         "rank_follow_max":rank_follow_new,

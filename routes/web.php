@@ -7,7 +7,6 @@ Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder')->name('findorder');
     Route::post('/findorders', 'App\Http\Controllers\panel@findPost')->name('findpost');
     Route::get('/settings', 'App\Http\Controllers\settings@index')->name('settings');
-    Route::get('/parase', 'App\Http\Controllers\settings@parase')->name('parase');
     Route::post('/settings/password', 'App\Http\Controllers\settings@store_personal_settings')->name('set.post');
     Route::post('/settings/personal_settings', 'App\Http\Controllers\settings@store_password')->name('personal.settings');
     Route::post('/settings/custumize', 'App\Http\Controllers\settings@store_custumize')->name('custumize');
@@ -20,6 +19,7 @@ Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/website/{websiteid}', 'App\Http\Controllers\panel@websitelist')->name('websitelist');
     Route::get('/website/deletekeyword/{id}', 'App\Http\Controllers\panel@deletekeyword')->name('deletekeyword');
     Route::post('/addword', 'App\Http\Controllers\panel@addword')->name('addword');
+    Route::get('/parase', 'App\Http\Controllers\settings@parase')->name('parase');
     Route::get('website/editkeyword/{id}', 'App\Http\Controllers\panel@editkeyword')->name('editkeyword');
     Route::post('website/updatekeyword/{id}', 'App\Http\Controllers\panel@updatekeyword')->name('updatekeyword');
     Route::get('website/grafik/{id}', 'App\Http\Controllers\panel@grafik')->name('grafik');

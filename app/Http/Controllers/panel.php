@@ -430,7 +430,7 @@ class panel extends Controller
 
                     echo "girdi";
                     if($device_information==='Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53'){
-                        preg_match_all('@<span class="Zu0yb UGIkD qzEoUe"><span dir="ltr">(.*?)<\/span><\/span>@', $response, $resultss, PREG_SET_ORDER, 0);
+                        preg_match_all('@<span class="Zu0yb UGIkD qzEoUe">(.*?)<span dir="ltr">(.*?)<\/span><\/span>@', $response, $resultss, PREG_SET_ORDER, 0);
                     }
                     else{
                         echo 'buraya girer';
@@ -445,17 +445,21 @@ class panel extends Controller
                     else {
                         echo 'buraya girer2';
 
-                        preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb qLRx3b tjvcx">(.*?)<span class="dyjrff qzEoUe">(.*?)<\/span><\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
+                        preg_match_all('@<div class="TbwUpd NJjxre"><cite class="iUh30 Zu0yb(.*?)">(.*?)<\/cite><\/div>@', $response, $resultss, PREG_SET_ORDER, 0);
                     }
                 }
+                $lastElement = last($resultss);
 
                 foreach ($resultss as $keyo=>$result){
-
+                    if($resultss==null){
+                        echo "ip değiş";
+                        $result==0;
+                    }
                 }
                 curl_close($ch);
                 packets::where('id',$id)->update(['rank_follow'=>$new]);
                 return view(
-                    'pages/findorder', compact('resultss','result','rank_follow_max','countrank','packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+                    'pages/findorder', compact('resultss','lastElement','result','rank_follow_max','countrank','packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
             }
         }}
 

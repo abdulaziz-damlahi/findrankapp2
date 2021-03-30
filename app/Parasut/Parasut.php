@@ -100,19 +100,23 @@ class Parasut extends Utils
      */
     public function request($method, $path, $query = [], $body = [])
     {
+
         $client = self::getClient();
         $options = [
             "query" => $query,
             "headers" => [
                 "Content-Type" => "application/vnd.api+json",
-                "Authorization" => "Bearer " . self::$accessToken
+                "Authorization" => "Bearer " . self::$accessToken,
+                "User-Agent"=>"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
             ]
         ];
 
         if (!empty($body)) {
             $options = array_merge($options, ["body" => $body]);
         }
+
         return $client->request($method, $path, $options);
+
     }
 
     /**

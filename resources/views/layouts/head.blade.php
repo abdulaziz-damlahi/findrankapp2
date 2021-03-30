@@ -57,7 +57,7 @@
         @endif    @if($routeName === 'packets_post')
             <script rel="stylesheet" src="{{asset('js')}}/packet_post.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">
-            <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
+
         @endif
         @if($routeName === 'contact' || $routeName === 'contact.post')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/contact.css">

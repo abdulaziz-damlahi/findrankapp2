@@ -9,17 +9,18 @@ class invoicerecords extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
-        'first_name',
-        'last_name',
-        'id_number',
-        'tax_no',
-        'tax_address',
-        'invoice_type',
-        'country',
-        'user_id',
-        'city',
-        'company_name',
+        "user_id",
+                        "first_name",
+                        "last_name",
+                        "id_number",
+                        "address",
+                        "tax_no",
+                        "phone",
+                        "invoice_type",
+                        "country",
+                        "city",
+                        "company_name"
+
     ];
     public function user()
     {

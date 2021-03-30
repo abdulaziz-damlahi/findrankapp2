@@ -177,15 +177,17 @@
             </div>
         </form>
         @isset($resultss)
-            @foreach ($resultss as $key=>$result)
-                @if(strpos($result[1],$website_request) !== false)
+            @if($resultss>0)
+                @if($language!=="arabic")
+            @foreach ($resultss as $keyo=>$result)
+                @if(strpos($result[2],$website_request) !== false)
                 <div id="alert_color" class="alert alert-light" role="alert">
 
-                    Sorguladığınız site  {{$key}} sırada yer alıyor.
+                    Sorguladığınız site  {{$keyo}} sırada yer alıyor.
                 </div>
                 @endif
             @endforeach
-                @if(strpos($result[1],$website_request) === false)
+                @if(strpos($result[2],$website_request) === false)
                     <div id="alert_color" class="alert alert-light" role="alert">
                         gelmedi
                     </div>
@@ -203,7 +205,7 @@
                     @foreach ($resultss as $key=>$result)
                     <tr>
                         <td>{{ $key }}</td>
-                        <td>{{ $result[1] }}
+                        <td><pre>{!!html_entity_decode($result[2])!!}</pre>
                         </td>
                     </tr>
                 @endforeach
@@ -211,6 +213,43 @@
             </table>
 </div>
 </div>
+                @else
+                    @foreach ($resultss as $keyo=>$result)
+                        @if(strpos($result[0],$website_request) !== false)
+                            <div id="alert_color" class="alert alert-light" role="alert">
+
+                                Sorguladığınız site  {{$keyo}} sırada yer alıyor.
+                            </div>
+                        @endif
+                    @endforeach
+                    @if(strpos($result[0],$website_request) !== true)
+                        <div id="alert_color" class="alert alert-light" role="alert">
+                            gelmedi
+                        </div>
+                    @endif
+                    <div class="container">
+                        <div class="row">
+                            <table class="table table-sm">
+                                <thead>
+                                <tr>
+                                    <th>Sırası</th>
+                                    <th>Siteler</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($resultss as $key=>$result)
+                                    <tr>
+                                        <td>{{ $key }}</td>
+                                        <td><pre>{!!html_entity_decode($result[0])!!}</pre>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @endif
+                @endif
         @endisset
 
 

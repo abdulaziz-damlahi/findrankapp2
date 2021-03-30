@@ -2,9 +2,10 @@
 
 namespace App\Parasut\Jobs;
 
-use App\Models\User;
+use App\Models\users;
 use App\Parasut\Enums\ParasutEndPoint;
 use App\Parasut\Models\ParasutRequestModel;
+use App\Models\invoicerecords;
 use App\Parasut\Parasut;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Bus\Queueable;
@@ -17,14 +18,14 @@ class InsertUserToParasut implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected User $user;
+    protected users $user;
 
     /**
      * Create a new job instance.
      *
-     * @param User $user
+     * @param users $user
      */
-    public function __construct(User $user)
+    public function __construct(users $user)
     {
         $this->user = $user;
     }
@@ -38,7 +39,7 @@ class InsertUserToParasut implements ShouldQueue
     public function handle()
     {
         $user = $this->user;
-        if (!isset($user['parasut_customer_id'])) {
+        if (!isset($user->parasut_customer_id)) {
             $parasut = new Parasut();
             $response = $parasut->create(
                 ParasutEndPoint::Contacts(),

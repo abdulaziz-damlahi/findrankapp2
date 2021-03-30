@@ -7,8 +7,11 @@ use App\Models\cards;
 use App\Models\packets;
 use App\Models\packets_reels;
 use App\Models\users;
+use App\Parasut\Parasut;
 use App\Models\invoicerecords;
 use App\Parasut\Utils;
+use App\Parasut\Enums\ParasutEndPoint;
+use App\Parasut\Models\ParasutRequestModel;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +25,6 @@ class settings extends Controller
     {
         $parasut = (new \App\Parasut\Parasut(request()));
 
-
         $user = Auth::user();
         $user_first_name = $user->first_name;
         $user_last_name = $user->last_name;
@@ -32,9 +34,11 @@ class settings extends Controller
         return view('pages/foruser/settings/settings', compact('user_first_name', 'user_last_name', 'phone', 'mail'));
     }
 
-    public function parase(users $user,invoicerecords $invoicerecords)
+    public function parase(users $user,invoicerecords $invoicerecords,packets $packets)
     {
-        $parasut2 = (new \App\Parasut\jobs\Invoicing($user,$invoicerecords));
+       $parasut2 = (new \App\Parasut\jobs\Invoicing($user,$invoicerecords,$packets));
+     //   $parasut2 = (new \App\Parasut\jobs\InsertUserToParasut($user));
+
     }
 
     public function getClient()

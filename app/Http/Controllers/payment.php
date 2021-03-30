@@ -26,6 +26,7 @@ class payment extends Controller
           }
           echo $keywordcount->price;
         */
+        $packets = new packets;
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
         $clientIP = Request()->ip();
@@ -309,12 +310,17 @@ class payment extends Controller
         $payment = json_decode($payment->getRawResult(), true);
         if ($payment['status'] === "success") {
             $success_message = "Payment Successful !";
+                $payid= $payment['paymentId'];
+            packets::all()->last()->update(['paymentId' => $payment['paymentId']]);
+            $iyzico_transaction_id = $payment['itemTransactions'][0]['paymentTransactionId'];
         }
         else{
             $success_message = "Payment Unsuccessful !";
+            $payid= 215;
+            $iyzico_transaction_id =215;
         }
 
-        return view('pages/packets/packets',compact('success_message','payment','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
+        return view('pages/packets/packets',compact('iyzico_transaction_id','payid','success_message','payment','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
 
     }
     public static function getOptions()

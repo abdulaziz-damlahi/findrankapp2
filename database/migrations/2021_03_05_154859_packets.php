@@ -24,6 +24,7 @@ class Packets extends Migration
             $table->string('descrpitions');
             $table->date('end_of_pocket');
             $table->integer('count_of_websites');
+            $table->integer('paymentId')->nullable();
             $table->integer('rank_follow');
             $table->integer('rank_follow_max');
             $table->string('packet_names');

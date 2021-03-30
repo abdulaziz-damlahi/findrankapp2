@@ -6,12 +6,17 @@
             <div id="packets_show" class="heading-block text-center margin-bottom-80">
                 <h2>Affordable SEO Services Packages </h2>
                 <div class="row">
-
+@isset($iyzico_transaction_id)
+    <input hidden val="{{$iyzico_transaction_id}}" id="iyzico_transaction_id">
+    @endisset
+    @isset($payid)
+    <p hidden id="pay_id" val="{{$payid}}" >{{$payid}}</p>
+    @endisset
                     <!-- Price -->
                     <div id="satis" class="col-md-4">
                         <!-- Icon -->
                         <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-1.png" alt=" "></div>
-
+                     <div hidden val=""></div>
                         <!-- Plan  -->
                         <div class="pricing-head">
                             <h4>{{$pack->names_packets}}</h4>
@@ -107,8 +112,9 @@
                     <div id="iyzipay-checkout-form" class="responsive">
                         <br>
                         <div id="form1">
-                            <div class="invoiceeetype" id="invoice_type"><input id="kurumsal" type="radio" name="gender" value="Kurumsal"> Kurumsal
-                                <input checked type="radio" id="bireysel" name="gender" value="Kurumsal"> Bireysel
+                            <div class="invoiceeetype" id="invoice_type">
+                                <input id="kurumsal" type="radio" name="gender" value="institutional"> Kurumsal
+                                <input checked type="radio" id="bireysel" name="gender" value="individual"> Bireysel
                             </div>
                             <div id="Kurumsalform">
                                 <label class="kurumsal col-md-6">
