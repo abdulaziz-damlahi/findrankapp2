@@ -44,6 +44,10 @@
             <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
             <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
+        @endif    @if($routeName === 'addwebsite')
+            <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
+            <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
+            <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
         @endif
 
         @if($routeName === 'websitelist')

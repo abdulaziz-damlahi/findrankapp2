@@ -48,6 +48,7 @@
                                         </tr>
                                         </thead>
                                         <tbody id="row">
+                                        <tbody id="row">
                                         {{--                                            table content from js--}}
                                         <div id="myModal" class="modal">
                                             <!-- Modal content -->
@@ -137,6 +138,16 @@
                                         <table
                                             {{--  down table head--}}
                                             class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
+                                            @if (session('success'))
+                                                <div class="alert alert-success">
+                                                    {{ session('success') }}
+                                                </div>
+                                            @endif
+                                                @if (session('sasa'))
+                                                    <div class="alert alert-danger">
+                                                        {{ session('sasa') }}
+                                                    </div>
+                                                @endif
                                             <thead>
                                             <tr>
                                                 <th scope="col">id</th>
