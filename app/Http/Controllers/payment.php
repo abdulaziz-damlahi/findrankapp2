@@ -312,6 +312,7 @@ echo $request->invoicetype;
 
 
         $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
+
         $payment = json_decode($payment->getRawResult(), true);
         if ($payment['status'] === "success") {
             $success_message = "Payment Successful !";
