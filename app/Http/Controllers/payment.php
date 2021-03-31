@@ -126,7 +126,7 @@ class payment extends Controller
 
             $locale = App::getLocale();
         }
-        if($request->First_name_institutional!==""){
+        if($request->First_name_institutional===""){
             $price = $request->input_price;
             $card_first_last_name= $request->card_first_last;
             $card_number= $request->card_number;
@@ -145,6 +145,7 @@ class payment extends Controller
             }
             elseif(App::getLocale()=='tr'){
                 $paymentrequest->setLocale(\Iyzipay\Model\Locale::TR);
+
                 $paymentrequest->setPrice($price);
                 $paymentrequest->setPaidPrice($price);
             }
@@ -170,7 +171,7 @@ class payment extends Controller
             $paymentrequest->setPaymentCard($paymentCard);
             $buyer = new \Iyzipay\Model\Buyer();
             $buyer->setId(Auth::id());
-
+            echo "gidi";
             $buyer->setCity($request->city_information_institutional);
             $buyer->setCountry($request->country_information_institutional);
             $buyer->setName($request->First_name_institutional);
@@ -261,7 +262,6 @@ class payment extends Controller
             $buyer->setGsmNumber($request->gsm_number_personal);
             $buyer->setEmail($request->email_personal);
             $buyer->setIdentityNumber($request->identification_number);
-
             $buyer->setRegistrationAddress($request->invoice_address_personal);
             $buyer->setIp($geo);
             $buyer->setCity($request->cities_personal);
@@ -306,15 +306,20 @@ class payment extends Controller
 
 
         $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
+        dd($payment);
         $payment = json_decode($payment->getRawResult(), true);
         if ($payment['status'] === "success") {
             $success_message = "Payment Successful !";
+            $payid= $payment['paymentId'];
+            packets::all()->last()->update(['paymentId' => $payment['paymentId']]);
+            $iyzico_transaction_id = $payment['itemTransactions'][0]['paymentTransactionId'];
         }
         else{
             $success_message = "Payment Unsuccessful !";
+            $payid= 215;
+            $iyzico_transaction_id =215;
         }
-
-        return view('pages/packets/packets',compact('success_message','payment','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
+        return view('pages/packets/packets',compact('iyzico_transaction_id','payid','success_message','payment','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
 
     }
     public static function getOptions()
