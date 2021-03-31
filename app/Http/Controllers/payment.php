@@ -9,8 +9,8 @@ use Iyzipay\Model\BasketItemType;
 use Iyzipay\Options;
 use App\Models\packets_reels;
 use App\Models\packets;
-use Iyzipay\Model\Currency;
-use Iyzipay\Model\Locale;
+use App\Models\requests;
+
 
 use Illuminate\Routing\Controller;
 
@@ -26,7 +26,6 @@ class payment extends Controller
           }
           echo $keywordcount->price;
         */
-        $packets = new packets;
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
         $clientIP = Request()->ip();
@@ -127,9 +126,7 @@ class payment extends Controller
 
             $locale = App::getLocale();
         }
-        if($request->invoicetype!="individual"){
-            echo " girersadasd";
-            echo $request->invoicetype;
+        if($request->First_name_institutional!==""){
             $price = $request->input_price;
             $card_first_last_name= $request->card_first_last;
             $card_number= $request->card_number;
@@ -147,7 +144,7 @@ class payment extends Controller
                 $paymentrequest->setPaidPrice($money_new_value);
             }
             elseif(App::getLocale()=='tr'){
-                $paymentrequest->setLocale(\Iyzipay\Model\Locale::TRY);
+                $paymentrequest->setLocale(\Iyzipay\Model\Locale::TR);
                 $paymentrequest->setPrice($price);
                 $paymentrequest->setPaidPrice($price);
             }
@@ -218,8 +215,6 @@ class payment extends Controller
 
         }
         else{
-            echo " girmez";
-echo $request->invoicetype;
             $price = $request->input_price;
             $card_first_last_name= $request->card_first_last;
             $card_number= $request->card_number;
@@ -237,7 +232,7 @@ echo $request->invoicetype;
                 $paymentrequest->setPaidPrice($money_new_value);
             }
             elseif(App::getLocale()=='tr'){
-                $paymentrequest->setCurrency(Currency::TRY);
+                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::TR);
                 $paymentrequest->setPrice($price);
                 $paymentrequest->setPaidPrice($price);
             }
@@ -273,7 +268,7 @@ echo $request->invoicetype;
             $buyer->setCountry($request->countries_personal);
             $paymentrequest->setBuyer($buyer);
             $shippingAddress = new \Iyzipay\Model\Address();
-            $shippingAddress->setContactName($request->firstName_personal);
+            $shippingAddress->setContactName($request->First_name_institutional);
             $shippingAddress->setCity($request->cities_personal);
             $shippingAddress->setCountry($request->countries_personal);
             $shippingAddress->setAddress($request->invoice_address_personal);
@@ -296,7 +291,7 @@ echo $request->invoicetype;
 
             }
             elseif(App::getLocale()=='tr'){
-                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::TRY);
+                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::TR);
                 $basketItem->setPrice($price);
             }
             else{
@@ -311,11 +306,11 @@ echo $request->invoicetype;
 
 
         $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
-
+        dd($paymentrequest);
         $payment = json_decode($payment->getRawResult(), true);
         if ($payment['status'] === "success") {
             $success_message = "Payment Successful !";
-                $payid= $payment['paymentId'];
+            $payid= $payment['paymentId'];
             packets::all()->last()->update(['paymentId' => $payment['paymentId']]);
             $iyzico_transaction_id = $payment['itemTransactions'][0]['paymentTransactionId'];
         }
@@ -325,7 +320,7 @@ echo $request->invoicetype;
             $iyzico_transaction_id =215;
         }
 
-        return view('pages/packets/packets',compact('iyzico_transaction_id','payid','success_message','payment','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
+        return view('pages/packets/packets',compact('success_message','payment','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
 
     }
     public static function getOptions()
