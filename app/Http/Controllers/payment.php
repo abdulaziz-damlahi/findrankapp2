@@ -306,7 +306,6 @@ class payment extends Controller
 
 
         $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
-        dd($payment);
         $payment = json_decode($payment->getRawResult(), true);
         if ($payment['status'] === "success") {
             $success_message = "Payment Successful !";

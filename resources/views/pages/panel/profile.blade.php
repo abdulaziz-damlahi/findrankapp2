@@ -9,10 +9,10 @@
                         <div class="row">
 
                             <div class="col-md-12">
-                                <div class="col-md-12">
+                                <div class="col-md-12 ">
                                     <div class="card bg-c-green order-card">
                                         <div class="card-block " style="height: 300px">
-                                            <table class="table table-bordered table-striped table-condensed ">
+                                            <table class="table table-bordered table-striped table-condensed " style="width:100%;">
                                                 <tbody>
                                                 <tr>
                                                     <td class="tableStyle">

@@ -83,6 +83,9 @@ label {
 #register:hover{
     color:#ff6c3a;
 }
+.submit{
+    height: 500px;
+}
 @media only screen and (max-width: 775px) {
 
     #contactForm {

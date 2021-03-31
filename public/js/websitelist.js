@@ -1,11 +1,8 @@
-let pageNumber = 1;
-let currentPage2 = 1;
-let xa = 0
-let wordcount;
-let contdivide;
 $(document).ready(function () {
-    Statistics()
+    Statistics();
 })
+
+
 
 function Statistics() {
     $.ajax({
@@ -47,10 +44,10 @@ function Statistics() {
                                 let sayi = response['data'][i].id
                                 var str = "<tr><td  class='anahtar' data-id='  " + i + "' id=\"ANAHTARKELİME\"> " + word + " </td>" +
                                     "<td id=\"rank\">  " + rank + "</td>" +
-                                    "<td id=\"country\">  " + country + "</td>" +
-                                    "<td id=\"country\">  " + city + "</td>" +
-                                    "<td id=\"language\">  " + language + "</td>" +
-                                    "<td id=\"device\">  " + device + "</td>" +
+                                    "<td id=\"country\" >  " + country + "</td>" +
+                                    "<td id=\"city\" class=\"hidden-xs\">  " + city + "</td>" +
+                                    "<td id=\"device2\" value=' " + device + "' > " + device + "</td>" +
+                                    "<td id=\"language\" class=\"hidden-xs\">  " + language + "</td>" +
                                     "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='grafik/" + wordid + "'> </a></td>" +
                                     "<td scope=\"col\"><a href = 'deletekeyword/" + wordid + "'  class=\"fa fa-trash text-danger \"></a></td>" +
                                     "<td   id=\"editbtn\"><a  class=\"fa fa-edit text-success \" href='editkeyword/" + wordid + "'> </a> </td></tr>";
@@ -77,7 +74,7 @@ window.addEventListener('load', (event) => {
     var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-    var btn = document.getElementById("addNewSite");
+    var btn = document.getElementById("addNewword");
 
 // Get the <span> element that closes the modal
     var span = document.getElementById("close");
@@ -197,10 +194,10 @@ $(document).ready(function () {
             $("#hidden_collonial").val($(this).val());
             $("#hidden_device").val($("#hidden_collonial").val());
         });
+
     });
     $("#language").change(function () {
         $("#language_hidden").val($(this).val());
-
     });
     $.ajax({
         type: 'get',
@@ -210,30 +207,7 @@ $(document).ready(function () {
     });
 });
 
-//chart popup
-window.addEventListener('load', (event) => {
 
-    var btn = document.getElementById("grafikbtn");
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
 
-    var span = document.getElementById("grafikclose");
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    var span2 = document.getElementById("grafikclose2");
-    span2.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    var modal = document.getElementById("grafikmodal");
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-});
 
 

@@ -46,10 +46,10 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">WEB SİTE / URL</th>
-                                            <th scope="col">ANAHTAR KELİME</th>
-                                            <th scope="col">SIRA</th>
-                                            <th class="hidden-xs" scope="col">GRAFİK</th>
+                                            <th scope="col" >website</th>
+                                            <th scope="col"  >word</th>
+                                            <th scope="col" >rank</th>
+                                            <th  scope="col">grafik</th>
                                         </tr>
                                         </thead>
                                         <tbody id="row">

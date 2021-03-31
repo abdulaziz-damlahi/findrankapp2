@@ -85,9 +85,9 @@ class panel extends Controller
             $webid = $request->websiteid;
             $keyword = new keywords;
             if ($request->has('name')) {
-                $keyword->name = $request->keyword;
+                $keyword->name = $request->name;
             } else {
-                return redirect()->back()->with('cantbeempty', 'keyword bos ekleden');
+                return redirect()->back()->with('cantbeempty', 'keleme bos ekleden');
             }
             if ($request->has('country')) {
             $keyword->country = $request->country;
@@ -183,7 +183,7 @@ class panel extends Controller
 
         $packetdata = packets::where('user_id', '=', $userId)->get()->first();
         if ($packetdata==NULL){
-            return redirect()->back()->with('packetempty', 'buy packet from home page to view your profile');
+            return redirect()->back()->with('packetempty', 'buy packet from home page to view profile');
         }
         return view('pages/panel/profile', compact('packetdata'));
     }
