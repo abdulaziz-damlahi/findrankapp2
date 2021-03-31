@@ -110,6 +110,7 @@ class keywordsrequest extends Seeder
             ['rank' => '1','keyword_id' => '1','user_id' => '1','created_at' => '2021-3-27  13:12:37','updated_at' => '2021-03-30 13:12:37'],
             ['rank' => '0','keyword_id' => '1','user_id' => '1','created_at' => '2021-3-28  13:12:37','updated_at' => '2021-03-30 13:12:37'],
             ['rank' => '20','keyword_id' => '1','user_id' => '1','created_at' => '2021-3-29  13:12:37','updated_at' => '2021-03-30 13:12:37'],
+            ['rank' => '20','keyword_id' => '1','user_id' => '1','created_at' => '2021-3-30  13:12:37','updated_at' => '2021-03-30 13:12:37'],
         ],);
     }
 }

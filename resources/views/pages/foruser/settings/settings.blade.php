@@ -52,8 +52,8 @@
                     </div>
                 </label>
             <label class="col-md-12">
-                <p class="label-txt">EMAIL </p>
-                <input type="text"name="mail"  value="{{$mail}}" class="input">
+                <p class="label-txt">EMAIL</p>
+                <input type="email"name="mail"  value="{{$mail}}" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>

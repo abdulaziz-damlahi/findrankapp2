@@ -1,6 +1,11 @@
 @extends('layouts.master')
 @section('content')
         <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
+        @if (session('packetempty'))
+            <div class="alert alert-danger">
+                {{ session('packetempty') }}
+            </div>
+        @endif
     {{--   <div style="" id="id">{{ $userId}}</div>--}}
     <div class="pcoded-inner-content" id="main">
         <div class="main-body">

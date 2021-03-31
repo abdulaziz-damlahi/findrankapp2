@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div  id="keywordid" class="hidden" >{{$id}}</div>
-
+    <div  id="userid"  class="hidden">{{ auth()->user()->id }}</div>
         <form id="myForm"  style="padding-left: 100px; height: 100px">
 
             <select id="lastForm" class="lastdate" style="background-color: white;">

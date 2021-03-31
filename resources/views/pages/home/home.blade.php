@@ -248,7 +248,7 @@ n sfb tp-resizeme font-crimson"
                                 <li> {{$last->rank_fosllow}} Rank Follow</li>
                                 <li> {{$last->description}}</li>
                             </ul>
-                            <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a></div>
+                            <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">PURCHACE</a></div>
                     </div>
                     <!-- Price -->
                     <div class="col-md-4">
@@ -268,7 +268,7 @@ n sfb tp-resizeme font-crimson"
                                 <li> {{$middle->rank_fosllow}} Rank Follow</li>
                                 <li> {{$middle->description}}</li>
                             </ul>
-                            <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a></div>
+                            <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">PURCHACE</a></div>
                     </div>
                     <!-- Price -->
                     <div class="col-md-4">
@@ -288,7 +288,7 @@ n sfb tp-resizeme font-crimson"
                                 <li> {{$pack->rank_fosllow}} Rank Follow</li>
                                 <li> {{$pack->description}}</li>
                             </ul>
-                            <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a></div>
+                            <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">PURCHACE</a></div>
                     </div>
                 </div>
             </div>

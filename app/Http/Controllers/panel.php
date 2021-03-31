@@ -180,7 +180,11 @@ class panel extends Controller
 
         $user = auth()->user();
         $userId = $user->id;
+
         $packetdata = packets::where('user_id', '=', $userId)->get()->first();
+        if ($packetdata==NULL){
+            return redirect()->back()->with('packetempty', 'buy packet from home page to view your profile');
+        }
         return view('pages/panel/profile', compact('packetdata'));
     }
 
