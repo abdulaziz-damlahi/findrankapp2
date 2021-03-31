@@ -148,13 +148,14 @@ function openNav() {
         document.getElementById("home").style.marginRight = "330px";
         document.getElementById("wrap").style.marginRight = "330px";
         if ($(window).width() < 700) {
-            document.getElementById("mySidebar").style.width = "100%";
+            document.getElementById("mySidebar").style.width = "92%";
+           $("#hedercont").hide();
         } else {
             document.getElementById("ownmenu").style.marginRight = "130px";}
 
-
         click = 1;
     } else {
+
         document.getElementById("mySidebar").style.width = "0px";
         document.getElementById("home").style.marginRight = "0px";
         document.getElementById("wrap").style.marginRight = "0px";
@@ -165,6 +166,7 @@ function openNav() {
 }
 
 function closeNav() {
+    $("#hedercont").show();
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("home").style.marginRight = "0";
     document.getElementById("wrap").style.marginRight = "0";

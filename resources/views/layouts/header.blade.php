@@ -52,7 +52,7 @@
     <div id="wrap">
 
         <!-- Top bar -->
-        <div class="container">
+        <div class="container" >
             <div class="row" id="notch">
                 <div class="col-md-2 noo-res"></div>
                 <div class="col-md-10">
@@ -82,7 +82,7 @@
         <!-- Header -->
         <header class="header coporate-header">
             <div class="sticky">
-                <div class="container">
+                <div class="container" id="hedercont">
                     <div class="logo"><a href="{{route("home")}}"><img src="{{asset('images')}}/logo.png" alt=""></a></div>
 
                     <!-- Nav -->
