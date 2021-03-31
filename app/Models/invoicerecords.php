@@ -8,23 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class invoicerecords extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         "user_id",
-                        "first_name",
-                        "last_name",
-                        "id_number",
-                        "address",
-                        "tax_no",
-                        "phone",
-                        "invoice_type",
-                        "country",
-                        "city",
-                        "company_name"
+        "first_name",
+        "last_name",
+        "taxpayer",
+        "id_number",
+        "tax_address",
+        "tax_no",
+        "e_invoice",
+        "phone",
+        "email",
+        "country",
+        "city",
+        "district",
+        "company_name",
+        "invoice_type",
 
     ];
+
     public function user()
     {
-        return $this->belongsTo('App\Models\users', 'id','id_website');
+        return $this->belongsTo('App\Models\users', 'id', 'id_website');
     }
 
 }

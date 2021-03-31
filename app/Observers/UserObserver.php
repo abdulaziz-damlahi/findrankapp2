@@ -43,6 +43,7 @@ class UserObserver
                 "account_type" => "customer"
             ])
         );
+
         $user->parasut_customer_id = $response['data']['id'];
         $user->save();
     }

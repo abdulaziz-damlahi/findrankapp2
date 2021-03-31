@@ -20,6 +20,7 @@ class Packets extends Migration
             $table->bigIncrements('id');
             $table->integer('count_of_words');
             $table->integer('max_count_of_words');
+            $table->integer('price');
             $table->integer('max_count_of_websites');
             $table->string('descrpitions');
             $table->date('end_of_pocket');

@@ -37,6 +37,7 @@ class Schema extends SchemaProvider
             'end_of_pocket'=> $resource->end_of_pocket,
             'rank_follow'=> $resource->rank_follow,
             'paymentId'=> $resource->paymentId,
+            'price'=> $resource->price,
             'rank_follow_max'=> $resource->rank_follow_max,
             'max_count_of_words'=> $resource->max_count_of_words,
             'max_count_of_websites'=> $resource->max_count_of_websites,

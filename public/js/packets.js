@@ -4,14 +4,13 @@ $(document).ready(function() {
         console.log($('#e_invoice').val());
     });
     $('#try_again').hide();
-    $('#settingsForm').height('600')
     $('#success_message').css('display','none');
     $('#error_message').css('display','none');
     if($('#button_third').hasClass('active')){
         console.log('geldi')
 
     };
-    $('#Bireyselfrom').hide();
+    $('#Kurumsalform').hide();
     $('#form2').hide();
     $('#form3').hide();
     $('#form4').hide();
@@ -21,23 +20,42 @@ $(document).ready(function() {
         $('#Bireyselfrom').hide();
         $('#Kurumsalform').show();
         $('.kurumsal').show();
+        let window_size =$( window ).width();
+        if(window_size<600){
+            $('#settingsForm').height('1300px')
+
+        }
+        else{
+            $('#settingsForm').height('800px')
+        }
         $('#themostunder').css('margin-right','60%');
 
 
 
     });
+
     $( ".PURCHACE" ).on( "click", function() {
+        $("#button_contact").hide();
         $('#settingsForm').show();
         let window_size =$( window ).width();
-        if(window_size<500){
-            $('#settingsForm').height('1000')
+        if(window_size<600){
+            $('#settingsForm').height('1300px')
         }else{
-            $('#settingsForm').height('600')
+            $('#settingsForm').height('800px')
         }
     });
     $( "#bireysel" ).on( "click", function() {
+        let window_size =$( window ).width();
+
         $('#Bireyselfrom').show();
         $('#Kurumsalform ').hide();
+        if(window_size<600){
+            $('#settingsForm').height('1100px')
+
+        }
+        else{
+            $('#settingsForm').height('800px')
+        }
     });
     i=0;
     $( "#button_contact2" ).click(function() {
@@ -66,6 +84,7 @@ $(document).ready(function() {
                 $('#form4').hide();
             }
             else if(i===1){
+                $("#button_contact").show();
                 let window_size =$( window ).width();
 
                 if(window_size<500){
@@ -84,6 +103,8 @@ $(document).ready(function() {
                 $('#form4').hide();
 
             }else if(i===2){
+                $("#button_contact").show();
+
                 let window_size =$( window ).width();
 
                 if(window_size<500){
@@ -102,6 +123,8 @@ $(document).ready(function() {
                 $('#form4').hide();
 
             }else if(i===3){
+                $("#button_contact").show();
+
                 $('#button_pay').show();
                 let window_size =$( window ).width();
 
@@ -135,13 +158,15 @@ $(document).ready(function() {
                 }
                 let window_size =$( window ).width();
 
-                if(window_size<500){
-                    $('#settingsForm').height('950')
+                if(window_size<600){
+                    $('#settingsForm').height('1300px')
 
                 }
                 else{
-                    $('#settingsForm').height('600')
+                    $('#settingsForm').height('800px')
                 }
+                $('#button_contact').hide();
+
                 $('#button_contact2').css('display','inline');
                 $('#form1').show();
                 $('#button_pay').hide();
@@ -304,111 +329,260 @@ $(document).ready(function() {
         }
     );
     function patch_invoice(){
-        let invoicee_id =  parseInt($('.invoice_id').val());
-        $('.invoice_size').val();
-        let first_name = $('.invoice_first_name').val();
-        let last_name = $('.invoice_last_name').val();
-        let address = $('.invoice_tax_address').val();
-        let number = $('.invoice_id_number').val();
-        let pay_id  =$("#pay_id").val();
-        console.log(pay_id,'sadsadasddönmed');
-        let pay_id2  =$("#pay_id").text();
-        console.log(pay_id2,'sadsadasddönmed');
-        let invoice_no =$('.invoice_tax_no').val();
-        let country=$('.invoice_country').val();
-        let city = $('.invoice_city').val();
-        let invoice_type = $('.invoice_invoice_type').val();
-        let company_name =$('.invoice_company_name').val();
-        let user_id =$('.invoice_user_id').val( );
-        $.ajax({
-            url: "http://127.0.0.1:8000/api/v1/invoicerecords"+invoicee_id,
-            type: "PATCH",
-            headers: { "Content-Type": "application/vnd.api+json",
-                Accept: "application/vnd.api+json",
-            },
-            data: JSON.stringify({
-                "data": {
-                    "type": "invoicerecords",
 
-                    "attributes": {
-                        "user_id":user_id,
-                        "first_name":first_name,
-                        "last_name":last_name,
-                        "id_number":number,
-                        "tax_address":address,
-                        "tax_no":invoice_no,
+            let invocetype = $('input[name=gender]:checked', '.invoiceeetype').val();
+         if(invocetype=="individual"){
+             let invoicee_id =  parseInt($('.invoice_id').val());
+             $('.invoice_size').val();
+             let first = $('#firstt_namee').val();
+             let last = $('#last_namee').val();
+             let Id_number = $('#numberr').val();
+             let id_number = parseInt(Id_number);
+             console.log(typeof id_number)
+             let invoice_no = $('#invoice_noo').val();
+             let companyName = $('#companyName').val();
+             let invoice_Addres = $('#invoice_adresses').val();
+             let gsm_number = $('#gsm_number').val();
+             let email_personal = $('#email_personal').val();
+             let e_invoice = $('#e_invoice').val();
 
-                        "country":country,
-                        "city":city,
-                        "company_name":company_name,
-                        "invoice_type":invoice_type,
+             let invocetype =$('input[name=gender]:checked', '.invoiceeetype').val();
+             console.log(invoice_no,'invoice no');
+             console.log(invoice_Addres,'invoice_addreses');
+             let country = $('#countries_personal').val();
+             let city = $('#cities_personal').val();
+             let district = $('#districttt').val();
+             $.ajax({
+                 url: "http://127.0.0.1:8000/api/v1/invoicerecords/"+invoicee_id,
+                 type: "PATCH",
+                 headers: { "Content-Type": "application/vnd.api+json",
+                     Accept: "application/vnd.api+json",
+                 },
+                 data: JSON.stringify({
+                     "data": {
+                         "type": "invoicerecords",
 
-                    }
-                }
+                         "attributes": {
+                             "user_id":user_id,
+                             "first_name":first,
+                             "last_name":last,
+                             "taxpayer":e_invoice,
+                             "id_number":Id_number,
+                             "tax_address":invoice_Addres,
+                             "tax_no":invoice_no,
+                             "e_invoice":e_invoice,
+                             "phone":parseInt(gsm_number),
+                             "email":email_personal,
+                             "country":country,
+                             "city":city,
+                             "district":district,
+                             "company_name":company_name,
+                             "invoice_type":invoice_type,
 
-            }),
-            success: function (result) {
-                console.log('işlem başarılı')
-                $('#success_message').css('display','grid');
-            },
-            error: function(result) {
-                $('#error_message').css('display','grid');
+                         }
+                     }
 
-            }
-        });
+                 }),
+                 success: function (result) {
+                     console.log('işlem başarılı')
+                     $('#success_message').css('display','grid');
+                 },
+                 error: function(result) {
+                     $('#error_message').css('display','grid');
+
+                 }
+             });
+         }
+         else{
+             let invoicee_id =  parseInt($('.invoice_id').val());
+             $('.invoice_size').val();
+             let first = $('#first_name').val();
+             let last = $('#last_name').val();
+             let Id_number = $('#number_personal').val();
+             let id_number = parseInt(Id_number);
+             console.log(typeof id_number)
+             let invoice_no = $('#invoice_noo').val();
+             let companyName = $('#companyName').val();
+             let invoice_Addres = $('#invoicd_address').val();
+             let gsm_number = $('#gsm_number').val();
+             let email_personal = $('#email').val();
+             let e_invoice = $('#e_invoice').val();
+
+             let invocetype =$('input[name=gender]:checked', '.invoiceeetype').val();
+             console.log(invoice_no,'invoice no');
+             console.log(invoice_Addres,'invoice_addreses');
+             let country = $('#country').val();
+             let city = $('#city').val();
+             let district = $('#DISTRICT_NAME').val();
+             $.ajax({
+                 url: "http://127.0.0.1:8000/api/v1/invoicerecords/"+invoicee_id,
+                 type: "PATCH",
+                 headers: { "Content-Type": "application/vnd.api+json",
+                     Accept: "application/vnd.api+json",
+                 },
+                 data: JSON.stringify({
+                     "data": {
+                         "type": "invoicerecords",
+                          "id":""+invoicee_id,
+                         "attributes": {
+                             "user_id":user_id,
+                             "first_name":first,
+                             "last_name":last,
+                             "taxpayer":e_invoice,
+                             "id_number":id_number,
+                             "address":invoice_Addres,
+                             "tax_no":invoice_no,
+                             "phone":parseInt(gsm_number),
+                             "email":email_personal,
+                             "country":country,
+                             "city":city,
+                             "district":district,
+                             "company_name":companyName,
+                             "invoice_type":invocetype,
+
+                         }
+                     }
+
+                 }),
+                 success: function (result) {
+                     console.log('işlem başarılı')
+                     $('#success_message').css('display','grid');
+                 },
+                 error: function(result) {
+                     $('#error_message').css('display','grid');
+
+                 }
+             });
+         }
+
     }
 
     function post_invoice(){
-        let first = $('#first_name').val();
-        let last = $('#last_name').val();
-        let Id_number = $('#number_personal').val();
-        let id_number = parseInt(Id_number);
-        console.log(typeof id_number)
-        let invoice_no = $('#invoice_noo').val();
-        let companyName = $('#companyName').val();
-        let invoice_Addres = $('#invoice_addresses').val();
-        let phonee = $('#gsm_number').val();
-           let invocetype =$('input[name=gender]:checked', '.invoiceeetype').val();
-        console.log(invoice_no,'invoice no');
-        console.log(invoice_Addres,'invoice_addreses');
-        let country = $('#country').val();
-        let city = $('#city').val();
-        $.ajax({
-            url: "http://127.0.0.1:8000/api/v1/invoicerecords",
-            type: "POST",
-            headers: { "Content-Type": "application/vnd.api+json",
-                Accept: "application/vnd.api+json",
-            },
-            data: JSON.stringify({
-                "data": {
-                    "type": "invoicerecords",
 
-                    "attributes": {
-                        "user_id":user_id,
-                        "first_name":first,
-                        "last_name":last,
-                        "id_number":id_number,
-                        "address":invoice_Addres,
-                        "tax_no":invoice_no,
-                        "phone":phonee,
-                        "invoice_type":invocetype,
-                        "country":country,
-                        "city":city,
-                        "company_name":companyName
+            let invocetype = $('input[name=gender]:checked', '.invoiceeetype').val();
+            if(invocetype=="individual"){
+                let invoicee_id =  parseInt($('.invoice_id').val());
+                $('.invoice_size').val();
+                let first = $('#firstt_namee').val();
+                let last = $('#last_namee').val();
+                let Id_number = $('#numberr').val();
+                let id_number = parseInt(Id_number);
+                console.log(typeof id_number)
+                let invoice_no = $('#invoice_noo').val();
+                let companyName = $('#companyName').val();
+                let invoice_Addres = $('#invoice_adresses').val();
+                let gsm_number = $('#gsm_number').val();
+                let email_personal = $('#email_personal').val();
+                let e_invoice = $('#e_invoice').val();
+
+                let invocetype =$('input[name=gender]:checked', '.invoiceeetype').val();
+                console.log(invoice_no,'invoice no');
+                console.log(invoice_Addres,'invoice_addreses');
+                let country = $('#countries_personal').val();
+                let city = $('#cities_personal').val();
+                let district = $('#districttt').val();
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/v1/invoicerecords",
+                    type: "POST",
+                    headers: { "Content-Type": "application/vnd.api+json",
+                        Accept: "application/vnd.api+json",
+                    },
+                    data: JSON.stringify({
+                        "data": {
+                            "type": "invoicerecords",
+
+                            "attributes": {
+                                "user_id":user_id,
+                                "first_name":first,
+                                "last_name":last,
+                                "id_number":id_number,
+                                "address":invoice_Addres,
+                                "tax_no":invoice_no,
+                                "phone":gsm_number,
+                                "taxpayer":e_invoice,
+                                "email":email_personal,
+                                "invoice_type":invocetype,
+                                "country":country,
+                                "city":city,
+                                "district":district,
+                                "company_name":companyName
+                            }
+                        }
+
+                    }),
+                    success: function (result) {
+                        console.log('işlem başarılı')
+                        $('#success_message').css('display','grid');
+                    },
+                    error: function(result) {
+                        $('#error_message').css('display','grid');
+
                     }
-                }
-
-            }),
-            success: function (result) {
-                console.log('işlem başarılı')
-                $('#success_message').css('display','grid');
-            },
-            error: function(result) {
-                $('#error_message').css('display','grid');
+                })
 
             }
-        });
-    }
+            else{
+                let invoicee_id =  parseInt($('.invoice_id').val());
+                $('.invoice_size').val();
+                let first = $('#first_name').val();
+                let last = $('#last_name').val();
+                let Id_number = $('#number_personal').val();
+                let id_number = parseInt(Id_number);
+                console.log(typeof id_number)
+                let invoice_no = $('#invoice_noo').val();
+                let companyName = $('#companyName').val();
+                let invoice_Addres = $('#invoicd_address').val();
+                let gsm_number = $('#gsm_number').val();
+                let email_personal = $('#email').val();
+                let e_invoice = $('#e_invoice').val();
+
+                let invocetype =$('input[name=gender]:checked', '.invoiceeetype').val();
+                console.log(invoice_no,'invoice no');
+                console.log(invoice_Addres,'invoice_addreses');
+                let country = $('#country').val();
+                let city = $('#city').val();
+                let district = $('#DISTRICT_NAME').val();
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/v1/invoicerecords",
+                    type: "POST",
+                    headers: { "Content-Type": "application/vnd.api+json",
+                        Accept: "application/vnd.api+json",
+                    },
+                    data: JSON.stringify({
+                        "data": {
+                            "type": "invoicerecords",
+
+                            "attributes": {
+                                "user_id":user_id,
+                                "first_name":first,
+                                "last_name":last,
+                                "id_number":id_number,
+                                "address":invoice_Addres,
+                                "tax_no":invoice_no,
+                                "phone":parseInt(gsm_number),
+                                "taxpayer":e_invoice,
+                                "email":email_personal,
+                                "invoice_type":invocetype,
+                                "country":country,
+                                "city":city,
+                                "district":district,
+                                "company_name":companyName
+                            }
+                        }
+
+                    }),
+                    success: function (result) {
+                        console.log('işlem başarılı')
+                        $('#success_message').css('display','grid');
+                    },
+                    error: function(result) {
+                        $('#error_message').css('display','grid');
+
+                    }
+                })
+
+            }
+    };
     function post_packets(){
         console.log($('#first_name').text());
         console.log($('#first_name').val());
@@ -458,6 +632,7 @@ $(document).ready(function() {
                         "end_of_pocket":con_date,
                         "max_count_of_words":hidden_word_count,
                         "rank_follow":0,
+                        "price":parseInt(hidden_price),
                         "paymentId":parseInt(pay_id2),
                         "rank_follow_max":rank_follow,
                         "count_of_websites":0,
@@ -522,6 +697,7 @@ $(document).ready(function() {
                         "end_of_pocket":con_date,
                         "max_count_of_words":hidden_word_count_new,
                         "rank_follow":0,
+                        "price":parseInt(hidden_price),
                         "rank_follow_max":rank_follow_new,
 
                         "count_of_websites": 0,

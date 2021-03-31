@@ -18,7 +18,14 @@
      margin-left:0px !important;
      mpadding-left:0px !important;
      width:55% !important;
- }
+ }#tax_mukellefi{
+height:40px;
+    margin-bottom:0.1px;
+    margin-top:0.1px;
+   }#e_invoice{
+           height: 30px;
+           margin: 0.1px !important;
+       }
  #success_message{
      display:grid;
  }
@@ -175,7 +182,7 @@ label {
     margin: 40px 0px;
 }
 #label label{
-    margin:0px;
+
     width:30px;
 }
 .label-txt {
@@ -315,7 +322,9 @@ label {
         width: 70%;
         margin-right: 5%;
         margin-left: 15%;
-    }
+    }#tax_mükkelefisaas{
+    margin-left:20% !important;
+         }
     #settingsForm {
         width: 100%;
         margin: 60px auto;

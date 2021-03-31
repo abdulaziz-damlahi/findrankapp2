@@ -10,7 +10,8 @@ use Iyzipay\Options;
 use App\Models\packets_reels;
 use App\Models\packets;
 use App\Models\requests;
-
+use Iyzipay\Model\Currency;
+use Iyzipay\Model\Locale;
 
 use Illuminate\Routing\Controller;
 
@@ -127,7 +128,9 @@ class payment extends Controller
 
             $locale = App::getLocale();
         }
-        if($request->First_name_institutional!==""){
+        if($request->invoicetype!="individual"){
+            echo " girersadasd";
+            echo $request->invoicetype;
             $price = $request->input_price;
             $card_first_last_name= $request->card_first_last;
             $card_number= $request->card_number;
@@ -145,7 +148,7 @@ class payment extends Controller
                 $paymentrequest->setPaidPrice($money_new_value);
             }
             elseif(App::getLocale()=='tr'){
-                $paymentrequest->setLocale(\Iyzipay\Model\Locale::TR);
+                $paymentrequest->setLocale(\Iyzipay\Model\Locale::TRY);
                 $paymentrequest->setPrice($price);
                 $paymentrequest->setPaidPrice($price);
             }
@@ -216,6 +219,8 @@ class payment extends Controller
 
         }
         else{
+            echo " girmez";
+echo $request->invoicetype;
             $price = $request->input_price;
             $card_first_last_name= $request->card_first_last;
             $card_number= $request->card_number;
@@ -233,7 +238,7 @@ class payment extends Controller
                 $paymentrequest->setPaidPrice($money_new_value);
             }
             elseif(App::getLocale()=='tr'){
-                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::TR);
+                $paymentrequest->setCurrency(Currency::TRY);
                 $paymentrequest->setPrice($price);
                 $paymentrequest->setPaidPrice($price);
             }
@@ -269,7 +274,7 @@ class payment extends Controller
             $buyer->setCountry($request->countries_personal);
             $paymentrequest->setBuyer($buyer);
             $shippingAddress = new \Iyzipay\Model\Address();
-            $shippingAddress->setContactName($request->First_name_institutional);
+            $shippingAddress->setContactName($request->firstName_personal);
             $shippingAddress->setCity($request->cities_personal);
             $shippingAddress->setCountry($request->countries_personal);
             $shippingAddress->setAddress($request->invoice_address_personal);
@@ -292,7 +297,7 @@ class payment extends Controller
 
             }
             elseif(App::getLocale()=='tr'){
-                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::TR);
+                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::TRY);
                 $basketItem->setPrice($price);
             }
             else{

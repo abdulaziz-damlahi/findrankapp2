@@ -113,8 +113,8 @@
                         <br>
                         <div id="form1">
                             <div class="invoiceeetype" id="invoice_type">
-                                <input id="kurumsal" type="radio" name="gender" value="institutional"> Kurumsal
-                                <input checked type="radio" id="bireysel" name="gender" value="individual"> Bireysel
+                                <input id="kurumsal" type="radio" name="invoicetype" value="institutional"> Kurumsal
+                                <input checked type="radio" id="bireysel" name="invoicetype" value="individual"> Bireysel
                             </div>
                             <div id="Kurumsalform">
                                 <label class="kurumsal col-md-6">
@@ -132,7 +132,7 @@
                                 </label>
                                 <label class="kurumsal col-md-6">
                                     <p class="label-txt">VERGI ADRESİ</p>
-                                    <input id="invoicd_address" type="text" class="input">
+                                    <input name="invoice_address_personal" id="invoicd_address" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
@@ -154,13 +154,6 @@
                                 <label class="col-md-6">
                                     <p class="label-txt">Kimlik Numarası</p>
                                     <input name="id_number" id="number_personal" type="text" class="input">
-                                    <div class="line-box">
-                                        <div class="line"></div>
-                                    </div>
-                                </label>
-                                <label class="col-md-6">
-                                    <p class="label-txt">Faturası Adresi</p>
-                                    <input name="invoiceAdress_institutional" id="invoice_addresses" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
@@ -191,7 +184,17 @@
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
+                                </label><label id="themostunder" class="col-md-6">
+                                    <p class="label-txt">DISTRICT</p>
+                                    <input name="district_insitutinoal" id="DISTRICT_NAME" type="text" class="input">
+                                    <div class="line-box">
+                                        <div class="line"></div>
+                                    </div>
                                 </label>
+                                <div style="margin-left:20%;" id="tax_mükkelefisaas" class="col-md-7">
+                                    <label id="tax_mukellefi">E vergi Mükellefiyim</label>
+                                    <input style="margin:0px" type="checkbox" id="e_invoice" name="e_invoice">
+                                </div>
 
                             </div>
                             <div id="Bireyselfrom">
@@ -239,20 +242,28 @@
                                 </label>
                                 <label class="col-md-6">
                                     <p class="label-txt">COUNTRY</p>
-                                    <input id="countries_personal" type="text" class="input">
+                                    <input name="countries_personal" id="countries_personal" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
                                 </label>
                                 <label class="col-md-6">
                                     <p class="label-txt">CITY</p>
-                                    <input id="cities_personal" type="text" class="input">
+                                    <input name="cities_personal" id="cities_personal" type="text" class="input">
+                                    <div class="line-box">
+                                        <div class="line"></div>
+                                    </div>
+                                </label>    <label class="col-md-6">
+                                    <p class="label-txt">DISTRICT</p>
+                                    <input id="district_bireysel" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
                                 </label>
-                                    <label>E vergi Mükellefiyim</label>
+                                <div style="margin-left:20%;" id="tax_mükkelefisaas" class="col-md-7">
+                                    <label id="tax_mukellefi">E vergi Mükellefiyim</label>
                                     <input style="margin:0px" type="checkbox" id="e_invoice" name="e_invoice">
+                                </div>
                             </div>
                         </div>
                         <div id="form2">

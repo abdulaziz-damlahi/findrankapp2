@@ -16,7 +16,7 @@ class AllInvoiceRequest extends Migration
         //
         Schema::create('all_invoice_request', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('invoice_id');
+            $table->integer('invoice_id');
             $table->integer('input_price');
             $table->integer('deneme_ay');
             $table->integer('deneme_years');

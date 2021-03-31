@@ -15,6 +15,7 @@ class packets extends Model
         'count_of_words',
         'descrpitions',
         'paymentId',
+        'price',
         'end_of_pocket',
         'max_count_of_websites',
         'rank_follow',

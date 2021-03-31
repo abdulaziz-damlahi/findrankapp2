@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Parasut\Models\TrackableModel;
 use App\Models\cards;
 use App\Models\packets;
 use App\Models\packets_reels;
@@ -34,9 +34,9 @@ class settings extends Controller
         return view('pages/foruser/settings/settings', compact('user_first_name', 'user_last_name', 'phone', 'mail'));
     }
 
-    public function parase(users $user,invoicerecords $invoicerecords,packets $packets)
+    public function parase(TrackableModel $model,users $user,invoicerecords $invoicerecords,packets $packets)
     {
-       $parasut2 = (new \App\Parasut\jobs\Invoicing($user,$invoicerecords,$packets));
+       $parasut2 = (new \App\Parasut\jobs\Invoicing($user,$packets,$model));
      //   $parasut2 = (new \App\Parasut\jobs\InsertUserToParasut($user));
 
     }

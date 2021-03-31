@@ -13,6 +13,7 @@ use App\Parasut\Enums\ParasutEndPoint;
 use App\Parasut\Models\ParasutRequestModel;
 use App\Parasut\Models\TrackableModel;
 use App\Parasut\Parasut;
+use App\Parasut\Jobs\Trackable;
 use Carbon\Carbon;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Bus\Queueable;
@@ -163,10 +164,7 @@ class Invoicing implements ShouldQueue
         ]);
         $response = (new Parasut())->create(ParasutEndPoint::EInvoices(), $requestModel);
         $trackableModel = new TrackableModel($response['data']['id'], "e_invoice", $invoiceId);
-        Trackable::dispatch($trackableModel)
-            ->delay(5)
-            ->onQueue('parasut');
-
+        Trackable::dispatch($trackableModel)->delay(5)->onQueue('parasut');
     }
 
     public function createEArchive(Request $request, Payment $payment, $invoiceId) // Make private
