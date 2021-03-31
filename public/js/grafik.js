@@ -20,7 +20,7 @@ function hideonlast() {
         if (val === "custom") {
             $('#fromto').show();
         }
-        if (val === "1hatfa") {
+        if (val === "1hafta") {
             prev1 = new Date();
             prev1.setDate(prev1.getDate() - 7);
             var totoday = new Date(prev1);
@@ -284,15 +284,46 @@ function grafik() {
         var mm2 = String(totoday.getMonth() + 1).padStart(2, '0');
         var yyyy2 = totoday.getFullYear();
         totoday = yyyy2 + '-' + mm2 + '-' + dd2;
+        $.ajax({
+            type: 'get',
+            url: "/api/v1/keywordsRequests",
+            success: function (response) {
 
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0');
-        var yyyy = today.getFullYear();
-        today = yyyy + '-' + mm + '-' + dd;
-        $("#to").val(today);
-        $("#from").val(totoday);
-        $('#fromto').show();
+                var len = 0;
+                if (response['data'] != null) {
+                    len = response['data'].length;
+                }
+
+                var  lastdate= response['data'][len-1].attributes.createdAt
+                var lastdate2 = lastdate.slice(0, 10)
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0');
+                var yyyy = today.getFullYear();
+                today = yyyy + '-' + mm + '-' + dd;
+                if (today!=lastdate2){
+                    var today = new Date();
+                    var dd = String(today.getDate()-1).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0');
+                    var yyyy = today.getFullYear();
+                    today = yyyy + '-' + mm + '-' + dd;
+                    $("#to").val(today);
+                    $("#from").val(totoday);
+                    $('#fromto').show();
+
+                }else{
+                    var today = new Date();
+                    var dd = String(today.getDate()).padStart(2, '0');
+                    var mm = String(today.getMonth() + 1).padStart(2, '0');
+                    var yyyy = today.getFullYear();
+                    today = yyyy + '-' + mm + '-' + dd;
+
+                    $("#to").val(today);
+                    $("#from").val(totoday);
+                    $('#fromto').show();
+                }
+            }
+        })
 
     }
 

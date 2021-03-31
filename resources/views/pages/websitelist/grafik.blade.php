@@ -6,7 +6,7 @@
 
             <select id="lastForm" class="lastdate" style="background-color: white;">
                 <option class="lastdate" id="custom" selected value="custom">iki tarih arasis</option>
-                <option class="lastdate" id="1hatfa" value="1hatfa">son 1 hafta</option>
+                <option class="lastdate" id="1hafta" value="1hafta">son 1 hafta</option>
                 <option class="lastdate" id="1ay" value="1ay">son 1 ay</option>
                 <option class="lastdate" id="3ay" value="3ay">son 3 ay</option>
                 <option class="lastdate" id="6ay" value="6ay">son 6 ay</option>
