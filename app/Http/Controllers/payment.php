@@ -126,7 +126,7 @@ class payment extends Controller
 
             $locale = App::getLocale();
         }
-        if($request->First_name_institutional===""){
+        if($request->invoicetype == "individual"){
             $price = $request->input_price;
             $card_first_last_name= $request->card_first_last;
             $card_number= $request->card_number;
@@ -171,27 +171,26 @@ class payment extends Controller
             $paymentrequest->setPaymentCard($paymentCard);
             $buyer = new \Iyzipay\Model\Buyer();
             $buyer->setId(Auth::id());
-            echo "gidi";
-            $buyer->setCity($request->city_information_institutional);
-            $buyer->setCountry($request->country_information_institutional);
-            $buyer->setName($request->First_name_institutional);
-            $buyer->setSurname($request->last_name_institutional);
-            $buyer->setGsmNumber($request->gsm_number_institutional);
-            $buyer->setEmail($request->email_institutional);
-            $buyer->setIdentityNumber($request->id_number);
-            $buyer->setRegistrationAddress($request->invoiceAdress_institutional);
+            $buyer->setCity($request->cities_personal);
+            $buyer->setCountry($request->countries_personal);
+            $buyer->setName($request->firstName_personal);
+            $buyer->setSurname($request->last_namee_personal);
+            $buyer->setGsmNumber($request->gsm_number_personal);
+            $buyer->setEmail($request->email_personal);
+            $buyer->setIdentityNumber($request->identification_number);
+            $buyer->setRegistrationAddress($request->invoice_address_personal);
             $buyer->setIp("85.34.78.112");
             $paymentrequest->setBuyer($buyer);
             $shippingAddress = new \Iyzipay\Model\Address();
-            $shippingAddress->setContactName($request->First_name_institutional);
-            $shippingAddress->setCity($request->city_information_institutional);
-            $shippingAddress->setCountry($request->country_information_institutional);
-            $shippingAddress->setAddress($request->invoiceAdress_institutional);
+            $shippingAddress->setContactName($request->firstName_personal);
+            $shippingAddress->setCity($request->cities_personal);
+            $shippingAddress->setCountry($request->countries_personal);
+            $shippingAddress->setAddress($request->invoice_address_personal);
             $billingAddress = new \Iyzipay\Model\Address();
-            $billingAddress->setContactName($request->First_name_institutional);
-            $billingAddress->setCity($request->city_information_institutional);
-            $billingAddress->setCountry($request->country_information_institutional);
-            $billingAddress->setAddress($request->invoiceAdress_institutional);
+            $billingAddress->setContactName($request->firstName_personal);
+            $billingAddress->setCity($request->cities_personal);
+            $billingAddress->setCountry($request->countries_personal);
+            $billingAddress->setAddress($request->invoice_address_personal);
             $paymentrequest->setBillingAddress($billingAddress);
             $basketItem = new BasketItem();
             $basketItem->setId($request['input_id']);
@@ -215,7 +214,7 @@ class payment extends Controller
             $paymentrequest->setBasketItems([$basketItem]);
 
         }
-        else{
+        elseif($request->invoicetype="institutional"){
             $price = $request->input_price;
             $card_first_last_name= $request->card_first_last;
             $card_number= $request->card_number;
@@ -233,7 +232,7 @@ class payment extends Controller
                 $paymentrequest->setPaidPrice($money_new_value);
             }
             elseif(App::getLocale()=='tr'){
-                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::TR);
+                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::TRY);
                 $paymentrequest->setPrice($price);
                 $paymentrequest->setPaidPrice($price);
             }
@@ -267,6 +266,8 @@ class payment extends Controller
             $buyer->setCity($request->cities_personal);
             $buyer->setCountry($request->countries_personal);
             $paymentrequest->setBuyer($buyer);
+            echo "bireysel";
+
             $shippingAddress = new \Iyzipay\Model\Address();
             $shippingAddress->setContactName($request->First_name_institutional);
             $shippingAddress->setCity($request->cities_personal);
@@ -306,12 +307,13 @@ class payment extends Controller
 
 
         $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
-        dd($payment);
         $payment = json_decode($payment->getRawResult(), true);
         if ($payment['status'] === "success") {
             $success_message = "Payment Successful !";
             $payid= $payment['paymentId'];
-            packets::all()->last()->update(['paymentId' => $payment['paymentId']]);
+            if(count(packets::all())>0){
+                packets::all()->last()->update(['paymentId' => $payment['paymentId']]);
+            }
             $iyzico_transaction_id = $payment['itemTransactions'][0]['paymentTransactionId'];
         }
         else{
