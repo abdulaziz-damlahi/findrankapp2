@@ -14,7 +14,17 @@
                         <div class="heading-block white-text text-center margin-bottom-50">
                             <h2 style="color: black">Update Your Keyword</h2>
                            </div>
-                    <textarea class="form-control" style="padding: 20px" id="keyword" name="keyword" rows="5"
+                        @if (session('notsuccess'))
+                            <div class="alert alert-danger">
+                                {{ session('notsuccess') }}
+                            </div>
+                        @endif
+                        @if (session('successupdated'))
+                            <div class="alert alert-success">
+                                {{ session('successupdated') }}
+                            </div>
+                        @endif
+                    <textarea class="form-control" style="padding: 20px" id="name" name="name" rows="5"
                               placeholder="">{{$currentKeyword->name}}</textarea>
                     <br><br>
                     @if($errors->any())

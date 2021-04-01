@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <div class="container" style="height:700px">
+    <div class="container websitescont" >
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -36,11 +36,10 @@
                         <tr>
                             <th scope="col">word</th>
                             <th scope="col">SIRA</th>
-                            <th scope="col" id="country">country</th>
-                            <th scope="col" id="city" class="hidden-xs">city</th>
-
-                            <th scope="col"id="device">device</th>
-                            <th scope="col" id="language"class="hidden-xs" >language</th>
+                            <th scope="col" id="country"class="one">country</th>
+                            <th scope="col" id="city" class="one">city</th>
+                            <th scope="col"id="device" class="one">device</th>
+                            <th scope="col" id="language"class="one" >language</th>
                             <th scope="col">grafik</th>
                             <th scope="col">delete</th>
                             <th scope="col">edit</th>

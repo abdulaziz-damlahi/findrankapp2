@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
-        <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
-        @if (session('packetempty'))
-            <div class="alert alert-danger">
-                {{ session('packetempty') }}
-            </div>
-        @endif
+    <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
+    @if (session('packetempty'))
+        <div class="alert alert-danger">
+            {{ session('packetempty') }}
+        </div>
+    @endif
     {{--   <div style="" id="id">{{ $userId}}</div>--}}
     <div class="pcoded-inner-content" id="main">
         <div class="main-body">
@@ -45,11 +45,10 @@
                                         style="font-size: 13px">
                                         <thead>
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col" >website</th>
-                                            <th scope="col"  >word</th>
-                                            <th scope="col" >rank</th>
-                                            <th  scope="col">grafik</th>
+                                            <th scope="col">website</th>
+                                            <th scope="col">word</th>
+                                            <th scope="col">rank</th>
+                                            <th scope="col">grafik</th>
                                         </tr>
                                         </thead>
                                         <tbody id="row">
@@ -103,15 +102,14 @@
                                 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                                 <div class="col-md-12" style="font-size:15px; padding: 40px;">
-                                        <span class="text-left"><button id="ilke3btn" class=""><i
-                                                    class="fa  fa-square push-5-r"
-                                                    style=" color:#005698">  </i>İlk 3'de:<b
+                                        <span class="text-left"><button id="ilke3btn" class="ilkbtn"><i class="fa  fa-square push-5-r"
+                                                                                                        style=" color:#ff6c3a">  </i>İlk 3'de:<b
                                                     id="ilk3">  </b> <b>kilme</b> </button> </span>
-                                    <span class="text-left"><button id="ilke10btn" class=""><i
+                                    <span class="text-left"><button id="ilke10btn" class="ilkbtn"><i
                                                 class="fa  fa-square push-5-r"
-                                                style=" color:#16c800">  </i>İlk 10'de: <b
+                                                style=" color:cornflowerblue">  </i>İlk 10'de: <b
                                                 id="ilk10">  </b> <b>kilme</b>  </button> </span>
-                                    <span class="text-left"><button id="ilke100btn" class=""><i
+                                    <span class="text-left"><button id="ilke100btn" class="ilkbtn"><i
                                                 class="fa  fa-square push-5-r"
                                                 style=" color:#cb0000">  </i>İlk 100'de: <b
                                                 id="ilk100">  </b> <b>kilme</b> </button>  </span>
@@ -148,14 +146,13 @@
                                                     {{ session('success') }}
                                                 </div>
                                             @endif
-                                                @if (session('notsuccess'))
-                                                    <div class="alert alert-danger">
-                                                        {{ session('notsuccess') }}
-                                                    </div>
-                                                @endif
+                                            @if (session('notsuccess'))
+                                                <div class="alert alert-danger">
+                                                    {{ session('notsuccess') }}
+                                                </div>
+                                            @endif
                                             <thead>
                                             <tr>
-                                                <th scope="col">id</th>
                                                 <th scope="col">SİTELER</th>
                                                 <th class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</th>
                                                 <th scope="col">KELİMELER</th>

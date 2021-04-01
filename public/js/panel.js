@@ -51,8 +51,7 @@ function Statistics2(pageNumber) {
                         url = url.replace(':id',dataid );
                         if (wordsiteid == websiteid) {
 
-                            var str = " <tr><th scope=\"row\">" + dataid + "</th>" +
-                                "<td id=\"colmun2\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto ' class='col-2'> <b> " + websitename + "</b></td>" +
+                            var str = "<tr><td id=\"colmun2\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto ' class='col-2'> <b> " + websitename + "</b></td>" +
                                 "<td id=\"ANAHTARKELİME\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto 'class='col-2'> " + word + "</td>" +
                                 "<td  id=\"rank\"class='col-2'>  " + rank + "</td>" +
                                 "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + dataid  +"'> </a></td></tr>";
@@ -243,7 +242,7 @@ window.onload = function () {
                 $('#ilk100').append(les100);
             }
             CanvasJS.addColorSet("customColorSet1",
-            ["#fd9644", "#fed330", "#fc5c65" ]);
+            ["#fd9644", "#6495ed", "#fc5c65" ]);
 
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
@@ -400,8 +399,7 @@ function get() {
                     var websitename = response['data'][i].attributes.website_name
                     var wordcount = response['data'][i].attributes.wordcount
                     var websiteid = response['data'][i].id
-                    var str = "<tr><th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websiteid + "</a></th>" +
-                        "<th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websitename + "</a></th>" +
+                    var str = "<th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websitename + "</a></th>" +
                         "<td class='hidden-xs' scope='col' >GÜNLÜK DEĞİŞİM</td>" +
                         "<td  +scope='col' >" + wordcount + "</td>" +
                         "<td scope='col'><a id='randomm'href=deletewebsite/" + websiteid + " class='fa fa-trash text-danger'></a></td></tr>";

@@ -42,12 +42,13 @@ function hideonlast() {
                     var lastdate2 = lastdate.slice(0, 10)
                     var today = new Date();
                     var dd = String(today.getDate()).padStart(2, '0');
-                    var mm = String(today.getMonth() + 1).padStart(2, '0');
+                    var mm = String(today.getMonth()).padStart(2, '0');
                     var yyyy = today.getFullYear();
                     today = yyyy + '-' + mm + '-' + dd;
                     if (today!=lastdate2){
                         var today = new Date();
-                        var dd = String(today.getDate()-1).padStart(2, '0');
+                        today.setDate(today.getDate() - 1);
+                        var dd = String(today.getDate()).padStart(2, '0');
                         var mm = String(today.getMonth() + 1).padStart(2, '0');
                         var yyyy = today.getFullYear();
                         today = yyyy + '-' + mm + '-' + dd;
@@ -92,12 +93,13 @@ function hideonlast() {
                     var lastdate2 = lastdate.slice(0, 10)
                     var today = new Date();
                     var dd = String(today.getDate()).padStart(2, '0');
-                    var mm = String(today.getMonth() + 1).padStart(2, '0');
+                    var mm = String(today.getMonth()).padStart(2, '0');
                     var yyyy = today.getFullYear();
                     today = yyyy + '-' + mm + '-' + dd;
                     if (today!=lastdate2){
                         var today = new Date();
-                        var dd = String(today.getDate()-1).padStart(2, '0');
+                        today.setDate(today.getDate() - 1);
+                        var dd = String(today.getDate()).padStart(2, '0');
                         var mm = String(today.getMonth() + 1).padStart(2, '0');
                         var yyyy = today.getFullYear();
                         today = yyyy + '-' + mm + '-' + dd;
@@ -123,6 +125,7 @@ function hideonlast() {
         if (val === "3ay") {
             prev1 = new Date();
             prev1.setDate(prev1.getDate() - 90);
+
             var totoday = new Date(prev1);
             var dd2 = String(totoday.getDate()).padStart(2, '0');
             var mm2 = String(totoday.getMonth() + 1).padStart(2, '0');
@@ -142,12 +145,13 @@ function hideonlast() {
                     var lastdate2 = lastdate.slice(0, 10)
                     var today = new Date();
                     var dd = String(today.getDate()).padStart(2, '0');
-                    var mm = String(today.getMonth() + 1).padStart(2, '0');
+                    var mm = String(today.getMonth()).padStart(2, '0');
                     var yyyy = today.getFullYear();
                     today = yyyy + '-' + mm + '-' + dd;
                     if (today!=lastdate2){
                         var today = new Date();
-                        var dd = String(today.getDate()-1).padStart(2, '0');
+                        today.setDate(today.getDate() - 1);
+                        var dd = String(today.getDate()).padStart(2, '0');
                         var mm = String(today.getMonth() + 1).padStart(2, '0');
                         var yyyy = today.getFullYear();
                         today = yyyy + '-' + mm + '-' + dd;
@@ -192,12 +196,13 @@ function hideonlast() {
                     var lastdate2 = lastdate.slice(0, 10)
                     var today = new Date();
                     var dd = String(today.getDate()).padStart(2, '0');
-                    var mm = String(today.getMonth() + 1).padStart(2, '0');
+                    var mm = String(today.getMonth()).padStart(2, '0');
                     var yyyy = today.getFullYear();
                     today = yyyy + '-' + mm + '-' + dd;
                     if (today!=lastdate2){
                         var today = new Date();
-                        var dd = String(today.getDate()-1).padStart(2, '0');
+                        today.setDate(today.getDate() - 1);
+                        var dd = String(today.getDate()).padStart(2, '0');
                         var mm = String(today.getMonth() + 1).padStart(2, '0');
                         var yyyy = today.getFullYear();
                         today = yyyy + '-' + mm + '-' + dd;
@@ -223,6 +228,7 @@ function hideonlast() {
         if (val === "12ay") {
             prev1 = new Date();
             prev1.setDate(prev1.getDate() - 365);
+
             var totoday = new Date(prev1);
             var dd2 = String(totoday.getDate()).padStart(2, '0');
             var mm2 = String(totoday.getMonth() + 1).padStart(2, '0');
@@ -242,12 +248,13 @@ function hideonlast() {
                     var lastdate2 = lastdate.slice(0, 10)
                     var today = new Date();
                     var dd = String(today.getDate()).padStart(2, '0');
-                    var mm = String(today.getMonth() + 1).padStart(2, '0');
+                    var mm = String(today.getMonth()).padStart(2, '0');
                     var yyyy = today.getFullYear();
                     today = yyyy + '-' + mm + '-' + dd;
                     if (today!=lastdate2){
                         var today = new Date();
-                        var dd = String(today.getDate()-1).padStart(2, '0');
+                        today.setDate(today.getDate() - 1);
+                        var dd = String(today.getDate()).padStart(2, '0');
                         var mm = String(today.getMonth() + 1).padStart(2, '0');
                         var yyyy = today.getFullYear();
                         today = yyyy + '-' + mm + '-' + dd;
@@ -261,6 +268,7 @@ function hideonlast() {
                     var mm = String(today.getMonth() + 1).padStart(2, '0');
                     var yyyy = today.getFullYear();
                     today = yyyy + '-' + mm + '-' + dd;
+
                     $("#to").val(today);
                     $("#from").val(totoday);
                     $('#fromto').hide();
@@ -269,6 +277,8 @@ function hideonlast() {
             })
 
         }
+
+
 
     });
 }
@@ -288,12 +298,10 @@ function grafik() {
             type: 'get',
             url: "/api/v1/keywordsRequests",
             success: function (response) {
-
                 var len = 0;
                 if (response['data'] != null) {
                     len = response['data'].length;
                 }
-
                 var  lastdate= response['data'][len-1].attributes.createdAt
                 var lastdate2 = lastdate.slice(0, 10)
                 var today = new Date();
@@ -303,7 +311,8 @@ function grafik() {
                 today = yyyy + '-' + mm + '-' + dd;
                 if (today!=lastdate2){
                     var today = new Date();
-                    var dd = String(today.getDate()-1).padStart(2, '0');
+                    today.setDate(today.getDate() - 1);
+                    var dd = String(today.getDate()).padStart(2, '0');
                     var mm = String(today.getMonth() + 1).padStart(2, '0');
                     var yyyy = today.getFullYear();
                     today = yyyy + '-' + mm + '-' + dd;
@@ -373,17 +382,16 @@ function grafik() {
                         test = cleandate[arraycounter].toString();
                         if (from == test) {
                             firstcount = arraycounter
-                            //console.log(firstcount)
+                            // console.log(firstcount)
                         }
                     }
                     for (var arraycounter = 0; arraycounter < cleandate.length; arraycounter++) {
                         var test = cleandate[arraycounter].toString()
                         if (to == test) {
                             lastcount = arraycounter
-                            //console.log(lastcount)
+                            // console.log(lastcount)
                         }
                     }
-                    ``
                     lastcount = lastcount + 1;
                     dpsvar = dps1.slice(firstcount, lastcount)
                     chart(dpsvar);

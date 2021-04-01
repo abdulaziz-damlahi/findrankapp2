@@ -2,9 +2,8 @@ $(document).ready(function () {
     Statistics();
 })
 
-
-
 function Statistics() {
+    if ($("#ANAHTARKELİME").val('Mobil')){console;}
     $.ajax({
         type: 'get',
         url: "/api/v1/Keywords/?include=website&sort=-id",
@@ -35,19 +34,19 @@ function Statistics() {
                     var language = response['data'][i].attributes.language
                     var device = response['data'][i].attributes.device
                     var city = response['data'][i].attributes.city
-
                     for (var i2 = 0; i2 < len2; i2++) {
                         var websiteid = response['included'][i2].id
                         var id_website = response['included'][i2].attributes.user_id
                         if (wordsiteid == websiteid) {
                             if (websiteid == websitidhtml) {
                                 let sayi = response['data'][i].id
-                                var str = "<tr><td  class='anahtar' data-id='  " + i + "' id=\"ANAHTARKELİME\"> " + word + " </td>" +
+                                console.log(device)
+                                var str = "<tr><td class='col' data-id='  " + i + "' id=\"ANAHTARKELİME\"> " + word + " </td>" +
                                     "<td id=\"rank\">  " + rank + "</td>" +
-                                    "<td id=\"country\" >  " + country + "</td>" +
-                                    "<td id=\"city\" class=\"hidden-xs\">  " + city + "</td>" +
-                                    "<td id=\"device2\" value=' " + device + "' > " + device + "</td>" +
-                                    "<td id=\"language\" class=\"hidden-xs\">  " + language + "</td>" +
+                                    "<td id=\"country\"  class='one' >  " + country + "</td>" +
+                                    "<td id=\"city\"  class='one' > " + city + "</td>" +
+                                    "<td id=\"device2\"class='one' > " + device + "</td>" +
+                                    "<td id=\"language\"class='one' >  " + language + "</td>" +
                                     "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='grafik/" + wordid + "'> </a></td>" +
                                     "<td scope=\"col\"><a href = 'deletekeyword/" + wordid + "'  class=\"fa fa-trash text-danger \"></a></td>" +
                                     "<td   id=\"editbtn\"><a  class=\"fa fa-edit text-success \" href='editkeyword/" + wordid + "'> </a> </td></tr>";
@@ -61,7 +60,6 @@ function Statistics() {
                 }
 
             }
-
 
         }
     });
@@ -79,7 +77,6 @@ window.addEventListener('load', (event) => {
 // Get the <span> element that closes the modal
     var span = document.getElementById("close");
     var span2 = document.getElementById("close2");
-
 
 // When the user clicks the button, open the modal
     btn.onclick = function () {
@@ -135,7 +132,7 @@ $(document).ready(function () {
                             $typecity = valll.attributes.Target_Type;
                             if (valll.attributes.Target_Type === 'City') {
                                 $("#cityy2")
-                                    .append('<option  class="cononical" value=' + valll.attributes.Canonical_Name + '>' + valll.attributes.name + '</option>')
+                                .append('<option  class="cononical" value=' + valll.attributes.Canonical_Name + '>' + valll.attributes.name + '</option>')
                             }
                         }
                     });
@@ -182,8 +179,7 @@ $(document).ready(function () {
                         if ($sa === $aaaa) {
                             $typecity = valll.attributes.Target_Type;
                             if (valll.attributes.Target_Type === 'City') {
-                                $("#cityy")
-                                    .append('<option  class="cononical" value=' + valll.attributes.Canonical_Name + '>' + valll.attributes.name + '</option>')
+                                $("#cityy").append('<option  class="cononical" value=' + valll.attributes.Canonical_Name + '>' + valll.attributes.name + '</option>')
                             }
                         }
                     });

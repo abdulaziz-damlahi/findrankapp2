@@ -90,22 +90,22 @@ class panel extends Controller
                 return redirect()->back()->with('cantbeempty', 'keleme bos ekleden');
             }
             if ($request->has('country')) {
-            $keyword->country = $request->country;
+                $keyword->country = $request->country;
             } else {
                 return redirect()->back()->with('cantbeempty', 'country bos ekleden');
             }
             if ($request->has('language')) {
-            $keyword->language = $request->language;
+                $keyword->language = $request->language;
             } else {
                 return redirect()->back()->with('cantbeempty', 'language bos ekleden');
             }
             if ($request->has('device')) {
-            $keyword->device = $request->device;
+                $keyword->device = $request->device;
             } else {
                 return redirect()->back()->with('cantbeempty', 'device bos ekleden');
             }
             if ($request->has('city')) {
-            $keyword->city = $request->city;
+                $keyword->city = $request->city;
             } else {
                 return redirect()->back()->with('cantbeempty', 'city bos ekleden');
             }
@@ -136,14 +136,19 @@ class panel extends Controller
 
     public function updatekeyword(Request $request, $id)
     {
-        keywords::where('id', '=', $id)->update([
-            'name' => $request->keyword,
+             $name=$request->name;
+        if ($name=== NULL){
+            return redirect()->back()->with('notsuccess', 'please enter a word');
+        }
+            keywords::where('id', '=', $id)->update([
+                'name' => $request->name,
             'country' => $request->country,
             'language' => $request->language,
             'device' => $request->device,
             'city' => $request->city,
         ]);
-        return redirect()->back();
+
+        return redirect()->back()->with('successupdated', 'successfully updated');
     }
 
     public function deletekeyword($id)
@@ -182,7 +187,7 @@ class panel extends Controller
         $userId = $user->id;
 
         $packetdata = packets::where('user_id', '=', $userId)->get()->first();
-        if ($packetdata==NULL){
+        if ($packetdata == NULL) {
             return redirect()->back()->with('packetempty', 'buy packet from home page to view profile');
         }
         return view('pages/panel/profile', compact('packetdata'));
