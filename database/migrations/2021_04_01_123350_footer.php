@@ -22,6 +22,7 @@ class Footer extends Migration
             $table->string('aboutUs');
             $table->string('location');
             $table->string('phone');
+            $table->string('copyright');
         });
     }
 

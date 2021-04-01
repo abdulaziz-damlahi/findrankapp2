@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\ContactMail;
+use App\Models\footer;
 
 use Illuminate\Support\Facades\Mail;
 
@@ -13,7 +14,8 @@ class contact extends Controller
 {
     //
     public function index (Request $request){
-        return view('pages/contact/contact');
+        $footer=footer::where('id', '=', 1)->get();
+        return view('pages/contact/contact',compact('footer'));
 }
     public function post (Request $request){
         $request->validate([
@@ -32,8 +34,9 @@ class contact extends Controller
           'mail'=>$mail,
           'phone'=>$phone,
         ];
+        $footer=footer::where('id', '=', 1)->get();
         Mail::to('td21brs14@hotmail.com')->send(new ContactMail($data));
-        return view('pages/contact/contact')->with('success','Mesajınız başarıyla iletildi');
+        return view('pages/contact/contact',compact('footer'))->with('success','Mesajınız başarıyla iletildi');
     }
 
 }

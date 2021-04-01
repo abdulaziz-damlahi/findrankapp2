@@ -200,7 +200,8 @@ class panel extends Controller
 
     public function FindOrder()
     {
-        return view('pages/findorder');
+        $footer=footer::where('id', '=', 1)->get();
+        return view('pages/findorder',compact('footer'));
     }
 
     public function findPost(Request $request)

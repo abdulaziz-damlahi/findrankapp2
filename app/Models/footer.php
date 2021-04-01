@@ -17,5 +17,6 @@ class footer extends Model
         'aboutUs',
         'location',
         'phone',
+        'copyright',
     ];
 }

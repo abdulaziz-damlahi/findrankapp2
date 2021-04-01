@@ -42,19 +42,17 @@ function Statistics2(pageNumber) {
                     var dataid = response['data'][i].id
                     var rank = response['data'][i].attributes.rank
 
-
                     for (var i2 = 0; i2 < len2; i2++) {
                         var websiteid = response['included'][i2].id
                         var id_website = response['included'][i2].attributes.user_id
                         var websitename = response['included'][i2].attributes.website_name
                         var url = '{{route("grafik",":id")}}';
-                        url = url.replace(':id',dataid );
+                        url = url.replace(':id', dataid);
                         if (wordsiteid == websiteid) {
-
                             var str = "<tr><td id=\"colmun2\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto ' class='col-2'> <b> " + websitename + "</b></td>" +
                                 "<td id=\"ANAHTARKELİME\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto 'class='col-2'> " + word + "</td>" +
                                 "<td  id=\"rank\"class='col-2'>  " + rank + "</td>" +
-                                "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + dataid  +"'> </a></td></tr>";
+                                "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + dataid + "'> </a></td></tr>";
                             $('#row').append(str);
                         }
                     }
@@ -152,7 +150,6 @@ function Statistics2(pageNumber) {
             }
             $('#notification-body').html("")
 
-
         }
     });
 }
@@ -169,7 +166,6 @@ window.addEventListener('load', (event) => {
 // Get the <span> element that closes the modal
     var span = document.getElementById("close");
     var span2 = document.getElementById("close2");
-
 
 // When the user clicks the button, open the modal
     btn.onclick = function () {
@@ -191,7 +187,6 @@ window.addEventListener('load', (event) => {
         }
     }
 });
-
 
 window.onload = function () {
     $.ajax({
@@ -216,7 +211,7 @@ window.onload = function () {
                         var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
                             "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
                             "<td id=\"rank\">  " + rank + "</td>" +
-                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id  +"'> </a></td></tr>";
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
                         $('#ilk3table').append(str);
                     }
                     if (rank > 3 && rank <= 10) {
@@ -224,7 +219,7 @@ window.onload = function () {
                         var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
                             "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
                             "<td id=\"rank\">  " + rank + "</td>" +
-                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id  +"'> </a></td></tr>";
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
                         $('#ilk10table').append(str);
 
                     }
@@ -233,7 +228,7 @@ window.onload = function () {
                         var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
                             "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
                             "<td id=\"rank\">  " + rank + "</td>" +
-                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id  +"'> </a></td></tr>";
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
                         $('#ilk100table').append(str);
                     }
                 }
@@ -242,14 +237,14 @@ window.onload = function () {
                 $('#ilk100').append(les100);
             }
             CanvasJS.addColorSet("customColorSet1",
-            ["#fd9644", "#6495ed", "#fc5c65" ]);
+                ["#fd9644", "#6495ed", "#fc5c65"]);
 
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
                 colorSet: "customColorSet1",
                 data: [
                     {
-                        colorSet:  "customColorSet1",
+                        colorSet: "customColorSet1",
                         //startAngle: 45,
                         indexLabelFontSize: 20,
                         indexLabelFontFamily: "Garamond",
@@ -257,23 +252,22 @@ window.onload = function () {
                         indexLabelLineColor: "darkgrey",
                         indexLabelPlacement: "outside",
                         type: "doughnut",
-                    startAngle: 60,
-                    //innerRadius: 60,
-                    indexLabelFontSize: 17,
-                    indexLabel: "{label} - #percent%",
-                    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-                    dataPoints: [
-                        {y: les3, label: "les than 3",},
-                        {y: les10, label: "les than 10"},
-                        {y: les100, label: "les than 100"},
-                    ]
-                }]
+                        startAngle: 60,
+                        //innerRadius: 60,
+                        indexLabelFontSize: 17,
+                        indexLabel: "{label} - #percent%",
+                        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                        dataPoints: [
+                            { y: les3, label: "les than 3", },
+                            { y: les10, label: "les than 10" },
+                            { y: les100, label: "les than 100" },
+                        ]
+                    }]
             });
             chart.render();
         }
 
     });
-
 
 }
 
@@ -298,7 +292,6 @@ window.addEventListener('load', (event) => {
     span.onclick = function () {
         modal.style.display = "none";
     }
-
 
 // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
@@ -379,7 +372,6 @@ $(document).ready(function () {
 
 })
 
-
 function get() {
     $.ajax({
         url: "http://127.0.0.1:8000/api/v1/Websites",
@@ -399,7 +391,7 @@ function get() {
                     var websitename = response['data'][i].attributes.website_name
                     var wordcount = response['data'][i].attributes.wordcount
                     var websiteid = response['data'][i].id
-                    var str = "<th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websitename + "</a></th>" +
+                    var str = "<tr><th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websitename + "</a></th>" +
                         "<td class='hidden-xs' scope='col' >GÜNLÜK DEĞİŞİM</td>" +
                         "<td  +scope='col' >" + wordcount + "</td>" +
                         "<td scope='col'><a id='randomm'href=deletewebsite/" + websiteid + " class='fa fa-trash text-danger'></a></td></tr>";
@@ -411,9 +403,7 @@ function get() {
     })
 }
 
-
 function getcount() {
-
 
     $.ajax({
         type: 'get',
@@ -468,7 +458,6 @@ function getcount() {
 
                     });
 
-
                 }
             }
         }
@@ -488,11 +477,11 @@ function Statistics() {
     })
 }
 
-
 $.ajax({
     url: "/api/v1/Packets",
     type: "POST",
-    headers: { "Content-Type": "application/vnd.api+json",
+    headers: {
+        "Content-Type": "application/vnd.api+json",
         Accept: "application/vnd.api+json",
     },
     data: JSON.stringify({
@@ -501,16 +490,17 @@ $.ajax({
             "attributes": {
                 "user_id": user_id,
                 "count_of_words": 0,
-                "descrpitions":"sada",
-                "end_of_pocket":gdate,
-                "max_count_of_words":hidden_word_count,
-                "rank_follow":0,
-                "rank_follow_max":rank_follow,
-                "count_of_websites":0,
+                "descrpitions": "sada",
+                "end_of_pocket": gdate,
+                "max_count_of_words": hidden_word_count,
+                "rank_follow": 0,
+                "rank_follow_max": rank_follow,
+                "count_of_websites": 0,
                 "max_count_of_websites": hidden_websites_count,
-                "packet_names":başlangic,
-            }}
-    }) ,
+                "packet_names": başlangic,
+            }
+        }
+    }),
     success: function (result) {
         console.log('işlem başarılı')
     }

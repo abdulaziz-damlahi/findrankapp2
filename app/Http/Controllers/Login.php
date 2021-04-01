@@ -20,7 +20,8 @@ class Login extends Controller
     public function index(Request $request)
     {
         $user = auth()->user();
-        return view('pages/login/login');
+        $footer=footer::where('id', '=', 1)->get();
+        return view('pages/login/login',compact('footer'));
 
     }
 

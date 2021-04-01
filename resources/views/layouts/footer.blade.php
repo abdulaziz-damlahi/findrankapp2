@@ -19,12 +19,11 @@
                     </div>
                 </div>
                 <div class="col-mx-12 col-md-4 col-sm-12 padding-top-50">
-                    <div class="news-letter">
-                        <h6>about us</h6>
+                    <h6>about us</h6>
                         <div class="news-letter">
-                            <li style="color: #fff;font-size: 16px;margin-top: 0px;margin-bottom: 30px;text-transform: uppercase;font-weight: normal;">{{$footers->aboutUs}}</li>
+                            <li style="color: #fff;font-size: 16px;text-transform: uppercase;font-weight: normal;">{{$footers->aboutUs}}</li>
                         </div>
-                    </div>
+
                 </div>
                 <div class="footer-info col-mx-12 col-md-4 col-sm-12">
                     <h6>contact us</h6>
@@ -40,7 +39,7 @@
         <!-- Rights -->
         <div class="rights">
             <div class="container">
-                <p>Copyright © data</p>
+                <p>{{$footers->copyright}}</p>
             </div>
         </div>
     </footer>

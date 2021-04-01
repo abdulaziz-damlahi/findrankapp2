@@ -3,7 +3,7 @@ $(document).ready(function () {
 })
 
 function Statistics() {
-    if ($("#ANAHTARKELİME").val('Mobil')){console;}
+    // if ($("#ANAHTARKELİME").val('Mobil')){console;}
     $.ajax({
         type: 'get',
         url: "/api/v1/Keywords/?include=website&sort=-id",
@@ -40,7 +40,6 @@ function Statistics() {
                         if (wordsiteid == websiteid) {
                             if (websiteid == websitidhtml) {
                                 let sayi = response['data'][i].id
-                                console.log(device)
                                 var str = "<tr><td class='col' data-id='  " + i + "' id=\"ANAHTARKELİME\"> " + word + " </td>" +
                                     "<td id=\"rank\">  " + rank + "</td>" +
                                     "<td id=\"country\"  class='one' >  " + country + "</td>" +
