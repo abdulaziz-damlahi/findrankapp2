@@ -7,6 +7,7 @@ use App\Models\invoicerecords;
 use App\Parasut\Jobs\InsertUserToParasut;
 use Illuminate\Support\Facades\App;
 use App\Parasut\Parasut;
+use App\Models\requests;
 use App\Parasut\Enums\ParasutEndPoint;
 use App\Parasut\Models\ParasutRequestModel;
 use GuzzleHttp\Exception\GuzzleException;
@@ -43,7 +44,6 @@ class UserObserver
                 "account_type" => "customer"
             ])
         );
-
         $user->parasut_customer_id = $response['data']['id'];
         $user->save();
     }

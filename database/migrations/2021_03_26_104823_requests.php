@@ -16,18 +16,24 @@ class Requests extends Migration
         //
         Schema::create('requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('input_price');
-            $table->integer('deneme_ay');
-            $table->integer('deneme_years');
-            $table->integer('deneme_cvs');
-            $table->string('card_first_last');
-            $table->unsignedBigInteger('card_number');
-            $table->unsignedBigInteger('user_id')->unsigned();
+            $table->unsignedBigInteger('user_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('packet_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('customer_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('invoice_record')->unsigned()->nullable();
+            $table->unsignedBigInteger('parasut_customer_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('paymnet_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('invoice_id')->unsigned()->nullable();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-            $table->foreign('user_id')
+            $table->foreign('customer_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');
+            $table->foreign('invoice_record')
+                ->references('id')
+                ->on('invoicerecords')->onDelete('cascade');
+            $table->foreign('packet_id')
+                ->references('id')
+                ->on('packets')->onDelete('cascade');
         });
     }
 

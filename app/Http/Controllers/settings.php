@@ -7,6 +7,10 @@ use App\Models\cards;
 use App\Models\packets;
 use App\Models\packets_reels;
 use App\Models\users;
+use App\Models\requests;
+use App\Parasut\Jobs\Invoicing;
+use App\Parasut\Jobs\updateUser;
+use App\Parasut\Jobs\createInvoice;
 use App\Parasut\Parasut;
 use App\Models\invoicerecords;
 use App\Parasut\Utils;
@@ -34,9 +38,17 @@ class settings extends Controller
         return view('pages/foruser/settings/settings', compact('user_first_name', 'user_last_name', 'phone', 'mail'));
     }
 
-    public function parase(TrackableModel $model,users $user,invoicerecords $invoicerecords,packets $packets)
+    public function parase(requests $request,invoicerecords $invoiceRecord,users $user,packets $packets)
     {
-       $parasut2 = (new \App\Parasut\jobs\Invoicing($user,$packets,$model));
+      //  $parasut = (new \App\Parasut\Parasut(request()));
+        $emailJob = new updateUser($user,$invoiceRecord);
+        $deneme = dispatch($emailJob);
+        foreach($deneme as $dene){
+            echo $dene."<br>" ;
+        }
+        $emailJob2 = new createInvoice($packets,$user);
+        dispatch($emailJob2);
+
      //   $parasut2 = (new \App\Parasut\jobs\InsertUserToParasut($user));
 
     }
@@ -69,7 +81,8 @@ class settings extends Controller
         $bune->first_name = $request->first_name;
         $bune->last_name = $request->last_name;
         $bune->phone = $request->phone;
-        $bune->email = $request->email;
+        echo $request->mail;
+        $bune->email = $request->mail;
         $bune->save();
         return redirect()->back()->with('success', 'Kullanıcı bilgileriniz başarıyla güncellendi');
 

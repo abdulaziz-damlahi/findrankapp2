@@ -7,9 +7,15 @@ use Illuminate\Support\Facades\Auth;
 use Iyzipay\Model\BasketItem;
 use Iyzipay\Model\BasketItemType;
 use Iyzipay\Options;
+use Iyzipay\Model\Currency;
 use App\Models\packets_reels;
 use App\Models\packets;
+use App\Models\invoicerecords;
 use App\Models\requests;
+use App\Parasut\Jobs\Invoicing;
+use App\Parasut\Jobs\updateUser;
+use App\Parasut\Jobs\createInvoice;
+use App\Models\users;
 
 
 use Illuminate\Routing\Controller;
@@ -133,7 +139,6 @@ class payment extends Controller
             $card_ay= $request->Ay;
             $card_yil= $request->Yil;
             $card_cvc= $request->CVC;
-            $card_cvc= $request->CVC;
 
             $paymentrequest->setConversationId("123456789");
             if(App::getLocale()=='de'){
@@ -145,6 +150,7 @@ class payment extends Controller
             }
             elseif(App::getLocale()=='tr'){
                 $paymentrequest->setLocale(\Iyzipay\Model\Locale::TR);
+                $paymentrequest->setCurrency(Currency::TL);
 
                 $paymentrequest->setPrice($price);
                 $paymentrequest->setPaidPrice($price);
@@ -222,7 +228,6 @@ class payment extends Controller
             $card_yil= $request->Yil;
             $card_cvc= $request->CVC;
 
-
             $paymentrequest->setConversationId("123456789");
             if(App::getLocale()=='de'){
                 $paymentrequest->setCurrency(\Iyzipay\Model\Currency::EUR);
@@ -232,7 +237,9 @@ class payment extends Controller
                 $paymentrequest->setPaidPrice($money_new_value);
             }
             elseif(App::getLocale()=='tr'){
-                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::TRY);
+                $paymentrequest->setCurrency(Currency::TL);
+
+                $paymentrequest->setLocale(\Iyzipay\Model\Locale::TR);
                 $paymentrequest->setPrice($price);
                 $paymentrequest->setPaidPrice($price);
             }
@@ -242,7 +249,7 @@ class payment extends Controller
                 $money_new_value = $price*$money_value;
                 $paymentrequest->setPrice($money_new_value);
                 $paymentrequest->setPaidPrice($money_new_value);
-            }
+        }
             $paymentrequest->setInstallment(1);
             $paymentrequest->setBasketId("B67832");
             $paymentrequest->setPaymentChannel(\Iyzipay\Model\PaymentChannel::WEB);
@@ -256,28 +263,28 @@ class payment extends Controller
             $paymentCard->setRegisterCard(0);
             $paymentrequest->setPaymentCard($paymentCard);
             $buyer = new \Iyzipay\Model\Buyer();
-            $buyer->setName($request->firstName_personal);
-            $buyer->setSurname($request->last_namee_personal);
-            $buyer->setGsmNumber($request->gsm_number_personal);
-            $buyer->setEmail($request->email_personal);
-            $buyer->setIdentityNumber($request->identification_number);
-            $buyer->setRegistrationAddress($request->invoice_address_personal);
-            $buyer->setIp($geo);
-            $buyer->setCity($request->cities_personal);
-            $buyer->setCountry($request->countries_personal);
+            $buyer->setId(Auth::id());
+            $buyer->setName($request->First_name_institutional);
+            $buyer->setSurname($request->last_name_institutional);
+            $buyer->setGsmNumber($request->gsm_number_institutional);
+            $buyer->setEmail($request->email_institutional);
+            $buyer->setIdentityNumber($request->id_number);
+            $buyer->setRegistrationAddress($request->invoice_address_institutional);
+            $buyer->setIp($geo->ip);
+            $buyer->setCity($request->city_information_institutional);
+            $buyer->setCountry($request->country_information_institutional);
+            echo "2.ci ";
             $paymentrequest->setBuyer($buyer);
-            echo "bireysel";
-
             $shippingAddress = new \Iyzipay\Model\Address();
             $shippingAddress->setContactName($request->First_name_institutional);
-            $shippingAddress->setCity($request->cities_personal);
-            $shippingAddress->setCountry($request->countries_personal);
+            $shippingAddress->setCity($request->city_information_institutional);
+            $shippingAddress->setCountry($request->country_information_institutional);
             $shippingAddress->setAddress($request->invoice_address_personal);
             $billingAddress = new \Iyzipay\Model\Address();
             $billingAddress->setContactName($request->First_name_institutional);
-            $billingAddress->setCity($request->cities_personal);
-            $billingAddress->setCountry($request->countries_personal);
-            $billingAddress->setAddress($request->invoice_address_personal);
+            $billingAddress->setCity($request->city_information_institutional);
+            $billingAddress->setCountry($request->country_information_institutional);
+            $billingAddress->setAddress($request->invoice_address_institutional);
             $paymentrequest->setBillingAddress($billingAddress);
             $basketItem = new BasketItem();
             $basketItem->setId($request['input_id']);
@@ -292,7 +299,7 @@ class payment extends Controller
 
             }
             elseif(App::getLocale()=='tr'){
-                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::TR);
+                $paymentrequest->setCurrency(Currency::TL);
                 $basketItem->setPrice($price);
             }
             else{
@@ -304,8 +311,6 @@ class payment extends Controller
             $paymentrequest->setBasketItems([$basketItem]);
 
         }
-
-
         $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
         $payment = json_decode($payment->getRawResult(), true);
         if ($payment['status'] === "success") {
@@ -313,6 +318,23 @@ class payment extends Controller
             $payid= $payment['paymentId'];
             if(count(packets::all())>0){
                 packets::all()->last()->update(['paymentId' => $payment['paymentId']]);
+             $request = new requests;
+             $requsa=requests::all();
+             $request2 = invoicerecords::all();
+             if((count($requsa))>0){
+                 requests::all()->last()->update(['paymnet_id'=>$payment['paymentId']],
+                 ['parasut_customer_id'=>Auth::user()->parasut_customer_id]);
+             }else{
+                 $request->customer_id=Auth::user()->id;
+                 $request->paymnet_id=(int)$payment['paymentId'];
+                 $request->user_id=Auth::user()->id;
+                 $request->packet_id=packets::all()->last()->id;
+                 $request->invoice_record=invoicerecords::all()->last()->id;
+                 $request->parasut_customer_id=Auth::user()->parasut_customer_id;
+                 $request->save();
+             }
+
+
             }
             $iyzico_transaction_id = $payment['itemTransactions'][0]['paymentTransactionId'];
         }

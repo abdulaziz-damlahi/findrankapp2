@@ -8,6 +8,7 @@ use App\Models\packets;
 use App\Models\invoicerecords;
 
 use App\Models\Request;
+use App\Models\requests;
 use App\Models\users;
 use App\Parasut\Enums\ParasutEndPoint;
 use App\Parasut\Models\ParasutRequestModel;
@@ -29,23 +30,28 @@ class Invoicing implements ShouldQueue
 
     protected invoicerecords $invoiceRecord;
     static $taxNumber;
+    static $invoiceId;
+    protected requests $request;
 
     /**
      * Create a new job instance.
      *
+     *      * @param requests $request
+
      * @param invoicerecords $invoiceRecord
      * @param users $user
      */
-    public function __construct(users $user,invoicerecords $invoiceRecord,packets $packets)
+    public function __construct(requests $request,invoicerecords $invoiceRecord,packets $packets,$user)
     {
-        $this->request = $invoiceRecord;
-        dd(self::createInvoice($user,$packets));
+        $this->request = $request;
+        self::handle();
 
     }
 
     /**
      * Execute the job.
-     *
+     *   @param invoicerecords $invoiceRecord
+     * @param users $user
      * @return void
      * @throws GuzzleException
      */
@@ -54,17 +60,17 @@ class Invoicing implements ShouldQueue
         $request = $this->request;
         $invoiceRecord = $this->invoicerecords;
         $user = $request->customer;
-        $payment = $request->payment;
-
+        $payment = $request->packets;
         $taxNumber = self::updateUser($user, $invoiceRecord);
         $invoice = self::createInvoice($user, $payment);
-
         $parasut = new Parasut();
+        /*
         if ($eInvoice = $parasut->isEInvoice($taxNumber)) {
             self::createEInvoice($request, $invoice['data']['id'], $eInvoice[0]['attributes']['e_invoice_address']);
         } else {
             self::createEArchive($request, $payment, $invoice['data']['id']);
         }
+        */
     }
 
     /**
@@ -149,6 +155,7 @@ class Invoicing implements ShouldQueue
 
     private function createEInvoice($invoiceId, $taxNumber)
     {
+        $user = Auth::user();
         $requestModel = new ParasutRequestModel(null, "e_invoices", [
             "vat_exemption_reason_code" => "223",
             "vat_exemption_reason" => "Geçici 20/1 Teknoloji Geliştirme Bölgelerinde Yapılan İşlemler",
@@ -157,14 +164,16 @@ class Invoicing implements ShouldQueue
         ], [
             "invoice" => [
                 "data" => [
-                    "id" => $invoiceId,
+                    "id" => $user['parasut_customer_id'],
                     "type" => "sales_invoices"
                 ]
             ]
         ]);
+        dd($requestModel);
         $response = (new Parasut())->create(ParasutEndPoint::EInvoices(), $requestModel);
         $trackableModel = new TrackableModel($response['data']['id'], "e_invoice", $invoiceId);
         Trackable::dispatch($trackableModel)->delay(5)->onQueue('parasut');
+
     }
 
     public function createEArchive(Request $request, Payment $payment, $invoiceId) // Make private
@@ -181,7 +190,7 @@ class Invoicing implements ShouldQueue
         ], [
             "sales_invoice" => [
                 "data" => [
-                    "id" => 44674414,
+                    "id" => 48066411,
                     "type" => "sales_invoices"
                 ]
             ]

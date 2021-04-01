@@ -183,13 +183,19 @@
                 @if(strpos($result[2],$website_request) !== false)
                 <div id="alert_color" class="alert alert-light" role="alert">
 
-                    Sorguladığınız site  {{$keyo}} sırada yer alıyor.
+                    Sorguladığınız site  {{$keyo+1}} sırada yer alıyor.
+                    <script>
+                      $(document).ready(function() {
+                        $(".deneme").hide();
+                        $(".deneme").css('display','none');
+                      });
+                    </script>
                 </div>
                 @endif
             @endforeach
                 @if(strpos($result[2],$website_request) === false)
-                    <div id="alert_color" class="alert alert-light" role="alert">
-                        gelmedi
+                    <div id="alert_color" class="alert deneme alert-light" role="alert">
+                        Aradığınız site bulunmamaktadır.
                     </div>
                 @endif
             <div class="container">
@@ -204,9 +210,14 @@
                 <tbody>
                     @foreach ($resultss as $key=>$result)
                     <tr>
-                        <td>{{ $key }}</td>
-                        <td><pre>{!!html_entity_decode($result[2])!!}</pre>
-                        </td>
+                        <td>{{ $key+1 }}</td>
+                        @if(strpos($result[2],$website_request) !== false)
+                            <td ><pre style="background-color: #03fdf5">{!!html_entity_decode($result[2])!!}</pre>
+                            </td>
+                        @else
+                            <td><pre >{!!html_entity_decode($result[2])!!}</pre>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>
@@ -218,15 +229,16 @@
                         @if(strpos($result[0],$website_request) !== false)
                             <div id="alert_color" class="alert alert-light" role="alert">
 
-                                Sorguladığınız site  {{$keyo}} sırada yer alıyor.
+                                Sorguladığınız site  {{$keyo+1}} sırada yer alıyor.
+
+                            </div>
+                        @else
+                            <div id="deneme" class="alert alert-light" role="alert">
+                                gelmedi
                             </div>
                         @endif
                     @endforeach
-                    @if(strpos($result[0],$website_request) !== true)
-                        <div id="alert_color" class="alert alert-light" role="alert">
-                            gelmedi
-                        </div>
-                    @endif
+
                     <div class="container">
                         <div class="row">
                             <table class="table table-sm">

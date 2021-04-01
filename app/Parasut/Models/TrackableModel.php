@@ -5,27 +5,29 @@ namespace App\Parasut\Models;
 
 
 use App\Models\all_invoice_request;
+use App\Models\invoicerecords;
+
 
 class TrackableModel
 {
     protected string $id;
     protected string $invoiceType;
     protected string $invoiceId;
-    protected all_invoice_request $request;
+    protected invoicerecords $invoicerecords;
 
     /**
      * TrackableModel constructor.
      * @param $id
      * @param $invoiceType
      * @param $invoiceId
-     * @param all_invoice_request $request
+     * @param invoicerecords $invoicerecords
      */
-    public function __construct($id, $invoiceType, $invoiceId, all_invoice_request $request)
+    public function __construct($id, $invoiceType, $invoiceId,$invoicerecords)
     {
         $this->id = $id;
         $this->invoiceType = $invoiceType;
         $this->invoiceId = $invoiceId;
-        $this->request = $request;
+        $this->request = $invoicerecords;
     }
 
     /**
@@ -53,7 +55,7 @@ class TrackableModel
     }
 
     /**
-     * @return all_invoice_request
+     * @return invoicerecords
      */
     public function getRequest()
     {

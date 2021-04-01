@@ -30,6 +30,7 @@ class Parasut extends Utils
     public function __construct()
     {
         self::checkAuth();
+
     }
 
     /**
@@ -85,7 +86,6 @@ class Parasut extends Utils
      */
     public function create(ParasutEndPoint $endPoint, ParasutRequestModel $requestModel)
     {
-        echo "geliyor";
         $response = self::request("POST", self::BASE_URL . $endPoint, [], $requestModel->toJson());
         return self::toArray($response->getBody());
     }
@@ -128,7 +128,6 @@ class Parasut extends Utils
      */
     public function update(ParasutEndPoint $endPoint, $id, ParasutRequestModel $requestModel)
     {
-        echo "gelmiyor";
 
         $response = self::request("PUT", self::BASE_URL . $endPoint . '/' . $id, [], $requestModel->toJson());
         return self::toArray($response->getBody());

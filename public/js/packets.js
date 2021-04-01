@@ -1,8 +1,13 @@
 $(document).ready(function() {
-    $('#e_invoice').change(function() {
-        $('#e_invoice').val($(this).is(':checked'));
-        console.log($('#e_invoice').val());
+   $('#e_invoicee').click(function() {
+        $('#e_invoicee').val($(this).is(':checked'));
+        console.log($('#e_invoicee').val($(this).is(':checked')));
+        console.log($('#e_invoicee').val());
+        console.log('girer');
     });
+    $('.invoiceeetype').on('change', function() {
+            console.log($('input[name=invoicetype]:checked', '.invoiceeetype').val());
+        });
     $('#try_again').hide();
     $('#success_message').css('display','none');
     $('#error_message').css('display','none');
@@ -329,8 +334,7 @@ $(document).ready(function() {
         }
     );
     function patch_invoice(){
-
-            let invocetype = $('input[name=gender]:checked', '.invoiceeetype').val();
+        let invocetype = $('input[name=invoicetype]:checked', '.invoiceeetype').val();
          if(invocetype=="individual"){
              let invoicee_id =  parseInt($('.invoice_id').val());
              $('.invoice_size').val();
@@ -344,7 +348,7 @@ $(document).ready(function() {
              let invoice_Addres = $('#invoice_adresses').val();
              let gsm_number = $('#gsm_number').val();
              let email_personal = $('#email_personal').val();
-             let e_invoice = $('#e_invoice').val();
+             let e_invoice = $('#e_invoicee').val();
 
              let invocetype =$('input[name=gender]:checked', '.invoiceeetype').val();
              console.log(invoice_no,'invoice no');
@@ -370,7 +374,6 @@ $(document).ready(function() {
                              "id_number":Id_number,
                              "tax_address":invoice_Addres,
                              "tax_no":invoice_no,
-                             "e_invoice":e_invoice,
                              "phone":parseInt(gsm_number),
                              "email":email_personal,
                              "country":country,
@@ -405,7 +408,7 @@ $(document).ready(function() {
              let companyName = $('#companyName').val();
              let invoice_Addres = $('#invoicd_address').val();
              let gsm_number = $('#gsm_number').val();
-             let email_personal = $('#email').val();
+             let email_personal = $('#email_ins').val();
              let e_invoice = $('#e_invoice').val();
 
              let invocetype =$('input[name=gender]:checked', '.invoiceeetype').val();
@@ -458,8 +461,7 @@ $(document).ready(function() {
     }
 
     function post_invoice(){
-
-            let invocetype = $('input[name=gender]:checked', '.invoiceeetype').val();
+            let invocetype = $('input[name=invoicetype]:checked', '.invoiceeetype').val();
             if(invocetype=="individual"){
                 let invoicee_id =  parseInt($('.invoice_id').val());
                 $('.invoice_size').val();
@@ -471,9 +473,14 @@ $(document).ready(function() {
                 let invoice_no = $('#invoice_noo').val();
                 let companyName = $('#companyName').val();
                 let invoice_Addres = $('#invoice_adresses').val();
+                let email_personal = $('#email').val();
                 let gsm_number = $('#gsm_number').val();
-                let email_personal = $('#email_personal').val();
-                let e_invoice = $('#e_invoice').val();
+                let gsm_number2 = $('#gsm_number').text();
+                console.log(gsm_number,'gelmiyor');
+                console.log(gsm_number2,'gelmiyor');
+                let e_invoice = $('#e_invoicee').val();
+                console.log('ikinci',e_invoice)
+
 
                 let invocetype =$('input[name=gender]:checked', '.invoiceeetype').val();
                 console.log(invoice_no,'invoice no');
@@ -498,7 +505,7 @@ $(document).ready(function() {
                                 "id_number":id_number,
                                 "address":invoice_Addres,
                                 "tax_no":invoice_no,
-                                "phone":gsm_number,
+                                "phone":parseInt(gsm_number),
                                 "taxpayer":e_invoice,
                                 "email":email_personal,
                                 "invoice_type":invocetype,
@@ -532,9 +539,10 @@ $(document).ready(function() {
                 let invoice_no = $('#invoice_noo').val();
                 let companyName = $('#companyName').val();
                 let invoice_Addres = $('#invoicd_address').val();
-                let gsm_number = $('#gsm_number').val();
-                let email_personal = $('#email').val();
+                let gsm_number = $('#gsm_number_insu').val();
+                let email_personal = $('#email_ins').val();
                 let e_invoice = $('#e_invoice').val();
+                console.log('ikinci',e_invoice)
 
                 let invocetype =$('input[name=gender]:checked', '.invoiceeetype').val();
                 console.log(invoice_no,'invoice no');

@@ -6,7 +6,18 @@ use App\Http\Requests\Auth\LoginByPassPostRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\users;
+use App\Parasut\Parasut;
 use App\Models\packets;
+use App\Parasut\Jobs\InsertUserToParasut;
+use Illuminate\Support\Facades\App;
+use App\Parasut\Enums\ParasutEndPoint;
+use App\Parasut\Models\ParasutRequestModel;
+use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use App\Models\packets_reels;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -23,10 +34,29 @@ class Login extends Controller
 
     }
 
-    public function Loginpost(Request $request)
+    public function Loginpost(Request $request,users $userss)
     {
         if (Auth::attempt(['email' => $request->email,
             'password' => $request->password])) {
+            $user=Auth::user();
+            echo Auth::id();
+            echo $user['first_name'];
+            echo "gelmediisadsa";
+            $parasut = new Parasut();
+            $response = $parasut->create(
+                ParasutEndPoint::Contacts(),
+                new ParasutRequestModel(null, 'contacts', [
+                    "email" => $user['email'],
+                    "name" => $user['first_name'] . ' ' . $user['last_name'],
+                    "short_name" => $user['first_name'] . ' ' . $user['last_name'],
+                    "contact_type" => "person",
+                    "phone" => $user['phone'],
+                    "is_abroad" => false,
+                    "archived" => false,
+                    "account_type" => "customer"
+                ]),
+            );
+            users::where('id',Auth::id())->update(['parasut_customer_id' => $response['data']['id']]);
             return redirect()->route('panel');
 
         }
@@ -54,6 +84,7 @@ class Login extends Controller
                 $user,
                 'message' => 'Başarıyla giriş yapıldı',
             ], 200);
+
         } else {
             return response()->json([
                 'message' => 'Başarıyla giriş yapamadı',

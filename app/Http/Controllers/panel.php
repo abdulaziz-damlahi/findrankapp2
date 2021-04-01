@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\packets;
 use App\Models\users;
 use App\Models\websites;
 use App\Models\keywords;
+use App\Models\invoicerecords;
 use App\Models\keywordRequest;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -18,8 +21,35 @@ use Illuminate\Support\Facades\DB;
 
 class panel extends Controller
 {
-    public function index()
+    public function index(packets $packets,users $user,invoicerecords $invoiceRecord)
     {
+       $packetsasad =  packets::where('user_id',Auth::user()->id)->get();
+
+       echo($packetsasad[0]->updated_at)."<br>";
+        $date1 = strtotime($packetsasad[0]->updated_at);
+        $date2 = strtotime(Carbon::now());
+
+// Formulate the Difference between two dates
+    /*    $diff = abs($date2 - $date1);
+        echo $diff."<br>";
+        $bolum = $diff/60;
+        $minute = floor($bolum);
+        echo(Carbon::now())."<br>";
+
+        if($minute=2){
+            echo "büyük";
+        }
+        else{
+            echo "küçük";
+        }*/
+    /*    $emailJob = new updateUser($user,$invoiceRecord);
+        $deneme = dispatch($emailJob);
+        foreach($deneme as $dene){
+            echo $dene."<br>" ;
+        }
+        $emailJob2 = new createInvoice($packets,$user);
+        dispatch($emailJob2);
+    */
         $user = auth()->user();
         $userId = $user->id;
         $userwebsites8 = websites::where('user_id','=',$userId)->orderByDesc('wordcount')->take(3)->get();
@@ -449,8 +479,14 @@ class panel extends Controller
                     }
                 }
                 $lastElement = last($resultss);
-
+                $i = 1;
                 foreach ($resultss as $keyo=>$result){
+                    if(strpos($result[0],$website_request) !== true){
+                        $burasi =$keyo;
+                    }
+                    else{
+                        $burasi=343143;
+                    }
                     if($resultss==null){
                         echo "ip değiş";
                         $result==0;
@@ -459,7 +495,7 @@ class panel extends Controller
                 curl_close($ch);
                 packets::where('id',$id)->update(['rank_follow'=>$new]);
                 return view(
-                    'pages/findorder', compact('resultss','lastElement','result','rank_follow_max','countrank','packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+                    'pages/findorder', compact('burasi','resultss','lastElement','result','rank_follow_max','countrank','packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
             }
         }}
 

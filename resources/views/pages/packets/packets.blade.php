@@ -132,7 +132,7 @@
                                 </label>
                                 <label class="kurumsal col-md-6">
                                     <p class="label-txt">VERGI ADRESİ</p>
-                                    <input name="invoice_address_personal" id="invoicd_address" type="text" class="input">
+                                    <input name="invoice_address_institutional" id="invoicd_address" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
@@ -160,13 +160,13 @@
                                 </label>
                                 <label class="col-md-6">
                                     <p class="label-txt">Telefon Numarası</p>
-                                    <input name="gsm_number_institutional" id="gsm_number" type="text" class="input">
+                                    <input name="gsm_number_institutional" id="gsm_number_insu" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
                                 </label> <label class="col-md-6">
                                     <p class="label-txt">Email</p>
-                                    <input name="email_institutional" id="email" type="text" class="input">
+                                    <input name="email_institutional" id="email_ins" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
@@ -235,7 +235,7 @@
                                 </label>
                                 <label class="col-md-6">
                                     <p class="label-txt">Email</p>
-                                    <input name="email_personal" id="email_personal" type="text" class="input">
+                                    <input name="email_personal" id="email" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
@@ -262,7 +262,7 @@
                                 </label>
                                 <div style="margin-left:20%;" id="tax_mükkelefisaas" class="col-md-7">
                                     <label id="tax_mukellefi">E vergi Mükellefiyim</label>
-                                    <input style="margin:0px" type="checkbox" id="e_invoice" name="e_invoice">
+                                    <input style="margin:0px" type="checkbox" id="e_invoicee" name="e_invoice">
                                 </div>
                             </div>
                         </div>

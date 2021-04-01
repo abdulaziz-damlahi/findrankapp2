@@ -347,7 +347,6 @@ $device_name ="Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebK
                                     if(!empty($resultss)){
 
                                     foreach ($resultss as $keyyy=>$resultsaasda){
-                                        html_entity_decode($resultsaasda, ENT_QUOTES);
                                         if(strpos($resultsaasda[1],$website_name) !== false){
                                             echo $resultsaasda[1];
                                             $resultsasa->rank=$keyyy;
