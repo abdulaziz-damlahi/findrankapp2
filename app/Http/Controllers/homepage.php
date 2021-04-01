@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\keywords;
 use App\Models\websites;
 use App\Models\packets;
+use App\Models\footer;
 use App\Models\packets_reels;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\payment;
@@ -96,7 +97,8 @@ class homepage extends Controller
 
             $locale = App::getLocale();
         }
-        return view('pages/home/home',compact('base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
+        $footer=footer::where('id', '=', 1)->get();
+        return view('pages/home/home',compact('base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value', 'footer'));
 
     }
 

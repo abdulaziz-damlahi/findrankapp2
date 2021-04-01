@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\users;
 use App\Models\packets;
+use App\Models\footer;
 use App\Models\packets_reels;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;

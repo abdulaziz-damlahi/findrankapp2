@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\packets_reels;
 use Illuminate\Http\Request;
+use App\Models\footer;
 use Illuminate\Support\Facades\App;
 
 class packets extends Controller
@@ -95,7 +96,8 @@ class packets extends Controller
             $locale = App::getLocale();
 
         }
-        return view('pages/packets/packets',compact('base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
+        $footer=footer::where('id', '=', 1)->get();
+        return view('pages/packets/packets',compact('base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value', 'footer'));
 
     }
 

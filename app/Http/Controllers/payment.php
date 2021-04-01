@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Iyzipay\Model\BasketItem;
 use Iyzipay\Model\BasketItemType;
 use Iyzipay\Options;
+use App\Models\footer;
 use App\Models\packets_reels;
 use App\Models\packets;
 use App\Models\requests;
@@ -313,8 +314,8 @@ class payment extends Controller
         else{
             $success_message = "Payment Unsuccessful !";
         }
-
-        return view('pages/packets/packets',compact('success_message','payment','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
+        $footer=footer::where('id', '=', 1)->get();
+        return view('pages/packets/packets',compact('success_message','payment','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value', 'footer'));
 
     }
     public static function getOptions()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\packets;
 use App\Models\users;
 use App\Models\websites;
+use App\Models\footer;
 use App\Models\keywords;
 use App\Models\keywordRequest;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -38,7 +39,8 @@ class panel extends Controller
             $keywordcount = keywords::where('website_id', '=', $x)->get('website_id')->count();
             websites::where('user_id', '=', $userId)->update(['wordcount' => $keywordcount]);
         }
-        return view('pages/panel/panel', compact('user', 'userwebsites8', 'packetdata'));
+         $footer=footer::where('id', '=', 1)->get();
+        return view('pages/panel/panel', compact('user', 'userwebsites8', 'packetdata', 'footer'));
     }
 
     public function addwebsite(Request $request)
@@ -130,8 +132,8 @@ class panel extends Controller
     public function editkeyword($id)
     {
         $currentKeyword = keywords::findOrFail($id);
-
-        return view('pages/websitelist/editkeyword', compact('currentKeyword'));
+        $footer=footer::where('id', '=', 1)->get();
+        return view('pages/websitelist/editkeyword', compact('currentKeyword', 'footer'));
     }
 
     public function updatekeyword(Request $request, $id)
@@ -167,7 +169,8 @@ class panel extends Controller
             'count_of_words' => $userkeywordcount,
             'count_of_websites' => $userwebsitecount,
         ]);
-        return view('pages/websitelist/websitelist', compact('websiteid'));
+        $footer=footer::where('id', '=', 1)->get();
+        return view('pages/websitelist/websitelist', compact('websiteid', 'footer'));
     }
 
     public function grafik($id)
@@ -177,7 +180,8 @@ class panel extends Controller
         if ($id != $keywordidnum) {
             return abort(404);
         }
-        return view('pages/websitelist/grafik', compact('id'));
+        $footer=footer::where('id', '=', 1)->get();
+        return view('pages/websitelist/grafik', compact('id', 'footer'));
     }
 
     public function profile()
@@ -190,7 +194,8 @@ class panel extends Controller
         if ($packetdata == NULL) {
             return redirect()->back()->with('packetempty', 'buy packet from home page to view profile');
         }
-        return view('pages/panel/profile', compact('packetdata'));
+        $footer=footer::where('id', '=', 1)->get();
+        return view('pages/panel/profile', compact('packetdata', 'footer'));
     }
 
     public function FindOrder()
@@ -493,8 +498,9 @@ class panel extends Controller
                 }
                 curl_close($ch);
                 packets::where('id', $id)->update(['rank_follow' => $new]);
+                $footer=footer::where('id', '=', 1)->get();
                 return view(
-                    'pages/findorder', compact('resultss', 'result', 'rank_follow_max', 'countrank', 'packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+                    'pages/findorder', compact('resultss', 'result', 'rank_follow_max', 'countrank', 'packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request', 'footer'));
             }
         }
     }
