@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 <div >
-    <section id="general_find" class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-50 padding-right-50"
+    <section id="general_find" class="col-md-12 row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-100 padding-right-65"
              >
 
         <br class="container" style="padding-right: 500px; padding-left:500px; ">
@@ -10,7 +10,7 @@
             <h2 style="color: black">What’s Your Google Rank ?</h2>
             <span style="color: black">See how well your page is optimised for your keyword</span></div>
         <!-- Form -->
-        <form method="post" action="{{route('findpost')}}">
+        <form method="post" class="form_rank_order col-md-12" action="{{route('findpost')}}">
             @csrf
             @if($errors->any())
                 <div class="alertMessage alert-danger">
@@ -26,8 +26,8 @@
                 </li>
             </ul>
 
-            <div class="row col-lg-12">
-                <div class="btn-group col-md-3 ">
+            <div class="row select_row col-lg-12">
+                <div class="btn-group findr_select col-md-3 ">
                     <div class="btn-group">
                         <select id="selectSecil" class="GoogleRank select">
                             <option class="select">
@@ -130,9 +130,9 @@
                         </select>
                     </div>
                 </div>
-                <div class="btn-group col-md-3 ">
+                <div class="btn-group findr_select col-md-3 ">
                     <div class="btn-group">
-                        <select id="language" class="select">
+                        <select id="language" class="select GoogleRank">
                             <option class="select">
                                 dil
                             </option>
@@ -148,15 +148,15 @@
                         </select>
                     </div>
                 </div>
-                <div class="btn-group col-md-3 ">
+                <div class="btn-group findr_select col-md-3 ">
                     <div class="btn-group">
-                        <select id="cityy" class="select">
+                        <select id="cityy" class="select GoogleRank">
                         </select>
                     </div>
                 </div>
-                <div class="btn-group col-md-3 ">
+                <div class="btn-group findr_select col-md-3 ">
                     <div class="btn-group">
-                        <select id="device" class="select">
+                        <select id="device" class="select GoogleRank">
                             <option >
                                 Mobil
                             </option>
@@ -183,7 +183,7 @@
                 @if(strpos($result[2],$website_request) !== false)
                 <div id="alert_color" class="alert alert-light" role="alert">
 
-                    Sorguladığınız site  {{$keyo+1}} sırada yer alıyor.
+                   <p>Sorguladığınız site  {{$keyo+1}} sırada yer alıyor.</p>
                     <script>
                       $(document).ready(function() {
                         $(".deneme").hide();
@@ -193,11 +193,17 @@
                 </div>
                 @endif
             @endforeach
+                @isset($result)
+                    @if($result!=0)
                 @if(strpos($result[2],$website_request) === false)
+                    <div class="col-md-12">
                     <div id="alert_color" class="alert deneme alert-light" role="alert">
-                        Aradığınız site bulunmamaktadır.
+                        <p>Aradığınız site bulunmamaktadır.</p>
+                    </div>
                     </div>
                 @endif
+                        @endif
+                @endisset
             <div class="container">
                 <div class="row">
             <table class="table table-sm">
@@ -212,11 +218,21 @@
                     <tr>
                         <td>{{ $key+1 }}</td>
                         @if(strpos($result[2],$website_request) !== false)
+                            @if($device_information=="Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53")
+
                             <td ><pre style="background-color: #03fdf5">{!!html_entity_decode($result[2])!!}</pre>
                             </td>
+                            @else
+                                <td ><pre style="background-color: #03fdf5">{!!html_entity_decode($result[2])!!}</pre>
+                                </td>
+                                @endif
                         @else
-                            <td><pre >{!!html_entity_decode($result[2])!!}</pre>
+                            @if($device_information=="Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53")
+                            <td><pre >{!!html_entity_decode($result[1])!!}</pre>
                             </td>
+                                @else
+                                <td><pre >{!!html_entity_decode($result[2])!!}</pre>
+                                @endif
                         @endif
                     </tr>
                 @endforeach

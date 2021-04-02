@@ -23,11 +23,6 @@ class panel extends Controller
 {
     public function index(packets $packets,users $user,invoicerecords $invoiceRecord)
     {
-       $packetsasad =  packets::where('user_id',Auth::user()->id)->get();
-
-       echo($packetsasad[0]->updated_at)."<br>";
-        $date1 = strtotime($packetsasad[0]->updated_at);
-        $date2 = strtotime(Carbon::now());
 
 // Formulate the Difference between two dates
     /*    $diff = abs($date2 - $date1);
@@ -456,7 +451,7 @@ class panel extends Controller
                     CURLOPT_SSL_VERIFYPEER => false,
                 ]);
                 $response = curl_exec($ch);
-                if ($len === 'ar') {
+                if ($len == 'ar') {
 
                     echo "girdi";
                     if($device_information==='Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53'){
@@ -479,17 +474,23 @@ class panel extends Controller
                     }
                 }
                 $lastElement = last($resultss);
-                $i = 1;
-                foreach ($resultss as $keyo=>$result){
-                    if(strpos($result[0],$website_request) !== true){
-                        $burasi =$keyo;
-                    }
-                    else{
-                        $burasi=343143;
-                    }
-                    if($resultss==null){
-                        echo "ip değiş";
-                        $result==0;
+                if($resultss==[]){
+                    echo "ip değiş";
+                    $burasi=343143;
+                    echo "dönmediasdsa";
+                    $result=0;
+                    echo "ip değiş";
+
+
+                }
+                else{
+                    foreach ($resultss as $keyo=>$result){
+                        if(strpos($result[0],$website_request) !== true){
+                            $burasi =$keyo;
+                        }
+                        else{
+                            $burasi=343143;
+                        }
                     }
                 }
                 curl_close($ch);

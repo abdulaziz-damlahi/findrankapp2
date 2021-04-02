@@ -1,9 +1,7 @@
 $(document).ready(function() {
    $('#e_invoicee').click(function() {
         $('#e_invoicee').val($(this).is(':checked'));
-        console.log($('#e_invoicee').val($(this).is(':checked')));
         console.log($('#e_invoicee').val());
-        console.log('girer');
     });
     $('.invoiceeetype').on('change', function() {
             console.log($('input[name=invoicetype]:checked', '.invoiceeetype').val());
@@ -467,6 +465,7 @@ $(document).ready(function() {
                 $('.invoice_size').val();
                 let first = $('#firstt_namee').val();
                 let last = $('#last_namee').val();
+
                 let Id_number = $('#numberr').val();
                 let id_number = parseInt(Id_number);
                 console.log(typeof id_number)
@@ -506,7 +505,7 @@ $(document).ready(function() {
                                 "address":invoice_Addres,
                                 "tax_no":invoice_no,
                                 "phone":parseInt(gsm_number),
-                                "taxpayer":e_invoice,
+                                "taxpayer":$('#e_invoicee').val(),
                                 "email":email_personal,
                                 "invoice_type":invocetype,
                                 "country":country,
@@ -568,7 +567,7 @@ $(document).ready(function() {
                                 "address":invoice_Addres,
                                 "tax_no":invoice_no,
                                 "phone":parseInt(gsm_number),
-                                "taxpayer":e_invoice,
+                                "taxpayer":$('#e_invoice').val(),
                                 "email":email_personal,
                                 "invoice_type":invocetype,
                                 "country":country,

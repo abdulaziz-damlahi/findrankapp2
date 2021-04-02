@@ -5,6 +5,7 @@ namespace App\parasut\Jobs;
 use App\Models\InvoiceRecord;
 use App\Models\Payment;
 use App\Models\packets;
+use App\Models\AllInvoiceRequest;
 use App\Models\invoicerecords;
 
 use App\Models\Request;
@@ -38,12 +39,25 @@ class createInvoice implements ShouldQueue
      */
     public function __construct(packets $packets,users $user)
     {
-      $deneme = self::createInvoice($user,$packets);
-      foreach($deneme as $sadq){
+      $createinvoice = self::createInvoice($user,$packets);
+
+      foreach($createinvoice as $invoice){
          /* foreach($sadq as $sadasdaq){
           echo $sadasdaq;
       }*/
-        dd($sadq);
+          $all_invoice_request= new AllInvoiceRequest();
+          $all_invoice_request->invoice_id=$invoice['id'];
+          $all_invoice_request->invoice_price=$invoice['attributes']['net_total'];
+          $all_invoice_request->description=$invoice['attributes']['description'];
+          $all_invoice_request->phone=$invoice['attributes']['billing_phone'];
+          $all_invoice_request->order_date=$invoice['attributes']['order_date'];
+          $all_invoice_request->city=$invoice['attributes']['city'];
+          $all_invoice_request->tax_number=$invoice['attributes']['tax_number'];
+          $all_invoice_request->tax_office=$invoice['attributes']['tax_office'];
+          $all_invoice_request->user_id=Auth::user()->id;
+          $all_invoice_request->save();
+          return $invoice;
+
       }
 
     }

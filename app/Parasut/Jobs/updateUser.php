@@ -29,6 +29,7 @@ class updateUser implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+
     /**
      * Create a new job instance.
      *
@@ -38,7 +39,9 @@ class updateUser implements ShouldQueue
     public function __construct(users $user, invoicerecords $invoiceRecord)
     {
         $this->request = $invoiceRecord;
-        echo self::updateUser($user, $invoiceRecord);
+        $parasutUser = self::updateUser($user, $invoiceRecord);
+        invoicerecords::all()->last()->update(['taxNumber',$parasutUser]);
+        return $parasutUser;
 
     }
 

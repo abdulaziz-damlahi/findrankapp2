@@ -34,19 +34,6 @@ $(document).ready(function() {
   $('#form2').hide();
   $('#form3').hide();
   $('.kurumsal').hide();
-  $( "#try_again" ).on( "click", function() {
-
-    $('#packets_show').show();
-    $('#settingsForm').hide();
-    $('#button_contact').show();
-    $('#button_contact2').show();
-    $('#form1').show();
-    $('#form2').hide();
-    $('#form3').hide();
-    $('#form4').hide();
-
-
-  });
 
   $('#settingsForm').height( 500 )
   $( "#kurumsal" ).on( "click", function() {

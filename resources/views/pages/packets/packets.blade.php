@@ -606,14 +606,14 @@
                         </div>
                         <div id="form4">
                             <div class="success-page">
-                                @isset($payment)
-                                    @if ($payment['status'] === "success")
+                                @isset($deneme)
+                                    @if ($deneme['status'] === "success")
 
                                         <h2 id="unSuccessMessage">{{$success_message}}</h2>
                                         <a href="{{route('panel')}}" id="startTouse">Kullanmaya Başla!</a>
                                     @else
                                         <h2 id="unsuccesmessage">{{$success_message}}</h2>
-                                        <a id="try_again">Tekrar Dene</a>
+                                        <a href="{{route('packets')}}"id="try_again">Tekrar Dene</a>
                                     @endif
                                 @endisset
 

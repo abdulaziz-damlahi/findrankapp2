@@ -248,7 +248,7 @@ n sfb tp-resizeme font-crimson"
                                 <li> {{$last->rank_fosllow}} Rank Follow</li>
                                 <li> {{$last->description}}</li>
                             </ul>
-                            <a href="#." class="PURCHACE btn btn-orange">PURCHACE</a></div>
+                            <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">PURCHACE</a></div>
                     </div>
                     <!-- Price -->
                     <div class="col-md-4">

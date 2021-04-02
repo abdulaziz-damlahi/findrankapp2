@@ -164,6 +164,7 @@ header nav .ownmenu .indicator {
 	width: 100%;
 }
 .seo-secore li {
+	padding-left: 0px !important;
 	margin-bottom: 20px;
 }
 .solution {

@@ -38,12 +38,12 @@ class Adapter extends AbstractAdapter
     public function creating(invoicerecords $invoicerecords)
     {
 
-        \App\Http\Controllers\payment::pay_post(request());
+        \App\Http\Controllers\payment::payment(request());
 
     }    public function updating(invoicerecords $invoicerecords)
     {
 
-        \App\Http\Controllers\payment::pay_post(request());
+        \App\Http\Controllers\payment::payment(request());
 
     }
     /**

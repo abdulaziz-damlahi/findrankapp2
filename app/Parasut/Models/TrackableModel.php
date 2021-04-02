@@ -4,7 +4,7 @@
 namespace App\Parasut\Models;
 
 
-use App\Models\all_invoice_request;
+use App\Models\allInvoiceRequest;
 use App\Models\invoicerecords;
 
 
