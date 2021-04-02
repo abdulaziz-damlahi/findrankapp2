@@ -7,7 +7,6 @@ use App\Models\cards;
 use App\Models\packets;
 use App\Models\packets_reels;
 use App\Models\users;
-use App\Models\footer;
 use App\Models\invoicerecords;
 use App\Parasut\Utils;
 use GuzzleHttp\Client;
@@ -28,8 +27,8 @@ class settings extends Controller
         $user_last_name = $user->last_name;
         $phone = $user->phone;
         $mail = $user->email;
-        $footer=footer::where('id', '=', 1)->get();
-        return view('pages/foruser/settings/settings', compact('user_first_name', 'user_last_name', 'phone', 'mail', 'footer'));
+
+        return view('pages/foruser/settings/settings', compact('user_first_name', 'user_last_name', 'phone', 'mail'));
     }
 
     public function parase(invoicerecords $invoicerecords)

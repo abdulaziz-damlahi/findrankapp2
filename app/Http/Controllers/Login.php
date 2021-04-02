@@ -7,7 +7,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\users;
 use App\Models\packets;
-use App\Models\footer;
 use App\Models\packets_reels;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +19,8 @@ class Login extends Controller
     public function index(Request $request)
     {
         $user = auth()->user();
-        $footer=footer::where('id', '=', 1)->get();
-        return view('pages/login/login',compact('footer'));
+
+        return view('pages/login/login');
 
     }
 

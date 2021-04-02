@@ -15,17 +15,11 @@ class keyword extends Seeder
     public function run()
     {
         DB::table('keywords')->insert([
-            [
-                'name' => 'wewd',
-                'device' => 'Masaüstü',
-                'country' => 'AR',
-                'city' => 'Roque',
-                'language' => 'english',
-                'rank' => '4',
-                'website_id' => '1',
-                'user_id' => '2',
+            ['name' => 'hemengeilirz 1', 'device' => 'Masaüstü', 'country' => 'AR', 'city' => 'Roque', 'language' => 'english', 'rank' => '4', 'website_id' => '1', 'user_id' => '2'],
+            ['name' => 'hemengeilirz 2', 'device' => 'Masaüstü', 'country' => 'AR', 'city' => 'Roque', 'language' => 'english', 'rank' => '4', 'website_id' => '1', 'user_id' => '2'],
+            ['name' => 'hemengeilirz 3', 'device' => 'Masaüstü', 'country' => 'AR', 'city' => 'Roque', 'language' => 'english', 'rank' => '4', 'website_id' => '1', 'user_id' => '2'],
 
-            ],
+            ['name' => 'facebook 4', 'device' => 'Masaüstü', 'country' => 'AR', 'city' => 'Roque', 'language' => 'english', 'rank' => '4', 'website_id' => '2', 'user_id' => '2'],
         ]);
     }
 }

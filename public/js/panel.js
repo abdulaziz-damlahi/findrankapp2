@@ -4,6 +4,8 @@ $(document).ready(function () {
     Statistics2(pageNumber);
     Statistics();
     get();
+    // differance();
+    differance2();
 })
 $("#nextPageButton").click(function () {
     pageNumber = currentPage2;
@@ -391,8 +393,11 @@ function get() {
                     var websitename = response['data'][i].attributes.website_name
                     var wordcount = response['data'][i].attributes.wordcount
                     var websiteid = response['data'][i].id
-                    var str = "<tr><th scope='col'><a href=website/" + websiteid + "><div id='colmun1'></div>" + websitename + "</a></th>" +
-                        "<td class='hidden-xs' scope='col' >GÜNLÜK DEĞİŞİM</td>" +
+                    var idweb = 'webid' + websiteid;
+                    var idiff = 'idiff' + websiteid;
+                    var str = "<tr> <th id='" + idweb + "' class='hidden' >" + websiteid + "</th> <th scope='col'><a href=website/" + websiteid + ">" +
+                        "<div id='colmun1'></div>" + websitename + "</a></th>" +
+                        "<td class='hidden-xs' scope='col' id='" + idiff + "'>t</td>" +
                         "<td  +scope='col' >" + wordcount + "</td>" +
                         "<td scope='col'><a id='randomm'href=deletewebsite/" + websiteid + " class='fa fa-trash text-danger'></a></td></tr>";
                     $('#followedWebsites').append(str);
@@ -477,31 +482,155 @@ function Statistics() {
     })
 }
 
-$.ajax({
-    url: "/api/v1/Packets",
-    type: "POST",
-    headers: {
-        "Content-Type": "application/vnd.api+json",
-        Accept: "application/vnd.api+json",
-    },
-    data: JSON.stringify({
-        "data": {
-            "type": "Packets",
-            "attributes": {
-                "user_id": user_id,
-                "count_of_words": 0,
-                "descrpitions": "sada",
-                "end_of_pocket": gdate,
-                "max_count_of_words": hidden_word_count,
-                "rank_follow": 0,
-                "rank_follow_max": rank_follow,
-                "count_of_websites": 0,
-                "max_count_of_websites": hidden_websites_count,
-                "packet_names": başlangic,
+// user_id=$('#userid').innerHTML;
+// $.ajax({
+//     url: "/api/v1/Packets",
+//     type: "POST",
+//     headers: {
+//         "Content-Type": "application/vnd.api+json",
+//         Accept: "application/vnd.api+json",
+//     },
+//     data: JSON.stringify({
+//         "data": {
+//             "type": "Packets",
+//             "attributes": {
+//                 "user_id": user_id,
+//                 "count_of_words": 0,
+//                 "descrpitions": "sada",
+//                 "end_of_pocket": gdate,
+//                 "max_count_of_words": hidden_word_count,
+//                 "rank_follow": 0,
+//                 "rank_follow_max": rank_follow,
+//                 "count_of_websites": 0,
+//                 "max_count_of_websites": hidden_websites_count,
+//                 "packet_names": başlangic,
+//             }
+//         }
+//     }),
+//     success: function (result) {
+//         console.log('işlem başarılı')
+//     }
+// });
+let equal = 0;
+let plus = 0;
+let minus = 0;
+
+// function differance() {
+//
+//     $.ajax({
+//         type: 'get',
+//         url: "/api/v1/Keywords/?include=website",
+//         success: function (response) {
+//             //len websites
+//             var len1 = 0;
+//             if (response['included'] != null) {
+//                 len1 = response['included'].length;
+//             }
+//             //len keyword
+//             var len2 = 0;
+//             if (response['data'] != null) {
+//                 len2 = response['data'].length;
+//             }
+//
+//             if (len1 > 0) {
+//                 for (var i1 = 0; i1 < len1; i1++) {
+//                     var websiteid = response['included'][i1].id
+//                     var websitename = response['included'][i1].attributes.website_name
+//                     console.log(websitename)
+//                     var idiff = 'idiff' + websiteid;
+//                     for (var i2 = 0; i2 < len2; i2++) {
+//
+//                         var keywordwebsiteid = response['data'][i2].attributes.website_id
+//                         var keywordid = response['data'][i2].id
+//                         var keywordwebsitename = response['data'][i2].attributes.name
+//                         if (websiteid == keywordwebsiteid) {
+//                             console.log(keywordid, keywordwebsitename)
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     });
+//
+// }
+
+function differance2() {
+    //today
+    var today = new Date();
+    today.setDate(today.getDate() + 30);
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth()).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    //yesterday
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() + 29);
+    var dd = String(yesterday.getDate()).padStart(2, '0');
+    var mm = String(yesterday.getMonth()).padStart(2, '0');
+    var yyyy = yesterday.getFullYear();
+    yesterday = yyyy + '-' + mm + '-' + dd;
+
+    $.ajax({
+        type: 'get',
+        url: "/api/v1/keywordsRequests",
+        success: function (response) {
+            //len keyword requests
+            var len3 = 0;
+            if (response['data'] != null) {
+                len3 = response['data'].length;
             }
+            if (len3 > 0) {
+                for (var i3 = 0; i3 < len3; i3++) {
+                    //today
+                    var KeyWordRequestKeywordId = response['data'][i3].attributes.keyword_id
+                    var KeyWordRequestrank = response['data'][i3].attributes.rank
+                    var KeyWordRequestcreatedAt = response['data'][i3].attributes.createdAt
+                    var KeyWordRequestcreatedAt2 = KeyWordRequestcreatedAt.toString().slice(0, 10)
+                    console.log(KeyWordRequestKeywordId)
+
+                    if (KeyWordRequestcreatedAt2 == today || KeyWordRequestcreatedAt2 == yesterday) {
+
+                        if (KeyWordRequestcreatedAt2 == today) {
+                            var KeyWordRequestranktoday = KeyWordRequestrank
+                            console.log(KeyWordRequestranktoday, 'today')
+                            console.log('')
+                        }
+                        if (KeyWordRequestcreatedAt2 == yesterday) {
+                            var KeyWordRequestrankyesterday = KeyWordRequestrank
+                            console.log(KeyWordRequestrankyesterday, 'yesterday')
+                            console.log('')
+                        }
+                        if (KeyWordRequestranktoday != null && KeyWordRequestrankyesterday != null) {
+                            compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday)
+                        }
+
+                    }
+
+                }
+
+            }
+
         }
-    }),
-    success: function (result) {
-        console.log('işlem başarılı')
+    })
+}
+
+function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday) {
+    equal = 0;
+    plus = 0;
+    minus = 0;
+    if (KeyWordRequestranktoday == KeyWordRequestrankyesterday) {
+        equal = equal + 1;
+
     }
-});
+    if (KeyWordRequestranktoday > KeyWordRequestrankyesterday) {
+        plus = plus + 1
+
+    }
+    if (KeyWordRequestranktoday < KeyWordRequestrankyesterday) {
+        minus = minus + 1
+    }
+    console.log(minus, 'minus')
+    console.log(plus, 'plus')
+    console.log(equal, 'equal')
+}
+

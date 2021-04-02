@@ -7,39 +7,39 @@
                     <!-- News Letter -->
                 </div>
                 <!-- Folow Us -->
-                @foreach($footer as $footers)
-                <div class="col-mx-12 col-md-4 col-sm-12 padding-top-50">
-                    <div class="news-letter">
-                        <h6>Follow us</h6>
-                        <ul class="social_icons pull-left margin-left-50 margin-top-10">
-                            <li><a href="{{$footers->facebook}}"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="{{$footers->twitter}}"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="{{$footers->linkedin}}"><i class="fa fa-linkedin"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-mx-12 col-md-4 col-sm-12 padding-top-50">
-                    <h6>about us</h6>
+
+                    <div class="col-mx-12 col-md-4 col-sm-12 padding-top-50">
                         <div class="news-letter">
-                            <li style="color: #fff;font-size: 16px;text-transform: uppercase;font-weight: normal;">{{$footers->aboutUs}}</li>
+                            <h6>Follow us</h6>
+                            <ul class="social_icons pull-left margin-left-50 margin-top-10">
+                                <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                                <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-mx-12 col-md-4 col-sm-12 padding-top-50">
+                        <h6>about us</h6>
+                        <div class="news-letter">
+                            <li style="color: #fff;font-size: 16px;text-transform: uppercase;font-weight: normal;"></li>
                         </div>
 
-                </div>
-                <div class="footer-info col-mx-12 col-md-4 col-sm-12">
-                    <h6>contact us</h6>
-                    <ul class="personal-info">
-                        <li><i class="fa fa-map-marker"></i>{{$footers->location}}</li>
-                        <li><i class="fa fa-envelope"></i>{{$footers->email}}</li>
-                        <li><i class="fa fa-phone"></i>{{$footers->phone}}</li>
-                    </ul>
-                </div>
-                @endforeach
+                    </div>
+                    <div class="footer-info col-mx-12 col-md-4 col-sm-12">
+                        <h6>contact us</h6>
+                        <ul class="personal-info">
+                            <li><i class="fa fa-map-marker"></i></li>
+                            <li><i class="fa fa-envelope"></i></li>
+                            <li><i class="fa fa-phone"></i></li>
+                        </ul>
+                    </div>
+
             </div>
         </div>
         <!-- Rights -->
         <div class="rights">
             <div class="container">
-                <p>{{$footers->copyright}}</p>
+                <p></p>
             </div>
         </div>
     </footer>

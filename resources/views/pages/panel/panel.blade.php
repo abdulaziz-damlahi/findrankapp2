@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
+    <a class="SideBarName" hidden id="userid">{{ auth()->user()->id }}</a>
     @if (session('packetempty'))
         <div class="alert alert-danger">
             {{ session('packetempty') }}
