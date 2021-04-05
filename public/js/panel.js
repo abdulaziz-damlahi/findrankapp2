@@ -586,22 +586,17 @@ function differance2() {
                     var KeyWordRequestrank = response['data'][i3].attributes.rank
                     var KeyWordRequestcreatedAt = response['data'][i3].attributes.createdAt
                     var KeyWordRequestcreatedAt2 = KeyWordRequestcreatedAt.toString().slice(0, 10)
-                    console.log(KeyWordRequestKeywordId)
 
                     if (KeyWordRequestcreatedAt2 == today || KeyWordRequestcreatedAt2 == yesterday) {
 
                         if (KeyWordRequestcreatedAt2 == today) {
                             var KeyWordRequestranktoday = KeyWordRequestrank
-                            console.log(KeyWordRequestranktoday, 'today')
-                            console.log('')
                         }
                         if (KeyWordRequestcreatedAt2 == yesterday) {
                             var KeyWordRequestrankyesterday = KeyWordRequestrank
-                            console.log(KeyWordRequestrankyesterday, 'yesterday')
-                            console.log('')
                         }
                         if (KeyWordRequestranktoday != null && KeyWordRequestrankyesterday != null) {
-                            compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday)
+                            compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRequestKeywordId)
                         }
 
                     }
@@ -614,23 +609,64 @@ function differance2() {
     })
 }
 
-function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday) {
+function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRequestKeywordId) {
     equal = 0;
     plus = 0;
     minus = 0;
+
+    var KeyWordRequestKeywordIdYedek = KeyWordRequestKeywordId
+   toString(KeyWordRequestKeywordIdYedek)
+    console.log(KeyWordRequestKeywordIdYedek,'  console.log(KeyWordRequestKeywordId)')
+    //diffrance = 1 -> minus , diffrance = 2 -> equal , diffrance = 3 -> plus
+    var different = 0;
+    if (KeyWordRequestranktoday < KeyWordRequestrankyesterday) {
+        minus = minus + 1
+        different = 1
+
+    }
     if (KeyWordRequestranktoday == KeyWordRequestrankyesterday) {
         equal = equal + 1;
+        different = 2
 
     }
     if (KeyWordRequestranktoday > KeyWordRequestrankyesterday) {
         plus = plus + 1
+        different = 3
 
     }
-    if (KeyWordRequestranktoday < KeyWordRequestrankyesterday) {
-        minus = minus + 1
+
+    console.log('')
+    console.log('keyword id', KeyWordRequestKeywordId)
+
+    if (different == 1) {
+        console.log('minus')
     }
-    console.log(minus, 'minus')
-    console.log(plus, 'plus')
-    console.log(equal, 'equal')
+    if (different == 2) {
+        console.log('equal')
+    }
+    if (different == 3) {
+        console.log('plus')
+    }
+
+    //  update diffrance ajax
+    $.ajax({
+        url: "/api/v1/Keywords/" + KeyWordRequestKeywordId,
+        type: "PATCH",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+        data: JSON.stringify({
+            "data":
+                {
+                    "type": "Keywords",
+                    "id": keywordid,
+                    "attributes": {
+                        "different":different
+                    }
+                }
+        }),
+
+    });
 }
 

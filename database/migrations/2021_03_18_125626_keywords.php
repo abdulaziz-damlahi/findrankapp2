@@ -22,6 +22,7 @@ class Keywords extends Migration
                 $table->string('name');
                 $table->string('device');
                 $table->string('country');
+                $table->integer('different');
                 $table->string('language');
                 $table->string('city');
                 $table->integer('rank');

@@ -15,6 +15,7 @@ class keywords extends Model
         'name',
         'date',
         'rank',
+        'different',
         'website_id',
         'user_keyword_id',
     ];
