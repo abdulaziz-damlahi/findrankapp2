@@ -6,7 +6,7 @@ $(document).ready(function () {
     StatisticsPage(pageNumber);
     Statistics();
     get();
-    appendDifferent();
+    // appendDifferent();
 })
 $(document).ready(function () {
     //today
@@ -149,7 +149,6 @@ $(document).ready(function () {
 let equal = 0;
 let plus = 0;
 let minus = 0;
-
 
 function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRequestKeywordId) {
     equal = 0;
@@ -599,7 +598,7 @@ function Statistics() {
 let minusappend
 let equalappend
 let plusappend
-function appendDifferent() {
+$(document).ready(function () {
 
 
     $.ajax({
@@ -668,5 +667,5 @@ function appendDifferent() {
         }
     });
 
-}
+})
 
