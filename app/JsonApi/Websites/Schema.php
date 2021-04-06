@@ -33,15 +33,16 @@ class Schema extends SchemaProvider
     public function getAttributes($resource)
     {
         return [
-
             'createdAt' => $resource->created_at,
-
             'updatedAt' => $resource->updated_at,
             'createdAt' => $resource->created_at,
             'user_id' => $resource->user_id,
             'website_name'=> $resource->website_name,
             'wordcount'=> $resource->wordcount,
             'user_id'=> $resource->user_id,
+            'down'=> $resource->down,
+            'equal'=> $resource->equal,
+            'up'=> $resource->up,
 
 
         ];

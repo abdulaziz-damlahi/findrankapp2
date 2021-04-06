@@ -1,25 +1,216 @@
 $(document).ready(function () {
     var pageNumber = 1;
+    // differance();
     getcount();
-    Statistics2(pageNumber);
+    chart();
+    StatisticsPage(pageNumber);
     Statistics();
     get();
-    // differance();
-    differance2();
+    appendDifferent();
 })
+$(document).ready(function () {
+    //today
+    var today = new Date();
+    today.setDate(today.getDate() + 30);
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth()).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    //yesterday
+    var yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() + 29);
+    var dd = String(yesterday.getDate()).padStart(2, '0');
+    var mm = String(yesterday.getMonth()).padStart(2, '0');
+    var yyyy = yesterday.getFullYear();
+    yesterday = yyyy + '-' + mm + '-' + dd;
+
+    $.ajax({
+        type: 'get',
+        url: "/api/v1/keywordsRequests",
+        success: function (response) {
+            //len keyword requests
+            var len3 = 0;
+            if (response['data'] != null) {
+                len3 = response['data'].length;
+            }
+            if (len3 > 0) {
+                for (var i3 = 0; i3 < len3; i3++) {
+                    //today
+                    var KeyWordRequestKeywordId = response['data'][i3].attributes.keyword_id
+                    var KeyWordRequestrank = response['data'][i3].attributes.rank
+                    var KeyWordRequestcreatedAt = response['data'][i3].attributes.createdAt
+                    var KeyWordRequestcreatedAt2 = KeyWordRequestcreatedAt.toString().slice(0, 10)
+
+                    if (KeyWordRequestcreatedAt2 == today || KeyWordRequestcreatedAt2 == yesterday) {
+
+                        if (KeyWordRequestcreatedAt2 == today) {
+                            var KeyWordRequestranktoday = KeyWordRequestrank
+                        }
+                        if (KeyWordRequestcreatedAt2 == yesterday) {
+                            var KeyWordRequestrankyesterday = KeyWordRequestrank
+                        }
+                        if (KeyWordRequestranktoday != null && KeyWordRequestrankyesterday != null) {
+                            compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRequestKeywordId)
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+    })
+})
+
+ function chart() {
+    $.ajax({
+        type: 'get',
+        url: "/api/v1/Keywords/?include=website",
+        success: function (response) {
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+
+            var les3 = 0;
+            var les10 = 0;
+            var les100 = 0;
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var id = response['data'][i].id
+                    var rank = response['data'][i].attributes.rank
+                    var word = response['data'][i].attributes.name
+                    if (rank > 0 && rank <= 3) {
+                        les3 = les3 + 1;
+                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
+                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+                            "<td id=\"rank\">  " + rank + "</td>" +
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
+                        $('#ilk3table').append(str);
+                    }
+                    if (rank > 3 && rank <= 10) {
+                        les10 = les10 + 1;
+                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
+                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+                            "<td id=\"rank\">  " + rank + "</td>" +
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
+                        $('#ilk10table').append(str);
+
+                    }
+                    if (rank > 10 && rank <= 100) {
+                        les100 = les100 + 1;
+                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
+                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+                            "<td id=\"rank\">  " + rank + "</td>" +
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
+                        $('#ilk100table').append(str);
+                    }
+                }
+                $('#ilk3').append(les3);
+                $('#ilk10').append(les10);
+                $('#ilk100').append(les100);
+            }
+            CanvasJS.addColorSet("customColorSet1",
+                ["#fd9644", "#6495ed", "#fc5c65"]);
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                colorSet: "customColorSet1",
+                data: [
+                    {
+                        colorSet: "customColorSet1",
+                        //startAngle: 45,
+                        indexLabelFontSize: 20,
+                        indexLabelFontFamily: "Garamond",
+                        indexLabelFontColor: "orange",
+                        indexLabelLineColor: "darkgrey",
+                        indexLabelPlacement: "outside",
+                        type: "doughnut",
+                        startAngle: 60,
+                        //innerRadius: 60,
+                        indexLabelFontSize: 17,
+                        indexLabel: "{label} - #percent%",
+                        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                        dataPoints: [
+                            { y: les3, label: "les than 3", },
+                            { y: les10, label: "les than 10" },
+                            { y: les100, label: "les than 100" },
+                        ]
+                    }]
+            });
+            chart.render();
+        }
+
+    });
+
+}
+
+let equal = 0;
+let plus = 0;
+let minus = 0;
+
+
+function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRequestKeywordId) {
+    equal = 0;
+    plus = 0;
+    minus = 0;
+
+    var KeyWordRequestKeywordIdYedek = KeyWordRequestKeywordId
+    var keywordid = String(KeyWordRequestKeywordIdYedek)
+    //diffrance = 1 -> minus , diffrance = 2 -> equal , diffrance = 3 -> plus
+    var different = 0;
+    if (KeyWordRequestranktoday < KeyWordRequestrankyesterday) {
+        minus = minus + 1
+        different = 1
+
+    }
+    if (KeyWordRequestranktoday == KeyWordRequestrankyesterday) {
+        equal = equal + 1;
+        different = 2
+
+    }
+    if (KeyWordRequestranktoday > KeyWordRequestrankyesterday) {
+        plus = plus + 1
+        different = 3
+
+    }
+
+    //  update diffrance ajax
+    $.ajax({
+        url: "/api/v1/Keywords/" + KeyWordRequestKeywordId,
+        type: "PATCH",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+        data: JSON.stringify({
+            "data":
+                {
+                    "type": "Keywords",
+                    "id": keywordid,
+                    "attributes": {
+                        "different": different
+                    }
+                }
+        }),
+
+    });
+}
+
 $("#nextPageButton").click(function () {
     pageNumber = currentPage2;
     pageNumber = pageNumber + 1;
-    Statistics2(pageNumber);
+    StatisticsPage(pageNumber);
 });
 
 $("#prevPageButton").click(function () {
     pageNumber = currentPage2;
     pageNumber = pageNumber - 1;
-    Statistics2(pageNumber);
+    StatisticsPage(pageNumber);
 });
 
-function Statistics2(pageNumber) {
+function StatisticsPage(pageNumber) {
     $.ajax({
         type: 'get',
         url: "/api/v1/Keywords/?include=website&page[number]=" + pageNumber + "&page[size]=10",
@@ -142,7 +333,7 @@ function Statistics2(pageNumber) {
 
             $(".pagination-buttons").click(function () {
                 pageNumber = $(this).data('id');
-                Statistics2(pageNumber);
+                StatisticsPage(pageNumber);
             });
             //convert date start here
             var CurrentData = response['data'];
@@ -189,89 +380,6 @@ window.addEventListener('load', (event) => {
         }
     }
 });
-
-window.onload = function () {
-    $.ajax({
-        type: 'get',
-        url: "/api/v1/Keywords/?include=website",
-        success: function (response) {
-            var len = 0;
-            if (response['data'] != null) {
-                len = response['data'].length;
-            }
-
-            var les3 = 0;
-            var les10 = 0;
-            var les100 = 0;
-            if (len > 0) {
-                for (var i = 0; i < len; i++) {
-                    var id = response['data'][i].id
-                    var rank = response['data'][i].attributes.rank
-                    var word = response['data'][i].attributes.name
-                    if (rank > 0 && rank <= 3) {
-                        les3 = les3 + 1;
-                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
-                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
-                            "<td id=\"rank\">  " + rank + "</td>" +
-                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
-                        $('#ilk3table').append(str);
-                    }
-                    if (rank > 3 && rank <= 10) {
-                        les10 = les10 + 1;
-                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
-                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
-                            "<td id=\"rank\">  " + rank + "</td>" +
-                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
-                        $('#ilk10table').append(str);
-
-                    }
-                    if (rank > 10 && rank <= 100) {
-                        les100 = les100 + 1;
-                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
-                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
-                            "<td id=\"rank\">  " + rank + "</td>" +
-                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
-                        $('#ilk100table').append(str);
-                    }
-                }
-                $('#ilk3').append(les3);
-                $('#ilk10').append(les10);
-                $('#ilk100').append(les100);
-            }
-            CanvasJS.addColorSet("customColorSet1",
-                ["#fd9644", "#6495ed", "#fc5c65"]);
-
-            var chart = new CanvasJS.Chart("chartContainer", {
-                animationEnabled: true,
-                colorSet: "customColorSet1",
-                data: [
-                    {
-                        colorSet: "customColorSet1",
-                        //startAngle: 45,
-                        indexLabelFontSize: 20,
-                        indexLabelFontFamily: "Garamond",
-                        indexLabelFontColor: "orange",
-                        indexLabelLineColor: "darkgrey",
-                        indexLabelPlacement: "outside",
-                        type: "doughnut",
-                        startAngle: 60,
-                        //innerRadius: 60,
-                        indexLabelFontSize: 17,
-                        indexLabel: "{label} - #percent%",
-                        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
-                        dataPoints: [
-                            { y: les3, label: "les than 3", },
-                            { y: les10, label: "les than 10" },
-                            { y: les100, label: "les than 100" },
-                        ]
-                    }]
-            });
-            chart.render();
-        }
-
-    });
-
-}
 
 //ilk 3 js
 window.addEventListener('load', (event) => {
@@ -391,13 +499,19 @@ function get() {
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
                     var websitename = response['data'][i].attributes.website_name
+                    var down = response['data'][i].attributes.down
+                    var equal = response['data'][i].attributes.equal
+                    var up = response['data'][i].attributes.up
                     var wordcount = response['data'][i].attributes.wordcount
                     var websiteid = response['data'][i].id
                     var idweb = 'webid' + websiteid;
                     var idiff = 'idiff' + websiteid;
-                    var str = "<tr> <th id='" + idweb + "' class='hidden' >" + websiteid + "</th> <th scope='col'><a href=website/" + websiteid + ">" +
+                    var str = "<tr> <th id='" + idweb + "' class='hidden' style='font-size: 15px'>" + websiteid + "</th> <th scope='col'><a href=website/" + websiteid + ">" +
                         "<div id='colmun1'></div>" + websitename + "</a></th>" +
-                        "<td class='hidden-xs' scope='col' id='" + idiff + "'>t</td>" +
+                        "<td style='font-size: 15px' class='hidden-xs' scope='col' id='" + idiff + "'>" +
+                        "<i class=\"fa fa-chevron-circle-up text-success\"> " + up + " </i>" +
+                        "<i class=\"fa fa-circle \"> " + equal + " </i>" +
+                        "<i class=\"fa fa-chevron-circle-down text-danger\"> " + down + " </i></td>" +
                         "<td  +scope='col' >" + wordcount + "</td>" +
                         "<td scope='col'><a id='randomm'href=deletewebsite/" + websiteid + " class='fa fa-trash text-danger'></a></td></tr>";
                     $('#followedWebsites').append(str);
@@ -482,191 +596,77 @@ function Statistics() {
     })
 }
 
-// user_id=$('#userid').innerHTML;
-// $.ajax({
-//     url: "/api/v1/Packets",
-//     type: "POST",
-//     headers: {
-//         "Content-Type": "application/vnd.api+json",
-//         Accept: "application/vnd.api+json",
-//     },
-//     data: JSON.stringify({
-//         "data": {
-//             "type": "Packets",
-//             "attributes": {
-//                 "user_id": user_id,
-//                 "count_of_words": 0,
-//                 "descrpitions": "sada",
-//                 "end_of_pocket": gdate,
-//                 "max_count_of_words": hidden_word_count,
-//                 "rank_follow": 0,
-//                 "rank_follow_max": rank_follow,
-//                 "count_of_websites": 0,
-//                 "max_count_of_websites": hidden_websites_count,
-//                 "packet_names": başlangic,
-//             }
-//         }
-//     }),
-//     success: function (result) {
-//         console.log('işlem başarılı')
-//     }
-// });
-let equal = 0;
-let plus = 0;
-let minus = 0;
+let minusappend
+let equalappend
+let plusappend
+function appendDifferent() {
 
-// function differance() {
-//
-//     $.ajax({
-//         type: 'get',
-//         url: "/api/v1/Keywords/?include=website",
-//         success: function (response) {
-//             //len websites
-//             var len1 = 0;
-//             if (response['included'] != null) {
-//                 len1 = response['included'].length;
-//             }
-//             //len keyword
-//             var len2 = 0;
-//             if (response['data'] != null) {
-//                 len2 = response['data'].length;
-//             }
-//
-//             if (len1 > 0) {
-//                 for (var i1 = 0; i1 < len1; i1++) {
-//                     var websiteid = response['included'][i1].id
-//                     var websitename = response['included'][i1].attributes.website_name
-//                     console.log(websitename)
-//                     var idiff = 'idiff' + websiteid;
-//                     for (var i2 = 0; i2 < len2; i2++) {
-//
-//                         var keywordwebsiteid = response['data'][i2].attributes.website_id
-//                         var keywordid = response['data'][i2].id
-//                         var keywordwebsitename = response['data'][i2].attributes.name
-//                         if (websiteid == keywordwebsiteid) {
-//                             console.log(keywordid, keywordwebsitename)
-//                         }
-//                     }
-//                 }
-//             }
-//         }
-//     });
-//
-// }
-
-function differance2() {
-    //today
-    var today = new Date();
-    today.setDate(today.getDate() + 30);
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth()).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    today = yyyy + '-' + mm + '-' + dd;
-    //yesterday
-    var yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() + 29);
-    var dd = String(yesterday.getDate()).padStart(2, '0');
-    var mm = String(yesterday.getMonth()).padStart(2, '0');
-    var yyyy = yesterday.getFullYear();
-    yesterday = yyyy + '-' + mm + '-' + dd;
 
     $.ajax({
         type: 'get',
-        url: "/api/v1/keywordsRequests",
+        url: "/api/v1/Keywords/?include=website",
         success: function (response) {
-            //len keyword requests
-            var len3 = 0;
+            //len websites
+
+            var len1 = 0;
+            if (response['included'] != null) {
+                len1 = response['included'].length;
+            }
+            //len keyword
+            var len2 = 0;
             if (response['data'] != null) {
-                len3 = response['data'].length;
+                len2 = response['data'].length;
             }
-            if (len3 > 0) {
-                for (var i3 = 0; i3 < len3; i3++) {
-                    //today
-                    var KeyWordRequestKeywordId = response['data'][i3].attributes.keyword_id
-                    var KeyWordRequestrank = response['data'][i3].attributes.rank
-                    var KeyWordRequestcreatedAt = response['data'][i3].attributes.createdAt
-                    var KeyWordRequestcreatedAt2 = KeyWordRequestcreatedAt.toString().slice(0, 10)
 
-                    if (KeyWordRequestcreatedAt2 == today || KeyWordRequestcreatedAt2 == yesterday) {
+            if (len1 > 0) {
+                for (var i1 = 0; i1 < len1; i1++) {
+                    minusappend = 0
+                    equalappend = 0
+                    plusappend = 0
+                    var wordcount2 = 0;
+                    var websiteid = response['included'][i1].id
+                    var website_name = response['included'][i1].attributes.website_name;
+                    for (var i2 = 0; i2 < len2; i2++) {
+                        var keywordwebsiteid = response['data'][i2].attributes.website_id
+                        var keyworddifferent = response['data'][i2].attributes.different
+                        if (websiteid == keywordwebsiteid) {
+                            if (keyworddifferent == 1) {
+                                minusappend =minusappend + 1
+                            }
+                            if (keyworddifferent == 2) {
+                                equalappend =  equalappend + 1
+                            }
+                            if (keyworddifferent == 3) {
+                                plusappend = plusappend + 1
+                            }
+                            $.ajax({
+                                url: "/api/v1/Websites/" + keywordwebsiteid,
+                                type: "PATCH",
+                                headers: {
+                                    "Content-Type": "application/vnd.api+json",
+                                    Accept: "application/vnd.api+json",
+                                },
+                                data: JSON.stringify({
+                                    "data": {
+                                        "type": "Websites",
+                                        'id': websiteid,
+                                        "attributes": {
+                                            "down": minusappend,
+                                            "equal": equalappend,
+                                            "up": plusappend,
+                                        }
+                                    }
+                                }),
 
-                        if (KeyWordRequestcreatedAt2 == today) {
-                            var KeyWordRequestranktoday = KeyWordRequestrank
+                            });
                         }
-                        if (KeyWordRequestcreatedAt2 == yesterday) {
-                            var KeyWordRequestrankyesterday = KeyWordRequestrank
-                        }
-                        if (KeyWordRequestranktoday != null && KeyWordRequestrankyesterday != null) {
-                            compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRequestKeywordId)
-                        }
-
                     }
 
+
                 }
-
             }
-
         }
-    })
-}
-
-function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRequestKeywordId) {
-    equal = 0;
-    plus = 0;
-    minus = 0;
-
-    var KeyWordRequestKeywordIdYedek = KeyWordRequestKeywordId
-   toString(KeyWordRequestKeywordIdYedek)
-    console.log(KeyWordRequestKeywordIdYedek,'  console.log(KeyWordRequestKeywordId)')
-    //diffrance = 1 -> minus , diffrance = 2 -> equal , diffrance = 3 -> plus
-    var different = 0;
-    if (KeyWordRequestranktoday < KeyWordRequestrankyesterday) {
-        minus = minus + 1
-        different = 1
-
-    }
-    if (KeyWordRequestranktoday == KeyWordRequestrankyesterday) {
-        equal = equal + 1;
-        different = 2
-
-    }
-    if (KeyWordRequestranktoday > KeyWordRequestrankyesterday) {
-        plus = plus + 1
-        different = 3
-
-    }
-
-    console.log('')
-    console.log('keyword id', KeyWordRequestKeywordId)
-
-    if (different == 1) {
-        console.log('minus')
-    }
-    if (different == 2) {
-        console.log('equal')
-    }
-    if (different == 3) {
-        console.log('plus')
-    }
-
-    //  update diffrance ajax
-    $.ajax({
-        url: "/api/v1/Keywords/" + KeyWordRequestKeywordId,
-        type: "PATCH",
-        headers: {
-            "Content-Type": "application/vnd.api+json",
-            Accept: "application/vnd.api+json",
-        },
-        data: JSON.stringify({
-            "data":
-                {
-                    "type": "Keywords",
-                    "id": keywordid,
-                    "attributes": {
-                        "different":different
-                    }
-                }
-        }),
-
     });
+
 }
 
