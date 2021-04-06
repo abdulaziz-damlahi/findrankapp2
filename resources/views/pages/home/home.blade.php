@@ -44,8 +44,7 @@
                          data-endspeed="300"
                          data-captionhidden="on"
                          style="color: #ffffff;    text-shadow: 2px 2px 8px #000000;font-size: 48px; font-weight: normal; letter-spacing:0px; line-height:55px;">
-                        Search Engine Results Pages Solutions <br>
-                        Fast and Affortable
+                       {{__('home.Search Engine Results Pages Solutions')}}<br>
                     </div>
                     <!-- Layer -->
                     <div class="tp-caption sfb tp-resizeme"
@@ -62,9 +61,7 @@
                          data-endspeed="300"
                          data-captionhidden="on"
                          style="color: #fff;  text-shadow:   2px 2px 8px #000000;font-size: 30px; font-weight: normal; line-height:36px;">
-                        DO You Want To See <br> your Daily Search Results<br> to your
-                        website.
-                    </div>
+                        {{__('home.DO You Want To See')}} <br>   {{__('home.your Daily Search Results')}} <br>{{__('home.to your website.')}}</div>
                     <!-- Layer -->
                     <div class="tp-caption sfb tp-resizeme font-crimson"
                          data-x="left" data-hoffset="40"
@@ -80,8 +77,7 @@ ationZ:0;scaleX:0;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;tr
                          data-endelementdelay="0.1"
                          data-endspeed="300"
                          data-captionhidden="on"
-                         style=""><a href="#packetsss" id="button_down" class="btn btn-white margin-left-20">Services
-                            Packages</a></div>
+                         style=""><a href="#packetsss" id="button_down" class="btn btn-white margin-left-20">{{__('home.Services Packages')}}</a></div>
                 </li>
                 <!-- Slider 1 -->
                 <li data-transition="fade" data-slotamount="7"><img src="images/slides/slide-bg-2.jpg"
@@ -116,8 +112,7 @@ ationZ:0;scaleX:0;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;tr
                          data-endspeed="300"
                          data-captionhidden="on"
                          style="color: #fff; font-size: 48px; text-shadow:   2px 2px 8px #000000;font-weight: normal; letter-spacing:0px; line-height:55px;">
-                        Lets Show Your Website <br>
-                        Rank
+                      {{__('home.Lets Show Your Website')}}<br> {{__('home.Rank')}}
                     </div>
                     <!-- Layer -->
                     <div class="tp-caption sfb tp-resizeme"
@@ -134,10 +129,7 @@ ationZ:0;scaleX:0;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;tr
                          data-endspeed="300"
                          data-captionhidden="on"
                          style="color: #fff; font-size: 30px; text-shadow:   2px 2px 8px #000000; font-weight: normal; line-height:36px;">
-                        Do you want to
-                        See the online Rank <br> your brand and drive more relevant traffic <br> to your
-                        website.
-                    </div>
+                        {{__('home.Do you want to See the online Rank')}} <br>{{__('home.your brand and drive more relevant traffic')}}  <br>{{__('home.to your website.')}}</div>
                     <!-- Layer -->
                     <div class="tp-captio
 n sfb tp-resizeme font-crimson"
@@ -167,24 +159,24 @@ n sfb tp-resizeme font-crimson"
         <div class="container">
             <!-- Tittle -->
             <div class="heading-block text-center margin-bottom-80">
-                <h2>Welcome To SEO Solution</h2>
-                <span>Do you want to Find Out Your Websites Rank ?</span>
+                <h2>{{__('home.Welcome To SEO Solution')}}</h2>
+                <span>{{__('home.Do you want to Find Out Your Websites Rank ?')}}</span>
             </div>
             <ul class="row text-center">
                 <!-- Web Analytics -->
                 <li class="col-md-4"><img src="images/icon-1.png" alt="">
-                    <h6>Web Analytics</h6>
-                    <p>Daily Search For Your Added Word In Google Search Engine.</p>
+                    <h6>{{__('home.Web Analytics')}}</h6>
+                    <p>{{__('home.Daily Search For Your Added Word In Google Search Engine.')}}</p>
                 </li>
                 <!-- Keyword Targeting -->
                 <li class="col-md-4"><img src="images/icon-2.png" alt="">
-                    <h6>Keyword Targeting</h6>
-                    <p>precise Search Results For Your Added Websites and words.</p>
+                    <h6>{{__('home.Keyword Targeting')}}</h6>
+                    <p>{{__('home.precise Search Results For Your Added Websites and words.')}}</p>
                 </li>
                 <!-- Technical Service -->
                 <li class="col-md-4"><img src="images/icon-3.png" alt="">
-                    <h6>Technical Service</h6>
-                    <p>GET In Touch Thro Contact Us Page.</p>
+                    <h6>{{__('home.Technical Service')}}</h6>
+                    <p>{{__('home.GET In Touch Thro Contact Us Page.')}}</p>
                 </li>
             </ul>
         </div>
@@ -197,26 +189,23 @@ n sfb tp-resizeme font-crimson"
                 <div class="col-md-6">
                     <!-- Tittle -->
                     <div class="heading-block text-left margin-bottom-20">
-                        <h2>Your Websites Rank Will Be Saved Automatically To Your Panel</h2>
-                        <p>Monitor keyword rankings daily to strategise and forecast your digital marketing efforts.
-                            Track hundreds of keywords and manage valuable keyterms with easy-to-edit labels.
-                            analysis Rankings also allows you to keep an eye on the with for comparison with your own
-                            keyword performance.</p>
+                        <h2>{{__('home.Your Websites Rank Will Be Saved Automatically To Your Panel')}}</h2>
+                        <p>{{__('home.Monitor keyword rankings')}}</p>
                     </div>
                     <!-- List Style -->
                     <ul class="list-style">
                         <li>
-                            <p><img src="images/list-icon-1.png" alt=""> We deliver Daily Rankings. </p>
+                            <p><img src="images/list-icon-1.png" alt="">{{__('home. We deliver Daily Rankings.')}} </p>
                         </li>
                         <li>
-                            <p><img src="images/list-icon-2.png" alt=""> High customer retention rate. </p>
+                            <p><img src="images/list-icon-2.png" alt="">{{__('home.High customer retention rate.')}}  </p>
                         </li>
                         <li>
-                            <p><img src="images/list-icon-3.png" alt=""> We always return e-mails and calls within one
+                            <p><img src="images/list-icon-3.png" alt="">{{__('home.Afordable pricing offers.')}}
                                 business day. </p>
                         </li>
                         <li>
-                            <p><img src="images/list-icon-4.png" alt=""> Afordable pricing offers. </p>
+                            <p><img src="images/list-icon-4.png" alt=""> {{__('home.We always return e-mails and calls within one')}} </p>
                         </li>
                     </ul>
                 </div>
@@ -228,7 +217,7 @@ n sfb tp-resizeme font-crimson"
         <div class="container">
             <!-- Tittle -->
             <div class="heading-block text-center margin-bottom-80">
-                <h2>Affordable SEO Services Packages </h2>
+                <h2>{{__('home.Affordable SEO Services Packages')}}</h2>
                 <div class="row">
                     <!-- Price -->
                     <div class="col-md-4">
@@ -299,26 +288,26 @@ n sfb tp-resizeme font-crimson"
         <div class="container">
             <!-- Tittle -->
             <div class="heading-block text-center margin-bottom-80">
-                <h2>Our Work Flow </h2>
+                <h2>{{__('home.Our Work Flow')}} </h2>
                 <span
-                    class="intro-style">Do you want to Know How Your Websites Are Appearing On The Search Engine? </span>
+                    class="intro-style">{{__('home.Do you want to')}}</span>
             </div>
             <div class="c"><img src="images/work-folow-img.jpg" style="padding-left: 120px" alt=" "></div>
             <ul class="row padding-left-50 padding-right-50" style=" text-align:center;">
                 <li class="col-sm-4">
                     <div class="icon"><img src="images/flow-icon-1.png" alt=""></div>
-                    <h6>Adding</h6>
-                    <p> Adding Your own Webites To Your Panel.</p>
+                    <h6>{{__('home.adding')}}</h6>
+                    <p>{{__('home.Adding Your own Webites To Your Panel.')}} </p>
                 </li>
                 <li class="col-sm-4">
                     <div class="icon"><img src="images/flow-icon-3.png" alt=""></div>
-                    <h6>Scrapping</h6>
-                    <p>  Our Unique Function Will Scrap Your Data Daily
+                    <h6>{{__('home.Scrapping')}}</h6>
+                    <p> {{__('home.Our Unique Function Will Scrap Your Data Daily')}}
                 </li>
                 <li class="col-sm-3">
                     <div class="icon"><img src="images/flow-icon-4.png" alt=""></div>
-                    <h6>Target</h6>
-                    <div style="justify-content: center;"> <p>  Targeting Your Websites And Keywords Rank Precisely</p></div>
+                    <h6>{{__('home.Target')}}</h6>
+                    <div style="justify-content: center;"> <p>{{__('home.Targeting Your Websites And Keywords Rank Precisely')}}  </p></div>
                 </li>
             </ul>
         </div>

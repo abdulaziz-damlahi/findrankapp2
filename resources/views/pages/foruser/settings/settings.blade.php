@@ -6,13 +6,13 @@
             <div class="menuy col-md-12">
                 <ul class="nav nav-tabs nav-justified nav-dark push-20" data-toggle="tabs">
                     <li class="setting_button active" id="button_first">
-                        <a class="setting_but"  href="#tab-profile-personal"><i class="si si-user push-5-r"></i><span class="hidden-xs">Kişisel Ayarlar</span></a>
+                        <a class="setting_but"  href="#tab-profile-personal"><i class="si si-user push-5-r"></i><span class="hidden-xs">{{__('pages.Personal Settings')}}</span></a>
                     </li>
                     <li class="setting_button" id="button_second">
-                        <a class="setting_but"  href="#tab-profile-password"><i class="setting_but si si-lock push-5-r"></i><span class="hidden-xs">Şifre İşlemleri</span></a>
+                        <a class="setting_but"  href="#tab-profile-password"><i class="setting_but si si-lock push-5-r"></i><span class="hidden-xs">{{__('pages.Password Settings')}}</span></a>
                     </li>
                     <li class="setting_button" id="button_third">
-                        <a class="setting_but"  href="#customize"><i class="setting_but si si-wrench push-5-r"></i><span class="hidden-xs">Özelleştirme</span></a>
+                        <a class="setting_but"  href="#customize"><i class="setting_but si si-wrench push-5-r"></i><span class="hidden-xs">{{__('pages.Customize')}}</span></a>
                     </li>
                 </ul>
                 @if($errors->any())
@@ -39,13 +39,13 @@
                 <form class="password_process" method="post" enctype="multipart/form-data" action="{{route('set.post')}}">
                 @csrf
                 <label class="col-md-6">
-                    <p class="label-txt">FIRST NAME</p>
+                    <p class="label-txt">{{__('pages.name')}}</p>
                     <input type="text" name="first_name" value="{{$user_first_name}}" class="input">
                     <div class="line-box">
                         <div class="line"></div>
                     </div>
                 </label>   <label class="col-md-6">
-                    <p class="label-txt">LAST NAME</p>
+                    <p class="label-txt">{{__('pages.Last Name')}}</p>
                     <input type="text"  name="last_name" value="{{$user_last_name}}" class="input">
                     <div class="line-box">
                         <div class="line"></div>

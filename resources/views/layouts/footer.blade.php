@@ -10,7 +10,7 @@
 
                     <div class="col-mx-12 col-md-4 col-sm-12 padding-top-50">
                         <div class="news-letter">
-                            <h6>Follow us</h6>
+                            <h6>{{__('footer.FOLLOW US')}}</h6>
                             <ul class="social_icons pull-left margin-left-50 margin-top-10">
                                 <li><a href=""><i class="fa fa-facebook"></i></a></li>
                                 <li><a href=""><i class="fa fa-twitter"></i></a></li>
@@ -19,18 +19,18 @@
                         </div>
                     </div>
                     <div class="col-mx-12 col-md-4 col-sm-12 padding-top-50">
-                        <h6>about us</h6>
+                        <h6>{{__('footer.about us')}}</h6>
                         <div class="news-letter">
                             <li style="color: #fff;font-size: 16px;text-transform: uppercase;font-weight: normal;"></li>
                         </div>
 
                     </div>
                     <div class="footer-info col-mx-12 col-md-4 col-sm-12">
-                        <h6>contact us</h6>
+                        <h6>{{__('footer.CONTACT US')}}</h6>
                         <ul class="personal-info">
-                            <li><i class="fa fa-map-marker"></i></li>
-                            <li><i class="fa fa-envelope"></i></li>
-                            <li><i class="fa fa-phone"></i></li>
+                            <li><i class="fa fa-map-marker"></i>Üniversite caddesi Özdiker korona D blok Kat:1 Daire:3 - Yenişehir (Çiftlikköy Mah.)</li>
+                            <li><i class="fa fa-envelope"></i>seo@outlook.com</li>
+                            <li><i class="fa fa-phone"></i>05349223582</li>
                         </ul>
                     </div>
 

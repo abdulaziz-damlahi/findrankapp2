@@ -14,12 +14,14 @@ use Illuminate\Routing\Controller;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class panel extends Controller
 {
     public function index()
     {
+        $this->location();
         $user = auth()->user();
         $userId = $user->id;
         $userwebsites8 = websites::where('user_id', '=', $userId)->orderByDesc('wordcount')->take(3)->get();
@@ -44,6 +46,7 @@ class panel extends Controller
 
     public function addwebsite(Request $request)
     {
+        $this->location();
         $user = auth()->user();
         $userId = $user->id;
         $maxwebsites = packets::where('user_id', '=', $userId)->get('max_count_of_websites');
@@ -71,6 +74,7 @@ class panel extends Controller
 
     public function addword(Request $request)
     {
+        $this->location();
         $user = auth()->user();
         $userId = $user->id;
         $maxwkeywords = packets::where('user_id', '=', $userId)->get('max_count_of_words');
@@ -123,13 +127,14 @@ class panel extends Controller
 
     public function deletewebsite($id)
     {
-
+        $this->location();
         DB::delete('delete from websites where id = ?', [$id]);
         return redirect('user/panel');
     }
 
     public function editkeyword($id)
     {
+        $this->location();
         $currentKeyword = keywords::findOrFail($id);
 
         return view('pages/websitelist/editkeyword', compact('currentKeyword'));
@@ -137,12 +142,13 @@ class panel extends Controller
 
     public function updatekeyword(Request $request, $id)
     {
-             $name=$request->name;
-        if ($name=== NULL){
+        $this->location();
+        $name = $request->name;
+        if ($name === NULL) {
             return redirect()->back()->with('notsuccess', 'please enter a word');
         }
-            keywords::where('id', '=', $id)->update([
-                'name' => $request->name,
+        keywords::where('id', '=', $id)->update([
+            'name' => $request->name,
             'country' => $request->country,
             'language' => $request->language,
             'device' => $request->device,
@@ -154,12 +160,13 @@ class panel extends Controller
 
     public function deletekeyword($id)
     {
+        $this->location();
         DB::delete('delete from keywords where id = ?', [$id]);
         return redirect()->back();
     }
 
     public function websitelist($websiteid)
-    {
+    {        $this->location();
         $user = auth()->user();
         $userId = $user->id;
         $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
@@ -173,7 +180,7 @@ class panel extends Controller
     }
 
     public function grafik($id)
-    {
+    {        $this->location();
         $keywordid = keywords::where('id', '=', $id)->get('id');
         $keywordidnum = (int)filter_var($keywordid, FILTER_SANITIZE_NUMBER_INT);
         if ($id != $keywordidnum) {
@@ -185,7 +192,7 @@ class panel extends Controller
 
     public function profile()
     {
-
+        $this->location();
         $user = auth()->user();
         $userId = $user->id;
 
@@ -199,12 +206,13 @@ class panel extends Controller
 
     public function FindOrder()
     {
-
+        $this->location();
         return view('pages/findorder');
     }
 
     public function findPost(Request $request)
     {
+        $this->location();
         $packets = packets::all();
         if (count($packets) > 0) {
             $id = $packets[0]->id;
@@ -504,35 +512,26 @@ class panel extends Controller
             }
         }
     }
-
-
-    public function userspacket()
+    public function location()
     {
-        $user = users::find(2);
-        $user->packets;
-        return $user;
-    }
-
-    public
-    function userswebsite()
-    {
-        $user = users::find(1);
-        $user->websites;
-        return $user;
-    }
-
-    public
-    function packetwebsite()
-    {
-        $packet = packets::find(1);
-        $packet->websites;
-        return $packet;
-    }
-
-    public function websitekeyword()
-    {
-        $website = websites::find(1);
-        $website->keywords;
-        $website;
+        $externalContent = file_get_contents('http://checkip.dyndns.com/');
+        preg_match('/Current IP Address: \[?([:.0-9a-fA-F]+)\]?/', $externalContent, $m);
+        $externalIp = $m[1];
+//        $americaIp = '78.180.10.189';
+        $geo = geoip()->getLocation($externalIp);
+        $localiton = $geo->iso_code;
+        if ($localiton === 'TR') {
+            $lang = 'tr';
+            App::setlocale($lang);
+        } else if ($localiton === 'US') {
+            $lang = 'en';
+            App::setlocale($lang);
+        } else if ($localiton === 'ES') {
+            $lang = 'es';
+            App::setlocale($lang);
+        } else if ($localiton === 'DE') {
+            $lang = 'de';
+            App::setlocale($lang);
+        }
     }
 }

@@ -13,6 +13,7 @@ use App\Http\Controllers\payment;
 class homepage extends Controller
 {
     public function index (Request $request){
+
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
         $clientIP = Request()->ip();
@@ -41,9 +42,12 @@ class homepage extends Controller
         $response = curl_exec($ch);
         $arr_result = json_decode($response);
         if($localiton==='TR'){
+
             $lang = 'tr';
             App::setlocale($lang);
+
             $locale = App::getLocale();
+            echo $locale;
             $money_value=$money;
             $money_value1=$money1;
             $money_value2=$money2;

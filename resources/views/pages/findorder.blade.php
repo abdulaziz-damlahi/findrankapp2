@@ -8,8 +8,8 @@
         <br class="container" style="padding-right: 500px; padding-left:500px; ">
         <!-- Tittle -->
         <div class="heading-block white-text text-center margin-bottom-50">
-            <h2 style="color: black">What’s Your Google Rank ?</h2>
-            <span style="color: black">See how well your page is optimised for your keyword</span></div>
+            <h2 style="color: black">{{__('pages.What’s Your Google Rank ?')}}</h2>
+            <span style="color: black">{{__('pages.See how well your page is optimised for your keyword')}}</span></div>
         <!-- Form -->
         <form method="post" action="{{route('findpost')}}">
             @csrf
@@ -31,8 +31,8 @@
                 <div class="btn-group col-md-3 ">
                     <div class="btn-group">
                         <select id="selectSecil" class="GoogleRank select">
-                            <option class="select">
-                                Ülke
+                            <option class="select" value="none" selected disabled hidden>
+                                {{__('pages.country')}}
                             </option>
                             <option class="select" value="TR">
                                 Türkiye
@@ -134,35 +134,41 @@
                 <div class="btn-group col-md-3 ">
                     <div class="btn-group">
                         <select id="language" class="select">
-                            <option class="select">
-                                dil
+                            <option class="select" value="none" selected disabled hidden>
+                                {{__('pages.language')}}
                             </option>
                             <option class="select">
-                                turkish
+                                {{__('pages.turkish')}}
                             </option>
                             <option class="select">
-                                english
+                                {{__('pages.english')}}
                             </option>
                             <option class="select">
-                                arabic
+                                {{__('pages.arabic')}}
                             </option>
                         </select>
                     </div>
                 </div>
                 <div class="btn-group col-md-3 ">
                     <div class="btn-group">
-                        <select id="cityy" class="select">
+                        <select id="cityy" class="select" >
+                            <option value="none" selected disabled hidden>
+                                {{__('pages.city')}}
+                            </option>
                         </select>
                     </div>
                 </div>
                 <div class="btn-group col-md-3 ">
                     <div class="btn-group">
                         <select id="device" class="select">
-                            <option >
-                                Mobil
+                            <option value="none" selected disabled hidden>
+                                {{__('pages.device')}}
                             </option>
                             <option >
-                                Masaüstü
+                                 {{__('pages.mobile')}}
+                            </option>
+                            <option >
+                                {{__('pages.desktop')}}
                             </option>
                         </select>
                     </div>
@@ -174,7 +180,7 @@
             <input hidden name="language_name" id="language_hidden" />
 
             <div id="check_now2" >
-                <button id="check_now"type="submit" class="btn btn-orange">Check Now !</button>
+                <button id="check_now"type="submit" class="btn btn-orange">   {{__('pages.Check Now !')}}</button>
             </div>
         </form>
         @isset($resultss)

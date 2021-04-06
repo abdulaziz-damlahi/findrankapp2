@@ -20,7 +20,7 @@
                                     <div style="background-color:#ff6c3a" class="card order-card">
                                         <div class="card-block">
                                             <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
-                                            <h class="m-b-20">Keywords Used {{ $userwebsite->wordcount }}</h>
+                                            <h class="m-b-20">{{__('panel.Keywords Used')}} {{ $userwebsite->wordcount }}</h>
                                             <h2 class="text-right"><i class="ti-shopping-cart f-left"
                                                                       style="text-shadow: 3px 3px 5px #0000!important; ;"></i><span></span>
                                             </h2>
@@ -38,7 +38,7 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="card whitebackground">
                                 <div class="card-header ">
-                                    <h5>Statistics</h5>
+                                    <h5>{{__('panel.Statistics')}}</h5>
                                     <br>
                                     <br>
                                     <table
@@ -46,10 +46,10 @@
                                         style="font-size: 13px">
                                         <thead>
                                         <tr>
-                                            <th scope="col">website</th>
-                                            <th scope="col">word</th>
-                                            <th scope="col">rank</th>
-                                            <th scope="col">grafik</th>
+                                            <th scope="col">{{__('panel.website')}}</th>
+                                            <th scope="col">{{__('panel.word')}}</th>
+                                            <th scope="col">{{__('panel.rank')}}</th>
+                                            <th scope="col">{{__('panel.graph')}}</th>
                                         </tr>
                                         </thead>
                                         <tbody id="row">
@@ -68,11 +68,11 @@
                                                     <br><br>
 
                                                     <button type="submit" class="btn btn-primary mcuLoadingButton"
-                                                            data-handler="confirm">Kaydet
+                                                            data-handler="confirm">{{__('panel.save')}}
                                                     </button>
                                                 </form>
                                                 <button id="close2" class="btn btn-default"
-                                                        data-dismiss="modal">Kapat
+                                                        data-dismiss="modal">{{__('panel.close')}}
                                                 </button>
                                             </div>
 
@@ -96,7 +96,7 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="card whitebackground">
                             <div class="card-header whitebackground">
-                                <h5>ANAHTAR KELİME POZİSYONLARI</h5>
+                                <h5>{{__('panel.positions')}}</h5>
                             </div>
                             <div class="card-block whitebackground">
                                 {{--popup ilk kilme--}}
@@ -104,16 +104,16 @@
                                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                                 <div class="col-md-12" style="font-size:15px; padding: 40px;">
                                         <span class="text-left"><button id="ilke3btn" class="ilkbtn"><i class="fa  fa-square push-5-r"
-                                                                                                        style=" color:#ff6c3a">  </i>İlk 3'de:<b
-                                                    id="ilk3">  </b> <b>kilme</b> </button> </span>
+                                                                                                        style=" color:#ff6c3a">  </i>{{__('panel.first')}} 3{{__('panel.de')}}:<b
+                                                    id="ilk3">  </b> <b>{{__('panel.word')}}</b> </button> </span>
                                     <span class="text-left"><button id="ilke10btn" class="ilkbtn"><i
                                                 class="fa  fa-square push-5-r"
-                                                style=" color:cornflowerblue">  </i>İlk 10'de: <b
-                                                id="ilk10">  </b> <b>kilme</b>  </button> </span>
+                                                style=" color:cornflowerblue">  </i>{{__('panel.first')}} 10{{__('panel.de')}}: <b
+                                                id="ilk10">  </b> <b>{{__('panel.word')}}</b>  </button> </span>
                                     <span class="text-left"><button id="ilke100btn" class="ilkbtn"><i
                                                 class="fa  fa-square push-5-r"
-                                                style=" color:#cb0000">  </i>İlk 100'de: <b
-                                                id="ilk100">  </b> <b>kilme</b> </button>  </span>
+                                                style=" color:#cb0000">  </i>{{__('panel.first')}} 100{{__('panel.de')}}: <b
+                                                id="ilk100">  </b> <b>{{__('panel.word')}}</b> </button>  </span>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                     <div class="col-lg-12 col-md-12">
                         <div class="card whitebackground">
                             <div class="card-header">
-                                <h5>TAKİP EDİLEN WEB SİTELERİ</h5>
+                                <h5>{{__('panel.Followed Websites')}}</h5>
                                 @if($errors->any())
                                     <div class="alert-danger" style="font-size: 15px;">
                                         {{$errors->first()}}
@@ -135,7 +135,7 @@
                                     <div class="push">
                                         <div class="btn-group">
                                             <button class="btns btn-default" type="button" id="addNewSite"><i
-                                                    class="fa fa-plus text-success"><span class="hidden-xs push-7-l">Site Ekle</span></i>
+                                                    class="fa fa-plus text-success"><span class="hidden-xs push-7-l">{{__('panel.Add Website')}}</span></i>
                                             </button>
 
                                         </div>
@@ -154,10 +154,10 @@
                                             @endif
                                             <thead>
                                             <tr>
-                                                <th scope="col">SİTELER</th>
-                                                <th class="hidden-xs" scope="col">GÜNLÜK DEĞİŞİM</th>
-                                                <th scope="col">KELİMELER</th>
-                                                <th class="hidden-xs" scope="col">delete</th>
+                                                <th scope="col">{{__('panel.Sites')}}</th>
+                                                <th class="hidden-xs" scope="col">{{__('panel.daily change')}}</th>
+                                                <th scope="col">{{__('panel.words count')}}</th>
+                                                <th class="hidden-xs" scope="col">{{__('panel.delete')}}</th>
                                             </tr>
                                             </thead>
                                             {{--   table body--}}
@@ -176,19 +176,15 @@
                                                         <br><br>
 
                                                         <button type="submit" class="btn btn-primary mcuLoadingButton"
-                                                                data-handler="confirm">Kaydet
+                                                                data-handler="confirm">{{__('panel.save')}}
                                                         </button>
                                                     </form>
                                                     <button id="close2" class="btn btn-default"
-                                                            data-dismiss="modal">Kapat
+                                                            data-dismiss="modal">{{__('panel.close')}}
                                                     </button>
                                                 </div>
 
                                             </div>
-                                            {{--<input hidden id="hidden_input">--}}
-                                            {{--<input hidden id="hidden_count">--}}
-
-
                                             </tbody>
                                             {{--  down table body--}}
                                         </table>
@@ -205,9 +201,9 @@
                                                         <thead>
                                                         <tr>
                                                             <th scope="col">#</th>
-                                                            <th scope="col">ANAHTAR KELİME</th>
-                                                            <th scope="col">sira</th>
-                                                            <th scope="col">grafik</th>
+                                                            <th scope="col">{{__('panel.keyword')}}</th>
+                                                            <th scope="col">{{__('panel.order')}}</th>
+                                                            <th scope="col">{{__('panel.graph')}}</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody id="ilk3table" class="list">
@@ -229,9 +225,9 @@
                                                         <thead>
                                                         <tr>
                                                             <th scope="col">#</th>
-                                                            <th scope="col">ANAHTAR KELİME</th>
-                                                            <th scope="col">sira</th>
-                                                            <th scope="col">grafik</th>
+                                                            <th scope="col">{{__('panel.keyword')}}</th>
+                                                            <th scope="col">{{__('panel.order')}}</th>
+                                                            <th scope="col">{{__('panel.graph')}}</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody id="ilk10table" class="list">
@@ -253,9 +249,9 @@
                                                         <thead>
                                                         <tr>
                                                             <th scope="col">#</th>
-                                                            <th scope="col">ANAHTAR KELİME</th>
-                                                            <th scope="col">sira</th>
-                                                            <th scope="col">grafik</th>
+                                                            <th scope="col">{{__('panel.keyword')}}</th>
+                                                            <th scope="col">{{__('panel.order')}}</th>
+                                                            <th scope="col">{{__('panel.graph')}}</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody id="ilk100table" class="list">
