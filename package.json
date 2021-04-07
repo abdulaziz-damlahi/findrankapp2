@@ -1,18 +1,32 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
+    "name": "findrankapp",
+    "version": "1.0.0",
+    "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\"></a></p>",
+    "main": "webpack.mix.js",
+    "directories": {
+        "test": "tests"
     },
-    "devDependencies": {
-        "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
-    }
+    "dependencies": {
+        "cross-env": "^7.0.3",
+        "isexe": "^2.0.0",
+        "path-key": "^3.1.1",
+        "shebang-regex": "^3.0.0",
+        "cross-spawn": "^7.0.3",
+        "shebang-command": "^2.0.0",
+        "which": "^2.0.2"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/abdulaziz-damlahi2/findRankApp.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/abdulaziz-damlahi2/findRankApp/issues"
+    },
+    "homepage": "https://gitlab.com/abdulaziz-damlahi2/findRankApp#readme"
 }
