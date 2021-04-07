@@ -10,7 +10,7 @@ return [
     'Login/Logout' => 'Giriş-yap/çıkış-Yap',
     'FIND-ORDER' => 'SIRA-BUL',
     'Logout' => 'Çıkış Yap',
-    'panel' => 'panel',
+    'panel' => 'pano',
     'CONTACT' => 'İLETİŞİM',
 ];
 ?>
