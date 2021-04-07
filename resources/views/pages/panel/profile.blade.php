@@ -16,27 +16,27 @@
                                                 <tbody>
                                                 <tr>
                                                     <td class="tableStyle">
-                                                        Paket:
+                                                        {{__('pages.packet')}}:
                                                     </td>
                                                     <td class="tableStyle">{{$packetdata->packet_names}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tableStyle">
-                                                        Başlangıç:
+                                                        {{__('pages.starts')}} :
                                                     </td>
                                                     <td class="tableStyle">{{$packetdata->created_at}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="tableStyle">
-                                                        Bitiş:
+                                                        {{__('pages.ends')}}:
                                                     </td>
                                                     <td class="tableStyle">{{$packetdata->end_of_pocket}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td id="daysleft" class="tableStyle">
-                                                        Gün Kaldı
+                                                        {{__('pages.Remaining Days')}}
                                                     </td>
-                                                    <td class="tableStyle"><b><a href="{{ route('packets') }}">update your packet</a></b>
+                                                    <td class="tableStyle"><b><a href="{{ route('packets') }}">{{__('pages.update your packet')}}</a></b>
                                                     </td>
                                                 </tr>
                                                 </tbody>
@@ -48,7 +48,7 @@
                                     <div class="card bg-c-yellow order-card">
                                         <div class="card-block">
                                             <div class="block-content block-content-full">
-                                                <div><span class="tableStyle">Kelime Takibi</span> <span
+                                                <div><span class="tableStyle">{{__('pages.Remaining words')}}</span> <span
                                                         id="" class="tableStyle pull-right"><b id="keywordused"></b>/<b
                                                             id="maxcountword">{{$packetdata->max_count_of_words}}</b></span>
                                                 </div>
@@ -60,13 +60,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="tableStyle">
-                                                    <small>Toplam takip altına alabileceğiniz kelime sayısı.</small><br>
-                                                    <small>Bu kelimelerin sırası her gün otomatik olarak
-                                                        güncellenir.</small>
+                                                    <br>
+                                                    <small>{{__('pages.Total number of keywords')}}</small><br>
                                                 </div>
                                                 <hr>
 
-                                                <div><span class="tableStyle">Site Ekleme</span> <span
+                                                <div><span class="tableStyle">{{__('pages.Remaining sites')}}</span> <span
                                                         class="tableStyle pull-right"><b id="websiteused"></b> /<b
                                                             id="maxwebsite">{{$packetdata->max_count_of_websites}}</b> </span>
                                                 </div>
@@ -77,7 +76,11 @@
                                                              role="progressbar" style="width: 100%"></div>
                                                     </div>
                                                 </div>
-
+                                                <div class="tableStyle">
+                                                    <br>
+                                                    <small>{{__('pages.Total number of websites')}}</small><br>
+                                                    <small>{{__('pages.The total of  keywords and sites')}}</small>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -87,17 +90,9 @@
                     </div>
                 </div>
                 <div id="styleSelector">
-
                 </div>
             </div>
         </div>
     </div>
     </div>
-    <style>
-        .tableStyle {
-            width: 50%;
-            font-size: 15px !important;
-            color: black !important;
-        }
-    </style>>
 @endsection

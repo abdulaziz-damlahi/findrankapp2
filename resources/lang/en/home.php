@@ -1,16 +1,15 @@
 <?php
 return [
-
     'Home' => 'Home',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     //slider
     'Lets Show Your Website' => 'Lets Show Your Website',
-    'rank' => 'rank',
+    'Rank' => 'Rank',
     'Do you want to See the online Rank' => 'Do you want to See the online Rank',
     'your brand and drive more relevant traffic' => 'your brand and drive more relevant traffic',
     //slider
-    'Search Engine Results Pages Solutions.' => 'Search Engine Results Pages Solutions',
+    'Search Engine Results Pages Solutions' => 'Search Engine Results Pages Solutions',
     'DO You Want To See' => 'DO You Want To See',
     'your Daily Search Results' => 'your Daily Search Results',
     'to your website.' => 'to your website.',
@@ -43,6 +42,6 @@ return [
     'Our Unique Function Will Scrap Your Data Daily' => 'Our Unique Function Will Scrap Your Data Daily',
     'Target' => 'Target',
     'Targeting Your Websites And Keywords Rank Precisely' => 'Targeting Your Websites And Keywords Rank Precisely',
-
+    'month'=>'month',
 ];
 ?>

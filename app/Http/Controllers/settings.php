@@ -12,7 +12,7 @@ use App\Parasut\Utils;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\App;
 class settings extends Controller
 {
     //
@@ -21,7 +21,7 @@ class settings extends Controller
     public function index(Request $request)
     {
        // $parasut = (new \App\Parasut\jobs\Invoicing(request()));
-
+        $this->location();
         $user = Auth::user();
         $user_first_name = $user->first_name;
         $user_last_name = $user->last_name;
@@ -112,5 +112,27 @@ class settings extends Controller
         $bune->save();
         return redirect()->back()->with('success', 'Firma bilgileriniz başarıyla güncellendi');
 
+    }
+    public function location()
+    {
+        $externalContent = file_get_contents('http://checkip.dyndns.com/');
+        preg_match('/Current IP Address: \[?([:.0-9a-fA-F]+)\]?/', $externalContent, $m);
+        $externalIp = $m[1];
+//        $americaIp = '78.180.10.189';
+        $geo = geoip()->getLocation($externalIp);
+        $localiton = $geo->iso_code;
+        if ($localiton === 'TR') {
+            $lang = 'tr';
+            App::setlocale($lang);
+        } else if ($localiton === 'US') {
+            $lang = 'en';
+            App::setlocale($lang);
+        } else if ($localiton === 'ES') {
+            $lang = 'es';
+            App::setlocale($lang);
+        } else if ($localiton === 'DE') {
+            $lang = 'de';
+            App::setlocale($lang);
+        }
     }
 }

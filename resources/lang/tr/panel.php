@@ -18,5 +18,7 @@ return [
     'daily change'=>'günlük değişim',
     'delete'=>'sil',
     'words count'=>'kelime sayı',
+    'save'=>'Kaydet',
+    'close'=>'Kapat',
 ];
 ?>

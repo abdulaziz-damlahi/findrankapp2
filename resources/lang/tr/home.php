@@ -1,6 +1,5 @@
 <?php
 return [
-
     'Home' => 'Anasayfa',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
@@ -43,7 +42,6 @@ return [
     'Our Unique Function Will Scrap Your Data Daily' => 'Raporları Günlük Kontrol Et',
     'Target' => 'Hedef',
     'Targeting Your Websites And Keywords Rank Precisely' => 'Site Hedeflerine Ulaş',
-    ''=>'',
-
+    'month'=>'Ay',
     ];
 ?>

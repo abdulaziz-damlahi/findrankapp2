@@ -44,7 +44,7 @@
                          data-endspeed="300"
                          data-captionhidden="on"
                          style="color: #ffffff;    text-shadow: 2px 2px 8px #000000;font-size: 48px; font-weight: normal; letter-spacing:0px; line-height:55px;">
-                       {{__('home.Search Engine Results Pages Solutions')}}<br>
+                        {{__('home.Search Engine Results Pages Solutions')}}<br>
                     </div>
                     <!-- Layer -->
                     <div class="tp-caption sfb tp-resizeme"
@@ -227,7 +227,7 @@ n sfb tp-resizeme font-crimson"
                         <div class="pricing-head">
                             <h4>{{$last->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                class="amount">{{$round_new2}}<span>.99</span></span> <span class="month">/ month</span>
+                                class="amount">{{$round_new2}}</span> <span class="month">/ {{__('home.month')}}</span>
                         </div>
                         <!-- Plean Detail -->
                         <div class="price-in">
@@ -247,7 +247,7 @@ n sfb tp-resizeme font-crimson"
                         <div class="pricing-head orange-bg">
                             <h4>{{$middle->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                class="amount">{{$round_new1}}<span>.99</span></span> <span class="month">/ month</span>
+                                class="amount">{{$round_new1}}</span> <span class="month">/ {{__('home.month')}}</span>
                         </div>
                         <!-- Plean Detail -->
                         <div class="price-in">
@@ -267,7 +267,7 @@ n sfb tp-resizeme font-crimson"
                         <div class="pricing-head">
                             <h4>{{$pack->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                class="amount">{{$round_new}}<span>.99</span></span> <span class="month">/ month</span>
+                                class="amount">{{$round_new}}</span> <span class="month">/ {{__('home.month')}}</span>
                         </div>
                         <!-- Plean Detail -->
                         <div class="price-in">
@@ -297,7 +297,7 @@ n sfb tp-resizeme font-crimson"
                 <li class="col-sm-4">
                     <div class="icon"><img src="images/flow-icon-1.png" alt=""></div>
                     <h6>{{__('home.adding')}}</h6>
-                    <p>{{__('home.Adding Your own Webites To Your Panel.')}} </p>
+                    <p>{{__('home.Adding Your own Webites To Your home.')}} </p>
                 </li>
                 <li class="col-sm-4">
                     <div class="icon"><img src="images/flow-icon-3.png" alt=""></div>

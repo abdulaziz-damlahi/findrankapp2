@@ -52,62 +52,62 @@
                     </div>
                 </label>
             <label class="col-md-12">
-                <p class="label-txt">EMAIL</p>
+                <p class="label-txt">{{__('pages.e-mail')}}</p>
                 <input type="email"name="mail"  value="{{$mail}}" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
             <label class="col-md-12">
-                <p class="label-txt">PHONE NUMBER</p>
+                <p class="label-txt">{{__('pages.PHONE NUMBER')}}</p>
                 <input type="text" name="phone"  value="{{$phone}}" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
-            <button  class="button_contact"id="button_contact"  type="submit">submit</button>
+            <button  class="button_contact"id="button_contact"  type="submit">{{__('pages.save')}}</button>
             </form>
             <form class="personal_settings"  method="post" enctype="multipart/form-data" action="{{route('personal.settings')}}">
              @csrf
                 <label class="col-md-12">
-                <p class="label-txt">ŞİMDİKİ ŞİFRE </p>
+                <p class="label-txt">{{__('pages.current password')}}</p>
                 <input name="password_now" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
             <label class="col-md-12">
-                <p class="label-txt">YENİ ŞİFRE</p>
+                <p class="label-txt">{{__('pages.new password')}}</p>
                 <input name="new_password" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label> <label class="col-md-12">
-                <p class="label-txt">YENİ ŞİFRE TEKRARI</p>
+                <p class="label-txt">{{__('pages.repeat new password')}}</p>
                 <input name="new_password_confirmation" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
-            <button class="button_contact"id="button_contact" type="submit" >submit</button>
+            <button class="button_contact"id="button_contact" type="submit" >{{__('pages.save')}}</button>
             </form>
                 <form class="custumize"  method="post" enctype="multipart/form-data" action="{{route('custumize')}}">
                     @csrf
             <label class="col-md-6">
-                <p class="label-txt">Firma İsmi </p>
+                <p class="label-txt">{{__('pages.company name')}} </p>
                 <input name="company_name" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
             <label class="col-md-6">
-                <p class="label-txt">Firma E-Posta Adresi</p>
+                <p class="label-txt">{{__('pages.company E-mail adrress')}}</p>
                 <input name="company_email" type="email" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
-            <button class="button_contact"id="button_contact" type="submit" action="{{route('custumize')}}"  >submit</button>
+            <button class="button_contact"id="button_contact" type="submit" action="{{route('custumize')}}"  >{{__('pages.save')}}</button>
             </form>
         </div>
     </div>

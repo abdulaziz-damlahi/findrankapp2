@@ -12,7 +12,7 @@
 
                     <div id="myModal2" class="modal2">
                         <div class="heading-block white-text text-center margin-bottom-50">
-                            <h2 style="color: black">Update Your Keyword</h2>
+                            <h2 style="color: black">{{__('pages.Update Your Keyword')}}</h2>
                            </div>
                         @if (session('notsuccess'))
                             <div class="alert alert-danger">
@@ -186,10 +186,10 @@
                                         {{$currentKeyword->device}}
                                     </option>
                                     <option>
-                                        Mobil
+                                        {{__('pages.mobile')}}
                                     </option>
                                     <option>
-                                        Masaüstü
+                                        {{__('pages.desktop')}}
                                     </option>
                                 </select>
                             </div>
@@ -210,7 +210,7 @@
                     <br><br><br>
                     <div class="row col-lg-12">
                         <button type="submit" class="btn btn-primary mcuLoadingButton"
-                                data-handler="confirm">update
+                                data-handler="confirm">  {{__('pages.Update')}}
                         </button>
                     </div>
                     <br><br><br>

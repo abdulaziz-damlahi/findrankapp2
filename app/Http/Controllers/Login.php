@@ -11,6 +11,7 @@ use App\Models\packets_reels;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\App;
 use Propaganistas\LaravelPhone\PhoneNumber;
 
 class Login extends Controller
@@ -18,10 +19,9 @@ class Login extends Controller
     //
     public function index(Request $request)
     {
+        $this->location();
         $user = auth()->user();
-
         return view('pages/login/login');
-
     }
 
     public function Loginpost(Request $request)
@@ -44,7 +44,7 @@ class Login extends Controller
      */
     public function loginByPass(Request $request)
     {
-
+        $this->location();
         if (Auth::attempt(['email' => $request->email,
             'password' => $request->password])) {
 
@@ -64,6 +64,7 @@ class Login extends Controller
     }
     public function registerPost(Request $request)
     {
+        $this->location();
         $requstemail = $request->email;
         $groupName = users::where('email', $request->email)->value('email');
        if(isset($groupName)){
@@ -92,5 +93,28 @@ class Login extends Controller
     {
         Auth::logout();
         return redirect()->route('login');
+    }
+
+    public function location()
+    {
+        $externalContent = file_get_contents('http://checkip.dyndns.com/');
+        preg_match('/Current IP Address: \[?([:.0-9a-fA-F]+)\]?/', $externalContent, $m);
+        $externalIp = $m[1];
+//        $americaIp = '78.180.10.189';
+        $geo = geoip()->getLocation($externalIp);
+        $localiton = $geo->iso_code;
+        if ($localiton === 'TR') {
+            $lang = 'tr';
+            App::setlocale($lang);
+        } else if ($localiton === 'US') {
+            $lang = 'en';
+            App::setlocale($lang);
+        } else if ($localiton === 'ES') {
+            $lang = 'es';
+            App::setlocale($lang);
+        } else if ($localiton === 'DE') {
+            $lang = 'de';
+            App::setlocale($lang);
+        }
     }
 }
