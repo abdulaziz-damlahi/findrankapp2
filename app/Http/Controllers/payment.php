@@ -125,6 +125,7 @@ class payment extends Controller
             $locale = App::getLocale();
         }
         $deneme =self::payment($request);
+        dd($deneme);
         if ($deneme['status'] === "success") {
             $success_message = "Payment Successful !";
             $payid= $deneme['paymentId'];
@@ -452,6 +453,7 @@ class payment extends Controller
         }
         $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
         $payment = json_decode($payment->getRawResult(), true);
+        dd($payment);
         return $payment;
         if ($payment['status'] === "success") {
             $success_message = "Payment Successful !";
