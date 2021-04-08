@@ -1,8 +1,6 @@
 @extends('layouts.master')
 @section('content')
-
     <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
-
     <div class="container" id="FindOrderContainer">
         <section id="general_find" class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-50 padding-right-50">
             <br class="container" style="padding-right: 500px; padding-left:500px; ">
@@ -26,130 +24,11 @@
                         <input type="text" name="keyword" class="form-control" placeholder="Keyword">
                     </li>
                     <div class="row col-lg-12">
-                        <div class="btn-group col-md-3">
+                        <div class="btn-group col-md-3" style="padding-top: 40px;padding-bottom: 30px">
                             <div class="btn-group">
-                                <select id="selectSecil" class="GoogleRank select">
-                                    <option class="select" value="none" selected disabled hidden>
-                                        {{__('pages.country')}}
-                                    </option>
-                                    <option class="select" value="TR">
-                                        Türkiye
-                                    </option>
-                                    <option class="select" value="AE">
-                                        Birleşik Arap Emirlikleri
-                                    </option>
-                                    <option class="select" value="AR">
-                                        Arjanstin
-                                    </option>
-                                    <option class="select" value="AU">
-                                        Avusturalya
-                                    </option>
-                                    </option>
-                                    <option class="select" value="AT">
-                                        Avusturya
-                                    </option>
-                                    </option>
-                                    <option class="select" value="BE">
-                                        Belçika
-                                    </option>
-                                    <option class="select" value="CA">
-                                        Kanada
-                                    </option>
-                                    <option class="select" value="CL">
-                                        Şili
-                                    </option>
-                                    <option class="select" value="CN">
-                                        Çin
-                                    </option>
-                                    <option class="select" value="CZ">
-                                        Çek Cumhuriyeti
-                                    </option>
-                                    <option class="select" value="DE">
-                                        Almanya
-                                    </option>
-                                    <option class="select" value="BG">
-                                        Bulgaristan
-                                    </option>
-                                    <option class="select" value="BR">
-                                        Brezilya
-                                    </option>
-                                    <option class="select" value="CH">
-                                        İsviçre
-                                    </option>
-                                    <option class="select" value="DE">
-                                        Almanya
-                                    </option>
-                                    <option class="select" value="CO">
-                                        Kolombiya
-                                    </option>
-                                    <option class="select" value="DK">
-                                        Danimarka
-                                    </option>
-                                    <option class="select" value="EC">
-                                        Ekvator
-                                    </option>
-                                    <option class="select" value="CO">
-                                        Kolombiya
-                                    </option>
-                                    <option class="select" value="EG">
-                                        Mısır
-                                    </option>
-                                    <option class="select" value="ES">
-                                        İspanya
-                                    </option>
-                                    <option class="select" value="FI">
-                                        Finlandiya
-                                    </option>
-                                    <option class="select" value="FR">
-                                        Finlandiya
-                                    </option>
-                                    <option class="select" value="GB">
-                                        İngiltere
-                                    </option>
-                                    <option class="select" value="GR">
-                                        Yunanistan
-                                    </option>
-                                    <option class="select" value="HU">
-                                        Macaristan
-                                    </option>
-                                    <option class="select" value="IN">
-                                        Hindistan
-                                    </option>
-                                    <option class="select" value="IE">
-                                        İrlanda
-                                    </option>
-                                    <option class="select" value="IL">
-                                        İsrail
-                                    </option>
-                                    <option class="select" value="IT">
-                                        İtalya
-                                    </option>
-                                    <option class="select" value="JP">
-                                        Japonya
-                                    </option>
-                                    <option class="select" value="KR">
-                                        Kore
-                                    </option>
-                                    <option class="select" value="LK">
-                                        Sri lanka
-                                    </option>
-                                    <option class="select" value="LU">
-                                        Lüksemburg
-                                    </option>
-                                    <option class="select" value="MA">
-                                        Fas
-                                    </option>
-                                    <option class="select" value="JP">
-                                        Japonya
-                                    </option>
-                                    <option class="select" value="MX">
-                                        Meksika
-                                    </option>
-                                    <option class="select" value="NG">
-                                        Nijerya
-                                    </option>
+                                <select id="selectSecil" class="selectpicker countrypicker" data-flag="true">
                                 </select>
-                                <span id="flag" style="padding:30px ;float: right;margin-right:50%;margin-left:50%"></span>
+                                <script rel="stylesheet" src="{{asset('js')}}/selectedcountry.js"></script>
                             </div>
                         </div>
                         <div class="btn-group col-md-3 ">
@@ -168,7 +47,8 @@
                                         {{__('pages.arabic')}}
                                     </option>
                                 </select>
-                                <span id="languagelogo" style="padding:13px ; font-weight: bold;font-size: 39px;float: right;margin-right:50%;margin-left:50% ;"></span>
+                                <span id="languagelogo"
+                                      style="padding:13px ; font-weight: bold;font-size: 39px;float: right;margin-right:50%;margin-left:50% ;"></span>
                             </div>
                         </div>
                         <div class="btn-group col-md-3 ">
@@ -203,7 +83,8 @@
                 <input hidden name="hidden_device_name" id="hidden_device"/>
                 <input hidden name="language_name" id="language_hidden"/>
                 <div id="check_now2">
-                    <button id="check_now" type="submit" class="btn btn-orange">{{__('pages.Check Now !')}}</button>
+                    <button id="check_now" type="submit" class="btn btn-orange bi bi-search"><i style="font-size: 20px"
+                                                                                                class="fa fa-search">  {{__('pages.Check Now !')}} </i></button>
                 </div>
             </form>
             @isset($resultss)

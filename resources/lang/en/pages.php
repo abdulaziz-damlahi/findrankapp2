@@ -12,7 +12,7 @@ return [
     'device' => 'device',
     'mobile' => 'mobile',
     'desktop' => 'desktop',
-    'Check Now !' => 'Check Now !',
+    'Check Now !' => 'results',
     //contact us
     'CONTACT US'=>'CONTACT US',
     'FIRSTNAME'=>'FIRSTNAME',

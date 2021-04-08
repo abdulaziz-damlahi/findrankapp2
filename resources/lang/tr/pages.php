@@ -12,7 +12,7 @@ return [
     'device' => 'Cihaz',
     'mobile' => 'Mobil',
     'desktop' => 'Masaüstü',
-    'Check Now !' => 'Şimdi kontrol et !',
+    'Check Now !' => 'sonuçları al',
     //contact us
     'CONTACT US'=>'BİZE ULAŞIN',
     'FIRSTNAME'=>'İSİM',
