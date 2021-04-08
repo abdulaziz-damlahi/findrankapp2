@@ -3,10 +3,12 @@ $(document).ready(function () {
     // differance();
     getcount();
     chart();
+    cardChange();
     StatisticsPage(pageNumber);
     Statistics();
     get();
     // appendDifferent();
+    latestRank();
 })
 $(document).ready(function () {
     //today
@@ -241,7 +243,7 @@ function StatisticsPage(pageNumber) {
                         var url = '{{route("grafik",":id")}}';
                         url = url.replace(':id', dataid);
                         if (wordsiteid == websiteid) {
-                            var str ="<tr><td id=\"colmun2\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto ' class='col-2'> <b> " + websitename + "</b></td>" +
+                            var str = "<tr><td id=\"colmun2\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto ' class='col-2'> <b> " + websitename + "</b></td>" +
                                 "<td id=\"ANAHTARKELİME\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto 'class='col-2'> " + word + "</td>" +
                                 "<td  id=\"rank\"class='col-2'>  " + rank + "</td>" +
                                 "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + dataid + "'> </a></td></tr>";
@@ -483,7 +485,7 @@ $(document).ready(function () {
 
 function get() {
     $.ajax({
-        url: "http://127.0.0.1:8000/api/v1/Websites",
+        url: "/api/v1/Websites",
         type: "GET",
         headers: {
             "Content-Type": "application/vnd.api+json",
@@ -667,13 +669,69 @@ $(document).ready(function () {
 
 })
 
-function Statistics() {
+function cardChange() {
     var firstwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(1) > div > div > div > h6:nth-child(2)").innerHTML;
     var secondwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(2) > div > div > div > h6:nth-child(2)").innerHTML;
     var thirdwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(3) > div > div > div > h6:nth-child(2)").innerHTML;
-
     $.ajax({
         url: "/api/v1/Websites",
+        type: "GET",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+        success: function (response) {
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var websiteid = response['data'][i].id
+                    if (websiteid == firstwebsite) {
+                        var up = response['data'][i].attributes.up
+                        var equal = response['data'][i].attributes.equal
+                        var down = response['data'][i].attributes.down
+                        var str = '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
+                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
+                        var id1 = 'idiff' + websiteid
+                        $("#" + id1).append(str)
+                    }
+                    if (websiteid == secondwebsite) {
+                        var up = response['data'][i].attributes.up
+                        var equal = response['data'][i].attributes.equal
+                        var down = response['data'][i].attributes.down
+                        var str = '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
+                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
+                        var id2 = 'idiff' + websiteid
+                        $("#" + id2).append(str)
+                    }
+                    if (websiteid == thirdwebsite) {
+                        var up = response['data'][i].attributes.up
+                        var equal = response['data'][i].attributes.equal
+                        var down = response['data'][i].attributes.down
+                        var str = '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
+                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
+                        var id3 = 'idiff' + websiteid
+                        $("#" + id3).append(str)
+                    }
+                }
+            }
+        }
+    })
+}
+
+function latestRank() {
+    //today
+    var today = new Date();
+    today.setDate(today.getDate() + 30);
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth()).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    console.log(today)
+    $.ajax({
+        url: "/api/v1/keywordsRequests",
         type: "GET",
         headers: {
             "Content-Type": "application/vnd.api+json",
@@ -687,37 +745,40 @@ function Statistics() {
             }
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
-                    var websiteid = response['data'][i].id
-                    if (websiteid == firstwebsite) {
-                        var up = response['data'][i].attributes.up
-                        var equal = response['data'][i].attributes.equal
-                        var down = response['data'][i].attributes.down
-                        var str= '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
-                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
-                        var id1='idiff'+websiteid
-                        console.log(id1)
-                        $("#"+id1).append(str)
-                    }
-                    if (websiteid == secondwebsite) {
-                        var up = response['data'][i].attributes.up
-                        var equal = response['data'][i].attributes.equal
-                        var down = response['data'][i].attributes.down
-                        var str= '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
-                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
-                        var id2='idiff'+websiteid
-                        $("#"+id2).append(str)
-                    }
-                    if (websiteid == thirdwebsite) {
-                        var up = response['data'][i].attributes.up
-                        var equal = response['data'][i].attributes.equal
-                        var down = response['data'][i].attributes.down
-                        var str= '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
-                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
-                        var id3='idiff'+websiteid
-                        $("#"+id3).append(str)
+                    var KeyWordRequestcreatedAt = response['data'][i].attributes.createdAt
+                    var KeyWordRequestrank = response['data'][i].attributes.rank
+                    var KeyWordRequestKeyword_id = response['data'][i].attributes.keyword_id
+
+                    var KeyWordRequestcreatedAt2 = KeyWordRequestcreatedAt.toString().slice(0, 10)
+                    if (KeyWordRequestcreatedAt2 == today) {
+                        console.log(KeyWordRequestcreatedAt2)
+                        console.log(KeyWordRequestrank)
+                        console.log(KeyWordRequestKeyword_id)
+                        console.log(KeyWordRequestKeyword_idSTRING)
+                        var KeyWordRequestKeyword_idSTRING=toString(KeyWordRequestrank)
+
+                        $.ajax({
+                            url: "/api/v1/Keywords/" + KeyWordRequestKeyword_id,
+                            type: "PATCH",
+                            headers: {
+                                "Content-Type": "application/vnd.api+json",
+                                Accept: "application/vnd.api+json",
+                            },
+                            data: JSON.stringify({
+                                "data": {
+                                    "type": "Websites",
+                                    "attributes": {
+                                        "rank": KeyWordRequestrank,
+                                    }
+                                }
+                            }),
+
+                        });
                     }
                 }
             }
         }
     })
 }
+
+
