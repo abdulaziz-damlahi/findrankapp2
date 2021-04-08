@@ -1,4 +1,31 @@
 $(document).ready(function() {
+  let website =  $("#website_value").text();
+  let frm = $(".form_rank_order");
+  let frmaction = $(".form_rank_order").data('route');
+  let formData={
+      website
+    }
+  let formrsda = $('.form_rank_order').attr('content')
+  console.log(formrsda);
+  $('#post_method').submit(function (e) {
+
+    var form_dataa = $(this);
+    $.ajax({
+      type: "POST",
+      url: frmaction,// where you wanna post
+      data: form_dataa.serialize(),
+      headers: {
+        'X-CSRF-TOKEN': $('.form_rank_order').attr('content')
+      },
+      error: function (jqXHR, textStatus, errorMessage) {
+        console.log(errorMessage); // Optional
+      },
+      success: function (data) {console.log(data)
+      console.log('başarısız')
+      }
+    });
+    e.preventDefault();
+  });
   /*  $.ajax({
         url: "http://localhost:3000",
         type: "POST",

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
-
+use Event;
 use App\Models\packets;
 use App\Models\users;
 use App\Models\websites;
@@ -17,11 +17,12 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
-
+use App\Events\ActionEvent;
 use Illuminate\Support\Facades\DB;
 
 class panel extends Controller
 {
+    public static $data;
     public function index(packets $packets,users $user,invoicerecords $invoiceRecord)
     {
 
@@ -182,29 +183,38 @@ class panel extends Controller
 
     public function findPost(Request $request)
     {
+        event(new ActionEvent($request));
+       $request->hidden_collonial_name;
         $colonial_name = $request->hidden_collonial_name;
         $device_information = $request->hidden_device_name;
         $website_request = $request->website;
         $keyword_request = $request->keyword;
         $language = $request->language_name;
-        $array_all = [$colonial_name,$device_information,$website_request,$keyword_request,$language];
+        $array_all = [
+            'colonial_name'=>$colonial_name,
+            'device'=>$device_information,
+            'website'=>$website_request,
+            'keyword'=>$keyword_request,
+            'language'=>$language
+        ];
         $arraydeeneme=["colonial name"=>$colonial_name];
         $hidden_collonial_name = json_encode($arraydeeneme);
         $client = new Client([
             'headers' => [ 'Content-Type' => 'application/json' ]
         ]);
-
-        $response = $client->post('http://localhost:3000',
+        $response = $client->post('http://localhost:3000/',
             ['body' => json_encode(
                 [
-                    'colonial_name' => $colonial_name,
-                    'device' => $device_information,
-                    'website' => $website_request,
-                    'keyword' => $keyword_request,
-                    'language' => $language,
+                    'colonial_name2'=>$colonial_name,
+                    'device'=>$device_information,
+                    'website'=>$website_request,
+                    'keyword'=>$keyword_request,
+                    'language'=>$language
                 ]
             )]
         );
+        return $response;
+            echo "girdi";
 
 
         /*
@@ -524,7 +534,7 @@ class panel extends Controller
                 packets::where('id',$id)->update(['rank_follow'=>$new]);
         */
                 return view(
-                    'pages/findorder', compact( 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+                    'pages/findorder', compact( 'response','language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
         }
 
 

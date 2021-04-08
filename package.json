@@ -9,11 +9,18 @@
     "dependencies": {
         "cross-env": "^7.0.3",
         "cross-spawn": "^7.0.3",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "ioredis": "^4.25.0",
         "isexe": "^2.0.0",
+        "laravel-echo": "^1.10.0",
         "laravel-echo-server": "^1.6.2",
         "path-key": "^3.1.1",
+        "redis-server": "^1.2.2",
         "shebang-command": "^2.0.0",
         "shebang-regex": "^3.0.0",
+        "socket.io": "^2.4.1",
+        "socket.io-client": "^2.4.0",
         "which": "^2.0.2"
     },
     "scripts": {

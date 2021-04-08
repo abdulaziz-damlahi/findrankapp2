@@ -1,16 +1,52 @@
 @extends('layouts.master')
 @section('content')
 <div >
+    <div class="full"></div>
     <section id="general_find" class="col-md-12 row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-100 padding-right-65"
              >
+        <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+        <script src=" https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
 
+        <script>
+          $(document).ready(function () {
+            const socket = io.connect("http://localhost:3000/", {});
+            socket.on('connect',function (){
+              console.log('connected server2')
+              $('#check_now').click(function (e) {
+                let test='girer';
+                socket.emit('girdi',{
+                  test
+                })
+                let website = $("#website_value").val();
+                let keyword = $("#keyword_value").val();
+                let country = $("#country ").val();
+                let city = $("#cityy ").val();
+                let language = $("#language ").val();
+                let device = $("#device ").val();
+
+                socket.emit('dönüyorMmu', {
+                  website,
+                  keyword,
+                  device,
+                  country,
+                  city,
+                  language,
+                })
+              });
+            })
+            socket.on('newmessage',function (message){
+              console.log('newmessage',message)
+              $( ".full" ).append(message.from);
+            })
+          });
+        </script>
         <br class="container" style="padding-right: 500px; padding-left:500px; ">
         <!-- Tittle -->
         <div class="heading-block white-text text-center margin-bottom-50">
             <h2 style="color: black">What’s Your Google Rank ?</h2>
             <span style="color: black">See how well your page is optimised for your keyword</span></div>
         <!-- Form -->
-        <form method="post" class="form_rank_order col-md-12" action="{{route('findpost')}}">
+        <form method="post" id="post_method" content="{{ csrf_token() }}" data-route="{{route('findpost')}}" class="form_rank_order col-md-12" enctype="multipart/form-data" >
             @csrf
             @if($errors->any())
                 <div class="alertMessage alert-danger">
@@ -19,17 +55,17 @@
             @endif
             <ul class="row col-lg-12">
                 <li class="col-md-6">
-                    <input type="text" name="website" class="form-control" placeholder="http://">
+                    <input type="text" id="website_value" name="website" class="form-control" placeholder="http://">
                 </li>
                 <li class="col-md-6">
-                    <input type="text" name="keyword" class="form-control" placeholder="Keyword">
+                    <input type="text" id="keyword_value" name="keyword" class="form-control" placeholder="Keyword">
                 </li>
             </ul>
 
             <div class="row select_row col-lg-12">
                 <div class="btn-group findr_select col-md-3 ">
                     <div class="btn-group">
-                        <select id="selectSecil" class="GoogleRank select">
+                        <select id="selectSecil" id="country" class="GoogleRank select">
                             <option class="select">
                                 Ülke
                             </option>
@@ -132,7 +168,7 @@
                 </div>
                 <div class="btn-group findr_select col-md-3 ">
                     <div class="btn-group">
-                        <select id="language" class="select GoogleRank">
+                        <select id="language"  class="select GoogleRank">
                             <option class="select">
                                 dil
                             </option>
@@ -173,7 +209,8 @@
             <input hidden name="language_name" id="language_hidden" />
 
             <div id="check_now2" >
-                <button id="check_now"type="submit" class="btn btn-orange">Check Now !</button>
+
+                <button id="check_now" class="btn btn-orange">Check Now !</button>
             </div>
         </form>
         @isset($resultss)
