@@ -24,14 +24,14 @@
                         <input type="text" name="keyword" class="form-control" placeholder="Keyword">
                     </li>
                     <div class="row col-lg-12">
-                        <div class="btn-group col-md-3" style="padding-top: 40px;padding-bottom: 30px">
+                        <div class="btn-group col-md-3 col-sm-3" style="padding-top: 40px;padding-bottom: 30px">
                             <div class="btn-group">
                                 <select id="selectSecil" class="selectpicker countrypicker" data-flag="true">
                                 </select>
                                 <script rel="stylesheet" src="{{asset('js')}}/selectedcountry.js"></script>
                             </div>
                         </div>
-                        <div class="btn-group col-md-3 ">
+                        <div class="btn-group col-md-3 col-sm-3">
                             <div class="btn-group">
                                 <select id="language" class="select">
                                     <option class="select" value="none" selected disabled hidden>
@@ -47,11 +47,9 @@
                                         {{__('pages.arabic')}}
                                     </option>
                                 </select>
-                                <span id="languagelogo"
-                                      style="padding:13px ; font-weight: bold;font-size: 39px;float: right;margin-right:50%;margin-left:50% ;"></span>
                             </div>
                         </div>
-                        <div class="btn-group col-md-3 ">
+                        <div class="btn-group col-md-3 col-sm-3">
                             <div class="btn-group">
                                 <select id="device" class="select">
                                     <option value="none" selected disabled hidden>
@@ -64,11 +62,10 @@
                                         {{__('pages.desktop')}}
                                     </option>
                                 </select>
-                                <span id="devicelogo" style="padding:15px;font-size:50px;float: right;margin-right:50%;margin-left:50%"></span>
                             </div>
 
                         </div>
-                        <div class="btn-group col-md-3 ">
+                        <div class="btn-group col-md-3 col-sm-3">
                             <div class="btn-group">
                                 <select id="cityy" class="select">
                                     <option value="none" selected disabled hidden>
