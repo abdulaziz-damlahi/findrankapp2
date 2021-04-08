@@ -24,7 +24,7 @@ class panel extends Controller
         $this->location();
         $user = auth()->user();
         $userId = $user->id;
-        $userwebsites8 = websites::where('user_id', '=', $userId)->orderByDesc('wordcount')->take(3)->get();
+        $userwebsites3 = websites::where('user_id', '=', $userId)->orderByDesc('wordcount')->take(3)->get();
         $username = $user->first_name;
         $keywordrequest = keywordRequest::where('user_id', '=', $userId)->get();
         $userwebsites8 = websites::where('user_id', '=', $userId)->orderByDesc('wordcount')->take(3)->get();
@@ -63,7 +63,9 @@ class panel extends Controller
             $website = new websites;
             $website->website_name = $request->website;
             $website->user_id = $userId;
-            $website->user_id = $userId;
+            $website->down = 0;
+            $website->equal = 0;
+            $website->up = 0;
             $website->wordcount = 0;
             $website->save();
             return redirect()->back()->with('success', 'Websiteniz Başarıyla Eklendi');

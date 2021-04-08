@@ -17,12 +17,15 @@
                         @foreach($userwebsites8 as $userwebsite)
                             <a href="website/{{ $userwebsite->id}} ">
                                 <div class="col-md-12 col-xl-4">
-                                    <div style="background-color:#ff6c3a" class="card order-card">
+                                    <div style="background-color:#ff6c3a;" class="card order-card">
                                         <div class="card-block">
                                             <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
+                                            <h6 class="m-b-20" hidden>{{ $userwebsite->id}}</h6>
                                             <h class="m-b-20">{{__('panel.Keywords Used')}} {{ $userwebsite->wordcount }}</h>
-                                            <h2 class="text-right"><i class="ti-shopping-cart f-left"
-                                                                      style="text-shadow: 3px 3px 5px #0000!important; ;"></i><span></span>
+                                            <br>
+                                            <h class="m-b-20"><span style='text-shadow: 2px 2px 6px #000000;font-size: 15px' scope='col'
+                                                                    id='idiff{{ $userwebsite->id}}'></span></h>
+                                            <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span></span>
                                             </h2>
                                             <p class="m-b-0"><span class="f-right"></span>
                                             <td class="sort_change text-center hidden-xs" data-change="36">
@@ -52,7 +55,6 @@
                                             <th scope="col">{{__('panel.graph')}}</th>
                                         </tr>
                                         </thead>
-                                        <tbody id="row">
                                         <tbody id="row">
                                         {{--                                            table content from js--}}
                                         <div id="myModal" class="modal">

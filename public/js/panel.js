@@ -63,7 +63,7 @@ $(document).ready(function () {
     })
 })
 
- function chart() {
+function chart() {
     $.ajax({
         type: 'get',
         url: "/api/v1/Keywords/?include=website",
@@ -241,7 +241,7 @@ function StatisticsPage(pageNumber) {
                         var url = '{{route("grafik",":id")}}';
                         url = url.replace(':id', dataid);
                         if (wordsiteid == websiteid) {
-                            var str = "<tr><td id=\"colmun2\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto ' class='col-2'> <b> " + websitename + "</b></td>" +
+                            var str ="<tr><td id=\"colmun2\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto ' class='col-2'> <b> " + websitename + "</b></td>" +
                                 "<td id=\"ANAHTARKELİME\" style='max-width: 40px;overflow-wrap:break-word;overflow: auto 'class='col-2'> " + word + "</td>" +
                                 "<td  id=\"rank\"class='col-2'>  " + rank + "</td>" +
                                 "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + dataid + "'> </a></td></tr>";
@@ -600,7 +600,6 @@ let equalappend
 let plusappend
 $(document).ready(function () {
 
-
     $.ajax({
         type: 'get',
         url: "/api/v1/Keywords/?include=website",
@@ -630,10 +629,10 @@ $(document).ready(function () {
                         var keyworddifferent = response['data'][i2].attributes.different
                         if (websiteid == keywordwebsiteid) {
                             if (keyworddifferent == 1) {
-                                minusappend =minusappend + 1
+                                minusappend = minusappend + 1
                             }
                             if (keyworddifferent == 2) {
-                                equalappend =  equalappend + 1
+                                equalappend = equalappend + 1
                             }
                             if (keyworddifferent == 3) {
                                 plusappend = plusappend + 1
@@ -661,7 +660,6 @@ $(document).ready(function () {
                         }
                     }
 
-
                 }
             }
         }
@@ -669,3 +667,57 @@ $(document).ready(function () {
 
 })
 
+function Statistics() {
+    var firstwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(1) > div > div > div > h6:nth-child(2)").innerHTML;
+    var secondwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(2) > div > div > div > h6:nth-child(2)").innerHTML;
+    var thirdwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(3) > div > div > div > h6:nth-child(2)").innerHTML;
+
+    $.ajax({
+        url: "/api/v1/Websites",
+        type: "GET",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+        success: function (response) {
+            console.log(response)
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var websiteid = response['data'][i].id
+                    if (websiteid == firstwebsite) {
+                        var up = response['data'][i].attributes.up
+                        var equal = response['data'][i].attributes.equal
+                        var down = response['data'][i].attributes.down
+                        var str= '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
+                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
+                        var id1='idiff'+websiteid
+                        console.log(id1)
+                        $("#"+id1).append(str)
+                    }
+                    if (websiteid == secondwebsite) {
+                        var up = response['data'][i].attributes.up
+                        var equal = response['data'][i].attributes.equal
+                        var down = response['data'][i].attributes.down
+                        var str= '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
+                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
+                        var id2='idiff'+websiteid
+                        $("#"+id2).append(str)
+                    }
+                    if (websiteid == thirdwebsite) {
+                        var up = response['data'][i].attributes.up
+                        var equal = response['data'][i].attributes.equal
+                        var down = response['data'][i].attributes.down
+                        var str= '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
+                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
+                        var id3='idiff'+websiteid
+                        $("#"+id3).append(str)
+                    }
+                }
+            }
+        }
+    })
+}

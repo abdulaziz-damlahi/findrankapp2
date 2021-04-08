@@ -24,7 +24,7 @@
                         <input type="text" name="keyword" class="form-control" placeholder="Keyword">
                     </li>
                     <div class="row col-lg-12">
-                        <div class="btn-group col-md-3 col-sm-3" style="padding-top: 40px;padding-bottom: 30px">
+                        <div class="btn-group col-md-3 col-sm-3" style="padding-top: 40px;">
                             <div class="btn-group">
                                 <select id="selectSecil" class="selectpicker countrypicker" data-flag="true">
                                 </select>

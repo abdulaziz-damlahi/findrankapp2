@@ -40,7 +40,6 @@
 }
 
 .select {
-
     width: 220px!important;
     color: #fff;
     position: relative;
@@ -58,8 +57,8 @@
     }
 
     .select {
-        margin: auto;
-        paddin-left: 8px;
+        margin-top: 40px;
+        padding-left: 8px;
     }
 }
 
@@ -83,7 +82,7 @@
 
 #selectSecil {
 
-    margin-top: 25px;
+    padding-top: 40px;
     font-size: 15px;
     font-weight: bold !important;
     color: #fff !important;
