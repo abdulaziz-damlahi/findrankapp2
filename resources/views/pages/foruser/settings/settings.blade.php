@@ -65,11 +65,7 @@
                     <div class="line"></div>
                 </div>
             </label>
-<<<<<<< HEAD
-            <button  class="btn btn-orange button_contact"id="button_contact"  type="submit">submit</button>
-=======
-            <button  class="button_contact"id="button_contact"  type="submit">{{__('pages.save')}}</button>
->>>>>>> origin/abdulazizdamlahilast
+            <button  class="btn btn-orange button_contact"id="button_contact"  type="submit">{{__('pages.save')}}</button>
             </form>
             <form class="personal_settings"  method="post" enctype="multipart/form-data" action="{{route('personal.settings')}}">
              @csrf
@@ -93,12 +89,9 @@
                     <div class="line"></div>
                 </div>
             </label>
-<<<<<<< HEAD
                 <button  class="btn btn-orange button_contact"id="button_contact"  type="submit">submit</button>
 
-=======
             <button class="button_contact"id="button_contact" type="submit" >{{__('pages.save')}}</button>
->>>>>>> origin/abdulazizdamlahilast
             </form>
                 <form class="custumize"  method="post" enctype="multipart/form-data" action="{{route('custumize')}}">
                     @csrf
@@ -116,12 +109,9 @@
                     <div class="line"></div>
                 </div>
             </label>
-<<<<<<< HEAD
                     <button class="btn btn-orange button_contact"id="button_contact" action="{{route('custumize')}}" type="submit" >submit</button>
 
-=======
             <button class="button_contact"id="button_contact" type="submit" action="{{route('custumize')}}"  >{{__('pages.save')}}</button>
->>>>>>> origin/abdulazizdamlahilast
             </form>
         </div>
     </div>

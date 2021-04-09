@@ -452,37 +452,7 @@ class payment extends Controller
         }
         $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
         $payment = json_decode($payment->getRawResult(), true);
-        if ($payment['status'] === "success") {
-            $success_message = "Payment Successful !";
-            $payid= $payment['paymentId'];
-            if(count(packets::all())>0){
-                packets::all()->last()->update(['paymentId' => $payment['paymentId']]);
-                $request = new requests;
-                $requsa=requests::all();
-                $request2 = invoicerecords::all();
-
-                if((count($requsa))>0){
-                    requests::all()->last()->update(['paymnet_id'=>$payment['paymentId']],
-                        ['parasut_customer_id'=>Auth::user()->parasut_customer_id]);
-                }else{
-                    $request->customer_id=Auth::user()->id;
-                    $request->paymnet_id=(int)$payment['paymentId'];
-                    $request->user_id=Auth::user()->id;
-                    $request->packet_id=packets::all()->last()->id;
-                    $request->invoice_record=invoicerecords::all()->last()->id;
-                    $request->parasut_customer_id=Auth::user()->parasut_customer_id;
-                    $request->save();
-                }
-
-
-            }
-            $iyzico_transaction_id = $payment['itemTransactions'][0]['paymentTransactionId'];
-        }
-        else{
-            $success_message = "Payment Unsuccessful !";
-            $payid= 215;
-            $iyzico_transaction_id =215;
-        }
+        return $payment;
     }
     public static function getOptions()
     {

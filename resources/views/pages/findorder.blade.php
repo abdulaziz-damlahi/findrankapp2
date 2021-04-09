@@ -48,7 +48,7 @@
                 <h2 style="color: black">{{__('pages.What’s Your Google Rank ?')}}</h2>
                 <span style="color: black">{{__('pages.See how well your page is optimised for your keyword')}}</span></div>
             <!-- Form -->
-            <form method="post" action="{{route('findpost')}}">
+            <form id="#post_method" method="post" action="{{route('findpost')}}">
                 @csrf
                 @if($errors->any())
                     <div class="alertMessage alert-danger">
@@ -119,7 +119,7 @@
                 <input hidden name="hidden_device_name" id="hidden_device"/>
                 <input hidden name="language_name" id="language_hidden"/>
                 <div id="check_now2">
-                    <button id="check_now" type="submit" class="btn btn-orange bi bi-search"><i style="font-size: 20px"
+                    <button id="check_now" class="btn btn-orange bi bi-search"><i style="font-size: 20px"
                                                                                                 class="fa fa-search">  {{__('pages.Check Now !')}} </i></button>
                 </div>
             </form>

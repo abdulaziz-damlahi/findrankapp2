@@ -27,13 +27,10 @@ class settings extends Controller
 
     public function index(Request $request)
     {
-<<<<<<< HEAD
         $parasut = (new \App\Parasut\Parasut(request()));
 
-=======
        // $parasut = (new \App\Parasut\jobs\Invoicing(request()));
         $this->location();
->>>>>>> origin/abdulazizdamlahilast
         $user = Auth::user();
         $user_first_name = $user->first_name;
         $user_last_name = $user->last_name;

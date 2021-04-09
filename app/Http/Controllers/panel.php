@@ -28,7 +28,7 @@ class panel extends Controller
             $bolum = $diff/60;
             $minute = floor($bolum);
             echo(Carbon::now())."<br>";
-    
+
             if($minute=2){
                 echo "büyük";
             }
@@ -630,7 +630,7 @@ class panel extends Controller
                 packets::where('id',$id)->update(['rank_follow'=>$new]);
         */
         return view(
-            'pages/findorder', compact('response', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+            'pages/findorder', compact( 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
     }
 
     public function userspacket()

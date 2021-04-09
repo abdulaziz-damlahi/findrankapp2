@@ -100,7 +100,7 @@ class createInvoice implements ShouldQueue
                         "relationships" => [
                             "product" => [
                                 "data" => [
-                                    "id" => 44674414,
+                                    "id" => 45328370,
                                     "type" => "products"
                                 ]
                             ]
