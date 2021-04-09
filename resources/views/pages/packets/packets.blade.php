@@ -113,15 +113,11 @@
                     <div id="iyzipay-checkout-form" class="responsive">
                         <br>
                         <div id="form1">
-<<<<<<< HEAD
                             <div class="invoiceeetype" id="invoice_type">
-                                <input id="kurumsal" type="radio" name="invoicetype" value="institutional"> Kurumsal
-                                <input checked type="radio" id="bireysel" name="invoicetype" value="individual"> Bireysel
-=======
-                            <div class="invoiceeetype" id="invoice_type"><input id="kurumsal" type="radio" name="gender" value="Kurumsal">{{__('pages.Corporate')}}
-                                <input checked type="radio" id="bireysel" name="gender" value="Kurumsal">{{__('pages.Individual')}}
->>>>>>> origin/abdulazizdamlahilast
+                                <input id="kurumsal" type="radio" name="invoicetype" value="institutional"> {{__('pages.Corporate')}}
+                                <input checked type="radio" id="bireysel" name="invoicetype" value="individual"> {{__('pages.Individual')}}
                             </div>
+
                             <div id="Kurumsalform">
                                 <label class="kurumsal col-md-6">
                                     <p class="label-txt">{{__('pages.COMPANY NAME')}}</p>
@@ -137,13 +133,8 @@
                                     </div>
                                 </label>
                                 <label class="kurumsal col-md-6">
-<<<<<<< HEAD
-                                    <p class="label-txt">VERGI ADRESİ</p>
-                                    <input name="invoice_address_institutional" id="invoicd_address" type="text" class="input">
-=======
                                     <p class="label-txt">{{__('pages.TAX ADDRESS')}}</p>
-                                    <input id="invoicd_address" type="text" class="input">
->>>>>>> origin/abdulazizdamlahilast
+                                    <input name="invoice_address_institutional" id="invoicd_address" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
@@ -170,31 +161,21 @@
                                     </div>
                                 </label>
                                 <label class="col-md-6">
-<<<<<<< HEAD
-                                    <p class="label-txt">Telefon Numarası</p>
-                                    <input name="gsm_number_institutional" id="gsm_number_insu" type="text" class="input">
-=======
                                     <p class="label-txt">{{__('pages.Billing address')}}</p>
-                                    <input name="invoiceAdress_institutional" id="invoice_addresses" type="text" class="input">
-                                    <div class="line-box">
+                                    <input name="gsm_number_institutional" id="gsm_number_insu" type="text" class="input">
+                                                           <div class="line-box">
                                         <div class="line"></div>
                                     </div>
                                 </label>
                                 <label class="col-md-6">
                                     <p class="label-txt">{{__('pages.PHONE NUMBER')}}</p>
                                     <input name="gsm_number_institutional" id="gsm_number" type="text" class="input">
->>>>>>> origin/abdulazizdamlahilast
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
                                 </label> <label class="col-md-6">
-<<<<<<< HEAD
-                                    <p class="label-txt">Email</p>
-                                    <input name="email_institutional" id="email_ins" type="text" class="input">
-=======
                                     <p class="label-txt">{{__('pages.Email')}}</p>
-                                    <input name="email_institutional" id="email" type="text" class="input">
->>>>>>> origin/abdulazizdamlahilast
+                                    <input name="email_institutional" id="email_ins" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
@@ -262,32 +243,21 @@
                                     </div>
                                 </label>
                                 <label class="col-md-6">
-<<<<<<< HEAD
-                                    <p class="label-txt">Email</p>
-                                    <input name="email_personal" id="email" type="text" class="input">
-=======
                                     <p class="label-txt">{{__('pages.Email')}}</p>
-                                    <input name="email_personal" id="email_personal" type="text" class="input">
->>>>>>> origin/abdulazizdamlahilast
+                                    <input name="email_personal" id="email" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
                                 </label>
                                 <label class="col-md-6">
-<<<<<<< HEAD
-                                    <p class="label-txt">COUNTRY</p>
-                                    <input name="countries_personal" id="countries_personal" type="text" class="input">
-=======
                                     <p class="label-txt">{{__('pages.COUNTRY')}}</p>
-                                    <input id="countries_personal" type="text" class="input">
->>>>>>> origin/abdulazizdamlahilast
+                                    <input name="countries_personal" id="countries_personal" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
                                 </label>
                                 <label class="col-md-6">
-<<<<<<< HEAD
-                                    <p class="label-txt">CITY</p>
+                                    <p class="label-txt">{{__('pages.CITY')}}</p>
                                     <input name="cities_personal" id="cities_personal" type="text" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
@@ -295,23 +265,14 @@
                                 </label>    <label class="col-md-6">
                                     <p class="label-txt">DISTRICT</p>
                                     <input id="district_bireysel" type="text" class="input">
-=======
-                                    <p class="label-txt">{{__('pages.CITY')}}</p>
-                                    <input id="cities_personal" type="text" class="input">
->>>>>>> origin/abdulazizdamlahilast
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
                                 </label>
-<<<<<<< HEAD
                                 <div style="margin-left:20%;" id="tax_mükkelefisaas" class="col-md-7">
-                                    <label id="tax_mukellefi">E vergi Mükellefiyim</label>
+                                    <label id="tax_mukellefi">{{__('pages.I am a tax payer')}}</label>
                                     <input style="margin:0px" type="checkbox" id="e_invoicee" name="e_invoice">
                                 </div>
-=======
-                                <label>{{__('pages.I am a tax payer')}}</label>
-                                <input style="margin:0px" type="checkbox" id="e_invoice" name="e_invoice">
->>>>>>> origin/abdulazizdamlahilast
                             </div>
                         </div>
                         <div id="form2">
@@ -661,11 +622,7 @@
                                         <a href="{{route('panel')}}" id="startTouse">{{__('pages.Get Started!')}}</a>
                                     @else
                                         <h2 id="unsuccesmessage">{{$success_message}}</h2>
-<<<<<<< HEAD
-                                        <a href="{{route('packets')}}"id="try_again">Tekrar Dene</a>
-=======
                                         <a id="try_again">{{__('pages.Try again')}}</a>
->>>>>>> origin/abdulazizdamlahilast
                                     @endif
                                 @endisset
 
@@ -681,6 +638,7 @@
                         <p hidden id="hidden_name_packets"></p>
                     </div>
                     <button id="button_pay" type="submit">{{__('pages.Pay')}}</button>
+
 
                 </form>
 

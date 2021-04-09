@@ -23,10 +23,7 @@ use Illuminate\Routing\Controller;
 class payment extends Controller
 {
     //
-<<<<<<< HEAD
     public static  function pay_post(Request $request,users $user,invoicerecords $invoiceRecord,packets $packets){
-=======
-    public static  function pay_post(Request $request){
         $paymentrequest = new \Iyzipay\Request\CreatePaymentRequest();
         /*  $packets_reel = packets_reels::all();
           $packets = packets::all()->first();
@@ -35,7 +32,6 @@ class payment extends Controller
           }
           echo $keywordcount->price;
         */
->>>>>>> origin/abdulazizdamlahilast
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
         $clientIP = Request()->ip();
@@ -133,7 +129,6 @@ class payment extends Controller
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
             echo "buraya girer5";
-<<<<<<< HEAD
 
             $locale = App::getLocale();
         }

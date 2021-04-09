@@ -1,61 +1,49 @@
 <?php
 
 namespace App\Http\Controllers;
-use Carbon\Carbon;
-use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Auth;
-use Event;
+
+use App\Events\ActionEvent;
+use App\Models\invoicerecords;
+use App\Models\keywordRequest;
+use App\Models\keywords;
 use App\Models\packets;
 use App\Models\users;
 use App\Models\websites;
-use App\Models\keywords;
-use App\Models\invoicerecords;
-use App\Models\keywordRequest;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller;
-use Illuminate\Routing\Controller as BaseController;
+use Event;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use App\Events\ActionEvent;
-=======
-
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
->>>>>>> origin/abdulazizdamlahilast
 use Illuminate\Support\Facades\DB;
 
 class panel extends Controller
 {
     public static $data;
-    public function index(packets $packets,users $user,invoicerecords $invoiceRecord)
+
+    public function index(packets $packets, users $user, invoicerecords $invoiceRecord)
     {
-<<<<<<< HEAD
 
-// Formulate the Difference between two dates
-    /*    $diff = abs($date2 - $date1);
-        echo $diff."<br>";
-        $bolum = $diff/60;
-        $minute = floor($bolum);
-        echo(Carbon::now())."<br>";
-
-        if($minute=2){
-            echo "büyük";
-        }
-        else{
-            echo "küçük";
-        }*/
-    /*    $emailJob = new updateUser($user,$invoiceRecord);
-        $deneme = dispatch($emailJob);
-        foreach($deneme as $dene){
-            echo $dene."<br>" ;
-        }
-        $emailJob2 = new createInvoice($packets,$user);
-        dispatch($emailJob2);
-    */
-=======
+        /*    $diff = abs($date2 - $date1);
+            echo $diff."<br>";
+            $bolum = $diff/60;
+            $minute = floor($bolum);
+            echo(Carbon::now())."<br>";
+    
+            if($minute=2){
+                echo "büyük";
+            }
+            else{
+                echo "küçük";
+            }*/
+        /*    $emailJob = new updateUser($user,$invoiceRecord);
+            $deneme = dispatch($emailJob);
+            foreach($deneme as $dene){
+                echo $dene."<br>" ;
+            }
+            $emailJob2 = new createInvoice($packets,$user);
+            dispatch($emailJob2);
+        */
         $this->location();
->>>>>>> origin/abdulazizdamlahilast
         $user = auth()->user();
         $userId = $user->id;
         $userwebsites3 = websites::where('user_id', '=', $userId)->orderByDesc('wordcount')->take(3)->get();
@@ -76,6 +64,29 @@ class panel extends Controller
         }
 
         return view('pages/panel/panel', compact('user', 'userwebsites8', 'packetdata'));
+    }
+
+    public function location()
+    {
+        $externalContent = file_get_contents('http://checkip.dyndns.com/');
+        preg_match('/Current IP Address: \[?([:.0-9a-fA-F]+)\]?/', $externalContent, $m);
+        $externalIp = $m[1];
+//        $americaIp = '78.180.10.189';
+        $geo = geoip()->getLocation($externalIp);
+        $localiton = $geo->iso_code;
+        if ($localiton === 'TR') {
+            $lang = 'tr';
+            App::setlocale($lang);
+        } else if ($localiton === 'US') {
+            $lang = 'en';
+            App::setlocale($lang);
+        } else if ($localiton === 'ES') {
+            $lang = 'es';
+            App::setlocale($lang);
+        } else if ($localiton === 'DE') {
+            $lang = 'de';
+            App::setlocale($lang);
+        }
     }
 
     public function addwebsite(Request $request)
@@ -252,44 +263,42 @@ class panel extends Controller
 
     public function findPost(Request $request)
     {
-<<<<<<< HEAD
         event(new ActionEvent($request));
-       $request->hidden_collonial_name;
+        $request->hidden_collonial_name;
         $colonial_name = $request->hidden_collonial_name;
         $device_information = $request->hidden_device_name;
         $website_request = $request->website;
         $keyword_request = $request->keyword;
         $language = $request->language_name;
         $array_all = [
-            'colonial_name'=>$colonial_name,
-            'device'=>$device_information,
-            'website'=>$website_request,
-            'keyword'=>$keyword_request,
-            'language'=>$language
+            'colonial_name' => $colonial_name,
+            'device' => $device_information,
+            'website' => $website_request,
+            'keyword' => $keyword_request,
+            'language' => $language
         ];
-        $arraydeeneme=["colonial name"=>$colonial_name];
+        $arraydeeneme = ["colonial name" => $colonial_name];
         $hidden_collonial_name = json_encode($arraydeeneme);
         $client = new Client([
-            'headers' => [ 'Content-Type' => 'application/json' ]
+            'headers' => ['Content-Type' => 'application/json']
         ]);
         try {
             $response = $client->post('http://localhost:3000/',
                 ['body' => json_encode(
                     [
-                        'colonial_name'=>$colonial_name,
-                        'device'=>$device_information,
-                        'website'=>$website_request,
-                        'keyword'=>$keyword_request,
-                        'language'=>$language
+                        'colonial_name' => $colonial_name,
+                        'device' => $device_information,
+                        'website' => $website_request,
+                        'keyword' => $keyword_request,
+                        'language' => $language
                     ]
                 )]);
-        }
-        catch (\GuzzleHttp\Exception\ClientException $e) {
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
 
             dd($e->getResponse()->getBody()->getContents());
 
         }
-            echo "girdi";
+        echo "girdi";
 
 
         /*
@@ -570,12 +579,10 @@ class panel extends Controller
                 $response = curl_exec($ch);
                 if ($len == 'ar') {
                     echo "girdi";
-<<<<<<< HEAD
                     if($device_information==='Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53'){
                         preg_match_all('@<span class="Zu0yb UGIkD qzEoUe">(.*?)<span dir="ltr">(.*?)<\/span><\/span>@', $response, $resultss, PREG_SET_ORDER, 0);
                     }
                     else{
-=======
                     if ($device_information === 'Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53') {
                         preg_match_all('@<span class="Zu0yb UGIkD qzEoUe">(.*?)<span class="kbNtnf">(.*?)<\/span><\/span>@', $response, $resultss, PREG_SET_ORDER, 0);
                     } else {
@@ -622,12 +629,9 @@ class panel extends Controller
 <<<<<<< HEAD
                 packets::where('id',$id)->update(['rank_follow'=>$new]);
         */
-                return view(
-                    'pages/findorder', compact( 'response','language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
-        }
-
-
-
+        return view(
+            'pages/findorder', compact('response', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
+    }
 
     public function userspacket()
     {
@@ -650,36 +654,9 @@ class panel extends Controller
         $packet = packets::find(1);
         $packet->websites;
         return $packet;
-=======
-                packets::where('id', $id)->update(['rank_follow' => $new]);
+        packets::where('id', $id)->update(['rank_follow' => $new]);
 
-                return view(
-                    'pages/findorder', compact('resultss', 'result', 'rank_follow_max', 'countrank', 'packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
-            }
-        }
->>>>>>> origin/abdulazizdamlahilast
-    }
-
-    public function location()
-    {
-        $externalContent = file_get_contents('http://checkip.dyndns.com/');
-        preg_match('/Current IP Address: \[?([:.0-9a-fA-F]+)\]?/', $externalContent, $m);
-        $externalIp = $m[1];
-//        $americaIp = '78.180.10.189';
-        $geo = geoip()->getLocation($externalIp);
-        $localiton = $geo->iso_code;
-        if ($localiton === 'TR') {
-            $lang = 'tr';
-            App::setlocale($lang);
-        } else if ($localiton === 'US') {
-            $lang = 'en';
-            App::setlocale($lang);
-        } else if ($localiton === 'ES') {
-            $lang = 'es';
-            App::setlocale($lang);
-        } else if ($localiton === 'DE') {
-            $lang = 'de';
-            App::setlocale($lang);
-        }
+        return view(
+            'pages/findorder', compact('resultss', 'result', 'rank_follow_max', 'countrank', 'packets', 'degise', 'ch', 'resultss', 'sa', 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
     }
 }

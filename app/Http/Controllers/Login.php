@@ -22,7 +22,6 @@ use App\Models\packets_reels;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\App;
 use Propaganistas\LaravelPhone\PhoneNumber;
 
 class Login extends Controller
@@ -49,13 +48,12 @@ class Login extends Controller
                 new ParasutRequestModel(null, 'contacts', [
                     "email" => $user['email'],
                     "name" => $user['first_name'] . ' ' . $user['last_name'],
-                    "short_name" => $user['first_name'] . ' ' . $user['last_name'],
                     "contact_type" => "person",
                     "phone" => $user['phone'],
                     "is_abroad" => false,
                     "archived" => false,
                     "account_type" => "customer"
-                ]),
+                ])
             );
             users::where('id',Auth::id())->update(['parasut_customer_id' => $response['data']['id']]);
             return redirect()->route('panel');

@@ -144,13 +144,7 @@ class Parasut extends Utils
 
 }
 
-<<<<<<< HEAD
-Parasut::$clientId = ' I-iNfYYeOPMoWoiERwGlM8MYMaStVbQQCntxgWyjx28';
-Parasut::$clientSecret = 'T7_CinCqCcOZt_ggnsnUDBAIrLQXXdN8DVPjri6Fl7M';
-Parasut::$username = 'bariss.be@gmail.com';
-=======
 Parasut::$clientId = 'fehmDPFeIwzSbtXeFA07hgBvR9eKg75XfxY1Iapvx54';
 Parasut::$clientSecret = 'U131Z3xsQDE1zeenn9l1ka7x8xG5pKejs7Z8Yhz9vmw';
-Parasut::$username = 'U131Z3xsQDE1zeenn9l1ka7x8xG5pKejs7Z8Yhz9vmw';
->>>>>>> origin/abdulazizdamlahilast
+Parasut::$username = 'bariss.be@gmail.com';
 Parasut::$password = 'brs199714';
