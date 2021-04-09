@@ -202,18 +202,23 @@ class panel extends Controller
         $client = new Client([
             'headers' => [ 'Content-Type' => 'application/json' ]
         ]);
-        $response = $client->post('http://localhost:3000/',
-            ['body' => json_encode(
-                [
-                    'colonial_name2'=>$colonial_name,
-                    'device'=>$device_information,
-                    'website'=>$website_request,
-                    'keyword'=>$keyword_request,
-                    'language'=>$language
-                ]
-            )]
-        );
-        return $response;
+        try {
+            $response = $client->post('http://localhost:3000/',
+                ['body' => json_encode(
+                    [
+                        'colonial_name'=>$colonial_name,
+                        'device'=>$device_information,
+                        'website'=>$website_request,
+                        'keyword'=>$keyword_request,
+                        'language'=>$language
+                    ]
+                )]);
+        }
+        catch (\GuzzleHttp\Exception\ClientException $e) {
+
+            dd($e->getResponse()->getBody()->getContents());
+
+        }
             echo "girdi";
 
 

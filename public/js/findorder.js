@@ -8,11 +8,10 @@ $(document).ready(function() {
   let formrsda = $('.form_rank_order').attr('content')
   console.log(formrsda);
   $('#post_method').submit(function (e) {
-
     var form_dataa = $(this);
     $.ajax({
       type: "POST",
-      url: frmaction,// where you wanna post
+      url: frmaction,
       data: form_dataa.serialize(),
       headers: {
         'X-CSRF-TOKEN': $('.form_rank_order').attr('content')
@@ -21,6 +20,7 @@ $(document).ready(function() {
         console.log(errorMessage); // Optional
       },
       success: function (data) {console.log(data)
+        data
       console.log('başarısız')
       }
     });

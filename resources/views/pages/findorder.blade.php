@@ -7,12 +7,14 @@
         <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
         <script src=" https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
 
+
         <script>
           $(document).ready(function () {
             const socket = io.connect("http://localhost:3000/", {});
+
             socket.on('connect',function (){
               console.log('connected server2')
-              $('#check_now').click(function (e) {
+              $('#post_method').submit(function (e) {
                 let test='girer';
                 socket.emit('girdi',{
                   test
