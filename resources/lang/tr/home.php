@@ -43,5 +43,6 @@ return [
     'Target' => 'Hedef',
     'Targeting Your Websites And Keywords Rank Precisely' => 'Site Hedeflerine Ulaş',
     'month'=>'Ay',
+    'PURCHASE'=>'Satin Al',
     ];
 ?>

@@ -68,14 +68,15 @@ class panel extends Controller
             $website->up = 0;
             $website->wordcount = 0;
             $website->save();
-            return redirect()->back()->with('success', 'Websiteniz Başarıyla Eklendi');
+            return redirect()->back()->with('success', __('alerts.website Successfully Added'));
         } else {
-            return redirect()->back()->with('notsuccess', 'Website Ekleme Hakkınız Bitmiştir');
+            return redirect()->back()->with('notsuccess', __('alerts.your limit of adding website has been exceeded'));
         }
     }
 
     public function addword(Request $request)
     {
+
         $this->location();
         $user = auth()->user();
         $userId = $user->id;
@@ -88,42 +89,43 @@ class panel extends Controller
             $request->validate([
                 'cantbeempty' => 'min:3|min:255',
             ]);
-
             $webid = $request->websiteid;
             $keyword = new keywords;
-            if ($request->has('name')) {
-                $keyword->name = $request->name;
+
+            if ($request->keyword != NULL) {
+                $keyword->name = $request->keyword;
             } else {
-                return redirect()->back()->with('cantbeempty', 'keleme bos ekleden');
+                return redirect()->back()->with('cantbeempty', __('alerts.the keyword is empty'));
             }
             if ($request->has('country')) {
                 $keyword->country = $request->country;
             } else {
-                return redirect()->back()->with('cantbeempty', 'country bos ekleden');
+                return redirect()->back()->with('cantbeempty', __('alerts.the country is empty'));
             }
             if ($request->has('language')) {
                 $keyword->language = $request->language;
             } else {
-                return redirect()->back()->with('cantbeempty', 'language bos ekleden');
+                return redirect()->back()->with('cantbeempty', __('alerts.the language is empty'));
             }
             if ($request->has('device')) {
                 $keyword->device = $request->device;
             } else {
-                return redirect()->back()->with('cantbeempty', 'device bos ekleden');
+                return redirect()->back()->with('cantbeempty', __('alerts.the device is empty'));
             }
             if ($request->has('city')) {
                 $keyword->city = $request->city;
             } else {
-                return redirect()->back()->with('cantbeempty', 'city bos ekleden');
+                return redirect()->back()->with('cantbeempty', __('alerts.city bos ekleden'));
             }
             $keyword->rank = 0;
             $keyword->website_id = $webid;
             $keyword->user_id = $userId;
+            $keyword->different = 0;
             $keyword->save();
 
-            return redirect()->back()->with('success', 'keleme Başarıyla Eklendi');
+            return redirect()->back()->with('success', __('alerts.word Successfully Added'));
         } else {
-            return redirect()->back()->with('notsuccess', 'keleme Ekleme Hakkınız Bitmiştir');
+            return redirect()->back()->with('notsuccess', __('alerts.your limit of adding word has been exceeded'));
         }
     }
 
@@ -147,7 +149,7 @@ class panel extends Controller
         $this->location();
         $name = $request->name;
         if ($name === NULL) {
-            return redirect()->back()->with('notsuccess', 'please enter a word');
+            return redirect()->back()->with('notsuccess', __('alerts.please enter a word'));
         }
         keywords::where('id', '=', $id)->update([
             'name' => $request->name,
@@ -157,7 +159,7 @@ class panel extends Controller
             'city' => $request->city,
         ]);
 
-        return redirect()->back()->with('successupdated', 'successfully updated');
+        return redirect()->back()->with('successupdated', __('alerts.successfully updated'));
     }
 
     public function deletekeyword($id)
@@ -168,7 +170,8 @@ class panel extends Controller
     }
 
     public function websitelist($websiteid)
-    {        $this->location();
+    {
+        $this->location();
         $user = auth()->user();
         $userId = $user->id;
         $userkeywordcount = keywords::where('user_id', '=', $userId)->count();
@@ -182,7 +185,8 @@ class panel extends Controller
     }
 
     public function grafik($id)
-    {        $this->location();
+    {
+        $this->location();
         $keywordid = keywords::where('id', '=', $id)->get('id');
         $keywordidnum = (int)filter_var($keywordid, FILTER_SANITIZE_NUMBER_INT);
         if ($id != $keywordidnum) {
@@ -200,7 +204,7 @@ class panel extends Controller
 
         $packetdata = packets::where('user_id', '=', $userId)->get()->first();
         if ($packetdata == NULL) {
-            return redirect()->back()->with('packetempty', 'buy packet from home page to view profile');
+            return redirect()->back()->with('packetempty', __('alerts.buy packet from home page to view profile'));
         }
 
         return view('pages/panel/profile', compact('packetdata'));
@@ -223,7 +227,7 @@ class panel extends Controller
             echo $new;
             $rank_follow_max = $packets[0]->rank_follow_max;
             if ($rank_follow_max == $countrank) {
-                return redirect()->route('findorder')->withErrors('Paket hakkınız dolmuştur');
+                return redirect()->route('findorder')->withErrors(__('alerts.Your packet has been expired'));
             } else {
                 $colonial_name = $request->hidden_collonial_name;
                 $device_information = $request->hidden_device_name;
@@ -514,6 +518,7 @@ class panel extends Controller
             }
         }
     }
+
     public function location()
     {
         $externalContent = file_get_contents('http://checkip.dyndns.com/');

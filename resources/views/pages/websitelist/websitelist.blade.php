@@ -55,7 +55,7 @@
                                 <br><br>
                                 <form action="{{route('addword')}}" class="btn-submit" method="POST">
                                     @csrf
-                                    <textarea class="form-control" id="urls" name="name" rows="5"
+                                    <textarea class="form-control" id="urls" name="keyword" rows="5"
                                               placeholder=""></textarea>
                                     <textarea style="display:none" class="form-control" id="urls2" name="websiteid"
                                               rows="5"
@@ -235,9 +235,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input hidden name="hidden_collonial_name" id="hidden_collonial"/>
-                                    <input hidden name="hidden_device_name" id="hidden_device"/>
-                                    <input hidden name="language_name" id="language_hidden"/>
+
                                     <br><br><br>
                                     <button type="submit" class="btn btn-primary mcuLoadingButton"
                                             data-handler="confirm"> {{__('pages.save')}}

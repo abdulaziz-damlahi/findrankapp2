@@ -43,5 +43,6 @@ return [
     'Target' => 'Target',
     'Targeting Your Websites And Keywords Rank Precisely' => 'Targeting Your Websites And Keywords Rank Precisely',
     'month'=>'month',
+    'PURCHASE'=>'PURCHASE',
 ];
 ?>

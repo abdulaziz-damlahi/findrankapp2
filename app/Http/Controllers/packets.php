@@ -10,7 +10,7 @@ class packets extends Controller
 {
     //
     public function index (Request $request){
-
+        $this->location();
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
         $clientIP = Request()->ip();
