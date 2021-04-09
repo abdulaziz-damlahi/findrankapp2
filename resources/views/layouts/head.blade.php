@@ -7,11 +7,17 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="M_Adnan" />
         <!-- Document Title -->
-        <!-- Favicon -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <!-- FontsOnline -->
-        <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -42,6 +48,11 @@
         @if($routeName === 'panel')
             <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
+            <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
+        @endif    @if($routeName === 'addwebsite')
+            <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
+            <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
+            <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
         @endif
 
         @if($routeName === 'websitelist')
@@ -64,10 +75,14 @@
         @if( $routeName === 'findorder' ||$routeName ==='findpost')
             <script rel="stylesheet" src="{{asset('js')}}/findorder.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/findorder.css">
+            <script src="https://mojoaxel.github.io/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
+            <link rel="stylesheet" href="https://mojoaxel.github.io/bootstrap-select-country/dist/css/bootstrap-select-country.min.css" />
+            <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
         @endif
         <script rel="stylesheet" src="{{asset('js')}}/login.js"></script>
         @if($routeName === 'settings' || $routeName === 'store.settings' )
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/settings.css">
+            <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
             <script rel="stylesheet" src="{{asset('js')}}/settings.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen" />
         @endif
@@ -77,7 +92,6 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/responsive.css">
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <!-- JavaScripts -->
-        <script src="{{asset('js')}}/vendors/modernizr.js"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- Favicon -->
         <!-- FontsOnline -->
@@ -87,6 +101,5 @@
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen" />
         <!-- JavaScripts -->
-        <script src="js/vendors/modernizr.js"></script>
     </head>
 @endsection

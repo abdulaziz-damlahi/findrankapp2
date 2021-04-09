@@ -13,6 +13,7 @@ use App\Http\Controllers\payment;
 class homepage extends Controller
 {
     public function index (Request $request){
+
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
         $clientIP = Request()->ip();
@@ -41,8 +42,10 @@ class homepage extends Controller
         $response = curl_exec($ch);
         $arr_result = json_decode($response);
         if($localiton==='TR'){
+
             $lang = 'tr';
             App::setlocale($lang);
+
             $locale = App::getLocale();
             $money_value=$money;
             $money_value1=$money1;
@@ -96,8 +99,30 @@ class homepage extends Controller
 
             $locale = App::getLocale();
         }
+        $this->location();
         return view('pages/home/home',compact('base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
 
     }
-
+    public function location()
+    {
+        $externalContent = file_get_contents('http://checkip.dyndns.com/');
+        preg_match('/Current IP Address: \[?([:.0-9a-fA-F]+)\]?/', $externalContent, $m);
+        $externalIp = $m[1];
+//        $americaIp = '78.180.10.189';
+        $geo = geoip()->getLocation($externalIp);
+        $localiton = $geo->iso_code;
+        if ($localiton === 'TR') {
+            $lang = 'tr';
+            App::setlocale($lang);
+        } else if ($localiton === 'US') {
+            $lang = 'en';
+            App::setlocale($lang);
+        } else if ($localiton === 'ES') {
+            $lang = 'es';
+            App::setlocale($lang);
+        } else if ($localiton === 'DE') {
+            $lang = 'de';
+            App::setlocale($lang);
+        }
+    }
 }

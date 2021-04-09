@@ -1,6 +1,7 @@
+
 @extends('layouts.master')
 @section('content')
-    <div class="container" style="height:700px">
+    <div class="container websitescont" >
         <div class="col-lg-12 col-md-12">
             <div class="card">
                 <div class="card-header">
@@ -8,24 +9,41 @@
                     <br>
                     <br>
                     <div class="btn-group">
-                        <button class="btns btn-default" type="button" id="addNewSite"><i
-                                class="fa fa-plus text-success"><span class="hidden-xs push-7-l">Add word</span></i>
+                        <a class="btns btn-default" href="{{route('panel')}}" type="button" id=""><i
+                                class="fa fa-arrow-left text-info">{{__('pages.panel')}}</i></a>
+                        <button class="btns btn-default" type="button" id="addNewword"><i
+                                class="fa fa-plus text-success"><span class="hidden-xs push-7-l">{{__('pages.Add Word')}}</span></i>
                         </button>
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        @if (session('notsuccess'))
+                            <div class="alert alert-danger">
+                                {{ session('notsuccess') }}
+                            </div>
+                        @endif
+                        @if (session('cantbeempty'))
+                            <div class="alert alert-danger">
+                                {{ session('cantbeempty') }}
+                            </div>
+                        @endif
                     </div>
                     <br>
                     <br>
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">ANAHTAR KELİME</th>
-                            <th scope="col">SIRA</th>
-                            <th scope="col">country</th>
-                            <th scope="col">city</th>
-                            <th scope="col">language</th>
-                            <th scope="col">device</th>
-                            <th scope="col">grafik</th>
-                            <th scope="col">delete</th>
-                            <th scope="col">edit</th>
+                            <th scope="col">{{__('pages.Keyword')}}</th>
+                            <th scope="col">{{__('pages.order')}}</th>
+                            <th scope="col" id="country"class="one">{{__('pages.country')}}</th>
+                            <th scope="col" id="city" class="one">{{__('pages.city')}}</th>
+                            <th scope="col"id="device" class="one">{{__('pages.device')}}</th>
+                            <th scope="col" id="language"class="one" >{{__('pages.language')}}</th>
+                            <th scope="col">{{__('pages.graph')}}</th>
+                            <th scope="col">{{__('pages.delete')}}</th>
+                            <th scope="col">{{__('pages.edit')}}</th>
                         </tr>
                         </thead>
                         <tbody id="row">
@@ -53,7 +71,7 @@
                                             <div class="btn-group">
                                                 <select id="selectSecil" name="country" class="select">
                                                     <option value="none" selected disabled hidden>
-                                                        country
+                                                        {{__('pages.country')}}
                                                     </option>
                                                     <option class="select" value="TR">
                                                         Türkiye
@@ -181,16 +199,16 @@
                                             <div class="btn-group">
                                                 <select id="language" name="language" class="select">
                                                     <option value="none" selected disabled hidden>
-                                                        language
+                                                        {{__('pages.language')}}
                                                     </option>
                                                     <option class="select">
-                                                        turkish
+                                                        {{__('pages.turkish')}}
                                                     </option>
                                                     <option class="select">
-                                                        english
+                                                        {{__('pages.english')}}
                                                     </option>
                                                     <option class="select">
-                                                        arabic
+                                                        {{__('pages.arabic')}}
                                                     </option>
                                                 </select>
                                             </div>
@@ -199,13 +217,13 @@
                                             <div class="btn-group">
                                                 <select id="device" name="device" class="select">
                                                     <option value="none" selected disabled hidden>
-                                                        device
+                                                        {{__('pages.device')}}
                                                     </option>
                                                     <option>
-                                                        Mobil
+                                                        {{__('pages.mobile')}}
                                                     </option>
                                                     <option>
-                                                        Masaüstü
+                                                        {{__('pages.desktop')}}
                                                     </option>
                                                 </select>
                                             </div>
@@ -217,16 +235,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input hidden name="hidden_collonial_name" id="hidden_collonial"/>
-                                    <input hidden name="hidden_device_name" id="hidden_device"/>
-                                    <input hidden name="language_name" id="language_hidden"/>
+
                                     <br><br><br>
                                     <button type="submit" class="btn btn-primary mcuLoadingButton"
-                                            data-handler="confirm">Kaydet
+                                            data-handler="confirm"> {{__('pages.save')}}
                                     </button>
                                 </form>
                                 <button id="close2" class="btn btn-default"
-                                        data-dismiss="modal">Kapat
+                                        data-dismiss="modal"> {{__('pages.close')}}
                                 </button>
                             </div>
                         </div>
@@ -237,7 +253,7 @@
                                 <span style="size: 15px;" id="grafikclose" class="grafikclose">X</span>
                                 <br><br>
                                 <button id="grafikclose2" class="btn btn-default"
-                                        data-dismiss="grafikmodal">Kapat
+                                        data-dismiss="grafikmodal"> {{__('pages.close')}}
                                 </button>
                             </div>
                         </div>

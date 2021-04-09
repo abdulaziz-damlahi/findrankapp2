@@ -17,22 +17,22 @@
             </div>
         @endif
         <label>
-            <p class="label-txt">ENTER YOUR EMAIL</p>
+            <p class="label-txt">{{__('pages.enter your email')}}</p>
             <input name="email" type="text" class="input">
             <div class="line-box">
                 <div class="line"></div>
             </div>
         </label>
         <label>
-            <p class="label-txt">ENTER YOUR PASSWORD</p>
+            <p class="label-txt">{{__('pages.ENTER YOUR PASSWORD')}}</p>
             <input name="password" type="text" class="input">
             <div class="line-box">
                 <div class="line"></div>
             </div>
         </label>
-        <button id="button" type="submit">submit</button>
+        <button id="button" type="submit">{{__('pages.save')}}</button>
         <div >
-        <a id="register"  href="#">Register here</a></div>
+        <a id="register"  href="#">{{__('pages.Register Here')}}</a></div>
 
     </form>
     </div>
@@ -40,40 +40,40 @@
         <form id="loginForm" method="post" action="{{route('register.post')}}">
             @csrf
             <label>
-                <p class="label-txt">FIRSTNAME</p>
+                <p class="label-txt">{{__('pages.name')}}</p>
                 <input name="first_name" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label> <label>
-                <p class="label-txt">last_name</p>
+                <p class="label-txt">{{__('pages.Last Name')}}</p>
                 <input name="last_name" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>     <label>
-                <p class="label-txt">EMAİL</p>
+                <p class="label-txt">{{__('pages.e-mail')}}</p>
                 <input name="email" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
                 <label>
-                    <p class="label-txt">PHONE</p>
+                    <p class="label-txt">{{__('pages.PHONE NUMBER')}}</p>
                     <input name="phone" type="text" class="input">
                     <div class="line-box">
                         <div class="line"></div>
                     </div>
                 </label>
             </label>     <label>
-                <p class="label-txt">PASSWORD</p>
+                <p class="label-txt">{{__('pages.PASSWORD')}}</p>
                 <input name="password" type="text" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>
             </label>
-            <button id="button" type="submit">submit</button>
+            <button id="button" type="submit">{{__('pages.save')}}</button>
             <div >
-                <a id="LoginButton"  href="#">Login here</a></div>
+                <a id="LoginButton"  href="#">{{__('pages.Login Here')}}</a></div>
         </form>
     </div>
 @endsection

@@ -4,8 +4,41 @@
     background: white !important;
     font-family: Alegreya Sans;
     height: 50px;
-    width: 220px;
+    width: 150px;
     text-transform: uppercase;
+
+}
+@media only screen and (max-width: 900px) {
+    .grafik{
+        height: 370px;
+        width: 100%;
+    }
+    .grafik2{
+        padding: 0px;
+        width: 100%
+    }
+    .myform{
+        padding-left: 100px;
+        height: 100px
+    }
 }
 
+@media only screen and (min-width: 900px) {
+    .grafik{
+        height: 370px;
+        width: 100%;
+    }
+    .grafik2{
+        padding: 100px;
+        width: 100%
+    }
+    .myform{
+        padding-left: 100px;
+        height: 100px
+    }
+    }
+
+.fromto{
+    height: 50px
+}
 

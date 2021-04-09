@@ -23,7 +23,19 @@ use Illuminate\Routing\Controller;
 class payment extends Controller
 {
     //
+<<<<<<< HEAD
     public static  function pay_post(Request $request,users $user,invoicerecords $invoiceRecord,packets $packets){
+=======
+    public static  function pay_post(Request $request){
+        $paymentrequest = new \Iyzipay\Request\CreatePaymentRequest();
+        /*  $packets_reel = packets_reels::all();
+          $packets = packets::all()->first();
+          foreach($packets_reel as $sad ){
+              $keywordcount = packets_reels::where('names_packets', '=', $packets->packet_names)->first();
+          }
+          echo $keywordcount->price;
+        */
+>>>>>>> origin/abdulazizdamlahilast
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
         $clientIP = Request()->ip();
@@ -121,6 +133,7 @@ class payment extends Controller
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
             echo "buraya girer5";
+<<<<<<< HEAD
 
             $locale = App::getLocale();
         }
@@ -269,6 +282,106 @@ class payment extends Controller
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
             echo "buraya girer5";
+=======
+
+            $locale = App::getLocale();
+        }
+        if($request->First_name_institutional!==""){
+            $price = $request->input_price;
+            $card_first_last_name= $request->card_first_last;
+            $card_number= $request->card_number;
+            $card_ay= $request->Ay;
+            $card_yil= $request->Yil;
+            $card_cvc= $request->CVC;
+            $card_cvc= $request->CVC;
+
+            $paymentrequest->setConversationId("123456789");
+            if(App::getLocale()=='de'){
+                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::EUR);
+                $money_value=$arr_result->rates->EUR;
+                $money_new_value = $price*$money_value;
+                $paymentrequest->setPrice($money_new_value);
+                $paymentrequest->setPaidPrice($money_new_value);
+            }
+            elseif(App::getLocale()=='tr'){
+                $paymentrequest->setLocale(\Iyzipay\Model\Locale::TR);
+                $paymentrequest->setPrice($price);
+                $paymentrequest->setPaidPrice($price);
+            }
+            else{
+                $paymentrequest->setCurrency(\Iyzipay\Model\Currency::USD);
+                $money_value=$arr_result->rates->USD;
+                $money_new_value = $price*$money_value;
+                $paymentrequest->setPrice($money_new_value);
+                $paymentrequest->setPaidPrice($money_new_value);
+            }
+
+            $paymentrequest->setInstallment(1);
+            $paymentrequest->setBasketId("B67832");
+            $paymentrequest->setPaymentChannel(\Iyzipay\Model\PaymentChannel::WEB);
+            $paymentrequest->setPaymentGroup(\Iyzipay\Model\PaymentGroup::PRODUCT);
+            $paymentCard = new \Iyzipay\Model\PaymentCard();
+            $paymentCard->setCardHolderName($card_first_last_name);
+            $paymentCard->setCardNumber($card_number);
+            $paymentCard->setExpireMonth($card_ay);
+            $paymentCard->setExpireYear($card_yil);
+            $paymentCard->setCvc($card_cvc);
+            $paymentCard->setRegisterCard(0);
+            $paymentrequest->setPaymentCard($paymentCard);
+            $buyer = new \Iyzipay\Model\Buyer();
+            $buyer->setId(Auth::id());
+
+            $buyer->setCity($request->city_information_institutional);
+            $buyer->setCountry($request->country_information_institutional);
+            $buyer->setName($request->First_name_institutional);
+            $buyer->setSurname($request->last_name_institutional);
+            $buyer->setGsmNumber($request->gsm_number_institutional);
+            $buyer->setEmail($request->email_institutional);
+            $buyer->setIdentityNumber($request->id_number);
+            $buyer->setRegistrationAddress($request->invoiceAdress_institutional);
+            $buyer->setIp("85.34.78.112");
+            $paymentrequest->setBuyer($buyer);
+            $shippingAddress = new \Iyzipay\Model\Address();
+            $shippingAddress->setContactName($request->First_name_institutional);
+            $shippingAddress->setCity($request->city_information_institutional);
+            $shippingAddress->setCountry($request->country_information_institutional);
+            $shippingAddress->setAddress($request->invoiceAdress_institutional);
+            $billingAddress = new \Iyzipay\Model\Address();
+            $billingAddress->setContactName($request->First_name_institutional);
+            $billingAddress->setCity($request->city_information_institutional);
+            $billingAddress->setCountry($request->country_information_institutional);
+            $billingAddress->setAddress($request->invoiceAdress_institutional);
+            $paymentrequest->setBillingAddress($billingAddress);
+            $basketItem = new BasketItem();
+            $basketItem->setId($request['input_id']);
+            $basketItem->setName($request['input_id'] . " Service");
+            $basketItem->setCategory1($request['input_id']);
+            $basketItem->setItemType(BasketItemType::VIRTUAL);
+            if(App::getLocale()=='de'){
+                $money_value=$arr_result->rates->EUR;
+                $money_new_value = $price*$money_value;
+                $basketItem->setPrice($money_new_value);
+
+            }
+            elseif(App::getLocale()=='tr'){
+                $basketItem->setPrice($price);
+            }
+            else{
+                $money_value=$arr_result->rates->USD;
+                $money_new_value = $price*$money_value;
+                $basketItem->setPrice($money_new_value);
+            }
+            $paymentrequest->setBasketItems([$basketItem]);
+
+        }
+        else{
+            $price = $request->input_price;
+            $card_first_last_name= $request->card_first_last;
+            $card_number= $request->card_number;
+            $card_ay= $request->Ay;
+            $card_yil= $request->Yil;
+            $card_cvc= $request->CVC;
+>>>>>>> origin/abdulazizdamlahilast
 
             $locale = App::getLocale();
         }
@@ -289,6 +402,7 @@ class payment extends Controller
                 $paymentrequest->setPaidPrice($money_new_value);
             }
             elseif(App::getLocale()=='tr'){
+<<<<<<< HEAD
                 $paymentrequest->setLocale(\Iyzipay\Model\Locale::TR);
                 $paymentrequest->setCurrency(Currency::TL);
 
@@ -450,11 +564,16 @@ class payment extends Controller
             }
             $paymentrequest->setBasketItems([$basketItem]);
 
+<<<<<<< HEAD
         }
         $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
         $payment = json_decode($payment->getRawResult(), true);
         dd($payment);
         return $payment;
+=======
+        $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
+        $payment = json_decode($payment->getRawResult(), true);
+>>>>>>> origin/abdulazizdamlahilast
         if ($payment['status'] === "success") {
             $success_message = "Payment Successful !";
             $payid= $payment['paymentId'];

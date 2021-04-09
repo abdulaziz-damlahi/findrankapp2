@@ -43,8 +43,12 @@ class Invoicing implements ShouldQueue
      */
     public function __construct(requests $request,invoicerecords $invoiceRecord,packets $packets,$user)
     {
+<<<<<<< HEAD
         $this->request = $request;
         self::handle();
+=======
+        $this->request = $invoiceRecord;
+>>>>>>> origin/abdulazizdamlahilast
 
     }
 

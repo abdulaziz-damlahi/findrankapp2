@@ -28,7 +28,9 @@ class websites extends Model
         'user_id',
         'wordcount',
         'rank',
-
+        'down',
+        'equal',
+        'up',
     ];
     public $timestamps = false;
 

@@ -9,26 +9,28 @@ function profile() {
         type: 'get',
         url: "/api/v1/Packets",
         success: function (response) {
-            //last day
-            var endofpacket = response['data'][0].attributes.end_of_pocket;
-            //todays date
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0');
-            var yyyy = today.getFullYear();
-            today = mm + '/' + dd + '/' + yyyy;
-            var todayformat = new Date(today);
-            var lastday = new Date(endofpacket);
-            //calc diffrance
-            var oneDay = 24 * 60 * 60 * 1000;
-            var diffDays = Math.round(Math.abs((todayformat - lastday) / oneDay));
-            diffDays2 = (diffDays) - 2;
-            $('#daysleft').append(diffDays2);
-
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+            for (var i = 0; i < 1; i++) {
+                var endofpacket = response['data'][0].attributes.end_of_pocket;
+                //todays date
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0');
+                var yyyy = today.getFullYear();
+                today = mm + '/' + dd + '/' + yyyy;
+                var todayformat = new Date(today);
+                var lastday = new Date(endofpacket);
+                //calc diffrance
+                var oneDay = 24 * 60 * 60 * 1000;
+                var diffDays = Math.round(Math.abs((todayformat - lastday) / oneDay));
+                diffDays2 = (diffDays) - 2;
+                $('#daysleft').append(diffDays2);
+            }
         }
     });
-
-
 }
 
 function wordlen() {

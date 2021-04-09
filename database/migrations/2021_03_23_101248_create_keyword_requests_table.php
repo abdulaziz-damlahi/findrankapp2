@@ -15,7 +15,7 @@ class CreateKeywordRequestsTable extends Migration
     {
         Schema::create('keyword_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('rank');
+            $table->integer('rank')->nullable();
             $table->unsignedBigInteger('keyword_id')->unsigned();
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));

@@ -18,6 +18,9 @@ class Websites extends Migration
             $table->bigIncrements('id');
             $table->string('website_name');
             $table->integer('wordcount')->nullable();
+            $table->integer('down')->nullable();
+            $table->integer('equal')->nullable();
+            $table->integer('up')->nullable();
             $table->unsignedBigInteger('user_id')->unsigned();
 
             $table->foreign('user_id')

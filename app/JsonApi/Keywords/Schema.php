@@ -33,6 +33,7 @@ class Schema extends SchemaProvider
         return [
             'name' => $resource->name,
             'rank' => $resource->rank,
+            'different' => $resource->different,
             'website_id' => $resource->website_id,
             'user_id' => $resource->user_id,
             'createdAt' => $resource->created_at,
@@ -40,6 +41,7 @@ class Schema extends SchemaProvider
             'language' => $resource->language,
             'country' => $resource->country,
             'city' => $resource->city,
+
         ];
     }
 }
