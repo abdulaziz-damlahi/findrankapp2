@@ -6,6 +6,10 @@ $(document).ready(function() {
     $('.invoiceeetype').on('change', function() {
             console.log($('input[name=invoicetype]:checked', '.invoiceeetype').val());
         });
+    $('#gsm_number').on('change', function() {
+          $("#gsm_number").val();
+          $("#gsm_number").text();
+        });
     $('#try_again').hide();
     $('#success_message').css('display','none');
     $('#error_message').css('display','none');

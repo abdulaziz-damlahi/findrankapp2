@@ -162,7 +162,7 @@
                                 </label>
                                 <label class="col-md-6">
                                     <p class="label-txt">{{__('pages.Billing address')}}</p>
-                                    <input name="gsm_number_institutional" id="gsm_number_insu" type="text" class="input">
+                                    <input name="gsm_number_institutional" id="invoicd_address" type="text" class="input">
                                                            <div class="line-box">
                                         <div class="line"></div>
                                     </div>
