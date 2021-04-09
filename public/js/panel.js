@@ -161,7 +161,7 @@ function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRe
     var keywordid = String(KeyWordRequestKeywordIdYedek)
     //diffrance = 1 -> minus , diffrance = 2 -> equal , diffrance = 3 -> plus
     var different = 0;
-    if (KeyWordRequestranktoday < KeyWordRequestrankyesterday) {
+    if (KeyWordRequestranktoday > KeyWordRequestrankyesterday) {
         minus = minus + 1
         different = 1
 
@@ -171,7 +171,7 @@ function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRe
         different = 2
 
     }
-    if (KeyWordRequestranktoday > KeyWordRequestrankyesterday) {
+    if (KeyWordRequestranktoday < KeyWordRequestrankyesterday) {
         plus = plus + 1
         different = 3
 
@@ -607,7 +607,6 @@ $(document).ready(function () {
         url: "/api/v1/Keywords/?include=website",
         success: function (response) {
             //len websites
-
             var len1 = 0;
             if (response['included'] != null) {
                 len1 = response['included'].length;
@@ -729,7 +728,7 @@ function latestRank() {
     var mm = String(today.getMonth()).padStart(2, '0');
     var yyyy = today.getFullYear();
     today = yyyy + '-' + mm + '-' + dd;
-    console.log(today)
+
     $.ajax({
         url: "/api/v1/keywordsRequests",
         type: "GET",
@@ -738,7 +737,6 @@ function latestRank() {
             Accept: "application/vnd.api+json",
         },
         success: function (response) {
-            console.log(response)
             var len = 0;
             if (response['data'] != null) {
                 len = response['data'].length;
@@ -748,17 +746,11 @@ function latestRank() {
                     var KeyWordRequestcreatedAt = response['data'][i].attributes.createdAt
                     var KeyWordRequestrank = response['data'][i].attributes.rank
                     var KeyWordRequestKeyword_id = response['data'][i].attributes.keyword_id
-
                     var KeyWordRequestcreatedAt2 = KeyWordRequestcreatedAt.toString().slice(0, 10)
-                    if (KeyWordRequestcreatedAt2 == today) {
-                        console.log(KeyWordRequestcreatedAt2)
-                        console.log(KeyWordRequestrank)
-                        console.log(KeyWordRequestKeyword_id)
-                        console.log(KeyWordRequestKeyword_idSTRING)
-                        var KeyWordRequestKeyword_idSTRING=toString(KeyWordRequestrank)
-
+                    if (KeyWordRequestcreatedAt2 === today) {
+                        var KeyWordRequestKeyword_idSTRING=KeyWordRequestKeyword_id.toString()
                         $.ajax({
-                            url: "/api/v1/Keywords/" + KeyWordRequestKeyword_id,
+                            url: "/api/v1/Keywords/" + KeyWordRequestKeyword_idSTRING,
                             type: "PATCH",
                             headers: {
                                 "Content-Type": "application/vnd.api+json",
@@ -766,7 +758,8 @@ function latestRank() {
                             },
                             data: JSON.stringify({
                                 "data": {
-                                    "type": "Websites",
+                                    "type": "Keywords",
+                                    'id':KeyWordRequestKeyword_idSTRING,
                                     "attributes": {
                                         "rank": KeyWordRequestrank,
                                     }
