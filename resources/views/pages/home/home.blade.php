@@ -11,7 +11,7 @@
     <div class="tp-banner-container">
         <div class="tp-banner-fix">
             <ul>
-                <!-- Slider 1dawdadsqdqwasdaefsefsdawdaw -->
+                <!-- Slider 1dawdadsqdqwadwdasdaefsefsdawdaw -->
                 <li data-transition="fade" data-slotamount="7"><img style="opacity: 0.1!important;"
                                                                     src="images/slides/slide-bg-1.jpg"
                                                                     data-bgposition="center top" alt=""/>
