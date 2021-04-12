@@ -13,11 +13,9 @@ class Parasut extends Utils
 {
     public const BASE_URL = "https://api.parasut.com/v4/424730/"; // TODO Change Required
     protected const TOKEN_BASE_URL = "https://api.parasut.com/oauth/token";
-
     static $accessToken = '';
     static $refreshToken = '';
     static $tokenExpiredAt = null;
-
     static $clientId = null;
     static $clientSecret = null;
     static $username = null;
@@ -30,7 +28,6 @@ class Parasut extends Utils
     public function __construct()
     {
         self::checkAuth();
-
     }
 
     /**
@@ -72,7 +69,6 @@ class Parasut extends Utils
             ['form_params' => $params]
         );
         $response = self::toArray($response->getBody());
-
         self::$refreshToken = $response['refresh_token'];
         self::$accessToken = $response['access_token'];
         self::$tokenExpiredAt = Carbon::createFromTimestamp($response['created_at'])->addSeconds($response['expires_in']);
@@ -100,23 +96,19 @@ class Parasut extends Utils
      */
     public function request($method, $path, $query = [], $body = [])
     {
-
         $client = self::getClient();
         $options = [
             "query" => $query,
             "headers" => [
                 "Content-Type" => "application/vnd.api+json",
                 "Authorization" => "Bearer " . self::$accessToken,
-                "User-Agent"=>"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
+                "User-Agent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36"
             ]
         ];
-
         if (!empty($body)) {
             $options = array_merge($options, ["body" => $body]);
         }
-
         return $client->request($method, $path, $options);
-
     }
 
     /**
@@ -128,7 +120,6 @@ class Parasut extends Utils
      */
     public function update(ParasutEndPoint $endPoint, $id, ParasutRequestModel $requestModel)
     {
-
         $response = self::request("PUT", self::BASE_URL . $endPoint . '/' . $id, [], $requestModel->toJson());
         return self::toArray($response->getBody());
     }
@@ -141,7 +132,6 @@ class Parasut extends Utils
         ], []);
         return $this->toArray($response->getBody())['data'];
     }
-
 }
 
 Parasut::$clientId = 'fehmDPFeIwzSbtXeFA07hgBvR9eKg75XfxY1Iapvx54';
