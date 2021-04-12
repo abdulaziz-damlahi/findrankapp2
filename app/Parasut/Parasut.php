@@ -24,7 +24,7 @@ class Parasut extends Utils
     static $password = null;
 
     /**
-     * Client constructor.
+     * Cli2ent sadconstructor.
      * @throws GuzzleException
      */
     public function __construct()

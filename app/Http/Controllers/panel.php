@@ -293,6 +293,7 @@ class panel extends Controller
                         'language' => $language
                     ]
                 )]);
+            print_r($response);
         } catch (\GuzzleHttp\Exception\ClientException $e) {
 
             dd($e->getResponse()->getBody()->getContents());

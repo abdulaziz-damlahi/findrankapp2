@@ -13,9 +13,6 @@ $(document).ready(function() {
       type: "POST",
       url: frmaction,
       data: form_dataa.serialize(),
-      headers: {
-        'X-CSRF-TOKEN': $('.form_rank_order').attr('content')
-      },
       error: function (jqXHR, textStatus, errorMessage) {
         console.log(errorMessage); // Optional
       },

@@ -48,7 +48,8 @@
                 <h2 style="color: black">{{__('pages.What’s Your Google Rank ?')}}</h2>
                 <span style="color: black">{{__('pages.See how well your page is optimised for your keyword')}}</span></div>
             <!-- Form -->
-            <form id="#post_method" method="post" action="{{route('findpost')}}">
+                <form method="post" id="post_method" content="{{ csrf_token() }}" data-route="{{route('findpost')}}" class="form_rank_order col-md-12" enctype="multipart/form-data" >
+
                 @csrf
                 @if($errors->any())
                     <div class="alertMessage alert-danger">
