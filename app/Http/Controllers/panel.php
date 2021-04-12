@@ -308,7 +308,7 @@ class panel extends Controller
         $this->location();
         $packets = packets::all();
         if (count($packets) > 0) {
->>>>>>> origin/abdulazizdamlahilast
+>>>sa>>>> origin/abdulazizdamlahilast
             $id = $packets[0]->id;
             $countrank = $packets[0]->rank_follow;
             $new = $countrank + 1;
