@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+
     <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
     <a class="SideBarName" hidden id="userid">{{ auth()->user()->id }}</a>
     @if (session('packetempty'))
@@ -23,8 +24,23 @@
                                             <h6 class="m-b-20" hidden>{{ $userwebsite->id}}</h6>
                                             <h class="m-b-20">{{__('panel.Keywords Used')}} {{ $userwebsite->wordcount }}</h>
                                             <br>
-                                            <h class="m-b-20"><span style='text-shadow: 2px 2px 6px #000000;font-size: 15px' scope='col'
-                                                                    id='idiff{{ $userwebsite->id}}'></span></h>
+                                            <h class="m-b-20">
+                                                <br>
+                                                <div class="col-md-18 col-sm-12  col-xl-12 col-12" style="justify-content: center">
+                                                    <div class="col-md-4 col-sm-4  col-xl-4 col-4">
+                                                        <h5 id='up{{ $userwebsite->id}}' style="color:lightgreen">
+                                                            <img style="height: 30px;" src="{{asset('assets')}}/svg/up-arrow.svg"></h5>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4  col-xl-4 col-4 ">
+                                                        <h5 id='equal{{ $userwebsite->id}}' style="color:mediumpurple">
+                                                            <img style="height: 30px;" src="{{asset('assets')}}/svg/equal-arrow.svg"></h5>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4  col-xl-4 col-4">
+                                                        <h5 id='down{{ $userwebsite->id}}' style="color:white">
+                                                            <img style="height: 30px;" src="{{asset('assets')}}/svg/down-arrow.svg"></h5>
+                                                    </div>
+                                                </div>
+                                            </h>
                                             <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span></span>
                                             </h2>
                                             <p class="m-b-0"><span class="f-right"></span>

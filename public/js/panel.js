@@ -669,9 +669,15 @@ $(document).ready(function () {
 })
 
 function cardChange() {
-    var firstwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(1) > div > div > div > h6:nth-child(2)").innerHTML;
-    var secondwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(2) > div > div > div > h6:nth-child(2)").innerHTML;
-    var thirdwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(3) > div > div > div > h6:nth-child(2)").innerHTML;
+    if (document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(1) > div > div > div > h6:nth-child(2)") != null) {
+        var firstwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(1) > div > div > div > h6:nth-child(2)").innerHTML;
+    }
+    if (document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(2) > div > div > div > h6:nth-child(2)") != null) {
+        var secondwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(2) > div > div > div > h6:nth-child(2)").innerHTML;
+    }
+    if (document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(3) > div > div > div > h6:nth-child(2)") != null) {
+        var thirdwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(3) > div > div > div > h6:nth-child(2)").innerHTML;
+    }
     $.ajax({
         url: "/api/v1/Websites",
         type: "GET",
@@ -688,31 +694,38 @@ function cardChange() {
                 for (var i = 0; i < len; i++) {
                     var websiteid = response['data'][i].id
                     if (websiteid == firstwebsite) {
+                        var url = "";
                         var up = response['data'][i].attributes.up
                         var equal = response['data'][i].attributes.equal
                         var down = response['data'][i].attributes.down
-                        var str = '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
-                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
-                        var id1 = 'idiff' + websiteid
-                        $("#" + id1).append(str)
+                        var upID = 'up' + websiteid
+                        var equalID = 'equal' + websiteid
+                        var downID = 'down' + websiteid
+                        $("#" + upID).append(up)
+                        $("#" + equalID).append(equal)
+                        $("#" + downID).append(down)
                     }
                     if (websiteid == secondwebsite) {
                         var up = response['data'][i].attributes.up
                         var equal = response['data'][i].attributes.equal
                         var down = response['data'][i].attributes.down
-                        var str = '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
-                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
-                        var id2 = 'idiff' + websiteid
-                        $("#" + id2).append(str)
+                        var upID = 'up' + websiteid
+                        var equalID = 'equal' + websiteid
+                        var downID = 'down' + websiteid
+                        $("#" + upID).append(up)
+                        $("#" + equalID).append(equal)
+                        $("#" + downID).append(down)
                     }
                     if (websiteid == thirdwebsite) {
                         var up = response['data'][i].attributes.up
                         var equal = response['data'][i].attributes.equal
                         var down = response['data'][i].attributes.down
-                        var str = '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
-                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
-                        var id3 = 'idiff' + websiteid
-                        $("#" + id3).append(str)
+                        var upID = 'up' + websiteid
+                        var equalID = 'equal' + websiteid
+                        var downID = 'down' + websiteid
+                        $("#" + upID).append(up)
+                        $("#" + equalID).append(equal)
+                        $("#" + downID).append(down)
                     }
                 }
             }
@@ -748,7 +761,7 @@ function latestRank() {
                     var KeyWordRequestKeyword_id = response['data'][i].attributes.keyword_id
                     var KeyWordRequestcreatedAt2 = KeyWordRequestcreatedAt.toString().slice(0, 10)
                     if (KeyWordRequestcreatedAt2 === today) {
-                        var KeyWordRequestKeyword_idSTRING=KeyWordRequestKeyword_id.toString()
+                        var KeyWordRequestKeyword_idSTRING = KeyWordRequestKeyword_id.toString()
                         $.ajax({
                             url: "/api/v1/Keywords/" + KeyWordRequestKeyword_idSTRING,
                             type: "PATCH",
@@ -759,7 +772,7 @@ function latestRank() {
                             data: JSON.stringify({
                                 "data": {
                                     "type": "Keywords",
-                                    'id':KeyWordRequestKeyword_idSTRING,
+                                    'id': KeyWordRequestKeyword_idSTRING,
                                     "attributes": {
                                         "rank": KeyWordRequestrank,
                                     }

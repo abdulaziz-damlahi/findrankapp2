@@ -30,7 +30,10 @@ function profile2() {
                     //calc diffrance
                     var oneDay = 24 * 60 * 60 * 1000;
                     var diffDays = Math.round(Math.abs((todayformat - lastday) / oneDay));
-                    diffDays2 = (diffDays) - 2;
+                    diffDays2 = (diffDays);
+                    if (createdAt==endofpacket|| createdAt>endofpacket){
+                        diffDays2='Aktif bir paketiniz yok.';
+                    }
                     $('#daysleft1').append(diffDays2);
                     $('#endofpacket1').append(endofpacket);
                     $('#createdAt1').append(createdAt);
