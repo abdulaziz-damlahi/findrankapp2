@@ -1,0 +1,5 @@
+.wordbreak {
+    max-width: 90px;
+    overflow-wrap: break-word;
+    overflow: auto
+}

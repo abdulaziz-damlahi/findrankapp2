@@ -13,4 +13,6 @@ return [
     'successfully updated' => 'successfully updated',
     'buy packet from home page to view profile' => 'buy packet from home page to view profile',
     'Your packet has been expired' => 'Your packet has been expired',
+    //edit keword
+    'please enter a word'=>'please enter a word',
 ];

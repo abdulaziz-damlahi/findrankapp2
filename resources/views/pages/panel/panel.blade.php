@@ -12,7 +12,6 @@
     <div class="pcoded-inner-content" id="main">
         <div class="main-body">
             <div class="page-wrapper">
-
                 <div class="page-body">
                     <div class="col-lg-8 col-md-12 row">
                         @foreach($userwebsites8 as $userwebsite)
@@ -23,29 +22,19 @@
                                             <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
                                             <h6 class="m-b-20" hidden>{{ $userwebsite->id}}</h6>
                                             <h class="m-b-20">{{__('panel.Keywords Used')}} {{ $userwebsite->wordcount }}</h>
-                                            <br>
-                                            <h class="m-b-20">
-                                                <br>
-                                                <div class="col-md-18 col-sm-12  col-xl-12 col-12" style="justify-content: center">
-                                                    <div class="col-md-4 col-sm-4  col-xl-4 col-4">
-                                                        <h5 id='up{{ $userwebsite->id}}' style="color:lightgreen">
-                                                            <img style="height: 30px;" src="{{asset('assets')}}/svg/up-arrow.svg"></h5>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-4  col-xl-4 col-4 ">
-                                                        <h5 id='equal{{ $userwebsite->id}}' style="color:mediumpurple">
-                                                            <img style="height: 30px;" src="{{asset('assets')}}/svg/equal-arrow.svg"></h5>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-4  col-xl-4 col-4">
-                                                        <h5 id='down{{ $userwebsite->id}}' style="color:white">
-                                                            <img style="height: 30px;" src="{{asset('assets')}}/svg/down-arrow.svg"></h5>
-                                                    </div>
-                                                </div>
-                                            </h>
+                                            <br><br>
+                                            <table>
+                                                <th> <h5 id='up{{ $userwebsite->id}}' style="color:lightgreen;width: 50px">
+                                                         <img class="svgstyle" src="{{asset('assets')}}/svg/up-arrow.svg">  </h5></th>
+                                                <th> <h5 id='equal{{ $userwebsite->id}}' style="color:mediumpurple">
+                                                         <img class="svgstyle" src="{{asset('assets')}}/svg/equal-arrow.svg">  </h5></th>
+                                                <th> <h5 id='down{{ $userwebsite->id}}' style="color:white">
+                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/down-arrow.svg">  </h5></th>
+                                            </table>
                                             <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span></span>
                                             </h2>
                                             <p class="m-b-0"><span class="f-right"></span>
                                             <td class="sort_change text-center hidden-xs" data-change="36">
-
                                             </td>
                                             </p>
                                         </div>
@@ -53,7 +42,6 @@
                                 </div>
                             </a>
                     @endforeach
-                    <!-- order-card end -->
                         <div class="col-lg-12 col-md-12">
                             <div class="card whitebackground">
                                 <div class="card-header ">
@@ -79,12 +67,10 @@
                                                 <span style="size: 15px;" id="close" class="close">X</span>
                                                 <br><br>
                                                 <form action="{{route('addwebsite')}}" class="btn-submit" method="POST">
-
                                                     @csrf
                                                     <textarea class="form-control" id="urls" name="website" rows="5"
                                                               placeholder=""></textarea>
                                                     <br><br>
-
                                                     <button type="submit" class="btn btn-primary mcuLoadingButton"
                                                             data-handler="confirm">{{__('panel.save')}}
                                                     </button>
@@ -93,13 +79,8 @@
                                                         data-dismiss="modal">{{__('panel.close')}}
                                                 </button>
                                             </div>
-
-
                                         </div>
-
-
                                         </tbody>
-
                                     </table>
                                     <div class="pagination" id="pagination">
                                         {{--java script generated Pagination in tbody (panel.js)--}}
@@ -155,7 +136,6 @@
                                             <button class="btns btn-default" type="button" id="addNewSite"><i
                                                     class="fa fa-plus text-success"><span class="hidden-xs push-7-l">{{__('panel.Add Website')}}</span></i>
                                             </button>
-
                                         </div>
                                         <table
                                             {{--  down table head--}}
@@ -201,19 +181,16 @@
                                                             data-dismiss="modal">{{__('panel.close')}}
                                                     </button>
                                                 </div>
-
                                             </div>
                                             </tbody>
                                             {{--  down table body--}}
                                         </table>
                                         <!-- ilk3 Modal  -->
                                         <div id="ilk3modal" class="modal">
-
                                             <div class="modal-content2">
                                                 <span style="size: 15px;" id="closeilk3" class="close">X</span>
                                                 <br><br>
                                                 <div class="col-md-12 container">
-
                                                     <table
                                                         class="table table-hover table-vcenter table-striped table-track">
                                                         <thead>
@@ -227,17 +204,14 @@
                                                         <tbody id="ilk3table" class="list">
                                                         </tbody>
                                                     </table>
-
                                                 </div>
                                             </div>
                                         </div>
                                         <div id="ilk10modal" class="modal">
-
                                             <div class="modal-content2">
                                                 <span style="size: 15px;" id="closeilk10" class="close">X</span>
                                                 <br><br>
                                                 <div class="col-md-12 container">
-
                                                     <table
                                                         class="table table-hover table-vcenter table-striped table-track">
                                                         <thead>
@@ -251,17 +225,14 @@
                                                         <tbody id="ilk10table" class="list">
                                                         </tbody>
                                                     </table>
-
                                                 </div>
                                             </div>
                                         </div>
                                         <div id="ilk100modal" class="modal">
-
                                             <div class="modal-content2">
                                                 <span style="size: 15px;" id="closeilk100" class="close">X</span>
                                                 <br><br>
                                                 <div class="col-md-12 container">
-
                                                     <table
                                                         class="table table-hover table-vcenter table-striped table-track">
                                                         <thead>
@@ -275,21 +246,14 @@
                                                         <tbody id="ilk100table" class="list">
                                                         </tbody>
                                                     </table>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
-
-                        <!-- statustic and process end -->
                     </div>
-                </div>
-                <div id="styleSelector">
                 </div>
             </div>
         </div>

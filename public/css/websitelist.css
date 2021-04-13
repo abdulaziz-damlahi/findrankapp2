@@ -1,5 +1,5 @@
 #body{
-    background-color:#efefef;
+    background-color: #e9f6ff;
 }
 
 /*popup style*/
@@ -22,7 +22,7 @@
 /* Modal Content */
 .modal-content {
 
-    background-color: #fefefe;
+    background-color: #e9f6ff;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -44,7 +44,7 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 .grafikmodal-content {
-    background-color: #fefefe;
+    background-color: #e9f6ff;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
@@ -98,6 +98,7 @@
 .btns:hover:not(.active) {
     transition: all .3s linear;
     background-color: #ff6c3a;
+    color: #0af9d7;
 }
 table{
     width: 50%;
@@ -117,11 +118,16 @@ table{
 .websitescont{
     height:auto;
     width:85%;
-    background-color: #efefef;
+    background-color: #e9f6ff;
 }
 }
 .col{
     max-width: 40px;
     overflow-wrap: break-word;
     overflow: auto;
+}
+.containerbtns{
+    background-color: #ff6c3a;
+    font-family: Alegreya Sans;
+    color: white;
 }

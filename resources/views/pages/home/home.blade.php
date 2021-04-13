@@ -296,7 +296,7 @@ n sfb tp-resizeme font-crimson"
                 <span
                     class="intro-style">{{__('home.Do you want to')}}</span>
             </div>
-            <div class="c"><img src="images/work-folow-img.jpg" style="padding-left: 120px" alt=" "></div>
+            <div class="c"><img id="workflowphoto" src="images/work-folow-img.jpg" style="padding-left: 120px" alt=" "></div>
             <ul class="row padding-left-50 padding-right-50" style=" text-align:center;">
                 <li class="col-sm-4">
                     <div class="icon"><img src="images/flow-icon-1.png" alt=""></div>

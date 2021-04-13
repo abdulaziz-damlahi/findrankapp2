@@ -9,10 +9,10 @@
                     <br>
                     <br>
                     <div class="btn-group">
-                        <a class="btns btn-default" href="{{route('panel')}}" type="button" id=""><i
-                                class="fa fa-arrow-left text-info">{{__('pages.panel')}}</i></a>
-                        <button class="btns btn-default" type="button" id="addNewword"><i
-                                class="fa fa-plus text-success"><span class="hidden-xs push-7-l">{{__('pages.Add Word')}}</span></i>
+                        <a class="containerbtns btns btn-default" href="{{route('panel')}}" type="button" >
+                            <i class="fa fa-arrow-left"  >{{__('pages.panel')}}</i></a>
+                        <button class="containerbtns btns btn-default" type="button" style="" id="addNewword">
+                            <i class="fa fa-plus"><span class="hidden-xs push-7-l">{{__('pages.Add Word')}}</span></i>
                         </button>
                         @if (session('success'))
                             <div class="alert alert-success">

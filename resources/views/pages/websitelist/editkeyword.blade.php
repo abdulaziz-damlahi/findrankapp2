@@ -1,29 +1,24 @@
 @extends('layouts.master')
 @section('content')
-
     <div class="container">
-
         <div class="container">
-
-                <br><br>
-                <form action="{{route('updatekeyword',$currentKeyword->id)}}" class="btn-submit" method="POST">
-                    @csrf
-
-
-                    <div id="myModal2" class="modal2">
-                        <div class="heading-block white-text text-center margin-bottom-50">
-                            <h2 style="color: black">{{__('pages.Update Your Keyword')}}</h2>
-                           </div>
-                        @if (session('notsuccess'))
-                            <div class="alert alert-danger">
-                                {{ session('notsuccess') }}
-                            </div>
-                        @endif
-                        @if (session('successupdated'))
-                            <div class="alert alert-success">
-                                {{ session('successupdated') }}
-                            </div>
-                        @endif
+            <br><br>
+            <form action="{{route('updatekeyword',$currentKeyword->id)}}" class="btn-submit" method="POST">
+                @csrf
+                <div id="myModal2" class="modal2">
+                    <div class="heading-block white-text text-center margin-bottom-50">
+                        <h2 style="color: black">{{__('pages.Update Your Keyword')}}</h2>
+                    </div>
+                    @if (session('notsuccess'))
+                        <div class="alert alert-danger">
+                            {{ session('notsuccess') }}
+                        </div>
+                    @endif
+                    @if (session('successupdated'))
+                        <div class="alert alert-success">
+                            {{ session('successupdated') }}
+                        </div>
+                    @endif
                     <textarea class="form-control" style="padding: 20px" id="name" name="name" rows="5"
                               placeholder="">{{$currentKeyword->name}}</textarea>
                     <br><br>
@@ -207,16 +202,19 @@
                     <input hidden name="hidden_collonial_name2" id="hidden_collonial2"/>
                     <input hidden name="hidden_device_name2" id="hidden_device2"/>
                     <input hidden name="language_name2" id="language_hidden2"/>
-                    <br><br><br>
-                    <div class="row col-lg-12">
-                        <button type="submit" class="btn btn-primary mcuLoadingButton"
+                    <br><br><br><br><br>
+                    <div class="row col-lg-12" >
+                        <button type="submit" class="btn btn-primary mcuLoadingButton" style="justify-content: center"
                                 data-handler="confirm">  {{__('pages.Update')}}
                         </button>
+                        <a href="{{route('websitelist', [$currentKeyword->website_id])}}" class="btn btn-primary " style="justify-content: center">
+                            {{__('pages.close')}}
+                        </a>
                     </div>
-                    <br><br><br>
-                </form>
-
-            </div>
+                    <br><br><br><br><br>
+                </div>
+            </form>
         </div>
+    </div>
     </div>
 @endsection

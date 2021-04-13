@@ -183,3 +183,5 @@ if (x != 'http://127.0.0.1:8000/') {
     // document.getElementById("findorder").remove();
     // document.getElementById("panelbtn").remove();
 }
+
+

@@ -1,44 +1,43 @@
 @extends('layouts.master')
 @section('content')
-<div >
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function () {
-        const socket = io.connect("http://localhost:3000/", {});
+    <div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+                integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function () {
+                const socket = io.connect("http://localhost:3000/", {});
 
-        socket.on('connect',function (){
-          console.log('connected server2')
-          $('#post_method').submit(function (e) {
-            let test='girer';
-            socket.emit('girdi',{
-              test
-            })
-            let website = $("#website_value").val();
-            let keyword = $("#keyword_value").val();
-            let country = $("#country ").val();
-            let city = $("#cityy ").val();
-            let language = $("#language ").val();
-            let device = $("#device ").val();
+                socket.on('connect', function () {
+                    console.log('connected server2')
+                    $('#post_method').submit(function (e) {
+                        let test = 'girer';
+                        socket.emit('girdi', {
+                            test
+                        })
+                        let website = $("#website_value").val();
+                        let keyword = $("#keyword_value").val();
+                        let country = $("#country ").val();
+                        let city = $("#cityy ").val();
+                        let language = $("#language ").val();
+                        let device = $("#device ").val();
 
-            socket.emit('dönüyorMmu', {
-              website,
-              keyword,
-              device,
-              country,
-              city,
-              language,
-            })
-          });
-        })
-        socket.on('newmessage',function (message){
-          console.log('newmessage',message)
-          $( ".full" ).append(message.from);
-        })
-      });
-    </script>
-
-</div>
-
+                        socket.emit('dönüyorMmu', {
+                            website,
+                            keyword,
+                            device,
+                            country,
+                            city,
+                            language,
+                        })
+                    });
+                })
+                socket.on('newmessage', function (message) {
+                    console.log('newmessage', message)
+                    $(".full").append(message.from);
+                })
+            });
+        </script>
+    </div>
     <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
     <div class="container" id="FindOrderContainer">
         <section id="general_find" class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-50 padding-right-50">
@@ -120,7 +119,7 @@
                 <input hidden name="language_name" id="language_hidden"/>
                 <div id="check_now2">
                     <button id="check_now" class="btn btn-orange bi bi-search"><i style="font-size: 20px"
-                                                                                                class="fa fa-search">  {{__('pages.Check Now !')}} </i></button>
+                                                                                  class="fa fa-search">  {{__('pages.Check Now !')}} </i></button>
                 </div>
             </form>
             @isset($resultss)

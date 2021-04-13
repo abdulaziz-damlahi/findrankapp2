@@ -46,7 +46,6 @@
                             <span class="curency">{{$base_moeny}}</span> <span
                                     class="amount">{{$round_new1}}<span></span></span> <span class="month">/ {{__('pages.month')}}</span>
                         </div>
-
                         <!-- Plean Detail -->
                         <div class="price-in">
                             <ul class="text-center">
@@ -57,7 +56,6 @@
                             </ul>
                             <a href="#." class="PURCHACE btn btn-orange">{{__('pages.PURCHASE')}}</a></div>
                     </div>
-
                     <!-- Price -->
                     <div class="col-md-4">
                         <!-- Icon -->
@@ -67,9 +65,8 @@
                         <div class="pricing-head">
                             <h4>{{$last->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                    class="amount">{{$round_new2}}<span>.99</span></span> <span class="month">/ {{__('pages.month')}}</span>
+                                    class="amount">{{$round_new2}}<span></span></span> <span class="month">/ {{__('pages.month')}}</span>
                         </div>
-
                         <!-- Plean Detail -->
                         <div class="price-in">
                             <ul class="text-center">
@@ -387,8 +384,7 @@
                                                     <div class="col-xs-12">
                                                         <div class="form-material">
                                                             <input class="form-control" id="shipping-name"
-                                                                   name="data[shipping][name]" type="text"
-                                                            >
+                                                                   name="data[shipping][name]" type="text">
                                                             <label for="shipping-name">{{__('pages.Your name')}}</label>
                                                         </div>
                                                     </div>
@@ -397,8 +393,7 @@
                                                     <div class="col-xs-12">
                                                         <div class="form-material">
                                                             <input class="form-control" id="shipping-lastname"
-                                                                   name="data[shipping][lastname]" type="text"
-                                                            >
+                                                                   name="data[shipping][lastname]" type="text">
                                                             <label for="shipping-lastname">{{__('pages.Your surname')}}</label>
                                                         </div>
                                                     </div>
@@ -417,8 +412,7 @@
                                                     <div class="col-xs-12">
                                                         <div class="form-material">
                                                             <input class="form-control" id="shipping-address"
-                                                                   name="data[shipping][address]" type="text"
-                                                            >
+                                                                   name="data[shipping][address]" type="text">
                                                             <label for="shipping-address">{{__('pages.Billing address')}}</label>
                                                         </div>
                                                     </div>
@@ -465,11 +459,7 @@
 
                                         </div>
                                     </div>
-                                    <!-- /Card Container -->
                                 </div>
-                                <!-- END Step 1 -->
-
-                                <!-- Step 2 -->
                                 <div class="tab-pane fade fade-up push-30-t push-50 in active"
                                      id="simple-classic-progress-step2">
                                     <table class="table table-striped table-vcenter">
@@ -511,24 +501,15 @@
                                     </table>
 
                                 </div>
-                                <!-- END Step 2 -->
-
-                                <!-- Step 3 -->
                                 <div class="tab-pane fade fade-up push-30-t push-50" id="simple-classic-progress-step3">
-                                    <!-- Card Container -->
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
                                             <div id="paymentFrame">{{__('pages.Creating your payment form ...')}}</div>
                                         </div>
                                     </div>
-                                    <!-- / Container -->
                                 </div>
-                                <!-- END Step 3 -->
-
-                                <!-- Step 4 -->
                                 <div class="tab-pane fade fade-up push-30-t push-50"
                                      id="simple-classic-progress-step4"></div>
-                                <!-- END Step 4 -->
                             </div>
                         </div>
                         <div id="form3">
@@ -589,7 +570,6 @@
                             <input hidden class="count_of_websites">
                             <input hidden class="count_of_words">
                             <input hidden class="packet_names">
-
                             <input hidden class="invoice_first_name">
                             <input hidden class="invoice_last_name">
                             <input hidden class="invoice_tax_no">
@@ -602,7 +582,6 @@
                             <input hidden class="invoice_user_id ">
                             <input hidden class="invoice_id">
                             <input hidden class="invoice_size">
-
                         </div>
                         <div id="form4">
                             <div class="success-page">
@@ -616,7 +595,6 @@
                                         <a href="{{route('packets')}}"id="try_again">{{__('pages.Try again')}}</a>
                                     @endif
                                 @endisset
-
                             </div>
                         </div>
                         <input hidden class="hidden">

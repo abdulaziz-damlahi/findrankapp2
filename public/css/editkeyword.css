@@ -1,14 +1,14 @@
 /* Modal Content */
 .modal-content {
 
-    background-color: #efefef;
+    background-color: #e9f6ff;
     margin: auto;
     padding: 20px;
     border: 1px solid #fefefe;
     width: 80%;
 }
 .modal2 {
-    background-color: #efefef;
+    background-color: #e9f6ff;
     padding-top: 110px;
     z-index: 1;
     left: 0;
@@ -18,7 +18,7 @@
     height: 100%;
 }
 .modal-content2 {
-    background-color: #efefef;
+    background-color: #e9f6ff;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
