@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -16,14 +17,13 @@ use App\Models\users;
 use App\Parasut\Jobs\Invoicing;
 use App\Parasut\Jobs\updateUser;
 use App\Parasut\Jobs\createInvoice;
-
-
 use Illuminate\Routing\Controller;
 
 class payment extends Controller
 {
     //
-    public static  function pay_post(Request $request,users $user,invoicerecords $invoiceRecord,packets $packets){
+    public static function pay_post(Request $request, users $user, invoicerecords $invoiceRecord, packets $packets)
+    {
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
         $clientIP = Request()->ip();
@@ -31,71 +31,67 @@ class payment extends Controller
         preg_match('/Current IP Address: \[?([:.0-9a-fA-F]+)\]?/', $externalContent, $m);
         $externalIp = $m[1];
         $externalIp;
-        $base_moeny='₺';
+        $base_moeny = '₺';
         $ippp = '2.16.7.255';
-        $ippamerica= '1.32.232.0';
-        $tr='78.180.10.189';
+        $ippamerica = '1.32.232.0';
+        $tr = '78.180.10.189';
         $geo = geoip()->getLocation('78.180.10.189');
-        $localiton=  $geo->iso_code;
+        $localiton = $geo->iso_code;
         $packets_reel = packets_reels::all();
         $pack = $packets_reel->take(1)->first();
         $middle = $packets_reel->take(2)->last();
         $last = $packets_reel->take(3)->last();
-        $money=  $pack->price;
-        $money1=  $middle->price;
-        $money2=  $last->price;
+        $money = $pack->price;
+        $money1 = $middle->price;
+        $money2 = $last->price;
         $url = "https://api.exchangeratesapi.io/latest?base=TRY";
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_URL, $url);
         $response = curl_exec($ch);
         $arr_result = json_decode($response);
-        if($localiton==='TR'){
+        if ($localiton === 'TR') {
             $lang = 'tr';
             App::setlocale($lang);
             $locale = App::getLocale();
-            $money_value=$money;
-            $money_value1=$money1;
-            $money_value2=$money2;
-            $money_new_value=$pack->price;
-            $money_new_value1=$middle->price;
-            $money_new_value2=$last->price;
-            $round_new  = round($money_new_value);
-            $round_new1  = round($money_new_value1);
-            $round_new2  = round($money_new_value2);
-
-            $base_moeny='₺';
+            $money_value = $money;
+            $money_value1 = $money1;
+            $money_value2 = $money2;
+            $money_new_value = $pack->price;
+            $money_new_value1 = $middle->price;
+            $money_new_value2 = $last->price;
+            $round_new = round($money_new_value);
+            $round_new1 = round($money_new_value1);
+            $round_new2 = round($money_new_value2);
+            $base_moeny = '₺';
             echo "buraya girer";
-        }
-        else if($localiton==='US'){
+        } else if ($localiton === 'US') {
             $lang = 'en';
             App::setlocale($lang);
             $locale = App::getLocale();
-            $money_value=$arr_result->rates->USD;
-            $money_new_value = $money1*$money_value;
-            $money_new_value1 = $money*$money_value;
-            $money_new_value2 = $money2*$money_value;
-            $round_new  = round($money_new_value);
-            $round_new1  = round($money_new_value1);
-            $round_new2  = round($money_new_value2);
+            $money_value = $arr_result->rates->USD;
+            $money_new_value = $money1 * $money_value;
+            $money_new_value1 = $money * $money_value;
+            $money_new_value2 = $money2 * $money_value;
+            $round_new = round($money_new_value);
+            $round_new1 = round($money_new_value1);
+            $round_new2 = round($money_new_value2);
             echo "buraya girer2";
-
-            $base_moeny='$';
-        } else if($localiton==='ES'){
+            $base_moeny = '$';
+        } else if ($localiton === 'ES') {
             $lang = 'es';
             App::setlocale($lang);
-            $money_value=$arr_result->rates->EUR;
-            $money_new_value = $money1*$money_value;
-            $money_new_value1 = $money*$money_value;
-            $money_new_value2 = $money2*$money_value;
-            $round_new  = round($money_new_value);
-            $round_new1  = round($money_new_value1);
-            $round_new2  = round($money_new_value2);
-            $base_moeny='€';
+            $money_value = $arr_result->rates->EUR;
+            $money_new_value = $money1 * $money_value;
+            $money_new_value1 = $money * $money_value;
+            $money_new_value2 = $money2 * $money_value;
+            $round_new = round($money_new_value);
+            $round_new1 = round($money_new_value1);
+            $round_new2 = round($money_new_value2);
+            $base_moeny = '€';
             echo "buraya girer3";
-
             $locale = App::getLocale();
-        }else if($localiton==='DE') {
+        } else if ($localiton === 'DE') {
             $lang = 'de';
             App::setlocale($lang);
             $base_moeny = '€';
@@ -107,9 +103,8 @@ class payment extends Controller
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
             echo "buraya girer4";
-
             $locale = App::getLocale();
-        }else {
+        } else {
             $lang = 'de';
             App::setlocale($lang);
             $base_moeny = '€';
@@ -121,48 +116,44 @@ class payment extends Controller
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
             echo "buraya girer5";
-
             $locale = App::getLocale();
         }
-        $deneme =self::payment($request);
+        $deneme = self::payment($request);
+        dd($deneme);
         if ($deneme['status'] === "success") {
             $success_message = "Payment Successful !";
-            $payid= $deneme['paymentId'];
-            $emailJob = new updateUser($user,$invoiceRecord);
+            $payid = $deneme['paymentId'];
+            $emailJob = new updateUser($user, $invoiceRecord);
             $deneme2 = dispatch($emailJob);
-            $emailJob2 = new createInvoice($packets,$user);
+            $emailJob2 = new createInvoice($packets, $user);
             dispatch($emailJob2);
-            if(count(packets::all())>0){
+            if (count(packets::all()) > 0) {
                 packets::all()->last()->update(['paymentId' => $deneme['paymentId']]);
                 $request = new requests;
-                $requsa=requests::all();
+                $requsa = requests::all();
                 $request2 = invoicerecords::all();
-
-                if((count($requsa))>0){
-                    requests::all()->last()->update(['paymnet_id'=>$deneme['paymentId']],
-                        ['parasut_customer_id'=>Auth::user()->parasut_customer_id]);
-                }else{
-                    $request->customer_id=Auth::user()->id;
-                    $request->paymnet_id=(int)$deneme['paymentId'];
-                    $request->user_id=Auth::user()->id;
-                    $request->packet_id=packets::all()->last()->id;
-                    $request->invoice_record=invoicerecords::all()->last()->id;
-                    $request->parasut_customer_id=Auth::user()->parasut_customer_id;
+                if ((count($requsa)) > 0) {
+                    requests::all()->last()->update(['paymnet_id' => $deneme['paymentId']],
+                        ['parasut_customer_id' => Auth::user()->parasut_customer_id]);
+                } else {
+                    $request->customer_id = Auth::user()->id;
+                    $request->paymnet_id = (int)$deneme['paymentId'];
+                    $request->user_id = Auth::user()->id;
+                    $request->packet_id = packets::all()->last()->id;
+                    $request->invoice_record = invoicerecords::all()->last()->id;
+                    $request->parasut_customer_id = Auth::user()->parasut_customer_id;
                     $request->save();
                 }
-
-
             }
             $iyzico_transaction_id = $deneme['itemTransactions'][0]['paymentTransactionId'];
+        } else {
+            $success_message = 'Ödeme Başarısız';
         }
-        else{
-            $success_message= 'Ödeme Başarısız';
-        }
-
-        return view('pages/packets/packets',compact('success_message','deneme','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
-
+        return view('pages/packets/packets', compact('success_message', 'deneme', 'base_moeny', 'round_new', 'round_new1', 'round_new2', 'money_new_value', 'locale', 'localiton', 'lang', 'packets_reel', 'last', 'pack', 'middle', 'money_new_value'));
     }
-    public static function payment(Request $request){
+
+    public static function payment(Request $request)
+    {
         $paymentrequest = new \Iyzipay\Request\CreatePaymentRequest();
         /*  $packets_reel = packets_reels::all();
           $packets = packets::all()->first();
@@ -178,71 +169,67 @@ class payment extends Controller
         preg_match('/Current IP Address: \[?([:.0-9a-fA-F]+)\]?/', $externalContent, $m);
         $externalIp = $m[1];
         $externalIp;
-        $base_moeny='₺';
+        $base_moeny = '₺';
         $ippp = '2.16.7.255';
-        $ippamerica= '1.32.232.0';
-        $tr='78.180.10.189';
+        $ippamerica = '1.32.232.0';
+        $tr = '78.180.10.189';
         $geo = geoip()->getLocation('78.180.10.189');
-        $localiton=  $geo->iso_code;
+        $localiton = $geo->iso_code;
         $packets_reel = packets_reels::all();
         $pack = $packets_reel->take(1)->first();
         $middle = $packets_reel->take(2)->last();
         $last = $packets_reel->take(3)->last();
-        $money=  $pack->price;
-        $money1=  $middle->price;
-        $money2=  $last->price;
+        $money = $pack->price;
+        $money1 = $middle->price;
+        $money2 = $last->price;
         $url = "https://api.exchangeratesapi.io/latest?base=TRY";
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_URL, $url);
         $response = curl_exec($ch);
         $arr_result = json_decode($response);
-        if($localiton==='TR'){
+        if ($localiton === 'TR') {
             $lang = 'tr';
             App::setlocale($lang);
             $locale = App::getLocale();
-            $money_value=$money;
-            $money_value1=$money1;
-            $money_value2=$money2;
-            $money_new_value=$pack->price;
-            $money_new_value1=$middle->price;
-            $money_new_value2=$last->price;
-            $round_new  = round($money_new_value);
-            $round_new1  = round($money_new_value1);
-            $round_new2  = round($money_new_value2);
-
-            $base_moeny='₺';
+            $money_value = $money;
+            $money_value1 = $money1;
+            $money_value2 = $money2;
+            $money_new_value = $pack->price;
+            $money_new_value1 = $middle->price;
+            $money_new_value2 = $last->price;
+            $round_new = round($money_new_value);
+            $round_new1 = round($money_new_value1);
+            $round_new2 = round($money_new_value2);
+            $base_moeny = '₺';
             echo "buraya girer";
-        }
-        else if($localiton==='US'){
+        } else if ($localiton === 'US') {
             $lang = 'en';
             App::setlocale($lang);
             $locale = App::getLocale();
-            $money_value=$arr_result->rates->USD;
-            $money_new_value = $money1*$money_value;
-            $money_new_value1 = $money*$money_value;
-            $money_new_value2 = $money2*$money_value;
-            $round_new  = round($money_new_value);
-            $round_new1  = round($money_new_value1);
-            $round_new2  = round($money_new_value2);
+            $money_value = $arr_result->rates->USD;
+            $money_new_value = $money1 * $money_value;
+            $money_new_value1 = $money * $money_value;
+            $money_new_value2 = $money2 * $money_value;
+            $round_new = round($money_new_value);
+            $round_new1 = round($money_new_value1);
+            $round_new2 = round($money_new_value2);
             echo "buraya girer2";
-
-            $base_moeny='$';
-        } else if($localiton==='ES'){
+            $base_moeny = '$';
+        } else if ($localiton === 'ES') {
             $lang = 'es';
             App::setlocale($lang);
-            $money_value=$arr_result->rates->EUR;
-            $money_new_value = $money1*$money_value;
-            $money_new_value1 = $money*$money_value;
-            $money_new_value2 = $money2*$money_value;
-            $round_new  = round($money_new_value);
-            $round_new1  = round($money_new_value1);
-            $round_new2  = round($money_new_value2);
-            $base_moeny='€';
+            $money_value = $arr_result->rates->EUR;
+            $money_new_value = $money1 * $money_value;
+            $money_new_value1 = $money * $money_value;
+            $money_new_value2 = $money2 * $money_value;
+            $round_new = round($money_new_value);
+            $round_new1 = round($money_new_value1);
+            $round_new2 = round($money_new_value2);
+            $base_moeny = '€';
             echo "buraya girer3";
-
             $locale = App::getLocale();
-        }else if($localiton==='DE') {
+        } else if ($localiton === 'DE') {
             $lang = 'de';
             App::setlocale($lang);
             $base_moeny = '€';
@@ -254,9 +241,8 @@ class payment extends Controller
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
             echo "buraya girer4";
-
             $locale = App::getLocale();
-        }else {
+        } else {
             $lang = 'de';
             App::setlocale($lang);
             $base_moeny = '€';
@@ -268,40 +254,34 @@ class payment extends Controller
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
             echo "buraya girer5";
-
             $locale = App::getLocale();
         }
-        if($request->invoicetype == "individual"){
+        if ($request->invoicetype == "individual") {
             $price = $request->input_price;
-            $card_first_last_name= $request->card_first_last;
-            $card_number= $request->card_number;
-            $card_ay= $request->Ay;
-            $card_yil= $request->Yil;
-            $card_cvc= $request->CVC;
-
+            $card_first_last_name = $request->card_first_last;
+            $card_number = $request->card_number;
+            $card_ay = $request->Ay;
+            $card_yil = $request->Yil;
+            $card_cvc = $request->CVC;
             $paymentrequest->setConversationId("123456789");
-            if(App::getLocale()=='de'){
+            if (App::getLocale() == 'de') {
                 $paymentrequest->setCurrency(\Iyzipay\Model\Currency::EUR);
-                $money_value=$arr_result->rates->EUR;
-                $money_new_value = $price*$money_value;
+                $money_value = $arr_result->rates->EUR;
+                $money_new_value = $price * $money_value;
                 $paymentrequest->setPrice($money_new_value);
                 $paymentrequest->setPaidPrice($money_new_value);
-            }
-            elseif(App::getLocale()=='tr'){
+            } elseif (App::getLocale() == 'tr') {
                 $paymentrequest->setLocale(\Iyzipay\Model\Locale::TR);
                 $paymentrequest->setCurrency(Currency::TL);
-
                 $paymentrequest->setPrice($price);
                 $paymentrequest->setPaidPrice($price);
-            }
-            else{
+            } else {
                 $paymentrequest->setCurrency(\Iyzipay\Model\Currency::USD);
-                $money_value=$arr_result->rates->USD;
-                $money_new_value = $price*$money_value;
+                $money_value = $arr_result->rates->USD;
+                $money_new_value = $price * $money_value;
                 $paymentrequest->setPrice($money_new_value);
                 $paymentrequest->setPaidPrice($money_new_value);
             }
-
             $paymentrequest->setInstallment(1);
             $paymentrequest->setBasketId("B67832");
             $paymentrequest->setPaymentChannel(\Iyzipay\Model\PaymentChannel::WEB);
@@ -342,50 +322,41 @@ class payment extends Controller
             $basketItem->setName($request['input_id'] . " Service");
             $basketItem->setCategory1($request['input_id']);
             $basketItem->setItemType(BasketItemType::VIRTUAL);
-            if(App::getLocale()=='de'){
-                $money_value=$arr_result->rates->EUR;
-                $money_new_value = $price*$money_value;
+            if (App::getLocale() == 'de') {
+                $money_value = $arr_result->rates->EUR;
+                $money_new_value = $price * $money_value;
                 $basketItem->setPrice($money_new_value);
-
-            }
-            elseif(App::getLocale()=='tr'){
+            } elseif (App::getLocale() == 'tr') {
                 $basketItem->setPrice($price);
-            }
-            else{
-                $money_value=$arr_result->rates->USD;
-                $money_new_value = $price*$money_value;
+            } else {
+                $money_value = $arr_result->rates->USD;
+                $money_new_value = $price * $money_value;
                 $basketItem->setPrice($money_new_value);
             }
             $paymentrequest->setBasketItems([$basketItem]);
-
-        }
-        elseif($request->invoicetype="institutional"){
+        } elseif ($request->invoicetype = "institutional") {
             $price = $request->input_price;
-            $card_first_last_name= $request->card_first_last;
-            $card_number= $request->card_number;
-            $card_ay= $request->Ay;
-            $card_yil= $request->Yil;
-            $card_cvc= $request->CVC;
-
+            $card_first_last_name = $request->card_first_last;
+            $card_number = $request->card_number;
+            $card_ay = $request->Ay;
+            $card_yil = $request->Yil;
+            $card_cvc = $request->CVC;
             $paymentrequest->setConversationId("123456789");
-            if(App::getLocale()=='de'){
+            if (App::getLocale() == 'de') {
                 $paymentrequest->setCurrency(\Iyzipay\Model\Currency::EUR);
-                $money_value=$arr_result->rates->EUR;
-                $money_new_value = $price*$money_value;
+                $money_value = $arr_result->rates->EUR;
+                $money_new_value = $price * $money_value;
                 $paymentrequest->setPrice($money_new_value);
                 $paymentrequest->setPaidPrice($money_new_value);
-            }
-            elseif(App::getLocale()=='tr'){
+            } elseif (App::getLocale() == 'tr') {
                 $paymentrequest->setCurrency(Currency::TL);
-
                 $paymentrequest->setLocale(\Iyzipay\Model\Locale::TR);
                 $paymentrequest->setPrice($price);
                 $paymentrequest->setPaidPrice($price);
-            }
-            else{
+            } else {
                 $paymentrequest->setCurrency(\Iyzipay\Model\Currency::USD);
-                $money_value=$arr_result->rates->USD;
-                $money_new_value = $price*$money_value;
+                $money_value = $arr_result->rates->USD;
+                $money_new_value = $price * $money_value;
                 $paymentrequest->setPrice($money_new_value);
                 $paymentrequest->setPaidPrice($money_new_value);
             }
@@ -430,35 +401,33 @@ class payment extends Controller
             $basketItem->setName($request['input_id'] . " Service");
             $basketItem->setCategory1($request['input_id']);
             $basketItem->setItemType(BasketItemType::VIRTUAL);
-            if(App::getLocale()=='de'){
+            if (App::getLocale() == 'de') {
                 $paymentrequest->setCurrency(\Iyzipay\Model\Currency::EUR);
-                $money_value=$arr_result->rates->EUR;
-                $money_new_value = $price*$money_value;
+                $money_value = $arr_result->rates->EUR;
+                $money_new_value = $price * $money_value;
                 $basketItem->setPrice($money_new_value);
-
-            }
-            elseif(App::getLocale()=='tr'){
+            } elseif (App::getLocale() == 'tr') {
                 $paymentrequest->setCurrency(Currency::TL);
                 $basketItem->setPrice($price);
-            }
-            else{
+            } else {
                 $paymentrequest->setCurrency(\Iyzipay\Model\Currency::USD);
-                $money_value=$arr_result->rates->USD;
-                $money_new_value = $price*$money_value;
+                $money_value = $arr_result->rates->USD;
+                $money_new_value = $price * $money_value;
                 $basketItem->setPrice($money_new_value);
             }
             $paymentrequest->setBasketItems([$basketItem]);
-
         }
         $payment = \Iyzipay\Model\Payment::create($paymentrequest, self::getOptions());
         $payment = json_decode($payment->getRawResult(), true);
         return $payment;
     }
+
     public static function getOptions()
     {
         $options = new Options();
         $options->setApiKey(('sandbox-bKyrtLaD0GOHCMtzDSfSMireECiKxAVC'));
-        $options->setSecretKey(('sandbox-KYxvzIudKKMzhCiXx8rRbYCmi4N4tdgm'));
+        $options->setSecretKey((
+        'sandbox-KYxvzIudKKMzhCiXx8rRbYCmi4N4tdgm'));
         $options->setBaseUrl(('https://sandbox-api.iyzipay.com'));
         return $options;
     }

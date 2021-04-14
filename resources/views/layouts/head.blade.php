@@ -33,7 +33,11 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css')}}/style.css">
         @if($routeName === 'home')
             <script rel="stylesheet" src="{{asset('js')}}/home.js"></script>
-        @endif        @if($routeName === 'editkeyword')
+        @endif
+        @if($routeName !== 'login')
+            <a class="SideBarName" hidden id="userid">{{ auth()->user()->id }}</a>
+        @endif
+        @if($routeName === 'editkeyword')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/editkeyword.css">
             <script rel="stylesheet" src="{{asset('js')}}/editkeyword.js"></script>
         @endif

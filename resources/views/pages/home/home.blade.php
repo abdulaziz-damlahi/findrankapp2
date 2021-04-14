@@ -241,7 +241,6 @@ n sfb tp-resizeme font-crimson"
                                 <li> {{$last->description}}</li>
                             </ul>
                             <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a></div>
-                        >>>>>>> origin/abdulazizdamlahilast
                     </div>
                     <!-- Price -->
                     <div class="col-md-4">

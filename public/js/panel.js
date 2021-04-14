@@ -471,18 +471,6 @@ window.addEventListener('load', (event) => {
     }
 });
 
-// $(document).ready(function () {
-//     if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-//         var colmun1 = document.getElementById("colmun1");
-//
-//         colmun1.style.maxWidth = "150px";
-//         colmun1.style.overflowWrap = "break-word";
-//         colmun1.style.overflow = "auto";
-//
-//     }
-//
-// })
-
 function get() {
     $.ajax({
         url: "/api/v1/Websites",
@@ -577,7 +565,6 @@ function getcount() {
                         }),
 
                     });
-
                 }
             }
         }

@@ -3,8 +3,9 @@ $(document).ready(function () {
     username();
 });
 
-
 function profile2() {
+    var userid= parseInt(document.getElementById("userid").innerHTML);
+
     $.ajax({
         type: 'get',
         url: "/api/v1/Packets",
@@ -15,6 +16,8 @@ function profile2() {
             }
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
+                    var userid_packet = response['data'][0].attributes.user_id;
+                if (userid_packet=userid){
                     var endofpacket = response['data'][0].attributes.end_of_pocket;
                     var createdAt = response['data'][0].attributes.createdAt;
                     var packet_names = response['data'][0].attributes.packet_names;
@@ -37,22 +40,24 @@ function profile2() {
                     var oneDay = 24 * 60 * 60 * 1000;
                     var diffDays = Math.round(Math.abs((today1format - lastday) / oneDay));
                     diffDays2 = (diffDays);
-                    if (today2==endofpacket|| today2>endofpacket){
-                        diffDays2='Aktif bir paketiniz yok.';
+                    if (today2 == endofpacket || today2 > endofpacket) {
+                        diffDays2 = 'Aktif bir paketiniz yok.';
                     }
                     $('#daysleft1').append(diffDays2);
                     $('#endofpacket1').append(endofpacket);
                     $('#createdAt1').append(createdAt);
                     $('#packet_names1').append(packet_names);
                 }
+                }
             }
 
         }
     });
 }
+
 function username() {
 
-  var username= document.getElementById("username").innerHTML;
+    var username = document.getElementById("username").innerHTML;
     $("#SideBarName").append(username)
 }
 
