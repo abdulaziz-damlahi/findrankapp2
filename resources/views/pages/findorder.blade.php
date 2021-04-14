@@ -66,7 +66,7 @@
                             <div class="btn-group">
                                 <select id="selectSecil" class="selectpicker countrypicker" data-flag="true">
                                 </select>
-                                <script rel="stylesheet" src="{{asset('js')}}/selectedcountry.js"></script>
+                                <script src="{{asset('js')}}/selectedcountry.js"></script>
                             </div>
                         </div>
                         <div class="btn-group col-md-3 col-sm-3">

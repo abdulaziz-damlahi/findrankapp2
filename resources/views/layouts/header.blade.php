@@ -37,6 +37,37 @@
             </tr>
             </tbody>
         </table>
+        <div class="col-md-12">
+            <div class="card order-card" style="background-color: #ff6c3a">
+                <div class="card-block">
+                    <div class="block-content block-content-full">
+                        <div><span class="tableStyle">{{__('pages.Remaining words')}}</span> <span
+                                id="" class="tableStyle pull-right"><b id="keywordusedSidebar"></b>/<b id="maxcountwordSidebar"></b></span>
+                        </div>
+                        <div class="progress-bar-border" style="margin-bottom:3px">
+                            <div class="progress">
+                                <div class="progress-bar bg-success" id="wordprogressSidebar" role="progressbar" aria-valuenow="25"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="tableStyle">
+                            <br>
+                        </div>
+                        <hr>
+                        <div><span class="tableStyle">{{__('pages.Remaining sites')}}</span> <span
+                                class="tableStyle pull-right"><b id="websiteusedSidebar"></b> /<b id="maxwebsiteSidebar"></b> </span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" id="websiteprogressSidebar" role="progressbar" aria-valuenow="25"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="tableStyle">
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @php
         $routeName = Route::getCurrentRoute()->getName();
