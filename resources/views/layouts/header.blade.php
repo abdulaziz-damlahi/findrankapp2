@@ -16,6 +16,9 @@
                type="button"><i
                     class="fa fa-gear push-5-r "></i>{{__('header.settings')}}</a>
         </div>
+        <br>
+        <br>
+        <br>
         <table class="table table-bordered table-striped table-condensed" style=";font-size: 15px">
             <tbody>
             <tr>

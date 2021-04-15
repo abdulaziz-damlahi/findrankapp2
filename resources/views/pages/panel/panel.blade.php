@@ -24,12 +24,12 @@
                                             <h class="m-b-20">{{__('panel.Keywords Used')}} {{ $userwebsite->wordcount }}</h>
                                             <br><br>
                                             <table>
-                                                <th> <h5 id='up{{ $userwebsite->id}}' style="color:lightgreen;width: 50px">
-                                                         <img class="svgstyle" src="{{asset('assets')}}/svg/up-arrow.svg">  </h5></th>
-                                                <th> <h5 id='equal{{ $userwebsite->id}}' style="color:mediumpurple">
-                                                         <img class="svgstyle" src="{{asset('assets')}}/svg/equal-arrow.svg">  </h5></th>
-                                                <th> <h5 id='down{{ $userwebsite->id}}' style="color:white">
-                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/down-arrow.svg">  </h5></th>
+                                                <th><h5 id='up{{ $userwebsite->id}}' style="color:lightgreen;width: 50px">
+                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/up-arrow.svg"></h5></th>
+                                                <th><h5 id='equal{{ $userwebsite->id}}' style="color:mediumpurple">
+                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/equal-arrow.svg"></h5></th>
+                                                <th><h5 id='down{{ $userwebsite->id}}' style="color:white">
+                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/down-arrow.svg"></h5></th>
                                             </table>
                                             <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span></span>
                                             </h2>
@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                             </a>
-                    @endforeach
+                        @endforeach
                         <div class="col-lg-12 col-md-12">
                             <div class="card whitebackground">
                                 <div class="card-header ">
@@ -113,6 +113,27 @@
                                                 class="fa  fa-square push-5-r"
                                                 style=" color:#cb0000">  </i>{{__('panel.first')}} 100{{__('panel.de')}}: <b
                                                 id="ilk100">  </b> <b>{{__('panel.word')}}</b> </button>  </span>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- ANAHTAR KELİME DEĞİŞİMLERİ--}}
+                        <div class="card whitebackground">
+                            <div class="card-header whitebackground">
+                                <div class="block block-bordered block-rounded">
+                                    <div class="block-header">
+                                        <h4 class="text-center">ANAHTAR KELİME DEĞİŞİMLERİ</h4>
+                                    </div>
+                                    <div class="block-content block-content-full">
+                                        <div class="push-5-l" style="margin-top:-17px">
+                                            <div style="display:inline-block"><b style="font-size:28px" id="totalup"></b> <img class="svgstylepanel" src="{{asset('assets')}}/svg/up-arrow.svg"><br><medium class="text-muted">Yükselme</medium></div>
+                                            <div class="pull-right push-5-r"><b style="font-size:28px" id="totaldown"></b><img class="svgstylepanel" src="{{asset('assets')}}/svg/down-arrow.svg"><br><medium class="text-muted">Düşüş</medium></div>
+                                        </div>
+                                        <div class="progress backorange" id="mainprogress">
+                                            <div class="progress-bar backgreen" id="KeywordTotalWordCount" role="progressbar" aria-valuenow="25"
+                                                 aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <span> <span id="totalword" class="font-w600"></span>word</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

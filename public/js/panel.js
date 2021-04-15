@@ -1,7 +1,9 @@
 $(document).ready(function () {
     var pageNumber = 1;
     // differance();
+    getKeywordRequest();
     getcount();
+    keywordsChanges();
     chart();
     cardChange();
     StatisticsPage(pageNumber);
@@ -10,7 +12,8 @@ $(document).ready(function () {
     // appendDifferent();
     latestRank();
 })
-$(document).ready(function () {
+
+function getKeywordRequest() {
     //today
     var today = new Date();
     today.setDate(today.getDate() + 30);
@@ -63,7 +66,7 @@ $(document).ready(function () {
 
         }
     })
-})
+}
 
 function chart() {
     $.ajax({
@@ -347,7 +350,6 @@ function StatisticsPage(pageNumber) {
         }
     });
 }
-
 // popup chart
 window.addEventListener('load', (event) => {
 
@@ -381,7 +383,6 @@ window.addEventListener('load', (event) => {
         }
     }
 });
-
 //ilk 3 js
 window.addEventListener('load', (event) => {
 
@@ -398,20 +399,23 @@ window.addEventListener('load', (event) => {
     btn.onclick = function () {
         modal.style.display = "block";
     }
-
 // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
     }
-
 // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
-});
 
+    modal.addEventListener("focusout", myFunction);
+
+    function myFunction() {
+        modal.style.visibility = 'hidden';
+    }
+});
 // ilk 10 js
 window.addEventListener('load', (event) => {
 
@@ -440,7 +444,6 @@ window.addEventListener('load', (event) => {
         }
     }
 });
-
 // ilk 100 js
 window.addEventListener('load', (event) => {
 
@@ -774,4 +777,38 @@ function latestRank() {
     })
 }
 
+function keywordsChanges() {
+    $.ajax({
+        type: 'get',
+        url: "/api/v1/Keywords",
+        success: function (response) {
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+            $('#totalword').append(len);
+            var up=0
+            var down=0
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                   var different = response['data'][i].attributes.different;
+                    //down calc
+                    if (different===1){down=down+1}
+                     //up calc
+                    if (different===3){up=up+1}
+                }
+            }
+            $('#totalup').append(up);
+            $('#totaldown').append(down);
+            if (up===0 && down===0){
+                var mainprogress = document.getElementById("mainprogress");
+                mainprogress.style.backgroundColor = "white";
+            }
+            percentage = (( up/ (down+up)) * 100);
+            var KeywordTotalWordCount = document.getElementById("KeywordTotalWordCount");
+            percentage2 = (percentage) + '%'
+            KeywordTotalWordCount.style.width = percentage2;
+        }
+    });
+}
 

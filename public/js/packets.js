@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $('#e_invoicee').click(function () {
         $('#e_invoicee').val($(this).is(':checked'));
-        console.log($('#e_invoicee').val());
+        //console.log($('#e_invoicee').val());
     });
     $('.invoiceeetype').on('change', function () {
-        console.log($('input[name=invoicetype]:checked', '.invoiceeetype').val());
+        //console.log($('input[name=invoicetype]:checked', '.invoiceeetype').val());
     });
     $('#gsm_number').on('change', function () {
         $("#gsm_number").val();
@@ -14,7 +14,7 @@ $(document).ready(function () {
     $('#success_message').css('display', 'none');
     $('#error_message').css('display', 'none');
     if ($('#button_third').hasClass('active')) {
-        console.log('geldi')
+        //console.log('geldi')
 
     }
     ;
@@ -73,7 +73,7 @@ $(document).ready(function () {
             if (i === 0) {
                 if ($('#kurumsal').prop("checked") === 'false') {
                     $('.kurumsal').hide();
-                    console.log($('.kurumsal').text());
+                    //console.log($('.kurumsal').text());
                     let window_size = $(window).width();
 
                     if (window_size < 500) {
@@ -155,7 +155,7 @@ $(document).ready(function () {
             if (i === 0) {
                 if ($('#kurumsal').prop("checked") === 'false') {
                     $('.kurumsal').hide();
-                    console.log($('.kurumsal').text());
+                    //console.log($('.kurumsal').text());
                 }
                 let window_size = $(window).width();
 
@@ -251,7 +251,7 @@ $(document).ready(function () {
                 jQuery.each(response, function (i, val) {
                     jQuery.each(val, function (is, vall) {
                         $start = vall.id - 1;
-                        console.log(vall);
+                        //console.log(vall);
 
                         $(".PURCHACE").eq($start).val(vall.id);
 
@@ -268,7 +268,7 @@ $(document).ready(function () {
 
         get_one_packets(number_id);
 
-        console.log(number_id)
+        //console.log(number_id)
 
         $("#packets_show").hide();
         $("#settingsForm").show();
@@ -301,12 +301,12 @@ $(document).ready(function () {
 
     let user_id = $('#hidden_id').text();
 
-    console.log(user_id)
+    //console.log(user_id)
     get_packets();
     get_invoice();
     $("#button_pay").click(function () {
 
-            console.log('burasdgeldi')
+            //console.log('burasdgeldi')
             const count = $('.hidden_size').val();
             if (count < 1) {
                 post_packets();
@@ -335,7 +335,7 @@ $(document).ready(function () {
             let last = $('#last_namee').val();
             let Id_number = $('#numberr').val();
             let id_number = parseInt(Id_number);
-            console.log(typeof id_number)
+            //console.log(typeof id_number)
             let invoice_no = $('#invoice_noo').val();
             let companyName = $('#companyName').val();
             let invoice_Addres = $('#invoice_adresses').val();
@@ -344,8 +344,8 @@ $(document).ready(function () {
             let e_invoice = $('#e_invoicee').val();
 
             let invocetype = $('input[name=gender]:checked', '.invoiceeetype').val();
-            console.log(invoice_no, 'invoice no');
-            console.log(invoice_Addres, 'invoice_addreses');
+            //console.log(invoice_no, 'invoice no');
+            //console.log(invoice_Addres, 'invoice_addreses');
             let country = $('#countries_personal').val();
             let city = $('#cities_personal').val();
             let district = $('#districttt').val();
@@ -381,7 +381,7 @@ $(document).ready(function () {
 
                 }),
                 success: function (result) {
-                    console.log('işlem başarılı')
+                    //console.log('işlem başarılı')
                     $('#success_message').css('display', 'grid');
                 },
                 error: function (result) {
@@ -396,7 +396,7 @@ $(document).ready(function () {
             let last = $('#last_name').val();
             let Id_number = $('#number_personal').val();
             let id_number = parseInt(Id_number);
-            console.log(typeof id_number)
+            //console.log(typeof id_number)
             let invoice_no = $('#invoice_noo').val();
             let companyName = $('#companyName').val();
             let invoice_Addres = $('#invoicd_address').val();
@@ -405,8 +405,8 @@ $(document).ready(function () {
             let e_invoice = $('#e_invoice').val();
 
             let invocetype = $('input[name=gender]:checked', '.invoiceeetype').val();
-            console.log(invoice_no, 'invoice no');
-            console.log(invoice_Addres, 'invoice_addreses');
+            //console.log(invoice_no, 'invoice no');
+            //console.log(invoice_Addres, 'invoice_addreses');
             let country = $('#country').val();
             let city = $('#city').val();
             let district = $('#DISTRICT_NAME').val();
@@ -442,7 +442,7 @@ $(document).ready(function () {
 
                 }),
                 success: function (result) {
-                    console.log('işlem başarılı')
+                    //console.log('işlem başarılı')
                     $('#success_message').css('display', 'grid');
                 },
                 error: function (result) {
@@ -464,21 +464,21 @@ $(document).ready(function () {
 
             let Id_number = $('#numberr').val();
             let id_number = parseInt(Id_number);
-            console.log(typeof id_number)
+            //console.log(typeof id_number)
             let invoice_no = $('#invoice_noo').val();
             let companyName = $('#companyName').val();
             let invoice_Addres = $('#invoice_adresses').val();
             let email_personal = $('#email').val();
             let gsm_number = $('#gsm_number').val();
             let gsm_number2 = $('#gsm_number').text();
-            console.log(gsm_number, 'gelmiyor');
-            console.log(gsm_number2, 'gelmiyor');
+            //console.log(gsm_number, 'gelmiyor');
+            //console.log(gsm_number2, 'gelmiyor');
             let e_invoice = $('#e_invoicee').val();
-            console.log('ikinci', e_invoice)
+            //console.log('ikinci', e_invoice)
 
             let invocetype = $('input[name=gender]:checked', '.invoiceeetype').val();
-            console.log(invoice_no, 'invoice no');
-            console.log(invoice_Addres, 'invoice_addreses');
+            //console.log(invoice_no, 'invoice no');
+            //console.log(invoice_Addres, 'invoice_addreses');
             let country = $('#countries_personal').val();
             let city = $('#cities_personal').val();
             let district = $('#districttt').val();
@@ -513,7 +513,7 @@ $(document).ready(function () {
 
                 }),
                 success: function (result) {
-                    console.log('işlem başarılı')
+                    //console.log('işlem başarılı')
                     $('#success_message').css('display', 'grid');
                 },
                 error: function (result) {
@@ -529,18 +529,18 @@ $(document).ready(function () {
             let last = $('#last_name').val();
             let Id_number = $('#number_personal').val();
             let id_number = parseInt(Id_number);
-            console.log(typeof id_number)
+            //console.log(typeof id_number)
             let invoice_no = $('#invoice_noo').val();
             let companyName = $('#companyName').val();
             let invoice_Addres = $('#invoicd_address').val();
             let gsm_number = $('#gsm_number_insu').val();
             let email_personal = $('#email_ins').val();
             let e_invoice = $('#e_invoice').val();
-            console.log('ikinci', e_invoice)
+            //console.log('ikinci', e_invoice)
 
             let invocetype = $('input[name=gender]:checked', '.invoiceeetype').val();
-            console.log(invoice_no, 'invoice no');
-            console.log(invoice_Addres, 'invoice_addreses');
+            //console.log(invoice_no, 'invoice no');
+            //console.log(invoice_Addres, 'invoice_addreses');
             let country = $('#country').val();
             let city = $('#city').val();
             let district = $('#DISTRICT_NAME').val();
@@ -575,7 +575,7 @@ $(document).ready(function () {
 
                 }),
                 success: function (result) {
-                    console.log('işlem başarılı')
+                    //console.log('işlem başarılı')
                     $('#success_message').css('display', 'grid');
                 },
                 error: function (result) {
@@ -588,18 +588,18 @@ $(document).ready(function () {
     };
 
     function post_packets() {
-        console.log($('#first_name').text());
-        console.log($('#first_name').val());
+        //console.log($('#first_name').text());
+        //console.log($('#first_name').val());
         let hidden_word_count = $("#hidden_word_count").text()
         let hidden_websites_count = $("#hidden_websites_count").text()
-        console.log(hidden_websites_count);
+        //console.log(hidden_websites_count);
         let başlangic = $("#başlangic").text()
         let rank_follow = $(".rank_follow").text()
         let hidden_price = $("#hidden_price").text()
         let pay_id = $("#pay_id").val();
-        console.log(pay_id, 'sadsadasddönmed');
+        //console.log(pay_id, 'sadsadasddönmed');
         let pay_id2 = $("#pay_id").text();
-        console.log(pay_id2, 'sadsadasddönmed');
+        //console.log(pay_id2, 'sadsadasddönmed');
         // var today = new Date();
         // var dd = String(today.getDate()).padStart(2, '0');
         // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -616,9 +616,9 @@ $(document).ready(function () {
         // let deyt =   new Date(yyyy,new_mm,new_dd);
         // var con_date =
         //     ""+deyt.getFullYear() + "-"+"0"+(deyt.getMonth()) + "-"+deyt.getDate();
-        // console.log(con_date)//converting the date
+        // //console.log(con_date)//converting the date
         // let gdate = "" + yyyy +"-"+"0"+ new_mm+"-" + new_dd; //given date
-        // console.log(gdate,'giremedi');
+        // //console.log(gdate,'giremedi');
         prev1 = new Date();
         prev1.setDate(prev1.getDate());
         var con_date = new Date(prev1);
@@ -626,8 +626,8 @@ $(document).ready(function () {
         var mm = String(con_date.getMonth() + 2).padStart(2, '0');
         var yyyy = con_date.getFullYear();
         con_date = yyyy + '-' + mm + '-' + dd;
-        console.log('abood');
-        console.log(con_date)
+        //console.log('abood');
+        //console.log(con_date)
 
         $.ajax({
             url: "http://127.0.0.1:8000/api/v1/Packets",
@@ -657,7 +657,7 @@ $(document).ready(function () {
                 }
             }),
             success: function (result) {
-                console.log('işlem başarılı')
+                //console.log('işlem başarılı')
             }
         });
     }
@@ -690,7 +690,7 @@ $(document).ready(function () {
         // var con_date =
         //     "" + deyt.getFullYear() + "-" + "0" + (deyt.getMonth()) + "-" + deyt.getDate(); //converting the date
         // let gdate = "" + startyear + "-" + "0" + startmonth + "-" + startday; //given date,
-        // console.log(gdate);
+        // //console.log(gdate);
 
         //abdulaziz yeni next month
         prev1 = new Date();
@@ -700,8 +700,8 @@ $(document).ready(function () {
         var mm = String(con_date.getMonth() + 2).padStart(2, '0');
         var yyyy = con_date.getFullYear();
         con_date = yyyy + '-' + mm + '-' + dd;
-        console.log('abood');
-        console.log(con_date)
+        //console.log('abood');
+        //console.log(con_date)
 
         $('.my_count_of_words').val();
         $('.my_count_of_websites').val();
@@ -735,7 +735,7 @@ $(document).ready(function () {
                 }
             }),
             success: function (result) {
-                console.log('işlem Güncellendi')
+                //console.log('işlem Güncellendi')
             }
         });
     }
@@ -749,7 +749,7 @@ $(document).ready(function () {
                 Accept: "application/vnd.api+json",
             },
             success: function (result) {
-                console.log(result)
+                //console.log(result)
                 let count = result.data.length
                 if (count > 0) {
                     $('.id_hidden').val(result.data[0].id)
@@ -761,8 +761,8 @@ $(document).ready(function () {
                     $('.max_my_count_of_websites').val(result.data[0].attributes.max_count_of_websites);
                     $('.rank_follow_max_max').val(result.data[0].attributes.rank_follow_max);
                     $('.date_packet').val(result.data[0].attributes.updated_at);
-                    console.log($('.rank_follow_max').val());
-                    console.log($('.rank_follow_max_max').val());
+                    //console.log($('.rank_follow_max').val());
+                    //console.log($('.rank_follow_max_max').val());
                     var today = $('.date_packet').val();
 
                 }
@@ -779,7 +779,7 @@ $(document).ready(function () {
                 Accept: "application/vnd.api+json",
             },
             success: function (result) {
-                console.log(result)
+                //console.log(result)
                 let count = result.data.length
                 if (count > 0) {
                     $('.invoice_id').val(result.data[0].id)
