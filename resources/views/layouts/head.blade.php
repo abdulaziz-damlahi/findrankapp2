@@ -64,12 +64,6 @@
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
             <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
         @endif
-
-        @if($routeName === 'websitelist')
-            <script rel="stylesheet" src="{{asset('js')}}/websitelist.js"></script>
-            <link rel="stylesheet" type="text/css" href="{{asset('css')}}/websitelist.css">
-        @endif
-
         @if($routeName === 'packets')
             <script rel="stylesheet" src="{{asset('js')}}/packets.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/packets.css">

@@ -14939,10 +14939,9 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
 }
 .svgstyle{
     height:30px;
-
 }
 .svgstylepanel{
-    font-size:28px
+    height:45px
 }
 .backorange{
     background-color: #ff6c3a;

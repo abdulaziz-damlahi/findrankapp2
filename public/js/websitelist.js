@@ -1,5 +1,7 @@
 $(document).ready(function () {
     Statistics();
+    keywordsChanges();
+    chart();
 })
 
 function Statistics() {
@@ -9,8 +11,7 @@ function Statistics() {
         url: "/api/v1/Keywords/?include=website&sort=-id",
         success: function (response) {
             $('#row').html("")
-            var websitidhtml = document.querySelector("#wrap > div:nth-child(3) > div > div > div.card-header > h5").innerHTML;
-
+            var websitidhtml =document.getElementById('websiteid').innerHTML;
             //len keyword
             var len = 0;
             if (response['data'] != null) {
@@ -202,7 +203,120 @@ $(document).ready(function () {
     });
 });
 
+function keywordsChanges() {
+    $.ajax({
+        type: 'get',
+        url: "/api/v1/Keywords",
+        success: function (response) {
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+            $('#totalword').append(len);
+            var up=0
+            var down=0
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var different = response['data'][i].attributes.different;
+                    //down calc
+                    if (different===1){down=down+1}
+                    //up calc
+                    if (different===3){up=up+1}
+                }
+            }
+            $('#totalup').append(up);
+            $('#totaldown').append(down);
+            if (up===0 && down===0){
+                var mainprogress = document.getElementById("mainprogress");
+                mainprogress.style.backgroundColor = "white";
+            }
+            percentage = (( up/ (down+up)) * 100);
+            var KeywordTotalWordCount = document.getElementById("KeywordTotalWordCount");
+            percentage2 = (percentage) + '%'
+            KeywordTotalWordCount.style.width = percentage2;
+        }
+    });
+}
 
+function chart() {
+    $.ajax({
+        type: 'get',
+        url: "/api/v1/Keywords/?include=website",
+        success: function (response) {
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
 
+            var les3 = 0;
+            var les10 = 0;
+            var les100 = 0;
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var id = response['data'][i].id
+                    var rank = response['data'][i].attributes.rank
+                    var word = response['data'][i].attributes.name
+                    if (rank > 0 && rank <= 3) {
+                        les3 = les3 + 1;
+                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
+                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+                            "<td id=\"rank\">  " + rank + "</td>" +
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
+                        $('#ilk3table').append(str);
+                    }
+                    if (rank > 3 && rank <= 10) {
+                        les10 = les10 + 1;
+                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
+                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+                            "<td id=\"rank\">  " + rank + "</td>" +
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
+                        $('#ilk10table').append(str);
 
+                    }
+                    if (rank > 10 && rank <= 100) {
+                        les100 = les100 + 1;
+                        var str = "<tr><td id=\"ANAHTARKELİME\"> " + id + "</td>" +
+                            "<td id=\"ANAHTARKELİME\"> " + word + "</td>" +
+                            "<td id=\"rank\">  " + rank + "</td>" +
+                            "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='/user/website/grafik/" + id + "'> </a></td></tr>";
+                        $('#ilk100table').append(str);
+                    }
+                }
+                $('#ilk3').append(les3);
+                $('#ilk10').append(les10);
+                $('#ilk100').append(les100);
+            }
+            CanvasJS.addColorSet("customColorSet1",
+                ["#fd9644", "#6495ed", "#fc5c65"]);
 
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                colorSet: "customColorSet1",
+                data: [
+                    {
+                        colorSet: "customColorSet1",
+                        //startAngle: 45,
+                        indexLabelFontSize: 20,
+                        indexLabelFontFamily: "Garamond",
+                        indexLabelFontColor: "orange",
+                        indexLabelLineColor: "darkgrey",
+                        indexLabelPlacement: "outside",
+                        type: "doughnut",
+                        startAngle: 60,
+                        //innerRadius: 60,
+                        indexLabelFontSize: 17,
+                        indexLabel: "{label} - #percent%",
+                        toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                        dataPoints: [
+                            { y: les3, label: "les than 3", },
+                            { y: les10, label: "les than 10" },
+                            { y: les100, label: "les than 100" },
+                        ]
+                    }]
+            });
+            chart.render();
+        }
+
+    });
+
+}

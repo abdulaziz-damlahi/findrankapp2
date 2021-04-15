@@ -121,18 +121,21 @@
                             <div class="card-header whitebackground">
                                 <div class="block block-bordered block-rounded">
                                     <div class="block-header">
-                                        <h4 class="text-center">ANAHTAR KELİME DEĞİŞİMLERİ</h4>
+                                        <h4 class="text-center">{{__('panel.KEYWORDS CHANGES')}}</h4>
                                     </div>
                                     <div class="block-content block-content-full">
                                         <div class="push-5-l" style="margin-top:-17px">
-                                            <div style="display:inline-block"><b style="font-size:28px" id="totalup"></b> <img class="svgstylepanel" src="{{asset('assets')}}/svg/up-arrow.svg"><br><medium class="text-muted">Yükselme</medium></div>
-                                            <div class="pull-right push-5-r"><b style="font-size:28px" id="totaldown"></b><img class="svgstylepanel" src="{{asset('assets')}}/svg/down-arrow.svg"><br><medium class="text-muted">Düşüş</medium></div>
+                                            <div style="display:inline-block"><b style="font-size:28px" id="totalup"></b><medium class="text-muted">{{__('panel.Rise')}}</medium>
+                                                <br> <img class="svgstylepanel" src="{{asset('assets')}}/svg/up-arrow.svg"><br></div>
+                                            <div class="pull-right push-5-r"><b style="font-size:28px" id="totaldown"></b><medium class="text-muted">{{__('panel.Drop')}}</medium>
+                                                <br><img class="svgstylepanel" src="{{asset('assets')}}/svg/down-arrow.svg"><br></div>
                                         </div>
+                                        <br>
                                         <div class="progress backorange" id="mainprogress">
                                             <div class="progress-bar backgreen" id="KeywordTotalWordCount" role="progressbar" aria-valuenow="25"
                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <span> <span id="totalword" class="font-w600"></span>word</span>
+                                        <span> <span id="totalword" class="font-w600"></span>{{__('panel.word')}} </span>
                                     </div>
                                 </div>
                             </div>

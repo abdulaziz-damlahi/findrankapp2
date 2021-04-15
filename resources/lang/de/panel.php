@@ -20,5 +20,8 @@ return [
     'daily change'=>'tägliche Veränderung',
     'delete'=>'löschen',
     'words count'=>'Wörter zählen',
+    'KEYWORDS CHANGES'=>'SCHLÜSSELWÖRTER ÄNDERN',
+    'Rise'=>'Erhebt euch',
+    'Drop'=>'Fallen',
 ];
 ?>

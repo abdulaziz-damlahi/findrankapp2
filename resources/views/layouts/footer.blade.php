@@ -1,6 +1,6 @@
 @section('footer')
 
-    <footer style="margin-top: 240px;">
+    <footer style="margin-top: 50px;">
         <div class="container fixed-bottom">
             <div class="row">
                 <div class="col-md-12 padding-top-50">
