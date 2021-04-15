@@ -8,7 +8,7 @@
             {{ session('packetempty') }}
         </div>
     @endif
-    {{--   <div style="" id="id">{{ $userId}}</div>--}}
+    {{--<div style="" id="id">{{ $userId}}</div>--}}
     <div class="pcoded-inner-content" id="main">
         <div class="main-body">
             <div class="page-wrapper">
@@ -88,7 +88,6 @@
                                     <div id="pageDetails" class="page-details">
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -125,9 +124,11 @@
                                     </div>
                                     <div class="block-content block-content-full">
                                         <div class="push-5-l" style="margin-top:-17px">
-                                            <div style="display:inline-block"><b style="font-size:28px" id="totalup"></b><medium class="text-muted">{{__('panel.Rise')}}</medium>
+                                            <div style="display:inline-block"><b style="font-size:28px" id="totalup"></b>
+                                                <medium class="text-muted">{{__('panel.Rise')}}</medium>
                                                 <br> <img class="svgstylepanel" src="{{asset('assets')}}/svg/up-arrow.svg"><br></div>
-                                            <div class="pull-right push-5-r"><b style="font-size:28px" id="totaldown"></b><medium class="text-muted">{{__('panel.Drop')}}</medium>
+                                            <div class="pull-right push-5-r"><b style="font-size:28px" id="totaldown"></b>
+                                                <medium class="text-muted">{{__('panel.Drop')}}</medium>
                                                 <br><img class="svgstylepanel" src="{{asset('assets')}}/svg/down-arrow.svg"><br></div>
                                         </div>
                                         <br>

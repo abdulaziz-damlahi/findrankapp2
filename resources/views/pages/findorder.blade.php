@@ -42,7 +42,7 @@
     <div class="container" id="FindOrderContainer">
         <section id="general_find" class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-50 padding-right-50">
             <br class="container" style="padding-right: 500px; padding-left:500px; ">
-            <!-- Tittle -->
+            <!-- Title -->
             <div class="heading-block white-text text-center margin-bottom-50">
                 <h2 style="color: black">{{__('pages.What’s Your Google Rank ?')}}</h2>
                 <span style="color: black">{{__('pages.See how well your page is optimised for your keyword')}}</span></div>
@@ -62,14 +62,14 @@
                         <input type="text" name="keyword" class="form-control" placeholder="Keyword">
                     </li>
                     <div class="row col-lg-12">
-                        <div class="btn-group col-md-3 col-sm-3" style="padding-top: 40px;">
+                        <div class="btn-group col-md-3 col-sm-6" style="padding-top: 40px;">
                             <div class="btn-group">
                                 <select id="selectSecil" class="selectpicker countrypicker" data-flag="true">
                                 </select>
                                 <script src="{{asset('js')}}/selectedcountry.js"></script>
                             </div>
                         </div>
-                        <div class="btn-group col-md-3 col-sm-3">
+                        <div class="btn-group col-md-3 col-sm-6">
                             <div class="btn-group">
                                 <select id="language" class="select">
                                     <option class="select" value="none" selected disabled hidden>
@@ -87,7 +87,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="btn-group col-md-3 col-sm-3">
+                        <div class="btn-group col-md-3 col-sm-6">
                             <div class="btn-group">
                                 <select id="device" class="select">
                                     <option value="none" selected disabled hidden>
@@ -103,7 +103,7 @@
                             </div>
 
                         </div>
-                        <div class="btn-group col-md-3 col-sm-3">
+                        <div class="btn-group col-md-3 col-sm-6">
                             <div class="btn-group">
                                 <select id="cityy" class="select">
                                     <option value="none" selected disabled hidden>
