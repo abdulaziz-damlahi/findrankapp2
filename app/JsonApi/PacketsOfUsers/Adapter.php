@@ -1,14 +1,18 @@
 <?php
 
-namespace App\JsonApi\Invoicerecords;
+namespace App\JsonApi\PacketsOfUsers;
 
+use App\JsonApi\Base\AbstractAdapter;
+use \App\Models\packets;
+use \App\Models\requests;
+use CloudCreativity\LaravelJsonApi\Http\Requests\FetchResource;
+use CloudCreativity\LaravelJsonApi\Document\ResourceObject;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
-use App\Models\invoicerecords;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use App\JsonApi\Base\AbstractAdapter;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\packets_of_users;
 
 class Adapter extends AbstractAdapter
 {
@@ -34,19 +38,9 @@ class Adapter extends AbstractAdapter
      */
     public function __construct(StandardStrategy $paging)
     {
-        parent::__construct(new \App\Models\invoicerecords(), $paging);
+        parent::__construct(new packets_of_users(), $paging);
     }
-    public function creating(invoicerecords $invoicerecords)
-    {
 
-        \App\Http\Controllers\payment::payment(request());
-
-    }    public function updating(invoicerecords $invoicerecords)
-    {
-
-        \App\Http\Controllers\payment::payment(request());
-
-    }
     /**
      * @param Builder $query
      * @param Collection $filters
@@ -54,7 +48,6 @@ class Adapter extends AbstractAdapter
      */
     protected function filter($query, Collection $filters)
     {
-        $query->whereUserId(Auth::id());
         $this->filterWithScopes($query, $filters);
     }
 

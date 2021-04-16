@@ -6,7 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="M_Adnan" />
+        <script src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"></script>
+
         <!-- Document Title -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js" integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.js" integrity="sha512-NpfrQEgzOExS1Ax8fjITKrgBFK87lZbBmvWdZk4suiCC4tsHPrTCsulgIA7Z/+CeWhDpEP/f36mNWgZXDKtTAA==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -79,8 +85,7 @@
         @if( $routeName === 'findorder' ||$routeName ==='findpost')
             <script rel="stylesheet" src="{{asset('js')}}/findorder.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/findorder.css">
-            <script src="https://mojoaxel.github.io/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
-            <link rel="stylesheet" href="https://mojoaxel.github.io/bootstrap-select-country/dist/css/bootstrap-select-country.min.css" />
+
             <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
         @endif
         <script rel="stylesheet" src="{{asset('js')}}/login.js"></script>

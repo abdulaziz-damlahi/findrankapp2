@@ -75,6 +75,8 @@ return [
         'packets-reels'  =>  \App\Models\packets_reels::class,
         'requests'  =>  \App\Models\requests::class,
         'invoicerecords'  =>  \App\Models\invoicerecords::class,
+        'packets-of-users'  =>  \App\Models\PacketsOfUsers::class,
+        'all-google-search-datas'  =>  \App\Models\AllGoogleSearchDatas::class,
     ],
 
     /*

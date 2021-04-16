@@ -9,12 +9,16 @@ use App\Models\keywords;
 use App\Models\packets;
 use App\Models\users;
 use App\Models\websites;
+use App\Models\AllGoogleSearchDatas;
 use Event;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function Symfony\Component\Translation\t;
 
 class panel extends Controller
 {
@@ -257,25 +261,36 @@ class panel extends Controller
 
     public function FindOrder()
     {
+
+        $userId  = Auth::user()->id;
+        $new = $userId;
+        $userIdMd5= base64_encode($userId);
+        echo $userIdMd5;
         $this->location();
-        return view('pages/findorder');
+        return view('pages/findorder',compact('userId','new','userIdMd5'));
     }
 
     public function findPost(Request $request)
     {
-        event(new ActionEvent($request));
+        $userId  = Auth::user()->id;
+        $new = $userId;
+        $userIdMd5= base64_encode($userId);
+        echo $userIdMd5;
+    /*    event(new ActionEvent($request));
         $request->hidden_collonial_name;
         $colonial_name = $request->hidden_collonial_name;
         $device_information = $request->hidden_device_name;
         $website_request = $request->website;
         $keyword_request = $request->keyword;
+        $hiddenToken = $request->hiddenToken;
         $language = $request->language_name;
         $array_all = [
             'colonial_name' => $colonial_name,
             'device' => $device_information,
             'website' => $website_request,
             'keyword' => $keyword_request,
-            'language' => $language
+            'language' => $language,
+            'hiddenToken' => $hiddenToken
         ];
         $arraydeeneme = ["colonial name" => $colonial_name];
         $hidden_collonial_name = json_encode($arraydeeneme);
@@ -293,22 +308,20 @@ class panel extends Controller
                         'language' => $language
                     ]
                 )]);
-            print_r($response);
-        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            return $response;
+        } catch (ClientException $e) {
 
-            dd($e->getResponse()->getBody()->getContents());
+            return ($e->getResponse()->getBody()->getContents());
 
         }
         echo "girdi";
-
-
+    */
         /*
         $packets =  packets::all();
         if(count($packets)>0) {
         $this->location();
         $packets = packets::all();
         if (count($packets) > 0) {
->>>>>>> origin/abdulazizdamlahilast
             $id = $packets[0]->id;
             $countrank = $packets[0]->rank_follow;
             $new = $countrank + 1;
@@ -630,10 +643,10 @@ class panel extends Controller
 <<<<<<< HEAD
                 packets::where('id',$id)->update(['rank_follow'=>$new]);
         */
-        return view(
-            'pages/findorder', compact( 'language', 'colonial_name', 'device_information', 'website_request', 'keyword_request'));
-    }
 
+        return view(
+            'pages/findorder',compact('userIdMd5'));
+    }
     public function userspacket()
     {
         $user = users::find(2);

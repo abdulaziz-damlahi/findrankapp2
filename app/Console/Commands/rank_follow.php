@@ -90,6 +90,7 @@ class rank_follow extends Command
                         )]
                     );
 
+
                     /*
                                                         if ($language == 'english') {
                                                             $len = 'en';

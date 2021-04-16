@@ -2,43 +2,9 @@
 @section('content')
 <div >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
-    <script>
-      $(document).ready(function () {
-        const socket = io.connect("http://localhost:3000/", {});
-
-        socket.on('connect',function (){
-          console.log('connected server2')
-          $('#post_method').submit(function (e) {
-            let test='girer';
-            socket.emit('girdi',{
-              test
-            })
-            let website = $("#website_value").val();
-            let keyword = $("#keyword_value").val();
-            let country = $("#country ").val();
-            let city = $("#cityy ").val();
-            let language = $("#language ").val();
-            let device = $("#device ").val();
-
-            socket.emit('dönüyorMmu', {
-              website,
-              keyword,
-              device,
-              country,
-              city,
-              language,
-            })
-          });
-        })
-        socket.on('newmessage',function (message){
-          console.log('newmessage',message)
-          $( ".full" ).append(message.from);
-        })
-      });
-    </script>
 
 </div>
-
+<input hidden val="{{$userIdMd5}}"value="{{$userIdMd5}}" class="deneme"id="hidden_user_id" >
     <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
     <div class="container" id="FindOrderContainer">
         <section id="general_find" class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-50 padding-right-50">
@@ -51,6 +17,9 @@
                 <form method="post" id="post_method" content="{{ csrf_token() }}" data-route="{{route('findpost')}}" class="form_rank_order col-md-12" enctype="multipart/form-data" >
 
                 @csrf
+                    <input hidden value="{{auth()->user()->id}}" id="hiddenToken" name="hiddenToken">
+                    <input hidden id="newmessage" name="newmessage">
+
                 @if($errors->any())
                     <div class="alertMessage alert-danger">
                         <h5>{{$errors->first()}}
@@ -58,10 +27,10 @@
                 @endif
                 <ul class="row col-lg-12">
                     <li class="col-md-6">
-                        <input type="text" name="website" class="form-control" placeholder="http://">
+                        <input type="text" id="website" name="website" class="form-control" placeholder="http://">
                     </li>
                     <li class="col-md-6">
-                        <input type="text" name="keyword" class="form-control" placeholder="Keyword">
+                        <input type="text" name="keyword"id="keyword" class="form-control" placeholder="Keyword">
                     </li>
                     <div class="row col-lg-12">
                         <div class="btn-group col-md-3 col-sm-3" style="padding-top: 40px;">
@@ -123,6 +92,12 @@
                     <button id="check_now" class="btn btn-orange bi bi-search"><i style="font-size: 20px"
                                                                                                 class="fa fa-search">  {{__('pages.Check Now !')}} </i></button>
                 </div>
+                    <div class="findOrderTitle" role="alert">
+
+                    </div>
+                    <div class="full">
+
+                    </div>
             </form>
             @isset($resultss)
                 @foreach ($resultss as $key=>$result)

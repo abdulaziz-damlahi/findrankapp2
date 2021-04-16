@@ -22,6 +22,7 @@ class users extends Migration
             $table->string('email')->nullable();
             $table->integer('token')->nullable();
             $table->string('password')->nullable();
+            $table->string('PersonalToken')->nullable();
             $table->string('company_name')->nullable();
             $table->string('company_email')->nullable();
             $table->string('company_logo')->nullable();

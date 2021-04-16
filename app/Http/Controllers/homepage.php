@@ -8,12 +8,12 @@ use App\Models\packets;
 use App\Models\packets_reels;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\payment;
+use Illuminate\Support\Facades\Auth;
 
 
 class homepage extends Controller
 {
     public function index (Request $request){
-
         $clientIP = \Request::ip();
         $clientIP = \Request::getClientIp(true);
         $clientIP = Request()->ip();

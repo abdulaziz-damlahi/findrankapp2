@@ -39,7 +39,6 @@ class packeets extends Command
      */
     public function handle()
     {
-
         packets::where('end_of_pocket','<=',Carbon::today())->delete();
     }
 }

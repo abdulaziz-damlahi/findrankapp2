@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\packets_reels;
+use App\Models\PacketsOfUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -122,5 +123,8 @@ class packets extends Controller
             $lang = 'de';
             App::setlocale($lang);
         }
+    }
+    public function BuyedPackets(Request $request){
+        $buyedPackets = new PacketsOfUsers;
     }
 }

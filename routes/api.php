@@ -31,10 +31,12 @@ JsonApi::register('v1')->routes(function (Api $api) {
     $api->post('/findrank', [\App\Http\Controllers\panel::class, 'findPost_T'])->name('findrank');
 
     $api->resource('Users');
+    $api->resource('packets-of-users');
     $api->resource('invoicerecords')->middleware("auth");
     $api->resource('Locations');
     $api->resource('keywordsRequests');
     $api->resource('packets-reels');
+    $api->resource('all-google-search-datas');
     $api->resource('keywordsRequests');
     $api->resource('Packets');
     $api->resource('requests');

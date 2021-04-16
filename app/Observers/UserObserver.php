@@ -45,6 +45,11 @@ class UserObserver
             ])
         );
         $user->parasut_customer_id = $response['data']['id'];
+        $sifre = base64_decode('sadaskjşlgfskjllş');
+        $randd = (rand(100000000,10000000000000000));
+        $deneme = "sfre".base64_encode($randd);
+        echo $deneme;
+        $user->PersonalToken = $deneme;
         $user->save();
     }
 

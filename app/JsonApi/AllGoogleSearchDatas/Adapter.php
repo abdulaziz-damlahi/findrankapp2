@@ -1,6 +1,7 @@
 <?php
 
-namespace App\JsonApi\Invoicerecords;
+namespace App\JsonApi\AllGoogleSearchDatas;
+
 
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
@@ -8,7 +9,7 @@ use App\Models\invoicerecords;
 use Illuminate\Support\Collection;
 use App\JsonApi\Base\AbstractAdapter;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\AllGoogleSearchDatas;
 
 class Adapter extends AbstractAdapter
 {
@@ -34,19 +35,9 @@ class Adapter extends AbstractAdapter
      */
     public function __construct(StandardStrategy $paging)
     {
-        parent::__construct(new \App\Models\invoicerecords(), $paging);
+        parent::__construct(new AllGoogleSearchDatas(), $paging);
     }
-    public function creating(invoicerecords $invoicerecords)
-    {
 
-        \App\Http\Controllers\payment::payment(request());
-
-    }    public function updating(invoicerecords $invoicerecords)
-    {
-
-        \App\Http\Controllers\payment::payment(request());
-
-    }
     /**
      * @param Builder $query
      * @param Collection $filters
@@ -54,8 +45,8 @@ class Adapter extends AbstractAdapter
      */
     protected function filter($query, Collection $filters)
     {
-        $query->whereUserId(Auth::id());
-        $this->filterWithScopes($query, $filters);
+     //   $query->whereUserId(Auth::id());
+       //  $this->filterWithScopes($query, $filters);
     }
 
 }
