@@ -2,6 +2,8 @@ $(document).ready(function () {
     Statistics();
     keywordsChanges();
     chart();
+    check();
+    popup();
 })
 
 function Statistics() {
@@ -10,13 +12,15 @@ function Statistics() {
         type: 'get',
         url: "/api/v1/Keywords/?include=website&sort=-id",
         success: function (response) {
+            var wordConut = 0
             $('#row').html("")
-            var websitidhtml =document.getElementById('websiteid').innerHTML;
+            var websitidhtml = document.getElementById('websiteid').innerHTML;
             //len keyword
             var len = 0;
             if (response['data'] != null) {
                 len = response['data'].length;
             }
+
             var elmId = $("#test").attr("id");
             //len websites
             var len2 = 0;
@@ -25,7 +29,6 @@ function Statistics() {
             }
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
-
                     var word = response['data'][i].attributes.name
                     var wordid = response['data'][i].id
                     var wordsiteid = response['data'][i].attributes.website_id
@@ -40,6 +43,7 @@ function Statistics() {
                         var id_website = response['included'][i2].attributes.user_id
                         if (wordsiteid == websiteid) {
                             if (websiteid == websitidhtml) {
+                                wordConut = wordConut + 1
                                 let sayi = response['data'][i].id
                                 var str = "<tr><td class='col' data-id='  " + i + "' id=\"ANAHTARKELİME\"> " + word + " </td>" +
                                     "<td id=\"rank\">  " + rank + "</td>" +
@@ -47,18 +51,15 @@ function Statistics() {
                                     "<td id=\"city\"  class='one' > " + city + "</td>" +
                                     "<td id=\"device2\"class='one' > " + device + "</td>" +
                                     "<td id=\"language\"class='one' >  " + language + "</td>" +
-                                    "<td   id=\"editbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='grafik/" + wordid + "'> </a></td>" +
+                                    "<td   id=\"grafikbtn\"><a  class=\"fa fa-bar-chart text-primary\" href='grafik/" + wordid + "'> </a></td>" +
                                     "<td scope=\"col\"><a href = 'deletekeyword/" + wordid + "'  class=\"fa fa-trash text-danger \"></a></td>" +
-                                    "<td   id=\"editbtn\"><a  class=\"fa fa-edit text-success \" href='editkeyword/" + wordid + "'> </a> </td></tr>";
+                                    "<td   id=\"editmyModalbtn\"><button onclick=\"updateword(" + wordid + ")\" class=\"fa fa-edit text-success\"></button></td></tr>";
                                 $('#row').append(str);
-
                             }
-
                         }
                     }
-
                 }
-
+                $('#CountOfWords').append(wordConut);
             }
 
         }
@@ -66,38 +67,6 @@ function Statistics() {
 }
 
 // add word popup
-window.addEventListener('load', (event) => {
-
-// Get the modal
-    var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-    var btn = document.getElementById("addNewword");
-
-// Get the <span> element that closes the modal
-    var span = document.getElementById("close");
-    var span2 = document.getElementById("close2");
-
-// When the user clicks the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-
-// When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    span2.onclick = function () {
-        modal.style.display = "none";
-    }
-
-// When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-});
 
 $("#device2").change(function () {
     if ($(this).val() === "Mobil") {
@@ -213,24 +182,24 @@ function keywordsChanges() {
                 len = response['data'].length;
             }
             $('#totalword').append(len);
-            var up=0
-            var down=0
+            var up = 0
+            var down = 0
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
                     var different = response['data'][i].attributes.different;
                     //down calc
-                    if (different===1){down=down+1}
+                    if (different === 1) {down = down + 1}
                     //up calc
-                    if (different===3){up=up+1}
+                    if (different === 3) {up = up + 1}
                 }
             }
             $('#totalup').append(up);
             $('#totaldown').append(down);
-            if (up===0 && down===0){
+            if (up === 0 && down === 0) {
                 var mainprogress = document.getElementById("mainprogress");
                 mainprogress.style.backgroundColor = "white";
             }
-            percentage = (( up/ (down+up)) * 100);
+            percentage = ((up / (down + up)) * 100);
             var KeywordTotalWordCount = document.getElementById("KeywordTotalWordCount");
             percentage2 = (percentage) + '%'
             KeywordTotalWordCount.style.width = percentage2;
@@ -319,4 +288,84 @@ function chart() {
 
     });
 
+}
+
+function check() {
+    var editmyModal = document.getElementById("editmyModal");
+    if (editmyModal === null) {check()} else {popup()}
+    check()
+};
+
+function popup() {
+    window.addEventListener('load', (event) => {
+// Get the modal
+        var modal = document.getElementById("myModal");
+        var editmyModal = document.getElementById("editmyModal");
+// Get the button that opens the modal
+        var btn = document.getElementById("addNewword");
+        var editmyModalbtn = document.getElementById("editmyModalbtn");
+// Get the <span> element that closes the modal
+        var span = document.getElementById("close");
+        var span2 = document.getElementById("close2");
+        var span3 = document.getElementById("editclose");
+// When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+// When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        span2.onclick = function () {
+            modal.style.display = "none";
+        }
+        span3.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        editmyModalbtn.onclick = function () {
+            editmyModal.style.display = "block";
+        }
+// When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+}
+
+function updateword(id) {
+var idstring = id.toString()
+    console.log(idstring)
+    var editkeyword = $('#editkeyword').val();
+    var editwebsiteid = $('#editwebsiteid').val();
+    var editcountry = $('#editcountry').val();
+    var editlanguage = $('#editlanguage').val();
+    var editdevice = $('#editdevice').val();
+    var editcity = $('#editcity').val();
+    console.log(editcity)
+    $.ajax({
+        url: "/api/v1/Keywords/" + id,
+        type: "PATCH",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+        data: JSON.stringify({
+            "data": {
+                "type": "Websites",
+                'id': idstring,
+                "attributes": {
+                    "name": editkeyword,
+                    "website_id": editwebsiteid,
+                    "device": editdevice,
+                    "language": editlanguage,
+                    "country":editcountry,
+                    "city": editcity,
+                }
+            }
+        }),
+
+    });
 }

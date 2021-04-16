@@ -203,11 +203,11 @@
                     <input hidden name="hidden_device_name2" id="hidden_device2"/>
                     <input hidden name="language_name2" id="language_hidden2"/>
                     <br><br><br><br><br>
-                    <div class="row col-lg-12" >
-                        <button type="submit" class="btn btn-primary mcuLoadingButton" style="justify-content: center"
-                                data-handler="confirm">  {{__('pages.Update')}}
+                    <div class="row col-md-12 editbtn" >
+
+                        <button type="submit" class="btn btn-primary mcuLoadingButton" data-handler="confirm">  {{__('pages.Update')}}
                         </button>
-                        <a href="{{route('websitelist', [$currentKeyword->website_id])}}" class="btn btn-primary " style="justify-content: center">
+                        <a href="{{route('websitelist', [$currentKeyword->website_id])}}" class="btn btn-primary ">
                             {{__('pages.close')}}
                         </a>
                     </div>

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    IfPacketExist();
     wordlensidebar();
     websitelensidebar();
     profile2();
@@ -112,4 +113,19 @@ function websitelensidebar() {
             });
         }
     });
+}
+
+function IfPacketExist() {
+    $.ajax({
+        url: "/api/v1/Packets",
+        type: "GET",
+        success: function (response) {
+            console.log(response['data'].length)
+            var len=response['data'].length
+            if (len === 0) {
+                console.log('true')
+                document.getElementById("buypacketbtn").style.display = "block";
+            }
+        }
+    })
 }

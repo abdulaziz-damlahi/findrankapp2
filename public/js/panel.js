@@ -499,13 +499,11 @@ function get() {
                     var idweb = 'webid' + websiteid;
                     var idiff = 'idiff' + websiteid;
                     var CurrentWebpage= window.location.href;
-                    console.log(CurrentWebpage);
                     const words = CurrentWebpage.split('/');
-                    console.log(words[0]);
-                 var Mainwebsite = words[0]+'//'+words[2];
-                    console.log(Mainwebsite);
+                 var Mainwebsite = words[0]+'//'+words[2];""
                     var str = "<tr> <th id='" + idweb + "' class='hidden' style='font-size: 15px'>" + websiteid + "</th> <th scope='col'><a href=website/" + websiteid + ">" +
                         "<div id='colmun1'></div>" + websitename + "</a></th>" +
+
                         "<td style='font-size: 15px' class='hidden-xs' scope='col' id='" + idiff + "'>" +
                         "<img class=\"svgstylemini\" src='" + Mainwebsite + "/assets/svg/up-arrow.svg'> " + up + " </i>" +
                         "<img class=\"svgstylemini\" src='" + Mainwebsite + "/assets/svg/equal-arrow.svg'> " + equal + " </i>" +

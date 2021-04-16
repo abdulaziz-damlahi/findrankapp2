@@ -34,8 +34,9 @@
         @if($routeName === 'home')
             <script rel="stylesheet" src="{{asset('js')}}/home.js"></script>
         @endif
-        @if($routeName !== 'login')
+        @if($routeName !== 'login'&&$routeName !=='home'&&$routeName !=='contact')
             <a class="SideBarName" hidden id="userid">{{ auth()->user()->id }}</a>
+            <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
         @endif
         @if($routeName === 'editkeyword')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/editkeyword.css">

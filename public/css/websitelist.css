@@ -1,4 +1,4 @@
-#body{
+#body {
     background-color: #e9f6ff;
 }
 
@@ -15,8 +15,23 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.editmyModal {
+    z-index: 1;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    /* Sit on top */
+    padding-top: 300px; /* Location of the box */
+    left: 0;
+    justify-content: center;
+    top: 0px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -28,6 +43,7 @@
     border: 1px solid #888;
     width: 80%;
 }
+
 .grafikmodal {
     z-index: 1;
     display: none; /* Hidden by default */
@@ -40,9 +56,10 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
+
 .grafikmodal-content {
     background-color: #e9f6ff;
     margin: auto;
@@ -50,6 +67,7 @@
     border: 1px solid #888;
     width: 80%;
 }
+
 /* The Close2 Button */
 .grafikclose {
     color: #aaaaaa;
@@ -64,6 +82,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 /* The Close Button */
 .close {
     color: #aaaaaa;
@@ -78,13 +97,14 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 /*site ekle panel*/
 
 
-.btns{
+.btns {
     border: none;
     color: white;
-    padding-right: 5px ;
+    padding-right: 5px;
     padding-left: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -100,55 +120,70 @@
     background-color: #ff6c3a;
     color: #0af9d7;
 }
-table{
+
+table {
     width: 50%;
 }
 
 @media only screen and (max-width: 900px) {
-    .one{
+    .one {
         display: none;
     }
-    .websitescont{
-        height:auto;
-        width:100%;
+
+    .websitescont {
+        height: auto;
+        width: 100%;
         background-color: #ffffff;
     }
 }
+
 @media only screen and (min-width: 900px) {
-.websitescont{
-    height:auto;
-    width:85%;
-    background-color: #e9f6ff;
+    .websitescont {
+        height: auto;
+        width: 85%;
+        background-color: #e9f6ff;
+    }
 }
-}
-.col{
+
+.col {
     max-width: 40px;
     overflow-wrap: break-word;
     overflow: auto;
 }
-.containerbtns{
+
+.containerbtns {
     background-color: #ff6c3a;
-    font-family: Alegreya Sans;
+font-family: sans-serif;
     color: white;
 }
-.grafiklist{
- background-color: #e9f6ff;
-}.
 
- totalwordlist{
- background-color: #e9f6ff;
-     margin-top: 100px!important;
+.grafiklist {
+    background-color: #e9f6ff;
 }
- .paddingcontainer{
-     margin-top: 50px;
-     background-color: #e9f6ff;
- }
-.svgstyleWebsites{
-    height:40px
+
+.
+totalwordlist {
+    background-color: #e9f6ff;
+    margin-top: 100px !important;
 }
-.backorange{
+
+.paddingcontainer {
+    margin-top: 50px;
+    background-color: #e9f6ff;
+}
+
+.svgstyleWebsites {
+    height: 40px
+}
+
+.backorange {
     background-color: #ff6c3a;
 }
-.backgreen{
+
+.backgreen {
     background-color: lawngreen;
+}
+
+.websitelistbtn {
+    font-family: sans-serif;
 }

@@ -6,14 +6,12 @@
             <div class="card">
                 <div class="card-header">
                     <h5 hidden id="websiteid">{{$websiteid}}</h5>
-                    <br>
-                    <br>
+                    <br><br>
                     <div class="btn-group">
-                        <a class="containerbtns btns btn-default" href="{{route('panel')}}" type="button">
-                            <i class="fa fa-arrow-left">{{__('pages.panel')}}</i></a>
-                        <button class="containerbtns btns btn-default" type="button" style="" id="addNewword">
-                            <i class="fa fa-plus"><span class="hidden-xs push-7-l">{{__('pages.Add Word')}}</span></i>
-                        </button>
+                        <a class="containerbtns btns btn-default " href="{{route('panel')}}" type="button">
+                            <i class="fa fa-arrow-left" ></i>{{__('pages.panel')}}</a>
+                        <button class="containerbtns btns btn-default" type="button" style="font-family: sans-serif;"  id="addNewword">
+                            <i class="fa fa-plus"></i><span class="hidden-xs push-7-l">{{__('pages.Add Word')}}</span>
                         @if (session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
@@ -22,7 +20,7 @@
                         @if (session('notsuccess'))
                             <div class="alert alert-danger">
                                 {{ session('notsuccess') }}
-                            </div>
+                            </div>`
                         @endif
                         @if (session('cantbeempty'))
                             <div class="alert alert-danger">
@@ -32,6 +30,7 @@
                     </div>
                     <br>
                     <br>
+
                     <table class="table">
                         <thead>
                         <tr>
@@ -246,6 +245,203 @@
                                 </button>
                             </div>
                         </div>
+                        <div id="editmyModal" class="editmyModal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span style="size: 15px;" id="editclose" class="editclose">X</span>
+                                <br><br>
+                                <form action="{{route('addword')}}" class="btn-submit" method="POST">
+                                    @csrf
+                                    <textarea class="form-control" id="urls" name="editkeyword" rows="5"
+                                              placeholder=""></textarea>
+                                    <textarea style="display:none" class="form-control" id="urls2" name="editwebsiteid"
+                                              rows="5"
+                                              placeholder="">{{$websiteid}}</textarea>
+                                    <br><br>
+                                    @if($errors->any())
+                                        <div class="alert-danger" style="font-size: 15px;">
+                                            {{$errors->first()}}
+                                        </div>
+                                    @endif
+                                    <div class="row col-lg-6">
+                                        <div class="btn-group col-md-3 ">
+                                            <div class="btn-group">
+                                                <select id="selectSecil" name="editcountry" class="select">
+                                                    <option value="none" selected disabled hidden>
+                                                        {{__('pages.country')}}
+                                                    </option>
+                                                    <option class="select" value="TR">
+                                                        Türkiye
+                                                    </option>
+                                                    <option class="select" value="AE">
+                                                        Birleşik Arap Emirlikleri
+                                                    </option>
+                                                    <option class="select" value="AR">
+                                                        Arjanstin
+                                                    </option>
+                                                    <option class="select" value="AU">
+                                                        Avusturalya
+                                                    </option>
+                                                    </option>
+                                                    <option class="select" value="AT">
+                                                        Avusturya
+                                                    </option>
+                                                    </option>
+                                                    <option class="select" value="BE">
+                                                        Belçika
+                                                    </option>
+                                                    <option class="select" value="CA">
+                                                        Kanada
+                                                    </option>
+                                                    <option class="select" value="CL">
+                                                        Şili
+                                                    </option>
+                                                    <option class="select" value="CN">
+                                                        Çin
+                                                    </option>
+                                                    <option class="select" value="CZ">
+                                                        Çek Cumhuriyeti
+                                                    </option>
+                                                    <option class="select" value="CZ">
+                                                        Çek Cumhuriyeti
+                                                    </option>
+                                                    <option class="select" value="DE">
+                                                        Almanya
+                                                    </option>
+                                                    <option class="select" value="BG">
+                                                        Bulgaristan
+                                                    </option>
+                                                    <option class="select" value="BR">
+                                                        Brezilya
+                                                    </option>
+                                                    <option class="select" value="CH">
+                                                        İsviçre
+                                                    </option>
+                                                    <option class="select" value="DE">
+                                                        Almanya
+                                                    </option>
+                                                    <option class="select" value="CO">
+                                                        Kolombiya
+                                                    </option>
+                                                    <option class="select" value="DK">
+                                                        Danimarka
+                                                    </option>
+                                                    <option class="select" value="EC">
+                                                        Ekvator
+                                                    </option>
+                                                    <option class="select" value="CO">
+                                                        Kolombiya
+                                                    </option>
+                                                    <option class="select" value="EG">
+                                                        Mısır
+                                                    </option>
+                                                    <option class="select" value="ES">
+                                                        İspanya
+                                                    </option>
+                                                    <option class="select" value="FI">
+                                                        Finlandiya
+                                                    </option>
+                                                    <option class="select" value="FR">
+                                                        Finlandiya
+                                                    </option>
+                                                    <option class="select" value="GB">
+                                                        İngiltere
+                                                    </option>
+                                                    <option class="select" value="GR">
+                                                        Yunanistan
+                                                    </option>
+                                                    <option class="select" value="HU">
+                                                        Macaristan
+                                                    </option>
+                                                    <option class="select" value="IN">
+                                                        Hindistan
+                                                    </option>
+                                                    <option class="select" value="IE">
+                                                        İrlanda
+                                                    </option>
+                                                    <option class="select" value="IL">
+                                                        İsrail
+                                                    </option>
+                                                    <option class="select" value="IT">
+                                                        İtalya
+                                                    </option>
+                                                    <option class="select" value="JP">
+                                                        Japonya
+                                                    </option>
+                                                    <option class="select" value="KR">
+                                                        Kore
+                                                    </option>
+                                                    <option class="select" value="LK">
+                                                        Sri lanka
+                                                    </option>
+                                                    <option class="select" value="Lu">
+                                                        Lüksemburg
+                                                    </option>
+                                                    <option class="select" value="MA">
+                                                        Fas
+                                                    </option>
+                                                    <option class="select" value="JP">
+                                                        Japonya
+                                                    </option>
+                                                    <option class="select" value="MX">
+                                                        Meksika
+                                                    </option>
+                                                    <option class="select" value="NG">
+                                                        Nijerya
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group col-md-3 ">
+                                            <div class="btn-group">
+                                                <select id="editlanguage" name="editlanguage" class="select">
+                                                    <option value="none" selected disabled hidden>
+                                                        {{__('pages.language')}}
+                                                    </option>
+                                                    <option class="select">
+                                                        {{__('pages.turkish')}}
+                                                    </option>
+                                                    <option class="select">
+                                                        {{__('pages.english')}}
+                                                    </option>
+                                                    <option class="select">
+                                                        {{__('pages.arabic')}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group col-md-3 ">
+                                            <div class="btn-group">
+                                                <select id="editdevice" name="editdevice" class="select">
+                                                    <option value="none" selected disabled hidden>
+                                                        {{__('pages.device')}}
+                                                    </option>
+                                                    <option>
+                                                        {{__('pages.mobile')}}
+                                                    </option>
+                                                    <option>
+                                                        {{__('pages.desktop')}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="btn-group col-md-3 ">
+                                            <div class="btn-group">
+                                                <select id="editcity" name="editcity" class="select">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br><br>
+                                    <button type="submit" class="btn btn-primary mcuLoadingButton"
+                                            data-handler="confirm"> {{__('pages.save')}}
+                                    </button>
+                                </form>
+                                <button id="editclose" class="btn btn-default"
+                                        data-dismiss="editmodal"> {{__('pages.close')}}
+                                </button>
+                            </div>
+                        </div>
                         {{-- grafik modal--}}
                         <div id="grafikmodal" class="grafikmodal">
                             <!-- Modal content -->
@@ -257,9 +453,9 @@
                                 </button>
                             </div>
                         </div>
-
                         </tbody>
                     </table>
+                    <div id="CountOfWords" style="float:right;margin-right:100px">total is </div>
                 </div>
                 <div class="card-block">
                 </div>

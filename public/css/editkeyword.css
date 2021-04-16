@@ -49,3 +49,7 @@
     transition: all .3s linear;
     background-color: #ff6c3a;
 }
+.editbtn{
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -74,4 +74,10 @@
     background: #ff6c3a;
     color: #fff;
 }
-
+.sirananaliztitle{
+    font-size: 35px;
+    font-weight: bold;
+    justify-content: center;
+    padding-left: 40%;
+    padding-right: 40%;
+}

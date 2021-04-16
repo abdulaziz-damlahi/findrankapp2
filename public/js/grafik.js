@@ -401,7 +401,7 @@ function grafik() {
                         chart = new CanvasJS.Chart("chartContainer", {
                             animationEnabled: true,
                             title: {
-                                text: "SIRA ANALİZİ"
+                                text: ""
                             },
                             axisX: {
                                 valueFormatString: "DD MMM,YYYY"
@@ -416,7 +416,7 @@ function grafik() {
                                 shared: true
                             },
                             data: [{
-                                name: "daily rank",
+                                name:"",
                                 type: "area",
                                 yValueFormatString: "#0.## ",
                                 showInLegend: true,
@@ -458,7 +458,7 @@ function grafik() {
         chart = new CanvasJS.Chart("chartContainer", {
             animationEnabled: true,
             title: {
-                text: "SIRA ANALİZİ"
+                text: ""
             },
             axisX: {
                 valueFormatString: "DD MMM,YYYY"
@@ -473,9 +473,9 @@ function grafik() {
                 shared: true
             },
             data: [{
-                name: "daily rank",
+                name:"",
                 type: "area",
-                yValueFormatString: "#0.## ",
+                yValueFormatString: "#0.##",
                 showInLegend: true,
                 dataPoints: dpslast
             },]

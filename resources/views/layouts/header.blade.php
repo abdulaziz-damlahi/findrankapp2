@@ -1,4 +1,3 @@
-
 @section('header')
 
     <div style="z-index:4!important;padding-top: 100px;" id="mySidebar" class="sidebar">
@@ -16,9 +15,7 @@
                type="button"><i
                     class="fa fa-gear push-5-r "></i>{{__('header.settings')}}</a>
         </div>
-        <br>
-        <br>
-        <br>
+        <br><br><br>
         <table class="table table-bordered table-striped table-condensed" style=";font-size: 15px">
             <tbody>
             <tr>
@@ -28,7 +25,7 @@
             </tr>
             <tr>
                 <td class="font-w600">{{__('header.Start')}}:</td>
-                <td id="createdAt1" ></td>
+                <td id="createdAt1"></td>
             </tr>
             <tr>
                 <td class="font-w600">{{__('header.ends')}}:</td>
@@ -37,9 +34,14 @@
             <tr>
                 <td class="font-w600">{{__('header.remaining')}}:</td>
                 <td id="daysleft1"></td>
+
             </tr>
             </tbody>
         </table>
+
+        <a href="{{route("packets")}}" class="btn btn-sm btn-success" style="display: none;margin-left:15px;margin-right:15px" id="buypacketbtn">
+            <i class="fa fa-dropbox" aria-hidden="true"></i> Paket Satın Al</a>
+        <br>
         <div class="col-md-12">
             <div class="card order-card" style="background-color: #ff6c3a">
                 <div class="card-block">
@@ -85,7 +87,7 @@
     <!-- Page Wrapper -->
     <div id="wrap">
         <!-- Top bar -->
-        <div class="container" >
+        <div class="container">
             <div class="row" id="notch">
                 <div class="col-md-2 noo-res"></div>
                 <div class="col-md-10">
