@@ -26,7 +26,7 @@ class Schema extends SchemaProvider
     /**
      * @param keywords $resource
      *      the domain record being serialized.
-     * @return string
+     * @return array
      */
     public function getAttributes($resource)
     {

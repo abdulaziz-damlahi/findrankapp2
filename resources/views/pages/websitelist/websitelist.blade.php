@@ -8,10 +8,15 @@
                     <h5 hidden id="websiteid">{{$websiteid}}</h5>
                     <br><br>
                     <div class="btn-group">
+
                         <a class="containerbtns btns btn-default " href="{{route('panel')}}" type="button">
-                            <i class="fa fa-arrow-left" ></i>{{__('pages.panel')}}</a>
-                        <button class="containerbtns btns btn-default" type="button" style="font-family: sans-serif;"  id="addNewword">
+                            <i class="fa fa-arrow-left"></i>{{__('pages.panel')}}</a>
+                        <button class="containerbtns btns btn-default" type="button" id="addNewword">
                             <i class="fa fa-plus"></i><span class="hidden-xs push-7-l">{{__('pages.Add Word')}}</span>
+                        </button>
+                        <button class="containerbtns btns btn-default" type="button"  id="editmyModalbtn">
+                            <i class="fa fa-edit"></i><span class="hidden-xs push-7-l">{{__('pages.edit')}}</span>
+                        </button>
                         @if (session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
@@ -34,6 +39,7 @@
                     <table class="table">
                         <thead>
                         <tr>
+                            <th scope="col">#</th>
                             <th scope="col">{{__('pages.Keyword')}}</th>
                             <th scope="col">{{__('pages.order')}}</th>
                             <th scope="col" id="country" class="one">{{__('pages.country')}}</th>
@@ -42,15 +48,14 @@
                             <th scope="col" id="language" class="one">{{__('pages.language')}}</th>
                             <th scope="col">{{__('pages.graph')}}</th>
                             <th scope="col">{{__('pages.delete')}}</th>
-                            <th scope="col">{{__('pages.edit')}}</th>
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody id="row">
-
                         <div id="myModal" class="modal">
                             <!-- Modal content -->
                             <div class="modal-content">
-                                <span style="size: 15px;" id="close" class="close">X</span>
+                                <span id="close" class="close">X</span>
                                 <br><br>
                                 <form action="{{route('addword')}}" class="btn-submit" method="POST">
                                     @csrf
@@ -69,7 +74,7 @@
                                         <div class="btn-group col-md-3 ">
                                             <div class="btn-group">
                                                 <select id="selectSecil" name="country" class="select">
-                                                    <option value="none" selected disabled hidden>
+                                                    <option value="none"  disabled hidden>
                                                         {{__('pages.country')}}
                                                     </option>
                                                     <option class="select" value="TR">
@@ -197,16 +202,16 @@
                                         <div class="btn-group col-md-3 ">
                                             <div class="btn-group">
                                                 <select id="language" name="language" class="select">
-                                                    <option value="none" selected disabled hidden>
+                                                    <option value="none"  disabled hidden class="hidden">
                                                         {{__('pages.language')}}
                                                     </option>
-                                                    <option class="select">
+                                                    <option class="select"  value="turkish" >
                                                         {{__('pages.turkish')}}
                                                     </option>
-                                                    <option class="select">
+                                                    <option class="select" value="english" >
                                                         {{__('pages.english')}}
                                                     </option>
-                                                    <option class="select">
+                                                    <option class="select" value="arabic" >
                                                         {{__('pages.arabic')}}
                                                     </option>
                                                 </select>
@@ -215,10 +220,10 @@
                                         <div class="btn-group col-md-3 ">
                                             <div class="btn-group">
                                                 <select id="device" name="device" class="select">
-                                                    <option value="none" selected disabled hidden>
+                                                    <option value="none"  disabled hidden>
                                                         {{__('pages.device')}}
                                                     </option>
-                                                    <option>
+                                                    <option >
                                                         {{__('pages.mobile')}}
                                                     </option>
                                                     <option>
@@ -248,26 +253,20 @@
                         <div id="editmyModal" class="editmyModal">
                             <!-- Modal content -->
                             <div class="modal-content">
-                                <span style="size: 15px;" id="editclose" class="editclose">X</span>
+                                <span id="editclose" class="close">X</span>
                                 <br><br>
-                                <form action="{{route('addword')}}" class="btn-submit" method="POST">
+                                <form id="editForm">
                                     @csrf
-                                    <textarea class="form-control" id="urls" name="editkeyword" rows="5"
+                                    <textarea class="form-control" id="editurls" name="editkeyword" rows="5"
                                               placeholder=""></textarea>
-                                    <textarea style="display:none" class="form-control" id="urls2" name="editwebsiteid"
-                                              rows="5"
+                                    <textarea style="display:none" class="form-control" id="editwebsiteid" name="editwebsiteid"
                                               placeholder="">{{$websiteid}}</textarea>
                                     <br><br>
-                                    @if($errors->any())
-                                        <div class="alert-danger" style="font-size: 15px;">
-                                            {{$errors->first()}}
-                                        </div>
-                                    @endif
                                     <div class="row col-lg-6">
                                         <div class="btn-group col-md-3 ">
                                             <div class="btn-group">
-                                                <select id="selectSecil" name="editcountry" class="select">
-                                                    <option value="none" selected disabled hidden>
+                                                <select id="editcountry" name="editcountry" class="select">
+                                                    <option value="none"  disabled hidden>
                                                         {{__('pages.country')}}
                                                     </option>
                                                     <option class="select" value="TR">
@@ -395,16 +394,16 @@
                                         <div class="btn-group col-md-3 ">
                                             <div class="btn-group">
                                                 <select id="editlanguage" name="editlanguage" class="select">
-                                                    <option value="none" selected disabled hidden>
+                                                    <option value="none"  disabled hidden>
                                                         {{__('pages.language')}}
                                                     </option>
-                                                    <option class="select">
+                                                    <option class="select" value="turkish">
                                                         {{__('pages.turkish')}}
                                                     </option>
-                                                    <option class="select">
+                                                    <option class="select" value="english">
                                                         {{__('pages.english')}}
                                                     </option>
-                                                    <option class="select">
+                                                    <option class="select" value="arabic">
                                                         {{__('pages.arabic')}}
                                                     </option>
                                                 </select>
@@ -413,10 +412,10 @@
                                         <div class="btn-group col-md-3 ">
                                             <div class="btn-group">
                                                 <select id="editdevice" name="editdevice" class="select">
-                                                    <option value="none" selected disabled hidden>
+                                                    <option value="none" disabled hidden>
                                                         {{__('pages.device')}}
                                                     </option>
-                                                    <option>
+                                                    <option >
                                                         {{__('pages.mobile')}}
                                                     </option>
                                                     <option>
@@ -433,15 +432,16 @@
                                         </div>
                                     </div>
                                     <br><br><br>
-                                    <button type="submit" class="btn btn-primary mcuLoadingButton"
-                                            data-handler="confirm"> {{__('pages.save')}}
-                                    </button>
+                                    <a id="submitedit" class="btn btn-primary mcuLoadingButton"> {{__('pages.save')}}
+                                    </a>
                                 </form>
-                                <button id="editclose" class="btn btn-default"
-                                        data-dismiss="editmodal"> {{__('pages.close')}}
+                                <button id="editclose2" class="btn btn-default" data-dismiss="editmodal">
+                                    {{__('pages.close')}}
                                 </button>
                             </div>
                         </div>
+
+
                         {{-- grafik modal--}}
                         <div id="grafikmodal" class="grafikmodal">
                             <!-- Modal content -->
@@ -455,7 +455,7 @@
                         </div>
                         </tbody>
                     </table>
-                    <div id="CountOfWords" style="float:right;margin-right:100px">total is </div>
+                    <div id="CountOfWords" style="float:right;margin-right:100px">total is</div>
                 </div>
                 <div class="card-block">
                 </div>
