@@ -41,7 +41,8 @@ class Schema extends SchemaProvider
             'language' => $resource->language,
             'country' => $resource->country,
             'city' => $resource->city,
-
+            'created_At' => $resource->created_At,
+            'updated_At' => $resource->updated_At,
         ];
     }
 }

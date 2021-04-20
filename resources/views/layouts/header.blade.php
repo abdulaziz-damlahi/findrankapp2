@@ -7,19 +7,15 @@
         <a class="SideBarName" id="SideBarName"></a>
 
         <div class="btn-group btn-group-justified2 push col-md-12" role="group">
-
-            <a href="{{route("profile")}}" class="btn btn-primary col-md-6" style="font-size: 17px ;color: white;"
-               type="button"><i
-                    class="fa fa-user push-5-r "></i>{{__('header.my account')}}</a>
-            <a href="{{route("settings")}}" class="btn btn-primary col-md-6" style="font-size: 17px; color: white;"
-               type="button"><i
-                    class="fa fa-gear push-5-r "></i>{{__('header.settings')}}</a>
+            <a href="{{route("profile")}}" class="btn  col-md-6" style="font-size: 17px ;color: white;margin-bottom: 30px"
+               type="button"><i class="fa fa-user push-5-r "></i>{{__('header.my account')}}</a>
+            <a href="{{route("settings")}}" class="btn  col-md-6" style="font-size: 17px; color: white;"
+               type="button"><i class="fa fa-gear push-5-r "></i>{{__('header.settings')}}</a>
         </div>
-        <br><br><br>
         <table class="table table-bordered table-striped table-condensed" style=";font-size: 15px">
             <tbody>
             <tr>
-
+                <div id="daysleft" hidden></div>
                 <td style="width:50%" class="font-w600">{{__('header.packet')}}:</td>
                 <td id="packet_names1"></td>
             </tr>
@@ -130,11 +126,10 @@
                             @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile'|| $routeName === 'findorder')
                                 <li><a href="{{route("logout")}}">{{__('header.Logout')}}</a></li>
                             @endif
-                            @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile')
+                            @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile'|| $routeName === 'websitelist')
 
                                 <li id="openbtn" data-toggle="toggle" class="openbtn" onclick="openNav()">〱</li>
                         @endif
-                        <!--======= SEARCH ICON =========-->
                             <ul class="dropdown">
                                 <li>
                                     <form>

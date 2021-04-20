@@ -8,15 +8,15 @@
                     <h5 hidden id="websiteid">{{$websiteid}}</h5>
                     <br><br>
                     <div class="btn-group">
-
                         <a class="containerbtns btns btn-default " href="{{route('panel')}}" type="button">
                             <i class="fa fa-arrow-left"></i>{{__('pages.panel')}}</a>
                         <button class="containerbtns btns btn-default" type="button" id="addNewword">
                             <i class="fa fa-plus"></i><span class="hidden-xs push-7-l">{{__('pages.Add Word')}}</span>
                         </button>
-                        <button class="containerbtns btns btn-default" type="button"  id="editmyModalbtn">
+                        <button class="containerbtns btns btn-default" type="button" style="display:none" id="editmyModalbtn">
                             <i class="fa fa-edit"></i><span class="hidden-xs push-7-l">{{__('pages.edit')}}</span>
                         </button>
+                        <div id="daysleft" hidden></div>
                         @if (session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
@@ -32,14 +32,15 @@
                                 {{ session('cantbeempty') }}
                             </div>
                         @endif
+                        <div id="packetalert" class="alert alert-danger" style="display: none">
+                            you dont have any packet
+                        </div>
                     </div>
-                    <br>
-                    <br>
-
+                    <br><br>
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col"><span class="fa fa-pencil"></span></th>
                             <th scope="col">{{__('pages.Keyword')}}</th>
                             <th scope="col">{{__('pages.order')}}</th>
                             <th scope="col" id="country" class="one">{{__('pages.country')}}</th>
@@ -70,37 +71,37 @@
                                             {{$errors->first()}}
                                         </div>
                                     @endif
-                                    <div class="row col-lg-6">
-                                        <div class="btn-group col-md-3 ">
+                                    <div class="row col-lg-10 col-md-10 col-xs-12" style="margin-bottom: 10px">
+                                        <div class="btn-group col-md-3">
                                             <div class="btn-group">
                                                 <select id="selectSecil" name="country" class="select">
-                                                    <option value="none"  disabled hidden>
+                                                    <option value="none" selected disabled hidden>
                                                         {{__('pages.country')}}
                                                     </option>
-                                                    <option class="select" value="TR">
+                                                    <option value="TR">
                                                         Türkiye
                                                     </option>
-                                                    <option class="select" value="AE">
+                                                    <option value="AE">
                                                         Birleşik Arap Emirlikleri
                                                     </option>
-                                                    <option class="select" value="AR">
+                                                    <option value="AR">
                                                         Arjanstin
                                                     </option>
-                                                    <option class="select" value="AU">
+                                                    <option value="AU">
                                                         Avusturalya
                                                     </option>
                                                     </option>
-                                                    <option class="select" value="AT">
+                                                    <option value="AT">
                                                         Avusturya
                                                     </option>
                                                     </option>
-                                                    <option class="select" value="BE">
+                                                    <option value="BE">
                                                         Belçika
                                                     </option>
-                                                    <option class="select" value="CA">
+                                                    <option value="CA">
                                                         Kanada
                                                     </option>
-                                                    <option class="select" value="CL">
+                                                    <option value="CL">
                                                         Şili
                                                     </option>
                                                     <option class="select" value="CN">
@@ -199,31 +200,31 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="btn-group col-md-3 ">
+                                        <div class="btn-group col-md-3">
                                             <div class="btn-group">
                                                 <select id="language" name="language" class="select">
-                                                    <option value="none"  disabled hidden class="hidden">
+                                                    <option value="none" selected disabled hidden>
                                                         {{__('pages.language')}}
                                                     </option>
-                                                    <option class="select"  value="turkish" >
+                                                    <option class="select" value="turkish">
                                                         {{__('pages.turkish')}}
                                                     </option>
-                                                    <option class="select" value="english" >
+                                                    <option class="select" value="english">
                                                         {{__('pages.english')}}
                                                     </option>
-                                                    <option class="select" value="arabic" >
+                                                    <option class="select" value="arabic">
                                                         {{__('pages.arabic')}}
                                                     </option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="btn-group col-md-3 ">
+                                        <div class="btn-group col-md-3">
                                             <div class="btn-group">
                                                 <select id="device" name="device" class="select">
-                                                    <option value="none"  disabled hidden>
+                                                    <option value="none" selected disabled hidden>
                                                         {{__('pages.device')}}
                                                     </option>
-                                                    <option >
+                                                    <option>
                                                         {{__('pages.mobile')}}
                                                     </option>
                                                     <option>
@@ -232,14 +233,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="btn-group col-md-3 ">
+                                        <div class="btn-group col-md-3">
                                             <div class="btn-group">
                                                 <select id="cityy" name="city" class="select">
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-
                                     <br><br><br>
                                     <button type="submit" class="btn btn-primary mcuLoadingButton"
                                             data-handler="confirm"> {{__('pages.save')}}
@@ -255,18 +255,18 @@
                             <div class="modal-content">
                                 <span id="editclose" class="close">X</span>
                                 <br><br>
-                                <form id="editForm">
+                                <form id="editForm" onsubmit='return onSubmit(this)'>
                                     @csrf
                                     <textarea class="form-control" id="editurls" name="editkeyword" rows="5"
                                               placeholder=""></textarea>
                                     <textarea style="display:none" class="form-control" id="editwebsiteid" name="editwebsiteid"
                                               placeholder="">{{$websiteid}}</textarea>
                                     <br><br>
-                                    <div class="row col-lg-6">
-                                        <div class="btn-group col-md-3 ">
+                                    <div class="row col-lg-10 col-md-10 col-xs-12" style="margin-bottom: 10px">
+                                        <div class="btn-group col-md-3 col-sm-6 col-xs-12">
                                             <div class="btn-group">
                                                 <select id="editcountry" name="editcountry" class="select">
-                                                    <option value="none"  disabled hidden>
+                                                    <option value="none" disabled hidden>
                                                         {{__('pages.country')}}
                                                     </option>
                                                     <option class="select" value="TR">
@@ -391,10 +391,10 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="btn-group col-md-3 ">
+                                        <div class="btn-group col-md-3 col-sm-6 col-xs-12">
                                             <div class="btn-group">
                                                 <select id="editlanguage" name="editlanguage" class="select">
-                                                    <option value="none"  disabled hidden>
+                                                    <option value="none" disabled hidden>
                                                         {{__('pages.language')}}
                                                     </option>
                                                     <option class="select" value="turkish">
@@ -409,13 +409,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="btn-group col-md-3 ">
+                                        <div class="btn-group col-md-3 col-sm-6 col-xs-12">
                                             <div class="btn-group">
                                                 <select id="editdevice" name="editdevice" class="select">
                                                     <option value="none" disabled hidden>
                                                         {{__('pages.device')}}
                                                     </option>
-                                                    <option >
+                                                    <option>
                                                         {{__('pages.mobile')}}
                                                     </option>
                                                     <option>
@@ -424,7 +424,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="btn-group col-md-3 ">
+                                        <div class="btn-group col-md-3 col-sm-6 col-xs-12">
                                             <div class="btn-group">
                                                 <select id="editcity" name="editcity" class="select">
                                                 </select>
@@ -432,12 +432,13 @@
                                         </div>
                                     </div>
                                     <br><br><br>
-                                    <a id="submitedit" class="btn btn-primary mcuLoadingButton"> {{__('pages.save')}}
-                                    </a>
+                                    <button id="submitedit" type="submit" class="btn btn-primary mcuLoadingButton"> {{__('pages.save')}}
+                                    </button>
+                                    <button id="editclose2" class="btn btn-default" data-dismiss="editmodal">
+                                        {{__('pages.close')}}
+                                    </button>
                                 </form>
-                                <button id="editclose2" class="btn btn-default" data-dismiss="editmodal">
-                                    {{__('pages.close')}}
-                                </button>
+
                             </div>
                         </div>
 
@@ -455,6 +456,9 @@
                         </div>
                         </tbody>
                     </table>
+                    <div class="pagination" id="pagination">
+                        {{--java script generated Pagination in tbody (panel.js)--}}
+                    </div>
                     <div id="CountOfWords" style="float:right;margin-right:100px">total is</div>
                 </div>
                 <div class="card-block">

@@ -1,16 +1,28 @@
 $(document).ready(function () {
-    Statistics();
+    var pageNumber = 1;
+    Statistics(pageNumber);
     keywordsChanges();
     chart();
     popup();
     checked();
 })
+$("#nextPageButton").click(function () {
+    pageNumber = currentPage2;
+    pageNumber = pageNumber + 1;
+    Statistics(pageNumber);
+});
 
-function Statistics() {
+$("#prevPageButton").click(function () {
+    pageNumber = currentPage2;
+    pageNumber = pageNumber - 1;
+    Statistics(pageNumber);
+});
+
+function Statistics(pageNumber) {
     // if ($("#ANAHTARKELİME").val('Mobil')){console;}
     $.ajax({
         type: 'get',
-        url: "/api/v1/Keywords/?include=website&sort=-id",
+        url: "/api/v1/Keywords/?include=website&sort=-id&page[number]="+pageNumber+"&page[size]=10",
         success: function (response) {
             var wordConut = 0
             $('#row').html("")
@@ -62,7 +74,96 @@ function Statistics() {
                 }
                 $('#CountOfWords').append(wordConut);
             }
+            var currentPage = response['meta'].page["current-page"];
+            var from = response['meta'].page.from;
+            var to = response['meta'].page.to;
+            var total = response['meta'].page.total;
+            var lastPage = response['meta'].page["last-page"];
+            var initpage = 0;
+            currentPage2 = currentPage
+            var currentPageTest = currentPage2 - 1;
+            $('#pagination').html("")
+            var firstButton = "<a href=\"#\" class='pagination-buttons'  " +
+                "data-id='1' id=\"firstPageBtn\">1 ...</a>"
+            $('#pagination').append(firstButton);
+            while (initpage < lastPage) {
 
+                initpage = initpage + 1;
+                currentPageTest = currentPageTest + 1;
+
+                var buttons = " <a href=\"#\" class='pagination-buttons'" +
+                    "  data-id='" + initpage + "' id=\"" + initpage + "\">" + initpage + "</a>"
+
+                $('#pagination').append(buttons);
+
+            }
+            var lastButton = "<a href=\"#\" class='pagination-buttons' " +
+                " data-id='" + lastPage + "' id=\"lastPageBtn\">... " + lastPage + "</a>"
+
+            $('#pagination').append(lastButton);
+
+            document.getElementById(+currentPage + "").classList.toggle('active');
+
+            // loop visible button
+            for (i = 1; i <= lastPage; i++) {
+                $("#" + i + "").hide();
+            }
+            if (currentPage < 5) {
+                for (i = 1; i <= 5; i++) {
+                    $("#" + i + "").show();
+                }
+            } else {
+                nextaPage = currentPage + 1;
+                prevPage1 = currentPage - 1
+                prevPage2 = currentPage - 2
+                prevPage3 = currentPage - 3
+                $("#" + currentPage + "").show();
+                $("#" + nextaPage + "").show();
+                $("#" + prevPage1 + "").show();
+                $("#" + prevPage2 + "").show();
+                $("#" + prevPage3 + "").show();
+            }
+
+            // hide show next & prev & last
+
+            if (lastPage != currentPage) {
+                $("#nextPageButton").show();
+            } else {
+                $("#nextPageButton").hide();
+            }
+            //last button hide'show
+            if (lastPage != currentPage && (lastPage - 1) != currentPage && lastPage != 5 && lastPage != 4 && lastPage != 3) {
+
+                $("#lastPageBtn").show();
+            } else {
+                $("#lastPageBtn").hide();
+            }
+            //first button hide'show
+            if (currentPage > 4) {
+                $("#firstPageBtn").show();
+            } else {
+                $("#firstPageBtn").hide();
+            }
+
+            if (currentPage != 1) {
+                $("#prevPageButton").show();
+            } else {
+                $("#prevPageButton").hide();
+            }
+
+            // button & next & prev action codes
+
+            $(".pagination-buttons").click(function () {
+                pageNumber = $(this).data('id');
+                StatisticsPage(pageNumber);
+            });
+            //convert date start here
+            var CurrentData = response['data'];
+            var len = 0;
+            if (CurrentData != null) {
+                len = CurrentData.length;
+            }
+            $('#notification-body').html("")
         }
     });
 }
@@ -366,10 +467,54 @@ function popup() {
         span4.onclick = function () {
             editmyModal.style.display = "none";
         }
+        $.ajax({
+            type: 'get',
+            url: "/api/v1/Packets",
+            success: function (response) {
+                var len = 0;
+                if (response['data'] != null) {
+                    len = response['data'].length;
+                }
+                if (len > 0) {
+                    for (var i = 0; i < len; i++) {
+                        var userid_packet = response['data'][0].attributes.user_id;
+                        if (userid_packet = userid) {
+                            var endofpacket = response['data'][0].attributes.end_of_pocket;
+                            var createdAt = response['data'][0].attributes.createdAt;
+                            //todays DD/MM/YYYY
+                            var today1 = new Date();
+                            var dd = String(today1.getDate()).padStart(2, '0');
+                            var mm = String(today1.getMonth() + 1).padStart(2, '0');
+                            var yyyy = today1.getFullYear();
+                            today1 = mm + '/' + dd + '/' + yyyy;
+                            var today1format = new Date(today1);
+                            var lastday = new Date(endofpacket);
+                            //calc diffrance
+                            var oneDay = 24 * 60 * 60 * 1000;
+                            var diffDays = Math.round(Math.abs((today1format - lastday) / oneDay));
+                            if (today1format>lastday){
+                                diffDays="-"+diffDays
+                            }
+                            diffDays2 = (diffDays);
+                            $('#daysleft').append(diffDays);
+                        }
+                    }
+                }
+
+            }
+        });
         editmyModalbtn.onclick = function () {
-            editmyModal.style.display = "block";
+            var remainingDays = document.getElementById('daysleft').innerHTML
+             remainingDaysINTEGER = parseInt(remainingDays)
+            if (remainingDaysINTEGER === 0 || remainingDaysINTEGER === null || remainingDaysINTEGER < 0) {
+                editmyModal.style.display = "none";
+                var packetalert = document.getElementById('packetalert');
+                packetalert.style.display = "block";
+            } else {
+                editmyModal.style.display = "block";
+            }
         }
-// When the user clicks anywhere outside of the modal, close it
+
         window.onclick = function (event) {
             if (event.target === modal) {
                 modal.style.display = "none";
@@ -381,28 +526,27 @@ function popup() {
     });
 }
 
-// function check() {
-//     var editmyModal = document.getElementById("editmyModal");
-//     if (editmyModal === null) {check()} else {popup()}
-//     check()
-// };
-
 function checked() {
+
     document.addEventListener('input', (e) => {
         if (e.target.getAttribute('name') === "checked") {
             var checkedRadio = e.target.value
             getcheckedRadio(checkedRadio)
-            // var editmyModalbtn = document.getElementById('editmyModalbtn');
-            // editmyModalbtn.style.display = "block";
+            var editmyModalbtn = document.getElementById('editmyModalbtn');
+            editmyModalbtn.style.display = "inline-block";
         }
     })
 }
 
+let checkedRadioGLOBAL
+
 function getcheckedRadio(checkedRadio) {
+    checkedRadioGLOBAL = checkedRadio
     $.ajax({
         type: 'get',
         url: "/api/v1/Keywords/" + checkedRadio,
         success: function (response) {
+            var countryname
             $('#editurls').html("")
             var id = response['data'].id;
             var website_id = response['data'].attributes.website_id;
@@ -413,24 +557,26 @@ function getcheckedRadio(checkedRadio) {
             var city = response['data'].attributes.city;
             $("#editurls").append(name);
             var o = new Option("editselectSecil text", "value");
-            // $('#editselectSecil').append('<option value="' + country + '" disabled hidden >' + country + '</option>');
-            // $('#editlanguage').append('<option value="' + language + '" disabled hidden>' + language + '</option>');
-            // $('#editdevice').append('<option value="' + device + '" disabled hidden>' + device + '</option>');
-            // $('#editcity').append('<option value="' + city + '" disabled hidden>' + city + '</option>');
-
-            $('#submitedit').click(function () {
-                updateword(checkedRadio)
-            });
+            if (country === 'TR') {countryname = 'Türkiye'}
+            if (country === 'AE') {console.log('true');country = 'Birleşik Arap Emirlikleri'}
+            $('#editselectSecil').append('<option value="' + country + '" hidden selected>' + country + '</option>');
+            $('#editlanguage').append('<option value="' + language + '" hidden selected>' + language + '</option>');
+            $('#editdevice').append('<option value="' + device + '" hidden selected>' + device + '</option>');
+            $('#editcity').append('<option value="' + city + '" hidden selected>' + city + '</option>');
         }
     });
 }
 
-// function onSubmit(form) {
-//     var data = JSON.stringify($(form).serializeArray());
-//     console.log(data);
-//     return false;
-// }
-function updateword(id) {
+function onSubmit(form) {
+    // event.preventDefault()
+    var id = checkedRadioGLOBAL
+    var data = JSON.stringify($(form).serializeArray());
+    var json = JSON.parse(data);
+    var editkeyword = json[1].value
+    var editcountry = json[3].value
+    var editlanguage = json[4].value
+    var editdevice = json[5].value
+    var editcity = json[6].value
 
     $.ajax({
         type: 'get',
@@ -438,56 +584,34 @@ function updateword(id) {
         success: function (response) {
             var rank = response['data'].attributes.rank;
             var different = response['data'].attributes.different;
-            var createdAt = response['data'].attributes.createdAt;
+            var website_id = response['data'].attributes.website_id;
 
-
-    var idstring = id.toString()
-    var editkeyword = $('#editurls').val();
-    var editwebsiteid = $('#editwebsiteid').val();
-    var editcountry = $('#editcountry').val();
-    var editlanguage = $('#editlanguage').val();
-    var editdevice = $('#editdevice').val();
-    var editcity = $('#editcity').val();
-    console.log(idstring)
-    console.log(editkeyword)
-    console.log(editwebsiteid)
-    console.log(editcountry)
-    console.log(editlanguage)
-    console.log(editdevice)
-    console.log(editcity)
-    var today = new Date();
-    console.log(today)
-    if (idstring !== null && editkeyword !== null && editwebsiteid !== null && editcountry !== null && editlanguage !== null && editdevice !== null && editcity !== null){
-        $.ajax({
-            url: "/api/v1/Keywords/" + id,
-            type: "PATCH",
-            headers: {
-                "Content-Type": "application/vnd.api+json",
-                Accept: "application/vnd.api+json",
-            },
-            data: JSON.stringify({
-                "data": {
-                    "type": "Keywords",
-                    "id": "" + idstring,
-                    "attributes": {
-                        "name": editkeyword,
-                        "device": editdevice,
-                        "rank": rank,
-                        "createdAt": createdAt,
-                        "language": editlanguage,
-                        "country": editcountry,
-                        "city": editcity
+            $.ajax({
+                url: "/api/v1/Keywords/" + id,
+                type: "PATCH",
+                headers: {
+                    "Content-Type": "application/vnd.api+json",
+                    Accept: "application/vnd.api+json",
+                },
+                data: JSON.stringify({
+                    "data": {
+                        "type": "Keywords",
+                        "id": "" + id,
+                        "attributes": {
+                            "name": editkeyword,
+                            "rank": rank,
+                            "different": different,
+                            "device": editdevice,
+                            "website_id": website_id,
+                            "language": editlanguage,
+                            "country": editcountry,
+                            "city": editcity,
+                            "updated_At": new Date(),
+                        }
                     }
-                }
-            }),
-            success: function (result) {
-               console.log(result,'success')
-            },
-            error: function (result) {
-                console.log(result,'error')
-            }
-        });
-    }
+                }),
+            });
         }
     });
 }
+

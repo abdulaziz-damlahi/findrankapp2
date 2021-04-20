@@ -55,6 +55,7 @@
         @if($routeName === 'websitelist')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/websitelist.css">
             <script rel="stylesheet" src="{{asset('js')}}/websitelist.js"></script>
+            <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
         @endif
         @if($routeName === 'panel')
             <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>

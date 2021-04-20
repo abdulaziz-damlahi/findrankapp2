@@ -179,7 +179,6 @@ function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRe
         different = 3
 
     }
-
     //  update diffrance ajax
     $.ajax({
         url: "/api/v1/Keywords/" + KeyWordRequestKeywordId,
@@ -233,7 +232,6 @@ function StatisticsPage(pageNumber) {
             }
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
-
                     var word = response['data'][i].attributes.name
                     var wordsiteid = response['data'][i].attributes.website_id
                     var dataid = response['data'][i].id
@@ -289,7 +287,6 @@ function StatisticsPage(pageNumber) {
             for (i = 1; i <= lastPage; i++) {
                 $("#" + i + "").hide();
             }
-
             if (currentPage < 5) {
                 for (i = 1; i <= 5; i++) {
                     $("#" + i + "").show();

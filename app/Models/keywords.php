@@ -17,9 +17,15 @@ class keywords extends Model
         'rank',
         'different',
         'website_id',
+        'device',
+        'language',
+        'country',
         'user_keyword_id',
+        'city',
+        'created_At',
+        'updated_At',
     ];
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function website():hasMany
     {

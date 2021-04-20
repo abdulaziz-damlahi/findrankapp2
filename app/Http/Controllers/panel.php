@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Type\Time;
 
 class panel extends Controller
 {
@@ -180,14 +181,6 @@ class panel extends Controller
         $this->location();
         DB::delete('delete from websites where id = ?', [$id]);
         return redirect('user/panel');
-    }
-
-    public function editkeyword($id)
-    {
-        $this->location();
-        $currentKeyword = keywords::findOrFail($id);
-
-        return view('pages/websitelist/editkeyword', compact('currentKeyword'));
     }
 
     public function updatekeyword(Request $request, $id)

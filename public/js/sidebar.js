@@ -120,11 +120,40 @@ function IfPacketExist() {
         url: "/api/v1/Packets",
         type: "GET",
         success: function (response) {
-            console.log(response['data'].length)
             var len=response['data'].length
-            if (len === 0) {
-                console.log('true')
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var userid_packet = response['data'][0].attributes.user_id;
+                    if (userid_packet = userid) {
+                        var endofpacket = response['data'][0].attributes.end_of_pocket;
+                        //todays DD/MM/YYYY
+                        var today1 = new Date();
+                        var dd = String(today1.getDate()).padStart(2, '0');
+                        var mm = String(today1.getMonth() + 1).padStart(2, '0');
+                        var yyyy = today1.getFullYear();
+                        today1 = mm + '/' + dd + '/' + yyyy;
+                        var today1format = new Date(today1);
+                        var lastday = new Date(endofpacket);
+                        //calc diffrance
+                        var oneDay = 24 * 60 * 60 * 1000;
+                        var diffDays = Math.round(Math.abs((today1format - lastday) / oneDay));
+                        if (today1format>lastday){
+                            diffDays="-"+diffDays
+                        }
+                        diffDays2 = (diffDays);
+                        $('#daysleft').append(diffDays);
+                    }
+                }
+            }
+            var remainingDays = document.getElementById('daysleft').innerHTML
+            remainingDaysINTEGER = parseInt(remainingDays)
+            if (remainingDaysINTEGER === 0 || remainingDaysINTEGER === null || remainingDaysINTEGER < 0|| len === 0) {
                 document.getElementById("buypacketbtn").style.display = "block";
+            } else {
+                document.getElementById("buypacketbtn").style.display = "none";
             }
         }
     })

@@ -19,7 +19,6 @@ Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/website/deletekeyword/{id}', 'App\Http\Controllers\panel@deletekeyword')->name('deletekeyword');
     Route::post('/addword', 'App\Http\Controllers\panel@addword')->name('addword');
     Route::get('/parase', 'App\Http\Controllers\settings@parase')->name('parase');
-    Route::get('website/editkeyword/{id}', 'App\Http\Controllers\panel@editkeyword')->name('editkeyword');
     Route::post('website/updatekeyword/{id}', 'App\Http\Controllers\panel@updatekeyword')->name('updatekeyword');
     Route::get('website/grafik/{id}', 'App\Http\Controllers\panel@grafik')->name('grafik');
 
