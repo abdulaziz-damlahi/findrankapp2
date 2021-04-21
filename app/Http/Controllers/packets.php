@@ -20,11 +20,13 @@ class packets extends Controller
         $externalIp = $m[1];
         $externalIp;
         $base_moeny='₺';
+
         $ippp = '2.16.7.255';
         $ippamerica= '1.32.232.0';
         $tr='78.180.10.189';
         $geo = geoip()->getLocation('78.180.10.189');
         $localiton=  $geo->iso_code;
+        $country = $geo->country;
         $packets_reel = packets_reels::all();
 
         $pack = $packets_reel->take(1)->first();
@@ -98,7 +100,7 @@ class packets extends Controller
 
         }
         $this->location();
-        return view('pages/packets/packets',compact('base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
+        return view('pages/packets/packets',compact('country','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
 
     }
 

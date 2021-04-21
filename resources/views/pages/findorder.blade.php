@@ -4,7 +4,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
 
 </div>
-<input hidden val="{{$userIdMd5}}"value="{{$userIdMd5}}" class="deneme"id="hidden_user_id" >
+
     <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
     <div class="container" id="FindOrderContainer">
         <section id="general_find" class="row bg-parallax seo-secore padding-top-100 padding-bottom-100 padding-left-50 padding-right-50">
@@ -17,6 +17,7 @@
                 <form method="post" id="post_method" content="{{ csrf_token() }}" data-route="{{route('findpost')}}" class="form_rank_order col-md-12" enctype="multipart/form-data" >
 
                 @csrf
+                    <input hidden name="hidden_user_id" val="{{$sifre}}" value="{{$sifre}}" class="deneme"id="hidden_user_id" >
                     <input hidden value="{{auth()->user()->id}}" id="hiddenToken" name="hiddenToken">
                     <input hidden id="newmessage" name="newmessage">
 

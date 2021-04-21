@@ -1,9 +1,11 @@
 $(document).ready(function () {
   console.log($("#hiddenToken").val())
+  let sfere = $('#hidden_user_id').val()
+  console.log($('#hidden_user_id').val())
   $('#check_now').click(function () {
     const token =parseInt($("#hiddenToken").val());
-    var sifre = Base64.encode(token)
-    var sifree = sifre+"A12";
+    let sifree =$("#hidden_user_id").val();
+    console.log(sifree,'sifre')
     console.log('tıklandı')
     $.ajax({
       url: "http://127.0.0.1:8000/api/v1/all-google-search-datas",
@@ -24,10 +26,11 @@ $(document).ready(function () {
             "colonial_name":$("#hidden_collonial").val(),
             "device":$("#hidden_device").val(),
             "language":$("#language").val(),
-            "token": sifree,
+            "token": ""+$("#hidden_user_id").val(),
             "statusofresult": "1",
             "processtime": "Currency"
           }}
+
 
       }),
       success: function (result) {
@@ -40,16 +43,13 @@ $(document).ready(function () {
 
       }
     })
+
   });
   $('#post_method').submit(function () {
     console.log('girer')
   });
 
   const socket = io.connect("http://localhost:3000/", {});
-  socket.emit('userIdToken', { userIdToken });
-  socket.on('connect', function () {
-    console.log('connected')
-  });
   socket.on('user_id_token', function () {
     console.log('connected')
   });
@@ -64,12 +64,47 @@ $(document).ready(function () {
       console.log( $("#newmessage").val(),'inoutttt22')
       $('#post_method').submit()
     })
-    console.log('girer')
-    socket.on('deneme', function (message) {
+
+  console.log(userIdToken);
+    socket.on('deneme'+userIdToken, function (message) {
+      const token = $(".deneme").val();
       console.log('sadsadsad')
-      console.log('deneme', message)
       $('#post_method').submit()
-      console.log('deneme', message)
+      console.log(message,'deneme');
+      console.log(message.array.base64data2,'message');
+      let array = message.array.users2
+      console.log(array,'girdi mi acbaa')
+      for (i = 0; i < array.length; i++) {
+        console.log('çalıştı mı',message.array.inout2[0])
+        let deneme =  $("#newmessage").val(message.array.inout2[0]);
+        console.log( $("#newmessage").val(),'deneme435')
+        const paragraph = array[i];
+        console.log('paragraph',paragraph)
+        const regex = ""+$("#newmessage").val();
+        var found2 = paragraph.match(regex);
+        console.log(found2);
+        if (found2 != null) {
+
+          $(".full").append("<li id='matchedRank' class='list' value="+i+" val="+i+" style='height:30px;margin-bottom:10px;background-color: #ff6c3a'>"+i +"    "+ array[i] + "</li>");
+        }else{
+          console.log('degil')
+          $(".full").append("<li class='list' style='height:30px; margin-bottom:10px;background-color: #0af9d7'>"+i +"    "+ array[i] + "</li>");
+        }
+      }
+      console.log('matchedrank',$("#matchedRank").val())
+      if($("#matchedRank").val()!=null){
+        console.log('girer')
+        $(".findOrderTitle").append("<div class='alert alert-success' role='alert'>" +
+            $("#matchedRank").val() + " Aradığınız eleman sırada"+
+            "</div>");
+      }
+      else if($("#matchedRank").val()==null) {
+        $(".findOrderTitle").append("<div class='alert alert-danger' role='alert'>" +
+            " Aradığınız eleman sırada Değil"+
+            "</div>");
+        console.log('girmez')
+
+      }
     });
   /*    console.log('girer mi acep', message.inout[0])
       var match_deger = message.inout[0];

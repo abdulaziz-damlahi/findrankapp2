@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('content')
-    //deneme
     <div class="container">
+        <canvas id="myChart" width="400" height="400"></canvas>
+
         <div class="pull-right">
             <button type="button" id="add" class="btn btn-success" data-toggle="modal"
                     data-target="#addModal">Create New Packet

@@ -18,6 +18,7 @@ class AllGoogleSearchDatas extends Model
         'statusofresult',
         'processtime',
         'language',
+        'keyword_id',
         'updated_at',
         'created_at',
     ];

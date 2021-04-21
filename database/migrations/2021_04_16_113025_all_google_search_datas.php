@@ -28,6 +28,10 @@ class AllGoogleSearchDatas extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('keyword_id')->unsigned()->nullable();
+            $table->foreign('keyword_id')
+                ->references('id')
+                ->on('keywords')->onDelete('cascade');
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

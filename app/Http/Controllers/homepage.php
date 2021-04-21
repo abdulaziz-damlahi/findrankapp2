@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\locations;
 use Illuminate\Http\Request;
 use App\Models\keywords;
 use App\Models\websites;

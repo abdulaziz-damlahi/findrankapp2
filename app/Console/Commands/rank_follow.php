@@ -9,6 +9,7 @@ use App\Models\keywords;
 use App\Models\users;
 use App\Models\KeywordRequest;
 use App\Models\packets;
+use App\Models\AllGoogleSearchDatas;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 class rank_follow extends Command
@@ -47,10 +48,12 @@ class rank_follow extends Command
         $keywords = keywords::all();
         $websites = websites::get();
         $keyword_id = keywords::all();
+        $AllGoogleSearchDatas = AllGoogleSearchDatas::all();
         $KeywordRequest = KeywordRequest::all();
         $keyword_id2 = keywords::get('website_id');
+        $packets = packets::all();
         //   $websie=  DB::table('websites')->find();
-        foreach ($websites as $website_id) {
+    /*    foreach ($websites as $website_id) {
             $result = keywords::with('website')->where('website_id', $website_id->id)->get();
             foreach ($result as $anahtar => $resultsasa) {
                 $sonucc = KeywordRequest::where('keyword_id', $resultsasa->id)->get();
@@ -66,12 +69,17 @@ class rank_follow extends Command
                     $device_name = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36s";
                 }
                 $packets = packets::all();
+    */
                 if (count($packets) > 0) {
-                    echo "döndü";
+                    foreach ($AllGoogleSearchDatas as $allgoogle){
+                    if($allgoogle->processtime=='Night'){
+                        $device_name=    $allgoogle->device;
+                        $website_name=    $allgoogle->website;
+                        $keyword=    $allgoogle->keyword;
                     $ch = curl_init();
-                    $colonial_name = $resultsasa->city;
-                    $aranan = urlencode($keyword);
-                    $language = $resultsasa->language;
+                    $colonial_name = $allgoogle->colonial_name;
+                    $aranan = urlencode($allgoogle->keyword);
+                    $language = $allgoogle->language;
                     $sa = $colonial_name;
                     $kelime = $aranan;
                     $ne = base64_encode($sa);
@@ -89,7 +97,8 @@ class rank_follow extends Command
                             ]
                         )]
                     );
-
+                }
+                }
 
                     /*
                                                         if ($language == 'english') {
@@ -396,6 +405,6 @@ class rank_follow extends Command
                     */
 
                 }
-            }}
+
     }
 }

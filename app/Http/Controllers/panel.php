@@ -129,6 +129,9 @@ class panel extends Controller
         $this->location();
         $user = auth()->user();
         $userId = $user->id;
+        $AllGoogleSearchDatas = new AllGoogleSearchDatas();
+        $keywordsId = new keywords();
+        $keywords = $keywordsId::all();
         $maxwkeywords = packets::where('user_id', '=', $userId)->get('max_count_of_words');
         $keword_count = packets::where('user_id', '=', $userId)->get('count_of_words');
         $maxkeywordfilterd = (int)filter_var($maxwkeywords, FILTER_SANITIZE_NUMBER_INT);
@@ -141,8 +144,13 @@ class panel extends Controller
             $webid = $request->websiteid;
             $keyword = new keywords;
 
+                $websitename = websites::where('id', '=', $webid)->get('website_name');
+                 echo $websitename."<br>";
+                 echo $websitename[0];
             if ($request->keyword != NULL) {
                 $keyword->name = $request->keyword;
+                $AllGoogleSearchDatas->keyword = $request->keyword;
+                echo "dsadsada";
             } else {
                 return redirect()->back()->with('cantbeempty', __('alerts.the keyword is empty'));
             }
@@ -153,25 +161,38 @@ class panel extends Controller
             }
             if ($request->has('language')) {
                 $keyword->language = $request->language;
+                $AllGoogleSearchDatas->language = $request->language;
+
             } else {
                 return redirect()->back()->with('cantbeempty', __('alerts.the language is empty'));
             }
             if ($request->has('device')) {
                 $keyword->device = $request->device;
+                $AllGoogleSearchDatas->device = $request->device;
             } else {
                 return redirect()->back()->with('cantbeempty', __('alerts.the device is empty'));
             }
             if ($request->has('city')) {
                 $keyword->city = $request->city;
+                $AllGoogleSearchDatas->colonial_name = $request->city;
             } else {
                 return redirect()->back()->with('cantbeempty', __('alerts.city bos ekleden'));
             }
             $keyword->rank = 0;
             $keyword->website_id = $webid;
+            $AllGoogleSearchDatas->website = $websitename[0]->website_name;
             $keyword->user_id = $userId;
             $keyword->different = 0;
+            $AllGoogleSearchDatas->statusofresult = "1";
+            $AllGoogleSearchDatas->processtime = "Night";
+            $AllGoogleSearchDatas->user_id = $userId;
+            $token = base64_encode($userId);
+            $token2 = $token."A12";
+            $AllGoogleSearchDatas->token = $token2;
             $keyword->save();
-
+            $KEyword_id = $keyword->id;
+            $AllGoogleSearchDatas->keyword_id = $KEyword_id;
+            $AllGoogleSearchDatas->save();
             return redirect()->back()->with('success', __('alerts.word Successfully Added'));
         } else {
             return redirect()->back()->with('notsuccess', __('alerts.your limit of adding word has been exceeded'));
@@ -218,8 +239,21 @@ class panel extends Controller
         return redirect()->back();
     }
 
+    public function grafik($id)
+    {
+        $this->location();
+        $keywordid = keywords::where('id', '=', $id)->get('id');
+        $keywordidnum = (int)filter_var($keywordid, FILTER_SANITIZE_NUMBER_INT);
+        if ($id != $keywordidnum) {
+            return abort(404);
+        }
+
+        return view('pages/websitelist/grafik', compact('id'));
+    }
+
     public function websitelist($websiteid)
     {
+
         $this->location();
         $user = auth()->user();
         $userId = $user->id;
@@ -231,18 +265,6 @@ class panel extends Controller
         ]);
 
         return view('pages/websitelist/websitelist', compact('websiteid'));
-    }
-
-    public function grafik($id)
-    {
-        $this->location();
-        $keywordid = keywords::where('id', '=', $id)->get('id');
-        $keywordidnum = (int)filter_var($keywordid, FILTER_SANITIZE_NUMBER_INT);
-        if ($id != $keywordidnum) {
-            return abort(404);
-        }
-
-        return view('pages/websitelist/grafik', compact('id'));
     }
 
     public function profile()
@@ -261,17 +283,18 @@ class panel extends Controller
 
     public function FindOrder()
     {
-
+       $sifre = rand(5, 150000);
         $userId  = Auth::user()->id;
         $new = $userId;
         $userIdMd5= base64_encode($userId);
         echo $userIdMd5;
         $this->location();
-        return view('pages/findorder',compact('userId','new','userIdMd5'));
+        return view('pages/findorder',compact('sifre','userId','new','userIdMd5'));
     }
 
     public function findPost(Request $request)
     {
+        $sifre = rand(5, 150000);
         $userId  = Auth::user()->id;
         $new = $userId;
         $userIdMd5= base64_encode($userId);
@@ -645,7 +668,7 @@ class panel extends Controller
         */
 
         return view(
-            'pages/findorder',compact('userIdMd5'));
+            'pages/findorder',compact('userIdMd5','sifre'));
     }
     public function userspacket()
     {

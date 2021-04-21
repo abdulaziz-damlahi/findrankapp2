@@ -237,13 +237,9 @@ n sfb tp-resizeme font-crimson"
                                 <li> {{$last->rank_fosllow}} Rank Follow</li>
                                 <li> {{$last->description}}</li>
                             </ul>
-<<<<<<< HEAD
-                            <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">PURCHACE</a></div>
-=======
-                            <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a></div>
->>>>>>> origin/abdulazizdamlahilast
-                    </div>
-                    <!-- Price -->
+                            <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a>
+                            </div>
+                            </div>
                     <div class="col-md-4">
                         <!-- Icon -->
                         <div class="plan-icon orange-bg"><img src="{{asset('images')}}/plan-icon-2.png" alt=" "></div>
@@ -283,6 +279,8 @@ n sfb tp-resizeme font-crimson"
                             </ul>
                             <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a></div>
                     </div>
+                                        </div>
+
                 </div>
             </div>
         </div>

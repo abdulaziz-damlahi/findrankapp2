@@ -1,5 +1,6 @@
 $(document).ready(function() {
-   $('#e_invoicee').click(function() {
+    var countryinformation =$('#countryinformation').val();
+    $('#e_invoicee').click(function() {
         $('#e_invoicee').val($(this).is(':checked'));
         console.log($('#e_invoicee').val());
     });
@@ -300,6 +301,7 @@ $(document).ready(function() {
                         $("#hidden_word_count").text(vall.word_count)
                         $("#hidden_websites_count").text(vall.websites_count)
                         $("#başlangic").text(vall.names_packets);
+                        $("#başlangic").val(vall.names_packets);
                         $(".rank_follow").text(vall.rank_fosllow);
                         $("#hidden_price").text(vall.price);
                         $("#hidden_description").text(vall.description)
@@ -307,7 +309,8 @@ $(document).ready(function() {
                 });
             }
         });
-    }let user_id =  $('#hidden_id').text();
+    }
+    let user_id =  $('#hidden_id').text();
 
     console.log(user_id)
     get_packets();
@@ -317,6 +320,7 @@ $(document).ready(function() {
             console.log('burasdgeldi')
             const count =  $('.hidden_size').val();
             if(count<1){
+                post_packets_ofUser()
                 post_packets();
                 if($('.invoice_size').val()<1){
                     post_invoice();
@@ -325,6 +329,7 @@ $(document).ready(function() {
                     patch_invoice();
                 }
             }else {
+                post_packets_ofUser()
                 patch_packets();
                 if($('.invoice_size').val()<1){
                     post_invoice();
@@ -594,6 +599,71 @@ $(document).ready(function() {
 
             }
     };
+    function post_packets_ofUser(){
+        console.log($('#first_name').text());
+        console.log($('#first_name').val());
+        let hidden_word_count  =$("#hidden_word_count").text()
+        let countryinformation  =$("#countryinformation").val()
+        console.log(countryinformation)
+        let hidden_websites_count  =$("#hidden_websites_count").text()
+        console.log(hidden_websites_count);
+        let başlangic  =$("#başlangic").text()
+        let rank_follow  =$(".rank_follow").text()
+        let hidden_price  =$("#hidden_price").text()
+        let pay_id  =$("#pay_id").val();
+        console.log(pay_id,'sadsadasddönmed');
+        let pay_id2  =$("#pay_id").text();
+        console.log(pay_id2,'sadsadasddönmed');
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today2 = dd + '-' + mm + '-' + yyyy;
+        let date_int_mm  = parseInt(mm);
+        let date_int_day  = parseInt(dd);
+        var new_mm = date_int_mm +1;
+        var new_dd = date_int_day +1;
+        todayee =  new_dd + "-" + '0'+new_mm  + "-" + yyyy;
+        let ee =  Date.parse(todayee);
+        let dateArray = todayee.split("-");
+        let dateObj = new Date(`${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`);
+        let deyt =   new Date(yyyy,new_mm,new_dd);
+        var con_date =
+            ""+deyt.getFullYear() + "-"+"0"+(deyt.getMonth()+1) + "-"+deyt.getDate(); //converting the date
+        let gdate = "" + yyyy +"-"+"0"+ new_mm+"-" + new_dd; //given date
+        console.log(gdate,'giremedi');
+        $.ajax({
+            url: "http://127.0.0.1:8000/api/v1/packets-of-users",
+            type: "POST",
+            headers: { "Content-Type": "application/vnd.api+json",
+                Accept: "application/vnd.api+json",
+            },
+            data: JSON.stringify({
+                "data": {
+                    "type": "packets-of-users",
+
+                    "attributes": {
+                        "user_id":user_id,
+                        "count_of_words": 0,
+                        "descrpitions":başlangic,
+                        "end_of_pocket":con_date,
+                        "max_count_of_words":hidden_word_count,
+                        "rank_follow":0,
+                        "country":""+countryinformation,
+                        "price":parseInt(hidden_price),
+                        "paymentId":parseInt(pay_id2),
+                        "rank_follow_max":rank_follow,
+                        "count_of_websites":0,
+                        "max_count_of_websites": hidden_websites_count,
+                        "packet_names":başlangic,
+
+                    }}
+            }) ,
+            success: function (result) {
+                console.log('işlem başarılı')
+            }
+        });
+    }
     function post_packets(){
         console.log($('#first_name').text());
         console.log($('#first_name').val());

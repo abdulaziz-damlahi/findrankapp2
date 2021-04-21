@@ -69,7 +69,7 @@
                                                               placeholder=""></textarea>
                                                     <br><br>
 
-                                                    <button type="submit" class="btn btn-primary mcuLoadingButton"
+                                                    <button id="sendWebsite" type="submit" class="btn btn-primary mcuLoadingButton"
                                                             data-handler="confirm">{{__('panel.save')}}
                                                     </button>
                                                 </form>

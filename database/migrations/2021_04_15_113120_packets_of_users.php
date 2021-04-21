@@ -26,6 +26,7 @@ class PacketsOfUsers extends Migration
             $table->integer('rank_follow');
             $table->integer('rank_follow_max');
             $table->string('packet_names');
+            $table->string('country');
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')

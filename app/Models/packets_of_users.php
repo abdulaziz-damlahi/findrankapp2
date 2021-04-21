@@ -18,6 +18,7 @@ class packets_of_users extends Model
         'descrpitions',
         'paymentId',
         'price',
+        'country',
         'end_of_pocket',
         'max_count_of_websites',
         'rank_follow',

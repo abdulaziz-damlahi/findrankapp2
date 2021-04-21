@@ -39,6 +39,7 @@ class Schema extends SchemaProvider
             'rank_follow'=> $resource->rank_follow,
             'paymentId'=> $resource->paymentId,
             'price'=> $resource->price,
+            'country'=> $resource->country,
             'rank_follow_max'=> $resource->rank_follow_max,
             'max_count_of_words'=> $resource->max_count_of_words,
             'max_count_of_websites'=> $resource->max_count_of_websites,
