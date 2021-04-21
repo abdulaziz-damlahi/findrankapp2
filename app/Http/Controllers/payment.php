@@ -118,11 +118,7 @@ class payment extends Controller
             echo "buraya girer5";
             $locale = App::getLocale();
         }
-<<<<<<< HEAD
-        $deneme =self::payment($request);
-=======
         $deneme = self::payment($request);
->>>>>>> github_abdulaziz2
         dd($deneme);
         if ($deneme['status'] === "success") {
             $success_message = "Payment Successful !";

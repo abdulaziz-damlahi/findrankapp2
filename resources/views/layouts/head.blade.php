@@ -3,7 +3,6 @@
         @php
             $routeName = Route::getCurrentRoute()->getName();
         @endphp
-<<<<<<< HEAD
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="M_Adnan" />
@@ -11,11 +10,9 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js"></script>
         <link href="https://canvasjs.com/assets/css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-=======
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <meta name="author" content="M_Adnan"/>
->>>>>>> github_abdulaziz2
         <!-- Document Title -->
         <script src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"></script>
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -104,12 +101,9 @@
         @if( $routeName === 'findorder' ||$routeName ==='findpost')
             <script rel="stylesheet" src="{{asset('js')}}/findorder.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/findorder.css">
-<<<<<<< HEAD
 
-=======
             <script src="https://mojoaxel.github.io/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
             <link rel="stylesheet" href="https://mojoaxel.github.io/bootstrap-select-country/dist/css/bootstrap-select-country.min.css"/>
->>>>>>> github_abdulaziz2
             <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
         @endif
         <script rel="stylesheet" src="{{asset('js')}}/login.js"></script>
