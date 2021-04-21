@@ -434,10 +434,10 @@
                                     <br><br><br>
                                     <button id="submitedit" type="submit" class="btn btn-primary mcuLoadingButton"> {{__('pages.save')}}
                                     </button>
-                                    <button id="editclose2" class="btn btn-default" data-dismiss="editmodal">
-                                        {{__('pages.close')}}
-                                    </button>
                                 </form>
+                                <button id="editclose2" class="btn btn-default" data-dismiss="editmodal">
+                                    {{__('pages.close')}}
+                                </button>
                             </div>
                         </div>
                         {{-- grafik modal--}}

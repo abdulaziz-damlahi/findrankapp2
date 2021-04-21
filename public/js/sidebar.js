@@ -68,7 +68,10 @@ function wordlensidebar() {
         url: "/api/v1/Packets",
         type: "GET",
         success: function (response) {
-            var maxword = response['data'][0].attributes.max_count_of_words;
+            if (response['data'][0] !== undefined) {
+                var maxword = response['data'][0].attributes.max_count_of_words;
+            }
+
             $.ajax({
                 url: "/api/v1/Keywords",
                 type: "GET",
@@ -94,7 +97,9 @@ function websitelensidebar() {
         url: "/api/v1/Packets",
         type: "GET",
         success: function (response) {
-            var maxwebsites = response['data'][0].attributes.max_count_of_websites;
+            if (response['data'][0] !== undefined) {
+                var maxwebsites = response['data'][0].attributes.max_count_of_websites;
+            }
             $.ajax({
                 url: "/api/v1/Websites",
                 type: "GET",
@@ -120,7 +125,7 @@ function IfPacketExist() {
         url: "/api/v1/Packets",
         type: "GET",
         success: function (response) {
-            var len=response['data'].length
+            var len = response['data'].length
             if (response['data'] != null) {
                 len = response['data'].length;
             }
@@ -140,8 +145,8 @@ function IfPacketExist() {
                         //calc diffrance
                         var oneDay = 24 * 60 * 60 * 1000;
                         var diffDays = Math.round(Math.abs((today1format - lastday) / oneDay));
-                        if (today1format>lastday){
-                            diffDays="-"+diffDays
+                        if (today1format > lastday) {
+                            diffDays = "-" + diffDays
                         }
                         diffDays2 = (diffDays);
                         $('#daysleft').append(diffDays);
@@ -150,7 +155,7 @@ function IfPacketExist() {
             }
             var remainingDays = document.getElementById('daysleft').innerHTML
             remainingDaysINTEGER = parseInt(remainingDays)
-            if (remainingDaysINTEGER === 0 || remainingDaysINTEGER === null || remainingDaysINTEGER < 0|| len === 0) {
+            if (remainingDaysINTEGER === 0 || remainingDaysINTEGER === null || remainingDaysINTEGER < 0 || len === 0) {
                 document.getElementById("buypacketbtn").style.display = "block";
             } else {
                 document.getElementById("buypacketbtn").style.display = "none";

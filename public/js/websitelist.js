@@ -22,7 +22,7 @@ function Statistics(pageNumber) {
     // if ($("#ANAHTARKELİME").val('Mobil')){console;}
     $.ajax({
         type: 'get',
-        url: "/api/v1/Keywords/?include=website&page[number]="+pageNumber+"&page[size]=10",
+        url: "/api/v1/Keywords/?include=website&sort=-id&page[number]="+pageNumber+"&page[size]=10",
         success: function (response) {
             var wordConut = 0
             $('#row').html("")
@@ -504,18 +504,17 @@ function popup() {
 
             }
         });
+        var remainingDays = document.getElementById('daysleft').innerHTML
+        remainingDaysINTEGER = parseInt(remainingDays)
         editmyModalbtn.onclick = function () {
-            var remainingDays = document.getElementById('daysleft').innerHTML
-             remainingDaysINTEGER = parseInt(remainingDays)
-            if (remainingDaysINTEGER === 0 || remainingDaysINTEGER === null || remainingDaysINTEGER < 0) {
+            console.log(remainingDaysINTEGER)
+            if (remainingDaysINTEGER === 0 || isNaN(remainingDaysINTEGER) || remainingDaysINTEGER < 0) {
                 editmyModal.style.display = "none";
-                var packetalert = document.getElementById('packetalert');
-                packetalert.style.display = "block";
+                document.getElementById('packetalert').style.display = "block";
             } else {
                 editmyModal.style.display = "block";
             }
         }
-
         window.onclick = function (event) {
             if (event.target === modal) {
                 modal.style.display = "none";
