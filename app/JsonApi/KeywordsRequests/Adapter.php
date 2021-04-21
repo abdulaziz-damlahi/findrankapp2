@@ -38,7 +38,6 @@ class Adapter extends AbstractAdapter
     {
         parent::__construct(new \App\Models\KeywordRequest(), $paging);
     }
-
     /**
      * @param Builder $query
      * @param Collection $filters

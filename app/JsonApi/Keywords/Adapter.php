@@ -2,6 +2,7 @@
 
 namespace App\JsonApi\Keywords;
 
+use App\Models\KeywordRequest;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -35,7 +36,17 @@ class Adapter extends AbstractAdapter
     {
         parent::__construct(new \App\Models\keywords(), $paging);
     }
+    public function creating(keywords $keywords)
+    {
 
+        \App\Http\Controllers\panel::addword(request());
+
+    }
+    public function updating(keywords $keywords)
+    {
+        \App\Http\Controllers\panel::addword(request());
+
+    }
     /**
      * @param Builder $query
      * @param Collection $filters

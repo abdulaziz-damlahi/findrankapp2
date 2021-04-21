@@ -11,8 +11,8 @@ use Psr\Http\Message\ResponseInterface;
 
 class Parasut extends Utils
 {
-    public const BASE_URL = "https://api.heroku-staging.parasut.com/2096/"; // TODO Change Required
-    protected const TOKEN_BASE_URL = "https://api.heroku-staging.parasut.com/oauth/token";
+    public const BASE_URL = "https://api.parasut.com/v4/424730/"; // TODO Change Required
+    protected const TOKEN_BASE_URL = "https://api.parasut.com/oauth/token";
     static $accessToken = '';
     static $refreshToken = '';
     static $tokenExpiredAt = null;
@@ -134,7 +134,7 @@ class Parasut extends Utils
     }
 }
 
-Parasut::$clientId = 'I-iNfYYeOPMoWoiERwGlM8MYMaStVbQQCntxgWyjx28';
-Parasut::$clientSecret = 'T7_CinCqCcOZt_ggnsnUDBAIrLQXXdN8DVPjri6Fl7M';
+Parasut::$clientId = 'fehmDPFeIwzSbtXeFA07hgBvR9eKg75XfxY1Iapvx54';
+Parasut::$clientSecret = 'U131Z3xsQDE1zeenn9l1ka7x8xG5pKejs7Z8Yhz9vmw';
 Parasut::$username = 'bariss.be@gmail.com';
 Parasut::$password = 'brs199714';
