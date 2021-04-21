@@ -55,6 +55,7 @@ return [
     'PASSWORD' => 'şifre',
       //packets
     'Month'=>'Ay',
+    'DISTRICT'=>'ilçe',
     'year'=>'Yil',
     'informations'=>'bilgiler',
     'Affordable SEO Services Packages'=>'.Affordable SEO Services Packages',

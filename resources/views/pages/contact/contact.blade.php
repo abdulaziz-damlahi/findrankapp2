@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-    <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
+
     <div id="contact_container">
         <form id="contactForm" method="post" action="{{route('contact.post')}}" class="contactForm">
             @if($errors->any())

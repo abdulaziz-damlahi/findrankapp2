@@ -1,7 +1,9 @@
 $(document).ready(function () {
     var pageNumber = 1;
     // differance();
+    getKeywordRequest();
     getcount();
+    keywordsChanges();
     chart();
     cardChange();
     StatisticsPage(pageNumber);
@@ -10,7 +12,8 @@ $(document).ready(function () {
     // appendDifferent();
     latestRank();
 })
-$(document).ready(function () {
+
+function getKeywordRequest() {
     //today
     var today = new Date();
     today.setDate(today.getDate() + 30);
@@ -63,7 +66,7 @@ $(document).ready(function () {
 
         }
     })
-})
+}
 
 function chart() {
     $.ajax({
@@ -176,7 +179,6 @@ function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRe
         different = 3
 
     }
-
     //  update diffrance ajax
     $.ajax({
         url: "/api/v1/Keywords/" + KeyWordRequestKeywordId,
@@ -230,7 +232,6 @@ function StatisticsPage(pageNumber) {
             }
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
-
                     var word = response['data'][i].attributes.name
                     var wordsiteid = response['data'][i].attributes.website_id
                     var dataid = response['data'][i].id
@@ -286,7 +287,6 @@ function StatisticsPage(pageNumber) {
             for (i = 1; i <= lastPage; i++) {
                 $("#" + i + "").hide();
             }
-
             if (currentPage < 5) {
                 for (i = 1; i <= 5; i++) {
                     $("#" + i + "").show();
@@ -347,7 +347,6 @@ function StatisticsPage(pageNumber) {
         }
     });
 }
-
 // popup chart
 window.addEventListener('load', (event) => {
 
@@ -381,7 +380,6 @@ window.addEventListener('load', (event) => {
         }
     }
 });
-
 //ilk 3 js
 window.addEventListener('load', (event) => {
 
@@ -398,20 +396,23 @@ window.addEventListener('load', (event) => {
     btn.onclick = function () {
         modal.style.display = "block";
     }
-
 // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
         modal.style.display = "none";
     }
-
 // When the user clicks anywhere outside of the modal, close it
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
-});
 
+    modal.addEventListener("focusout", myFunction);
+
+    function myFunction() {
+        modal.style.visibility = 'hidden';
+    }
+});
 // ilk 10 js
 window.addEventListener('load', (event) => {
 
@@ -440,7 +441,6 @@ window.addEventListener('load', (event) => {
         }
     }
 });
-
 // ilk 100 js
 window.addEventListener('load', (event) => {
 
@@ -471,18 +471,6 @@ window.addEventListener('load', (event) => {
     }
 });
 
-$(document).ready(function () {
-    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-        var colmun1 = document.getElementById("colmun1");
-
-        colmun1.style.maxWidth = "150px";
-        colmun1.style.overflowWrap = "break-word";
-        colmun1.style.overflow = "auto";
-
-    }
-
-})
-
 function get() {
     $.ajax({
         url: "/api/v1/Websites",
@@ -507,12 +495,16 @@ function get() {
                     var websiteid = response['data'][i].id
                     var idweb = 'webid' + websiteid;
                     var idiff = 'idiff' + websiteid;
+                    var CurrentWebpage= window.location.href;
+                    const words = CurrentWebpage.split('/');
+                 var Mainwebsite = words[0]+'//'+words[2];""
                     var str = "<tr> <th id='" + idweb + "' class='hidden' style='font-size: 15px'>" + websiteid + "</th> <th scope='col'><a href=website/" + websiteid + ">" +
                         "<div id='colmun1'></div>" + websitename + "</a></th>" +
+
                         "<td style='font-size: 15px' class='hidden-xs' scope='col' id='" + idiff + "'>" +
-                        "<i class=\"fa fa-chevron-circle-up text-success\"> " + up + " </i>" +
-                        "<i class=\"fa fa-circle \"> " + equal + " </i>" +
-                        "<i class=\"fa fa-chevron-circle-down text-danger\"> " + down + " </i></td>" +
+                        "<img class=\"svgstylemini\" src='" + Mainwebsite + "/assets/svg/up-arrow.svg'> " + up + " </i>" +
+                        "<img class=\"svgstylemini\" src='" + Mainwebsite + "/assets/svg/equal-arrow.svg'> " + equal + " </i>" +
+                        "<img class=\"svgstylemini\" src='" + Mainwebsite + "/assets/svg/down-arrow.svg'> " + down + " </i></td>" +
                         "<td  +scope='col' >" + wordcount + "</td>" +
                         "<td scope='col'><a id='randomm'href=deletewebsite/" + websiteid + " class='fa fa-trash text-danger'></a></td></tr>";
                     $('#followedWebsites').append(str);
@@ -577,7 +569,6 @@ function getcount() {
                         }),
 
                     });
-
                 }
             }
         }
@@ -600,6 +591,7 @@ function Statistics() {
 let minusappend
 let equalappend
 let plusappend
+
 $(document).ready(function () {
 
     $.ajax({
@@ -669,9 +661,15 @@ $(document).ready(function () {
 })
 
 function cardChange() {
-    var firstwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(1) > div > div > div > h6:nth-child(2)").innerHTML;
-    var secondwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(2) > div > div > div > h6:nth-child(2)").innerHTML;
-    var thirdwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(3) > div > div > div > h6:nth-child(2)").innerHTML;
+    if (document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(1) > div > div > div > h6:nth-child(2)") != null) {
+        var firstwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(1) > div > div > div > h6:nth-child(2)").innerHTML;
+    }
+    if (document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(2) > div > div > div > h6:nth-child(2)") != null) {
+        var secondwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(2) > div > div > div > h6:nth-child(2)").innerHTML;
+    }
+    if (document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(3) > div > div > div > h6:nth-child(2)") != null) {
+        var thirdwebsite = document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(3) > div > div > div > h6:nth-child(2)").innerHTML;
+    }
     $.ajax({
         url: "/api/v1/Websites",
         type: "GET",
@@ -688,31 +686,38 @@ function cardChange() {
                 for (var i = 0; i < len; i++) {
                     var websiteid = response['data'][i].id
                     if (websiteid == firstwebsite) {
+                        var url = "";
                         var up = response['data'][i].attributes.up
                         var equal = response['data'][i].attributes.equal
                         var down = response['data'][i].attributes.down
-                        var str = '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
-                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
-                        var id1 = 'idiff' + websiteid
-                        $("#" + id1).append(str)
+                        var upID = 'up' + websiteid
+                        var equalID = 'equal' + websiteid
+                        var downID = 'down' + websiteid
+                        $("#" + upID).append(up)
+                        $("#" + equalID).append(equal)
+                        $("#" + downID).append(down)
                     }
                     if (websiteid == secondwebsite) {
                         var up = response['data'][i].attributes.up
                         var equal = response['data'][i].attributes.equal
                         var down = response['data'][i].attributes.down
-                        var str = '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
-                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
-                        var id2 = 'idiff' + websiteid
-                        $("#" + id2).append(str)
+                        var upID = 'up' + websiteid
+                        var equalID = 'equal' + websiteid
+                        var downID = 'down' + websiteid
+                        $("#" + upID).append(up)
+                        $("#" + equalID).append(equal)
+                        $("#" + downID).append(down)
                     }
                     if (websiteid == thirdwebsite) {
                         var up = response['data'][i].attributes.up
                         var equal = response['data'][i].attributes.equal
                         var down = response['data'][i].attributes.down
-                        var str = '<i class=\"fa fa-chevron-circle-up text-success\">' + up + '</i> <i class=\"fa fa-circle\">' + equal + '</i>' +
-                            ' <i class=\"fa fa-chevron-circle-down text-danger\">' + down + '</i>'
-                        var id3 = 'idiff' + websiteid
-                        $("#" + id3).append(str)
+                        var upID = 'up' + websiteid
+                        var equalID = 'equal' + websiteid
+                        var downID = 'down' + websiteid
+                        $("#" + upID).append(up)
+                        $("#" + equalID).append(equal)
+                        $("#" + downID).append(down)
                     }
                 }
             }
@@ -748,7 +753,7 @@ function latestRank() {
                     var KeyWordRequestKeyword_id = response['data'][i].attributes.keyword_id
                     var KeyWordRequestcreatedAt2 = KeyWordRequestcreatedAt.toString().slice(0, 10)
                     if (KeyWordRequestcreatedAt2 === today) {
-                        var KeyWordRequestKeyword_idSTRING=KeyWordRequestKeyword_id.toString()
+                        var KeyWordRequestKeyword_idSTRING = KeyWordRequestKeyword_id.toString()
                         $.ajax({
                             url: "/api/v1/Keywords/" + KeyWordRequestKeyword_idSTRING,
                             type: "PATCH",
@@ -759,7 +764,7 @@ function latestRank() {
                             data: JSON.stringify({
                                 "data": {
                                     "type": "Keywords",
-                                    'id':KeyWordRequestKeyword_idSTRING,
+                                    'id': KeyWordRequestKeyword_idSTRING,
                                     "attributes": {
                                         "rank": KeyWordRequestrank,
                                     }
@@ -774,4 +779,38 @@ function latestRank() {
     })
 }
 
+function keywordsChanges() {
+    $.ajax({
+        type: 'get',
+        url: "/api/v1/Keywords",
+        success: function (response) {
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+            $('#totalword').append(len);
+            var up=0
+            var down=0
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                   var different = response['data'][i].attributes.different;
+                    //down calc
+                    if (different===1){down=down+1}
+                     //up calc
+                    if (different===3){up=up+1}
+                }
+            }
+            $('#totalup').append(up);
+            $('#totaldown').append(down);
+            if (up===0 && down===0){
+                var mainprogress = document.getElementById("mainprogress");
+                mainprogress.style.backgroundColor = "white";
+            }
+            percentage = (( up/ (down+up)) * 100);
+            var KeywordTotalWordCount = document.getElementById("KeywordTotalWordCount");
+            percentage2 = (percentage) + '%'
+            KeywordTotalWordCount.style.width = percentage2;
+        }
+    });
+}
 

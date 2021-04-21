@@ -54,6 +54,7 @@ return [
     'enter your email' => 'Geben sie ihre E-Mail Adresse ein',
     //packets
     'Month'=>'Monat',
+    'DISTRICT'=>'KREIS',
     'year'=>'Jahr',
     'Affordable SEO Services Packages'=>'Erschwingliche SEO-Service-Pakete',
     'informations'=>'Informationen',

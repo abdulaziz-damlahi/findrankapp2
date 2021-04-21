@@ -1,5 +1,5 @@
-
 @section('header')
+
     <div style="z-index:4!important;padding-top: 100px;" id="mySidebar" class="sidebar">
 
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" id="closebtn"> X </a>
@@ -7,24 +7,21 @@
         <a class="SideBarName" id="SideBarName"></a>
 
         <div class="btn-group btn-group-justified2 push col-md-12" role="group">
-
-            <a href="{{route("profile")}}" class="btn btn-primary col-md-6" style="font-size: 17px ;color: white;"
-               type="button"><i
-                    class="fa fa-user push-5-r "></i>{{__('header.my account')}}</a>
-            <a href="{{route("settings")}}" class="btn btn-primary col-md-6" style="font-size: 17px; color: white;"
-               type="button"><i
-                    class="fa fa-gear push-5-r "></i>{{__('header.settings')}}</a>
+            <a href="{{route("profile")}}" class="btn  col-md-6" style="font-size: 17px ;color: white;margin-bottom: 30px"
+               type="button"><i class="fa fa-user push-5-r "></i>{{__('header.my account')}}</a>
+            <a href="{{route("settings")}}" class="btn  col-md-6" style="font-size: 17px; color: white;"
+               type="button"><i class="fa fa-gear push-5-r "></i>{{__('header.settings')}}</a>
         </div>
         <table class="table table-bordered table-striped table-condensed" style=";font-size: 15px">
             <tbody>
             <tr>
-
+                <div id="daysleft" hidden></div>
                 <td style="width:50%" class="font-w600">{{__('header.packet')}}:</td>
                 <td id="packet_names1"></td>
             </tr>
             <tr>
                 <td class="font-w600">{{__('header.Start')}}:</td>
-                <td id="createdAt1" ></td>
+                <td id="createdAt1"></td>
             </tr>
             <tr>
                 <td class="font-w600">{{__('header.ends')}}:</td>
@@ -33,9 +30,45 @@
             <tr>
                 <td class="font-w600">{{__('header.remaining')}}:</td>
                 <td id="daysleft1"></td>
+
             </tr>
             </tbody>
         </table>
+
+        <a href="{{route("packets")}}" class="btn btn-sm btn-success" style="display: none;margin-left:15px;margin-right:15px" id="buypacketbtn">
+            <i class="fa fa-dropbox" aria-hidden="true"></i> Paket Satın Al</a>
+        <br>
+        <div class="col-md-12">
+            <div class="card order-card" style="background-color: #ff6c3a">
+                <div class="card-block">
+                    <div class="block-content block-content-full">
+                        <div><span class="tableStyle">{{__('pages.Remaining words')}}</span> <span
+                                id="" class="tableStyle pull-right"><b id="keywordusedSidebar"></b>/<b id="maxcountwordSidebar"></b></span>
+                        </div>
+                        <div class="progress-bar-border" style="margin-bottom:3px">
+                            <div class="progress">
+                                <div class="progress-bar bg-success" id="wordprogressSidebar" role="progressbar" aria-valuenow="25"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="tableStyle">
+                            <br>
+                        </div>
+                        <hr>
+                        <div><span class="tableStyle">{{__('pages.Remaining sites')}}</span> <span
+                                class="tableStyle pull-right"><b id="websiteusedSidebar"></b> /<b id="maxwebsiteSidebar"></b> </span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" id="websiteprogressSidebar" role="progressbar" aria-valuenow="25"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="tableStyle">
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @php
         $routeName = Route::getCurrentRoute()->getName();
@@ -50,7 +83,7 @@
     <!-- Page Wrapper -->
     <div id="wrap">
         <!-- Top bar -->
-        <div class="container" >
+        <div class="container">
             <div class="row" id="notch">
                 <div class="col-md-2 noo-res"></div>
                 <div class="col-md-10">
@@ -93,11 +126,10 @@
                             @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile'|| $routeName === 'findorder')
                                 <li><a href="{{route("logout")}}">{{__('header.Logout')}}</a></li>
                             @endif
-                            @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile')
+                            @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile'|| $routeName === 'websitelist')
 
                                 <li id="openbtn" data-toggle="toggle" class="openbtn" onclick="openNav()">〱</li>
                         @endif
-                        <!--======= SEARCH ICON =========-->
                             <ul class="dropdown">
                                 <li>
                                     <form>

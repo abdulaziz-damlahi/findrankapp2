@@ -12,5 +12,6 @@ return [
     'successfully updated' => 'başarıyla güncellendi',
     'buy packet from home page to view profile' => 'profili görüntülemek için ana sayfadan paket satın alın',
     'Your packet has been expired'=>'Paket hakkınız dolmuştur',
+    'please enter a word'=>'Lütfen bir kelime girin',
     ];
 ?>

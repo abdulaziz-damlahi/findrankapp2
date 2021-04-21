@@ -176,10 +176,12 @@ function closeNav() {
 }
 
 var x = location.href;
-if (x != 'http://127.0.0.1:8000/') {
+if (x !== 'http://127.0.0.1:8000/') {
     document.getElementById("notch").style.display = "none";
 } else {
     //     document.getElementById("openbtn").remove();
     // document.getElementById("findorder").remove();
     // document.getElementById("panelbtn").remove();
 }
+
+

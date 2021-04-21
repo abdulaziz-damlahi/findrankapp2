@@ -9,7 +9,11 @@ use App\Models\keywords;
 use App\Models\packets;
 use App\Models\users;
 use App\Models\websites;
+<<<<<<< HEAD
 use App\Models\AllGoogleSearchDatas;
+=======
+use Database\Seeders\website;
+>>>>>>> github_abdulaziz2
 use Event;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
@@ -18,7 +22,11 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+<<<<<<< HEAD
 use function Symfony\Component\Translation\t;
+=======
+use Ramsey\Uuid\Type\Time;
+>>>>>>> github_abdulaziz2
 
 class panel extends Controller
 {
@@ -204,14 +212,6 @@ class panel extends Controller
         $this->location();
         DB::delete('delete from websites where id = ?', [$id]);
         return redirect('user/panel');
-    }
-
-    public function editkeyword($id)
-    {
-        $this->location();
-        $currentKeyword = keywords::findOrFail($id);
-
-        return view('pages/websitelist/editkeyword', compact('currentKeyword'));
     }
 
     public function updatekeyword(Request $request, $id)

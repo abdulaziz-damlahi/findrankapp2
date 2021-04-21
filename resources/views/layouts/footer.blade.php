@@ -1,7 +1,7 @@
 @section('footer')
 
-    <footer>
-        <div class="container">
+    <footer style="margin-top: 50px;">
+        <div class="container fixed-bottom">
             <div class="row">
                 <div class="col-md-12 padding-top-50">
                     <!-- News Letter -->

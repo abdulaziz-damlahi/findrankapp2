@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+
     <a class="SideBarName" hidden id="username">{{ auth()->user()->first_name }}</a>
     <a class="SideBarName" hidden id="userid">{{ auth()->user()->id }}</a>
     @if (session('packetempty'))
@@ -7,11 +8,10 @@
             {{ session('packetempty') }}
         </div>
     @endif
-    {{--   <div style="" id="id">{{ $userId}}</div>--}}
+    {{--<div style="" id="id">{{ $userId}}</div>--}}
     <div class="pcoded-inner-content" id="main">
         <div class="main-body">
             <div class="page-wrapper">
-
                 <div class="page-body">
                     <div class="col-lg-8 col-md-12 row">
                         @foreach($userwebsites8 as $userwebsite)
@@ -22,22 +22,26 @@
                                             <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
                                             <h6 class="m-b-20" hidden>{{ $userwebsite->id}}</h6>
                                             <h class="m-b-20">{{__('panel.Keywords Used')}} {{ $userwebsite->wordcount }}</h>
-                                            <br>
-                                            <h class="m-b-20"><span style='text-shadow: 2px 2px 6px #000000;font-size: 15px' scope='col'
-                                                                    id='idiff{{ $userwebsite->id}}'></span></h>
+                                            <br><br>
+                                            <table>
+                                                <th><h5 id='up{{ $userwebsite->id}}' style="color:lightgreen;width: 50px">
+                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/up-arrow.svg"></h5></th>
+                                                <th><h5 id='equal{{ $userwebsite->id}}' style="color:mediumpurple">
+                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/equal-arrow.svg"></h5></th>
+                                                <th><h5 id='down{{ $userwebsite->id}}' style="color:white">
+                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/down-arrow.svg"></h5></th>
+                                            </table>
                                             <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span></span>
                                             </h2>
                                             <p class="m-b-0"><span class="f-right"></span>
                                             <td class="sort_change text-center hidden-xs" data-change="36">
-
                                             </td>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </a>
-                    @endforeach
-                    <!-- order-card end -->
+                        @endforeach
                         <div class="col-lg-12 col-md-12">
                             <div class="card whitebackground">
                                 <div class="card-header ">
@@ -63,13 +67,16 @@
                                                 <span style="size: 15px;" id="close" class="close">X</span>
                                                 <br><br>
                                                 <form action="{{route('addwebsite')}}" class="btn-submit" method="POST">
-
                                                     @csrf
                                                     <textarea class="form-control" id="urls" name="website" rows="5"
                                                               placeholder=""></textarea>
                                                     <br><br>
+<<<<<<< HEAD
 
                                                     <button id="sendWebsite" type="submit" class="btn btn-primary mcuLoadingButton"
+=======
+                                                    <button type="submit" class="btn btn-primary mcuLoadingButton"
+>>>>>>> github_abdulaziz2
                                                             data-handler="confirm">{{__('panel.save')}}
                                                     </button>
                                                 </form>
@@ -77,13 +84,8 @@
                                                         data-dismiss="modal">{{__('panel.close')}}
                                                 </button>
                                             </div>
-
-
                                         </div>
-
-
                                         </tbody>
-
                                     </table>
                                     <div class="pagination" id="pagination">
                                         {{--java script generated Pagination in tbody (panel.js)--}}
@@ -91,7 +93,6 @@
                                     <div id="pageDetails" class="page-details">
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -119,6 +120,32 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- ANAHTAR KELİME DEĞİŞİMLERİ--}}
+                        <div class="card whitebackground">
+                            <div class="card-header whitebackground">
+                                <div class="block block-bordered block-rounded">
+                                    <div class="block-header">
+                                        <h4 class="text-center">{{__('panel.KEYWORDS CHANGES')}}</h4>
+                                    </div>
+                                    <div class="block-content block-content-full">
+                                        <div class="push-5-l" style="margin-top:-17px">
+                                            <div style="display:inline-block"><b style="font-size:28px" id="totalup"></b>
+                                                <medium class="text-muted">{{__('panel.Rise')}}</medium>
+                                                <br> <img class="svgstylepanel" src="{{asset('assets')}}/svg/up-arrow.svg"><br></div>
+                                            <div class="pull-right push-5-r"><b style="font-size:28px" id="totaldown"></b>
+                                                <medium class="text-muted">{{__('panel.Drop')}}</medium>
+                                                <br><img class="svgstylepanel" src="{{asset('assets')}}/svg/down-arrow.svg"><br></div>
+                                        </div>
+                                        <br>
+                                        <div class="progress backorange" id="mainprogress">
+                                            <div class="progress-bar backgreen" id="KeywordTotalWordCount" role="progressbar" aria-valuenow="25"
+                                                 aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <span> <span id="totalword" class="font-w600"></span>{{__('panel.word')}} </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- statustic and process start -->
                     <div class="col-lg-12 col-md-12">
@@ -139,11 +166,8 @@
                                             <button class="btns btn-default" type="button" id="addNewSite"><i
                                                     class="fa fa-plus text-success"><span class="hidden-xs push-7-l">{{__('panel.Add Website')}}</span></i>
                                             </button>
-
                                         </div>
-                                        <table
-                                            {{--  down table head--}}
-                                            class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
+                                        <table class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
                                             @if (session('success'))
                                                 <div class="alert alert-success">
                                                     {{ session('success') }}
@@ -185,19 +209,16 @@
                                                             data-dismiss="modal">{{__('panel.close')}}
                                                     </button>
                                                 </div>
-
                                             </div>
                                             </tbody>
                                             {{--  down table body--}}
                                         </table>
                                         <!-- ilk3 Modal  -->
                                         <div id="ilk3modal" class="modal">
-
                                             <div class="modal-content2">
                                                 <span style="size: 15px;" id="closeilk3" class="close">X</span>
                                                 <br><br>
                                                 <div class="col-md-12 container">
-
                                                     <table
                                                         class="table table-hover table-vcenter table-striped table-track">
                                                         <thead>
@@ -211,17 +232,14 @@
                                                         <tbody id="ilk3table" class="list">
                                                         </tbody>
                                                     </table>
-
                                                 </div>
                                             </div>
                                         </div>
                                         <div id="ilk10modal" class="modal">
-
                                             <div class="modal-content2">
                                                 <span style="size: 15px;" id="closeilk10" class="close">X</span>
                                                 <br><br>
                                                 <div class="col-md-12 container">
-
                                                     <table
                                                         class="table table-hover table-vcenter table-striped table-track">
                                                         <thead>
@@ -235,17 +253,14 @@
                                                         <tbody id="ilk10table" class="list">
                                                         </tbody>
                                                     </table>
-
                                                 </div>
                                             </div>
                                         </div>
                                         <div id="ilk100modal" class="modal">
-
                                             <div class="modal-content2">
                                                 <span style="size: 15px;" id="closeilk100" class="close">X</span>
                                                 <br><br>
                                                 <div class="col-md-12 container">
-
                                                     <table
                                                         class="table table-hover table-vcenter table-striped table-track">
                                                         <thead>
@@ -259,21 +274,14 @@
                                                         <tbody id="ilk100table" class="list">
                                                         </tbody>
                                                     </table>
-
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
-
-                        <!-- statustic and process end -->
                     </div>
-                </div>
-                <div id="styleSelector">
                 </div>
             </div>
         </div>

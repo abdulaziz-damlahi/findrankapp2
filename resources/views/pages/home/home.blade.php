@@ -1,6 +1,8 @@
 @include('layouts.head')
 @include('layouts.header')
 @include('layouts.footer')
+
+
     <!doctype html>
 <html class="no-js" lang="en">
 @yield('head')
@@ -11,7 +13,7 @@
     <div class="tp-banner-container">
         <div class="tp-banner-fix">
             <ul>
-                <!-- Slider 1dawdadsqdqwasdaefsefsdawdaw -->
+                <!-- Slider 1dawdadsqdqwadwdasdaefsefsdawdaw -->
                 <li data-transition="fade" data-slotamount="7"><img style="opacity: 0.1!important;"
                                                                     src="images/slides/slide-bg-1.jpg"
                                                                     data-bgposition="center top" alt=""/>
@@ -61,7 +63,7 @@
                          data-endspeed="300"
                          data-captionhidden="on"
                          style="color: #fff;  text-shadow:   2px 2px 8px #000000;font-size: 30px; font-weight: normal; line-height:36px;">
-                        {{__('home.DO You Want To See')}} <br>   {{__('home.your Daily Search Results')}} <br>{{__('home.to your website.')}}</div>
+                        {{__('home.DO You Want To See')}} <br> {{__('home.your Daily Search Results')}} <br>{{__('home.to your website.')}}</div>
                     <!-- Layer -->
                     <div class="tp-caption sfb tp-resizeme font-crimson"
                          data-x="left" data-hoffset="40"
@@ -112,7 +114,7 @@ ationZ:0;scaleX:0;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;tr
                          data-endspeed="300"
                          data-captionhidden="on"
                          style="color: #fff; font-size: 48px; text-shadow:   2px 2px 8px #000000;font-weight: normal; letter-spacing:0px; line-height:55px;">
-                      {{__('home.Lets Show Your Website')}}<br> {{__('home.Rank')}}
+                        {{__('home.Lets Show Your Website')}}<br> {{__('home.Rank')}}
                     </div>
                     <!-- Layer -->
                     <div class="tp-caption sfb tp-resizeme"
@@ -129,7 +131,8 @@ ationZ:0;scaleX:0;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;tr
                          data-endspeed="300"
                          data-captionhidden="on"
                          style="color: #fff; font-size: 30px; text-shadow:   2px 2px 8px #000000; font-weight: normal; line-height:36px;">
-                        {{__('home.Do you want to See the online Rank')}} <br>{{__('home.your brand and drive more relevant traffic')}}  <br>{{__('home.to your website.')}}</div>
+                        {{__('home.Do you want to See the online Rank')}} <br>{{__('home.your brand and drive more relevant traffic')}}
+                        <br>{{__('home.to your website.')}}</div>
                     <!-- Layer -->
                     <div class="tp-captio
 n sfb tp-resizeme font-crimson"
@@ -237,9 +240,15 @@ n sfb tp-resizeme font-crimson"
                                 <li> {{$last->rank_fosllow}} Rank Follow</li>
                                 <li> {{$last->description}}</li>
                             </ul>
+<<<<<<< HEAD
                             <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a>
                             </div>
                             </div>
+=======
+                            <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a></div>
+                    </div>
+                    <!-- Price -->
+>>>>>>> github_abdulaziz2
                     <div class="col-md-4">
                         <!-- Icon -->
                         <div class="plan-icon orange-bg"><img src="{{asset('images')}}/plan-icon-2.png" alt=" "></div>
@@ -294,7 +303,7 @@ n sfb tp-resizeme font-crimson"
                 <span
                     class="intro-style">{{__('home.Do you want to')}}</span>
             </div>
-            <div class="c"><img src="images/work-folow-img.jpg" style="padding-left: 120px" alt=" "></div>
+            <div class="c"><img id="workflowphoto" src="images/work-folow-img.jpg" style="padding-left: 120px" alt=" "></div>
             <ul class="row padding-left-50 padding-right-50" style=" text-align:center;">
                 <li class="col-sm-4">
                     <div class="icon"><img src="images/flow-icon-1.png" alt=""></div>
@@ -309,7 +318,7 @@ n sfb tp-resizeme font-crimson"
                 <li class="col-sm-3">
                     <div class="icon"><img src="images/flow-icon-4.png" alt=""></div>
                     <h6>{{__('home.Target')}}</h6>
-                    <div style="justify-content: center;"> <p>{{__('home.Targeting Your Websites And Keywords Rank Precisely')}}  </p></div>
+                    <div style="justify-content: center;"><p>{{__('home.Targeting Your Websites And Keywords Rank Precisely')}}  </p></div>
                 </li>
             </ul>
         </div>

@@ -35,6 +35,7 @@ return [
     'repeat new password'=>'Repeat New Password',
     'company E-mail adrress'=>'Company E-mail Adrress',
 //profile
+    'DISTRICT' => 'DISTRICT',
     'packet' => 'packet',
     'starts' => 'Started at',
     'ends' => 'ends at',

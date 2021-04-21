@@ -20,5 +20,8 @@ return [
     'words count'=>'kelime sayı',
     'save'=>'Kaydet',
     'close'=>'Kapat',
+    'KEYWORDS CHANGES'=>'ANAHTAR KELİME DEĞİŞİMLERİ',
+    'Rise'=>'Yükselme',
+    'Drop'=>'Düşüş',
 ];
 ?>

@@ -13,4 +13,5 @@ return [
     'successfully updated' => 'erfolgreich aktualisiert',
     'buy packet from home page to view profile' => 'Paket von der Homepage kaufen Profil anzeigen',
     'Your packet has been expired' => 'Ihr Paket ist abgelaufen',
-];
+    'please enter a word'=>'Bitte geben Sie ein Wort ein',
+    ];

@@ -8,37 +8,76 @@
     text-transform: uppercase;
 
 }
+
 @media only screen and (max-width: 900px) {
-    .grafik{
+    .grafik {
         height: 370px;
         width: 100%;
     }
-    .grafik2{
+
+    .grafik2 {
+        margin-top: 130px;
         padding: 0px;
-        width: 100%
+        width: 100%;
     }
-    .myform{
+
+    .myform {
         padding-left: 100px;
         height: 100px
     }
 }
 
 @media only screen and (min-width: 900px) {
-    .grafik{
+    .grafik {
         height: 370px;
         width: 100%;
     }
-    .grafik2{
+
+    .grafik2 {
         padding: 100px;
-        width: 100%
+        width: 100%;
     }
-    .myform{
+
+    .myform {
         padding-left: 100px;
         height: 100px
     }
-    }
-
-.fromto{
-    height: 50px
 }
 
+.fromto {
+    height: 50px;
+    right: 17px;
+    padding-top:10px;
+}
+
+.applybtn {
+    background: #222935;
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 15px 35px;
+    font-weight: bold;
+    border-radius: 4px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.4);
+    -webkit-transition: all 0.4s ease-in-out;
+}
+
+.applybtn.active, .applybtn:active {
+    background-image: none;
+    outline: 0;
+}
+
+.applybtn:hover {
+    background: #ff6c3a;
+    color: #fff;
+}
+.sirananaliztitle{
+    font-size: 35px;
+    font-weight: bold;
+    justify-content: center;
+    padding-left: 40%;
+    padding-right: 40%;
+}

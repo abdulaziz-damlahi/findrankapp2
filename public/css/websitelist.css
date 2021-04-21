@@ -1,5 +1,5 @@
-#body{
-    background-color:#efefef;
+#body {
+    background-color: #e9f6ff;
 }
 
 /*popup style*/
@@ -15,19 +15,36 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.editmyModal {
+    z-index: 1;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    /* Sit on top */
+    padding-top: 300px; /* Location of the box */
+    left: 0;
+    justify-content: center;
+    top: 0px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
 
-    background-color: #fefefe;
+    background-color: #e9f6ff;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
 }
+
 .grafikmodal {
     z-index: 1;
     display: none; /* Hidden by default */
@@ -40,16 +57,18 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
+
 .grafikmodal-content {
-    background-color: #fefefe;
+    background-color: #e9f6ff;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
 }
+
 /* The Close2 Button */
 .grafikclose {
     color: #aaaaaa;
@@ -64,12 +83,14 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 /* The Close Button */
 .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    size: 15px;
 }
 
 .close:hover,
@@ -78,13 +99,14 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 /*site ekle panel*/
 
 
-.btns{
+.btns {
     border: none;
     color: white;
-    padding-right: 5px ;
+    padding-right: 5px;
     padding-left: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -98,30 +120,105 @@
 .btns:hover:not(.active) {
     transition: all .3s linear;
     background-color: #ff6c3a;
+    color: #0af9d7;
 }
-table{
+
+table {
     width: 50%;
 }
 
 @media only screen and (max-width: 900px) {
-    .one{
+    .one {
         display: none;
     }
-    .websitescont{
-        height:auto;
-        width:100%;
+
+    .websitescont {
+        height: auto;
+        width: 100%;
         background-color: #ffffff;
     }
 }
+
+.websitelistchart {
+    height: 220px;
+    width: 85%;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
 @media only screen and (min-width: 900px) {
-.websitescont{
-    height:auto;
-    width:85%;
-    background-color: #efefef;
+    .websitescont {
+        height: auto;
+        width: 85%;
+        background-color: white;
+    }
 }
-}
-.col{
+
+.col {
     max-width: 40px;
     overflow-wrap: break-word;
     overflow: auto;
+}
+
+.containerbtns {
+    background-color: #ff6c3a;
+    font-family: sans-serif;
+    color: white;
+}
+
+.grafiklist {
+    background-color: #e9f6ff;
+}
+
+.
+totalwordlist {
+    background-color: #e9f6ff;
+    margin-top: 100px !important;
+}
+
+.paddingcontainer {
+
+}
+
+.svgstyleWebsites {
+    height: 40px
+}
+
+.backorange {
+    background-color: #ff6c3a;
+}
+
+.backgreen {
+    background-color: lawngreen;
+}
+
+.websitelistbtn {
+    font-family: sans-serif;
+}
+
+.pagination-buttons {
+    display: inline-block;
+}
+
+.pagination-buttons {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination-buttons.active {
+    background-color: #2896b3;
+    color: #4a4a4a;
+    border-radius: 5px;
+}
+
+.pagination-buttons:hover:not(.active) {
+    background-color: #dddddd;
+    border-radius: 5px;
+}
+
+.keywordChange {
+    margin-top: 5px;
+    padding-right: 100px
 }
