@@ -8,37 +8,93 @@ $(document).ready(function () {
       url: "http://127.0.0.1:8000/api/v1/packets-of-users",
       type: "GET",
       success: function (result) {
-        console.log(result);
         $.each( result.data, function( key, value ) {
-          console.log(value.attributes.country)
           countries.push(value.attributes.country);
-          console.log(value );
         });
         var count = {};
         countries.forEach(function(i) { count[i] = (count[i]||0) + 1;});
-        console.log(count);
         let array2 = Object.values(count)
-        console.log(typeof count,'dass')
-       let array3=  Object.entries(count);
-        let dene = Object.fromEntries(array3);
-        console.log(dene,'dene')
+       let array3=  Object.keys(count);
         // Create and populate the data table.
         var years = ['2001', '2002', '2003', '2004', '2005'];
         var sales = [1, 2, 3, 4, 5];
-
+      /*  var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ["array3"   ,  array2],
+        ]);
+       */
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'years');
-        data.addColumn('number', 'sales');
+        // assumes "word" is a string and "count" is a number
+        data.addColumn('string', 'word');
+        data.addColumn('number', 'count');
 
-        for(i = 0; i < years.length; i++)
-          data.addRow([years[i], sales[i]]);
+        for (var i = 0; i < array3.length; i++) {
+          data.addRow([array3[i], array2[i]]);
+        }
+        var options = {
+          title: 'Ülkelere Göre Kullanıcı verileri',
+          pieHole: 0.4,
+        };
+
 
         // Create and draw the visualization.
-        new google.visualization.LineChart(document.getElementById('visualization')).
-        draw(data, {});
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
       }
     });
   }
+  $.ajax({
+    url: "http://127.0.0.1:8000/api/v1/all-google-search-datas",
+    type: "GET",
+    success: function (result) {
+      var searching = [];
+      console.log(result);
+      $.each(result.data, function (key, value) {
+        if(value.attributes.processtime=="Currency"){
+          var today = new Date();
+          var today2= new Date(value.attributes.updated_at);
+          function formatDate(date) {
+            var d = new Date(today),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+              month = '0' + month;
+            if (day.length < 2)
+              day = '0' + day;
+
+            return [year, month, day].join('-');
+          }
+          function formatDaate(date) {
+            var d = new Date(today2),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2)
+              month = '0' + month;
+            if (day.length < 2)
+              day = '0' + day;
+
+            return [year, month, day].join('-');
+          }
+          let FormatedSDate = formatDate(today);
+          let FormatedSDate2 = formatDaate(today2);
+          searching.push(value)
+          console.log(FormatedSDate)
+          console.log(FormatedSDate2)
+          const match= FormatedSDate.match(FormatedSDate2)
+          if(match!=null){
+              console.log(value)
+          }
+
+
+        }
+      })
+
+    }
+  });
   $.ajax({
     url: "http://127.0.0.1:8000/api/v1/packets-reels",
     type: "GET",
@@ -47,8 +103,6 @@ $(document).ready(function () {
       if (result['data'] != null) {
         lenght = result['data'].length;
       }
-      console.log(lenght)
-      console.log(result)
       for (i = 0; i < lenght; i++) {
         var price = result['data'][i].attributes.price;
         var names_packets = result['data'][i].attributes.names_packets;
@@ -57,7 +111,6 @@ $(document).ready(function () {
         var websites_count = result['data'][i].attributes.websites_count;
         var description = result['data'][i].attributes.description;
         var rank_fosllow = result['data'][i].attributes.rank_fosllow;
-        console.log(price)
         var str = "<tr><td>" + names_packets + "</td><td>" + word_count + "</td><td>" + websites_count + "</td><td>" + rank_fosllow + "</td><td>" + description + "</td><td>" + price + "</td>" +
             "<td> <button type=\"button\" class=\"btn btn-success editbtn \" data-toggle=\"modal\"\n" +
             "                    data-target=\"#upModal\">EDIT" +
@@ -65,7 +118,6 @@ $(document).ready(function () {
         $("#bodyTable").append(str)
       }
 
-      console.log('işlem başarılı')
     }
 
   });
@@ -88,13 +140,11 @@ $(document).ready(function () {
       url: "http://127.0.0.1:8000/api/v1/packets-reels",
       data: $('#modalForm').serialize(),
       success: function (response) {
-        console.log(response)
         $('#addModal').modal('hide');
         alert("Packet Saved");
         location.reload();
       },
       error: function (error) {
-        console.log(error);
       }
     });
   });
@@ -107,7 +157,6 @@ $(document).ready(function () {
     }).get();
 
 
-    console.log(data);
     $('#names_packet').val(data[0]);
     $('#word_count').val(data[1]);
     $('#websites_count').val(data[2]);
@@ -124,13 +173,11 @@ $(document).ready(function () {
       url: "http://127.0.0.1:8000/api/v1/packets-reels" + id,
       data: $('#editmodalForm').serialize(),
       success: function (response) {
-        console.log(response)
         $('#upModal').modal('hide');
         alert("Packet Saved");
         location.reload();
       },
       error: function (error) {
-        console.log(error);
       }
     });
   });
@@ -140,7 +187,6 @@ $(document).ready(function () {
       return $(this).text();
 
     }).get();
-    console.log(data);
 
   });
 
@@ -153,7 +199,6 @@ function destroy(id){
     type: "DELETE",
     url: "http://127.0.0.1:8000/api/v1/packets-reels"+id,
     success: function (response) {
-      console.log(response);
     }
   });
 }

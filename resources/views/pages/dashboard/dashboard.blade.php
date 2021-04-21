@@ -1,10 +1,9 @@
 @extends('layouts.master')
 @section('content')
+    <div class="background">
     <div class="container">
-        <div id="piechart" style="width: 900px; height: 500px;"></div>
-
-
-    <div class="pull-right">
+        <div id="piechart" style="width: 700px; height: 500px;"></div>
+        <div class="pull-right">
             <button type="button" id="add" class="btn btn-success" data-toggle="modal"
                     data-target="#addModal">Create New Packet
             </button>
@@ -105,4 +104,6 @@
                 </div>
             </div>
         </div>
+        </div>
+
 @endsection
