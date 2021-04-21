@@ -537,6 +537,7 @@ function screenSize() {
 }
 
 $( window ).resize(function() {
+    document.querySelector("#chartContainer > div > a").remove();
     if ($(window).width() < 768) {
         var keywordChange = document.getElementById('keywordChange');
         keywordChange.style.display = "none";

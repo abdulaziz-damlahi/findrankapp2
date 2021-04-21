@@ -6,7 +6,7 @@
             <div id="chartContainer"></div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         </div>
-        {{-- ANAHTAR KELİME DEĞİŞİMLERİ--}}
+        {{-- ANAHTAR KELİME DEĞawdawdİŞİMLERİ--}}
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 keywordChange" id="keywordChange">
                 <div class="block-header">
                     <h5 class="text-center">{{__('panel.KEYWORDS CHANGES')}}</h5>
