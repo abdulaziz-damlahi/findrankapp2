@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+    //deneme
     <div class="container">
         <div class="pull-right">
             <button type="button" id="add" class="btn btn-success" data-toggle="modal"
