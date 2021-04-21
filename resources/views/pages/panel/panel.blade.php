@@ -162,9 +162,7 @@
                                                     class="fa fa-plus text-success"><span class="hidden-xs push-7-l">{{__('panel.Add Website')}}</span></i>
                                             </button>
                                         </div>
-                                        <table
-                                            {{--  down table head--}}
-                                            class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
+                                        <table class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
                                             @if (session('success'))
                                                 <div class="alert alert-success">
                                                     {{ session('success') }}

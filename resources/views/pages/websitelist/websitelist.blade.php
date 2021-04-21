@@ -1,6 +1,39 @@
 @extends('layouts.master')
 @section('content')
 
+    <div class="container websitelistchart">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+            <div id="chartContainer"></div>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </div>
+        {{-- ANAHTAR KELİME DEĞİŞİMLERİ--}}
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 keywordChange" id="keywordChange">
+                <div class="block-header">
+                    <h5 class="text-center">{{__('panel.KEYWORDS CHANGES')}}</h5>
+                </div>
+                <div class="block-content block-content-full">
+                    <div class="push-5-l" style="margin-top:-17px">
+                        <div style="display:inline-block"><b style="font-size:28px" id="totalup"></b>
+                            <medium class="text-muted">{{__('panel.Rise')}}</medium>
+                            <br> <img class="svgstyleWebsites" src="{{asset('assets')}}/svg/up-arrow.svg"><br>
+                        </div>
+                        <div class="pull-right push-5-r"><b style="font-size:28px" id="totaldown"></b>
+                            <medium class="text-muted">{{__('panel.Drop')}}</medium>
+                            <br><img class="svgstyleWebsites" src="{{asset('assets')}}/svg/down-arrow.svg"><br>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="progress backorange" id="mainprogress">
+                        <div class="progress-bar backgreen" id="KeywordTotalWordCount" role="progressbar"
+                             aria-valuenow="25"
+                             aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <span> <span id="totalword" class="font-w600"></span> &nbsp;{{__('panel.word')}} </span>
+                </div>
+            </div>
+
+    </div>
+
     <div class="container websitescont">
         <div class="col-lg-12 col-md-12">
             <div class="card">
@@ -11,9 +44,11 @@
                         <a class="containerbtns btns btn-default " href="{{route('panel')}}" type="button">
                             <i class="fa fa-arrow-left"></i>{{__('pages.panel')}}</a>
                         <button class="containerbtns btns btn-default" type="button" id="addNewword">
-                            <i class="fa fa-plus"></i><span class="hidden-xs push-7-l">{{__('pages.Add Word')}}</span>
+                            <i class="fa fa-plus"></i><span
+                                class="hidden-xs push-7-l">{{__('pages.Add Word')}}</span>
                         </button>
-                        <button class="containerbtns btns btn-default" type="button" style="display:none" id="editmyModalbtn">
+                        <button class="containerbtns btns btn-default" type="button" style="display:none"
+                                id="editmyModalbtn">
                             <i class="fa fa-edit"></i><span class="hidden-xs push-7-l">{{__('pages.edit')}}</span>
                         </button>
                         <div id="daysleft" hidden></div>
@@ -37,7 +72,7 @@
                         </div>
                     </div>
                     <br><br>
-                    <table class="table">
+                    <table class="table table-hover table-vcenter table-striped table-track">
                         <thead>
                         <tr>
                             <th scope="col"><span class="fa fa-pencil"></span></th>
@@ -71,7 +106,8 @@
                                             {{$errors->first()}}
                                         </div>
                                     @endif
-                                    <div class="row col-lg-10 col-md-10 col-xs-12" style="margin-bottom: 10px">
+                                    <div class="row col-lg-10 col-md-10 col-xs-12"
+                                         style="margin-bottom: 10px;margin-right: 30px">
                                         <div class="btn-group col-md-3">
                                             <div class="btn-group">
                                                 <select id="selectSecil" name="country" class="select">
@@ -259,7 +295,8 @@
                                     @csrf
                                     <textarea class="form-control" id="editurls" name="editkeyword" rows="5"
                                               placeholder=""></textarea>
-                                    <textarea style="display:none" class="form-control" id="editwebsiteid" name="editwebsiteid"
+                                    <textarea style="display:none" class="form-control" id="editwebsiteid"
+                                              name="editwebsiteid"
                                               placeholder="">{{$websiteid}}</textarea>
                                     <br><br>
                                     <div class="row col-lg-10 col-md-10 col-xs-12" style="margin-bottom: 10px">
@@ -432,7 +469,8 @@
                                         </div>
                                     </div>
                                     <br><br><br>
-                                    <button id="submitedit" type="submit" class="btn btn-primary mcuLoadingButton"> {{__('pages.save')}}
+                                    <button id="submitedit" type="submit"
+                                            class="btn btn-primary mcuLoadingButton"> {{__('pages.save')}}
                                     </button>
                                 </form>
                                 <button id="editclose2" class="btn btn-default" data-dismiss="editmodal">
@@ -459,51 +497,6 @@
                     <div id="CountOfWords" style="float:right;margin-right:100px">total is</div>
                 </div>
                 <div class="card-block">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="col-lg-12 col-md-12 paddingcontainer">
-            <div class="col-lg-6 col-md-12 ">
-                <div class="card whitebackground">
-                    <div class="card-header whitebackground">
-                        <h5>{{__('panel.positions')}}</h5>
-                    </div>
-                    <div class="card-block whitebackground">
-                        {{--popup ilk kilme--}}
-                        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-                    </div>
-                    <br><br>
-                </div>
-            </div>
-            {{-- ANAHTAR KELİME DEĞİŞİMLERİ--}}
-            <div class="col-lg-6 col-md-12 totalwordlist" style="margin-top: 120px">
-                <div class="card whitebackground">
-                    <div class="card-header whitebackground">
-                        <div class="block block-bordered block-rounded">
-                            <div class="block-header">
-                                <h4 class="text-center">{{__('panel.KEYWORDS CHANGES')}}</h4>
-                            </div>
-                            <div class="block-content block-content-full">
-                                <div class="push-5-l" style="margin-top:-17px">
-                                    <div style="display:inline-block"><b style="font-size:28px" id="totalup"></b>
-                                        <medium class="text-muted">{{__('panel.Rise')}}</medium>
-                                        <br> <img class="svgstyleWebsites" src="{{asset('assets')}}/svg/up-arrow.svg"><br></div>
-                                    <div class="pull-right push-5-r"><b style="font-size:28px" id="totaldown"></b>
-                                        <medium class="text-muted">{{__('panel.Drop')}}</medium>
-                                        <br><img class="svgstyleWebsites" src="{{asset('assets')}}/svg/down-arrow.svg"><br></div>
-                                </div>
-                                <br>
-                                <div class="progress backorange" id="mainprogress">
-                                    <div class="progress-bar backgreen" id="KeywordTotalWordCount" role="progressbar" aria-valuenow="25"
-                                         aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <span> <span id="totalword" class="font-w600"></span> &nbsp;{{__('panel.word')}} </span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

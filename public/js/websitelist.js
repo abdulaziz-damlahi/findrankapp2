@@ -1,28 +1,18 @@
 $(document).ready(function () {
-    var pageNumber = 1;
-    Statistics(pageNumber);
+    Statistics();
     keywordsChanges();
     chart();
     popup();
     checked();
+    changeBackground();
+    screenSize();
 })
-$("#nextPageButton").click(function () {
-    pageNumber = currentPage2;
-    pageNumber = pageNumber + 1;
-    Statistics(pageNumber);
-});
 
-$("#prevPageButton").click(function () {
-    pageNumber = currentPage2;
-    pageNumber = pageNumber - 1;
-    Statistics(pageNumber);
-});
-
-function Statistics(pageNumber) {
+function Statistics() {
     // if ($("#ANAHTARKELİME").val('Mobil')){console;}
     $.ajax({
         type: 'get',
-        url: "/api/v1/Keywords/?include=website&sort=-id&page[number]="+pageNumber+"&page[size]=10",
+        url: "/api/v1/Keywords/?include=website&sort=-id",
         success: function (response) {
             var wordConut = 0
             $('#row').html("")
@@ -56,6 +46,7 @@ function Statistics(pageNumber) {
                             if (websiteid == websitidhtml) {
                                 wordConut = wordConut + 1
                                 let sayi = response['data'][i].id
+
                                 var str = "<tr><td scope=\"col\"><input type='radio' name='checked' value='" + wordid + "'></td>" +
                                     "<td class='col' data-id='  " + i + "' id=\"ANAHTARKELİME\"> " + word + " </td>" +
                                     "<td id=\"rank\">  " + rank + "</td>" +
@@ -71,104 +62,12 @@ function Statistics(pageNumber) {
                         }
                     }
                 }
-                var total = response['meta'].page.total
                 $('#CountOfWords').append(wordConut);
-                $('#CountOfWords').html("current page total is "+wordConut+"");
-
             }
-            var currentPage = response['meta'].page["current-page"];
-            var from = response['meta'].page.from;
-            var to = response['meta'].page.to;
-            var total = response['meta'].page.total;
-            var lastPage = response['meta'].page["last-page"];
-            var initpage = 0;
-            currentPage2 = currentPage
-            var currentPageTest = currentPage2 - 1;
-            $('#pagination').html("")
-            var firstButton = "<a href=\"#\" class='pagination-buttons'  " +
-                "data-id='1' id=\"firstPageBtn\">1 ...</a>"
-            $('#pagination').append(firstButton);
-            while (initpage < lastPage) {
-
-                initpage = initpage + 1;
-                currentPageTest = currentPageTest + 1;
-
-                var buttons = " <a href=\"#\" class='pagination-buttons'" +
-                    "  data-id='" + initpage + "' id=\"" + initpage + "\">" + initpage + "</a>"
-
-                $('#pagination').append(buttons);
-
-            }
-            var lastButton = "<a href=\"#\" class='pagination-buttons' " +
-                " data-id='" + lastPage + "' id=\"lastPageBtn\">... " + lastPage + "</a>"
-
-            $('#pagination').append(lastButton);
-
-            document.getElementById(+currentPage + "").classList.toggle('active');
-
-            // loop visible button
-            for (i = 1; i <= lastPage; i++) {
-                $("#" + i + "").hide();
-            }
-            if (currentPage < 5) {
-                for (i = 1; i <= 5; i++) {
-                    $("#" + i + "").show();
-                }
-            } else {
-                nextaPage = currentPage + 1;
-                prevPage1 = currentPage - 1
-                prevPage2 = currentPage - 2
-                prevPage3 = currentPage - 3
-                $("#" + currentPage + "").show();
-                $("#" + nextaPage + "").show();
-                $("#" + prevPage1 + "").show();
-                $("#" + prevPage2 + "").show();
-                $("#" + prevPage3 + "").show();
-            }
-
-            // hide show next & prev & last
-
-            if (lastPage != currentPage) {
-                $("#nextPageButton").show();
-            } else {
-                $("#nextPageButton").hide();
-            }
-            //last button hide'show
-            if (lastPage != currentPage && (lastPage - 1) != currentPage && lastPage != 5 && lastPage != 4 && lastPage != 3) {
-
-                $("#lastPageBtn").show();
-            } else {
-                $("#lastPageBtn").hide();
-            }
-            //first button hide'show
-            if (currentPage > 4) {
-                $("#firstPageBtn").show();
-            } else {
-                $("#firstPageBtn").hide();
-            }
-
-            if (currentPage != 1) {
-                $("#prevPageButton").show();
-            } else {
-                $("#prevPageButton").hide();
-            }
-
-            // button & next & prev action codes
-
-            $(".pagination-buttons").click(function () {
-                pageNumber = $(this).data('id');
-                Statistics(pageNumber);
-            });
-            //convert date start here
-            var CurrentData = response['data'];
-            var len = 0;
-            if (CurrentData != null) {
-                len = CurrentData.length;
-            }
-            $('#notification-body').html("")
         }
     });
 }
+
 // add word popup
 $("#device2").change(function () {
     if ($(this).val() === "Mobil") {
@@ -336,9 +235,13 @@ function keywordsChanges() {
                 for (var i = 0; i < len; i++) {
                     var different = response['data'][i].attributes.different;
                     //down calc
-                    if (different === 1) {down = down + 1}
+                    if (different === 1) {
+                        down = down + 1
+                    }
                     //up calc
-                    if (different === 3) {up = up + 1}
+                    if (different === 3) {
+                        up = up + 1
+                    }
                 }
             }
             $('#totalup').append(up);
@@ -409,6 +312,7 @@ function chart() {
             var chart = new CanvasJS.Chart("chartContainer", {
                 animationEnabled: true,
                 colorSet: "customColorSet1",
+                height: 220,
                 data: [
                     {
                         colorSet: "customColorSet1",
@@ -425,13 +329,14 @@ function chart() {
                         indexLabel: "{label} - #percent%",
                         toolTipContent: "<b>{label}:</b> {y} (#percent%)",
                         dataPoints: [
-                            { y: les3, label: "les than 3", },
-                            { y: les10, label: "les than 10" },
-                            { y: les100, label: "les than 100" },
+                            {y: les3, label: "les than 3",},
+                            {y: les10, label: "les than 10"},
+                            {y: les100, label: "les than 100"},
                         ]
                     }]
             });
             chart.render();
+            removetrademanrk();
         }
 
     });
@@ -493,8 +398,8 @@ function popup() {
                             //calc diffrance
                             var oneDay = 24 * 60 * 60 * 1000;
                             var diffDays = Math.round(Math.abs((today1format - lastday) / oneDay));
-                            if (today1format>lastday){
-                                diffDays="-"+diffDays
+                            if (today1format > lastday) {
+                                diffDays = "-" + diffDays
                             }
                             diffDays2 = (diffDays);
                             $('#daysleft').append(diffDays);
@@ -557,8 +462,13 @@ function getcheckedRadio(checkedRadio) {
             var city = response['data'].attributes.city;
             $("#editurls").append(name);
             var o = new Option("editselectSecil text", "value");
-            if (country === 'TR') {countryname = 'Türkiye'}
-            if (country === 'AE') {console.log('true');country = 'Birleşik Arap Emirlikleri'}
+            if (country === 'TR') {
+                countryname = 'Türkiye'
+            }
+            if (country === 'AE') {
+                console.log('true');
+                country = 'Birleşik Arap Emirlikleri'
+            }
             $('#editselectSecil').append('<option value="' + country + '" hidden selected>' + country + '</option>');
             $('#editlanguage').append('<option value="' + language + '" hidden selected>' + language + '</option>');
             $('#editdevice').append('<option value="' + device + '" hidden selected>' + device + '</option>');
@@ -615,3 +525,27 @@ function onSubmit(form) {
     });
 }
 
+function changeBackground() {
+    document.body.style.background = "#F3F3F3";
+}
+
+function screenSize() {
+    if ($(window).width() < 768) {
+        var keywordChange = document.getElementById('keywordChange');
+        keywordChange.style.display = "none";
+    }
+}
+
+$( window ).resize(function() {
+    if ($(window).width() < 768) {
+        var keywordChange = document.getElementById('keywordChange');
+        keywordChange.style.display = "none";
+    }else{
+        var keywordChange = document.getElementById('keywordChange');
+        keywordChange.style.display = "block";
+    }
+});
+
+function removetrademanrk(){
+document.querySelector("#chartContainer > div > a").remove();
+}
