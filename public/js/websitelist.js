@@ -22,7 +22,7 @@ function Statistics(pageNumber) {
     // if ($("#ANAHTARKELİME").val('Mobil')){console;}
     $.ajax({
         type: 'get',
-        url: "/api/v1/Keywords/?include=website&sort=-id&page[number]="+pageNumber+"&page[size]=10",
+        url: "/api/v1/Keywords/?include=website&page[number]="+pageNumber+"&page[size]=10",
         success: function (response) {
             var wordConut = 0
             $('#row').html("")
@@ -32,7 +32,6 @@ function Statistics(pageNumber) {
             if (response['data'] != null) {
                 len = response['data'].length;
             }
-
             var elmId = $("#test").attr("id");
             //len websites
             var len2 = 0;
@@ -72,7 +71,10 @@ function Statistics(pageNumber) {
                         }
                     }
                 }
+                var total = response['meta'].page.total
                 $('#CountOfWords').append(wordConut);
+                $('#CountOfWords').html("current page total is "+wordConut+"");
+
             }
             var currentPage = response['meta'].page["current-page"];
             var from = response['meta'].page.from;
@@ -155,7 +157,7 @@ function Statistics(pageNumber) {
 
             $(".pagination-buttons").click(function () {
                 pageNumber = $(this).data('id');
-                StatisticsPage(pageNumber);
+                Statistics(pageNumber);
             });
             //convert date start here
             var CurrentData = response['data'];
@@ -167,9 +169,7 @@ function Statistics(pageNumber) {
         }
     });
 }
-
 // add word popup
-
 $("#device2").change(function () {
     if ($(this).val() === "Mobil") {
         let mobile_device = "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) CriOS/45.0.2454.68 Mobile/11B554a Safari/9537.53"
@@ -272,6 +272,7 @@ $(document).ready(function () {
         }
     });
 });
+
 $(document).ready(function () {
     $("#editdevice").change(function () {
         if ($(this).val() === "Mobil") {

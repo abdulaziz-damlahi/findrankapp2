@@ -591,6 +591,7 @@ function Statistics() {
 let minusappend
 let equalappend
 let plusappend
+
 $(document).ready(function () {
 
     $.ajax({

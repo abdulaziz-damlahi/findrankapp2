@@ -438,11 +438,8 @@
                                         {{__('pages.close')}}
                                     </button>
                                 </form>
-
                             </div>
                         </div>
-
-
                         {{-- grafik modal--}}
                         <div id="grafikmodal" class="grafikmodal">
                             <!-- Modal content -->
