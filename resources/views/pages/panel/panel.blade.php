@@ -71,12 +71,8 @@
                                                     <textarea class="form-control" id="urls" name="website" rows="5"
                                                               placeholder=""></textarea>
                                                     <br><br>
-<<<<<<< HEAD
 
-                                                    <button id="sendWebsite" type="submit" class="btn btn-primary mcuLoadingButton"
-=======
                                                     <button type="submit" class="btn btn-primary mcuLoadingButton"
->>>>>>> github_abdulaziz2
                                                             data-handler="confirm">{{__('panel.save')}}
                                                     </button>
                                                 </form>

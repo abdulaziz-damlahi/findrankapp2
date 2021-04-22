@@ -119,7 +119,6 @@ class payment extends Controller
             $locale = App::getLocale();
         }
         $deneme =self::payment($request);
-        dd($deneme);
         if ($deneme['status'] === "success") {
             $success_message = "Payment Successful !";
             $payid = $deneme['paymentId'];
