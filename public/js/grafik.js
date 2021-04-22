@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     grafik();
     hideonlast();
 })
@@ -481,7 +480,6 @@ function grafik() {
             },]
         });
         chart.render();
-
         function toggleDataSeries(e) {
             if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
                 e.dataSeries.visible = false;

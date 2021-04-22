@@ -12,7 +12,6 @@
                 <option class="lastdate" id="6ay" value="6ay">{{__('pages.Last 6 Months')}}</option>
                 <option class="lastdate" id="12ay" value="12ay">{{__('pages.Last 12 Months')}}</option>
             </select>
-
             <input class="applybtn " type="button" id="myButton" value="{{__('pages.apply')}}">
             <div id="fromto" class="fromto col-lg-12 col-md-12">
                 <input type="date" id="from" name="datefrom" class="fromto">
