@@ -1,0 +1,93 @@
+#rightMenu{
+    width:300px;
+    height:760px;
+    float:right;
+    background: darkorange;
+    margin-bottom:50px;
+}
+#userPicture{
+    margin-left:130px;
+    margin-top:40px;
+}
+#adminName{
+    margin: auto;
+    margin-top:20px;
+    width: 30%;
+}
+#Buttondashboard{
+float:left;
+    height:80px;
+    width:20px;
+    margin-top:18%;
+    background: black;
+
+}
+#arrowicon{
+    margin-top: 25px;
+}#arrowleft{
+    display:none;
+    margin-top: 25px;
+}
+ #containe{
+     margin-left: 0px !important;
+     margin-right: 0px !important;
+ }
+ #under_menu{
+     height: 400px;
+     width: 100%;
+     margin-top: 40%;
+     margin-left:3%
+ }
+#under_menu table{
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+ }
+#buttondash{
+    height:30px;
+
+}.pull-right{
+    float:left;
+ }
+#userName{
+    margin-left:0px !important;
+}
+#visitorsMenu{
+    text-align: center;
+    margin-top:20px;
+}
+#visitorsCount{
+
+}
+#piechart{
+    z-index: -1;
+    position: absolute;
+}
+@media only screen and (max-width: 500px) {
+    #rightMenu {
+        width: 94.1%;
+        height:760px;
+        float:right;
+        background: darkorange;
+        margin-bottom:50px;
+        display: block;
+    }
+    #Buttondashboard{
+        margin-top: 100%;
+    }
+    #under_menu{
+        height: 400px;
+        width: 100%;
+        margin-top: 100%;
+        overflow-x: auto;
+    }
+}
+@media only screen and (min-width: 500px) and (max-width: 1300px) {
+    #under_menu{
+        height: 400px;
+        width: 100%;
+        margin-top: 30%;
+        overflow-x: auto;
+    }
+}

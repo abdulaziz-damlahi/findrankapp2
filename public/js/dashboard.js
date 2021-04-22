@@ -1,4 +1,52 @@
 $(document).ready(function () {
+  var x =screen.width
+  $("#rightMenu").css('display','block');
+  $("#piechart").css('display','none');
+if(x>500){
+  $("#rightMenu").css('overflow-x','auto');
+
+}else{
+}
+  $( "#buttondash" ).click(function() {
+    console.log('girer')
+    $("#rightMenu" ).toggle('slide');
+    if ($("#rightMenu").css('display') == 'block' )
+    {
+      console.log($("#rightMenu").css('display'),"block")
+      console.log('none oldu')
+
+      $("#piechart").css('display','block');
+      $("#piechart").show();
+      $("#piechart").css('width','200px');
+
+      $("#arrowleft").css('display','block');
+      $("#arrowicon").css('display','none');
+
+    }
+    else if ($("#rightMenu").css('display') == 'none' ){
+        $("#piechart").css('display','none');
+      console.log('girer2')
+      $("#piechart").hide();
+      console.log($("#rightMenu").css('display'),"block2")
+
+      $("#under_menu").css('margin-bottom','550px')
+      $("#arrowleft").css('display','none');
+      $("#arrowicon").css('display','block');
+      var x =screen.width
+      if(x<500){
+        console.log('geeliyor');
+        $("#under_menu").css('position','relative')
+        $("#under_menu").css('width','100%')
+        $("#under_menu").css('margin-bottom','550px')
+        $("#Buttondashboard").css('margin-top','90%')
+      }
+      else{
+        console.log('gidiyor');
+
+      }
+
+    }
+  });
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
   function drawChart() {

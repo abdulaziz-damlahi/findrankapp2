@@ -1,29 +1,49 @@
 @extends('layouts.master')
 @section('content')
     <div class="background">
-    <div class="container">
-        <div id="piechart" style="width: 700px; height: 500px;"></div>
-        <div class="pull-right">
-            <button type="button" id="add" class="btn btn-success" data-toggle="modal"
-                    data-target="#addModal">Create New Packet
-            </button>
+        <div class="">
+            <div id="rightMenu">
+                <div id="userPicture">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="60" height="60" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7.753 18.305c-.261-.586-.789-.991-1.871-1.241-2.293-.529-4.428-.993-3.393-2.945 3.145-5.942.833-9.119-2.489-9.119-3.388 0-5.644 3.299-2.489 9.119 1.066 1.964-1.148 2.427-3.393 2.945-1.084.25-1.608.658-1.867 1.246-1.405-1.723-2.251-3.919-2.251-6.31 0-5.514 4.486-10 10-10s10 4.486 10 10c0 2.389-.845 4.583-2.247 6.305z"/></svg>
+                </div>
+                <div class="mt-20 ml-5" id="userName">
+                    <h3 class="mx-auto;" id="adminName">{{Auth::user()->first_name}}</h3>
+                </div>
+                <div class="mt-20" id="visitorsMenu">
+                    <h5 id="visitors"> Bugünkü Sorgu Sayısı <br> Sayısı</h5>
+                    <h5 id="visitorsCount"> {{$i}} </h5>
+                </div>
+            </div>
+            <div style="float:right;" class="mt-150" id="Buttondashboard">
+                <a href="#" class="mt-20" id="buttondash">
+                    <svg id="arrowicon" xmlns="http://www.w3.org/2000/svg" fill="white" width="24" height="24" viewBox="0 0 24 24"><path d="M6.028 0v6.425l5.549 5.575-5.549 5.575v6.425l11.944-12z"/></svg>
+                    <svg id="arrowleft" xmlns="http://www.w3.org/2000/svg" fill="white"  width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>
+                </a>
+            </div>
         </div>
-        <table class="table table-striped" id="packetTable">
+    <div id="containe" class="container">
+        <div id="piechart" style="width: 400px; height: 500px;"></div>
+        <div id="under_menu">
+            <table class="table table-striped" id="packetTable">
 
-            <thead>
-            <tr>
+                <thead>
+                <button type="button" id="add" class="btn btn-success" data-toggle="modal"
+                        data-target="#addModal">Create New Packet
+                </button>
+                <tr>
 
-                <th>Packet Name</th>
-                <th>Word Count</th>
-                <th>Websites Count</th>
-                <th>Rank Follow</th>
-                <th>Description</th>
-                <th>Price</th>
-            </tr>
-            </thead>
-            <tbody id="bodyTable">
-            </tbody>
-        </table>
+                    <th>Packet Name</th>
+                    <th>Word Count</th>
+                    <th>Websites Count</th>
+                    <th>Rank Follow</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody id="bodyTable">
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">

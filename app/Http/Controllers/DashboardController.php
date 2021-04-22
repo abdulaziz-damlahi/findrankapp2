@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\packets_reels;
+use App\Models\AllGoogleSearchDatas;
 use http\Client\Response;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 
@@ -17,9 +19,23 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $date = Carbon::now();
+        $all =AllGoogleSearchDatas::all();
+        $dateinclude = $date->isoFormat('YY-MM-DD');
+            $i=0;
+        foreach ($all as $key=>$dates){
+            if($dates->processtime=="Currency"){
+                if (str_contains($dates->created_at, $dateinclude)) {
+                    $i++;
+                    $countOfrequests =  count($all);
+                }else{
+                    $i;
+                }
+            }
+        }
         $packets = packets_reels::latest()->get();
 
-        return view('pages\dashboard\dashboard', compact('packets'));
+        return view('pages\dashboard\dashboard', compact('packets','i'));
     }
 
     /**
