@@ -1,11 +1,9 @@
 @extends('layouts.master')
 @section('content')
-<<<<<<< HEAD
 <div >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
 
 </div>
-=======
     <div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
                 integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
@@ -26,7 +24,6 @@
                         let city = $("#cityy ").val();
                         let language = $("#language ").val();
                         let device = $("#device ").val();
->>>>>>> github_abdulaziz2
 
                         socket.emit('dönüyorMmu', {
                             website,
