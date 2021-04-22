@@ -36,6 +36,7 @@ class Login extends Controller
 
     public function Loginpost(Request $request,users $userss)
     {
+
         if (Auth::attempt(['email' => $request->email,
             'password' => $request->password])) {
             $user=Auth::user();
@@ -93,13 +94,18 @@ class Login extends Controller
     }
     public function registerPost(Request $request)
     {
+       $dene =  $request->validate([
+            'first_name' => 'required|max:255',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
         $this->location();
         $requstemail = $request->email;
         $groupName = users::where('email', $request->email)->value('email');
        if(isset($groupName)){
            return redirect()->route('login')->withErrors('Bu email hesabı bulunmaktadır.');
-
-
        }
        else{
            users::create([
@@ -107,6 +113,7 @@ class Login extends Controller
                'last_name' => $request->last_name,
                'phone' => $request->phone,
                'email' => $request->email,
+               'userType' => "Customer",
                'password' => bcrypt($request->password),
 
 

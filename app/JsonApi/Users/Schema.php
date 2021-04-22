@@ -36,6 +36,7 @@ class Schema extends SchemaProvider
             'last_name'=> $resource->last_name,
             'phone'=> $resource->phone,
             'email'=> $resource->email,
+            'userType'=> $resource->userType,
             'password'=> $resource->password,
         ];
     }

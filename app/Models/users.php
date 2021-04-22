@@ -18,6 +18,7 @@ class users extends Authenticatable
         'user_id',
         'phone',
         'email',
+        'userType',
         'password',
         'PersonalToken',
         'updated_at',

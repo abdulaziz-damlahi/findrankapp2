@@ -43,7 +43,12 @@ class Validators extends AbstractValidators
     protected function rules($record, array $data): array
     {
         return [
-            //
+            'parasut_customer_id' => ['required', 'max:255'],
+            'first_name' => ['required', 'string', 'max:30'],
+            'last_name' => ['required', 'string', 'max:30'],
+            'phone' => ['required', 'string', 'max:15'],
+            'email' => ['required', 'string'],
+            'password' => [ 'required','string', 'max:100'],
         ];
     }
 

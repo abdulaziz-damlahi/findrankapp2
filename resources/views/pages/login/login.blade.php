@@ -1,6 +1,10 @@
 @extends('layouts.master')
 @section('content')
-
+    @if (session('permissionsError'))
+        <div id="permissionerror" class="alert alert-danger" role="alert">
+            {{ session('permissionsError') }}
+        </div>
+    @endif
     <div id="login_container" class="container my-5 py-5">
 
     <form class="user" id="loginForm" method="post" action="{{route('login.post')}}">

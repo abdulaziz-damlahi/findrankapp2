@@ -9,7 +9,11 @@ body {
     font-family: "Poppins", sans-serif;
     background-attachment: fixed;
 }
-
+#permissionerror{
+    width: 30%;
+    text-align: center;
+    margin: auto;
+}
 ul {
     padding-left: 0;
     list-style-type: none;

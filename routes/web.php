@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+Route::prefix('admin/')->middleware(['auth','isAdmin'])->group(function() {
+    Route::get('dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+});
 Route::post('/update/{id}', 'App\Http\Controllers\DashboardController@update')->name('update');
 Route::get('/edit/{id}', 'App\Http\Controllers\DashboardController@edit')->name('edit');
 Route::get('/delete/{id}', 'App\Http\Controllers\DashboardController@delete')->name('delete');
