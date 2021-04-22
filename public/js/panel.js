@@ -164,7 +164,7 @@ function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRe
     var keywordid = String(KeyWordRequestKeywordIdYedek)
     //diffrance = 1 -> minus , diffrance = 2 -> equal , diffrance = 3 -> plus
     var different = 0;
-    if (KeyWordRequestranktoday > KeyWordRequestrankyesterday) {
+    if (KeyWordRequestranktoday < KeyWordRequestrankyesterday) {
         minus = minus + 1
         different = 1
 
@@ -174,7 +174,7 @@ function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRe
         different = 2
 
     }
-    if (KeyWordRequestranktoday < KeyWordRequestrankyesterday) {
+    if (KeyWordRequestranktoday > KeyWordRequestrankyesterday) {
         plus = plus + 1
         different = 3
 

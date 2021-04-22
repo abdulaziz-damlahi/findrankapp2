@@ -112,13 +112,33 @@ class panel extends Controller
             $user = auth()->user();
             $userId = $user->id;
             $website = new websites;
-            $website->website_name = $request->website;
-            $website->user_id = $userId;
-            $website->down = 0;
-            $website->equal = 0;
-            $website->up = 0;
-            $website->wordcount = 0;
-            $website->save();
+
+            $webistename = $request->website;
+            if (str_contains($webistename, '.')){
+            $arr = explode(".", $webistename, -1);
+            $first = $arr[0];
+            if ($first === 'www') {
+                $website->website_name = $request->website;
+                $website->user_id = $userId;
+                $website->down = 0;
+                $website->equal = 0;
+                $website->up = 0;
+                $website->wordcount = 0;
+                $website->save();
+            } else {
+                $prebend = 'www.';
+                $afterbend = '.com';
+                $website->website_name = $prebend . $first . $afterbend;
+                $website->user_id = $userId;
+                $website->down = 0;
+                $website->equal = 0;
+                $website->up = 0;
+                $website->wordcount = 0;
+                $website->save();
+            }
+            }else{
+                return redirect()->back()->with('validwebsite', 'enter a valid website');
+            }
             return redirect()->back()->with('success', __('alerts.website Successfully Added'));
         } else {
             return redirect()->back()->with('notsuccess', __('alerts.your limit of adding website has been exceeded'));
@@ -146,9 +166,9 @@ class panel extends Controller
             $webid = $request->websiteid;
             $keyword = new keywords;
 
-                $websitename = websites::where('id', '=', $webid)->get('website_name');
-                 echo $websitename."<br>";
-                 echo $websitename[0];
+            $websitename = websites::where('id', '=', $webid)->get('website_name');
+            echo $websitename . "<br>";
+            echo $websitename[0];
             if ($request->keyword != NULL) {
                 $keyword->name = $request->keyword;
                 $AllGoogleSearchDatas->keyword = $request->keyword;
@@ -189,7 +209,7 @@ class panel extends Controller
             $AllGoogleSearchDatas->processtime = "Night";
             $AllGoogleSearchDatas->user_id = $userId;
             $token = base64_encode($userId);
-            $token2 = $token."A12";
+            $token2 = $token . "A12";
             $AllGoogleSearchDatas->token = $token2;
             $keyword->save();
             $KEyword_id = $keyword->id;
@@ -267,72 +287,68 @@ class panel extends Controller
         $user = auth()->user();
         $userId = $user->id;
 
-        $packetdata = packets::where('user_id', '=', $userId)->get()->first();
-        if ($packetdata == NULL) {
-            return redirect()->back()->with('packetempty', __('alerts.buy packet from home page to view profile'));
-        }
 
-        return view('pages/panel/profile', compact('packetdata'));
+        return view('pages/panel/profile');
     }
 
     public function FindOrder()
     {
-       $sifre = rand(5, 150000);
-        $userId  = Auth::user()->id;
+        $sifre = rand(5, 150000);
+        $userId = Auth::user()->id;
         $new = $userId;
-        $userIdMd5= base64_encode($userId);
+        $userIdMd5 = base64_encode($userId);
         echo $userIdMd5;
         $this->location();
-        return view('pages/findorder',compact('sifre','userId','new','userIdMd5'));
+        return view('pages/findorder', compact('sifre', 'userId', 'new', 'userIdMd5'));
     }
 
     public function findPost(Request $request)
     {
         $sifre = rand(5, 150000);
-        $userId  = Auth::user()->id;
+        $userId = Auth::user()->id;
         $new = $userId;
-        $userIdMd5= base64_encode($userId);
+        $userIdMd5 = base64_encode($userId);
         echo $userIdMd5;
-    /*    event(new ActionEvent($request));
-        $request->hidden_collonial_name;
-        $colonial_name = $request->hidden_collonial_name;
-        $device_information = $request->hidden_device_name;
-        $website_request = $request->website;
-        $keyword_request = $request->keyword;
-        $hiddenToken = $request->hiddenToken;
-        $language = $request->language_name;
-        $array_all = [
-            'colonial_name' => $colonial_name,
-            'device' => $device_information,
-            'website' => $website_request,
-            'keyword' => $keyword_request,
-            'language' => $language,
-            'hiddenToken' => $hiddenToken
-        ];
-        $arraydeeneme = ["colonial name" => $colonial_name];
-        $hidden_collonial_name = json_encode($arraydeeneme);
-        $client = new Client([
-            'headers' => ['Content-Type' => 'application/json']
-        ]);
-        try {
-            $response = $client->post('http://localhost:3000/',
-                ['body' => json_encode(
-                    [
-                        'colonial_name' => $colonial_name,
-                        'device' => $device_information,
-                        'website' => $website_request,
-                        'keyword' => $keyword_request,
-                        'language' => $language
-                    ]
-                )]);
-            return $response;
-        } catch (ClientException $e) {
+        /*    event(new ActionEvent($request));
+            $request->hidden_collonial_name;
+            $colonial_name = $request->hidden_collonial_name;
+            $device_information = $request->hidden_device_name;
+            $website_request = $request->website;
+            $keyword_request = $request->keyword;
+            $hiddenToken = $request->hiddenToken;
+            $language = $request->language_name;
+            $array_all = [
+                'colonial_name' => $colonial_name,
+                'device' => $device_information,
+                'website' => $website_request,
+                'keyword' => $keyword_request,
+                'language' => $language,
+                'hiddenToken' => $hiddenToken
+            ];
+            $arraydeeneme = ["colonial name" => $colonial_name];
+            $hidden_collonial_name = json_encode($arraydeeneme);
+            $client = new Client([
+                'headers' => ['Content-Type' => 'application/json']
+            ]);
+            try {
+                $response = $client->post('http://localhost:3000/',
+                    ['body' => json_encode(
+                        [
+                            'colonial_name' => $colonial_name,
+                            'device' => $device_information,
+                            'website' => $website_request,
+                            'keyword' => $keyword_request,
+                            'language' => $language
+                        ]
+                    )]);
+                return $response;
+            } catch (ClientException $e) {
 
-            return ($e->getResponse()->getBody()->getContents());
+                return ($e->getResponse()->getBody()->getContents());
 
-        }
-        echo "girdi";
-    */
+            }
+            echo "girdi";
+        */
         /*
         $packets =  packets::all();
         if(count($packets)>0) {
@@ -662,8 +678,9 @@ class panel extends Controller
         */
 
         return view(
-            'pages/findorder',compact('userIdMd5','sifre'));
+            'pages/findorder', compact('userIdMd5', 'sifre'));
     }
+
     public function userspacket()
     {
         $user = users::find(2);

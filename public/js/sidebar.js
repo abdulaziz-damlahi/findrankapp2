@@ -8,7 +8,6 @@ $(document).ready(function () {
 
 function profile2() {
     var userid = parseInt(document.getElementById("userid").innerHTML);
-
     $.ajax({
         type: 'get',
         url: "/api/v1/Packets",
@@ -71,7 +70,6 @@ function wordlensidebar() {
             if (response['data'][0] !== undefined) {
                 var maxword = response['data'][0].attributes.max_count_of_words;
             }
-
             $.ajax({
                 url: "/api/v1/Keywords",
                 type: "GET",
@@ -157,6 +155,9 @@ function IfPacketExist() {
             remainingDaysINTEGER = parseInt(remainingDays)
             if (remainingDaysINTEGER === 0 || remainingDaysINTEGER === null || remainingDaysINTEGER < 0 || len === 0) {
                 document.getElementById("buypacketbtn").style.display = "block";
+                document.getElementById("mySidebar").style.width = "330px";
+                document.getElementById("home").style.marginRight = "330px";
+                document.getElementById("wrap").style.marginRight = "330px";
             } else {
                 document.getElementById("buypacketbtn").style.display = "none";
             }

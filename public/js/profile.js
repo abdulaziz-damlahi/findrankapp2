@@ -40,7 +40,11 @@ function profile() {
                     if (today2 == endofpacket || today2 > endofpacket) {
                         diffDays2 = 'Aktif bir paketiniz yok.';
                     }
-                    $('#daysleft').append(diffDays2);
+                    $('#daysleft3').append(diffDays2);
+                    console.log(diffDays2)
+                    $('#endofpacket').append(endofpacket);
+                    $('#createdAt').append(createdAt);
+                    $('#packet_names').append(packet_names);
                 }
             }
         }
@@ -49,46 +53,56 @@ function profile() {
 
 function wordlen() {
     $.ajax({
-        url: "/api/v1/Keywords",
+        url: "/api/v1/Packets",
         type: "GET",
-        headers: {
-            "Content-Type": "application/vnd.api+json",
-            Accept: "application/vnd.api+json",
-        },
         success: function (response) {
-            var lenkeyword = 0;
-            if (response['data'] != null) {
-                lenkeyword = response['data'].length;
+            if (response['data'][0] !== undefined) {
+                var maxword = response['data'][0].attributes.max_count_of_words;
             }
-            $('#keywordused').append(lenkeyword);
-            var maxword = parseInt(document.querySelector("#maxcountword").innerHTML);
-            perc1 = ((lenkeyword / maxword) * 100);
-            var keywordprogress = document.getElementById("wordprogress");
-            perc1a = (perc1) + '%'
-            keywordprogress.style.width = perc1a;
+            $.ajax({
+                url: "/api/v1/Keywords",
+                type: "GET",
+                success: function (response) {
+                    var lenkeyword = 0;
+                    if (response['data'] != null) {
+                        lenkeyword = response['data'].length;
+                    }
+                    $('#keywordused').append(lenkeyword);
+                    $('#maxcountword').append(maxword);
+                    perc1 = ((lenkeyword / maxword) * 100);
+                    var keywordprogress = document.getElementById("wordprogress");
+                    perc1a = (perc1) + '%'
+                    keywordprogress.style.width = perc1a;
+                }
+            });
         }
     });
 }
 
 function websitelen() {
     $.ajax({
-        url: "/api/v1/Websites",
+        url: "/api/v1/Packets",
         type: "GET",
-        headers: {
-            "Content-Type": "application/vnd.api+json",
-            Accept: "application/vnd.api+json",
-        },
         success: function (response) {
-            var lenwebsite = 0;
-            if (response['data'] != null) {
-                lenwebsite = response['data'].length;
+            if (response['data'][0] !== undefined) {
+                var maxwebsites = response['data'][0].attributes.max_count_of_websites;
             }
-            $('#websiteused').append(lenwebsite);
-            var maxwebsite = parseInt(document.querySelector("#maxwebsite").innerHTML);
-            perc2 = ((lenwebsite / maxwebsite) * 100);
-            var websiteprogress = document.getElementById("websiteprogress");
-            perc2a = (perc2) + '%'
-            websiteprogress.style.width = perc2a;
+            $.ajax({
+                url: "/api/v1/Websites",
+                type: "GET",
+                success: function (response) {
+                    var lenwebsites = 0;
+                    if (response['data'] != null) {
+                        lenwebsites = response['data'].length;
+                    }
+                    $('#websiteused').append(lenwebsites);
+                    $('#maxwebsite').append(maxwebsites);
+                    perc1 = ((lenwebsites / maxwebsites) * 100);
+                    var keywordprogress = document.getElementById("websiteprogress");
+                    perc1a = (perc1) + '%'
+                    keywordprogress.style.width = perc1a;
+                }
+            });
         }
     });
 }

@@ -6,15 +6,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <meta name="author" content="M_Adnan"/>
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <meta name="author" content="M_Adnan"/>
         <!-- Document Title -->
 {{--        <script src="https://canvasjs.com/assets/script/jquery-ui.1.11.2.min.js"></script>--}}
-        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+{{--        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>--}}
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"
                 integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ=="

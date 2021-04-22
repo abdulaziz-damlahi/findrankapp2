@@ -24,12 +24,16 @@
                                             <h class="m-b-20">{{__('panel.Keywords Used')}} {{ $userwebsite->wordcount }}</h>
                                             <br><br>
                                             <table>
-                                                <th><h5 id='up{{ $userwebsite->id}}' style="color:lightgreen;width: 50px">
-                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/up-arrow.svg"></h5></th>
+                                                <th><h5 id='up{{ $userwebsite->id}}'
+                                                        style="color:lightgreen;width: 50px">
+                                                        <img class="svgstyle"
+                                                             src="{{asset('assets')}}/svg/up-arrow.svg"></h5></th>
                                                 <th><h5 id='equal{{ $userwebsite->id}}' style="color:mediumpurple">
-                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/equal-arrow.svg"></h5></th>
+                                                        <img class="svgstyle"
+                                                             src="{{asset('assets')}}/svg/equal-arrow.svg"></h5></th>
                                                 <th><h5 id='down{{ $userwebsite->id}}' style="color:white">
-                                                        <img class="svgstyle" src="{{asset('assets')}}/svg/down-arrow.svg"></h5></th>
+                                                        <img class="svgstyle"
+                                                             src="{{asset('assets')}}/svg/down-arrow.svg"></h5></th>
                                             </table>
                                             <h2 class="text-right"><i class="ti-shopping-cart f-left"></i><span></span>
                                             </h2>
@@ -102,8 +106,9 @@
                                 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                                 <div class="col-md-12" style="font-size:15px; padding: 40px;">
-                                        <span class="text-left"><button id="ilke3btn" class="ilkbtn"><i class="fa  fa-square push-5-r"
-                                                                                                        style=" color:#ff6c3a">  </i>{{__('panel.first')}} 3{{__('panel.de')}}:<b
+                                        <span class="text-left"><button id="ilke3btn" class="ilkbtn"><i
+                                                    class="fa  fa-square push-5-r"
+                                                    style=" color:#ff6c3a">  </i>{{__('panel.first')}} 3{{__('panel.de')}}:<b
                                                     id="ilk3">  </b> <b>{{__('panel.word')}}</b> </button> </span>
                                     <span class="text-left"><button id="ilke10btn" class="ilkbtn"><i
                                                 class="fa  fa-square push-5-r"
@@ -125,19 +130,25 @@
                                     </div>
                                     <div class="block-content block-content-full">
                                         <div class="push-5-l" style="margin-top:-17px">
-                                            <div style="display:inline-block"><b style="font-size:28px" id="totalup"></b>
+                                            <div style="display:inline-block"><b style="font-size:28px"
+                                                                                 id="totalup"></b>
                                                 <medium class="text-muted">{{__('panel.Rise')}}</medium>
-                                                <br> <img class="svgstylepanel" src="{{asset('assets')}}/svg/up-arrow.svg"><br></div>
-                                            <div class="pull-right push-5-r"><b style="font-size:28px" id="totaldown"></b>
+                                                <br> <img class="svgstylepanel"
+                                                          src="{{asset('assets')}}/svg/up-arrow.svg"><br></div>
+                                            <div class="pull-right push-5-r"><b style="font-size:28px"
+                                                                                id="totaldown"></b>
                                                 <medium class="text-muted">{{__('panel.Drop')}}</medium>
-                                                <br><img class="svgstylepanel" src="{{asset('assets')}}/svg/down-arrow.svg"><br></div>
+                                                <br><img class="svgstylepanel"
+                                                         src="{{asset('assets')}}/svg/down-arrow.svg"><br></div>
                                         </div>
                                         <br>
                                         <div class="progress backorange" id="mainprogress">
-                                            <div class="progress-bar backgreen" id="KeywordTotalWordCount" role="progressbar" aria-valuenow="25"
+                                            <div class="progress-bar backgreen" id="KeywordTotalWordCount"
+                                                 role="progressbar" aria-valuenow="25"
                                                  aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
-                                        <span> <span id="totalword" class="font-w600"></span>{{__('panel.word')}} </span>
+                                        <span> <span id="totalword"
+                                                     class="font-w600"></span>{{__('panel.word')}} </span>
                                     </div>
                                 </div>
                             </div>
@@ -160,10 +171,12 @@
                                     <div class="push">
                                         <div class="btn-group">
                                             <button class="btns btn-default" type="button" id="addNewSite"><i
-                                                    class="fa fa-plus text-success"><span class="hidden-xs push-7-l">{{__('panel.Add Website')}}</span></i>
+                                                    class="fa fa-plus text-success"><span
+                                                        class="hidden-xs push-7-l">{{__('panel.Add Website')}}</span></i>
                                             </button>
                                         </div>
-                                        <table class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
+                                        <table
+                                            class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
                                             @if (session('success'))
                                                 <div class="alert alert-success">
                                                     {{ session('success') }}
@@ -172,6 +185,11 @@
                                             @if (session('notsuccess'))
                                                 <div class="alert alert-danger">
                                                     {{ session('notsuccess') }}
+                                                </div>
+                                            @endif
+                                                @if (session('validwebsite'))
+                                                <div class="alert alert-danger">
+                                                    {{ session('validwebsite') }}
                                                 </div>
                                             @endif
                                             <thead>
