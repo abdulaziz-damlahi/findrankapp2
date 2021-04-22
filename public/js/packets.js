@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 $(document).ready(function() {
     var countryinformation =$('#countryinformation').val();
     $('#e_invoicee').click(function() {
-=======
 $(document).ready(function () {
     $('#e_invoicee').click(function () {
->>>>>>> github_abdulaziz2
         $('#e_invoicee').val($(this).is(':checked'));
         //console.log($('#e_invoicee').val());
     });
@@ -305,10 +302,7 @@ $(document).ready(function () {
             }
         });
     }
-<<<<<<< HEAD
     let user_id =  $('#hidden_id').text();
-=======
->>>>>>> github_abdulaziz2
 
     let user_id = $('#hidden_id').text();
 
@@ -317,28 +311,22 @@ $(document).ready(function () {
     get_invoice();
     $("#button_pay").click(function () {
 
-<<<<<<< HEAD
             console.log('burasdgeldi')
             const count =  $('.hidden_size').val();
             if(count<1){
                 post_packets_ofUser()
-=======
             //console.log('burasdgeldi')
             const count = $('.hidden_size').val();
             if (count < 1) {
->>>>>>> github_abdulaziz2
                 post_packets();
                 if ($('.invoice_size').val() < 1) {
                     post_invoice();
                 } else {
                     patch_invoice();
                 }
-<<<<<<< HEAD
             }else {
                 post_packets_ofUser()
-=======
             } else {
->>>>>>> github_abdulaziz2
                 patch_packets();
                 if ($('.invoice_size').val() < 1) {
                     post_invoice();
@@ -609,7 +597,6 @@ $(document).ready(function () {
 
         }
     };
-<<<<<<< HEAD
     function post_packets_ofUser(){
         console.log($('#first_name').text());
         console.log($('#first_name').val());
@@ -675,38 +662,7 @@ $(document).ready(function () {
             }
         });
     }
-    function post_packets(){
-        console.log($('#first_name').text());
-        console.log($('#first_name').val());
-        let hidden_word_count  =$("#hidden_word_count").text()
-        let hidden_websites_count  =$("#hidden_websites_count").text()
-        console.log(hidden_websites_count);
-        let başlangic  =$("#başlangic").text()
-        let rank_follow  =$(".rank_follow").text()
-        let hidden_price  =$("#hidden_price").text()
-        let pay_id  =$("#pay_id").val();
-        console.log(pay_id,'sadsadasddönmed');
-        let pay_id2  =$("#pay_id").text();
-        console.log(pay_id2,'sadsadasddönmed');
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-        today2 = dd + '-' + mm + '-' + yyyy;
-        let date_int_mm  = parseInt(mm);
-        let date_int_day  = parseInt(dd);
-        var new_mm = date_int_mm +1;
-        var new_dd = date_int_day +1;
-        todayee =  new_dd + "-" + '0'+new_mm  + "-" + yyyy;
-        let ee =  Date.parse(todayee);
-        let dateArray = todayee.split("-");
-        let dateObj = new Date(`${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`);
-        let deyt =   new Date(yyyy,new_mm,new_dd);
-        var con_date =
-            ""+deyt.getFullYear() + "-"+"0"+(deyt.getMonth()+1) + "-"+deyt.getDate(); //converting the date
-        let gdate = "" + yyyy +"-"+"0"+ new_mm+"-" + new_dd; //given date
-        console.log(gdate,'giremedi');
-=======
+
 
     function post_packets() {
         //console.log($('#first_name').text());
@@ -749,7 +705,6 @@ $(document).ready(function () {
         con_date = yyyy + '-' + mm + '-' + dd;
         //console.log('abood');
         //console.log(con_date)
->>>>>>> github_abdulaziz2
 
         $.ajax({
             url: "http://127.0.0.1:8000/api/v1/Packets",

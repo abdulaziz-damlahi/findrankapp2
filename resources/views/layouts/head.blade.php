@@ -6,14 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="author" content="M_Adnan" />
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js"></script>
-        <link href="https://canvasjs.com/assets/css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <meta name="author" content="M_Adnan"/>
         <!-- Document Title -->
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://canvasjs.com/assets/script/jquery-ui.1.11.2.min.js"></script>
         <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js" integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ==" crossorigin="anonymous"></script>
@@ -32,7 +29,7 @@
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="images/favicon.ico" type="image/x-icon">
         <!-- FontsOnline -->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>-->
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
                 crossorigin="anonymous"></script>
@@ -58,10 +55,18 @@
             <script rel="stylesheet" src="{{asset('js')}}/editkeyword.js"></script>
         @endif
         @if($routeName === 'grafik')
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js"></script>
+            <link href="https://canvasjs.com/assets/css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/grafik.css">
             <script rel="stylesheet" src="{{asset('js')}}/grafik.js"></script>
         @endif
         @if($routeName === 'dashboard' ||$routeName === 'dashboard' ||$routeName === '/update' ||$routeName === '/edit' ||$routeName === '/delete/' ||$routeName === 'store' )
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js"></script>
+            <link href="https://canvasjs.com/assets/css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <link rel="stylesheet"type="text/css" href="{{asset('css')}}/grafik.css">
             <script rel="stylesheet" src="{{asset('js')}}/dashboard.js"></script>
         @endif
@@ -77,6 +82,10 @@
             <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
         @endif
         @if($routeName === 'panel')
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js"></script>
+            <link href="https://canvasjs.com/assets/css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <script rel="stylesheet" src="{{asset('js')}}/panel.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
             <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
