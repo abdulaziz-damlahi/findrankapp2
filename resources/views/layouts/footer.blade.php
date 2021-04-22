@@ -1,5 +1,5 @@
 @section('footer')
-
+</div>
     <footer style="margin-top: 50px;">
         <div class="container fixed-bottom">
             <div class="row">
@@ -43,7 +43,6 @@
             </div>
         </div>
     </footer>
-    </div>
     <!-- JavaScripts -->
     <script src="{{asset('js')}}/vendors/jquery/jquery.min.js"></script>
     <script src="{{asset('js')}}/vendors/wow.min.js"></script>

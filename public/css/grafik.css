@@ -69,7 +69,28 @@
     background-image: none;
     outline: 0;
 }
-
+#add{
+    padding: 7px;
+    margin-top: 20px;
+    margin-right: 30px;
+}
+.rightMenu{
+    height:800px;
+    width:300px;
+    background: darkorange;
+    float:right;
+}
+#dashboard_under{
+    background: burlywood;;
+}
+#deletebtn, .editbtn {
+    padding-top: 10px;
+    pading-bottom: 10px;
+    padding-bottom: 10px;
+ }
+#dashboard_under #bodyTable tr{
+    background: bisque;
+}
 .applybtn:hover {
     background: #ff6c3a;
     color: #fff;
