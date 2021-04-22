@@ -155,9 +155,6 @@ function IfPacketExist() {
             remainingDaysINTEGER = parseInt(remainingDays)
             if (remainingDaysINTEGER === 0 || remainingDaysINTEGER === null || remainingDaysINTEGER < 0 || len === 0) {
                 document.getElementById("buypacketbtn").style.display = "block";
-                document.getElementById("mySidebar").style.width = "330px";
-                document.getElementById("home").style.marginRight = "330px";
-                document.getElementById("wrap").style.marginRight = "330px";
             } else {
                 document.getElementById("buypacketbtn").style.display = "none";
             }

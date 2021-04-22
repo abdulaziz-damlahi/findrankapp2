@@ -412,7 +412,6 @@ function popup() {
         var remainingDays = document.getElementById('daysleft').innerHTML
         remainingDaysINTEGER = parseInt(remainingDays)
         editmyModalbtn.onclick = function () {
-            console.log(remainingDaysINTEGER)
             if (remainingDaysINTEGER === 0 || isNaN(remainingDaysINTEGER) || remainingDaysINTEGER < 0) {
                 editmyModal.style.display = "none";
                 document.getElementById('packetalert').style.display = "block";
@@ -466,7 +465,6 @@ function getcheckedRadio(checkedRadio) {
                 countryname = 'Türkiye'
             }
             if (country === 'AE') {
-                console.log('true');
                 country = 'Birleşik Arap Emirlikleri'
             }
             $('#editselectSecil').append('<option value="' + country + '" hidden selected>' + country + '</option>');
@@ -537,7 +535,6 @@ function screenSize() {
 }
 
 $( window ).resize(function() {
-    document.querySelector("#chartContainer > div > a").remove();
     if ($(window).width() < 768) {
         var keywordChange = document.getElementById('keywordChange');
         keywordChange.style.display = "none";
