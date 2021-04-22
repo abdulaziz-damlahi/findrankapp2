@@ -28,10 +28,10 @@
                                                         style="color:lightgreen;width: 50px">
                                                         <img class="svgstyle"
                                                              src="{{asset('assets')}}/svg/up-arrow.svg"></h5></th>
-                                                <th><h5 id='equal{{ $userwebsite->id}}' style="color:mediumpurple">
+                                                <th><h5 id='equal{{ $userwebsite->id}}' style="color:#ffa8a0">
                                                         <img class="svgstyle"
                                                              src="{{asset('assets')}}/svg/equal-arrow.svg"></h5></th>
-                                                <th><h5 id='down{{ $userwebsite->id}}' style="color:white">
+                                                <th><h5 id='down{{ $userwebsite->id}}' style="color:#fff0ee">
                                                         <img class="svgstyle"
                                                              src="{{asset('assets')}}/svg/down-arrow.svg"></h5></th>
                                             </table>
