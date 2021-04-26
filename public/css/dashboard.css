@@ -61,7 +61,7 @@ float:left;
 
 }
 #piechart{
-    z-index: -1;
+
     position: absolute;
 }
 @media only screen and (max-width: 500px) {

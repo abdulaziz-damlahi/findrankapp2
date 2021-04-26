@@ -23,7 +23,7 @@
         </div>
     <div id="containe" class="container">
         <div class="col-md-12" >
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
             </div>
