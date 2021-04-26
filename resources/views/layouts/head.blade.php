@@ -65,10 +65,13 @@
             <script rel="stylesheet" src="{{asset('js')}}/grafik.js"></script>
         @endif
         @if($routeName === 'dashboard' ||$routeName === 'dashboard' ||$routeName === '/update' ||$routeName === '/edit' ||$routeName === '/delete/' ||$routeName === 'store' )
-            <link rel="stylesheet" type="text/css" href="{{asset('css')}}/grafik.css">
-            <link rel="stylesheet" type="text/css" href="{{asset('css')}}/dashboard.css">
-            <script rel="stylesheet" src="{{asset('js')}}/dashboard.js"></script>
-        @endif
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js"></script>
+            <link href="https://canvasjs.com/assets/css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <link rel="stylesheet"type="text/css" href="{{asset('css')}}/grafik.css">
+            <link rel="stylesheet"type="text/css" href="{{asset('css')}}/dashboard.css">
+            <script rel="stylesheet" src="{{asset('js')}}/dashboard.js"></script>        @endif
         @if($routeName === 'profile')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/profile.css">
