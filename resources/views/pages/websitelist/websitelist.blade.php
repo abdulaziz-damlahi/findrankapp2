@@ -60,7 +60,7 @@
                         @if (session('notsuccess'))
                             <div class="alert alert-danger">
                                 {{ session('notsuccess') }}
-                            </div>`
+                            </div>
                         @endif
                         @if (session('cantbeempty'))
                             <div class="alert alert-danger">

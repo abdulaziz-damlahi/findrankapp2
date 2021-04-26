@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <div class="background">
+<<<<<<< HEAD
         <div class="">
             <div id="rightMenu">
                 <div id="userPicture">
@@ -44,6 +45,37 @@
                 </tbody>
             </table>
         </div>
+=======
+    <div class="container">
+        <div class="col-md-12" >
+        <div class="col-md-8">
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </div>
+            <div class="col-md-4">
+        <div id="piechart" style="width: 700px; height: 500px;"></div>
+        <div class="pull-right">
+            <button type="button" id="add" class="btn btn-success" data-toggle="modal"
+                    data-target="#addModal">Create New Packet
+            </button>
+        </div>
+            </div>
+        </div>
+        <table class="table table-striped" id="packetTable">
+            <thead>
+            <tr>
+                <th>Packet Name</th>
+                <th>Word Count</th>
+                <th>Websites Count</th>
+                <th>Rank Follow</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody id="bodyTable">
+            </tbody>
+        </table>
+>>>>>>> merge_all
     </div>
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
