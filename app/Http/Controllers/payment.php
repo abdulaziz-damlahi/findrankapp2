@@ -37,6 +37,7 @@ class payment extends Controller
         $tr = '78.180.10.189';
         $geo = geoip()->getLocation('78.180.10.189');
         $localiton = $geo->iso_code;
+        $country = $geo->country;
         $packets_reel = packets_reels::all();
         $pack = $packets_reel->take(1)->first();
         $middle = $packets_reel->take(2)->last();
@@ -148,7 +149,7 @@ class payment extends Controller
         } else {
             $success_message = 'Ödeme Başarısız';
         }
-        return view('pages/packets/packets', compact('success_message', 'deneme', 'base_moeny', 'round_new', 'round_new1', 'round_new2', 'money_new_value', 'locale', 'localiton', 'lang', 'packets_reel', 'last', 'pack', 'middle', 'money_new_value'));
+        return view('pages/packets/packets', compact('country','success_message', 'deneme', 'base_moeny', 'round_new', 'round_new1', 'round_new2', 'money_new_value', 'locale', 'localiton', 'lang', 'packets_reel', 'last', 'pack', 'middle', 'money_new_value'));
     }
 
     public static function payment(Request $request)

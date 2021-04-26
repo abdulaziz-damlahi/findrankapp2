@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 
 class Parasut extends Utils
 {
-    public const BASE_URL = "https://api.parasut.com/424730/"; // TODO Change Required
+    public const BASE_URL = "https://api.parasut.com/v4/424730/"; // TODO Change Required
     protected const TOKEN_BASE_URL = "https://api.parasut.com/oauth/token";
     static $accessToken = '';
     static $refreshToken = '';

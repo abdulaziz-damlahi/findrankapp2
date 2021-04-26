@@ -54,6 +54,7 @@ class packets extends Controller
             $money_new_value2=$last->price;
             $round_new  = round($money_new_value);
             $round_new1  = round($money_new_value1);
+            $country = $geo->country;
             $round_new2  = round($money_new_value2);
 
             $base_moeny='₺';
@@ -68,6 +69,7 @@ class packets extends Controller
             $money_new_value2 = $money2*$money_value;
             $round_new  = round($money_new_value);
             $round_new1  = round($money_new_value1);
+            $country = $geo->country;
             $round_new2  = round($money_new_value2);
 
             $base_moeny='$';
@@ -81,6 +83,7 @@ class packets extends Controller
             $round_new  = round($money_new_value);
             $round_new1  = round($money_new_value1);
             $round_new2  = round($money_new_value2);
+            $country = $geo->country;
             $base_moeny='€';
 
             $locale = App::getLocale();
@@ -94,6 +97,7 @@ class packets extends Controller
             $money_new_value2 = $money2 * $money_value;
             $round_new = round($money_new_value);
             $round_new1 = round($money_new_value1);
+            $country = $geo->country;
             $round_new2 = round($money_new_value2);
 
             $locale = App::getLocale();
