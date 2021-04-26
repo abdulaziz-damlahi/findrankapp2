@@ -6,10 +6,9 @@
             <div id="packets_show" class="heading-block text-center margin-bottom-80">
                 <h2>{{__('pages.Affordable SEO Services Packages')}}</h2>
                 <div class="row">
-                    @isset($country)
                     <input hidden value="{{$country}}" val="{{$country}}" id="countryinformation">
-                    @endisset
-                @isset($iyzico_transaction_id)
+
+                    @isset($iyzico_transaction_id)
                         <input hidden val="{{$iyzico_transaction_id}}" id="iyzico_transaction_id">
                     @endisset
                     @isset($payid)
