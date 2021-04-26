@@ -616,13 +616,13 @@ $(document).ready(function() {
         console.log(pay_id2,'sadsadasddönmed');
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth()).padStart(2, '0'); //January is 0!
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         today2 = dd + '-' + mm + '-' + yyyy;
         let date_int_mm  = parseInt(mm);
         let date_int_day  = parseInt(dd);
         var new_mm = date_int_mm +1;
-        var new_dd = date_int_day;
+        var new_dd = date_int_day +1;
         todayee =  new_dd + "-" + '0'+new_mm  + "-" + yyyy;
         let ee =  Date.parse(todayee);
         let dateArray = todayee.split("-");
@@ -679,13 +679,13 @@ $(document).ready(function() {
         console.log(pay_id2,'sadsadasddönmed');
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth()).padStart(2, '0'); //January is 0!
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
         today2 = dd + '-' + mm + '-' + yyyy;
         let date_int_mm  = parseInt(mm);
         let date_int_day  = parseInt(dd);
         var new_mm = date_int_mm +1;
-        var new_dd = date_int_day ;
+        var new_dd = date_int_day +1;
         todayee =  new_dd + "-" + '0'+new_mm  + "-" + yyyy;
         let ee =  Date.parse(todayee);
         let dateArray = todayee.split("-");
