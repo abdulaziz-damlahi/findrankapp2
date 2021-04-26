@@ -21,19 +21,19 @@
 {{--            </div>--}}
 {{--            <svg id="arrowicon" xmlns="http://www.w3.org/2000/svg" fill="white" width="24" height="24" viewBox="0 0 24 24"><path d="M6.028 0v6.425l5.549 5.575-5.549 5.575v6.425l11.944-12z"/></svg>--}}
 {{--        </div>--}}
-   <div id="containe" class="container">--}}
+   <div id="containe" class="container">
         <div class="col-md-12" >
             <div class="col-md-6">
                 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
             </div>
             <div class="col-md-4">
-                <div id="piechart" style="width: 700px; height: 500px;"></div>
+                <div id="piechart" ></div>
                 <div class="pull-right">
                 </div>
             </div>
         </div>
-        <div id="piechart" style="width: 400px; height: 500px;"></div>
+<div class="col-md-12">
         <div id="under_menu">
             <table class="table table-striped" id="packetTable">
 
@@ -45,9 +45,9 @@
 
                     <th>Packet Name</th>
                     <th>Word Count</th>
-                    <th>Websites Count</th>
-                    <th>Rank Follow</th>
-                    <th>Description</th>
+                    <th>web count</th>
+                    <th class="hidden-xs">Rank Follow</th>
+                    <th class="hidden-xs">Description</th>
                     <th>Price</th>
                 </tr>
                 </thead>
@@ -55,6 +55,7 @@
                 </tbody>
             </table>
         </div>
+
     <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -136,4 +137,6 @@
         </div>
         </div>
 
+   </div>
+   </div>
 @endsection

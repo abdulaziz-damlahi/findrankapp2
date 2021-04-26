@@ -28,14 +28,9 @@ float:left;
     display:none;
     margin-top: 25px;
 }
- #containe{
-     margin-left: 0px !important;
-     margin-right: 0px !important;
- }
  #under_menu{
      height: 400px;
      width: 100%;
-     margin-top: 40%;
      margin-left:3%
  }
 #under_menu table{
@@ -61,10 +56,15 @@ float:left;
 
 }
 #piechart{
+   width:500px;
+   height:500px;
 
-    position: absolute;
 }
 @media only screen and (max-width: 500px) {
+    #piechart{
+    width:370px;
+    height:400px;
+    }
     #rightMenu {
         width: 94.1%;
         height:760px;
@@ -79,7 +79,7 @@ float:left;
     #under_menu{
         height: 400px;
         width: 100%;
-        margin-top: 100%;
+
         overflow-x: auto;
     }
 }
@@ -87,7 +87,7 @@ float:left;
     #under_menu{
         height: 400px;
         width: 100%;
-        margin-top: 30%;
+
         overflow-x: auto;
     }
 }

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var x = screen.width
     $("#rightMenu").css('display', 'block');
-    $("#piechart").css('display', 'none');
+    $("#piechart").css('display', 'block');
     if (x > 500) {
         $("#rightMenu").css('overflow-x', 'auto');
 
@@ -168,10 +168,10 @@ $(document).ready(function () {
                     var websites_count = result['data'][i].attributes.websites_count;
                     var description = result['data'][i].attributes.description;
                     var rank_fosllow = result['data'][i].attributes.rank_fosllow;
-                    var str = "<tr><td>" + names_packets + "</td><td>" + word_count + "</td><td>" + websites_count + "</td><td>" + rank_fosllow + "</td><td>" + description + "</td><td>" + price + "</td>" +
-                        "<td> <button type=\"button\" class=\"btn btn-success editbtn \" data-toggle=\"modal\"\n" +
-                        "                    data-target=\"#upModal\">EDIT" +
-                        "            </button></td> <td><button type='button' id='deletebtn' onclick=''   class='btn btn-danger ' >DELETE</button></td></tr>"
+                    var str = "<tr><td>" + names_packets + "</td><td>" + word_count + "</td><td>" + websites_count + "</td><td class='hidden-xs'>" + rank_fosllow + "</td><td  class='hidden-xs'>" + description + "</td><td>" + price + "</td>" +
+                        "<td> <a type=\"button\" class=\"  \" data-toggle=\"modal\"\n" +
+                        "                    data-target=\"#upModal\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 16.094l-4.157-4.104 4.1-4.141-1.849-1.849-4.105 4.159-4.156-4.102-1.833 1.834 4.161 4.12-4.104 4.157 1.834 1.832 4.118-4.159 4.143 4.102 1.848-1.849z\"/></svg>" +
+                        "            </a></td> <td><a href='#' type='button' id='deletebtn' onclick=''   class='' ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\"><path d=\"M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 16.094l-4.157-4.104 4.1-4.141-1.849-1.849-4.105 4.159-4.156-4.102-1.833 1.834 4.161 4.12-4.104 4.157 1.834 1.832 4.118-4.159 4.143 4.102 1.848-1.849z\"/></svg></a></td></tr>"
                     $("#bodyTable").append(str)
                 }
 

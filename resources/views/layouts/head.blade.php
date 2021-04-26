@@ -61,6 +61,10 @@
             <script rel="stylesheet" src="{{asset('js')}}/editkeyword.js"></script>
         @endif
         @if($routeName === 'grafik')
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js"></script>
+            <link href="https://canvasjs.com/assets/css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/grafik.css">
             <script rel="stylesheet" src="{{asset('js')}}/grafik.js"></script>
         @endif
@@ -71,7 +75,8 @@
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <link rel="stylesheet"type="text/css" href="{{asset('css')}}/grafik.css">
             <link rel="stylesheet"type="text/css" href="{{asset('css')}}/dashboard.css">
-            <script rel="stylesheet" src="{{asset('js')}}/dashboard.js"></script>        @endif
+            <script rel="stylesheet" src="{{asset('js')}}/dashboard.js"></script>
+        @endif
         @if($routeName === 'profile')
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/Panel.css">
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/profile.css">
@@ -108,10 +113,8 @@
             <script rel="stylesheet" src="{{asset('js')}}/findorder.js"></script>
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/findorder.css">
 
-            <script
-                    src="https://mojoaxel.github.io/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
-            <link rel="stylesheet"
-                  href="https://mojoaxel.github.io/bootstrap-select-country/dist/css/bootstrap-select-country.min.css"/>
+            <script src="https://mojoaxel.github.io/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
+            <link rel="stylesheet" href="https://mojoaxel.github.io/bootstrap-select-country/dist/css/bootstrap-select-country.min.css"/>
             <script rel="stylesheet" src="{{asset('js')}}/sidebar.js"></script>
         @endif
         <script rel="stylesheet" src="{{asset('js')}}/login.js"></script>
@@ -130,11 +133,9 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- Favicon -->
         <!-- FontsOnline -->
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet'
-              type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800,900,300,100' rel='stylesheet'
-              type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,800,900,300,100' rel='stylesheet' type='text/css'>
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen"/>
         <!-- JavaScripts -->
