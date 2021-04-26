@@ -11,7 +11,7 @@
         <meta name="author" content="M_Adnan"/>
         <!-- Document Title -->
         {{--        <script src="https://canvasjs.com/assets/script/jquery-ui.1.11.2.min.js"></script>--}}
-        {{--        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>--}}
+              <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.1/dist/chart.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -20,7 +20,7 @@
 {{--        </script>--}}
 {{--                integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ=="--}}
 {{--                crossorigin="anonymous"></script>--}}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
 
 {{--        </script>--}}
 {{--                integrity="sha512-NpfrQEgzOExS1Ax8fjITKrgBFK87lZbBmvWdZk4suiCC4tsHPrTCsulgIA7Z/+CeWhDpEP/f36mNWgZXDKtTAA=="--}}

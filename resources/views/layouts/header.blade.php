@@ -1,7 +1,23 @@
 @section('header')
+    @php
+        $routeName2 = Route::getCurrentRoute()->getName();
+    @endphp
 
     <div style="z-index:4!important;padding-top: 100px;" id="mySidebar" class="sidebar">
-
+@if($routeName2=="dashboard")
+            <div id="userPicture">--}}
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" id="closebtn"> X </a>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="60" height="60" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7.753 18.305c-.261-.586-.789-.991-1.871-1.241-2.293-.529-4.428-.993-3.393-2.945 3.145-5.942.833-9.119-2.489-9.119-3.388 0-5.644 3.299-2.489 9.119 1.066 1.964-1.148 2.427-3.393 2.945-1.084.25-1.608.658-1.867 1.246-1.405-1.723-2.251-3.919-2.251-6.31 0-5.514 4.486-10 10-10s10 4.486 10 10c0 2.389-.845 4.583-2.247 6.305z"/></svg>
+                                </div>
+                                <div class="mt-20 ml-5" id="userName">
+                                    <h3 class="mx-auto;" id="adminName">{{Auth::user()->first_name}}</h3>
+                                </div>
+                                <div class="mt-20" id="visitorsMenu">
+                                    <h5 id="visitors"> Bugünkü Sorgu Sayısı <br> Sayısı</h5>
+                                    <h5 id="visitorsCount"> {{$i}} </h5>
+                                </div>
+    @endif
+        @if($routeName2!="dashboard")
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" id="closebtn"> X </a>
 
         <a class="SideBarName" id="SideBarName"></a>
@@ -35,7 +51,7 @@
             </tbody>
         </table>
 
-        <a href="{{route("packets")}}" class="btn btn-sm btn-success" style="display: none;margin-left:15px;margin-right:15px" id="buypacketbtn">
+    <a href="{{route("packets")}}" class="btn btn-sm btn-success" style="display: none;margin-left:15px;margin-right:15px" id="buypacketbtn">
             <i class="fa fa-dropbox" aria-hidden="true"></i> Paket Satın Al</a>
         <br>
         <div class="col-md-12">
@@ -69,7 +85,9 @@
                 </div>
             </div>
         </div>
+    @endif
     </div>
+
     @php
         $routeName = Route::getCurrentRoute()->getName();
     @endphp
@@ -126,7 +144,7 @@
                             @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile'|| $routeName === 'findorder')
                                 <li><a href="{{route("logout")}}">{{__('header.Logout')}}</a></li>
                             @endif
-                            @if($routeName === 'panel' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile'|| $routeName === 'websitelist')
+                            @if($routeName === 'panel' ||$routeName === 'dashboard' || $routeName === 'settings'  || $routeName === 'findorder'|| $routeName === 'profile'|| $routeName === 'websitelist')
 
                                 <li id="openbtn" data-toggle="toggle" class="openbtn" onclick="openNav()">〱</li>
                         @endif

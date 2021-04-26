@@ -127,8 +127,7 @@ class panel extends Controller
                 $website->save();
             } else {
                 $prebend = 'www.';
-                $afterbend = '.com';
-                $website->website_name = $prebend . $first . $afterbend;
+                $website->website_name = $prebend .$webistename;
                 $website->user_id = $userId;
                 $website->down = 0;
                 $website->equal = 0;
