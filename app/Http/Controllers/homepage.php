@@ -29,25 +29,16 @@ class homepage extends Controller
         $geo = geoip()->getLocation('78.180.10.189');
         $localiton=  $geo->iso_code;
         $packets_reel = packets_reels::all();
-        $pack = $packets_reel->take(1)->first();
-        $middle = $packets_reel->take(2)->last();
-        $last = $packets_reel->take(3)->last();
-        $money=  $pack->price;
-        $money1=  $middle->price;
-        $money2=  $last->price;
+        $reels = packets_reels::all();
+        $count_reels = count($reels);
 
-        $url = "https://api.exchangeratesapi.io/latest?base=TRY";
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_URL, $url);
-        $response = curl_exec($ch);
-        $arr_result = json_decode($response);
-        if($localiton==='TR'){
-
-            $lang = 'tr';
-            App::setlocale($lang);
-
-            $locale = App::getLocale();
+        if ($count_reels>3){
+            $pack = $packets_reel->take(1)->first();
+            $middle = $packets_reel->take(2)->last();
+            $last = $packets_reel->take(3)->last();
+            $money=  $pack->price;
+            $money1=  $middle->price;
+            $money2=  $last->price;
             $money_value=$money;
             $money_value1=$money1;
             $money_value2=$money2;
@@ -57,51 +48,141 @@ class homepage extends Controller
             $round_new  = round($money_new_value);
             $round_new1  = round($money_new_value1);
             $round_new2  = round($money_new_value2);
+            $url = "https://api.exchangeratesapi.io/latest?base=TRY";
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_URL, $url);
+            $response = curl_exec($ch);
+            $arr_result = json_decode($response);
+           $last_packet =  packets_reels::all()->last();
+            $moneylast=  $last_packet->price;
+            if($localiton==='TR'){
 
-            $base_moeny='₺';
+                $lang = 'tr';
+                App::setlocale($lang);
+
+                $locale = App::getLocale();
+                $moneylasT  = round($moneylast);
+                $base_moeny='₺';
+                echo "girer";
+                echo $moneylasT;
+            }
+            else if($localiton==='US'){
+                $lang = 'en';
+                App::setlocale($lang);
+                $locale = App::getLocale();
+                $money_value=$arr_result->rates->USD;
+                $moneylast=  $last_packet->price;
+                $money_new_value = $moneylast*$money_value;
+                $moneylasT  = round($money_new_value);
+
+                $base_moeny='$';
+                echo "girer2";
+
+            } else if($localiton==='ES'){
+                $lang = 'es';
+                App::setlocale($lang);
+                $money_value=$arr_result->rates->EUR;
+                $moneylast=  $last_packet->price;
+                $money_new_value = $moneylast*$money_value;
+                $moneylasT  = round($money_new_value);
+                $base_moeny='€';
+
+                $locale = App::getLocale();
+                echo "girer3";
+
+            }else if($localiton==='DE') {
+                $lang = 'de';
+                App::setlocale($lang);
+                $base_moeny = '€';
+                $money_value = $arr_result->rates->EUR;
+                $moneylast=  $last_packet->price;
+                $money_new_value = $moneylast*$money_value;
+                $moneylasT  = round($money_new_value);
+
+                $locale = App::getLocale();
+                echo "girer4";
+
+            }
+
+
+        }else{
+            $pack = $packets_reel->take(1)->first();
+            $middle = $packets_reel->take(2)->last();
+            $last = $packets_reel->take(3)->last();
+            $money=  $pack->price;
+            $money1=  $middle->price;
+            $money2=  $last->price;
+            $last_packet =  packets_reels::all()->last();
+            $moneylasT =  packets_reels::all()->last()->price;
+            $url = "https://api.exchangeratesapi.io/latest?base=TRY";
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_URL, $url);
+            $response = curl_exec($ch);
+            $arr_result = json_decode($response);
+            if($localiton==='TR'){
+
+                $lang = 'tr';
+                App::setlocale($lang);
+
+                $locale = App::getLocale();
+                $money_value=$money;
+                $money_value1=$money1;
+                $money_value2=$money2;
+                $money_new_value=$pack->price;
+                $money_new_value1=$middle->price;
+                $money_new_value2=$last->price;
+                $round_new  = round($money_new_value);
+                $round_new1  = round($money_new_value1);
+                $round_new2  = round($money_new_value2);
+
+                $base_moeny='₺';
+            }
+            else if($localiton==='US'){
+                $lang = 'en';
+                App::setlocale($lang);
+                $locale = App::getLocale();
+                $money_value=$arr_result->rates->USD;
+                $money_new_value = $money1*$money_value;
+                $money_new_value1 = $money*$money_value;
+                $money_new_value2 = $money2*$money_value;
+                $round_new  = round($money_new_value);
+                $round_new1  = round($money_new_value1);
+                $round_new2  = round($money_new_value2);
+
+                $base_moeny='$';
+            } else if($localiton==='ES'){
+                $lang = 'es';
+                App::setlocale($lang);
+                $money_value=$arr_result->rates->EUR;
+                $money_new_value = $money1*$money_value;
+                $money_new_value1 = $money*$money_value;
+                $money_new_value2 = $money2*$money_value;
+                $round_new  = round($money_new_value);
+                $round_new1  = round($money_new_value1);
+                $round_new2  = round($money_new_value2);
+                $base_moeny='€';
+
+                $locale = App::getLocale();
+            }else if($localiton==='DE') {
+                $lang = 'de';
+                App::setlocale($lang);
+                $base_moeny = '€';
+                $money_value = $arr_result->rates->EUR;
+                $money_new_value = $money1 * $money_value;
+                $money_new_value1 = $money * $money_value;
+                $money_new_value2 = $money2 * $money_value;
+                $round_new = round($money_new_value);
+                $round_new1 = round($money_new_value1);
+                $round_new2 = round($money_new_value2);
+
+                $locale = App::getLocale();
+            }
         }
-        else if($localiton==='US'){
-            $lang = 'en';
-            App::setlocale($lang);
-            $locale = App::getLocale();
-            $money_value=$arr_result->rates->USD;
-            $money_new_value = $money1*$money_value;
-            $money_new_value1 = $money*$money_value;
-            $money_new_value2 = $money2*$money_value;
-            $round_new  = round($money_new_value);
-            $round_new1  = round($money_new_value1);
-            $round_new2  = round($money_new_value2);
 
-            $base_moeny='$';
-        } else if($localiton==='ES'){
-            $lang = 'es';
-            App::setlocale($lang);
-            $money_value=$arr_result->rates->EUR;
-            $money_new_value = $money1*$money_value;
-            $money_new_value1 = $money*$money_value;
-            $money_new_value2 = $money2*$money_value;
-            $round_new  = round($money_new_value);
-            $round_new1  = round($money_new_value1);
-            $round_new2  = round($money_new_value2);
-            $base_moeny='€';
-
-            $locale = App::getLocale();
-        }else if($localiton==='DE') {
-            $lang = 'de';
-            App::setlocale($lang);
-            $base_moeny = '€';
-            $money_value = $arr_result->rates->EUR;
-            $money_new_value = $money1 * $money_value;
-            $money_new_value1 = $money * $money_value;
-            $money_new_value2 = $money2 * $money_value;
-            $round_new = round($money_new_value);
-            $round_new1 = round($money_new_value1);
-            $round_new2 = round($money_new_value2);
-
-            $locale = App::getLocale();
-        }
         $this->location();
-        return view('pages/home/home',compact('base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
+        return view('pages/home/home',compact('last_packet','moneylasT','count_reels','base_moeny','round_new','round_new1','round_new2','money_new_value','locale','localiton','lang','packets_reel','last','pack','middle','money_new_value'));
 
     }
     public function location()

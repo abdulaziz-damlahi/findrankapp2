@@ -223,7 +223,7 @@ n sfb tp-resizeme font-crimson"
                 <h2>{{__('home.Affordable SEO Services Packages')}}</h2>
                 <div class="row">
                     <!-- Price -->
-                    <div class="col-md-4">
+                    <div class="packets col-md-4">
                         <!-- Icon -->
                         <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-1.png" alt=" "></div>
                         <!-- Plan  -->
@@ -240,23 +240,18 @@ n sfb tp-resizeme font-crimson"
                                 <li> {{$last->rank_fosllow}} Rank Follow</li>
                                 <li> {{$last->description}}</li>
                             </ul>
-<<<<<<< HEAD
                             <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a>
                             </div>
                             </div>
-=======
-                            <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a></div>
-                    </div>
                     <!-- Price -->
->>>>>>> github_abdulaziz2
-                    <div class="col-md-4">
+                    <div class="packets col-md-4">
                         <!-- Icon -->
                         <div class="plan-icon orange-bg"><img src="{{asset('images')}}/plan-icon-2.png" alt=" "></div>
                         <!-- Plan  -->
                         <div class="pricing-head orange-bg">
                             <h4>{{$middle->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                class="amount">{{$round_new1}}</span> <span class="month">/ {{__('home.month')}}</span>
+                                    class="amount">{{$round_new1}}</span> <span class="month">/ {{__('home.month')}}</span>
                         </div>
                         <!-- Plean Detail -->
                         <div class="price-in">
@@ -269,14 +264,14 @@ n sfb tp-resizeme font-crimson"
                             <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a></div>
                     </div>
                     <!-- Price -->
-                    <div class="col-md-4">
+                    <div class="packets col-md-4">
                         <!-- Icon -->
                         <div class="plan-icon"><img src="{{asset('images')}}/plan-icon-3.png" alt=" "></div>
                         <!-- Plan  -->
                         <div class="pricing-head">
                             <h4>{{$pack->names_packets}}</h4>
                             <span class="curency">{{$base_moeny}}</span> <span
-                                class="amount">{{$round_new}}</span> <span class="month">/ {{__('home.month')}}</span>
+                                    class="amount">{{$round_new}}</span> <span class="month">/ {{__('home.month')}}</span>
                         </div>
                         <!-- Plean Detail -->
                         <div class="price-in">
@@ -288,11 +283,37 @@ n sfb tp-resizeme font-crimson"
                             </ul>
                             <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a></div>
                     </div>
+                    @isset($count_reels)
+                        @if($count_reels>3)
+
+                        <script>
+                          $('.packets').removeClass('col-md-4').addClass('col-md-3')
+                        </script>
+                        <div class="col-md-3">
+                            <!-- Icon -->
+                            <div class="plan-icon orange-bg"><img src="{{asset('images')}}/plan-icon-2.png" alt=" "></div>
+                            <!-- Plan  -->
+                            <div class="pricing-head orange-bg">
+                                <h4>{{$middle->names_packets}}</h4>
+                                <span class="curency">{{$base_moeny}}</span> <span
+                                        class="amount">{{$moneylasT}}</span> <span class="month">/ {{__('home.month')}}</span>
+                            </div>
+                            <!-- Plean Detail -->
+                            <div class="price-in">
+                                <ul class="text-center">
+                                    <li> {{$last_packet->word_count}} Keywords</li>
+                                    <li> {{$last_packet->websites_count}} Websites</li>
+                                    <li> {{$last_packet->rank_fosllow}} Rank Follow</li>
+                                    <li> {{$last_packet->description}}</li>
+                                </ul>
+                                <a href="{{route('packets')}}" class="PURCHACE btn btn-orange">{{__('home.PURCHASE')}}</a></div>
+                        </div>
+                            @endif
+                    @endisset
+                    </div>
+                                        </div>
                                         </div>
 
-                </div>
-            </div>
-        </div>
     </section>
     <!-- Flow Work  -->
     <section class="flow-work padding-top-80 padding-bottom-80">
