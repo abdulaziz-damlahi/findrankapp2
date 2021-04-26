@@ -61,7 +61,7 @@ $(document).ready(function () {
             let countries = [];
 
             $.ajax({
-                url: "http://127.0.0.1:8000/api/v1/packets-of-users",
+                url: "/api/v1/packets-of-users",
                 type: "GET",
                 success: function (result) {
                     $.each(result.data, function (key, value) {
@@ -102,7 +102,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "http://127.0.0.1:8000/api/v1/all-google-search-datas",
+            url: "/api/v1/all-google-search-datas",
             type: "GET",
             success: function (result) {
                 var searching = [];
@@ -152,7 +152,7 @@ $(document).ready(function () {
             }
         });
         $.ajax({
-            url: "http://127.0.0.1:8000/api/v1/packets-reels",
+            url: "/api/v1/packets-reels",
             type: "GET",
             success: function (result) {
                 var lenght = 0;
@@ -192,7 +192,7 @@ $(document).ready(function () {
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: "http://127.0.0.1:8000/api/v1/packets-reels",
+                url: "/api/v1/packets-reels",
                 data: $('#modalForm').serialize(),
                 success: function (response) {
                     $('#addModal').modal('hide');
@@ -224,7 +224,7 @@ $(document).ready(function () {
             // e.preventDefault();
             $.ajax({
                 type: "PATCH",
-                url: "http://127.0.0.1:8000/api/v1/packets-reels" + id,
+                url: "/api/v1/packets-reels" + id,
                 data: $('#editmodalForm').serialize(),
                 success: function (response) {
                     $('#upModal').modal('hide');
@@ -319,11 +319,93 @@ $(document).ready(function () {
     function destroy(id) {
         $.ajax({
             type: "DELETE",
-            url: "http://127.0.0.1:8000/api/v1/packets-reels" + id,
+            url: "api/v1/packets-reels" + id,
             success: function (response) {
             }
         });
     }
+    $(document).ready(function () {
+        window.addEventListener('load', (event) => {
+
+// Get the modal
+            var modal = document.getElementById("upModal");
+// Get the button that opens the modal
+            var btn = document.getElementById("addcreate");
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+        });
+
+
+        $('#modalForm').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/api/v1/packets-reels",
+                data: $('#modalForm').serialize(),
+                success: function (response) {
+                    console.log(response)
+                    $('#addModal').modal('hide');
+                    alert("Packet Saved");
+                    location.reload();
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+
+        $('.editbtn').on('click', function () {
+            $('#upModal').modal('show');
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+            }).get();
+
+
+            console.log(data);
+            $('#names_packet').val(data[0]);
+            $('#word_count').val(data[1]);
+            $('#websites_count').val(data[2]);
+            $('#rank_fosllow').val(data[3]);
+            $('#description').val(data[4]);
+            $('#price').val(data[5]);
+
+        });
+
+        $('#editmodalForm').on('submit', function (e) {
+            // e.preventDefault();
+            $.ajax({
+                type: "PATCH",
+                url: "/api/v1/packets-reels" + id,
+                data: $('#editmodalForm').serialize(),
+                success: function (response) {
+                    console.log(response)
+                    $('#upModal').modal('hide');
+                    alert("Packet Saved");
+                    location.reload();
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+        $('#deletebtn').on('click', function () {
+            $tr = $(this).closest('tr');
+            var data = $tr.children("td").map(function () {
+                return $(this).text();
+
+            }).get();
+            console.log(data);
+
+        });
+
+        var id = $('.deletebtn').val();
+
+
+    });
+
+
 });
 
 
