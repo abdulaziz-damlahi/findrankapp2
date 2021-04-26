@@ -99,6 +99,7 @@ $(document).ready(function () {
                     chart.draw(data, options);
                 }
             });
+            console.log('gireadasdsasad')
         }
 
         $.ajax({
