@@ -56,14 +56,14 @@ float:left;
 
 }
 #piechart{
-   width:500px;
-   height:500px;
+   width:50px;
+   height:1000px;
 
 }
 @media only screen and (max-width: 500px) {
     #piechart{
     width:370px;
-    height:400px;
+        height:1000px;
     }
     #rightMenu {
         width: 94.1%;

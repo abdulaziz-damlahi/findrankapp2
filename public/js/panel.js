@@ -138,9 +138,9 @@ function chart() {
                         indexLabel: "{label} - #percent%",
                         toolTipContent: "<b>{label}:</b> {y} (#percent%)",
                         dataPoints: [
-                            { y: les3, label: "les than 3", },
-                            { y: les10, label: "les than 10" },
-                            { y: les100, label: "les than 100" },
+                            {y: les3, label: "les than 3",},
+                            {y: les10, label: "les than 10"},
+                            {y: les100, label: "les than 100"},
                         ]
                     }]
             });
@@ -179,7 +179,7 @@ function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRe
         different = 3
 
     }
-    //  update diffrance ajax
+
     $.ajax({
         url: "/api/v1/Keywords/" + KeyWordRequestKeywordId,
         type: "PATCH",
@@ -347,6 +347,7 @@ function StatisticsPage(pageNumber) {
         }
     });
 }
+
 // popup chart
 window.addEventListener('load', (event) => {
 
@@ -495,9 +496,10 @@ function get() {
                     var websiteid = response['data'][i].id
                     var idweb = 'webid' + websiteid;
                     var idiff = 'idiff' + websiteid;
-                    var CurrentWebpage= window.location.href;
+                    var CurrentWebpage = window.location.href;
                     const words = CurrentWebpage.split('/');
-                 var Mainwebsite = words[0]+'//'+words[2];""
+                    var Mainwebsite = words[0] + '//' + words[2];
+                    ""
                     var str = "<tr> <th id='" + idweb + "' class='hidden' style='font-size: 15px'>" + websiteid + "</th> <th scope='col'><a href=website/" + websiteid + ">" +
                         "<div id='colmun1'></div>" + websitename + "</a></th>" +
 
@@ -537,12 +539,8 @@ function getcount() {
                 for (var i1 = 0; i1 < len1; i1++) {
                     var wordcount2 = 0;
                     var websiteid = response['included'][i1].id
-                    var type = response['included'][i1].type;
-                    var createdAt = response['included'][i1].attributes.createdAt;
-                    var updatedAt = response['included'][i1].attributes.updatedAt;
                     var user_id = response['included'][i1].attributes.user_id
                     var website_name = response['included'][i1].attributes.website_name;
-                    // wordcount = response['data'][i3].attributes.wordcount;
                     for (var i2 = 0; i2 < len2; i2++) {
                         var keywordwebsiteid = response['data'][i2].attributes.website_id
                         if (websiteid == keywordwebsiteid) {
@@ -789,24 +787,28 @@ function keywordsChanges() {
                 len = response['data'].length;
             }
             $('#totalword').append(len);
-            var up=0
-            var down=0
+            var up = 0
+            var down = 0
             if (len > 0) {
                 for (var i = 0; i < len; i++) {
-                   var different = response['data'][i].attributes.different;
+                    var different = response['data'][i].attributes.different;
                     //down calc
-                    if (different===1){down=down+1}
-                     //up calc
-                    if (different===3){up=up+1}
+                    if (different === 1) {
+                        down = down + 1
+                    }
+                    //up calc
+                    if (different === 3) {
+                        up = up + 1
+                    }
                 }
             }
             $('#totalup').append(up);
             $('#totaldown').append(down);
-            if (up===0 && down===0){
+            if (up === 0 && down === 0) {
                 var mainprogress = document.getElementById("mainprogress");
                 mainprogress.style.backgroundColor = "white";
             }
-            percentage = (( up/ (down+up)) * 100);
+            percentage = ((up / (down + up)) * 100);
             var KeywordTotalWordCount = document.getElementById("KeywordTotalWordCount");
             percentage2 = (percentage) + '%'
             KeywordTotalWordCount.style.width = percentage2;

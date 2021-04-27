@@ -2,9 +2,11 @@
 
 namespace App\JsonApi\PacketsOfUsers;
 
+use App\Models\users;
 use CloudCreativity\LaravelJsonApi\Validation\AbstractValidators;
 use App\Models\websites;
 use CloudCreativity\LaravelJsonApi\Contracts\Validation\ValidatorInterface;
+use http\Client\Curl\User;
 use Illuminate\Validation\Rule;
 
 
@@ -17,7 +19,7 @@ class Validators extends AbstractValidators
      * @var string[]|null
      *      the allowed paths, an empty array for none allowed, or null to allow all paths.
      */
-    protected $allowedIncludePaths = [];
+    protected $allowedIncludePaths = ["Users"];
 
     /**
      * The sort field names a client is allowed send.
