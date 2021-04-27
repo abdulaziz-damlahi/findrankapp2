@@ -101,34 +101,44 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="addModalLabel">Create Packet</h4>
+                        <h4 class="modal-title" id="upModalLabel">Edit Packet</h4>
 
                     </div>
                     <div class="modal-body">
-                        {{csrf_field()}}
+
                         <form id="editmodalForm" class="form-horizontal">
+                            {{csrf_field()}}
 
                             <div class="form-group ">
                                 <label>Packet Name</label>
-                                <input type="text" class="form-control" id="names_packet"></div>
+                                <input type="text" class="form-control" name="names_packets1" id="names_packets1"
+                                       value=""></div>
 
                             <div class="form-group">
-                                <label>Word Count</label> <input type="number" class="form-control" id="word_count"></div>
+                                <label>Word Count</label> <input type="number" name="word_count1" class="form-control"
+                                                                 value="" id="word_count1">
+                            </div>
                             <div class="form-group">
-                                <label>Websites Count</label> <input type="number" class="form-control" id="websites_count">
+                                <label>Websites Count</label> <input type="number" name="websites_count1" value=""
+                                                                     class="form-control"
+                                                                     id="websites_count1">
                             </div>
                             <div class="form-group ">
-                                <label>Rank Follow</label> <input type="number" class="form-control" id="rank_fosllow">
+                                <label>Rank Follow</label> <input type="number" class="form-control" value=""
+                                                                  name="rank_fosllow1" id="rank_fosllow1">
                             </div>
                             <div class="form-group ">
-                                <label>Description</label> <input type="text" class="form-control" id="description"></div>
-                            <div class="form-group ">
-                                <label>Price</label> <input type="number" class="form-control" id="price"></div>
+                                <label>Description</label> <input type="text" class="form-control" value=""
+                                                                  name="description1" id="description1">
+                            </div>
+                            <div class="form-group " id="price2">
+                                <label>Price</label> <input type="number" class="form-control" name="price1" value=""
+                                                            id="price1"></div>
 
 
                             <div class="modal-footer">
-                                <button type="submit" id="btnSave" class="btn btn-primary">Save changes</button>
-                                <button type="bu  tton" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" id="buttonSave" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>
                         </form>
                     </div>

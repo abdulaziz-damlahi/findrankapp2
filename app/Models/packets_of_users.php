@@ -28,9 +28,9 @@ class packets_of_users extends Model
         'count_of_websites',
     ];
 
-    public function user()
+    public function users()
     {
-        $this->belongsTo('App\Models\users', 'id', 'id');
+        return $this->hasOne('App\Models\users', 'id', 'user_id');
     }
 
 }

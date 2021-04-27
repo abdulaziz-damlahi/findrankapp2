@@ -16,7 +16,7 @@
                     <div class="col-lg-8 col-md-12 row">
                         @foreach($userwebsites8 as $userwebsite)
                             <a href="website/{{ $userwebsite->id}} ">
-                                <div class="col-md-12 col-xl-4">
+                                <div class="col-md-12 ">
                                     <div style="background-color:#ff6c3a;" class="card order-card">
                                         <div class="card-block">
                                             <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>

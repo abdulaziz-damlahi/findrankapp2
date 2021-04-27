@@ -34,9 +34,8 @@ class users extends Authenticatable
     {
         return $this->hasMany('App\Models\packets', 'id','id');
     }
-    public function PacketsOfUsers()
-    {
-        return $this->hasMany('App\Models\PacketsOfUsers', 'id','id');
+    public function packetsOfUsers()     {
+        return $this->hasMany('App\Models\packets_of_users', 'user_id','id');
     }
     public function website()
     {

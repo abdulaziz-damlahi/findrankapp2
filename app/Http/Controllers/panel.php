@@ -28,7 +28,6 @@ class panel extends Controller
 
     public function index(packets $packets, users $user, invoicerecords $invoiceRecord)
     {
-
         /*    $diff = abs($date2 - $date1);
             echo $diff."<br>";
             $bolum = $diff/60;
@@ -183,7 +182,6 @@ class panel extends Controller
             if ($request->has('language')) {
                 $keyword->language = $request->language;
                 $AllGoogleSearchDatas->language = $request->language;
-
             } else {
                 return redirect()->back()->with('cantbeempty', __('alerts.the language is empty'));
             }
