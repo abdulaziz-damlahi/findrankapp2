@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\packets_of_users;
 use App\Models\packets_reels;
 use App\Models\AllGoogleSearchDatas;
 use http\Client\Response;
@@ -33,9 +34,11 @@ class DashboardController extends Controller
                 }
             }
         }
+        if (packets_of_users::count()!==null){
+        $allpackets =packets_of_users::count();
+        }else{$allpackets=0;}
         $packets = packets_reels::latest()->get();
-
-        return view('pages\dashboard\dashboard', compact('packets','i'));
+        return view('pages\dashboard\dashboard', compact('packets','i','allpackets'));
     }
 
     /**

@@ -32,5 +32,8 @@ class packets_of_users extends Model
     {
         return $this->hasOne('App\Models\users', 'id', 'user_id');
     }
-
+    public function Users()
+    {
+        return $this->hasOne('App\Models\users', 'id', 'user_id');
+    }
 }
