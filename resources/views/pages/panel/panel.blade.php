@@ -16,7 +16,7 @@
                     <div class="col-lg-8 col-md-12 row">
                         @foreach($userwebsites8 as $userwebsite)
                             <a href="website/{{ $userwebsite->id}} ">
-                                <div class="col-md-12 ">
+                                <div class="col-md-4">
                                     <div style="background-color:#ff6c3a;" class="card order-card">
                                         <div class="card-block">
                                             <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
@@ -53,8 +53,8 @@
                                     <br>
                                     <br>
                                     <table
-                                        class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%"
-                                        style="font-size: 13px">
+                                            class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%"
+                                            style="font-size: 13px">
                                         <thead>
                                         <tr>
                                             <th scope="col">{{__('panel.website')}}</th>
@@ -107,17 +107,17 @@
                                 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                                 <div class="col-md-12" style="font-size:15px; padding: 40px;">
                                         <span class="text-left"><button id="ilke3btn" class="ilkbtn"><i
-                                                    class="fa  fa-square push-5-r"
-                                                    style=" color:#ff6c3a">  </i>{{__('panel.first')}} 3{{__('panel.de')}}:<b
-                                                    id="ilk3">  </b> <b>{{__('panel.word')}}</b> </button> </span>
+                                                        class="fa  fa-square push-5-r"
+                                                        style=" color:#ff6c3a">  </i>{{__('panel.first')}} 3{{__('panel.de')}}:<b
+                                                        id="ilk3">  </b> <b>{{__('panel.word')}}</b> </button> </span>
                                     <span class="text-left"><button id="ilke10btn" class="ilkbtn"><i
-                                                class="fa  fa-square push-5-r"
-                                                style=" color:cornflowerblue">  </i>{{__('panel.first')}} 10{{__('panel.de')}}: <b
-                                                id="ilk10">  </b> <b>{{__('panel.word')}}</b>  </button> </span>
+                                                    class="fa  fa-square push-5-r"
+                                                    style=" color:cornflowerblue">  </i>{{__('panel.first')}} 10{{__('panel.de')}}: <b
+                                                    id="ilk10">  </b> <b>{{__('panel.word')}}</b>  </button> </span>
                                     <span class="text-left"><button id="ilke100btn" class="ilkbtn"><i
-                                                class="fa  fa-square push-5-r"
-                                                style=" color:#cb0000">  </i>{{__('panel.first')}} 100{{__('panel.de')}}: <b
-                                                id="ilk100">  </b> <b>{{__('panel.word')}}</b> </button>  </span>
+                                                    class="fa  fa-square push-5-r"
+                                                    style=" color:#cb0000">  </i>{{__('panel.first')}} 100{{__('panel.de')}}: <b
+                                                    id="ilk100">  </b> <b>{{__('panel.word')}}</b> </button>  </span>
                                 </div>
                             </div>
                         </div>
@@ -171,12 +171,12 @@
                                     <div class="push">
                                         <div class="btn-group">
                                             <button class="btns btn-default" type="button" id="addNewSite"><i
-                                                    class="fa fa-plus text-success"><span
-                                                        class="hidden-xs push-7-l">{{__('panel.Add Website')}}</span></i>
+                                                        class="fa fa-plus text-success"><span
+                                                            class="hidden-xs push-7-l">{{__('panel.Add Website')}}</span></i>
                                             </button>
                                         </div>
                                         <table
-                                            class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
+                                                class="table table-hover table-vcenter table-striped table-track table-layout: fixed; width: 100%">
                                             @if (session('success'))
                                                 <div class="alert alert-success">
                                                     {{ session('success') }}
@@ -187,7 +187,7 @@
                                                     {{ session('notsuccess') }}
                                                 </div>
                                             @endif
-                                                @if (session('validwebsite'))
+                                            @if (session('validwebsite'))
                                                 <div class="alert alert-danger">
                                                     {{ session('validwebsite') }}
                                                 </div>
@@ -234,7 +234,7 @@
                                                 <br><br>
                                                 <div class="col-md-12 container">
                                                     <table
-                                                        class="table table-hover table-vcenter table-striped table-track">
+                                                            class="table table-hover table-vcenter table-striped table-track">
                                                         <thead>
                                                         <tr>
                                                             <th scope="col">#</th>
@@ -255,7 +255,7 @@
                                                 <br><br>
                                                 <div class="col-md-12 container">
                                                     <table
-                                                        class="table table-hover table-vcenter table-striped table-track">
+                                                            class="table table-hover table-vcenter table-striped table-track">
                                                         <thead>
                                                         <tr>
                                                             <th scope="col">#</th>
@@ -276,7 +276,7 @@
                                                 <br><br>
                                                 <div class="col-md-12 container">
                                                     <table
-                                                        class="table table-hover table-vcenter table-striped table-track">
+                                                            class="table table-hover table-vcenter table-striped table-track">
                                                         <thead>
                                                         <tr>
                                                             <th scope="col">#</th>

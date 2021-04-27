@@ -28,10 +28,6 @@ class packets_of_users extends Model
         'count_of_websites',
     ];
 
-    public function users()
-    {
-        return $this->hasOne('App\Models\users', 'id', 'user_id');
-    }
     public function Users()
     {
         return $this->hasOne('App\Models\users', 'id', 'user_id');

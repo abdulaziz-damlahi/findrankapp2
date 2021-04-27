@@ -46,9 +46,7 @@ class Adapter extends AbstractAdapter
      */
     public function creating(packets $packets)
     {
-
         \App\Http\Controllers\payment::payment(request());
-
     }
     public function updating(packets $packets)
     {

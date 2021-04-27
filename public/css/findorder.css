@@ -9,7 +9,10 @@
 .form_rank_order {
     background-color: white;
 }
-
+#general_find{
+    margin-bottom: 10%;
+    margin-top: 5%;
+}
 .findorder {
     border-radius: 9px;
 }

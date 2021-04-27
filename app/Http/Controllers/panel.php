@@ -165,12 +165,9 @@ class panel extends Controller
             $keyword = new keywords;
 
             $websitename = websites::where('id', '=', $webid)->get('website_name');
-            echo $websitename . "<br>";
-            echo $websitename[0];
             if ($request->keyword != NULL) {
                 $keyword->name = $request->keyword;
                 $AllGoogleSearchDatas->keyword = $request->keyword;
-                echo "dsadsada";
             } else {
                 return redirect()->back()->with('cantbeempty', __('alerts.the keyword is empty'));
             }
@@ -294,7 +291,6 @@ class panel extends Controller
         $userId = Auth::user()->id;
         $new = $userId;
         $userIdMd5 = base64_encode($userId);
-        echo $userIdMd5;
         $this->location();
         return view('pages/findorder', compact('sifre', 'userId', 'new', 'userIdMd5'));
     }
@@ -305,7 +301,6 @@ class panel extends Controller
         $userId = Auth::user()->id;
         $new = $userId;
         $userIdMd5 = base64_encode($userId);
-        echo $userIdMd5;
         /*    event(new ActionEvent($request));
             $request->hidden_collonial_name;
             $colonial_name = $request->hidden_collonial_name;

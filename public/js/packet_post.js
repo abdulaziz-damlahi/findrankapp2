@@ -14,20 +14,17 @@ $(document).ready(function() {
 
   if(window_size<500){
     $('#settingsForm').height(1200);
-    console.log('geldiBurayaKüçük');
 
 
 
   }else{
     if($('.menuy ul li').eq(1).hasClass('active')){
-      console.log('geldiBurayaBüyük')
       $('#settingsForm').height(800);
     }
   }
   $('#success_message').css('display','none');
   $('#error_message').css('display','none');
   if($('#button_third').hasClass('active')){
-    console.log('geldi')
 
   };
   $('#Bireyselfrom').hide();
@@ -65,7 +62,6 @@ $(document).ready(function() {
       if(i===0){
         if($( '#kurumsal' ).prop( "checked" )==='false'){
           $('.kurumsal').hide();
-          console.log($('.kurumsal').text());
 
         }
         $('#button_pay').hide();
@@ -156,7 +152,6 @@ $(document).ready(function() {
         }
         if($( '#kurumsal' ).prop( "checked" )==='false'){
           $('.kurumsal').hide();
-          console.log($('.kurumsal').text());
 
         }
         $('#button_contact2').css('display','inline');
@@ -252,7 +247,6 @@ $(document).ready(function() {
         jQuery.each(response, function (i, val) {
           jQuery.each(val, function (is, vall) {
             $start = vall.id - 1;
-            console.log(vall);
             $(".PURCHACE").eq($start).val(vall.id);
 
           });
@@ -268,7 +262,6 @@ $(document).ready(function() {
     get_one_packets(number_id);
 
 
-    console.log(number_id)
 
     $("#packets_show").hide();
     $("#settingsForm").show();
@@ -299,7 +292,6 @@ $(document).ready(function() {
     });
   }let user_id =  $('#hidden_id').text();
 
-  console.log(user_id)
   get_packets();
 
   function get_packets(){

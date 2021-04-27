@@ -41,7 +41,6 @@ function profile() {
                         diffDays2 = 'Aktif bir paketiniz yok.';
                     }
                     $('#daysleft3').append(diffDays2);
-                    console.log(diffDays2)
                     $('#endofpacket').append(endofpacket);
                     $('#createdAt').append(createdAt);
                     $('#packet_names').append(packet_names);

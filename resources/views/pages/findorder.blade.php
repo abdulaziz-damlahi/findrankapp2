@@ -90,9 +90,6 @@
                                     <option class="select" value="english">
                                         {{__('pages.english')}}
                                     </option>
-                                    <option class="select" value="arabic">
-                                        {{__('pages.arabic')}}
-                                    </option>
                                 </select>
                             </div>
                         </div>

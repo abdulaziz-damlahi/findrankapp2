@@ -120,7 +120,8 @@ class payment extends Controller
             $locale = App::getLocale();
         }
         $deneme =self::payment($request);
-        if ($deneme['status'] === "success") {
+
+        if ($deneme['status'] == "success") {
             $success_message = "Payment Successful !";
             $payid = $deneme['paymentId'];
             $emailJob = new updateUser($user, $invoiceRecord);
@@ -142,10 +143,12 @@ class payment extends Controller
                     $request->packet_id = packets::all()->last()->id;
                     $request->invoice_record = invoicerecords::all()->last()->id;
                     $request->parasut_customer_id = Auth::user()->parasut_customer_id;
+
                     $request->save();
                 }
             }
             $iyzico_transaction_id = $deneme['itemTransactions'][0]['paymentTransactionId'];
+
         } else {
             $success_message = 'Ödeme Başarısız';
         }
@@ -202,7 +205,6 @@ class payment extends Controller
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
             $base_moeny = '₺';
-            echo "buraya girer";
         } else if ($localiton === 'US') {
             $lang = 'en';
             App::setlocale($lang);
@@ -214,7 +216,6 @@ class payment extends Controller
             $round_new = round($money_new_value);
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
-            echo "buraya girer2";
             $base_moeny = '$';
         } else if ($localiton === 'ES') {
             $lang = 'es';
@@ -227,7 +228,6 @@ class payment extends Controller
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
             $base_moeny = '€';
-            echo "buraya girer3";
             $locale = App::getLocale();
         } else if ($localiton === 'DE') {
             $lang = 'de';
@@ -240,7 +240,6 @@ class payment extends Controller
             $round_new = round($money_new_value);
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
-            echo "buraya girer4";
             $locale = App::getLocale();
         } else {
             $lang = 'de';
@@ -253,7 +252,6 @@ class payment extends Controller
             $round_new = round($money_new_value);
             $round_new1 = round($money_new_value1);
             $round_new2 = round($money_new_value2);
-            echo "buraya girer5";
             $locale = App::getLocale();
         }
         if ($request->invoicetype == "individual") {
@@ -383,7 +381,6 @@ class payment extends Controller
             $buyer->setIp($geo->ip);
             $buyer->setCity($request->city_information_institutional);
             $buyer->setCountry($request->country_information_institutional);
-            echo "2.ci ";
             $paymentrequest->setBuyer($buyer);
             $shippingAddress = new \Iyzipay\Model\Address();
             $shippingAddress->setContactName($request->First_name_institutional);

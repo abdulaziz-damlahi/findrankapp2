@@ -6,7 +6,6 @@ $(document).ready(function(){
     $(this).parent().addClass('active');
     $(this).addClass("active");
    if($('#button_first').hasClass('active')){
-   console.log('sa')
      $('.personal_settings').hide();
      $('.password_process').show();
      $('.custumize').hide();

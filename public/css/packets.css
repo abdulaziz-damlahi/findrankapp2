@@ -29,6 +29,10 @@ height:40px;
  #success_message{
      display:grid;
  }
+ #packetsPage{
+     background-color: antiquewhite;
+
+ }
  #button_pay {
      cursor: pointer;
      transition: ease .3s;

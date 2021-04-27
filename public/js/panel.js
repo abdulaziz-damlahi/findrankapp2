@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var pageNumber = 1;
     // differance();
+    latestRank();
     getKeywordRequest();
     getcount();
     keywordsChanges();
@@ -9,9 +10,64 @@ $(document).ready(function () {
     StatisticsPage(pageNumber);
     Statistics();
     get();
-    // appendDifferent();
-    latestRank();
+  //  appendDifferent();
+
+    websitefun();
 })
+function latestRank() {
+    //today
+    var today = new Date();
+    today.setDate(today.getDate() + 30);
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth()).padStart(2, '0');
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+
+    $.ajax({
+        url: "/api/v1/keywordsRequests",
+        type: "GET",
+        headers: {
+            "Content-Type": "application/vnd.api+json",
+            Accept: "application/vnd.api+json",
+        },
+        success: function (response) {
+            var len = 0;
+            if (response['data'] != null) {
+                len = response['data'].length;
+            }
+            if (len > 0) {
+                for (var i = 0; i < len; i++) {
+                    var KeyWordRequestcreatedAt = response['data'][i].attributes.createdAt
+                    var KeyWordRequestrank = response['data'][i].attributes.rank
+                    var KeyWordRequestKeyword_id = response['data'][i].attributes.keyword_id
+                    var KeyWordRequestcreatedAt2 = KeyWordRequestcreatedAt.toString().slice(0, 10)
+                    if (KeyWordRequestcreatedAt2 === today) {
+                        console.log(today)
+                        var KeyWordRequestKeyword_idSTRING = KeyWordRequestKeyword_id.toString()
+                        $.ajax({
+                            url: "/api/v1/Keywords/" + KeyWordRequestKeyword_idSTRING,
+                            type: "PATCH",
+                            headers: {
+                                "Content-Type": "application/vnd.api+json",
+                                Accept: "application/vnd.api+json",
+                            },
+                            data: JSON.stringify({
+                                "data": {
+                                    "type": "Keywords",
+                                    'id': KeyWordRequestKeyword_idSTRING,
+                                    "attributes": {
+                                        "rank": KeyWordRequestrank,
+                                    }
+                                }
+                            }),
+
+                        });
+                    }
+                }
+            }
+        }
+    })
+}
 
 function getKeywordRequest() {
     //today
@@ -54,7 +110,9 @@ function getKeywordRequest() {
                         if (KeyWordRequestcreatedAt2 == yesterday) {
                             var KeyWordRequestrankyesterday = KeyWordRequestrank
                         }
-                        if (KeyWordRequestranktoday != null && KeyWordRequestrankyesterday != null) {
+
+                        if (KeyWordRequestranktoday !== null && KeyWordRequestrankyesterday !== null) {
+
                             compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRequestKeywordId)
                         }
 
@@ -159,7 +217,6 @@ function compare(KeyWordRequestranktoday, KeyWordRequestrankyesterday, KeyWordRe
     equal = 0;
     plus = 0;
     minus = 0;
-
     var KeyWordRequestKeywordIdYedek = KeyWordRequestKeywordId
     var keywordid = String(KeyWordRequestKeywordIdYedek)
     //diffrance = 1 -> minus , diffrance = 2 -> equal , diffrance = 3 -> plus
@@ -590,7 +647,7 @@ let minusappend
 let equalappend
 let plusappend
 
-$(document).ready(function () {
+function websitefun() {
 
     $.ajax({
         type: 'get',
@@ -655,8 +712,8 @@ $(document).ready(function () {
             }
         }
     });
+}
 
-})
 
 function cardChange() {
     if (document.querySelector("#main > div > div > div.page-body > div.col-lg-8.col-md-12.row > a:nth-child(1) > div > div > div > h6:nth-child(2)") != null) {
@@ -723,59 +780,7 @@ function cardChange() {
     })
 }
 
-function latestRank() {
-    //today
-    var today = new Date();
-    today.setDate(today.getDate() + 30);
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth()).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    today = yyyy + '-' + mm + '-' + dd;
 
-    $.ajax({
-        url: "/api/v1/keywordsRequests",
-        type: "GET",
-        headers: {
-            "Content-Type": "application/vnd.api+json",
-            Accept: "application/vnd.api+json",
-        },
-        success: function (response) {
-            var len = 0;
-            if (response['data'] != null) {
-                len = response['data'].length;
-            }
-            if (len > 0) {
-                for (var i = 0; i < len; i++) {
-                    var KeyWordRequestcreatedAt = response['data'][i].attributes.createdAt
-                    var KeyWordRequestrank = response['data'][i].attributes.rank
-                    var KeyWordRequestKeyword_id = response['data'][i].attributes.keyword_id
-                    var KeyWordRequestcreatedAt2 = KeyWordRequestcreatedAt.toString().slice(0, 10)
-                    if (KeyWordRequestcreatedAt2 === today) {
-                        var KeyWordRequestKeyword_idSTRING = KeyWordRequestKeyword_id.toString()
-                        $.ajax({
-                            url: "/api/v1/Keywords/" + KeyWordRequestKeyword_idSTRING,
-                            type: "PATCH",
-                            headers: {
-                                "Content-Type": "application/vnd.api+json",
-                                Accept: "application/vnd.api+json",
-                            },
-                            data: JSON.stringify({
-                                "data": {
-                                    "type": "Keywords",
-                                    'id': KeyWordRequestKeyword_idSTRING,
-                                    "attributes": {
-                                        "rank": KeyWordRequestrank,
-                                    }
-                                }
-                            }),
-
-                        });
-                    }
-                }
-            }
-        }
-    })
-}
 
 function keywordsChanges() {
     $.ajax({

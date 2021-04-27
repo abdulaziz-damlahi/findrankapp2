@@ -40,7 +40,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
+                                            aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="addModalLabel">Create Packet</h4>
                             </div>
                             <div class="modal-body">
@@ -96,7 +96,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
+                                            aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="upModalLabel">Edit Packet</h4>
 
                             </div>
@@ -105,61 +105,6 @@
                                 <form id="editmodalForm" class="form-horizontal">
                                     {{csrf_field()}}
 
-<<<<<<< HEAD
-                        <div class="modal-footer">
-                            <button type="submit" id="btnSave" class="btn btn-primary">Save changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="upModal" style="display: none" tabindex="-1" role="dialog"
-             aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="upModalLabel">Edit Packet</h4>
-
-                    </div>
-                    <div class="modal-body">
-
-                        <form id="editmodalForm" class="form-horizontal">
-                            {{csrf_field()}}
-
-                            <div class="form-group ">
-                                <label>Packet Name</label>
-                                <input type="text" class="form-control" name="names_packets1" id="names_packets1"
-                                       value=""></div>
-
-                            <div class="form-group">
-                                <label>Word Count</label> <input type="number" name="word_count1" class="form-control"
-                                                                 value="" id="word_count1">
-                            </div>
-                            <div class="form-group">
-                                <label>Websites Count</label> <input type="number" name="websites_count1" value=""
-                                                                     class="form-control"
-                                                                     id="websites_count1">
-                            </div>
-                            <div class="form-group ">
-                                <label>Rank Follow</label> <input type="number" class="form-control" value=""
-                                                                  name="rank_fosllow1" id="rank_fosllow1">
-                            </div>
-                            <div class="form-group ">
-                                <label>Description</label> <input type="text" class="form-control" value=""
-                                                                  name="description1" id="description1">
-                            </div>
-                            <div class="form-group " id="price2">
-                                <label>Price</label> <input type="number" class="form-control" name="price1" value=""
-                                                            id="price1"></div>
-
-
-                            <div class="modal-footer">
-                                <button type="button" id="buttonSave" class="btn btn-primary">Save changes</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-=======
                                     <div class="form-group ">
                                         <label>Packet Name</label>
                                         <input type="text" class="form-control" name="names_packets1"
@@ -215,7 +160,6 @@
                             <div class="modal-footer justify-content-center">
                                 <button type="button" id="deleteButton" class="btn btn-danger">Delete</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
->>>>>>> cdf4e1c76ef04700cb63ec3c9c6a869803d4b410
                             </div>
                         </div>
                     </div>

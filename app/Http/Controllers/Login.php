@@ -40,9 +40,6 @@ class Login extends Controller
         if (Auth::attempt(['email' => $request->email,
             'password' => $request->password])) {
             $user=Auth::user();
-            echo Auth::id();
-            echo $user['first_name'];
-            echo "gelmediisadsa";
             $parasut = new Parasut();
             $response = $parasut->create(
                 ParasutEndPoint::Contacts(),

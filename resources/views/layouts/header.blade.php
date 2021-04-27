@@ -30,9 +30,9 @@
 
         <div class="btn-group btn-group-justified2 push col-md-12" role="group">
             <a href="{{route("profile")}}" class="btn  col-md-6"
-               style="font-size: 17px ;color: white;margin-bottom: 30px"
+               style="font-size: 14px ;color: white;margin-bottom: 30px"
                type="button"><i class="fa fa-user push-5-r "></i>{{__('header.my account')}}</a>
-            <a href="{{route("settings")}}" class="btn  col-md-6" style="font-size: 17px; color: white;"
+            <a href="{{route("settings")}}" class="btn  col-md-6" style="font-size: 14px; color: white;"
                type="button"><i class="fa fa-gear push-5-r "></i>{{__('header.settings')}}</a>
         </div>
         <table class="table table-bordered table-striped table-condensed" style=";font-size: 15px">
@@ -112,29 +112,6 @@
         <!-- Page Wrapper -->
         <div id="wrap">
             <!-- Top bar -->
-            <div class="container">
-                <div class="row" id="notch">
-                    <div class="col-md-2 noo-res"></div>
-                    <div class="col-md-10">
-                        <div class="top-bar">
-                            <div class="col-md-3">
-                                <ul class="social_icons">
-                                    <li><a href="#."><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#."><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#."><i class="fa fa-google"></i></a></li>
-                                </ul>
-                            </div>
-                            <!-- Social Icon -->
-                            <div class="col-md-9">
-                                <ul class="some-info font-montserrat">
-                                    <li><i class="fa fa-phone"></i>05349223582</li>
-                                    <li><i class="fa fa-envelope"></i> seo@outlook.com</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!--Header -->
             <header class="header coporate-header">
                 <div class="sticky">

@@ -28,9 +28,10 @@ class packetsObserver
      * @param  \App\Models\packets  $packets
      * @return void
      */
-    public function created(users $user)
+    public function created(packets $packets)
     {
         //
+        $payment =  \App\Http\Controllers\payment::payment(request());
     }
 
     /**

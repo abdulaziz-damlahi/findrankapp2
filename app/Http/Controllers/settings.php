@@ -46,7 +46,6 @@ class settings extends Controller
         $emailJob = new updateUser($user,$invoiceRecord);
         $deneme = dispatch($emailJob);
         foreach($deneme as $dene){
-            echo $dene."<br>" ;
         }
         $emailJob2 = new createInvoice($packets,$user);
         dispatch($emailJob2);
@@ -83,7 +82,6 @@ class settings extends Controller
         $bune->first_name = $request->first_name;
         $bune->last_name = $request->last_name;
         $bune->phone = $request->phone;
-        echo $request->mail;
         $bune->email = $request->mail;
         $bune->save();
         return redirect()->back()->with('success', 'Kullanıcı bilgileriniz başarıyla güncellendi');

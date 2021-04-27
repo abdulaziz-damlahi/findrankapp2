@@ -49,7 +49,6 @@ class Validators extends AbstractValidators
     protected function rules($record, array $data): array
     {
         return [
-            //
         ];
     }
 

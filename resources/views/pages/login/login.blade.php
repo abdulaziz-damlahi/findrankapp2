@@ -29,7 +29,7 @@
         </label>
         <label>
             <p class="label-txt">{{__('pages.ENTER YOUR PASSWORD')}}</p>
-            <input name="password" type="text" class="input">
+            <input name="password" type="password" class="input">
             <div class="line-box">
                 <div class="line"></div>
             </div>
@@ -70,7 +70,7 @@
                 </label>
             </label>     <label>
                 <p class="label-txt">{{__('pages.PASSWORD')}}</p>
-                <input name="password" type="text" class="input">
+                <input name="password" type="password" class="input">
                 <div class="line-box">
                     <div class="line"></div>
                 </div>

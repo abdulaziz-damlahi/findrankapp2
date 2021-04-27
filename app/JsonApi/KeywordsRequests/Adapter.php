@@ -46,7 +46,9 @@ class Adapter extends AbstractAdapter
      */
     protected function filter($query, Collection $filters)
     {
+        $query->whereUserId(Auth::id());
         $this->filterWithScopes($query, $filters);
     }
+
 
 }

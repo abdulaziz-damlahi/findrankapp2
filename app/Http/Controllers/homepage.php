@@ -64,8 +64,6 @@ class homepage extends Controller
                 $locale = App::getLocale();
                 $moneylasT  = round($moneylast);
                 $base_moeny='₺';
-                echo "girer";
-                echo $moneylasT;
             }
             else if($localiton==='US'){
                 $lang = 'en';
@@ -77,7 +75,6 @@ class homepage extends Controller
                 $moneylasT  = round($money_new_value);
 
                 $base_moeny='$';
-                echo "girer2";
 
             } else if($localiton==='ES'){
                 $lang = 'es';
@@ -89,7 +86,6 @@ class homepage extends Controller
                 $base_moeny='€';
 
                 $locale = App::getLocale();
-                echo "girer3";
 
             }else if($localiton==='DE') {
                 $lang = 'de';
@@ -101,7 +97,6 @@ class homepage extends Controller
                 $moneylasT  = round($money_new_value);
 
                 $locale = App::getLocale();
-                echo "girer4";
 
             }
 

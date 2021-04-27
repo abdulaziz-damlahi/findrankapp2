@@ -1,8 +1,14 @@
 @extends('layouts.master')
 @section('content')
-    <section class="pricing-table light-gray-bg padding-top-100 padding-bottom-100">
+    <section id="packetsPage" class="pricing-table light-gray-bg padding-top-100 padding-bottom-100">
         <div class="container">
             <!-- Tittle -->
+            @if($errors->any())
+                <div class="alert-danger">
+                    {{$errors->first()}}
+                </div>
+
+            @endif
             <div id="packets_show" class="heading-block text-center margin-bottom-80">
                 <h2>{{__('pages.Affordable SEO Services Packages')}}</h2>
                 <div class="row">
@@ -517,14 +523,14 @@
                         <div id="form3">
                             <label class="col-md-12">
                                 <p class="label-txt">{{__('pages.Name, Surname on the Card:')}}</p>
-                                <input name="card_first_last" type="text" class="input">
+                                <input required name="card_first_last" type="text" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
                             </label>
                             <label class="col-md-12">
                                 <p class="label-txt">{{__('pages.Card number')}} :</p>
-                                <input name="card_number" type="number" class="input">
+                                <input required name="card_number" type="number" class="input">
                                 <div class="line-box">
                                     <div class="line"></div>
                                 </div>
@@ -532,19 +538,19 @@
                             <div class="col-md-12">
                                 <p class="label-txt">{{__('pages.Card Expiry Date')}}:</p>
                                 <label class="col-md-4">
-                                    <input name="Ay" type="number" placeholder="{{__('pages.Month')}}" class="input">
+                                    <input required name="Ay" type="number" placeholder="{{__('pages.Month')}}" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
                                 </label>
                                 <label class="col-md-4">
-                                    <input name="Yil" type="number" placeholder="{{__('pages.year')}}" class="input">
+                                    <input required name="Yil" type="number" placeholder="{{__('pages.year')}}" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
                                 </label>
                                 <label class="col-md-4">
-                                    <input name="CVC" type="number" placeholder="CVV" class="input">
+                                    <input required name="CVC" type="number" placeholder="CVV" class="input">
                                     <div class="line-box">
                                         <div class="line"></div>
                                     </div>
@@ -558,6 +564,9 @@
                             <p hidden id="hidden_id" val="{{\Illuminate\Support\Facades\Auth::id()}}">{{\Illuminate\Support\Facades\Auth::id()}}</p>
                             <input hidden class="hidden_size">
                             <input hidden class="id_hidden">
+                            @isset($payment_id)
+                            <input hidden val="{{$payment_id}}" value="{{$payment_id}}" name="hiddenpaymentId" class="hiddenpaymentId">
+                            @endisset
                             <input hidden class="hidden_descrpitions">
                             <input hidden class="my_count_of_words">
                             <input hidden class="max_my_count_of_words">
