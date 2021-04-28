@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(packetreeels::class);
         $this->call(website::class);
         $this->call(keyword::class);
+
         // \App\Models\User::factory(10)->create();
     }
 }

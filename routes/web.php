@@ -2,11 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
-Route::post('/update/{id}', 'App\Http\Controllers\DashboardController@update')->name('update');
-Route::get('/edit/{id}', 'App\Http\Controllers\DashboardController@edit')->name('edit');
-Route::get('/delete/{id}', 'App\Http\Controllers\DashboardController@delete')->name('delete');
-Route::post('/store', 'App\Http\Controllers\DashboardController@store')->name('store');
+
 Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('/findorder', 'App\Http\Controllers\panel@FindOrder')->name('findorder');
     Route::post('/findorder', 'App\Http\Controllers\panel@findPost')->name('findpost');
@@ -28,6 +24,11 @@ Route::prefix('user/')->middleware('auth')->group(function(){
     Route::get('website/editkeyword/{id}', 'App\Http\Controllers\panel@editkeyword')->name('editkeyword');
     Route::post('website/updatekeyword/{id}', 'App\Http\Controllers\panel@updatekeyword')->name('updatekeyword');
     Route::get('website/grafik/{id}', 'App\Http\Controllers\panel@grafik')->name('grafik');
+    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+//    Route::post('/update/{id}', 'App\Http\Controllers\DashboardController@update')->name('update');
+//    Route::get('/edit/{id}', 'App\Http\Controllers\DashboardController@edit')->name('edit');
+//    Route::get('/delete/{id}', 'App\Http\Controllers\DashboardController@delete')->name('delete');
+//    Route::post('/store', 'App\Http\Controllers\DashboardController@store')->name('store');
 
 });
 Route::prefix('user/')->middleware('isLogin')->group(function() {

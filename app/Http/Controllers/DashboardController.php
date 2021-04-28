@@ -15,11 +15,14 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $packets = packets_reels::latest()->get();
+$packet=DB::table('users')->orderBy('id','desc')->paginate(5);
+//if ($request->ajax()){
+//
+//}
 
-        return view('pages\dashboard\dashboard', compact('packets'));
+        return view('pages\dashboard\dashboard',compact($packet));
     }
 
     /**
@@ -58,7 +61,7 @@ class DashboardController extends Controller
         $packet->description = $request->input('description');
         $packet->price = $request->input('price');
         $packet->save();
-        return Response::json($packet);
+      //  return Response::json($packet);
     }
 
     /**
@@ -78,10 +81,13 @@ class DashboardController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-//    public function edit(Request $request,$id)
+//    public function edit($id)
 //    {
-//        $packet = packets_reels::find($id)->update($request,$id);
-//        return response()->json($packet);
+//       // $packet = packets_reels::find($id)->update($request,$id);
+//       if ($request()->ajax()){
+//           $data=packets_reels::find($id);
+//        return response()->json(['data'=>$data]);
+//       }
 //    }
 
     /**

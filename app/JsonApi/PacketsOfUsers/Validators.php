@@ -1,12 +1,11 @@
 <?php
 
-namespace App\JsonApi\Users;
+namespace App\JsonApi\PacketsOfUsers;
 
 use CloudCreativity\LaravelJsonApi\Validation\AbstractValidators;
 
 class Validators extends AbstractValidators
 {
-    protected $defaultSort = '-createdAt';
 
     /**
      * The include paths a client is allowed to request.
@@ -14,7 +13,9 @@ class Validators extends AbstractValidators
      * @var string[]|null
      *      the allowed paths, an empty array for none allowed, or null to allow all paths.
      */
-    protected $allowedIncludePaths = ["packetsOfUsers"];
+    protected $defaultSort = '-createdAt';
+    protected $allowedIncludePaths = ["Users"];
+    protected $allowedSortParameters = ["createdAt"];
 
     /**
      * The sort field names a client is allowed send.
@@ -22,7 +23,7 @@ class Validators extends AbstractValidators
      * @var string[]|null
      *      the allowed fields, an empty array for none allowed, or null to allow all fields.
      */
-    protected $allowedSortParameters = ["createdAt"];
+
 
     /**
      * The filters a client is allowed send.

@@ -37,6 +37,7 @@ class Schema extends SchemaProvider
             'phone'=> $resource->phone,
             'email'=> $resource->email,
             'password'=> $resource->password,
+            'created_at'=> $resource->created_at,
         ];
     }
 }

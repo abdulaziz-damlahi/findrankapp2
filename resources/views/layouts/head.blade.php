@@ -28,6 +28,7 @@
         <link rel="stylesheet"type="text/css" href="{{asset('css')}}/font-awesome.min.css">
         <link rel="stylesheet"type="text/css" href="{{asset('css')}}/main.css">
         <link rel="stylesheet"type="text/css" href="{{asset('css')}}/style.css">
+        <link rel="stylesheet"type="text/css" href="{{asset('css')}}/dashboard.css">
         @if($routeName === 'editkeyword')
             <link rel="stylesheet"type="text/css" href="{{asset('css')}}/editkeyword.css">
             <script rel="stylesheet" src="{{asset('js')}}/editkeyword.js"></script>
@@ -105,5 +106,12 @@
         <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
         <link rel="stylesheet" type="text/css" href="{{asset('rs-plugin')}}/css/settings.css" media="screen" />
         <!-- JavaScripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js" integrity="sha512-frFP3ZxLshB4CErXkPVEXnd5ingvYYtYhE5qllGdZmcOlRKNEPbufyupfdSTNmoF5ICaQNO6SenXzOZvoGkiIA==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.js" integrity="sha512-uzuo1GprrBscZGr+iQSv8+YQQsKY+rSHJju0FruVsGHV2CZNZPymW/4RkxoHxAxw3Lo5UQaxDMF8zINUfAsGeg==" crossorigin="anonymous"></script><!-- Pagination Plugin -->
+        <script src="//code.jquery.com/jquery.min.js"></script>
+        <script src="pagination.js"></script>
+        <script src='//cdn.datatables.net/plug-ins/1.10.11/sorting/date-eu.js' type='text/javascript'></script>
+
+
     </head>
 @endsection

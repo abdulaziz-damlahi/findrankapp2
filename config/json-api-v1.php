@@ -75,6 +75,7 @@ return [
         'packets-reels'  =>  \App\Models\packets_reels::class,
         'requests'  =>  \App\Models\requests::class,
         'invoicerecords'  =>  \App\Models\invoicerecords::class,
+        'packets-of-users'  =>  \App\Models\packets_of_users::class,
     ],
 
     /*

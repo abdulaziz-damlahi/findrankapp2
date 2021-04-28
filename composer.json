@@ -21,7 +21,8 @@
         "predis/predis": "^1.1",
         "stevebauman/location": "^6.1",
         "torann/currency": "^1.1",
-        "torann/geoip": "^3.0"
+        "torann/geoip": "^3.0",
+        "yajra/laravel-datatables-oracle": "^9.17"
     },
     "require-dev": {
         "cloudcreativity/json-api-testing": "^3.2",
