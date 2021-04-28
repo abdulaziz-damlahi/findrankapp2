@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     getCountryDate();
     drawChart();
@@ -5,6 +6,7 @@ $(document).ready(function () {
     addpacket();
     search();
     packetreels();
+
 });
 let dps1 = [];
 
@@ -61,7 +63,8 @@ function drawChart() {
             var options = {
                 title: 'Ülkelere Göre Kullanıcı verileri',
                 pieHole: 0.4,
-                chartArea: {width: 1000, height: 1000}
+                chartArea: {width: 900, height: 900},
+                legend: 'none'
             };
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
@@ -403,9 +406,11 @@ function packetreels(){
                 var description = result['data'][i].attributes.description;
                 var rank_fosllow = result['data'][i].attributes.rank_fosllow;
                 var str = "<tr><td>" + id + "</td><td>" + names_packets + "</td><td>" + word_count + "</td><td>" + websites_count + "</td><td>" + rank_fosllow + "</td><td>" + description + "</td><td>" + price + "</td>" +
-                    "<td> <button type=\"button\" id='editbtn'  class=\"btn btn-success\" onclick='return edit2(" + id + ") ' data-toggle=\"modal\" data-target=\"#upModal\">EDIT</button></td> <td><button  type='button' id='deletebtn' onclick='return destroy(" + id + ") ' class='btn btn-danger ' data-toggle=\"modal\" data-target='#deleteModal'>DELETE</button></td></tr>"
+                    "<td> <a type=\"button\" id='editbtn'  class=\"text-success fa fa-edit\" onclick='return edit2(" + id + ") ' data-toggle=\"modal\" data-target=\"#upModal\"></a></td>" +
+                    " <td><a  type='button' id='deletebtn' onclick='return destroy(" + id + ") ' class='text-danger fa fa-trash' data-toggle=\"modal\" data-target='#deleteModal'></a></td></tr>"
                 $("#bodyTable").append(str)
             }
         }
     });
 }
+

@@ -15,8 +15,8 @@
                 <div class="page-body">
                     <div class="col-lg-8 col-md-12 row">
                         @foreach($userwebsites8 as $userwebsite)
-                            <a href="website/{{ $userwebsite->id}} ">
-                                <div class="col-md-4">
+                            <a href="website/{{ $userwebsite->id}}">
+                                <div class="col-lg-4 col-md-12">
                                     <div style="background-color:#ff6c3a;" class="card order-card">
                                         <div class="card-block">
                                             <h6 class="m-b-20"> {{ $userwebsite->website_name }}</h6>
@@ -133,8 +133,7 @@
                                             <div style="display:inline-block"><b style="font-size:28px"
                                                                                  id="totalup"></b>
                                                 <medium class="text-muted">{{__('panel.Rise')}}</medium>
-                                                <br> <img class="svgstylepanel"
-                                                          src="{{asset('assets')}}/svg/up-arrow.svg"><br></div>
+                                                <br> <img class="svgstylepanel" src="{{asset('assets')}}/svg/up-arrow.svg"><br></div>
                                             <div class="pull-right push-5-r"><b style="font-size:28px"
                                                                                 id="totaldown"></b>
                                                 <medium class="text-muted">{{__('panel.Drop')}}</medium>

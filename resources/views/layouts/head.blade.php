@@ -76,6 +76,7 @@
         @endif
         @if($routeName === 'dashboard' ||$routeName === 'dashboard' ||$routeName === '/update' ||$routeName === '/edit' ||$routeName === '/delete/' ||$routeName === 'store' )
             <link rel="stylesheet" type="text/css" href="{{asset('css')}}/grafik.css">
+            <link rel="stylesheet" type="text/css" href="{{asset('css')}}/dashboard.css">
             <script rel="stylesheet" src="{{asset('js')}}/dashboard.js"></script>
         @endif
         @if($routeName === 'profile')

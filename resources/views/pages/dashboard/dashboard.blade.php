@@ -2,8 +2,8 @@
 @section('content')
     <div class="background">
         <div id="containe" class="container">
-            <div id="charts" class="col-md-12" style="height: 370px">
-                <div class="col-md-6 col-sm-12 col-xs-12">
+            <div id="charts" class="col-md-12" >
+                <div class="col-md-8 col-sm-12 col-xs-12">
                     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
                     <br>
@@ -17,18 +17,22 @@
             </div>
             <div id="packetsreels" class="col-md-12">
                 <div id="under_menu">
-                    <table class="table table-striped" id="packetTable">
+                    <table class="packetTable" id="packetTable">
                         <thead>
                         <button type="button" id="add" class="btn btn-success" data-toggle="modal"
                                 data-target="#addModal">Create New Packet
                         </button>
                         <tr>
+                            <th> #</th>
                             <th>Packet Name</th>
                             <th>Word Count</th>
-                            <th>web count</th>
+                            <th>Web count</th>
                             <th class="hidden-xs">Rank Follow</th>
                             <th class="hidden-xs">Description</th>
                             <th>Price</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+
                         </tr>
                         </thead>
                         <tbody id="bodyTable">
@@ -165,10 +169,10 @@
                     </div>
                 </div>
             </div>
-            <div id="PACKETSPURCHASED" class="col-md-12" style="width:100%;background-color: white ;">
+            <div id="PACKETSPURCHASED" class="col-md-12" style="width:100%;">
                 <h3>PACKETS PURCHASED</h3>
                 <div class="card">
-                    <table class="table table-hover" id="firstTable">
+                    <table class="table" id="firstTable">
                         <thead>
                         <tr>
                             <th class="hide">id</th>

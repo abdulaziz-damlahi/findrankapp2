@@ -56,14 +56,14 @@ float:left;
 
 }
 #piechart{
-   width:50px;
-   height:1000px;
+   width:100%;
+   height:370px;
 
 }
 @media only screen and (max-width: 500px) {
     #piechart{
-    width:370px;
-        height:1000px;
+        width:100%;
+        height:370px;
     }
     #rightMenu {
         width: 94.1%;
@@ -87,7 +87,52 @@ float:left;
     #under_menu{
         height: 400px;
         width: 100%;
-
         overflow-x: auto;
     }
+}
+.packetTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.packetTable td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+
+.packetTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.packetTable tr:hover {background-color: #ddd;}
+
+.packetTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #000000;
+    color: white;
+}
+#firstTable {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#firstTable td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+
+#firstTable tr:nth-child(odd){background-color: #f2f2f2;}
+
+#firstTable tr:hover {background-color: #ddd;}
+
+#firstTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #000000;
+    color: white;
 }
